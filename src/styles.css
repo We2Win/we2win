@@ -1,0 +1,29 @@
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  --main-font-normal-dark: #ccc;
+  --main-bg-color: #232323;
+  --main-bg-color-highlight: #434343;
+  --main-width: 1125px;
+  --main-margin: 0 auto;
+  --main-padding: 2em 80px;
+  --header-bg-color: var(--main-bg-color);
+  --header-border-solid: #aaa;
+  --header-font-normal: #aaa;
+  --header-font-highlight: #fff;
+  --titleBanner-font-normal: var(--main-font-normal-dark);
+  --footer-bg-color: var(--main-bg-color);
+  --footer-font-normal: #999;
+  --footer-font-highlight: #fff;
+}
+
+section {
+  width: var(--main-width);
+  margin: var(--main-margin);
+  padding: var(--main-padding);
+  box-sizing: border-box;
+}
+

@@ -1,0 +1,143 @@
+:host {
+  display: block;
+  background-color: var(--header-bg-color);
+}
+
+section {
+  padding-bottom: 0;
+  color: white;
+  display: flex;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+#logo {
+  display: inline-block;
+  height: 30px;
+  margin: 0;
+  flex: none;
+}
+
+#wrapper {
+  display: inline-block;
+  width: 20vw;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#topBar {
+  height: 0.7em;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  text-align: right;
+}
+
+#iconSet {
+  flex: 5;
+  padding-right: 2em;
+}
+
+#iconSet button {
+  width: 1.2em;
+  height: 1.2em;
+  border: none;
+  opacity: 0.6;
+  margin: 0 0.5em;
+  transition: opacity 0.5s;
+  outline: none;
+  cursor: pointer;
+}
+
+#iconSet button:hover {
+  opacity: 1;
+}
+
+#iconSet button#mail {
+  background: url('/assets/img/icon_mail.png');
+  background-size: 1.2em;
+  background-repeat: no-repeat;
+}
+
+#iconSet button#dashboard {
+  background: url('/assets/img/icon_dashboard.png');
+  background-size: 1.2em;
+  background-repeat: no-repeat;
+}
+
+#iconSet button#notification {
+  background: url('/assets/img/icon_notification.png');
+  background-size: 1.2em;
+  background-repeat: no-repeat;
+}
+
+#accountInfo {
+  border-bottom: 1px solid var(--header-border-solid);
+  box-sizing: border-box;
+  display: flex;
+  padding: 0.3em 0.5em;
+  flex: none;
+}
+
+#accountInfo img {
+  width: 0.6em;
+  height: 0.6em;
+  margin: 0 0.5em;
+  flex: none;
+}
+
+#accountInfo #user {
+  font-size: 0.7em;
+  line-height: 100%;
+  flex: 1;
+}
+
+#accountInfo #point {
+  width: 5em;
+  font-size: 0.7em;
+  color: white;
+  flex: none;
+}
+
+#mainMenu, .subMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+li {
+  color: var(--header-font-normal);
+  list-style: none;
+  flex: none;
+  transition: color 0.5s;
+  cursor: pointer;
+  outline: none;
+}
+li:hover {
+  color: var(--header-font-highlight);
+}
+
+#mainMenu {
+  height: calc(30px + 2em);
+}
+
+#mainMenu li {
+  font-size: 1.2em;  
+}
+
+.subMenu {
+  position: relative;
+  height: 3em;
+  margin-bottom: -3em;
+  background: #232323;
+  border-bottom: 1px solid #1e1e1e;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.subMenu li {
+  font-size: 1em;
+  margin: 0 2em;
+}

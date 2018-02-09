@@ -1,0 +1,29 @@
+<section>
+  <div id="wrapper">
+    <div id="topBar">
+      <div id="iconSet">
+        <button id="mail"></button>
+        <button id="dashboard"></button>
+        <button id="notification"></button>
+      </div>
+      <div id="accountInfo">
+        <img src="/assets/img/icon_profile.png" alt="">
+        <div id="user">Administrator</div>
+        <div id="point">3,700</div>
+      </div>
+    </div>
+
+    <nav id="mainMenu">
+      <img id="logo" src="/assets/img/logo.png" />
+      <li *ngFor="let menu of menuTree" routerLink="{{ '/' + menu.path}}" (mouseover)="viewSubMenu(menu.name, $event)">{{ menu.name }}</li>
+    </nav>
+  </div>
+</section>
+
+<ng-container *ngFor="let menu of menuTree">
+  <ng-container *ngIf="menu.sub">
+    <nav class="subMenu" *ngIf="menu.name === selectedName" (mouseleave)="hideSubMenu(menu.name)">
+      <li *ngFor="let submenu of menu.sub" routerLink="{{ '/' + menu.path + '/' + submenu.path }}">{{submenu.name}}</li>
+    </nav>
+  </ng-container>
+</ng-container>

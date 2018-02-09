@@ -1,0 +1,70 @@
+:host {
+  display: block;
+}
+
+section {
+  width: var(--main-width);
+  margin: var(--main-margin);
+  padding: 2em 0;
+  text-align: center;
+}
+
+.grey {
+  background: #d8d8d8;
+}
+
+section>div {
+  display: flex;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 2em 0 1.5em 0;
+  text-align: center;
+}
+
+app-select {
+  margin-right: 80px;
+}
+
+.contents {
+  width: calc(var(--main-width) - 160px);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+app-card {
+    margin-top: 1em;
+}
+
+.btnNav {
+  width: 20px;
+  flex: none;
+  border: none;
+  opacity: 0.3;
+  transition: opacity 0.5s;
+  outline: none;
+}
+
+.btnNav:hover {
+  opacity: 0.8;
+}
+
+#btnLeft {
+  background: url('/assets/img/back.svg');
+  background-size: 20px 42px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 60px;
+}
+
+#btnRight {
+  background: url('/assets/img/next.svg');
+  background-size: 20px 42px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 60px;
+}

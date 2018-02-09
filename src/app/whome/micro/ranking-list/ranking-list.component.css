@@ -1,0 +1,77 @@
+:host {
+    display: block;
+  background: #d8d8d8;
+}
+
+section {
+  text-align: center;
+}
+
+h1 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 2em 0 1.5em 0;
+  text-align: center;
+}
+
+#dateSelector {
+  width: 146px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: 300;
+  flex: 1;
+  margin: 0;
+}
+
+.contents {
+  width: 956px;
+  display: flex;
+  /* flex-flow: row wrap; */
+  justify-content: space-between;
+  padding: 0;
+}
+
+app-card {
+  width: 270px;
+  margin-top: 4em;
+}
+
+app-card:before {
+  content: '1위';
+  display: block;
+  width: 100%;
+  height: 2em;
+  font-size: 1.2em;
+  padding: 0.4em;
+  margin-top: -2em;
+  color: #333;
+  text-align: center;
+}
+
+.btnNav {
+  width: 0.5em;
+  height: 2em;
+  flex: none;
+  border: none;
+  outline: none;
+}
+
+#btnLeft {
+  background: url('/assets/img/back.svg');
+  background-size: 10px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#btnRight {
+  background: url('/assets/img/next.svg');
+  background-size: 10px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}

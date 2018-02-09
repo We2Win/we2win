@@ -1,0 +1,64 @@
+:host {
+  display: block;
+}
+
+.namecard {
+  width: 100%;
+  border: 1px solid #999;
+  padding: 1em 2em;
+  margin: 7px;
+  width: 304px;
+  height: 195px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+div.p:after {
+  position: absolute;
+  right: 1em;
+  top: 0;
+  background: url('/assets/img/icon_p.png');
+}
+
+h3 {
+  display: block;
+  font-size: 0.8em;
+  font-weight: 300;
+  margin: 0;
+  color: #999;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 1.3em;
+  font-weight: 500;
+  margin: 0.5em 1em 0.5em 0;
+  color: var(--main-bg-color-dark);
+}
+
+h2 {
+  display: inline-block;
+  font-size: 1.1em;
+  font-weight: 400;
+  margin: 0;
+  color: #333;
+}
+
+h4 {
+  display: inline-block;
+  clear: left;
+  font-weight: 600;
+  margin: 0.2em 2em 0.2em 0;
+  font-size: 0.5em;
+}
+
+p {
+  display: inline-block;
+  font-weight: 300;
+  margin: 0.2em 0;
+  font-size: 0.5em;
+}
+
+#hp {
+  color: #d0021b;
+}
