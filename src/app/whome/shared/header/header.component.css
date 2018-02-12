@@ -56,19 +56,22 @@ section {
 
 #iconSet button#mail {
   background: url('/assets/img/icon_mail.png');
-  background-size: 1.2em;
+  background-size: 1.2em auto;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
 #iconSet button#dashboard {
   background: url('/assets/img/icon_dashboard.png');
-  background-size: 1.2em;
+  background-size: 1.2em auto;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
 #iconSet button#notification {
   background: url('/assets/img/icon_notification.png');
-  background-size: 1.2em;
+  background-size: auto 1.2em;
+  background-position: center;
   background-repeat: no-repeat;
 }
 

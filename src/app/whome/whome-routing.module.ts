@@ -22,6 +22,9 @@ import { ScrapComponent } from './pages/portfolio/scrap/scrap.component';
 import { PageInfoService } from './page-info.service';
 import { InfoMainComponent } from './pages/info/info-main/info-main.component';
 import { SiteMainComponent } from './pages/site/site-main/site-main.component';
+import { ApplyEmployerComponent } from './pages/recruit/apply-employer/apply-employer.component';
+import { ApplyEmployeeComponent } from './pages/recruit/apply-employee/apply-employee.component';
+import { MeetingDetailComponent } from './pages/meeting/meeting-detail/meeting-detail.component';
 
 
 
@@ -93,22 +96,39 @@ const routes: Routes = [
             component: EmployerComponent
           },
           {
-            path: 'employee',
+            path: 'employer',
             component: EmployerComponent
           },
           {
-            path: 'employer',
+            path: 'employee',
             component: EmployeeComponent
           },
           {
             path: 'apply',
             component: ApplyComponent
+          },
+          {
+            path: 'apply-employer',
+            component: ApplyEmployerComponent
+          },
+          {
+            path: 'apply-employee',
+            component: ApplyEmployeeComponent
           }
         ]
       },
       {
         path: 'meeting',
-        component: MeetingComponent
+        children: [
+          {
+            path: '',
+            component: MeetingComponent
+          },
+          {
+            path: 'detail/:id',
+            component: MeetingDetailComponent
+          }
+        ]
       },
       {
         path: 'portfolio',

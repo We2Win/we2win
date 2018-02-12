@@ -44,9 +44,6 @@ export class PageInfoService {
       },
       'employee': {
         'title': '구직 정보'
-      },
-      'apply': {
-        'title': '구인 구직 등록하기'
       }
     },
     'meeting': {
@@ -62,7 +59,7 @@ export class PageInfoService {
   getCurrentData(routePath, data) {
     if (!routePath) return;
     const path = routePath.split('/');
-    console.log('executing...', path, path.length);
+    // console.log('executing...', path, path.length);
 
     let currentData;
 

@@ -18,7 +18,6 @@ import { LawComponent } from './pages/info/law/law.component';
 import { NewsComponent } from './pages/info/news/news.component';
 import { ReportComponent } from './pages/info/report/report.component';
 import { WeeklyComponent } from './pages/info/weekly/weekly.component';
-import { DetailComponent } from './pages/meeting/detail/detail.component';
 import { MeetingComponent } from './pages/meeting/meeting/meeting.component';
 import { PersonalComponent } from './pages/portfolio/personal/personal.component';
 import { ScrapComponent } from './pages/portfolio/scrap/scrap.component';
@@ -31,7 +30,15 @@ import { SelectComponent } from './micro/select/select.component';
 import { PageInfoService } from './page-info.service';
 import { InfoMainComponent } from './pages/info/info-main/info-main.component';
 import { SiteMainComponent } from './pages/site/site-main/site-main.component';
-import { NamecardComponent } from './micro/namecard/namecard.component';
+import { ApplyEmployeeComponent } from './pages/recruit/apply-employee/apply-employee.component';
+import { ApplyEmployerComponent } from './pages/recruit/apply-employer/apply-employer.component';
+import { ButtonComponent } from './micro/button/button.component';
+import { PopupComponent } from './micro/popup/popup.component';
+import { EmployeeCardComponent } from './micro/employee-card/employee-card.component';
+import { EmployerCardComponent } from './micro/employer-card/employer-card.component';
+import { SelectFilteringComponent } from './micro/select-filtering/select-filtering.component';
+import { MeetingCardComponent } from './micro/meeting-card/meeting-card.component';
+import { MeetingDetailComponent } from './pages/meeting/meeting-detail/meeting-detail.component';
 
 
 @NgModule({
@@ -56,7 +63,6 @@ import { NamecardComponent } from './micro/namecard/namecard.component';
     NewsComponent,
     ReportComponent,
     WeeklyComponent,
-    DetailComponent,
     MeetingComponent,
     PersonalComponent,
     ScrapComponent,
@@ -68,7 +74,15 @@ import { NamecardComponent } from './micro/namecard/namecard.component';
     SelectComponent,
     InfoMainComponent,
     SiteMainComponent,
-    NamecardComponent,
+    ApplyEmployeeComponent,
+    ApplyEmployerComponent,
+    ButtonComponent,
+    PopupComponent,
+    EmployeeCardComponent,
+    EmployerCardComponent,
+    SelectFilteringComponent,
+    MeetingCardComponent,
+    MeetingDetailComponent,
   ],
   providers: [ PageInfoService ]
 })

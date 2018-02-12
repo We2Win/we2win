@@ -1,0 +1,76 @@
+:host {
+  position: relative;
+  width: 144px;
+  height: 4.3em;
+  float: right;
+  margin: 3.5em 0 0 -100%;
+  text-align: left;
+  font-size: 0.8em;
+  line-height: 200%;
+  user-select: none;
+}
+
+div {
+  width: 100%;
+  margin: 0 80px 0 0;
+  padding: 0.2em 1em;
+  border: 2px solid transparent;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  transition: border 0.5s;
+}
+
+div:after {
+  content: '';
+  width: 0.9em;
+  height: 0.9em;
+  margin: 0.5em 0;
+  background: url('/assets/img/arrow_down_black.png');
+  background-size: 0.9em;
+  background-repeat: no-repeat;
+  background-position: center;
+  float: right;
+}
+
+ul {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -1px;
+  border: 2px solid #d8d8d8;
+  background: rgba(255, 255, 255, 0.8);
+  color: #666;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0s;
+  z-index: 5;
+}
+
+ul.semiShow {
+  opacity: 0.4;
+  height: auto;
+  visibility: visible;
+}
+
+ul.show {
+  opacity: 1;
+  height: auto;
+  visibility: visible;
+}
+
+li {
+  display: block;
+  width: 100%;
+  padding: 0.3em 1em;
+  box-sizing: border-box;
+}
+
+li:hover {
+  background: rgba(200, 200, 200, 0.7);
+  color: white;
+}
+

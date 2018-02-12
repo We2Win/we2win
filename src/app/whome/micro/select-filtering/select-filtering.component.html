@@ -1,0 +1,4 @@
+<div id="container" (click)="viewUl(true);" (mouseover)="semiViewUl(true);" (mouseleave)="hideUl(true);">{{ selected }}</div>
+<ul (click)="selectValue($event);" (mouseover)="viewUl(false);" (mouseleave)="hideUl(false);">
+  <li *ngFor="let str of type">{{ str }}</li>
+</ul>

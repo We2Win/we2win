@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: 'app/whome/whome.module#WhomeModule'
   },
   {
+    path: 'management',
+    loadChildren: 'app/wmanagement/wmanagement.module#WmanagementModule'
+  },
+  {
     path: 'wadmin',
     loadChildren: 'app/wadmin/wadmin.module#WadminModule'
   },
@@ -20,4 +24,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

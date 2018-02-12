@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 100%;
+  background: var(--footer-bg-color);
+  padding: 3em 0;
+  color: var(--footer-font-normal);
+  cursor: default;
+}
+
+p {
+  font-size: 0.8em;
+}
+
+b {
+  color: #ddd;
+}
+

@@ -1,0 +1,65 @@
+h1 {
+    text-align: center;
+    margin: 4em 0 2em 0;
+    font-weight: 400;
+}
+
+.formPart {
+    border-top: 1px solid #999;
+    display: flex;
+}
+
+h2 {
+    display: block;
+    width: 170px;
+    padding: 1em;
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 200%;
+}
+h2:after {
+    content: '필수사항 *';
+    font-size: 0.7em;
+    display: block;
+}
+
+ul {
+    flex: 1;
+    margin: 1em;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0;
+    width: 200px;
+    line-height: 300%;
+}
+
+h3.necessary:after {
+    content: '*';
+    display: inline-block;
+}
+
+input {
+    flex: 1;
+}
+
+button {
+    width: 220px;
+}
+
+span {
+    flex: 2;
+    font-size: 0.8em;
+    padding: 0.2em 1em;
+    margin: 0.25em;
+    border: 1px solid transparent;
+    line-height: 300%;
+}

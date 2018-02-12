@@ -1,0 +1,100 @@
+#top {
+  display: flex;
+  padding: 5em 0 2em 0;
+}
+
+#top>div {
+  flex: 1 1 auto;
+}
+
+#top #imgNav {
+  margin-right: 2em;
+}
+
+#top h1 {
+  margin-bottom: 1em;
+}
+
+#top p {
+  margin-bottom: 2em;
+}
+
+#top li {
+  display: flex;
+}
+
+#top li h2 {
+  width: 150px;
+  font-size: 0.9em;
+  line-height: 200%;
+}
+
+#top li h3 {
+  flex: 1;
+  font-size: 0.9em;
+  line-height: 200%;
+}
+
+#top app-button {
+  display: block;
+  margin: 1em auto;
+}
+
+.part {
+  border-top: 1px solid #999;
+  display: flex;
+  padding: 1em 2em;
+}
+
+.part h2 {
+  width: 200px;
+  font-size: 0.8em;
+  flex: none;
+}
+
+.part .description {
+    flex: 1;
+  font-size: 0.8em;
+}
+
+.part li {
+  display: flex;
+  padding: 0 0 1em 0;
+}
+
+.part li+li {
+  border-top: 1px solid #d8d8d8;
+  padding-top: 1em;
+}
+
+.part li#submit {
+  border-top: 1px solid #999;
+}
+
+.part li h3 {
+  width: 150px;
+  padding-left: 0.5em;
+}
+
+.part li p {
+  flex: 1;
+}
+
+.part textarea {
+  flex: 1;
+  min-height: 4em;
+  font-size: 1em;
+  padding: 0.5em 1em;
+  border: 1px solid #999;
+  resize: vertical;
+}
+
+.part app-button {
+  width: 100px;
+  margin: 0;
+}
+
+.cardList {
+  display: flex;
+  justify-content: space-between;
+}
