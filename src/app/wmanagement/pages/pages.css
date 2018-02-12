@@ -1,0 +1,172 @@
+:host {
+  flex-direction: column;
+  flex: 1;
+  background: #eee;
+  padding: 1em;
+}
+
+section {
+  width: calc(var(--main-width) - 225px);
+  margin: 0 0 auto 0;
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.particle {
+  flex: 1;
+  padding: 1em 0;
+  margin: 0.5em;
+  background: white;
+  min-height: 100px;
+}
+
+#titleBar {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5em 2em;
+  margin: 0 0 1em 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+#titleBar * {
+  flex: 1;
+}
+
+h1 {
+    flex: 1;
+    font-size: 1.2em;
+    line-height: 180%;
+}
+#title {
+  font-size: 0.9em;
+}
+
+#date {
+  font-size: 0.7em;
+  text-align: right;
+}
+
+.lTable {
+  display: table;
+  width: 100%;
+  background: none;
+  font-size: 0.9em;
+  /* word-wrap: break-word; */
+  /* border-spacing set instead of margin */
+  /* border-spacing: 10px; */
+  /* border-collapse: separat e; */
+}
+
+.lTableRow {
+  display: table-row;
+  line-height: 200%;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.lTableColumn1 {
+  display: table-column;
+}
+
+.lTableColumn2 {
+  display: table-column;
+}
+
+.lTableCell,
+.lTableHead {
+  display: table-cell;
+  padding: 0.5em 0.3em;
+}
+
+.lTableCell img {
+  width: auto;
+  height: 1.8em;
+  vertical-align: middle;
+}
+
+.lTableHeading {
+  display: table-cell;
+  width: auto;
+  font-weight: bold;
+  padding: 0.5em 0.9em;
+  vertical-align: middle;
+  color: #0361d5;
+  white-space: nowrap;
+}
+
+.lTableHead {
+  font-weight: bold;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.lTableFoot {
+  display: table-footer-group;
+  font-weight: bold;
+}
+
+.lTableBody {
+  display: table-row-group;
+}
+
+li {
+    display: flex;
+    padding: 0.25em 2em;
+    margin: 0.3em 0;
+}
+
+li h2 {
+  display: inline-block;
+  width: 200px;
+  line-height: 200%;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+}
+
+input#search {
+  border: none;
+  background: transparent;
+  font-size: 1.2em;
+}
+
+input, textarea {
+    flex: 1;
+    border: 1px solid #d8d8d8;
+    font-size: 0.9em;
+    line-height: 150%;
+    margin: 0;
+    padding: 0.5em 1em;
+}
+
+input + input {
+    margin-left: 0.5em;
+}
+
+input[type="date"] {
+    font-size: 1em;
+}
+
+.blank {
+    width: 20%;
+}
+
+button {
+    border: none;
+    background: transparent;
+    font-size: 1em;
+    float: right;
+    margin-top: 1em;
+    margin-right: 2em;
+    padding: 1em;
+}

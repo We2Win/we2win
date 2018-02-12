@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  background: #ddd;
+  text-align: left;
+}
+
+section {
+  width: calc(var(--main-width) - 225px);
+  margin: 0 0 auto 0;
+  padding: 4em 1em 1em 3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+h2 {
+    font-size: 1em;
+}
+
+h2:after {
+    content:'';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 1em;
+    background: url('/assets/img/icon_download.png');
+    background-size: 1em 1em;
+    background-repeat: no-repeat;
+
+}

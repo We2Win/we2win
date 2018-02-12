@@ -70,3 +70,7 @@ h4 {
     flex: 1;
     display: block;
 }
+
+app-button {
+    margin: 3em 0;
+}

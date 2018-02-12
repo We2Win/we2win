@@ -63,15 +63,14 @@ export class PageInfoService {
 
     let currentData;
 
-    if (path.length < 2) {
-      return 0;
-    } else if (path.length === 2) {
-      currentData = this.dataset[path[1]];
-    } else {
-      currentData = this.dataset[path[1]][path[2]];
-    }
-
     try {
+      if (path.length < 2) {
+        return 0;
+      } else if (path.length === 2) {
+        currentData = this.dataset[path[1]];
+      } else {
+        currentData = this.dataset[path[1]][path[2]];
+      }
       return currentData[data];
     } catch {
       return 0;

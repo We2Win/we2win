@@ -1,0 +1,58 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 225px;
+    flex: none;
+    background: var(--main-bg-color);
+    margin-left: calc((100vw - var(--main-width)) / 2);
+    color: white;
+    padding: 1em 0;
+}
+
+#logo {
+    width: 93px;
+    height: 25px;
+    padding-left: 1em;
+}
+
+#managerInfo {
+    text-align: center;
+}
+
+#managerInfo img {
+    margin: 3em 0 0 0;
+}
+
+#managerInfo p {
+    margin: 0.5em 0 2em 0;
+}
+
+#buttonBar {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 0;
+    border-top: 2px solid #2d2d2d;
+    border-bottom: 2px solid #2d2d2d;
+}
+
+nav {
+    flex: 1;
+}
+
+nav li {
+    padding: 1.2em 2em;
+    color: #999;
+    transition: color 0.7s, background 1s;
+    cursor: pointer;
+    outline: none;
+}
+
+nav li:hover, nav li:focus {
+    background-color: #444;
+    color: #ddd;
+}
+
+#versionInfo {
+    padding: 1em 2em;
+    color: #666;
+}

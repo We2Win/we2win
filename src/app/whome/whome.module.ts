@@ -39,6 +39,7 @@ import { EmployerCardComponent } from './micro/employer-card/employer-card.compo
 import { SelectFilteringComponent } from './micro/select-filtering/select-filtering.component';
 import { MeetingCardComponent } from './micro/meeting-card/meeting-card.component';
 import { MeetingDetailComponent } from './pages/meeting/meeting-detail/meeting-detail.component';
+import { SiteCardComponent } from './micro/site-card/site-card.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { MeetingDetailComponent } from './pages/meeting/meeting-detail/meeting-d
     SelectFilteringComponent,
     MeetingCardComponent,
     MeetingDetailComponent,
+    SiteCardComponent,
   ],
   providers: [ PageInfoService ]
 })

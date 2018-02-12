@@ -1,0 +1,19 @@
+:host {
+  display: inline-block;
+  background: var(--main-bg-color);
+  color: var(--main-font-normal-dark);
+  flex: none;
+  width: 150px;
+  font-size: 0.9em;
+  padding: 0.5em 0;
+  line-height: 150%;
+  text-align: center;
+  margin: 0 0 0 0.5em;
+  outline: none;
+  border: none;
+}
+
+:host:hover {
+  background: var(--main-bg-color-highlight);
+}
+

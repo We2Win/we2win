@@ -49,11 +49,13 @@
   font-size: 0.9em;
   font-weight: 500;
   text-align: left;
+  color: #D80007;
 }
 
 .card>h3:before {
     display: inline-block;
     content: '마감 임박';
     font-size: 0.7em;
+    margin-right: 1em;
     color: #D80007;
 }
