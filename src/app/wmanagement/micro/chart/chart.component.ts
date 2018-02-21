@@ -209,9 +209,9 @@ export class ChartComponent implements OnInit {
     fillStandard.addColorStop(0, 'rgba(170, 170, 170, 0.4)');
     fillStandard.addColorStop(1, 'rgba(170, 170, 170, 1)');
 
-    this.chartData.dashboard[0].data.datasets[0]['backgroundColor'] =
+    this.chartData['dashboard'][0].data.datasets[0]['backgroundColor'] =
       [fillPlatinum, fillPremium, fillStandard];
-    this.chartData.analysisContents[0].data.datasets[0]['backgroundColor'] =
+    this.chartData['analysisContents'][0].data.datasets[0]['backgroundColor'] =
       [fillPlatinum, fillPremium, fillStandard];
 
     try {
