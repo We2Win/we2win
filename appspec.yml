@@ -7,16 +7,16 @@ hooks:
   BeforeInstall:
     - location: script/install.sh
       timeout: 100
-      runas: ubuntu
+      runas: DeployTest
   AfterInstall:
     - location: script/change_permissions.sh
       timeout: 100
-      runas: ubuntu
+      runas: DeployTest
   ApplicationStart:
     - location: script/start_server.sh
       timeout: 300
-      runas: ubuntu
+      runas: DeployTest
   ApplicationStop:
     - location: script/stop_server.sh
       timeout: 100
-      runas: ubuntu
+      runas: DeployTest
