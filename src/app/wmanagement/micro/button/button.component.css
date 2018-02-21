@@ -11,6 +11,7 @@
   margin: 0 0 0 0.5em;
   outline: none;
   border: none;
+  cursor: default;
 }
 
 :host:hover {

@@ -1,0 +1,63 @@
+<section>
+  <article>
+    <header>
+      <app-select [type]="'카테고리'"></app-select>
+      <app-select [type]="'금액'"></app-select>
+      <input class="search" type="text" placeholder="컨텐츠 검색" />
+    </header>
+    <app-table [type]="'analysisContents'">
+      <app-analysis-contents-record></app-analysis-contents-record>
+      <app-analysis-contents-record></app-analysis-contents-record>
+      <app-analysis-contents-record></app-analysis-contents-record>
+      <app-analysis-contents-record></app-analysis-contents-record>
+      <app-analysis-contents-record></app-analysis-contents-record>
+      <app-analysis-contents-record></app-analysis-contents-record>
+      <app-analysis-contents-record></app-analysis-contents-record>
+      <app-analysis-contents-record></app-analysis-contents-record>
+    </app-table>
+  </article>
+  <div class="wrapper">
+    <article>
+      <header>
+        <span id="title">인기 컨텐츠 | 클릭</span>
+        <span id="date">2017.12</span>
+      </header>
+      <div class="subtitle">부동산 정보</div>
+      <app-chart class="shorter" [type]="'analysisContents'" [num]="'0'"></app-chart>
+      <div class="subtitle">분양 현장</div>
+      <app-chart [type]="'analysisContents'" [num]="'1'"></app-chart>
+    </article>
+    <article>
+      <header>
+        <span id="title">인기 컨텐츠 | 스크랩</span>
+        <span id="date">2017.12</span>
+      </header>
+      <div class="subtitle">부동산 정보</div>
+      <app-chart class="shorter" [type]="'analysisContents'" [num]="'2'"></app-chart>
+      <div class="subtitle">분양 현장</div>
+      <app-chart [type]="'analysisContents'" [num]="'3'"></app-chart>
+    </article>
+  </div>
+  <div class="wrapper">
+    <article>
+      <header>
+        <span id="title">인기 컨텐츠 | 댓글</span>
+        <span id="date">2017.12</span>
+      </header>
+      <div class="subtitle">부동산 정보</div>
+      <app-chart class="shorter" [type]="'analysisContents'" [num]="'4'"></app-chart>
+      <div class="subtitle">분양 현장</div>
+      <app-chart [type]="'analysisContents'" [num]="'5'"></app-chart>
+    </article>
+    <article>
+      <header>
+        <span id="title">인기 컨텐츠 | 공유</span>
+        <span id="date">2017.12</span>
+      </header>
+      <div class="subtitle">부동산 정보</div>
+      <app-chart class="shorter" [type]="'analysisContents'" [num]="'6'"></app-chart>
+      <div class="subtitle">분양 현장</div>
+      <app-chart [type]="'analysisContents'" [num]="'7'"></app-chart>
+    </article>
+  </div>
+</section>

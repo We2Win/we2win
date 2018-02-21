@@ -1,0 +1,111 @@
+:host {
+  visibility: hidden;
+}
+
+:host.show {
+  visibility: visible;
+}
+
+#popupBox {
+  position: fixed;
+  margin: auto;
+  padding: 2em;
+  width: 50vw;
+  max-height: 80vh;
+  top: 10vh;
+  left: 25vw;
+  background: #fff;
+  z-index: 11;
+  text-align: left;
+  overflow-y: scroll;
+}
+
+#dim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+:host.show #dim {
+  opacity: 1;
+}
+
+h1 {
+  font-size: 1.3em;
+}
+
+div {
+  padding: 1em;
+}
+
+li {
+  list-style: none;
+}
+
+h1+div {
+  display: flex;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #999;
+  padding: 1.5em 1em;
+}
+
+h1+div li {
+  display: inline-block;
+  flex: 1 1 auto;
+}
+
+h2 {
+  font-size: 0.7em;
+  font-weight: 300;
+  margin: 0;
+  line-height: 150%;
+}
+
+h3 {
+  display: inline-block;
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0;
+  line-height: 150%;
+}
+
+h4 {
+  font-size: 0.8em;
+  margin: 2em 1em 1em 1em;
+}
+
+div {
+  border-top: 1px solid #999;
+}
+
+li {
+  display: flex;
+}
+
+h5 {
+  width: 150px;
+  font-size: 0.8em;
+  line-height: 200%;
+  font-weight: 400;
+  margin: 0;
+}
+
+p, li div {
+  flex: 1 1 auto;
+  width: auto;
+  font-size: 0.8em;
+  line-height: 200%;
+  font-weight: 400;
+  margin: 0;
+}
+
+pre {
+  margin: 0;
+}
+

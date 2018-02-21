@@ -1,0 +1,63 @@
+:host {
+  display: table;
+  width: 100%;
+  background: none;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 0;
+  /* word-wrap: break-word; */
+  /* border-spacing set instead of margin */
+  /* border-spacing: 10px; */
+  /* border-collapse: separat e; */
+}
+
+header {
+  display: table-row;
+  font-size: 1em;
+  line-height: 300%;
+  font-weight: bold;
+}
+
+header .cell {
+  display: table-cell;
+  padding: 0em 0.3em;
+  border-bottom: 1px solid #ddd;
+}
+
+.lTableRow {
+  display: table-row;
+  line-height: 200%;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.lTableCell,
+.lTableHead {
+  display: table-cell;
+  padding: 0.5em 0.3em;
+}
+
+.lTableCell img {
+  width: auto;
+  height: 1.8em;
+  vertical-align: middle;
+}
+
+.lTableHeading {
+  display: table-cell;
+  width: auto;
+  font-weight: bold;
+  padding: 0.5em 0.9em;
+  vertical-align: middle;
+  color: #0361d5;
+  white-space: nowrap;
+}
+
+.lTableFoot {
+  display: table-footer-group;
+  font-weight: bold;
+}
+
+.lTableBody {
+  display: table-row-group;
+}

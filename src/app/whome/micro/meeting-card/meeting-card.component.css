@@ -12,10 +12,47 @@
   border: 1px solid #aaa;
   background: #fff;
 }
-
-.card.gold {
-  border-top: 3px solid #d5b15e;
+.card.platinum {
+  border-top: 3px solid var(--level-platinum);
 }
+
+.card.premium {
+  border-top: 3px solid var(--level-premium);
+}
+
+.card.standard {
+  border-top: 3px solid var(--level-standard);
+}
+
+.card #levelBar {
+  position: relative;
+  margin-bottom: -25px;
+  height: 25px;
+  opacity: 0;
+  color: white;
+  line-height: 200%;
+  transition: opacity 0.5s;
+  text-align: left;
+  font-size: 0.9em;
+  padding: 0 1em;
+}
+
+.card.platinum #levelBar {
+  background: var(--level-platinum-gradient);
+}
+
+.card.premium #levelBar {
+  background: var(--level-premium-gradient);
+}
+
+.card.standard #levelBar {
+  background: var(--level-standard-gradient);
+}
+
+.card:hover #levelBar {
+  opacity: 1;
+}
+
 
 .card>#imgFrame {
   height: 225px;

@@ -11,9 +11,21 @@ import { AccountComponent } from './pages/account/account.component';
 import { AnalysisComponent } from './pages/analysis/analysis.component';
 import { TrackingComponent } from './pages/tracking/tracking.component';
 import { SelectComponent } from './micro/select/select.component';
-import { ContentsRegistrationComponent } from './pages/contents/contents-registration.component';
-import { ContentsModificationComponent } from './pages/contents/contents-modification.component';
+import { ContentsRegistrationComponent } from './pages/contents/contents-registration/contents-registration.component';
+import { ContentsModificationComponent } from './pages/contents/contents-modification/contents-modification.component';
 import { ButtonComponent } from './micro/button/button.component';
+import { AnalysisUserComponent } from './pages/analysis/analysis-user/analysis-user.component';
+import { AnalysisContentsComponent } from './pages/analysis/analysis-contents/analysis-contents.component';
+import { NotificationComponent } from './pages/notification/notification.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { PopupComponent } from './micro/popup/popup.component';
+import { AccountRecordComponent } from './micro/account-record/account-record.component';
+import { TableComponent } from './micro/table/table.component';
+import { DateInputComponent } from './micro/date-input/date-input.component';
+import { ListInputComponent } from './micro/list-input/list-input.component';
+import { ChartComponent } from './micro/chart/chart.component';
+import { AnalysisUserRecordComponent } from './micro/analysis-user-record/analysis-user-record.component';
+import { AnalysisContentsRecordComponent } from './micro/analysis-contents-record/analysis-contents-record.component';
 
 @NgModule({
   imports: [
@@ -33,6 +45,18 @@ import { ButtonComponent } from './micro/button/button.component';
     ContentsRegistrationComponent,
     ContentsModificationComponent,
     ButtonComponent,
+    AnalysisUserComponent,
+    AnalysisContentsComponent,
+    NotificationComponent,
+    SettingsComponent,
+    PopupComponent,
+    AccountRecordComponent,
+    TableComponent,
+    DateInputComponent,
+    ListInputComponent,
+    ChartComponent,
+    AnalysisUserRecordComponent,
+    AnalysisContentsRecordComponent,
   ]
 })
 export class WmanagementModule { }

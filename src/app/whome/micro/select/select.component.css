@@ -1,12 +1,12 @@
 :host {
-    display: inline-block;
+  display: inline-block;
   width: 144px;
   height: 2.9em;
   margin: 0.25em;
   text-align: left;
   font-size: 0.8em;
   user-select: none;
-  line-height: 300%;  
+  line-height: 300%;
 }
 
 div {

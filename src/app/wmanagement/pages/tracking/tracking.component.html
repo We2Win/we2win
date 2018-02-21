@@ -1,42 +1,34 @@
 <section>
-  <div class="particle">
-    <div id="titleBar">
+  <article>
+    <header>
       <h1>구직자 정보</h1>
-      <app-select>회원등급</app-select>
-      <app-select>금액</app-select>
+      <app-select [type]="'회원 등급'"></app-select>
+      <app-select [type]="'금액'"></app-select>
       <input type="text" placeholder="아이디 검색" />
-    </div>
-    <div class="lTable">
-      <div class="lTableColumn1"></div>
-      <div class="lTableColumn2"></div>
-      <div class="lTableRow">
-        <div class="lTableHead">
-          <input type="checkbox" />
-        </div>
-        <div class="lTableHead">아이디</div>
-        <div class="lTableHead">이름</div>
-        <div class="lTableHead">이메일</div>
-        <div class="lTableHead">직종</div>
-        <div class="lTableHead">금액</div>
-        <div class="lTableHead">희망연봉</div>
-      </div>
-      <div class="lTableRow">
-        <div class="lTableCell">
-          <input type="checkbox" />
-        </div>
-        <div class="lTableCell">Christian_Red</div>
-        <div class="lTableCell">이유정</div>
-        <div class="lTableCell">Christian_red@hanmail.net</div>
-        <div class="lTableCell">STANDARD</div>
-        <div class="lTableCell">30,000</div>
-        <div class="lTableCell">1억 5000만원</div>
-      </div>
-    </div>
-  </div>
-  <div class="particle">
-    <div id="titleBar">
+    </header>
+    <app-table [type]="'tracking'"></app-table>
+  </article>
+  <article>
+    <header>
       <span id="title">월별 신청 그래프</span>
       <span id="date">2017. 12</span>
+    </header>
+    <div id="horizontaProfile">
+      <img src="/assets/img/icon_profile.png"/>
+      <li>
+        <h2>20대 남성</h2>
+        <span>김철수</span>
+        <span>세무사</span>
+      </li>
+      <li>
+        <h2>희망지역</h2>
+        <span>서울, 경기</span>
+      </li>
+      <li>
+        <h2>희망업무</h2>
+        <span>오피스텔</span>
+      </li>
     </div>
-  </div>
+    <canvas id="monthly"></canvas>
+  </article>
 </section>

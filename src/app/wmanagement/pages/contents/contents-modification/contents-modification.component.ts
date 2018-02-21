@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './contents-modification.component.html',
   styleUrls: [
     './contents-modification.component.css',
-    '../pages.css'
+    '../../pages.css'
   ]
 })
 export class ContentsModificationComponent implements OnInit {

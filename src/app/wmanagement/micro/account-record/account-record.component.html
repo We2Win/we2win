@@ -1,0 +1,17 @@
+<!-- <span class="cell">
+  <input type="checkbox" />
+</span>
+<span class="cell">Christian_Red
+  <div>
+    <span class="edit">Edit</span>
+    <span class="delete">Delete</span>
+  </div>
+</span>
+<span class="cell">이유정</span>
+<span class="cell">Christian_red@hanmail.net</span>
+<span class="cell">STANDARD
+  <span class="point">999,999</span>
+</span>
+<span class="cell">2017.12.31 - 2018.12.30</span> -->
+
+<span class="cell" *ngFor="let sample of sampleData" [ngClass]="sample.data">{{ sample.value }}</span>

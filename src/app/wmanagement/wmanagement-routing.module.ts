@@ -5,14 +5,21 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AccountComponent } from './pages/account/account.component';
 import { AnalysisComponent } from './pages/analysis/analysis.component';
 import { TrackingComponent } from './pages/tracking/tracking.component';
-import { ContentsRegistrationComponent } from './pages/contents/contents-registration.component';
-import { ContentsModificationComponent } from './pages/contents/contents-modification.component';
+import { ContentsRegistrationComponent } from './pages/contents/contents-registration/contents-registration.component';
+import { ContentsModificationComponent } from './pages/contents/contents-modification/contents-modification.component';
+import { AnalysisUserComponent } from './pages/analysis/analysis-user/analysis-user.component';
+import { AnalysisContentsComponent } from './pages/analysis/analysis-contents/analysis-contents.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { NotificationComponent } from './pages/notification/notification.component';
 
 const routes: Routes = [
   {
     path: '',
     component: WmanagementComponent,
     children: [
+      {
+        path: 'mng'
+      },
       {
         path: '',
         redirectTo: 'dashboard',
@@ -59,7 +66,16 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: AnalysisComponent
+            redirectTo: 'user',
+            pathMatch: 'full'
+          },
+          {
+            path: 'user',
+            component: AnalysisUserComponent
+          },
+          {
+            path: 'contents',
+            component: AnalysisContentsComponent
           }
         ]
       },
@@ -69,6 +85,24 @@ const routes: Routes = [
           {
             path: '',
             component: TrackingComponent
+          }
+        ]
+      },
+      {
+        path: 'settings',
+        children: [
+          {
+            path: '',
+            component: SettingsComponent
+          }
+        ]
+      },
+      {
+        path: 'notification',
+        children: [
+          {
+            path: '',
+            component: NotificationComponent
           }
         ]
       }

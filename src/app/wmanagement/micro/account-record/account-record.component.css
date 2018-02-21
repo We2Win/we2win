@@ -1,0 +1,47 @@
+:host {
+  display: table-row;
+  line-height: 200%;
+  font-size: 0.9em;
+  line-height: 300%;  
+  text-align: center;
+}
+
+:host:hover {
+  background: #eee;
+}
+
+.cell {
+  display: table-cell;
+  padding: 0em 0.3em;
+}
+
+.cell img {
+  width: auto;
+  height: 1.8em;
+  vertical-align: middle;
+}
+
+.edit, .delete {
+  display: inline-block;
+  margin: 0 0.5em;
+  width: 5em;
+  font-size: 0.8em;  
+}
+
+.edit {
+  color: #063590;
+}
+
+.delete {
+  color: #AE1212;
+}
+
+.point {
+  font-size: 0.8em;
+  color: #666;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+}

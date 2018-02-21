@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: 'app/whome/whome.module#WhomeModule'
   },
   {
-    path: 'management',
+    path: 'mng',
     loadChildren: 'app/wmanagement/wmanagement.module#WmanagementModule'
   },
   {
