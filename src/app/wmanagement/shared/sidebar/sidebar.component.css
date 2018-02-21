@@ -8,7 +8,7 @@
   padding: 1em 0;
 }
 
-@media (min-width: 1135px) {
+@media (min-width: 1400px) {
   :host {
     margin-left: calc((100vw - var(--main-width)) / 2 - 10vw);
   }
