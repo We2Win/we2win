@@ -1,0 +1,15 @@
+<!-- <div class="lTableRow">
+  <div class="lTableHead">
+    <input type="checkbox" />
+  </div>
+  <div class="lTableHead">아이디</div>
+  <div class="lTableHead">이름</div>
+  <div class="lTableHead">이메일</div>
+  <div class="lTableHead">등급</div>
+  <div class="lTableHead">사용기간</div>
+</div> -->
+
+<header>
+  <span class="cell" *ngFor="let category of categories[type]" [innerHTML]="category"></span>
+</header>
+<ng-content></ng-content>

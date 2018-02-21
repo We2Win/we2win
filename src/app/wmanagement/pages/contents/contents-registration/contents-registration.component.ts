@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './contents-registration.component.html',
   styleUrls: [
     './contents-registration.component.css',
-    '../pages.css'
+    '../../pages.css'
   ]
 })
 export class ContentsRegistrationComponent implements OnInit {

@@ -4,3 +4,16 @@
   background: #eee;
   padding: 1em;
 }
+
+#horizontalProfile {
+  display: flex;
+  flex-direction: column;
+}
+
+#horizontalProfile span {
+  flex: 1;
+}
+
+#horizontalProfil h2 {
+  font-size: 0.9em;
+}

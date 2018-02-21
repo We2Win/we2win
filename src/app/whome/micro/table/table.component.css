@@ -1,0 +1,25 @@
+:host {
+  display: table;
+  width: 100%;
+  background: none;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 0;
+  /* word-wrap: break-word; */
+  /* border-spacing set instead of margin */
+  /* border-spacing: 10px; */
+  /* border-collapse: separat e; */
+}
+
+header {
+  display: table-row;
+  font-size: 1em;
+  line-height: 300%;
+  font-weight: bold;
+}
+
+header .cell {
+  display: table-cell;
+  padding: 0em 0.3em;
+  border-bottom: 1px solid #ddd;
+}

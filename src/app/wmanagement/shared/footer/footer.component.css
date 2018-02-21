@@ -5,6 +5,7 @@
   padding: 3em 0;
   color: var(--footer-font-normal);
   cursor: default;
+  box-sizing: border-box;
 }
 
 p {

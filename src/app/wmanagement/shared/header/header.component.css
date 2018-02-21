@@ -2,6 +2,7 @@
   display: block;
   background: #ddd;
   text-align: left;
+  cursor: default;
 }
 
 section {

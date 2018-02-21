@@ -1,18 +1,21 @@
-<img id="logo" src="/assets/img/logo.png" alt="Logo" />
+<img id="logo" src="/assets/img/logo.png" routerLink="/" alt="Logo" />
 <div id="managerInfo">
   <img src="/assets/img/icon_manager.png" alt="Profile image" />
   <p>ManagerNoName</p>
 </div>
 <div id="buttonBar">
-  <img src="/assets/img/icon_settings.png" alt="Settings" />
-  <img src="/assets/img/icon_alert.png" alt="Alerts" />
+  <li routerLink="/mng/settings"><img src="/assets/img/icon_settings.png" alt="Settings" /></li>
+  <li routerLink="/mng/notification"><img src="/assets/img/icon_alert.png" alt="Alerts" /></li>
 </div>
 <nav>
-  <li routerLink="/management/dashboard">대쉬보드</li>
-  <li routerLink="/management/account">계정관리</li>
-  <li routerLink="/management/contents">컨텐츠관리</li>
-  <li routerLink="/management/analysis">분석관리</li>
-  <li routerLink="/management/tracking">트래킹</li>
+  <ng-container *ngFor="let menu of navTree">
+    <li class="menu" routerLink="{{ '/mng/' + menu.title }}">{{ menu.description }}
+      <div (click)="$event.stopPropagation();">
+        <li class="submenu" *ngFor="let sub of menu.children" routerLink="{{ '/mng/' + menu.title + '/' + sub.title }}">{{ sub.description }}</li>
+      </div>
+    </li>
+
+  </ng-container>
 </nav>
 <div id="versionInfo">
   Version 0.1

@@ -16,9 +16,19 @@ section {
 .wrapper {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 
-.particle {
+.wrapper + .wrapper {
+  margin-top: 0.5em;
+}
+
+.container,
+.listContainer {
+  flex: 1;
+}
+
+article {
   flex: 1;
   padding: 1em 0;
   margin: 0.5em;
@@ -26,23 +36,23 @@ section {
   min-height: 100px;
 }
 
-#titleBar {
+article header {
   border-bottom: 1px solid #ddd;
   padding: 0.5em 2em;
-  margin: 0 0 1em 0;
   display: flex;
   align-items: flex-end;
 }
 
-#titleBar * {
+article header * {
   flex: 1;
 }
 
 h1 {
-    flex: 1;
-    font-size: 1.2em;
-    line-height: 180%;
+  flex: 1;
+  font-size: 1.2em;
+  line-height: 180%;
 }
+
 #title {
   font-size: 0.9em;
 }
@@ -52,81 +62,45 @@ h1 {
   text-align: right;
 }
 
-.lTable {
-  display: table;
-  width: 100%;
-  background: none;
-  font-size: 0.9em;
-  /* word-wrap: break-word; */
-  /* border-spacing set instead of margin */
-  /* border-spacing: 10px; */
-  /* border-collapse: separat e; */
-}
-
-.lTableRow {
-  display: table-row;
-  line-height: 200%;
-  font-size: 0.9em;
-  text-align: center;
-}
-
-.lTableColumn1 {
-  display: table-column;
-}
-
-.lTableColumn2 {
-  display: table-column;
-}
-
-.lTableCell,
-.lTableHead {
-  display: table-cell;
-  padding: 0.5em 0.3em;
-}
-
-.lTableCell img {
-  width: auto;
-  height: 1.8em;
-  vertical-align: middle;
-}
-
-.lTableHeading {
-  display: table-cell;
-  width: auto;
-  font-weight: bold;
-  padding: 0.5em 0.9em;
-  vertical-align: middle;
-  color: #0361d5;
-  white-space: nowrap;
-}
-
-.lTableHead {
-  font-weight: bold;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
-}
-
-.lTableFoot {
-  display: table-footer-group;
-  font-weight: bold;
-}
-
-.lTableBody {
-  display: table-row-group;
+.subtitle {
+  padding: 2em 2em 0 2em;
+  font-size: 1em;
 }
 
 li {
-    display: flex;
-    padding: 0.25em 2em;
-    margin: 0.3em 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.25em 2em;
+  margin: 0.3em 0;
 }
 
 li h2 {
   display: inline-block;
-  width: 200px;
+  width: 150px;
   line-height: 200%;
   font-size: 0.9em;
   margin: 0;
+}
+
+li h3 {
+  display: block;
+  flex: none;
+  line-height: 200%;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0.5em 1em;
+  border: 1px solid #d8d8d8;
+  border-left: none;
+}
+
+li h4 {
+  display: block;
+  flex: none;
+  width: 7em;
+  line-height: 200%;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0.5em 1em;
 }
 
 input[type="checkbox"] {
@@ -140,33 +114,62 @@ input#search {
   font-size: 1.2em;
 }
 
-input, textarea {
-    flex: 1;
-    border: 1px solid #d8d8d8;
-    font-size: 0.9em;
-    line-height: 150%;
-    margin: 0;
-    padding: 0.5em 1em;
+input,
+textarea {
+  flex: 1;
+  border: 1px solid #d8d8d8;
+  font-size: 0.9em;
+  line-height: 150%;
+  margin: 0;
+  padding: 0.5em 1em;
 }
 
-input + input {
-    margin-left: 0.5em;
+input+input {
+  margin-left: 0.5em;
 }
 
-input[type="date"] {
-    font-size: 1em;
+input.search {
+  border: none;
+  background: url('/assets/img/search.png');
+  background-repeat: no-repeat;
+  background-size: 1em;
+  background-position-x: right;
+  background-position-y: 0.7em;
+  padding-right: 2em;
+  outline: none;
+}
+
+*+input.search {
+  border-left: 1px solid #ddd;
 }
 
 .blank {
-    width: 20%;
+  width: 20%;
+}
+
+.submitBar {
+  border-top: 1px solid #ddd;
+  height: 4em;
+  display: block;
+}
+
+.submitBar button {
+  margin-left: 1em;
 }
 
 button {
-    border: none;
-    background: transparent;
-    font-size: 1em;
-    float: right;
-    margin-top: 1em;
-    margin-right: 2em;
-    padding: 1em;
+  border: none;
+  background: transparent;
+  font-size: 1em;
+  float: right;
+  padding: 1em;
+  transition: background 0.5s;
+}
+
+button:hover {
+  background: #ddd;
+}
+
+app-select+app-select {
+  border-left: 1px solid #ddd;
 }

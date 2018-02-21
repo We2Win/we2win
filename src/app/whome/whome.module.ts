@@ -18,7 +18,7 @@ import { LawComponent } from './pages/info/law/law.component';
 import { NewsComponent } from './pages/info/news/news.component';
 import { ReportComponent } from './pages/info/report/report.component';
 import { WeeklyComponent } from './pages/info/weekly/weekly.component';
-import { MeetingComponent } from './pages/meeting/meeting/meeting.component';
+import { MeetingComponent } from './pages/meeting/meeting.component';
 import { PersonalComponent } from './pages/portfolio/personal/personal.component';
 import { ScrapComponent } from './pages/portfolio/scrap/scrap.component';
 import { ApplyComponent } from './pages/recruit/apply/apply.component';
@@ -40,6 +40,12 @@ import { SelectFilteringComponent } from './micro/select-filtering/select-filter
 import { MeetingCardComponent } from './micro/meeting-card/meeting-card.component';
 import { MeetingDetailComponent } from './pages/meeting/meeting-detail/meeting-detail.component';
 import { SiteCardComponent } from './micro/site-card/site-card.component';
+import { InfoCardComponent } from './micro/info-card/info-card.component';
+import { LevelDirective } from './directive/level.directive';
+import { ReportDetailComponent } from './pages/info/report/report-detail/report-detail.component';
+import { NewsDetailComponent } from './pages/info/news/news-detail/news-detail.component';
+import { DescriptionComponent } from './micro/description/description.component';
+import { TableComponent } from './micro/table/table.component';
 
 
 @NgModule({
@@ -85,6 +91,12 @@ import { SiteCardComponent } from './micro/site-card/site-card.component';
     MeetingCardComponent,
     MeetingDetailComponent,
     SiteCardComponent,
+    InfoCardComponent,
+    LevelDirective,
+    ReportDetailComponent,
+    NewsDetailComponent,
+    DescriptionComponent,
+    TableComponent,
   ],
   providers: [ PageInfoService ]
 })

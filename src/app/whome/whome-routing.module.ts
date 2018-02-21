@@ -16,7 +16,7 @@ import { OfficetelComponent } from './pages/site/officetel/officetel.component';
 import { EmployerComponent } from './pages/recruit/employer/employer.component';
 import { EmployeeComponent } from './pages/recruit/employee/employee.component';
 import { ApplyComponent } from './pages/recruit/apply/apply.component';
-import { MeetingComponent } from './pages/meeting/meeting/meeting.component';
+import { MeetingComponent } from './pages/meeting/meeting.component';
 import { PersonalComponent } from './pages/portfolio/personal/personal.component';
 import { ScrapComponent } from './pages/portfolio/scrap/scrap.component';
 import { PageInfoService } from './page-info.service';

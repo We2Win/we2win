@@ -1,30 +1,16 @@
 <section>
-  <div class="particle">
-    <div id="titleBar">
+  <article>
+    <header>
       <h1>전체 9,999명</h1>
-      <app-select>상위 카테고리</app-select>
-      <app-select>하위 카테고리</app-select>
+      <app-select [type]="'회원 등급'"></app-select>
+      <app-select [type]="'금액'"></app-select>
       <input id="search" type="text" />
-    </div>
-    <div class="lTable">
-      <div class="lTableColumn1"></div>
-      <div class="lTableColumn2"></div>
-      <div class="lTableRow">
-        <div class="lTableHead"><input type="checkbox" /></div>
-        <div class="lTableHead">아이디</div>
-        <div class="lTableHead">이름</div>
-        <div class="lTableHead">이메일</div>
-        <div class="lTableHead">등급</div>
-        <div class="lTableHead">사용기간</div>
-      </div>
-      <div class="lTableRow">
-        <div class="lTableCell"><input type="checkbox" /></div>
-        <div class="lTableCell">Christian_Red</div>
-        <div class="lTableCell">이유정</div>
-        <div class="lTableCell">Christian_red@hanmail.net</div>
-        <div class="lTableCell">STANDARD</div>
-        <div class="lTableCell">2017.12.31 - 2018.12.30</div>
-      </div>
-    </div>
-  </div>
+    </header>
+    <app-table [type]="'account'">
+      <app-account-record></app-account-record>
+      <app-account-record></app-account-record>
+      <app-account-record></app-account-record>
+      <app-account-record></app-account-record>
+    </app-table>
+  </article>
 </section>

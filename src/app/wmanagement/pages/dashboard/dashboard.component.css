@@ -2,3 +2,45 @@
   width: 100%;
   display: flex;
 }
+
+#infoPie {
+  margin: 3em 0;
+}
+
+#composition{
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+#composition li {
+  font-size: 0.9em;
+  line-height: 200%;
+  display: flex;
+}
+
+#composition progress[value] {
+  width: 100%;
+  height: 1em;
+  border: none;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#composition progress[value]::-webkit-progress-bar {
+  background: #eee;
+}
+
+#composition progress[value]::-moz-progress-bar {
+  background: #eee;
+}
+
+#composition progress[value]::-webkit-progress-value {
+  background: #ccc;
+}
+
+#composition progress[value]::-moz-progress-value {
+  background: #ccc;
+}

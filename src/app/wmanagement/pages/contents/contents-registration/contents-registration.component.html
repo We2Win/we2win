@@ -1,0 +1,166 @@
+<section>
+  <article>
+    <header>
+      <h1>카테고리</h1>
+      <app-select [type]="'상위 카테고리'" #topCategory></app-select>
+      <app-select [type]="'하위 카테고리'" [topCategory]="topCategory.selected"></app-select>
+    </header>
+
+    <form id="info">
+      <li>
+        <h2>제목</h2>
+        <input type="text" placeholder="제목을 입력하세요" />
+      </li>
+      <li>
+        <h2>요약 정보</h2>
+        <textarea placeholder="요약 정보를 입력하세요"></textarea>
+      </li>
+      <li>
+        <h2>분양 오픈일</h2>
+        <app-date-input [type]="duration"></app-date-input>
+        <app-button>일정 등록</app-button>
+      </li>
+      <li>
+        <h2>분양가</h2>
+        <input type="number">
+        <h3>원</h3>
+        <span class="blank"></span>
+      </li>
+      <li>
+        <h2>담당자 정보</h2>
+        <input type="text">
+        <input type="text">
+        <span class="blank"></span>
+      </li>
+      <li>
+        <h2>현장 시세</h2>
+        <div class="container">
+          <div class="wrapper">
+            <h4>#1 현재 시세</h4>
+            <span class="listContainer">
+              <app-list-input [type]="'평형'"></app-list-input>
+              <app-list-input [type]="'시세'"></app-list-input>
+            </span>
+          </div>
+          <div class="wrapper">
+            <h4>#2 주위 시세</h4>
+            <span class="listContainer">
+              <app-list-input [type]="'평형'"></app-list-input>
+              <app-list-input [type]="'시세'"></app-list-input>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <h2>현장 리포트</h2>
+        <textarea placeholder="상세 정보를 입력하세요"></textarea>
+      </li>
+      <li>
+        <h2>현장 사진</h2>
+        <input type="file">
+        <app-button>사진 등록</app-button>
+        <span class="blank"></span>
+      </li>
+      <li class="submitBar">
+        <button>등록하기</button>
+        <button>미리보기</button>
+      </li>
+    </form>
+
+    <form id="news">
+      <li>
+        <h2>컨텐츠 제목</h2>
+        <input type="text" placeholder="제목을 입력하세요" />
+      </li>
+      <li>
+        <h2>사진</h2>
+        <input type="file" placeholder="JPG, GIF, PNG, BMP , HEIF 가능">
+        <app-button>사진 업로드</app-button>
+      </li>
+      <li>
+        <h2>뉴스 제목</h2>
+        <input type="text" placeholder="뉴스 제목을 입력하세요">
+      </li>
+      <li>
+        <h2>뉴스 상세내용</h2>
+        <input type="text" placeholder="뉴스 상세내용을 입력하세요">
+      </li>
+      <li>
+        <h2>뉴스 분석제목</h2>
+        <input type="text" placeholder="뉴스 분석제목을 입력하세요">
+      </li>
+      <li>
+        <h2>뉴스 분석내용</h2>
+        <input type="text" placeholder="뉴스 분석내용을 입력하세요">
+      </li>
+      <li class="submitBar">
+        <button>등록하기</button>
+        <button>미리보기</button>
+      </li>
+    </form>
+
+    <form id="law">
+      <li>
+        <h2>제목</h2>
+        <input type="text" placeholder="제목을 입력하세요" />
+      </li>
+      <li>
+        <h2>요약정보</h2>
+        <textarea placeholder="요약 정보를 입력하세요"></textarea>
+      </li>
+      <li>
+        <h2>뉴스 상세내용</h2>
+        <input type="text" placeholder="뉴스 상세내용을 입력하세요">
+      </li>
+      <li>
+        <h2>뉴스 분석제목</h2>
+        <input type="text" placeholder="뉴스 분석제목을 입력하세요">
+      </li>
+      <li>
+        <h2>뉴스 분석내용</h2>
+        <input type="text" placeholder="뉴스 분석내용을 입력하세요">
+      </li>
+      <li>
+        <h2>사진</h2>
+        <input type="file" placeholder="JPG, GIF, PNG, BMP , HEIF 가능">
+        <app-button>사진 업로드</app-button>
+      </li>
+      <li class="submitBar">
+        <button>등록하기</button>
+        <button>미리보기</button>
+      </li>
+    </form>
+
+    <form id="meeting">
+      <li>
+        <h2>제목</h2>
+        <input type="text" placeholder="제목을 입력하세요" />
+      </li>
+      <li>
+        <h2>요약정보</h2>
+        <textarea placeholder="요약 정보를 입력하세요"></textarea>
+      </li>
+      <li>
+        <h2>주최측</h2>
+        <input type="text" placeholder="주최측을 입력하세요">
+      </li>
+      <li>
+        <h2>신청 기간</h2>
+        <input type="text" placeholder="뉴스 분석제목을 입력하세요">
+      </li>
+      <li>
+        <h2>뉴스 분석내용</h2>
+        <input type="text" placeholder="뉴스 분석내용을 입력하세요">
+      </li>
+      <li>
+        <h2>사진</h2>
+        <input type="file" placeholder="JPG, GIF, PNG, BMP , HEIF 가능">
+        <app-button>사진 업로드</app-button>
+      </li>
+      <li class="submitBar">
+        <button>등록하기</button>
+        <button>미리보기</button>
+      </li>
+    </form>
+  </article>
+</section>

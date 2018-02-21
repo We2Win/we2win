@@ -1,4 +1,21 @@
 <section>
-  <h1>대쉬보드</h1>
-  <h2>엑셀 다운로드</h2>
+  <h1>{{ dataset['title'] }}</h1>
+  <h2 (click)="viewPopup();">엑셀 다운로드</h2>
 </section>
+
+<app-popup>
+  <h1>엑셀파일 다운로드</h1>
+  <li>
+    <h5>기간</h5>
+    <p></p>
+  </li>
+  <li>
+    <h5>파일</h5>
+    <p>
+      <li>전체파일 다운로드</li>
+      <li>회원정보 다운로드</li>
+      <li>컨텐츠 구성 다운로드</li>
+      <li>사용자 활동 다운로드</li>
+    </p>
+  </li>
+</app-popup>

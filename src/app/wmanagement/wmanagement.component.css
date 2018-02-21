@@ -1,10 +1,18 @@
+:host {
+    display: flex;
+    min-width: var(--main-width);
+    min-height: 100vh;
+    flex-direction: column;
+}
+
 #container {
     display: flex;
+    flex: 1;
     justify-content: center;
 }
 
 #contentsContainer {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
 }
