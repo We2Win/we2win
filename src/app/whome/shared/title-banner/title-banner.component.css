@@ -1,5 +1,6 @@
 :host {
   display: block;
+  min-width: var(--main-width);
   background: url('/assets/img/bg_title_banner.png');
   background-color: linear-gradient(#666, #333);
   color: var(--titleBanner-font-normal);

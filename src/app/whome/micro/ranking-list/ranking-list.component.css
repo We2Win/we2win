@@ -1,5 +1,6 @@
 :host {
   display: block;
+  min-width: var(--main-width);
   background: #d8d8d8;
 }
 

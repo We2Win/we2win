@@ -1,6 +1,11 @@
 :host {
   display: block;
+  min-width: var(--main-width);
   background-color: var(--header-bg-color);
+}
+
+* {
+  outline: none;
 }
 
 section {
@@ -35,8 +40,7 @@ section {
 }
 
 #iconSet {
-  flex: 5;
-  padding-right: 2em;
+  flex: auto;
 }
 
 #iconSet button {
@@ -73,34 +77,6 @@ section {
   background-size: auto 1.2em;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-#accountInfo {
-  border-bottom: 1px solid var(--header-border-solid);
-  box-sizing: border-box;
-  display: flex;
-  padding: 0.3em 0.5em;
-  flex: none;
-}
-
-#accountInfo img {
-  width: 0.6em;
-  height: 0.6em;
-  margin: 0 0.5em;
-  flex: none;
-}
-
-#accountInfo #user {
-  font-size: 0.7em;
-  line-height: 100%;
-  flex: 1;
-}
-
-#accountInfo #point {
-  width: 5em;
-  font-size: 0.7em;
-  color: white;
-  flex: none;
 }
 
 #mainMenu, .subMenu {

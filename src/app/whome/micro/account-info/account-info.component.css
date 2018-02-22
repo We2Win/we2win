@@ -1,0 +1,49 @@
+.signed,
+.unsigned {
+  min-width: 10em;
+  padding: 0.3em 0em;
+  font-size: 0.7em;
+  flex: auto;
+  box-sizing: border-box;
+  display: none;
+}
+
+.signed {
+  border-bottom: 1px solid var(--header-border-solid);
+}
+
+.show {
+  display: inline-flex;
+}
+
+img {
+  width: 0.7em;
+  height: 0.7em;
+  margin: 0 0.5em;
+  flex: 1 1 auto;
+}
+
+#user {
+  line-height: 100%;
+  flex: 1;
+}
+
+#point {
+  width: 5em;
+  color: white;
+  flex: 1 1 auto;
+}
+
+.unsigned div {
+  font-size: 1em;
+  color: #aaa;
+  flex: none;
+  margin-left: auto;
+  text-align: right;
+  transition: color 0.5s;
+  cursor: pointer;
+}
+
+.unsigned div:hover {
+  color: white;
+}

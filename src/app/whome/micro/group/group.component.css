@@ -1,0 +1,130 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+}
+
+:host /deep/ * {
+  flex: 1;
+}
+
+:host /deep/ h1 {
+  font-size: 1.6em;
+  font-weight: 300%;
+  margin: 3em 0 1em 0;
+  padding: 2em 0;
+  text-align: center;
+  flex: 1;
+}
+
+:host /deep/ article {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid #666;
+}
+
+:host /deep/ article article {
+  border: none;
+  padding: 0.5em;
+}
+
+:host /deep/ div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+:host /deep/ li {
+  display: flex;
+  flex: auto;
+  margin: 0.5em 0;
+}
+
+:host /deep/ h2 {
+  display: inline-block;
+  width: 200px;
+  line-height: 200%;
+  font-size: 1em;
+  margin: 0;
+  flex: none;
+}
+
+:host /deep/ h2>b {
+  font-weight: normal;
+  font-size: 0.7em;
+}
+
+:host /deep/ h3 {
+  display: block;
+  flex: none;
+  line-height: 200%;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0.5em 1em;
+  border: 1px solid #d8d8d8;
+  border-left: none;
+}
+
+:host /deep/ h4 {
+  display: block;
+  flex: none;
+  width: 7em;
+  line-height: 200%;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+:host /deep/ .blank {
+  color: #999;
+  font-size: 0.7em;
+  margin-left: 1em;
+  line-height: 4.1em;
+}
+
+:host /deep/ app-button {
+  margin: 1em auto;
+}
+
+:host /deep/ article app-button {
+  margin: 0 0 0 1em;
+  font-size: 0.9em;
+}
+
+:host /deep/ label {
+  font-size: 0.9em;
+}
+
+:host /deep/ li label {
+  flex: none;
+  flex-basis: 6em;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+:host /deep/ input[type="checkbox"] {
+  width: 1em;
+  height: 1em;
+  margin: 0 1em;
+  border: 1px solid #333;
+  flex: none;
+}
+
+:host /deep/ input,
+:host /deep/ textarea {
+  flex: 1;
+  border: 1px solid #d8d8d8;
+  line-height: 150%;
+  margin: 0;
+  padding: 1em;
+}
+
+:host /deep/ textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 15em;
+}
+
