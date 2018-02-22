@@ -1,0 +1,9 @@
+RewriteEngine On
+# Unless directory, remove trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/$ http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api [R=301,L]
+# Redirect external .php requests to extensionless url
+RewriteCond %{THE_REQUEST} ^(.+)\.php([#?][^\ ]*)?\ HTTP/
+RewriteRule ^(.+)\.php$ http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api [R=301,L]
+# Resolve .php file for extensionless php urls
+RewriteRule ^([^/.]+)$ $1.php [L]

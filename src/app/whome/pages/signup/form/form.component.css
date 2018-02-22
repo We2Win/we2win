@@ -1,0 +1,75 @@
+.naver {
+  background: #169E09;
+}
+
+.kakao {
+  background: #F8E71C;
+  color: #333;
+}
+
+.facebook {
+  background: #30559E;
+
+}
+
+.platinum {
+  margin-right: 1em;
+  border: 1px solid #d8d8d8;
+  border-top: 3px solid var(--level-platinum);
+}
+.premium {
+  margin-right: 1em;
+  border: 1px solid #d8d8d8;
+  border-top: 3px solid var(--level-premium);
+}
+.standard {
+  border: 1px solid #d8d8d8;
+  border-top: 3px solid var(--level-standard);
+}
+
+p {
+  padding: 1em;
+  font-size: 0.8em;
+}
+
+.platinum #level {
+  background: var(--level-platinum-gradient);
+  font-size: 0.8em;
+  padding: 0.5em 1em;
+  flex: none;
+  flex-basis: 1.5em;
+  color: white;
+}
+.premium #level {
+  background: var(--level-premium-gradient);
+  font-size: 0.8em;
+  padding: 0.5em 1em;
+  flex: none;
+  flex-basis: 1.5em;
+  color: white;
+}
+.standard #level {
+  background: var(--level-standard-gradient);
+  font-size: 0.8em;
+  padding: 0.5em 1em;
+  flex: none;
+  flex-basis: 1.5em;
+  color: white;
+}
+
+#price {
+  border-top: 1px solid #d8d8d8;
+  padding: 1em;
+  text-align: center;
+  font-size: 1.2em;
+  color: red;
+  flex: none;
+  flex-basis: 1em;
+}
+
+#lastWarning {
+  padding: 3em 0 1em 0;
+  font-size: 0.9em;
+  text-align: center;
+  line-height: 200%;
+}

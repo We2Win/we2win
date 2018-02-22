@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WhomeRoutingModule } from './whome-routing.module';
 
@@ -46,12 +46,16 @@ import { ReportDetailComponent } from './pages/info/report/report-detail/report-
 import { NewsDetailComponent } from './pages/info/news/news-detail/news-detail.component';
 import { DescriptionComponent } from './micro/description/description.component';
 import { TableComponent } from './micro/table/table.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { AccountInfoComponent } from './micro/account-info/account-info.component';
+import { PolicyComponent } from './pages/signup/policy/policy.component';
+import { GroupComponent } from './micro/group/group.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    WhomeRoutingModule
+    WhomeRoutingModule,
   ],
   declarations: [
     HeaderComponent,
@@ -97,6 +101,10 @@ import { TableComponent } from './micro/table/table.component';
     NewsDetailComponent,
     DescriptionComponent,
     TableComponent,
+    SigninComponent,
+    AccountInfoComponent,
+    PolicyComponent,
+    GroupComponent,
   ],
   providers: [ PageInfoService ]
 })

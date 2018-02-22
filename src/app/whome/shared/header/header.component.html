@@ -6,15 +6,11 @@
         <button id="dashboard" routerLink="/mng"></button>
         <button id="notification"></button>
       </div>
-      <div id="accountInfo">
-        <img src="/assets/img/icon_profile.png" alt="">
-        <div id="user">Administrator</div>
-        <div id="point">3,700</div>
-      </div>
+      <app-account-info></app-account-info>
     </div>
 
     <nav id="mainMenu">
-      <img id="logo" src="/assets/img/logo.png" />
+      <img id="logo" src="/assets/img/logo.png" routerLink="/" />
       <li *ngFor="let menu of menuTree" routerLink="{{ '/' + menu.path}}" (mouseover)="viewSubMenu(menu.name, $event)">{{ menu.name }}</li>
     </nav>
   </div>
