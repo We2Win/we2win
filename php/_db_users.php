@@ -25,7 +25,7 @@ class Users{
   //Update user
   function updateUser($data){
     global $conn;
-    $query = "UPDATE users SET first_name='".$data->first_name."', last_name='".$data->last_name."' WHERE id=$data->id.";
+    $query = "UPDATE users SET ID='".$data->ID."', last_name='".$data->last_name."' WHERE id=$data->id.";
     echo $result=mysqli_query($conn, $query);
     header('Content-Type: application/json');
     //Respond success / error messages
