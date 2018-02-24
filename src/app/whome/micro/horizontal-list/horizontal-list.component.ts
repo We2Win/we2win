@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-horizontal-list',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./horizontal-list.component.css']
 })
 export class HorizontalListComponent implements OnInit {
+  _toptitle: String;
 
-  constructor() { }
+  @Input() toptitle = 'hi';
+
+  constructor(el: ElementRef) {
+    this._toptitle = this.toptitle;
+  }
 
   ngOnInit() {
+
   }
 
 }
