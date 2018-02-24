@@ -1,36 +1,25 @@
 webpackJsonp(["wadmin.module"],{
 
-/***/ "../../../../../src/app/wadmin/nav-bar/nav-bar.component.css":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./src/app/wadmin/nav-bar/nav-bar.component.css":
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
+module.exports = ""
 
 /***/ }),
 
-/***/ "../../../../../src/app/wadmin/nav-bar/nav-bar.component.html":
+/***/ "./src/app/wadmin/nav-bar/nav-bar.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<p>\n  nav-bar works!\n</p>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/wadmin/nav-bar/nav-bar.component.ts":
+/***/ "./src/app/wadmin/nav-bar/nav-bar.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavBarComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49,8 +38,8 @@ var NavBarComponent = /** @class */ (function () {
     NavBarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-nav-bar',
-            template: __webpack_require__("../../../../../src/app/wadmin/nav-bar/nav-bar.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/wadmin/nav-bar/nav-bar.component.css")]
+            template: __webpack_require__("./src/app/wadmin/nav-bar/nav-bar.component.html"),
+            styles: [__webpack_require__("./src/app/wadmin/nav-bar/nav-bar.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], NavBarComponent);
@@ -66,14 +55,14 @@ can be found in the LICENSE file at http://angular.io/license
 
 /***/ }),
 
-/***/ "../../../../../src/app/wadmin/wadmin-routing.module.ts":
+/***/ "./src/app/wadmin/wadmin-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WadminRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/wadmin/nav-bar/nav-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nav_bar_nav_bar_component__ = __webpack_require__("./src/app/wadmin/nav-bar/nav-bar.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -105,16 +94,16 @@ var WadminRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/wadmin/wadmin.module.ts":
+/***/ "./src/app/wadmin/wadmin.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WadminModule", function() { return WadminModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wadmin_routing_module__ = __webpack_require__("../../../../../src/app/wadmin/wadmin-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/wadmin/nav-bar/nav-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wadmin_routing_module__ = __webpack_require__("./src/app/wadmin/wadmin-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nav_bar_nav_bar_component__ = __webpack_require__("./src/app/wadmin/nav-bar/nav-bar.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
