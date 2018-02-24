@@ -22,11 +22,11 @@ html {
   --level-platinum: #d5b15e;
   --level-premium: #111111;
   --level-standard: #bbbbbb;
-  --level-platinum-gradient: linear-gradient(35deg, rgba(213, 177, 94, 0.5), rgba(187, 141, 34, 0.9));
+  --level-platinum-gradient: linear-gradient(35deg, rgba(213, 177, 94, 0.7), rgba(187, 141, 34, 0.2));
   --level-premium-gradient: linear-gradient(35deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
   --level-standard-gradient: linear-gradient(35deg, rgba(187, 187, 187, 1.0), rgba(187, 187, 187, 0.4));
   /* for submenu position */
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 * {
