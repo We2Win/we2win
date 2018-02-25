@@ -8,9 +8,6 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !/api/
-RewriteCond %{REQUEST_URI} !/dist/
-RewriteRule ^(dist/.*)$ index.html [L,QSA]
-
 RewriteRule ^(api/.*)$ api/index.php?request=$1 [L,QSA]
 
 </ifModule>
