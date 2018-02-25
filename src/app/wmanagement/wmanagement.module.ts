@@ -26,6 +26,7 @@ import { ListInputComponent } from './micro/list-input/list-input.component';
 import { ChartComponent } from './micro/chart/chart.component';
 import { AnalysisUserRecordComponent } from './micro/analysis-user-record/analysis-user-record.component';
 import { AnalysisContentsRecordComponent } from './micro/analysis-contents-record/analysis-contents-record.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import { AnalysisContentsRecordComponent } from './micro/analysis-contents-recor
     ChartComponent,
     AnalysisUserRecordComponent,
     AnalysisContentsRecordComponent,
+    Error404Component,
   ]
 })
 export class WmanagementModule { }
