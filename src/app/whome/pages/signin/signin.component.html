@@ -1,3 +1,22 @@
-<p>
-  signin works!
-</p>
+<section>
+  <app-group>
+    <h1>로그인</h1>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <article [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <h2>아이디</h2>
+        <input type="text" [(ngModel)]="model.username" #username="ngModel" placeholder="아이디" required/>
+      </article>
+      <article *ngIf="f.submitted && !username.valid">
+        <h2>아이디를 입력해 주세요.</h2>
+      </article>
+      <article [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <h2>비밀번호</h2>
+        <input type="password" placeholder="비밀번호" />
+      </article>
+      <article *ngIf="f.submitted && !username.valid">
+        <h2>비밀번호를 입력해 주세요.</h2>
+      </article>
+      <app-button [disabled]="loading" >로그인</app-button>
+    </form>
+  </app-group>
+</section>
