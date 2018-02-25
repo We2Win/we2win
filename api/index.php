@@ -1,38 +1,44 @@
 <?php
-include_once('./vendor/autoload.php');
- 
-use Firebase\JWT\JWT;
- 
-$tokenId = base64_encode("tokenID_example");
-$issuedAt = time();
-$notBefore = $issuedAt;
-$expire = $notBefore + 60*60;
-$serverName = "test_server";
- 
- 
-$secret_key = "secret_key_value";
- 
-$acco_id = "kjh";
-$server_no = 1;
- 
-$data = array(
-   'iat' => $issuedAt,
-   'jti' => $tokenId,
-   'iss' => $serverName,
-   'nbf' => $notBefore,
-   'exp' => $expire,
-   'data' => [
-      'acco_id' => $acco_id,
-      'server_no' => $server_no,
-   ]
- 
-);
- 
-$jwt = JWT::encode($data, $secret_key);
-echo "encoded jwt: " . $jwt . "n";
- 
-$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
- 
-print_r($decoded);
- 
+session_start();
+
+$rawBody = file_get_contents("php://input"); // Read body
+
+
+if($rawBody != "") { //if post data
+require("users.php");
+if(sizeof($users) > 0) {
+	$user_list = json_decode($users);
+}
+
+	$data = json_decode($rawBody);
+	//post data from login form
+	$user = $data->user;
+	$pass = $data->pass;
+	$auth = false;
+	foreach($user_list as $u) {
+		//check username and hashed password
+		if($u->user == $user && password_verify($pass,$u->pass)) {
+			echo '{"user":"'.$user.'", "auth":"1"}';
+			$_SESSION['auth'] = 1;
+			$_SESSION['user'] = $user;
+			$auth = true;
+			break;
+		}
+	}
+	if(!$auth) {
+		//if wrong authentication details, output not authenticated
+		echo '{"user":"'.$user.'", "auth":"0"}';
+		$_SESSION['auth'] = 0;
+		$_SESSION['user'] = 'none';
+	}
+} else {
+	//if no post data
+	//if not authenticated, output that fact
+	if($_SESSION['auth'] == 0) {
+		echo '{"user":"none", "auth":"0"}'; 
+	} else {
+		//if authenticated, output json
+		echo '{"user":"'.$_SESSION['user'].'", "auth":"'.$_SESSION['auth'].'"}';
+	}
+}
 ?>

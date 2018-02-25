@@ -25,12 +25,12 @@ import { SiteMainComponent } from './pages/site/site-main/site-main.component';
 import { ApplyEmployerComponent } from './pages/recruit/apply-employer/apply-employer.component';
 import { ApplyEmployeeComponent } from './pages/recruit/apply-employee/apply-employee.component';
 import { MeetingDetailComponent } from './pages/meeting/meeting-detail/meeting-detail.component';
-import { SigninComponent } from './pages/signin/signin.component';
 import { DoneComponent } from './pages/signup/done/done.component';
 import { PolicyComponent } from './pages/signup/policy/policy.component';
 import { FormComponent } from './pages/signup/form/form.component';
 import { Error404Component } from './pages/error404/error404.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './guard/auth.guard';
+import { LoginComponent } from './pages/login/login.component';
 
 
 const routes: Routes = [
@@ -143,15 +143,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'signin',
-    children: [
-      {
-        path: '',
-        component: SigninComponent
-      }
-    ]
-  },
-  {
     path: 'signup',
     children: [
       {
@@ -172,6 +163,10 @@ const routes: Routes = [
         component: DoneComponent
       }
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',

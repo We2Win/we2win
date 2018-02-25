@@ -1,44 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms/src/model';
-import { FormBuilder } from '@angular/forms/src/form_builder';
-import { AuthenticationService } from '../../services/authentication.service';
-import { Validators } from '@angular/forms/src/validators';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
-
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthenticationService,
-    private router: Router
-  ) {
-    this.form = this.fb.group({
-      ID: ['', Validators.required],
-      Password: ['', Validators.required]
+  constructor(private authService: AuthService, private router: Router) { }
+  // we want to actually subscribe to the boolean of the observable
+  onSubmit(form: any): void {
+    console.log(form.user);
+    this.authService.login(form.user, form.pass).subscribe(auth => {
+      if (auth) {
+        this.router.navigate(['/restricted']);
+      }
     });
   }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.authService.checkAuth().subscribe(auth => {
+      if (auth) {
+        this.router.navigate(['/restricted']);
+      }
+    });
   }
-
-  login() {
-    const val = this.form.value;
-
-    if (val.ID && val.Password) {
-      this.authService.login(val.ID, val.Password)
-        .subscribe(
-          () => {
-            console.log('User is logged in');
-            this.router.navigateByUrl('/');
-          }
-        );
-    }
-  }
-
 }

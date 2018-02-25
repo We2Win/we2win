@@ -7,11 +7,11 @@ import { Component, OnInit, ElementRef, Input } from '@angular/core';
 })
 export class InfoCardComponent implements OnInit {
   @Input() level: string;
-  constructor(private _elementRef: ElementRef) { 
+  constructor(private _elementRef: ElementRef) {
   }
 
   ngOnInit() {
-    console.log('pla: ', this.level);
+    // console.log('pla: ', this.level);
   }
 
   bookmark() {
