@@ -11,6 +11,7 @@ import { AnalysisUserComponent } from './pages/analysis/analysis-user/analysis-u
 import { AnalysisContentsComponent } from './pages/analysis/analysis-contents/analysis-contents.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { NotificationComponent } from './pages/notification/notification.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 const routes: Routes = [
   {
@@ -107,7 +108,10 @@ const routes: Routes = [
         ]
       }
     ]
-
+  },
+  {
+    path: '**',
+    component: Error404Component
   }
 ];
 

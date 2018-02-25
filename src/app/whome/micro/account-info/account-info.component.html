@@ -1,7 +1,7 @@
 <div class="signed">
   <img src="/assets/img/icon_profile.png" alt="">
-  <div id="user">Administrator</div>
-  <div id="point">3,700</div>
+  <div id="user">{{ currentUser.ID || 'Noname' }}님</div>
+  <div id="point">{{ currentUser.UPoint || '0' }} P</div>
 </div>
 
 <div class="unsigned show">
