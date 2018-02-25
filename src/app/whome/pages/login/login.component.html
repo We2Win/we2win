@@ -2,16 +2,16 @@
 <section>
   <app-group>
     <h1>로그인</h1>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
       <article>
         <fieldset>
           <h2>아이디</h2>
-          <input name="ID">
+          <input name="ID" formControlName="ID" required>
         </fieldset>
         <fieldset>
           <h2>비밀번호</h2>
           <input name="Password"
-            type="password">
+            type="password" formControlName="Password" required>
         </fieldset>
       </article>
       <app-button [type]="'submit'">로그인</app-button>
