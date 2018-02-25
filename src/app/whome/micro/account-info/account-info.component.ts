@@ -20,6 +20,7 @@ export class AccountInfoComponent implements OnInit {
     db.getUsers().subscribe(
       (response: Response) => {
         // this.persons = response.json();
+        console.log("Hello:");
         console.log(response);
       },
       (error) => { console.log(error); }

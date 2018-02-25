@@ -5,14 +5,15 @@ class Users{
   {
     global $conn;
     $query="SELECT * FROM `01011803` ORDER BY id DESC";
-    $response=array();
+    // $response=array();
+    $hello="Hello World!";
     $result=mysqli_query($conn, $query);
     while($row = mysqli_fetch_assoc($result))
     {
       $response[]=$row;
     }
     header('Content-Type: application/json');
-    echo json_encode($response);
+    echo json_encode($hello);
   }
   //Save user
   function saveUser($data){
