@@ -29,6 +29,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { DoneComponent } from './pages/signup/done/done.component';
 import { PolicyComponent } from './pages/signup/policy/policy.component';
 import { FormComponent } from './pages/signup/form/form.component';
+import { Error404Component } from './pages/error404/error404.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -36,6 +38,7 @@ const routes: Routes = [
   {
     path: '',
     component: WhomeComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -170,6 +173,10 @@ const routes: Routes = [
         ]
       }
     ]
+  },
+  {
+    path: '**',
+    component: Error404Component
   }
 ];
 

@@ -1,7 +1,7 @@
 <?php
 class Users{
   //Get users
-  function getUsers($data)
+  function getUsers()
   {
     global $conn;
     $query="SELECT * FROM `01011803`";
