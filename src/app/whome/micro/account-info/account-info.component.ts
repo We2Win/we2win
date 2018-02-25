@@ -8,7 +8,11 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-account-info',
   templateUrl: './account-info.component.html',
-  styleUrls: ['./account-info.component.css']
+  styleUrls: ['./account-info.component.css'],
+  providers: [
+    DbConnectService,
+    UserService,
+  ]
 })
 export class AccountInfoComponent implements OnInit {
   title: 'Testing';

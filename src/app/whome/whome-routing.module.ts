@@ -33,7 +33,6 @@ import { Error404Component } from './pages/error404/error404.component';
 import { AuthGuard } from './guards/auth.guard';
 
 
-
 const routes: Routes = [
   {
     path: '',
@@ -141,36 +140,36 @@ const routes: Routes = [
         path: 'portfolio',
         component: ScrapComponent
       },
+    ]
+  },
+  {
+    path: 'signin',
+    children: [
       {
-        path: 'signin',
-        children: [
-          {
-            path: '',
-            component: SigninComponent
-          }
-        ]
+        path: '',
+        component: SigninComponent
+      }
+    ]
+  },
+  {
+    path: 'signup',
+    children: [
+      {
+        path: '',
+        redirectTo: 'policy',
+        pathMatch: 'full'
       },
       {
-        path: 'signup',
-        children: [
-          {
-            path: '',
-            redirectTo: 'policy',
-            pathMatch: 'full'
-          },
-          {
-            path: 'policy',
-            component: PolicyComponent
-          },
-          {
-            path: 'form',
-            component: FormComponent
-          },
-          {
-            path: 'done',
-            component: DoneComponent
-          }
-        ]
+        path: 'policy',
+        component: PolicyComponent
+      },
+      {
+        path: 'form',
+        component: FormComponent
+      },
+      {
+        path: 'done',
+        component: DoneComponent
       }
     ]
   },
@@ -183,7 +182,10 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [PageInfoService]
+  providers: [
+    PageInfoService,
+    AuthGuard,
+  ]
 })
 export class WhomeRoutingModule {
   constructor(private pageInfoService: PageInfoService, router: Router) {
