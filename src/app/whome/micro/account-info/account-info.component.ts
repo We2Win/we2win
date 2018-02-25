@@ -23,11 +23,18 @@ export class AccountInfoComponent implements OnInit {
   users: User[] = [];
 
   constructor(
+    // type 1:
     // private db: DbConnectService,
     // private http: Http,
-    private userService: UserService
+
+    // type 2:
+    // private userService: UserService
   ) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // type 2:
+    // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // console.log(this.currentUser);
+
+    // type 1:
     // db.getUsers().subscribe(
     //   (response: Response) => {
     //     // this.persons = response.json();
@@ -42,16 +49,17 @@ export class AccountInfoComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteUser(ID: number) {
-    this.userService.delete(ID).subscribe(() => {
-      this.loadAllUsers();
-    });
-  }
+  // type 2:
+  // deleteUser(ID: number) {
+  //   this.userService.delete(ID).subscribe(() => {
+  //     this.loadAllUsers();
+  //   });
+  // }
 
-  private loadAllUsers() {
-    this.userService.getAll().subscribe(users => {
-      this.users = users;
-    });
-  }
+  // private loadAllUsers() {
+  //   this.userService.getAll().subscribe(users => {
+  //     this.users = users;
+  //   });
+  // }
 
 }

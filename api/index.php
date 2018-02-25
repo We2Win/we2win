@@ -1,53 +1,38 @@
 <?php
-if (isset($_SERVER['HTTP_ORIGIN'])) {
-    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-    //If required
-    header('Access-Control-Allow-Credentials: true');
-    header('Access-Control-Max-Age: 86400');    // cache for 1 day
-}
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+include_once('./vendor/autoload.php');
  
-  if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-        header("Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS");         
+use Firebase\JWT\JWT;
  
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-        header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+$tokenId = base64_encode("tokenID_example");
+$issuedAt = time();
+$notBefore = $issuedAt;
+$expire = $notBefore + 60*60;
+$serverName = "test_server";
  
-    exit(0);
-}
-// Connect to database
-$conn = mysqli_connect('invmariadb1.cjj16juccmpl.ap-northeast-2.rds.amazonaws.com','aptwant','dhdltkdhdltk','mainDB');
-include_once('users.php');
-$request_method = $_SERVER["REQUEST_METHOD"];
-$data = json_decode(file_get_contents("php://input"));
-$user = new Users;
-switch($request_method)
-{
-  case 'GET':
-    // Retrive Users
-    if(!empty($_GET["ID"]))
-    {
-      $ID=intval($_GET["ID"]);
-      $user->getUsers($ID);
-    }
-    else
-    {
-      $user->getUsers();
-    }
-    break;
-  case 'POST':
-    // Insert User
-    $user->saveUser($data);
-    break;
-  case 'PUT':
-    $user->updateUser($data);
-    break;
-  case 'DELETE':
-    // Delete User
-    $user->deleteUser($data);
-    break;
-  default:
-    // Invalid Request Method
-    header("HTTP/1.0 405 Method Not Allowed");
-    break;
-}
+ 
+$secret_key = "secret_key_value";
+ 
+$acco_id = "kjh";
+$server_no = 1;
+ 
+$data = array(
+   'iat' => $issuedAt,
+   'jti' => $tokenId,
+   'iss' => $serverName,
+   'nbf' => $notBefore,
+   'exp' => $expire,
+   'data' => [
+      'acco_id' => $acco_id,
+      'server_no' => $server_no,
+   ]
+ 
+);
+ 
+$jwt = JWT::encode($data, $secret_key);
+echo "encoded jwt: " . $jwt . "n";
+ 
+$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+ 
+print_r($decoded);
+ 
+?>
