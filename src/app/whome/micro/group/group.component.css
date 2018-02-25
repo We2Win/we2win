@@ -86,6 +86,7 @@
 }
 
 :host /deep/ app-button {
+  display: block;
   margin: 1em auto;
 }
 

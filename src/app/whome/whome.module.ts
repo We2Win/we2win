@@ -52,6 +52,10 @@ import { PolicyComponent } from './pages/signup/policy/policy.component';
 import { GroupComponent } from './micro/group/group.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule } from '@angular/forms';
+import { AlertService } from './services/alert.service';
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -109,8 +113,14 @@ import { FormsModule } from '@angular/forms';
     PolicyComponent,
     GroupComponent,
     Error404Component,
+    LoginComponent,
   ],
-  providers: [ PageInfoService ]
+  providers: [
+    PageInfoService,
+    AlertService,
+    AuthenticationService,
+    UserService,
+  ]
 })
 export class WhomeModule {
 }

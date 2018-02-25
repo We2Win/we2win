@@ -2,7 +2,23 @@
 <section>
   <app-group>
     <h1>로그인</h1>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <form [formGroup]="form">
+      <fieldset>
+        <legend>Login</legend>
+        <article>
+          <h2>Email</h2>
+          <input name="ID" formControlName="ID">
+        </article>
+        <article>
+          <h2>Password</h2>
+          <input name="Password" formControlName="Password"
+            type="password">
+        </article>
+      </fieldset>
+      <app-button>로그인</app-button>
+    </form>
+    
+    <!-- <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
       <article [ngClass]="{ 'has-error': f.submitted && !ID.valid }">
         <h2>아이디</h2>
         <input type="text" name="ID" [(ngModel)]="model.ID" #ID="ngModel" placeholder="아이디" required/>
@@ -18,7 +34,7 @@
         <h2>비밀번호를 입력해 주세요.</h2>
       </article>
       <app-button>로그인</app-button>
-    </form>
+    </form> -->
   </app-group>
 </section>
 <app-footer></app-footer>
