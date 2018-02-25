@@ -14,7 +14,8 @@ class Users{
       $response[]=$row;
     }
     header('Content-Type: application/json');
-    echo json_encode($hello);
+    // echo json_encode($hello);
+    echo $hello;
   }
   //Save user
   function saveUser($data){
