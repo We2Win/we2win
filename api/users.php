@@ -52,7 +52,7 @@ class Users{
       $ID = mysqli_real_escape_string($conn,$_POST['ID']);
       $Password = mysqli_real_escape_string($conn,$_POST['Password']);
 
-      $query = "SELECT ID FROM `01011803` WHERE ID = '$ID' and Password = '$Password'";
+      $query = "SELECT * FROM `01011803` WHERE ID = '$ID'";
       $result = mysqli_query($conn, $query);
       $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
       $active = $row['active'];
