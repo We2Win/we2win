@@ -29,7 +29,7 @@ export class AuthGuard implements CanActivate {
             return true;
         }).catch(() => {
             console.log('Could not login');
-            alert('로그인은 해주세요');
+            alert('로그인 후 보실 수 있습니다.');
             this.router.navigate(['/login']);
             return Observable.of(false);
         });

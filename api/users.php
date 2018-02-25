@@ -47,5 +47,23 @@ class Users{
     header('Content-Type: application/json');
     //Respond success / error messages
   }
+
+  function login($data){
+      $ID = mysqli_real_escape_string($conn,$_POST['ID']);
+      $Password = mysqli_real_escape_string($conn,$_POST['Password']);
+
+      $query = "SELECT ID FROM `01011803` WHERE ID = '$ID' and Password = '$Password'";
+      $result = mysqli_query($conn, $query);
+      $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+      $active = $row['active'];
+
+      $count = mysqli_num_rows($result);
+
+      if ($count == 1) {
+          echo $result;
+      } else {
+          echo "Failed";
+      }
+  }
 }
 ?>

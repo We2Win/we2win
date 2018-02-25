@@ -2,7 +2,7 @@
 <section>
   <app-group>
     <h1>로그인</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
       <article>
         <fieldset>
           <h2>아이디</h2>
