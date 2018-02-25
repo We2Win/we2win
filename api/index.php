@@ -24,7 +24,7 @@ switch($request_method)
     break;
   case 'POST':
     // Insert User
-    $user->saveUser($data);
+    $user->login($data);
     break;
   case 'PUT':
     $user->updateUser($data);

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { FormsModule, FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms/src/validators';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +10,22 @@ import { Validators } from '@angular/forms/src/validators';
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) { }
   // we want to actually subscribe to the boolean of the observable
   loginForm: FormGroup;
-  ID: FormControl;
-  Password: FormControl;
+  post: any;
+  ID: string;
+  Password: string;
+
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    this.loginForm = fb.group({
+      'ID': [null, Validators.required],
+      'Password': [null, Validators.required]
+    });
+  }
 
   ngOnInit(): void {
     this.authService.checkAuth().subscribe(auth => {
@@ -24,29 +34,12 @@ export class LoginComponent implements OnInit {
       }
     });
 
-    this.createForm();
-    // this.createFormControls();
   }
 
-  createForm() {
-    this.loginForm = new FormGroup({
-      ID: this.ID,
-      Password: this.Password,
-    });
-  }
-
-  createFormControls() {
-    this.ID = new FormControl('', Validators.required);
-    this.Password = new FormControl('', [
-      Validators.required,
-      // Validators.minLength(8)
-    ]);
-  }
-
-  onSubmit(): void {
+  onSubmit(user): void {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.ID);
-      this.authService.login(this.loginForm.ID, this.loginForm.Password).subscribe(auth => {
+      console.log(user);
+      this.authService.login(user.ID, user.Password).subscribe(auth => {
         console.log(auth);
         if (auth) {
           this.router.navigate(['/']);

@@ -50,7 +50,7 @@ import { AccountInfoComponent } from './micro/account-info/account-info.componen
 import { PolicyComponent } from './pages/signup/policy/policy.component';
 import { GroupComponent } from './micro/group/group.component';
 import { Error404Component } from './pages/error404/error404.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './services/auth.service';
 
@@ -60,6 +60,7 @@ import { AuthService } from './services/auth.service';
     CommonModule,
     WhomeRoutingModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     HeaderComponent,
