@@ -12,8 +12,8 @@ class Users{
     global $conn;
     $query="SELECT * FROM `01011803`";
     $response=array();
-    $hello=array();
-    $hello[]="Hello World!";
+    // $hello=array();
+    // $hello[]="Hello World!";
     $result=mysqli_query($conn, $query);
     while($row = mysqli_fetch_assoc($result))
     {
@@ -21,7 +21,7 @@ class Users{
     }
     header('Content-Type: application/json');
     // echo json_encode($hello);
-    echo json_encode($hello);
+    echo json_encode($result);
   }
   //Save user
   function saveUser($data){
