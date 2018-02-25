@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { DbConnectService } from '../../../db-connect.service';
 
 @Component({
@@ -20,8 +20,9 @@ export class AccountInfoComponent implements OnInit {
     db.getUsers().subscribe(
       (response: Response) => {
         // this.persons = response.json();
-        console.log("Hello:");
+        console.log('Hello:');
         console.log(response);
+        console.log('done.');
       },
       (error) => { console.log(error); }
     );
