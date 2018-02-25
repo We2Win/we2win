@@ -1,19 +1,18 @@
 <?php
 class Users{
   //Get users
-  function getUsers()
+  function getUsers($data)
   {
     global $conn;
-    $query="SELECT * FROM `01011803` ORDER BY id DESC";
-    // $response=array();
-    $hello="Hello World!";
+    $query="SELECT * FROM `01011803`";
+    $response=array();
     $result=mysqli_query($conn, $query);
     while($row = mysqli_fetch_assoc($result))
     {
       $response[]=$row;
     }
     header('Content-Type: application/json');
-    echo json_encode($hello);
+    echo json_encode($response);
   }
   //Save user
   function saveUser($data){
