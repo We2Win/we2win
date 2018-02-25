@@ -51,12 +51,14 @@ import { AccountInfoComponent } from './micro/account-info/account-info.componen
 import { PolicyComponent } from './pages/signup/policy/policy.component';
 import { GroupComponent } from './micro/group/group.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
     CommonModule,
     WhomeRoutingModule,
+    FormsModule,
   ],
   declarations: [
     HeaderComponent,
