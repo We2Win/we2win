@@ -15,7 +15,7 @@ class Users{
     }
     header('Content-Type: application/json');
     // echo json_encode($hello);
-    echo $hello;
+    echo json_encode($hello);
   }
   //Save user
   function saveUser($data){
