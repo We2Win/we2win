@@ -50,6 +50,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { AccountInfoComponent } from './micro/account-info/account-info.component';
 import { PolicyComponent } from './pages/signup/policy/policy.component';
 import { GroupComponent } from './micro/group/group.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 
 @NgModule({
@@ -105,6 +106,7 @@ import { GroupComponent } from './micro/group/group.component';
     AccountInfoComponent,
     PolicyComponent,
     GroupComponent,
+    Error404Component,
   ],
   providers: [ PageInfoService ]
 })
