@@ -6,7 +6,10 @@ import { AlertService } from '../../services/alert.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
+  providers: [
+    AuthenticationService,
+  ]
 })
 export class SigninComponent implements OnInit {
   model: any = {};
