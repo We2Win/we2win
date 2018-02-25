@@ -1,24 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) {}
+    constructor(private authService: AuthService, private router: Router) { }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-    if (localStorage.getItem('currentUser')) {
-      // logged in.
-      return true;
+    canActivate(): Observable<boolean> {
+        return this.checkLogin();
     }
-    // not logged
-    this.router.navigate(['/signin'], {
-      queryParams: { returnUrl: state.url }
-    });
-    return false;
-  }
+    canActivateChild(): Observable<boolean> {
+        return this.checkLogin();
+    }
+    // authguard can provide an observable rather than a straight boolean
+    checkLogin(): Observable<boolean> {
+        return this.authService.checkAuth().map(e => {
+            if (e === false) {
+                this.router.navigate(['/login']);
+                return false;
+            }
+            return true;
+        }).catch(() => {
+            console.log('Could not login');
+            this.router.navigate(['/login']);
+            return Observable.of(false);
+        });
+    }
 }

@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { DbConnectService } from '../../../db-connect.service';
 import { User } from '../../models/user';
-import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
+// import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-account-info',
@@ -11,7 +12,8 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./account-info.component.css'],
   providers: [
     DbConnectService,
-    UserService,
+    // UserService,
+    AuthService,
   ]
 })
 export class AccountInfoComponent implements OnInit {
@@ -28,7 +30,10 @@ export class AccountInfoComponent implements OnInit {
     // private http: Http,
 
     // type 2:
-    // private userService: UserService
+    // private userService: UserService,
+
+    // type 3:
+    private authService: AuthService
   ) {
     // type 2:
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -47,6 +52,7 @@ export class AccountInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.authService.setToken('hello');
   }
 
   // type 2:
