@@ -19,8 +19,8 @@ export class AuthService {
         }
       });
   }
-  login(u: string, p: string): Observable<boolean> {
-    return this.http.post('api/index.php', JSON.stringify({ 'user': u, 'pass': p }))
+  login(id: string, pw: string): Observable<boolean> {
+    return this.http.post('api/index.php', JSON.stringify({ 'ID': id, 'Password': pw }))
       .map(response => {
         console.log(response);
         if (response['auth'] === 1) {

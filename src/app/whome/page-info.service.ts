@@ -57,7 +57,7 @@ export class PageInfoService {
 
 
   getCurrentData(routePath, data) {
-    if (!routePath) return;
+    if (!routePath) { return; }
     const path = routePath.split('/');
     // console.log('executing...', path, path.length);
 
