@@ -7,9 +7,9 @@ RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !/ws/
+RewriteCond %{REQUEST_URI} !/api/
 RewriteRule ^(.*)$ index.html [L,QSA]
 
-RewriteRule ^(ws/.*)$ ws/index.php?request=$1 [L,QSA]
+RewriteRule ^(api/.*)$ api/index.php?request=$1 [L,QSA]
 
 </ifModule>
