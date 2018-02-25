@@ -3,6 +3,47 @@ session_start();
 
 $rawBody = file_get_contents("php://input"); // Read body
 
+$conn = mysqli_connect('invmariadb1.cjj16juccmpl.ap-northeast-2.rds.amazonaws.com','aptwant','dhdltkdhdltk','mainDB');
+include_once('users.php');
+$request_method = $_SERVER["REQUEST_METHOD"];
+$data = json_decode(file_get_contents("php://input"));
+$user = new Users;
+switch($request_method)
+{
+  case 'GET':
+    // Retrive Users
+    if(!empty($_GET["ID"]))
+    {
+      $ID=intval($_GET["ID"]);
+      $user->getUsers($ID);
+    }
+    else
+    {
+      $user->getUsers();
+    }
+    break;
+  case 'POST':
+    // Insert User
+    $user->saveUser($data);
+    break;
+  case 'PUT':
+    $user->updateUser($data);
+    break;
+  case 'DELETE':
+    // Delete User
+    $user->deleteUser($data);
+    break;
+  default:
+    // Invalid Request Method
+    header("HTTP/1.0 405 Method Not Allowed");
+    break;
+}
+
+
+
+
+
+
 
 if($rawBody != "") { //if post data
 require("users.php");
