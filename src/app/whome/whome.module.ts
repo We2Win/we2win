@@ -46,16 +46,13 @@ import { ReportDetailComponent } from './pages/info/report/report-detail/report-
 import { NewsDetailComponent } from './pages/info/news/news-detail/news-detail.component';
 import { DescriptionComponent } from './micro/description/description.component';
 import { TableComponent } from './micro/table/table.component';
-import { SigninComponent } from './pages/signin/signin.component';
 import { AccountInfoComponent } from './micro/account-info/account-info.component';
 import { PolicyComponent } from './pages/signup/policy/policy.component';
 import { GroupComponent } from './micro/group/group.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule } from '@angular/forms';
-import { AlertService } from './services/alert.service';
-import { AuthenticationService } from './services/authentication.service';
-import { UserService } from './services/user.service';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -108,7 +105,6 @@ import { LoginComponent } from './pages/login/login.component';
     NewsDetailComponent,
     DescriptionComponent,
     TableComponent,
-    SigninComponent,
     AccountInfoComponent,
     PolicyComponent,
     GroupComponent,
@@ -117,9 +113,7 @@ import { LoginComponent } from './pages/login/login.component';
   ],
   providers: [
     PageInfoService,
-    AlertService,
-    AuthenticationService,
-    UserService,
+    AuthService
   ]
 })
 export class WhomeModule {
