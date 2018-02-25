@@ -15,14 +15,14 @@ export class LoginComponent implements OnInit {
     console.log(form.user);
     this.authService.login(form.user, form.pass).subscribe(auth => {
       if (auth) {
-        this.router.navigate(['/restricted']);
+        this.router.navigate(['/']);
       }
     });
   }
   ngOnInit(): void {
     this.authService.checkAuth().subscribe(auth => {
       if (auth) {
-        this.router.navigate(['/restricted']);
+        this.router.navigate(['/']);
       }
     });
   }

@@ -2,20 +2,19 @@
 <section>
   <app-group>
     <h1>로그인</h1>
-    <form>
-      <fieldset>
-        <legend>Login</legend>
-        <article>
-          <h2>Email</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <article>
+        <fieldset>
+          <h2>아이디</h2>
           <input name="ID">
-        </article>
-        <article>
-          <h2>Password</h2>
+        </fieldset>
+        <fieldset>
+          <h2>비밀번호</h2>
           <input name="Password"
             type="password">
-        </article>
-      </fieldset>
-      <app-button>로그인</app-button>
+        </fieldset>
+      </article>
+      <app-button [type]="'submit'">로그인</app-button>
     </form>
     
     <!-- <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
