@@ -20,11 +20,7 @@ export class UserService {
   }
 
   update(user: User) {
-<<<<<<< HEAD
     return this.http.put('/api/users/' + user.ID, user);
-=======
-    return this.http.put('/api/users/' + user.id, user);
->>>>>>> 8f6b82da0fc8280e950b4c4c25d8194d79615d2b
   }
 
   delete(id: number) {
