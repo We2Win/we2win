@@ -28,9 +28,14 @@ class Users{
   function saveUser($data){
     global $conn;
     $query="INSERT INTO `01011803` (ID, Password) VALUES ('".$data->ID."', '".$data->Password."')";
-    echo $result=mysqli_query($conn, $query);
+    $result=$conn->query($query);
+    while($row = mysqli_fetch_assoc($result))
+    {
+      $response[]=$row;
+    }
     header('Content-Type: application/json');
     //Respond success / error messages
+    echo json_encode($response);
   }
   //Update user
   function updateUser($data){
