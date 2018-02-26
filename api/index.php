@@ -26,6 +26,8 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 $data = json_decode(file_get_contents("php://input"));
 $user = new Users;
 
+    echo json_encode("{'data':'".$request_method."'}");
+
 // $user->getUsers();
 switch($request_method)
 {
