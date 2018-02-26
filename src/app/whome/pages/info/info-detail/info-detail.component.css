@@ -1,0 +1,71 @@
+#top {
+  display: flex;
+  padding: 5em 0 2em 0;
+}
+
+#top>div {
+  flex: 1 1 auto;
+}
+
+#top #imgNav {
+  margin-right: 2em;
+}
+
+#top h1 {
+  margin-bottom: 1em;
+}
+
+#top p {
+  margin-bottom: 2em;
+}
+
+#top li {
+  display: flex;
+}
+
+#top li h2 {
+  width: 150px;
+  font-size: 0.9em;
+  line-height: 200%;
+}
+
+#top li h3 {
+  flex: 1;
+  font-size: 0.9em;
+  line-height: 200%;
+}
+
+#top app-button {
+  width: 400px;
+  display: block;
+  margin: 1em auto;
+}
+
+.price {
+  color: red;
+  font-size: 1.8em !important;
+}
+
+#levelBar {
+  display: block;
+  height: 25px;
+  color: white;
+  line-height: 200%;
+  transition: opacity 0.5s;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  padding: 0 1em;
+}
+
+#levelBar.platinum {
+  background: var(--level-platinum-gradient);
+}
+
+#levelBar.premium {
+  background: var(--level-premium-gradient);
+}
+
+#levelBar.standard {
+  background: var(--level-standard-gradient);
+}

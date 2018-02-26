@@ -5,7 +5,8 @@ import { Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
-import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class UserService {
@@ -17,16 +18,12 @@ export class UserService {
   getById(id: string) {
     return this.http.get('/api');
   }
-  create(user: User): Observable<User> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-        // 'Authorization': 'my-auth-token'
-      })
-    };
+  create(user: User) {
+    const bodyString = JSON.stringify(user);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
 
-    return this.http.post<Response>('api/newUser/',
-      JSON.stringify(user), httpOptions)
+    return this.http.post('api/', bodyString, options)
       // .map((res: User) => JSON.stringify(res))
       .catch((error: any) => Observable.throw(error.message));
   }

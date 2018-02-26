@@ -43,7 +43,7 @@ import { SiteCardComponent } from './micro/site-card/site-card.component';
 import { InfoCardComponent } from './micro/info-card/info-card.component';
 import { LevelDirective } from './directive/level.directive';
 import { ReportDetailComponent } from './pages/info/report/report-detail/report-detail.component';
-import { NewsDetailComponent } from './pages/info/news/news-detail/news-detail.component';
+import { NewsDetailComponent } from './pages/info/news-detail/news-detail.component';
 import { DescriptionComponent } from './micro/description/description.component';
 import { TableComponent } from './micro/table/table.component';
 import { AccountInfoComponent } from './micro/account-info/account-info.component';
@@ -56,6 +56,7 @@ import { AuthService } from './services/auth.service';
 import { SocialComponent } from './pages/signup/social/social.component';
 import { SocialButtonComponent } from './micro/social-button/social-button.component';
 import { UserService } from './services/user.service';
+import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
 
 
 @NgModule({
@@ -116,6 +117,7 @@ import { UserService } from './services/user.service';
     LoginComponent,
     SocialComponent,
     SocialButtonComponent,
+    InfoDetailComponent,
   ],
   providers: [
     PageInfoService,
