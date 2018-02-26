@@ -3,7 +3,7 @@
 // $user['pass'] = password_hash("password_here",PASSWORD_DEFAULT);
 // echo json_encode($user);
 
-$conn = mysqli_connect('invmariadb1.cjj16juccmpl.ap-northeast-2.rds.amazonaws.com','aptwant','dhdltkdhdltk','mainDB');
+// $conn = mysqli_connect('invmariadb1.cjj16juccmpl.ap-northeast-2.rds.amazonaws.com','aptwant','dhdltkdhdltk','mainDB');
 
 class Users{
   //Get users
