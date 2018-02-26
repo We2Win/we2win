@@ -48,6 +48,7 @@ export class FormComponent implements OnInit {
     // if (this.signupForm.valid) {
     this.user = this.signupForm.value;
     console.log(this.user);
+    // this.userService.create(this.user)
     this.userService.try()
       .subscribe(
         data => {
