@@ -32,7 +32,7 @@ while($row = mysqli_fetch_assoc($result))
   $response[]=$row;
 }
 
-echo json_encode("{'data':'".$response."'}");
+echo json_encode("{'data':'".$request_method."'}");
 
 // $user->getUsers();
 // switch($request_method)
