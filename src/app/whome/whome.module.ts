@@ -53,6 +53,8 @@ import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './services/auth.service';
+import { SocialComponent } from './pages/signup/social/social.component';
+import { SocialButtonComponent } from './micro/social-button/social-button.component';
 
 
 @NgModule({
@@ -111,6 +113,8 @@ import { AuthService } from './services/auth.service';
     GroupComponent,
     Error404Component,
     LoginComponent,
+    SocialComponent,
+    SocialButtonComponent,
   ],
   providers: [
     PageInfoService,

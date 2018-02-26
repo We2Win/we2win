@@ -1,47 +1,45 @@
-<app-header></app-header>
 <section>
   <app-group>
     <h1>회원 가입</h1>
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
-
-      <article>
-        <h2>기본정보
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="subGroup">
+        <label>기본정보
           <br>
           <b> * 필수사항</b>
-        </h2>
-        <div>
-          <li>
-            <h2>아이디 *</h2>
-            <input type="text" formControlName="ID" placeholder="최소 4글자 최대 15글자" />
+        </label>
+        <article>
+          <li class="form-group">
+            <label>아이디 *</label>
+            <input class="form-control" type="text" formControlName="ID" placeholder="최소 4글자 최대 15글자" />
             <app-button>아이디 확인</app-button>
           </li>
-          <li>
-            <h2>패스워드 *</h2>
-            <input type="password" formControlName="Password" placeholder="비밀번호를 입력해 주세요." />
+          <li class="form-group">
+            <label>패스워드 *</label>
+            <input class="form-control" type="password" formControlName="Password" placeholder="비밀번호를 입력해 주세요." />
             <div class="blank">특수문자 포함 12자리</div>
           </li>
-          <li>
-            <h2>패스워드 확인 *</h2>
-            <input type="password" placeholder="비밀번호를 입력해 주세요." />
+          <li class="form-group">
+            <label>패스워드 확인 *</label>
+            <input class="form-control" type="password" formControlName="confirmPassword" placeholder="비밀번호를 입력해 주세요." />
             <div class="blank"></div>
           </li>
-          <li>
-            <h2>성명</h2>
-            <input type="text" placeholder="성명을 입력해 주세요.">
+          <li class="form-group">
+            <label>성명</label>
+            <input class="form-control" type="text" formControlName="Name" placeholder="성명을 입력해 주세요.">
             <div class="blank"></div>
           </li>
-          <li>
-            <h2>핸드폰</h2>
-            <input type="text" placeholder="예) 홍길동">
+          <li class="form-group">
+            <label>핸드폰</label>
+            <input class="form-control" type="text" formControlName="CP" placeholder="예) 홍길동">
             <div class="blank"></div>
           </li>
-          <li>
-            <h2>E-Mail</h2>
-            <input type="text" placeholder="연락처를 입력하세요">
+          <li class="form-group">
+            <label>E-Mail</label>
+            <input class="form-control" type="text" formControlName="Email" placeholder="연락처를 입력하세요">
             <div class="blank"></div>
           </li>
-          <li>
-            <h2>신청등급</h2>
+          <!-- <li class="form-group">
+            <label>신청등급</label>
             <div class="card platinum">
               <div id="level">PLATINUM</div>
               <p>오프라인 모임과 함께 다양한 형태로 정보를 수집하고 분석 할 수 있다.</p>
@@ -61,92 +59,96 @@
               </p>
               <p id="price">무료/월</p>
             </div>
+          </li> -->
+          <li class="form-group">
+            <label>신청등급</label>
+            <div class="checkboxGroup">
+              <label class="sublabel" for="01">PLATINUM</label>
+              <input class="form-control" name="ULevel" id="01" type="radio">
+              <label class="sublabel" for="02">PREMIUM</label>
+              <input class="form-control" name="ULevel" id="02" type="radio">
+              <label class="sublabel" for="03">STANDARD</label>
+              <input class="form-control" name="ULevel" id="03" type="radio">
+            </div>
           </li>
-          <li>
-            <h2></h2>
-            <label for="01">PLATINUM</label>
-            <input id="01" type="checkbox">
-            <label for="02">PREMIUM</label>
-            <input id="02" type="checkbox">
-            <label for="03">STANDARD</label>
-            <input id="03" type="checkbox">
-            <div id="blank"></div>
+          <li class="form-group">
+            <label>가입목적</label>
+            <div class="checkboxGroup">
+              <label class="sublabel" for="11">투자</label>
+              <input class="form-control" name="Hope" id="11" type="radio">
+              <label class="sublabel" for="12">살거주</label>
+              <input class="form-control" name="Hope" id="12" type="radio">
+              <label class="sublabel" for="13">모두 해당</label>
+              <input class="form-control" name="Hope" id="13" type="radio">
+            </div>
           </li>
-          <li>
-            <h2>가입목적</h2>
-            <label for="11">투자</label>
-            <input id="11" type="checkbox">
-            <label for="12">살거주</label>
-            <input id="12" type="checkbox">
-            <label for="13">모두 해당</label>
-            <input id="13" type="checkbox">
-            <div id="blank"></div>
+          <li class="form-group">
+            <label>관심분야</label>
+            <div class="checkboxGroup">
+              <label class="sublabel" for="21">아파트</label>
+              <input class="form-control" name="Site" id="21" type="radio">
+              <label class="sublabel" for="22">오피스텔</label>
+              <input class="form-control" name="Site" id="22" type="radio">
+              <label class="sublabel" for="23">상가/호텔</label>
+              <input class="form-control" name="Site" id="23" type="radio">
+              <label class="sublabel" for="24">모두 해당</label>
+              <input class="form-control" name="Site" id="24" type="radio">
+            </div>
           </li>
-          <li>
-            <h2>관심분야</h2>
-            <label for="21">아파트</label>
-            <input id="21" type="checkbox">
-            <label for="22">오피스텔</label>
-            <input id="22" type="checkbox">
-            <label for="23">상가/호텔</label>
-            <input id="23" type="checkbox">
-            <label for="24">모두 해당</label>
-            <input id="24" type="checkbox">
-            <div id="blank"></div>
+          <li class="form-group">
+            <label>관심지역</label>
+            <input class="form-control" formControlName="Location" type="text" placeholder="예) 서울, 경기 / 도, 시단위로 기입">
           </li>
-          <li>
-            <h2>관심지역</h2>
-            <input type="text" placeholder="예) 서울, 경기 / 도, 시단위로 기입">
+          <li class="form-group">
+            <label>관심금액</label>
+            <input class="form-control" formControlName="Amount" type="text" placeholder="">
           </li>
-          <li>
-            <h2>관심금액</h2>
-            <input type="text" placeholder="">
+        </article>
+      </div>
+
+      <div class="subGroup">
+        <label>선택정보</label>
+        <article>
+          <li class="form-group">
+            <label>집주소</label>
+            <input class="form-control" formControlName="HA" type="text" placeholder="주소를 입력해주세요.">
+            <div class="blank"></div>
+            <!-- <app-button>주소 검색</app-button> -->
           </li>
-        </div>
-      </article>
-      <article>
-        <h2>선택정보</h2>
-        <div>
-          <li>
-            <h2>집주소</h2>
-            <input type="text" placeholder="주소를 입력해주세요.">
-            <app-button>주소 검색</app-button>
+          <li class="form-group">
+            <label>집전화번호</label>
+            <input class="form-control" formControlName="HP" type="text" placeholder="연락처를 입력하세요.">
+            <div class="blank"></div>
           </li>
-          <li>
-            <h2>집전화번호</h2>
-            <input type="text" placeholder="연락처를 입력하세요.">
+          <li class="form-group">
+            <label>사무실 주소</label>
+            <input class="form-control" formControlName="OA" type="text" placeholder="주소를 입력해주세요.">
+            <div class="blank"></div>
+            <!-- <app-button>주소 검색</app-button> -->
           </li>
-          <li>
-            <h2>사무실 주소</h2>
-            <input type="text" placeholder="주소를 입력해주세요.">
-            <app-button>주소 검색</app-button>
+          <li class="form-group">
+            <label>사무실 전화번호</label>
+            <input class="form-control" formControlName="OP" type="text" placeholder="연락처를 입력하세요.">
+            <div class="blank"></div>
           </li>
-          <li>
-            <h2>사무실 전화번호</h2>
-            <input type="text" placeholder="연락처를 입력하세요.">
+          <li class="form-group">
+            <label>정보 수신</label>
+            <div class="checkboxGroup">
+              <label class="sublabel" for="31">메일</label>
+              <input class="form-control" name="InfoA" id="31" type="radio">
+              <label class="sublabel" for="32">문자</label>
+              <input class="form-control" name="InfoA" id="32" type="radio">
+              <label class="sublabel" for="33">미수신</label>
+              <input class="form-control" name="InfoA" id="33" type="radio">
+            </div>
           </li>
-          <li>
-            <h2>정보 수신</h2>
-            <label for="31">메일</label>
-            <input id="31" type="checkbox">
-            <label for="32">문자</label>
-            <input id="32" type="checkbox">
-            <label for="33">미수신</label>
-            <input id="33" type="checkbox">
-            <div id="blank"></div>
+          <li class="form-group">
+            <label>가용자산</label>
+            <input class="form-control" formControlName="AAmount" type="text" placeholder="">
+            <div class="blank"></div>
           </li>
-          <li>
-            <h2>가용자산</h2>
-            <input type="text" placeholder="">
-          </li>
-        </div>
-      </article>
-      <article>
-        <h2>SNS 계정 연동</h2>
-        <button id="naver">네이버 계정 연동</button>
-        <button id="kakao">카카오 계정 연동</button>
-        <button id="facebook">페이스북 계정 연동</button>
-      </article>
+        </article>
+      </div>
       <div id="lastWarning">
         입력하신 내용을 다시한번 확인 하시고,
         <br>가입하기를 눌러주시면 회원가입이 완료됩니다.
@@ -155,4 +157,3 @@
     </form>
   </app-group>
 </section>
-<app-footer></app-footer>

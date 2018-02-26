@@ -31,6 +31,7 @@ import { FormComponent } from './pages/signup/form/form.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { SocialComponent } from './pages/signup/social/social.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'info',
+        redirectTo: 'login',
         pathMatch: 'full'
       },
       {
@@ -144,6 +145,7 @@ const routes: Routes = [
   },
   {
     path: 'signup',
+    component: WhomeComponent,
     children: [
       {
         path: '',
@@ -153,6 +155,10 @@ const routes: Routes = [
       {
         path: 'policy',
         component: PolicyComponent
+      },
+      {
+        path: 'social',
+        component: SocialComponent
       },
       {
         path: 'form',
@@ -166,11 +172,23 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: WhomeComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent
+      }
+    ]
   },
   {
     path: '**',
-    component: Error404Component
+    component: LoginComponent,
+    children: [
+      {
+        path: '',
+        component: Error404Component
+      }
+    ]
   }
 ];
 

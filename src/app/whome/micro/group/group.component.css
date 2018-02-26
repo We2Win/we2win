@@ -17,37 +17,67 @@
   flex: 1;
 }
 
-:host /deep/ article {
+:host /deep/ .subGroup {
   display: flex;
-  flex-wrap: wrap;
+  flex: 1;
+  flex-direction: row;
   margin-top: 0.5em;
   padding: 0.5em;
   padding-top: 1.5em;
   border-top: 1px solid #666;
 }
 
-:host /deep/ article article {
-  border: none;
-  padding: 0.5em;
-}
-
-:host /deep/ fieldset {
-  width: 100%;
-  flex: none;
-  border: none;
-  padding: 0.5em;
-}
-
-:host /deep/ div {
+:host /deep/ article {
   display: flex;
-  flex: 1;
   flex-direction: column;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid #666;
+}
+
+:host /deep/ .subGroup article {
+  border: none;
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  width: auto;
+}
+
+:host /deep/ label {
+  display: inline-block;
+  width: 200px;
+  line-height: 200%;
+  font-size: 1em;
+  margin: 0;
+  flex: none;
 }
 
 :host /deep/ li {
   display: flex;
-  flex: auto;
-  margin: 0.5em 0;
+  flex: 1;
+  flex-direction: row;
+  margin-top: 2em;
+}
+
+:host /deep/ article li {
+  margin: 0;
+}
+
+:host /deep/ article li+li {
+  margin-top: 1em;
+}
+
+:host /deep/ .sublabel {
+  width: auto;
+  flex: 1;
+  font-size: 0.9em;
+  line-height: 100%;
+  text-align: center;
+}
+
+:host /deep/ .left {
+  text-align: left;
 }
 
 :host /deep/ h2 {
@@ -59,7 +89,7 @@
   flex: none;
 }
 
-:host /deep/ h2>b {
+:host /deep/ label>b {
   font-weight: normal;
   font-size: 0.7em;
 }
@@ -92,28 +122,34 @@
   line-height: 4.1em;
 }
 
+:host /deep/ .card {
+  min-height: 300px;
+}
+
+:host /deep/ .checkboxGroup {
+  padding: 1em 0;
+  flex: 1;
+}
+
 :host /deep/ app-button {
   display: block;
-  margin: 1em auto;
+  margin: 3em auto;
 }
 
 :host /deep/ article app-button {
   margin: 0 0 0 1em;
   font-size: 0.9em;
 }
-
-:host /deep/ label {
-  font-size: 0.9em;
-}
-
+/* 
 :host /deep/ li label {
   flex: none;
   flex-basis: 6em;
   font-size: 0.8em;
   text-align: center;
-}
+} */
 
-:host /deep/ input[type="checkbox"] {
+:host /deep/ input[type="checkbox"],
+:host /deep/ input[type="radio"] {
   width: 1em;
   height: 1em;
   margin: 0 1em;
@@ -131,8 +167,15 @@
 }
 
 :host /deep/ textarea {
-  width: 100%;
   box-sizing: border-box;
+  font-size: 0.8em;
   min-height: 15em;
+  white-space: normal;
 }
 
+:host /deep/ textarea:read-only {
+  outline: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  resize: none;
+}

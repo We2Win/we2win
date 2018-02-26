@@ -1,18 +1,21 @@
-<app-header></app-header>
 <section>
   <app-group>
     <h1>로그인</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
       <article>
-        <fieldset>
+        <li>
+          <div class="blank"></div>
           <h2>아이디</h2>
           <input name="ID" formControlName="ID" required>
-        </fieldset>
-        <fieldset>
+          <div class="blank"></div>
+        </li>
+        <li>
+          <div class="blank"></div>
           <h2>비밀번호</h2>
           <input name="Password"
             type="password" formControlName="Password" required>
-        </fieldset>
+          <div class="blank"></div>
+        </li>
       </article>
       <app-button [type]="'submit'">로그인</app-button>
     </form>
@@ -36,4 +39,3 @@
     </form> -->
   </app-group>
 </section>
-<app-footer></app-footer>
