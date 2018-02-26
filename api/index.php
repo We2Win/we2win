@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 
-session_name('GETUSERS');
-session_start();
+// session_name('GETUSERS');
+// session_start();
 
 $rawBody = json_decode(file_get_contents("php://input"), true); // Read body
 
@@ -49,7 +49,7 @@ while($row = mysqli_fetch_assoc($result))
   $response[]=$row;
 }
 
-echo json_encode("{'data':'".$rawBody."'}");
+echo json_encode("{'data':'".$request_method."'}");
 
 // $user->getUsers();
 // switch($request_method)
