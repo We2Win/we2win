@@ -1,15 +1,31 @@
 <?php
+session_name('GETUSERS');
 session_start();
 
 $rawBody = file_get_contents("php://input"); // Read body
 
-$conn = mysqli_connect('invmariadb1.cjj16juccmpl.ap-northeast-2.rds.amazonaws.com','aptwant','dhdltkdhdltk','mainDB');
-include_once('users.php');
-$request_method = $_SERVER["REQUEST_METHOD"];
-$data = json_decode(file_get_contents("php://input"));
-$user = new Users;
+$conn = new mysqli('invmariadb1.cjj16juccmpl.ap-northeast-2.rds.amazonaws.com','aptwant','dhdltkdhdltk','mainDB');
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
-$user->getUsers();
+$result = $conn->query("SELECT * from  `01011803`");
+
+if($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+    echo "ID: " . $row["ID"] . " - Password: " . $row["Password"];
+  }
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+
+// include_once('users.php');
+// $request_method = $_SERVER["REQUEST_METHOD"];
+// $data = json_decode(file_get_contents("php://input"));
+// $user = new Users;
+
 // switch($request_method)
 // {
 //   case 'GET':
