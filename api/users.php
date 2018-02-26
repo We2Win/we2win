@@ -10,7 +10,7 @@ class Users{
   function getUsers()
   {
     global $conn;
-    $query="SELECT * FROM `01011803`";
+    $query="SELECT * FROM `01011803` WHERE ID=`100ki`";
     // $query="SHOW TABLES;";
     $response=array();
     // $hello=array();
