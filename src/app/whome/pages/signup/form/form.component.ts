@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
       ID: new FormControl(),
       // PW: new FormGroup({
         Password: new FormControl(),
-        confirmPassword: new FormControl()
+        confirmPassword: new FormControl(),
       // }),
       Name: new FormControl(),
       CP: new FormControl(),
