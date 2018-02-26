@@ -55,6 +55,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './services/auth.service';
 import { SocialComponent } from './pages/signup/social/social.component';
 import { SocialButtonComponent } from './micro/social-button/social-button.component';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -118,7 +119,8 @@ import { SocialButtonComponent } from './micro/social-button/social-button.compo
   ],
   providers: [
     PageInfoService,
-    AuthService
+    AuthService,
+    UserService
   ]
 })
 export class WhomeModule {
