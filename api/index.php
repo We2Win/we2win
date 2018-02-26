@@ -26,7 +26,13 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 $data = json_decode(file_get_contents("php://input"));
 $user = new Users;
 
-echo json_encode("{'data':'".$_POST."'}");
+$result = $_POST;
+while($row = mysqli_fetch_assoc($result))
+{
+  $response[]=$row;
+}
+
+echo json_encode("{'data':'".$response."'}");
 
 // $user->getUsers();
 // switch($request_method)
