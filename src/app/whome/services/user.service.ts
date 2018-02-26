@@ -25,7 +25,7 @@ export class UserService {
       })
     };
 
-    return this.http.post<User>('http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api', JSON.stringify(user), httpOptions)
+    return this.http.post<User>('https://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api', JSON.stringify(user), httpOptions)
       // .map((res: User) => JSON.stringify(res))
       .catch((error: any) => Observable.throw(error.message));
   }
