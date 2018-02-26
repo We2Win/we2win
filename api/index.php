@@ -9,23 +9,24 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$result = $conn->query("SELECT * from  `01011803`");
+// $result = $conn->query("SELECT * from  `01011803`");
 
-if($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-    echo "ID: " . $row["ID"] . " - Password: " . $row["Password"];
-  }
-} else {
-    echo "0 results";
-}
+// if($result->num_rows > 0) {
+//   while($row = $result->fetch_assoc()) {
+//     echo "ID: " . $row["ID"] . " - Password: " . $row["Password"];
+//   }
+// } else {
+//     echo "0 results";
+// }
 
-$conn->close();
+// $conn->close();
 
-// include_once('users.php');
-// $request_method = $_SERVER["REQUEST_METHOD"];
-// $data = json_decode(file_get_contents("php://input"));
-// $user = new Users;
+include_once('users.php');
+$request_method = $_SERVER["REQUEST_METHOD"];
+$data = json_decode(file_get_contents("php://input"));
+$user = new Users;
 
+$user->getUsers();
 // switch($request_method)
 // {
 //   case 'GET':
@@ -56,6 +57,8 @@ $conn->close();
 //     header("HTTP/1.0 405 Method Not Allowed");
 //     break;
 // }
+
+$conn->close();
 
 
 
