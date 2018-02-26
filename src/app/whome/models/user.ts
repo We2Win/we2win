@@ -1,6 +1,7 @@
 export class User {
     ID: string;
     Password: string;
+    Name: string;
     CP: number;
     ULevel: number;
     UPoing: number;

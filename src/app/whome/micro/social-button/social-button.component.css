@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  padding: 0 0.5em;
+}
+
+button {
+  width: 100%;
+  font-size: 1em;
+  padding: 1em;
+  outline: none;
+  border: none;
+}
+
+.naver {
+  background: #00c73c;
+  color: white;
+}
+
+.naver:hover {
+  background: #1de459;
+}
+
+.google {
+  background: #ccc;
+  color: #333;
+}
+
+.google:hover {
+  background: #ddd;
+}
+
+.kakao {
+  background: #f9e002;
+  color: #333;
+}
+
+.kakao:hover {
+  background: #ffed47;
+}
