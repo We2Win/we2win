@@ -24,7 +24,7 @@ export class UserService {
       })
     };
 
-    return this.http.post<User>('/api', user, httpOptions)
+    return this.http.post<User>('http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api', user, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
