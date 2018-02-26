@@ -20,8 +20,8 @@ export class UserService {
   create(user: User): Observable<User> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
+        'Content-Type': 'application/x-www-form-urlencoded'
+        // 'Authorization': 'my-auth-token'
       })
     };
 
