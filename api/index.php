@@ -12,36 +12,38 @@ include_once('users.php');
 $request_method = $_SERVER["REQUEST_METHOD"];
 $data = json_decode(file_get_contents("php://input"));
 $user = new Users;
-switch($request_method)
-{
-  case 'GET':
-    // Retrive Users
-    if(!empty($_GET["ID"]))
-    {
-      $ID=intval($_GET["ID"]);
-      $user->getUsers($ID);
-    }
-    else
-    {
-      $user->getUsers();
-    }
-    break;
-  case 'POST':
-    // Insert User
-    $user->login($data);
-    break;
-  case 'PUT':
-    $user->updateUser($data);
-    break;
-  case 'DELETE':
-    // Delete User
-    $user->deleteUser($data);
-    break;
-  default:
-    // Invalid Request Method
-    header("HTTP/1.0 405 Method Not Allowed");
-    break;
-}
+
+$user->getUsers();
+// switch($request_method)
+// {
+//   case 'GET':
+//     // Retrive Users
+//     if(!empty($_GET["ID"]))
+//     {
+//       $ID=intval($_GET["ID"]);
+//       $user->getUsers($ID);
+//     }
+//     else
+//     {
+//       $user->getUsers();
+//     }
+//     break;
+//   case 'POST':
+//     // Insert User
+//     $user->login($data);
+//     break;
+//   case 'PUT':
+//     $user->updateUser($data);
+//     break;
+//   case 'DELETE':
+//     // Delete User
+//     $user->deleteUser($data);
+//     break;
+//   default:
+//     // Invalid Request Method
+//     header("HTTP/1.0 405 Method Not Allowed");
+//     break;
+// }
 
 
 

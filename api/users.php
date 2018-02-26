@@ -10,8 +10,8 @@ class Users{
   function getUsers()
   {
     global $conn;
-    // $query="SELECT * FROM `01011803`";
-    $query="SHOW TABLES;";
+    $query="SELECT * FROM `01011803`";
+    // $query="SHOW TABLES;";
     $response=array();
     // $hello=array();
     // $hello[]="Hello World!";
