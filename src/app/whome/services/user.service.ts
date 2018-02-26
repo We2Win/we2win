@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../models/user';
-import { Headers, RequestOptions } from '@angular/http';
+import { Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
+import 'rxjs/Rx';
 
 @Injectable()
 export class UserService {
@@ -25,9 +26,8 @@ export class UserService {
     };
 
     return this.http.post<User>('http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api', user, httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      );
+      // .map((res: Response) => res.json())
+      .catch((error:any) => Observable.throw(error.message));
   }
   update(user: User) {
     return this.http.put('/api', user);
