@@ -1,4 +1,8 @@
 <?php
+$host = 
+?>
+
+<?php
 session_start();
 
 $rawBody = file_get_contents("php://input"); // Read body
@@ -10,10 +14,6 @@ $data = json_decode(file_get_contents("php://input"));
 $user = new Users;
 switch($request_method)
 {
-  case 'POST':
-    // Insert User
-    $user->login($data);
-    break;
   case 'GET':
     // Retrive Users
     if(!empty($_GET["ID"]))
@@ -25,6 +25,10 @@ switch($request_method)
     {
       $user->getUsers();
     }
+    break;
+  case 'POST':
+    // Insert User
+    $user->login($data);
     break;
   case 'PUT':
     $user->updateUser($data);

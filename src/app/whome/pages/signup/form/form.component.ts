@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../../../models/user';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,8 @@ export class FormComponent implements OnInit {
   private user: User;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -20,7 +22,7 @@ export class FormComponent implements OnInit {
       ID: new FormControl(),
       // PW: new FormGroup({
         Password: new FormControl(),
-        confirmPassword: new FormControl(),
+        // confirmPassword: new FormControl(),
       // }),
       Name: new FormControl(),
       CP: new FormControl(),
@@ -45,7 +47,14 @@ export class FormComponent implements OnInit {
   onSubmit() {
     // if (this.signupForm.valid) {
     this.user = this.signupForm.value;
-    console.log(this.user);
+    this.userService.create(this.user)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+        }
+      );
     // }
   }
 
