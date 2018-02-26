@@ -1,7 +1,7 @@
 <section>
   <app-group>
     <h1>회원 가입</h1>
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit(.value)" novalidate>
       <div class="subGroup">
         <label>기본정보
           <br>
@@ -18,11 +18,11 @@
             <input class="form-control" type="password" formControlName="Password" placeholder="비밀번호를 입력해 주세요." />
             <div class="blank">특수문자 포함 12자리</div>
           </li>
-          <li class="form-group">
+          <!-- <li class="form-group">
             <label>패스워드 확인 *</label>
             <input class="form-control" type="password" formControlName="confirmPassword" placeholder="비밀번호를 입력해 주세요." />
             <div class="blank"></div>
-          </li>
+          </li> -->
           <li class="form-group">
             <label>성명</label>
             <input class="form-control" type="text" formControlName="Name" placeholder="성명을 입력해 주세요.">
