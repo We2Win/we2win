@@ -49,41 +49,41 @@ while($row = mysqli_fetch_assoc($result))
   $response[]=$row;
 }
 
-echo json_encode("{'data':'".$request_method."'}");
+// echo json_encode("{'data':'".$request_method."'}");
 
-// $user->getUsers();
-// switch($request_method)
-// {
-//   case 'GET':
-//     // Retrive Users
-//     if(!empty($_GET["ID"]))
-//     {
-//       $ID=intval($_GET["ID"]);
-//       $user->getUsers($ID);
-//     }
-//     else
-//     {
-//       $user->getUsers();
-//     }
-//     break;
-//   case 'POST':
-//     // Insert User
-//     $user->saveUser($data);
-//     break;
-//   case 'PUT':
-//     $user->updateUser($data);
-//     break;
-//   case 'DELETE':
-//     // Delete User
-//     $user->deleteUser($data);
-//     break;
-//   default:
-//     // Invalid Request Method
-//     header("HTTP/1.0 405 Method Not Allowed");
-//     break;
-// }
+$user->getUsers();
+switch($request_method)
+{
+  case 'GET':
+    // Retrive Users
+    if(!empty($_GET["ID"]))
+    {
+      $ID=intval($_GET["ID"]);
+      $user->getUsers($ID);
+    }
+    else
+    {
+      $user->getUsers();
+    }
+    break;
+  case 'POST':
+    // Insert User
+    $user->saveUser($data);
+    break;
+  case 'PUT':
+    $user->updateUser($data);
+    break;
+  case 'DELETE':
+    // Delete User
+    $user->deleteUser($data);
+    break;
+  default:
+    // Invalid Request Method
+    header("HTTP/1.0 405 Method Not Allowed");
+    break;
+}
 
-// $conn->close();
+$conn->close();
 
 
 
