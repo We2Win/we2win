@@ -15,14 +15,14 @@ class Users{
     $response=array();
     // $hello=array();
     // $hello[]="Hello World!";
-    $result=mysqli_query($conn, $query);
+    $result=$conn->query($query);
     while($row = mysqli_fetch_assoc($result))
     {
       $response[]=$row;
     }
     header('Content-Type: application/json');
     // echo json_encode($hello);
-    echo json_encode($result);
+    echo json_encode($response);
   }
   //Save user
   function saveUser($data){
