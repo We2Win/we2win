@@ -48,8 +48,8 @@ export class FormComponent implements OnInit {
     // if (this.signupForm.valid) {
     this.user = this.signupForm.value;
     console.log(this.user);
-    // this.userService.create(this.user)
-    this.userService.try()
+    this.userService.create(this.user)
+    // this.userService.try()
       .subscribe(
         data => {
           console.log(data);
@@ -58,16 +58,6 @@ export class FormComponent implements OnInit {
           console.log('error: ', error);
         }
       );
-    // this.userService.create(this.user)
-    //   .subscribe(
-    //     data => {
-    //       console.log(data);
-    //     },
-    //     error => {
-    //       console.log('error: ', error);
-    //     }
-    //   );
-    // }
   }
 
 }
