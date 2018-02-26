@@ -1,8 +1,4 @@
 <?php
-$host = 
-?>
-
-<?php
 session_start();
 
 $rawBody = file_get_contents("php://input"); // Read body
