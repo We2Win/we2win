@@ -24,7 +24,10 @@ export class UserService {
       })
     };
 
-    return this.http.post<User>('/api', user, httpOptions);
+    return this.http.post<User>('/api', user, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   update(user: User) {
     return this.http.put('/api', user);
