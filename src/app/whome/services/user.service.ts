@@ -21,5 +21,7 @@ export class UserService {
   delete(id: string) {
     return this.http.delete('/api');
   }
-
+  try() {
+    return this.http.get('http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api/');
+  }
 }
