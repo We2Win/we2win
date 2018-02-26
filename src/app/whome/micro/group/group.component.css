@@ -17,6 +17,10 @@
   flex: 1;
 }
 
+:host /deep/ article * {
+  flex: 1;
+}
+
 :host /deep/ .subGroup {
   display: flex;
   flex: 1;

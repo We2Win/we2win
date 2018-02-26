@@ -32,17 +32,19 @@ import { Error404Component } from './pages/error404/error404.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { SocialComponent } from './pages/signup/social/social.component';
+import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
+import { NewsDetailComponent } from './pages/info/news-detail/news-detail.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: WhomeComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'info',
         pathMatch: 'full'
       },
       {
@@ -67,6 +69,14 @@ const routes: Routes = [
           {
             path: 'news',
             component: NewsComponent
+          },
+          {
+            path: 'info-detail/:id',
+            component: InfoDetailComponent
+          },
+          {
+            path: 'news-detail/:id',
+            component: NewsDetailComponent
           }
         ]
       },

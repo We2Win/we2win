@@ -10,7 +10,7 @@
     </div>
 
     <nav id="mainMenu">
-      <img id="logo" src="/assets/img/logo.png" routerLink="/" />
+      <img id="logo" src="/assets/img/logo.png" routerLink="/info" />
       <li *ngFor="let menu of menuTree" routerLink="{{ '/' + menu.path}}" (mouseover)="viewSubMenu(menu.name, $event)">{{ menu.name }}</li>
     </nav>
   </div>

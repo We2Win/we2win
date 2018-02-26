@@ -1,4 +1,4 @@
-:host {
+.card {
   display: inline-block;
   margin: 1em 0;
   width: 225px;
@@ -6,22 +6,21 @@
   background: #fff;
   flex-basis: auto;
   flex-grow: 0;
-
 }
 
-:host.platinum {
+:host.platinum .card{
   border-top: 4px solid var(--level-platinum);
 }
 
-:host.premium {
+:host.premium .card{
   border-top: 4px solid var(--level-premium);
 }
 
-:host.standard {
+:host.standard .card{
   border-top: 4px solid var(--level-standard);
 }
 
-:host #levelBar {
+.card #levelBar {
   position: relative;
   margin-bottom: -25px;
   height: 25px;
@@ -36,18 +35,21 @@
 }
 
 :host.platinum #levelBar {
+
   background: var(--level-platinum-gradient);
 }
 
 :host.premium #levelBar {
+
   background: var(--level-premium-gradient);
 }
 
 :host.standard #levelBar {
+
   background: var(--level-standard-gradient);
 }
 
-:host:hover #levelBar {
+.card:hover #levelBar {
   opacity: 1;
 }
 
@@ -67,7 +69,7 @@
   transition: all 0.5s;
 }
 
-:host:hover #imgFrame img {
+.card:hover #imgFrame img {
   width: calc(100% + 2em);
   margin: 0 -1em;
 }
@@ -89,18 +91,18 @@
   height: 17px;
 }
 
-:host:hover #buttonBar {
+.card:hover #buttonBar {
   opacity: 1;
 }
 
-:host>h2 {
+.card>h2 {
   margin: 1em;
   font-size: 1em;
   font-weight: 600;
   text-align: left;
 }
 
-:host>h3 {
+.card>h3 {
   margin: 1em;
   font-size: 1.1em;
   font-weight: 500;
