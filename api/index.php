@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 session_name('GETUSERS');
 session_start();
 
-$rawBody = file_get_contents("php://input"); // Read body
+$rawBody = json_decode(file_get_contents("php://input"), true); // Read body
 
 $conn = new mysqli('invmariadb1.cjj16juccmpl.ap-northeast-2.rds.amazonaws.com','aptwant','dhdltkdhdltk','mainDB');
 if ($conn->connect_error) {
@@ -49,7 +49,7 @@ while($row = mysqli_fetch_assoc($result))
   $response[]=$row;
 }
 
-echo json_encode("{'data':'".$request_method."'}");
+echo json_encode("{'data':'".$rawBody."'}");
 
 // $user->getUsers();
 // switch($request_method)
