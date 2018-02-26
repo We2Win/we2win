@@ -47,7 +47,7 @@ export class FormComponent implements OnInit {
   onSubmit() {
     // if (this.signupForm.valid) {
     this.user = this.signupForm.value;
-    console.log(this.user);
+    console.log(JSON.stringify(this.user));
     this.userService.create(this.user)
     // this.userService.try()
       .subscribe(
