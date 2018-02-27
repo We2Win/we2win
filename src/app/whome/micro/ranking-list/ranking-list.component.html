@@ -1,9 +1,15 @@
 <section>
   <h1>{{ toptitle }}</h1>
-  <div id="dateSelector">
-    <button id="btnLeft" class="btnNav"></button>
-    <h2>2017.12.12 기준</h2>
-    <button id="btnRight" class="btnNav"></button>
+  <div id="subBar">
+    <div class="side"></div>
+    <div id="dateSelector">
+      <button id="btnLeft" class="btnNav"></button>
+      <h2>2017.12.12 기준</h2>
+      <button id="btnRight" class="btnNav"></button>
+    </div>
+    <div class="side">
+      <h3 class="more" (click)="onClickMore()" *ngIf="more">더보기</h3>
+    </div>
   </div>
   <div class="contents">
     <ng-content></ng-content>

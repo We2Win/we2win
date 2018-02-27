@@ -1,90 +1,103 @@
 <section>
-  <h1>구인 등록 하기</h1>
-  <div class="formPart">
-    <h2>구인 요건</h2>
-    <ul>
-      <li>
-        <h3>업무</h3>
-        <app-select></app-select>
-      </li>
-      <li>
-        <h3>업무 내용</h3>
-        <input type="text" placeholder="업무 내용을 입력하세요." />
-      </li>
-      <li>
-        <h3>나이</h3>
-        <input type="text" />
-        <input type="text" />
-        <span>세</span>
-      </li>
-      <li>
-        <h3>응시요건</h3>
-        <input type="text" placeholder="예) 분양경력 1년 이상" />
-      </li>
-      <li>
-        <h3>모집인원</h3>
-        <input type="text" />
-        <span>명</span>
-      </li>
-      <li>
-        <h3>채용방법</h3>
-        <input type="text" placeholder="예) 전화 또는 서류접수" />
-      </li>
-      <li>
-        <h3>모집기간</h3>
-        <input type="date" />
-        <input type="date" />
-        <app-button></app-button>
-      </li>
-      <li>
-        <h3>상세요건</h3>
-        <textarea placeholder="상세 요건을 적어주세요."></textarea>
-      </li>
-    </ul>
-  </div>
-  <div class="formPart">
-    <h2>현장 정보</h2>
-    <ul>
-      <li>
-        <h3>현장명</h3>
-        <input type="text" placeholder="현장명을 입력해 주세요" />
-      </li>
-      <li>
-        <h3>소재지</h3>
-        <input type="text" placeholder="소재지를 입력해 주세요" />
-      </li>
-      <li>
-        <h3>담당자 정보</h3>
-        <input type="text" placeholder="이름을 입력하세요" />
-      </li>
-      <li>
-        <h3>전화</h3>
-        <input type="text" placeholder="연락처를 입력하세요" />
-      </li>
-      <li>
-        <h3>핸드폰</h3>
-        <input type="text" placeholder="연락처를 입력하세요" />
-      </li>
-      <li>
-        <h3></h3>
-      </li>
-    </ul>
-  </div>
-  <div class="formPart">
-    <h2>개인정보 수집 및 이용 동의</h2>
-    <ul>
-      <textarea id="policy">1. 개인 정보 수집, 이용 목적 해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.
-        이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 1. 개인 정보 수집, 이용 목적 해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을
-        진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</textarea>
-      <li>
-        <input type="checkbox">
-        <p>개인정보 수집 및 이용 동의에 관한 사항을 읽었으며, 이에 동의 합니다.</p>
-      </li>
-    </ul>
-  </div>
+  <app-group>
+    <h1>구직 등록 하기</h1>
+    <div class="subGroup">
+      <label>구인 요건
+        <br>
+        <b>필수사항</b>
+      </label>
+      <article>
+        <div class="row">
+          <label>업무</label>
+          <app-select></app-select>
+        </div>
+        <div class="row">
+          <label>업무 내용</label>
+          <input type="text" placeholder="업무 내용을 입력하세요." />
+        </div>
+        <div class="row">
+          <label>나이</label>
+          <input type="text" />
+          <input type="text" />
+          <span>세</span>
+          <div class="blank"></div>
+        </div>
+        <div class="row">
+          <label>응시요건</label>
+          <input type="text" placeholder="예) 분양경력 1년 이상" />
+        </div>
+        <div class="row">
+          <label>모집인원</label>
+          <input type="text" />
+          <span>명</span>
+          <div class="blank"></div>
+        </div>
+        <div class="row">
+          <label>채용방법</label>
+          <input type="text" placeholder="예) 전화 또는 서류접수" />
+        </div>
+        <div class="row">
+          <label>모집기간</label>
+          <input type="date" />
+          <input type="date" />
+          <div class="blank"></div>
+        </div>
+        <div class="row">
+          <label>상세요건</label>
+          <textarea placeholder="상세 요건을 적어주세요."></textarea>
+        </div>
+      </article>
+    </div>
+    <div class="subGroup">
+      <label>
+        현장 정보
+        <br>
+        <b>필수 사항 *</b>
+      </label>
+      <article>
+        <div class="row">
+          <label>현장명</label>
+          <input type="text" placeholder="현장명을 입력해 주세요" />
+        </div>
+        <div class="row">
+          <label>소재지</label>
+          <input type="text" placeholder="소재지를 입력해 주세요" />
+        </div>
+        <div class="row">
+          <label>담당자 정보</label>
+          <input type="text" placeholder="이름을 입력하세요" />
+        </div>
+        <div class="row">
+          <label>전화</label>
+          <input type="text" placeholder="연락처를 입력하세요" />
+        </div>
+        <div class="row">
+          <label>핸드폰</label>
+          <input type="text" placeholder="연락처를 입력하세요" />
+        </div>
+        <div class="row">
+          <label></label>
+        </div>
+      </article>
+    </div>
+    <article>
+      <div class="row">
+        <label>개인정보 수집 및
+          <br>이용 동의</label>
+        <textarea readonly="readonly">
+          1. 개인 정보 수집, 이용 목적 해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.
+          이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 1. 개인 정보 수집, 이용 목적 해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여
+          재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.
+        </textarea>
+      </div>
+    </article>
+    <div class="row">
+      <label></label>
+      <input id="agree2" type="checkbox" [checked]="agree2" (change)="agree2 = !agree2">
+      <label class="sublabel left" for="agree2">개인정보 수집 및 이용 동의에 관한 사항을 읽었으며, 이에 동의 합니다.</label>
+    </div>
 
-  <div id="submit">
-    <p>입력하신 내용을 다시한번 확인 하시고, 등록하기를 눌러주세요. 접수된 내용은 담당자의 확인 후 정식 등록됩니다.</p>
+    <p>입력하신 내용을 다시한번 확인 하시고, 등록하기를 눌러주세요. <br>접수된 내용은 담당자의 확인 후 정식 등록됩니다.</p>
     <app-button>구인 등록하기</app-button>
-  </div>
+  </app-group>
 </section>

@@ -1,8 +1,9 @@
 <section>
   <app-select-filtering></app-select-filtering>
-  <h1>{{ toptitle }}</h1>
+  <h1></h1>
   <div class="contents">
-    <ng-content></ng-content>
+    <ng-content select=".c1"></ng-content>
+    <ng-content select=".c2"></ng-content>
   </div>
-  <app-button>더보기</app-button>
+  <app-button (click)="showMore()">더보기</app-button>
 </section>

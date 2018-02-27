@@ -1,15 +1,15 @@
 <app-vertical-list [toptitle]="'최신 정보'">
-    <app-info-card [level]="'platinum'"></app-info-card>
-    <app-info-card [level]="'platinum'"></app-info-card>
-    <app-info-card [level]="'premium'"></app-info-card>
-    <app-info-card [level]="'platinum'"></app-info-card>
-    <app-info-card [level]="'standard'"></app-info-card>
-    <app-info-card [level]="'standard'"></app-info-card>
-    <app-info-card [level]="'platinum'"></app-info-card>
-    <app-info-card [level]="'platinum'"></app-info-card>
+  <app-info-card [level]="'platinum'"></app-info-card>
+  <app-info-card [level]="'platinum'"></app-info-card>
+  <app-info-card [level]="'premium'"></app-info-card>
+  <app-info-card [level]="'platinum'"></app-info-card>
+  <app-info-card [level]="'standard'"></app-info-card>
+  <app-info-card [level]="'standard'"></app-info-card>
+  <app-info-card [level]="'platinum'"></app-info-card>
+  <app-info-card [level]="'platinum'"></app-info-card>
 </app-vertical-list>
-<app-ranking-list [toptitle]="'주간 이슈'">
-    <app-info-card class="first"></app-info-card>
-    <app-info-card class="second"></app-info-card>
-    <app-info-card class="third"></app-info-card>
+<app-ranking-list [toptitle]="'주간 이슈'" [more]="'info/weekly'">
+  <app-info-card [level]="'platinum'" class="first"></app-info-card>
+  <app-info-card [level]="'premium'" class="second"></app-info-card>
+  <app-info-card [level]="'standard'" class="third"></app-info-card>
 </app-ranking-list>

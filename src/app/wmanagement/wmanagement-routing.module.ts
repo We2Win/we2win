@@ -19,9 +19,6 @@ const routes: Routes = [
     component: WmanagementComponent,
     children: [
       {
-        path: 'mng'
-      },
-      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

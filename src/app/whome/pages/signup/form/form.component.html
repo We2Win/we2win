@@ -8,37 +8,37 @@
           <b> * 필수사항</b>
         </label>
         <article>
-          <li class="form-group">
+          <div class="form-group row">
             <label>아이디 *</label>
             <input class="form-control" type="text" formControlName="ID" placeholder="최소 4글자 최대 15글자" />
             <app-button>아이디 확인</app-button>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>패스워드 *</label>
             <input class="form-control" type="password" formControlName="Password" placeholder="비밀번호를 입력해 주세요." />
             <div class="blank">특수문자 포함 12자리</div>
-          </li>
-          <!-- <li class="form-group">
+          </div>
+          <!-- <div class="form-group row">
             <label>패스워드 확인 *</label>
             <input class="form-control" type="password" formControlName="confirmPassword" placeholder="비밀번호를 입력해 주세요." />
             <div class="blank"></div>
-          </li> -->
-          <li class="form-group">
+          </div> -->
+          <div class="form-group row">
             <label>성명</label>
             <input class="form-control" type="text" formControlName="Name" placeholder="성명을 입력해 주세요.">
             <div class="blank"></div>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>핸드폰</label>
             <input class="form-control" type="text" formControlName="CP" placeholder="예) 홍길동">
             <div class="blank"></div>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>E-Mail</label>
             <input class="form-control" type="text" formControlName="Email" placeholder="연락처를 입력하세요">
             <div class="blank"></div>
-          </li>
-          <!-- <li class="form-group">
+          </div>
+          <!-- <div class="form-group row">
             <label>신청등급</label>
             <div class="card platinum">
               <div id="level">PLATINUM</div>
@@ -59,8 +59,8 @@
               </p>
               <p id="price">무료/월</p>
             </div>
-          </li> -->
-          <li class="form-group">
+          </div> -->
+          <div class="form-group row">
             <label>신청등급</label>
             <div class="checkboxGroup">
               <label class="sublabel" for="01">PLATINUM</label>
@@ -70,8 +70,8 @@
               <label class="sublabel" for="03">STANDARD</label>
               <input class="form-control" name="ULevel" id="03" type="radio">
             </div>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>가입목적</label>
             <div class="checkboxGroup">
               <label class="sublabel" for="11">투자</label>
@@ -81,8 +81,8 @@
               <label class="sublabel" for="13">모두 해당</label>
               <input class="form-control" name="Hope" id="13" type="radio">
             </div>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>관심분야</label>
             <div class="checkboxGroup">
               <label class="sublabel" for="21">아파트</label>
@@ -94,44 +94,44 @@
               <label class="sublabel" for="24">모두 해당</label>
               <input class="form-control" name="Site" id="24" type="radio">
             </div>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>관심지역</label>
             <input class="form-control" formControlName="Location" type="text" placeholder="예) 서울, 경기 / 도, 시단위로 기입">
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>관심금액</label>
             <input class="form-control" formControlName="Amount" type="text" placeholder="">
-          </li>
+          </div>
         </article>
       </div>
 
       <div class="subGroup">
         <label>선택정보</label>
         <article>
-          <li class="form-group">
+          <div class="form-group row">
             <label>집주소</label>
             <input class="form-control" formControlName="HA" type="text" placeholder="주소를 입력해주세요.">
             <div class="blank"></div>
             <!-- <app-button>주소 검색</app-button> -->
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>집전화번호</label>
             <input class="form-control" formControlName="HP" type="text" placeholder="연락처를 입력하세요.">
             <div class="blank"></div>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>사무실 주소</label>
             <input class="form-control" formControlName="OA" type="text" placeholder="주소를 입력해주세요.">
             <div class="blank"></div>
             <!-- <app-button>주소 검색</app-button> -->
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>사무실 전화번호</label>
             <input class="form-control" formControlName="OP" type="text" placeholder="연락처를 입력하세요.">
             <div class="blank"></div>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>정보 수신</label>
             <div class="checkboxGroup">
               <label class="sublabel" for="31">메일</label>
@@ -141,12 +141,12 @@
               <label class="sublabel" for="33">미수신</label>
               <input class="form-control" name="InfoA" id="33" type="radio">
             </div>
-          </li>
-          <li class="form-group">
+          </div>
+          <div class="form-group row">
             <label>가용자산</label>
             <input class="form-control" formControlName="AAmount" type="text" placeholder="">
             <div class="blank"></div>
-          </li>
+          </div>
         </article>
       </div>
       <div id="lastWarning">

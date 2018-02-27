@@ -57,6 +57,7 @@ import { SocialComponent } from './pages/signup/social/social.component';
 import { SocialButtonComponent } from './micro/social-button/social-button.component';
 import { UserService } from './services/user.service';
 import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
+import { ChartComponent } from './micro/chart/chart.component';
 
 
 @NgModule({
@@ -118,6 +119,7 @@ import { InfoDetailComponent } from './pages/info/info-detail/info-detail.compon
     SocialComponent,
     SocialButtonComponent,
     InfoDetailComponent,
+    ChartComponent,
   ],
   providers: [
     PageInfoService,

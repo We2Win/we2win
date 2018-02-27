@@ -10,12 +10,18 @@ export class HorizontalListComponent implements OnInit {
 
   @Input() toptitle = 'hi';
 
-  constructor(el: ElementRef) {
+  constructor(
+    private _elementRef: ElementRef
+  ) {
     this._toptitle = this.toptitle;
   }
 
   ngOnInit() {
 
+  }
+
+  showMore() {
+    this._elementRef.nativeElement.querySelector('.c2').classList.add('show');
   }
 
 }

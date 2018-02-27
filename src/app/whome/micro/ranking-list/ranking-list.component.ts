@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ranking-list',
@@ -6,11 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./ranking-list.component.css']
 })
 export class RankingListComponent implements OnInit {
-
   @Input() toptitle = 'noname';
-  constructor() { }
+  @Input() more;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  onClickMore() {
+    this.router.navigate(['info/weekly']);
   }
 
 }

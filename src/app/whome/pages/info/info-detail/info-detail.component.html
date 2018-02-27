@@ -8,55 +8,62 @@
       <h1>[83호]경주 라마다 호텔 분양 정보
         <br>경주 라마다 호텔 분양 정보</h1>
       <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만,</p>
-      <li>
-        <h2>분양모집일</h2>
-        <h3>2017.12.09 - 2017.12.31</h3>
-      </li>
-      <li>
-        <h2>분양가</h2>
-        <h3 class="price">3,000,000,000원</h3>
-      </li>
+      <div>
+        <label>분양모집일</label>
+        <p>2017.12.09 - 2017.12.31</p>
+      </div>
+      <div>
+        <label>분양가</label>
+        <p class="price">3,000,000,000원</p>
+      </div>
       <app-button>담당자 | 안미리 본부장 | 010 - 4567- 2345</app-button>
     </div>
   </div>
   <app-group>
     <article>
-      <li>
+      <div class="row">
         <label>현장 시세</label>
-      </li>
+        <app-chart [type]="'infoDetail'" [num]="'0'"></app-chart>
+        <app-chart [type]="'infoDetail'" [num]="'1'"></app-chart>
+      </div>
     </article>
     <article>
-      <li>
+      <div class="row">
         <label>현장 리포트</label>
         <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가
           승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.
           이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-      </li>
+      </div>
     </article>
     <div class="subGroup">
       <label>현장 댓글</label>
       <article>
-        <label>Amberyi_0523</label>
-        <li>
+        <div class="row">
+          <label>Amberyi_0523</label>
           <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-          <p>2017-12-23</p>
-        </li>
-        <label>Amberyi_0523</label>
-        <li>
+          <span>2017-12-23</span>
+        </div>
+        <div class="row">
+          <label>Amberyi_0523</label>
           <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-          <p>2017-12-23</p>
-        </li>
-        <h3>Amberyi_0523</h3>
-        <li>
-          <textarea></textarea>
+          <span>2017-12-23</span>
+        </div>
+        <div class="row">
+          <label>Amberyi_0523</label>
+          <input type="text">
           <app-button>댓글 입력</app-button>
-        </li>
+        </div>
       </article>
     </div>
     <article>
-      <li>
-        <label>현장 댓글</label>
-      </li>
+      <div class="row">
+        <label>관련 분양 리포트</label>
+        <div class="row">
+          <app-info-card [level]="'platinum'"></app-info-card>
+          <app-info-card [level]="'platinum'"></app-info-card>
+          <app-info-card [level]="'platinum'"></app-info-card>
+        </div>
+      </div>
     </article>
   </app-group>
 </section>
