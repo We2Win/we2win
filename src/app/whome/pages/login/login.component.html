@@ -1,7 +1,7 @@
 <section>
   <app-group>
     <h1>로그인</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
       <article>
         <div class="row">
           <div class="blank"></div>
