@@ -7,13 +7,23 @@
 
 #horizontalProfile {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-#horizontalProfile span {
+#horizontalProfile>* {
   flex: 1;
 }
 
-#horizontalProfil h2 {
+#horizontalProfile li {
+  display: block;
+}
+
+#horizontalProfile h2 {
   font-size: 0.9em;
 }
+
+#horizontalProfile span {
+  display: block;
+  font-size: 1.4em;
+}
+

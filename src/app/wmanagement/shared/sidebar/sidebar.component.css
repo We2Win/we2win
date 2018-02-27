@@ -82,6 +82,7 @@ nav .submenu {
   font-size: 1em;
   position: absolute;
   left: 100%;
+  margin: -9999px;
   opacity: 0;
   transition: opacity 0.5s;
 }
@@ -89,6 +90,7 @@ nav .submenu {
 nav .menu:hover .submenu {
   position: static;
   opacity: 1;
+  margin: 0;
 }
 
 nav .submenu:hover,
