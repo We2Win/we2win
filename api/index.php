@@ -51,7 +51,7 @@ while($row = mysqli_fetch_assoc($result))
 
 // echo json_encode("{'data':'".$request_method."'}");
 
-$user->getUsers();
+// $user->getUsers();
 switch($request_method)
 {
   case 'GET':
@@ -68,7 +68,10 @@ switch($request_method)
     break;
   case 'POST':
     // Insert User
-    $user->saveUser($data);
+    if($data->isLogin)
+      $user->login($data);
+    else
+      $user->saveUser($data);
     break;
   case 'PUT':
     $user->updateUser($data);

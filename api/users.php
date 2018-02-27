@@ -55,21 +55,22 @@ class Users{
   }
 
   function login($data){
-      $ID = mysqli_real_escape_string($conn,$_POST['ID']);
-      $Password = mysqli_real_escape_string($conn,$_POST['Password']);
+    $ID = mysqli_real_escape_string($conn,$data->ID);
+    $Password = mysqli_real_escape_string($conn,$data->Password);
+    // $Password = mysqli_real_escape_string($conn,$_POST['Password']);
 
-      $query = "SELECT * FROM `01011803` WHERE ID = '$ID'";
-      $result = mysqli_query($conn, $query);
-      $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-      $active = $row['active'];
+    $query = "SELECT * FROM `01011803` WHERE ID = '$ID'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    $active = $row['active'];
 
-      $count = mysqli_num_rows($result);
+    $count = mysqli_num_rows($result);
 
-      if ($count == 1) {
-          echo $result;
-      } else {
-          echo "Failed";
-      }
+    if ($count == 1) {
+        echo $result;
+    } else {
+        echo "Failed";
+    }
   }
 }
 ?>

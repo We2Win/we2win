@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,7 @@ export class LoginComponent implements OnInit {
   // we want to actually subscribe to the boolean of the observable
   loginForm: FormGroup;
   post: any;
-  ID: string;
-  Password: string;
+  private user: User;
 
   constructor(
     private authService: AuthService,
@@ -34,12 +34,18 @@ export class LoginComponent implements OnInit {
       }
     });
 
+    this.loginForm = new FormGroup({
+      ID: new FormControl('', [Validators.required]),
+      Password: new FormControl('', [Validators.required]),
+    });
+
   }
 
   onSubmit(user): void {
     if (this.loginForm.valid) {
-      console.log(user);
-      this.authService.login(user.ID, user.Password).subscribe(auth => {
+      this.user = this.loginForm.value;
+      this.user.isLogin = true;
+      this.authService.login(this.user).subscribe(auth => {
         console.log(auth);
         if (auth) {
           this.router.navigate(['/']);

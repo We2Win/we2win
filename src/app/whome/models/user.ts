@@ -18,4 +18,5 @@ export class User {
     AAmount: string;
     ASns: string;
     UWord: string;
+    isLogin: boolean;
 }
