@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { User } from '../models/user';
+import { Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { User } from '../models/user';
-import { RequestOptions, Headers } from '@angular/http';
+
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient) { }
@@ -21,22 +23,22 @@ export class AuthService {
         }
       });
   }
-  login(user: User): Observable<boolean> {
+  login(user: User) {
     const bodyString = JSON.stringify(user);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    
-    return this.http.post('api/', bodyString)
-      .map(response => {
-        console.log(response);
-        if (response['auth'] === 1) {
-          return true;
-        } else {
-          return false;
-        }
-      }).catch(() => {
-        console.log('Could not login');
-        return Observable.of(false);
-      });
+
+    return this.http.post('api/', bodyString);
+      // .map(response => {
+      //   console.log(response);
+      //   if (response['auth'] === 1) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // }).catch(() => {
+      //   console.log('Could not login');
+      //   return Observable.of(false);
+      // });
   }
 }
