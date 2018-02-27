@@ -73,3 +73,7 @@ p {
   text-align: center;
   line-height: 200%;
 }
+
+.alert {
+  color: red;
+}
