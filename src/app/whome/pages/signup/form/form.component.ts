@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -14,15 +15,16 @@ export class FormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      ID: new FormControl(),
+      ID: new FormControl('', [Validators.required, Validators.minLength(4)]),
       // PW: new FormGroup({
-        Password: new FormControl(),
-        // confirmPassword: new FormControl(),
+      Password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      // confirmPassword: new FormControl(),
       // }),
       Name: new FormControl(),
       CP: new FormControl(),
@@ -45,19 +47,23 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    // if (this.signupForm.valid) {
-    this.user = this.signupForm.value;
-    console.log(JSON.stringify(this.user));
-    this.userService.create(this.user)
-    // this.userService.try()
-      .subscribe(
+    if (this.signupForm.valid) {
+      this.user = this.signupForm.value;
+      console.log(JSON.stringify(this.user));
+      this.userService.create(this.user)
+        // this.userService.try()
+        .subscribe(
         data => {
-          console.log(data);
+          this.router.navigate(['signup', 'done']);
         },
         error => {
+          alert('불러오기에 실패하였습니다.');
           console.log('error: ', error);
         }
-      );
+        );
+    } else {
+      alert('양식에 맞게 작성해주세요');
+    }
   }
 
 }

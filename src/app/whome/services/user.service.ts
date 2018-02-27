@@ -23,9 +23,9 @@ export class UserService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('api/', bodyString)
+    return this.http.post('api/', bodyString);
       // .map((res: User) => JSON.stringify(res))
-      .catch((error: any) => Observable.throw(error.message));
+      // .catch((error: any) => Observable.throw(error.message));
   }
   update(user: User) {
     return this.http.put('/api', user);
