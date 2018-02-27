@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormControl } from '@angular/forms/src/model';
+import { FormControl } from '@angular/forms';
 
 import { User } from '../../models/user';
 
@@ -10,7 +10,7 @@ import { User } from '../../models/user';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthService]
+  // providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
   // we want to actually subscribe to the boolean of the observable
