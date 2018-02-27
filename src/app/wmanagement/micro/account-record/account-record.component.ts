@@ -6,14 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-record.component.css']
 })
 export class AccountRecordComponent implements OnInit {
-  sampleData: Array<Object> = [
-    {
-      'value': '(check)',
-      'type': '(check)'
-    },
+  recordData: Array<Object> = [
     {
       'value': 'Christian_Red',
-      'type': 'plain'
+      'type': 'id'
     },
     {
       'value': '이유정',
@@ -24,7 +20,7 @@ export class AccountRecordComponent implements OnInit {
       'type': 'plain'
     },
     {
-      'value': 'STANDARD',
+      'value': 'PLATINUM',
       'type': 'level'
     },
     {
