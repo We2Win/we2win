@@ -30,14 +30,19 @@
       </div>
     </div>
     <div class="contentBox2">
-      <nav id="menuScrap">
-        <li id="info" class="active">부동산 정보 스크랩</li>
-        <li id="site">분양 현황 스크랩</li>
+      <nav id="menuScrap" class="tabGroup">
+        <li class="info show" (click)="showInfo()">부동산 정보 스크랩</li>
+        <li class="site" (click)="showSite()">분양 현황 스크랩</li>
       </nav>
-      <div id="info">
+      <div class="info show">
         <span id="categories">리포트</span>
         <span id="title">[제83호] 경주 라마다 호텔 분양대금 ABL 8차</span>
         <span id="date">2017.12.12.</span>
+      </div>
+      <div class="site">
+          <span id="categories">분양</span>
+          <span id="title">[제83호] 경주 라마다 호텔 분양대금 ABL 8차</span>
+          <span id="date">2017.12.12.</span>
       </div>
     </div>
   </div>
@@ -46,8 +51,8 @@
       <app-table [type]="'calendar'"></app-table>
     </div>
     <div class="contentBox1">
-      <nav id="menuSechedule">
-        <li id="schedule" class="active">일정 관리</li>
+      <nav id="menuSechedule" class="tabGroup">
+        <li id="schedule" class="show">일정 관리</li>
       </nav>
       <li></li>
     </div>

@@ -190,9 +190,14 @@ const routes: Routes = [
       }
     ]
   },
+  // temporary state
+  {
+    path: 'mng',
+    loadChildren: 'app/wmanagement/wmanagement.module#WmanagementModule'
+  },
   {
     path: '**',
-    component: LoginComponent,
+    component: WhomeComponent,
     children: [
       {
         path: '',

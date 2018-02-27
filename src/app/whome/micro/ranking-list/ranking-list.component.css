@@ -12,12 +12,18 @@ h1 {
   display: block;
   font-size: 1.5em;
   font-weight: 400;
-  margin: 2em 0 1.5em 0;
+  margin: 2em 0 0.5em 0;
   text-align: center;
+}
+
+#subBar {
+  display: flex;
+  justify-content: space-between;
 }
 
 #dateSelector {
   width: 146px;
+  flex: none;
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -30,39 +36,69 @@ h2 {
   margin: 0;
 }
 
+.side {
+  width: 100px;
+  flex: none;
+}
+
+h3 {
+  font-size: 0.9em;
+}
+
+.more {
+  cursor: pointer;
+}
+
+.more:after {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 1em;
+  box-sizing: border-box;
+  background: url('/assets/img/next.svg');
+  background-repeat: no-repeat;
+  background-size: 0.8em;
+  background-position-y: bottom;
+}
+
 .contents {
   width: 956px;
   display: flex;
   /* flex-flow: row wrap; */
   justify-content: space-between;
   padding: 0;
+  margin-top: 1em;
 }
 
-.contents>*>* {
-  width: 270px;
-  margin-top: 4em;
+:host /deep/ .contents>* {
+  width: 270px !important;
+  margin-top: 5em !important;
 }
 
-.contents>*>*:before {
+:host /deep/ .card:before {
   display: block;
+  position: relative;
   width: 100%;
-  height: 2em;
+  height: 4em;
   font-size: 1.2em;
+  line-height: 400%;
   padding: 0.4em;
-  margin-top: -2em;
+  margin-top: -4em;
   color: #333;
   text-align: center;
+  box-sizing: border-box;
 }
 
-.contents>*>*.first:before {
+:host /deep/ .first .card:before {
   content: '1위';
 }
 
-.contents>*>*.second:before {
+:host /deep/ .second .card:before {
   content: '2위';
 }
 
-.contents>*>*.third:before {
+:host /deep/ .third .card:before {
   content: '3위';
 }
 

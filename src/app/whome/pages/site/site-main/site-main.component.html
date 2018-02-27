@@ -1,12 +1,25 @@
 <app-vertical-list [toptitle]="'신규 분양 현장'">
-    <app-site-card></app-site-card>
-    <app-site-card></app-site-card>
-    <app-site-card></app-site-card>
-    <app-site-card></app-site-card>
-    <app-site-card></app-site-card>
-    <app-site-card></app-site-card>
-    <app-site-card></app-site-card>
-    <app-site-card></app-site-card>
+  <app-site-card [level]="'premium'"></app-site-card>
+  <app-site-card [level]="'standard'"></app-site-card>
+  <app-site-card [level]="'premium'"></app-site-card>
+  <app-site-card [level]="'premium'"></app-site-card>
+  <app-site-card [level]="'platinum'"></app-site-card>
+  <app-site-card [level]="'standard'"></app-site-card>
+  <app-site-card [level]="'premium'"></app-site-card>
+  <app-site-card [level]="'standard'"></app-site-card>
 </app-vertical-list>
-<app-vertical-list [toptitle]="'분양 리포트'"></app-vertical-list>
-<app-ranking-list [toptitle]="'주간 분양 현장 이슈'"></app-ranking-list>
+<app-vertical-list [toptitle]="'분양 리포트'">
+  <app-site-card [level]="'premium'"></app-site-card>
+  <app-site-card [level]="'standard'"></app-site-card>
+  <app-site-card [level]="'premium'"></app-site-card>
+  <app-site-card [level]="'premium'"></app-site-card>
+  <app-site-card [level]="'platinum'"></app-site-card>
+  <app-site-card [level]="'standard'"></app-site-card>
+  <app-site-card [level]="'premium'"></app-site-card>
+  <app-site-card [level]="'standard'"></app-site-card>
+</app-vertical-list>
+<app-ranking-list [toptitle]="'주간 분양 현장 이슈'">
+  <app-site-card class="first" [level]="'premium'"></app-site-card>
+  <app-site-card class="second" [level]="'standard'"></app-site-card>
+  <app-site-card class="third" [level]="'premium'"></app-site-card>
+</app-ranking-list>

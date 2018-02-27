@@ -1,5 +1,4 @@
 #done {
-  flex: none;
   padding: 2em 5em;
 }
 
@@ -14,5 +13,5 @@ div {
 }
 
 img {
-  flex: none;
+  flex: none !important;
 }

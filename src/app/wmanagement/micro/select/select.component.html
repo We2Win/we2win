@@ -1,4 +1,10 @@
 <div id="container" (click)="viewUl(true);" (mouseover)="semiViewUl(true);" (mouseleave)="hideUl(true);">{{ selected }}</div>
 <ul (click)="selectValue($event);" (mouseover)="viewUl(false);" (mouseleave)="hideUl(false);">
-  <li *ngFor="let category of categories[type]">{{ category }}</li>
+  <ng-container *ngIf="!isSub">
+    <li *ngFor="let category of categories[type]">{{ category }}</li>
+  </ng-container>
+
+  <ng-container *ngIf="isSub">
+    <li *ngFor="let subcategory of subcategories[topCategory]">{{ subcategory }}</li>
+  </ng-container>
 </ul>
