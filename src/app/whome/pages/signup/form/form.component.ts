@@ -66,4 +66,9 @@ export class FormComponent implements OnInit {
     }
   }
 
+  confirm(e) {
+    e.stopPropagation();
+    alert('가능합니다.');
+  }
+
 }
