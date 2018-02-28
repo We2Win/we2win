@@ -13,6 +13,5 @@ export class NotifierComponent implements OnInit {
   }
 
   hidePopup() {
-    
   }
 }
