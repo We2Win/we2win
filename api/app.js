@@ -52,9 +52,9 @@ app.use(function (req, res, next) {
 });
 
 // Setup Routes and handle errors
-app.use('/v1', v1);
+app.use('/api/v1', v1);
 
-app.use('/', function (req, res) {
+app.use('/api', function (req, res) {
     res.statusCode = 200;//send the appropriate status code
     res.json({ status: "success", message: "Parcel Pending API", data: {} })
 });
