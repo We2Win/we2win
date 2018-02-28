@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extend: false}))
 app.use(bodyParser.json())
 app.use(passport.initialize());
 
-app.use('/v1', v1);
+app.use('/', v1);
 
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
