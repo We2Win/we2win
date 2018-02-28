@@ -5,13 +5,12 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const morgan = require('morgan');
 const mysql = require('mysql');
-const logger = require('logger');
 // const connection = mysql.createConnection();
 const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(express.logger('dev'));
+app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extend: false}))
 app.use(bodyParser.json())
 // print the request log on console
