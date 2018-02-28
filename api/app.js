@@ -2,8 +2,9 @@ require('./config/config');
 require('./global_functions');
 
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const passport = require('passport');
 const mysql = require('mysql');
 // const connection = mysql.createConnection();
 const port = process.env.PORT || 3000;
