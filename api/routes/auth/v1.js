@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const UserController = require('./../controllers/UserController');
-const CompanyController = require('./../controllers/CompanyController');
-const HomeController = require('./../controllers/HomeController');
+const UserController = require('./../../controllers/UserController');
+const CompanyController = require('./../../controllers/CompanyController');
+const HomeController = require('./../../controllers/HomeController');
 
-const custom = require('./../middleware/custom');
+const custom = require('./../../middleware/custom');
 
 const passport = require('passport');
 const path = require('path');
