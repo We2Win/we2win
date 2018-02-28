@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // app.use(logger('dev'));
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({extend: false}))
 app.use(bodyParser.json())
 // print the request log on console
 app.use(morgan('dev'))
@@ -20,7 +20,7 @@ app.use(passport.initialize());
 app.set('port', port);
 
 
-const models = require('./models');
+const models = require('./models/index');
 models.sequelize.authenticate().then(() => {
     console.log('Connected to SQL database.');
 }).catch( err => {
