@@ -58,6 +58,7 @@ import { SocialButtonComponent } from './micro/social-button/social-button.compo
 import { UserService } from './services/user.service';
 import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
 import { ChartComponent } from './micro/chart/chart.component';
+import { NotifierComponent } from './micro/notifier/notifier.component';
 
 
 @NgModule({
@@ -120,6 +121,7 @@ import { ChartComponent } from './micro/chart/chart.component';
     SocialButtonComponent,
     InfoDetailComponent,
     ChartComponent,
+    NotifierComponent,
   ],
   providers: [
     PageInfoService,
