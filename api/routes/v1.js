@@ -13,7 +13,7 @@ const path = require('path');
 console.log("HIIII");
 // User Routes
 router.get('/api', (req, res) => res.send('Hello!'));
-app.get('/test', (req, res) => res.send('Hello World!'))
+router.get('/test', (req, res) => res.send('Hello World!'))
 
 // router.post('/users', UserController.create); //create   
 
