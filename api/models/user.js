@@ -55,9 +55,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Model.associate = function (models) {
-    this.Companies = this.belongsToMany(models.Company, {
-      through: 'UserCompany'
-    });
+    // this.Companies = this.belongsToMany(models.Company, {
+    //   through: 'UserCompany'
+    // });
   };
 
   Model.beforeSave(async (user, options) => {
