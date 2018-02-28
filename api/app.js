@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extend: false}))
+app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 // print the request log on console
 app.use(morgan('dev'))
