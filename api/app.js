@@ -52,9 +52,9 @@ app.use(function (req, res, next) {
 });
 
 // Setup Routes and handle errors
-app.use('/api/v1', v1);
+app.use('/v1', v1);
 
-app.use('/api', function (req, res) {
+app.use('/', function (req, res) {
     res.statusCode = 200;//send the appropriate status code
     res.json({ status: "success", message: "Parcel Pending API", data: {} })
 });
@@ -77,7 +77,7 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-app.get('/api/todo', (req, res) => res.send('Hello!'));
+app.get('/todo', (req, res) => res.send('Hello!'));
 
 module.exports = app;
 
