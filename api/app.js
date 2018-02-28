@@ -23,7 +23,8 @@ app.set('port', process.env.PORT || 3000);
 
 
 app.get('/', (req, res) => {
-  res.send('Root');
+//   res.send('Root');
+    return 'hi';
 });
 
 app.get('/users', (req, res) => {
