@@ -77,7 +77,7 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-app.get('/todo', (req, res) => res.send('Hello!'));
+app.get('/api/todo', (req, res) => res.send('Hello!'));
 
 module.exports = app;
 
