@@ -18,6 +18,8 @@ app.use(bodyParser.urlencoded({extend: false}))
 app.use(bodyParser.json())
 app.use(passport.initialize());
 
+app.use('/v1', v1);
+
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
     console.log('Connected to SQL database.');
@@ -49,7 +51,6 @@ app.use(function (req, res, next) {
 });
 
 // Setup Routes and handle errors
-app.use('/v1', v1);
 
 app.use('/', function (req, res) {
     res.statusCode = 200;//send the appropriate status code
