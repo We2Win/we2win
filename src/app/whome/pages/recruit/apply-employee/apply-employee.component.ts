@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./apply-employee.component.css']
 })
 export class ApplyEmployeeComponent implements OnInit {
-
+  agree2: boolean;
   constructor() { }
 
   ngOnInit() {
