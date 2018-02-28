@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "Express": "^3.0.1",
+    "bcrypt": "^1.0.3",
+    "bcrypt-promise": "^2.0.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "jsonwebtoken": "^8.1.1",
