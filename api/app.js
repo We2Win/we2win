@@ -20,7 +20,7 @@ app.use(passport.initialize());
 app.set('port', port);
 
 
-const models = require('./models/index');
+const models = require('./models');
 models.sequelize.authenticate().then(() => {
     console.log('Connected to SQL database.');
 }).catch( err => {
