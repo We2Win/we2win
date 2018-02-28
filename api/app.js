@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({extend: false}))
 app.use(bodyParser.json())
 app.use(passport.initialize());
 
+console.log('1');
 app.use('/v1', v1);
 
 const models = require('./models');
@@ -32,6 +33,9 @@ if(CONFIG.app === 'We2Win') {
     // for testing:
     // models.sequelize.sync({ force: true });
 }
+
+console.log('11');
+
 
 // CORS
 app.use(function (req, res, next) {
@@ -57,12 +61,17 @@ app.use('/', function (req, res) {
     res.json({ status: "success", message: "Parcel Pending API", data: {} })
 });
 
+console.log('111');
+
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
+
+console.log('1111');
 
 // error handler
 app.use(function (err, req, res, next) {
@@ -74,6 +83,7 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+console.log('11111');
 
 module.exports = app;
 
