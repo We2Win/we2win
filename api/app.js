@@ -27,7 +27,7 @@ app.get('/api', (req, res) => {
     // return 'hi';
 });
 
-app.get('/users', (req, res) => {
+app.get('/api/users', (req, res) => {
   console.log(users);
 
   connection.query('SELECT * from `01011803`', function (err, rows, fields) {
