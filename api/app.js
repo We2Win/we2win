@@ -19,35 +19,35 @@ let users = [{
   }
 ]
 
-app.set('port', process.env.PORT || 3000);
+// app.set('port', process.env.PORT || 3000);
 
 
 app.get('/', (req, res) => {
-//   res.send('Root');
-    return 'hi';
+  res.send('Root');
+    // return 'hi';
 });
 
-app.get('/users', (req, res) => {
-  console.log(users);
+// app.get('/users', (req, res) => {
+//   console.log(users);
 
-  connection.query('SELECT * from `01011803`', function (err, rows, fields) {
-    if (!err) {
-      console.log('The solution is: ', rows);
-      res.send(rows);
-    } else {
-      console.log('Error while performing Query.', err);
-    }
-  });
-});
+//   connection.query('SELECT * from `01011803`', function (err, rows, fields) {
+//     if (!err) {
+//       console.log('The solution is: ', rows);
+//       res.send(rows);
+//     } else {
+//       console.log('Error while performing Query.', err);
+//     }
+//   });
+// });
 
-app.get('/users:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  if (!id) {
-    return res.status(400).json({
-      error: 'Incorrect id'
-    });
-  }
-});
+// app.get('/users:id', (req, res) => {
+//   const id = parseInt(req.params.id, 10);
+//   if (!id) {
+//     return res.status(400).json({
+//       error: 'Incorrect id'
+//     });
+//   }
+// });
 
 
 
