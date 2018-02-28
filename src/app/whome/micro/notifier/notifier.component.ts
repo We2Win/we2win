@@ -12,4 +12,7 @@ export class NotifierComponent implements OnInit {
   ngOnInit() {
   }
 
+  hidePopup() {
+    
+  }
 }
