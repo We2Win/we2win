@@ -3,23 +3,20 @@ require('./global_functions');
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
+const logger = require('morgan');
 const passport = require('passport');
 const v1 = require('./routes/auth/v1');
-const mysql = require('mysql');
+// const mysql = require('mysql');
 // const connection = mysql.createConnection();
 // const port = process.env.PORT || 3000;
 
 const app = express();
 
-// app.use(logger('dev'));
+// print the request log on console
+app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extend: false}))
 app.use(bodyParser.json())
-// print the request log on console
-app.use(morgan('dev'))
 app.use(passport.initialize());
-// app.set('port', port);
-
 
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
@@ -27,7 +24,7 @@ models.sequelize.authenticate().then(() => {
 }).catch( err => {
     console.error('Error loading SQL database:', err);
 })
-if(CONFIG.app === 'development') {
+if(CONFIG.app === 'We2Win') {
     // creates tables from models
     models.sequelize.sync();
     // for testing:
