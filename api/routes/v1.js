@@ -13,16 +13,16 @@ const path = require('path');
 console.log("HIIII");
 // User Routes
 router.get('/api', (req, res) => res.send('Hello!'));
+app.get('/test', (req, res) => res.send('Hello World!'))
 
+// router.post('/users', UserController.create); //create   
 
-router.post('/users', UserController.create); //create   
+// router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
 
-router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
+// router.put('/users', passport.authenticate('jwt', { session: false }), UserController.update); //update
 
-router.put('/users', passport.authenticate('jwt', { session: false }), UserController.update); //update
-
-router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
-router.post('/users/login', UserController.login);
+// router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
+// router.post('/users/login', UserController.login);
 
 // // Company Routes
 // router.post('/companies',
