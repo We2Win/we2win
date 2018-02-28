@@ -1,12 +1,11 @@
 require('./config/config');
 require('./global_functions');
 
-
 const express = require('express');
 const bodyParser = require('body-parser')
 const morgan = require('morgan');
-
 const mysql = require('mysql');
+const logger = require('logger');
 // const connection = mysql.createConnection();
 const port = process.env.PORT || 3000;
 
@@ -21,7 +20,6 @@ app.use(morgan('dev'))
 app.set('jwt-secret', config.secret)
 app.set('port', port);
 
-app.use('/api', require('./router/api'))
 
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
