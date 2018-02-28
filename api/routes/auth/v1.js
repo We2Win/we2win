@@ -11,6 +11,7 @@ const passport = require('passport');
 const path = require('path');
 
 // User Routes
+router.get('/', (req, res) => res.send('Hello!'));
 router.post('/api/users', UserController.create); //create   
 
 router.get('/api/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
