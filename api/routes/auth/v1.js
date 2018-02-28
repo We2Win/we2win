@@ -20,13 +20,13 @@ router.put('/users', passport.authenticate('jwt', { session: false }), UserContr
 router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
 router.post('/users/login', UserController.login);
 
-// Company Routes
-router.post('/companies',
-    passport.authenticate('jwt', { session: false }), CompanyController.create);
-router.get('/companies', passport.authenticate('jwt', { session: false }), CompanyController.getAll);
+// // Company Routes
+// router.post('/companies',
+//     passport.authenticate('jwt', { session: false }), CompanyController.create);
+// router.get('/companies', passport.authenticate('jwt', { session: false }), CompanyController.getAll);
 
-router.get('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.get);
-router.put('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.update);
-router.delete('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.remove);
+// router.get('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.get);
+// router.put('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.update);
+// router.delete('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.remove);
 
 module.exports = router;
