@@ -8,7 +8,7 @@ const passport = require('passport');
 const v1 = require('./routes/auth/v1');
 const mysql = require('mysql');
 // const connection = mysql.createConnection();
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(bodyParser.json())
 // print the request log on console
 app.use(morgan('dev'))
 app.use(passport.initialize());
-app.set('port', port);
+// app.set('port', port);
 
 
 const models = require('./models');
