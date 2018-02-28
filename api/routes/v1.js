@@ -10,6 +10,7 @@ const custom = require('./../middleware/custom');
 const passport = require('passport');
 const path = require('path');
 
+console.log("HIIII");
 // User Routes
 router.get('/api', (req, res) => res.send('Hello!'));
 
