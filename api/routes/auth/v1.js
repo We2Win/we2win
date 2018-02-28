@@ -11,14 +11,14 @@ const passport = require('passport');
 const path = require('path');
 
 // User Routes
-router.post('/users', UserController.create); //create   
+router.post('/api/users', UserController.create); //create   
 
-router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
+router.get('/api/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
 
-router.put('/users', passport.authenticate('jwt', { session: false }), UserController.update); //update
+router.put('/api/users', passport.authenticate('jwt', { session: false }), UserController.update); //update
 
-router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
-router.post('/users/login', UserController.login);
+router.delete('/api/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
+router.post('/api/users/login', UserController.login);
 
 // // Company Routes
 // router.post('/companies',
