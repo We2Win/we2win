@@ -8,6 +8,7 @@
 #horizontalProfile {
   display: flex;
   flex-direction: row;
+  padding: 2em 0;
 }
 
 #horizontalProfile>* {
@@ -23,7 +24,7 @@
 }
 
 #horizontalProfile span {
-  display: block;
+  display: inline-block;
   font-size: 1.4em;
 }
 
