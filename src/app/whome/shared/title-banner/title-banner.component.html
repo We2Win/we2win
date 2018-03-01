@@ -1,4 +1,4 @@
-<section *ngIf="dataset['title']" [class]="route[dataset['title'];">
+<section *ngIf="dataset['title']" [ngClass]="route[dataset['title'];">
   <h1>{{ dataset['title'] }}</h1>
   <h2>{{ dataset['description'] }}</h2>
   <input type="text" />
