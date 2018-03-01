@@ -35,6 +35,8 @@ export class TitleBannerComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         const routePath = event.urlAfterRedirects;
         this.updateData(routePath);
+        this._elementRef.nativeElement.querySelector('section').className = this.route[this.dataset['title']];
+        console.log(this.route[this.dataset['title']]);        
       }
     });
   }
@@ -44,7 +46,6 @@ export class TitleBannerComponent implements OnInit {
   updateData(routePath) {
     this.dataset['title'] = this.pageInfoService.getCurrentData(routePath, 'title') || '';
     this.dataset['description'] = this.pageInfoService.getCurrentData(routePath, 'description') || '';
-    this._elementRef.nativeElement.querySelector('section').className = this.route[this.dataset['title']];
   }
 
 }
