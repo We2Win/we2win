@@ -191,7 +191,7 @@ export class ChartComponent implements OnInit {
     ],
     tracking: [
       {
-        type: 'horizontalBar',
+        type: 'bar',
         data: {
           datasets: [{
             data: [5, 6, 6.5, 5, 7, 8, 9, 7.5, 10, 8, 5, 5.5]
