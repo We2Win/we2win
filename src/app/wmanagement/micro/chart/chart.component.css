@@ -1,8 +1,12 @@
 :host {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 300px;
   flex: 1;
   padding: 0 1em;
   box-sizing: border-box;
+}
+
+canvas {
+  height: 300px;
 }
