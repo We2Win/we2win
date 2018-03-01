@@ -44,7 +44,7 @@ export class TitleBannerComponent implements OnInit {
   updateData(routePath) {
     this.dataset['title'] = this.pageInfoService.getCurrentData(routePath, 'title') || '';
     this.dataset['description'] = this.pageInfoService.getCurrentData(routePath, 'description') || '';
-    this._elementRef.nativeElement.className = this.route[this.dataset['title']];
+    this._elementRef.nativeElement.querySelector('section').className = this.route[this.dataset['title']];
   }
 
 }
