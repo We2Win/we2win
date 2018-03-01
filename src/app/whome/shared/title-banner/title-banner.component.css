@@ -1,10 +1,30 @@
 :host {
   display: block;
   min-width: var(--main-width);
-  background: url('/assets/img/bg_title_banner.png');
+  /* background: url('/assets/img/bg_title_banner.png'); */
   background-color: linear-gradient(#666, #333);
   color: var(--titleBanner-font-normal);
   text-align: center;
+}
+
+.info {
+  background: url('/assets/img/key_info.png');
+}
+
+.site {
+  background: url('/assets/img/key_site.png');
+}
+
+.employee {
+  background: url('/assets/img/key_employee.png');
+}
+
+.employer {
+  background: url('/assets/img/key_employer.png');
+}
+
+.meeting {
+  background: url('/assets/img/key_meeting.png');
 }
 
 h1 {
