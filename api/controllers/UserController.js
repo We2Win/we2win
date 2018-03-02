@@ -16,6 +16,7 @@ const create = async function (req, res) {
   } else {
     let err, user;
 
+    body.Password = bcrypt.hashSync(body.Password, 8);
     [err, user] = await to(authService.createUser(body));
 
     console.log('user: ', user);
