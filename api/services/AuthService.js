@@ -36,7 +36,7 @@ const createUser = async function (userInfo) {
     [err, user] = await to (User.create(userInfo));
     if (err) TE('존재하는 ID입니다.');
 
-    user.beforeSave();
+    User.beforeSave(user);
     return user;
     // if (validator.isEmail(unique_key)) {
     //     auth_info.method = 'email';
