@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const UserController = require('./../controllers/UserController');
-const InfoController = require('./../controllers/InfoController');
+const ContentController = require('./../controllers/ContentController');
 // const CompanyController = require('./../controllers/CompanyController');
 // const HomeController = require('./../controllers/HomeController');
 
@@ -26,7 +26,7 @@ router.post('/users/login', UserController.login);
 
 router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
 
-router.post('/infos', InfoController.create);
+router.post('/contents', ContentController.create);
 
 // // Company Routes
 // router.post('/companies',
