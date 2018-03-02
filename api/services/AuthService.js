@@ -9,6 +9,7 @@ const getUniqueKeyFromBody = function (body) {
 module.exports.getUniqueKeyFromBody = getUniqueKeyFromBody;
 
 const createUser = async function (userInfo) {
+    console.log('createUser()');
     let unique_key, auth_info, err;
 
     auth_info = {}
@@ -23,6 +24,7 @@ const createUser = async function (userInfo) {
     [err, user] = await to (User.create(userInfo));
     if (err) TE('생성 중 오류가 발생했습니다.');
 
+    console.log('createUser()');
     User.beforeSave(user);
     return user;
 }

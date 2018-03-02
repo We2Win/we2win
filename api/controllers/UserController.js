@@ -21,6 +21,7 @@ const create = async function (req, res) {
     console.log('bye');
 
     if (err) return ReE(res, err, 422);
+    console.log('bye');
     return ReS(res, {
       message: 'Successfully created new user.',
       user: user.toWeb(),
