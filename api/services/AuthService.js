@@ -30,6 +30,13 @@ const createUser = async function (userInfo) {
     unique_key = getUniqueKeyFromBody(userInfo);
     if (!unique_key) TE('존재하는 ID입니다.');
 
+    auth_info.method = 'ID';
+    userInfo.ID = unique_key;
+
+    [err, user] = await to (User.create(userInfo));
+    if (err) TE('존재하는 ID입니다.');
+
+    return user;
     // if (validator.isEmail(unique_key)) {
     //     auth_info.method = 'email';
     //     userInfo.email = unique_key;
