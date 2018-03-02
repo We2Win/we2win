@@ -14,8 +14,8 @@ const app = express();
 
 // print the request log on console
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extend: false}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extend: false}));
+app.use(bodyParser.json());
 app.use(passport.initialize());
 
 
@@ -27,7 +27,9 @@ models.sequelize.authenticate().then(() => {
 })
 if(CONFIG.app === 'We2Win') {
     // creates tables from models
+    console.log('starting');
     models.sequelize.sync();
+    console.log('end');
     // for testing:
     // models.sequelize.sync({ force: true });
 }
