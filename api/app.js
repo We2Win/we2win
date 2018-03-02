@@ -6,9 +6,6 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const passport = require('passport');
 const v1 = require('./routes/v1');
-// const mysql = require('mysql');
-// const connection = mysql.createConnection();
-// const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -80,17 +77,3 @@ app.use(function (err, req, res, next) {
 
 // module.exports = app;
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
-
-
-// app.get('/api/users', (req, res) => {
-//   console.log(users);
-
-//   connection.query('SELECT * from `01011803`', function (err, rows, fields) {
-//     if (!err) {
-//       console.log('The solution is: ', rows);
-//       res.send(rows);
-//     } else {
-//       console.log('Error while performing Query.', err);
-//     }
-//   });
-// });
