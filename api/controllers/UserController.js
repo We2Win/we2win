@@ -29,14 +29,10 @@ const create = async function (req, res) {
 module.exports.create = create;
 
 const get = async function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    let user2 = {
-      'ID': JSON.stringify(req),
-      'Password': req.password || 'no'
-    }
+  res.setHeader('Content-Type', 'application/json');
+  let user = req.user;
 
-    return ReS(res, { user: user2 });
-    // return ReS(res, { user: user.toWeb() });
+  return ReS(res, { user: user.toWeb() });
 }
 module.exports.get = get;
 
