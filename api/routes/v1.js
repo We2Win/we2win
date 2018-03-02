@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const UserController = require('./../controllers/UserController');
+const InfoController = require('./../controllers/InfoController');
 // const CompanyController = require('./../controllers/CompanyController');
 // const HomeController = require('./../controllers/HomeController');
 
@@ -24,6 +25,9 @@ router.delete('/users', passport.authenticate('jwt', { session: false }), UserCo
 router.post('/users/login', UserController.login);
 
 router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
+
+
+router.post('/info', InfoController.create);
 
 // // Company Routes
 // router.post('/companies',
