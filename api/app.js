@@ -22,7 +22,9 @@ app.use(passport.initialize());
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
     console.log('Connected to SQL database.');
-    console.log('end');
+    console.log('end11');
+    models.sequelize.sync();
+
 }).catch( err => {
     console.error('Error loading SQL database:', err);
 })
