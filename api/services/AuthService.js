@@ -8,6 +8,18 @@ const getUniqueKeyFromBody = function (body) {
 }
 module.exports.getUniqueKeyFromBody = getUniqueKeyFromBody;
 
+const createInfo = async function (data) {
+    console.log('createInfo1()');
+    let unique_key, auth_info, err;
+
+    console.log(JSON.stringify(data));
+    [err, info] = await to(Info.create(data));
+    if (err) TE('생성 중 오류가 발생했습니다.');
+
+    console.log('createInfo()');
+    return info;
+}
+
 const createUser = async function (userInfo) {
     console.log('createUser1()');
     let unique_key, auth_info, err;
