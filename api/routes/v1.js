@@ -27,6 +27,8 @@ router.post('/users/login', UserController.login);
 router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
 
 router.post('/contents', ContentController.create);
+router.get('/contents', ContentController.get);
+router.delete('/contents', ContentController.remove);
 
 // // Company Routes
 // router.post('/companies',
