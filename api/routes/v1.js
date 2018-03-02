@@ -10,7 +10,7 @@ const UserController = require('./../controllers/UserController');
 const passport = require('passport');
 const path = require('path');
 
-console.log("HIIII");
+console.log("Start v1.js");
 // User Routes
 router.get('/api', (req, res) => res.send('Hello!'));
 router.get('/test', (req, res) => res.send('Hello World!'))

@@ -13,7 +13,7 @@ const v1 = require('./routes/v1');
 const app = express();
 
 // print the request log on console
-// app.use(logger('dev'));
+app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
@@ -22,7 +22,7 @@ app.use(passport.initialize());
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
     console.log('Connected to SQL database.');
-    models.sequelize.sync();
+    // models.sequelize.sync();
 
 }).catch( err => {
     console.error('Error loading SQL database:', err);
