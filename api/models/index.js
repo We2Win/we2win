@@ -25,7 +25,7 @@ fs
     console.log('starting');
     var model = sequelize['import'](path.join(__dirname, file));
     db[model.name] = model;
-    console.log(model.name);
+    console.log(JSON.stringify(db));
   });
 
 Object.keys(db).forEach(modelName => {
