@@ -14,8 +14,8 @@ const path = require('path');
 
 router.post('/users', UserController.create); //create   
 
-// router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
-router.get('/users', UserController.get);
+router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
+// router.get('/users', UserController.get);
 
 router.put('/users', passport.authenticate('jwt', { session: false }), UserController.update); //update
 
