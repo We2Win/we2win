@@ -28,11 +28,11 @@ module.exports.create = create;
 
 const get = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
-    let user = req;
+    // let user = req;
     
-    console.log('user: ', user);
+    // console.log('user: ', user);
 
-    return ReS(res, 'done');
+    return ReS(res, { message: 'done' });
     
     // return ReS(res, { user: user.toWeb() });
 }
