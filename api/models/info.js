@@ -16,6 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  Model.associate = function (models) {
+    // this.Companies = this.belongsToMany(models.Company, {
+    //   through: 'UserCompany'
+    // });
+  };
+
   Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
