@@ -9,7 +9,7 @@ const getUniqueKeyFromBody = function (body) {
 module.exports.getUniqueKeyFromBody = getUniqueKeyFromBody;
 
 const createUser = async function (userInfo) {
-    console.log('createUser()');
+    console.log('createUser1()');
     let unique_key, auth_info, err;
 
     auth_info = {}
