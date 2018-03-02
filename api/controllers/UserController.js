@@ -19,8 +19,6 @@ const create = async function (req, res) {
     body.Password = bcrypt.hashSync(body.Password, 8);
     [err, user] = await to(authService.createUser(body));
 
-    console.log('user: ', user);
-
     if (err) return ReE(res, err, 422);
     return ReS(res, {
       message: 'Successfully created new user.',
