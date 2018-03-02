@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt');
 const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
 
-console.log(sequelize, DataTypes);
 module.exports = (sequelize, DataTypes) => {
+  console.log(sequelize, DataTypes);
   var Model = sequelize.define('User', {
     ID: {
         type: DataTypes.STRING,
