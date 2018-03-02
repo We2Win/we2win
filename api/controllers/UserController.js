@@ -1,7 +1,3 @@
-import {
-  async
-} from 'q';
-
 const User = require('../models').User;
 const authService = require('./../services/AuthService');
 
