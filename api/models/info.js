@@ -5,23 +5,23 @@ const jwt = require('jsonwebtoken');
 
 
 module.exports = (sequelize, DataTypes) => {
-    var Model = sequelize.define('Info', {
-        Title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            primaryKey: true
-        },
-        Description: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-    });
+  var Model = sequelize.define('Info', {
+    Title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true
+    },
+    Description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+  });
 
-    Model.prototype.toWeb = function () {
-        let JSON = this.toJSON();
-        console.log('this: ', JSON);
-        return JSON;
-    };
+  Model.prototype.toWeb = function () {
+    let JSON = this.toJSON();
+    console.log('this: ', JSON);
+    return JSON;
+  };
 
-    return Model;
+  return Model;
 };
