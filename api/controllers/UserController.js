@@ -33,8 +33,8 @@ module.exports.create = create;
 const get = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     let user2 = {
-      'ID': req.ID,
-      'Password': req.Password
+      'ID': req.id,
+      'Password': req.password || 'no'
     }
 
     return ReS(res, { user: user2 });
