@@ -22,13 +22,14 @@ app.use(passport.initialize());
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
     console.log('Connected to SQL database.');
+    console.log('end');
 }).catch( err => {
     console.error('Error loading SQL database:', err);
 })
 if(CONFIG.app === 'We2Win') {
     // creates tables from models
     console.log('starting');
-    models.sequelize.sync();
+    // models.sequelize.sync();
     console.log('end');
     // for testing:
     // models.sequelize.sync({ force: true });
