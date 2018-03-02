@@ -25,6 +25,7 @@ module.exports.create = create;
 
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
+  console.log(JSON.stringify(req));
   let content = req.content;
 
   console.log('title: ', JSON.stringify(req.content));
