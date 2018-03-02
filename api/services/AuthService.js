@@ -21,7 +21,7 @@ const createUser = async function (userInfo) {
     userInfo.ID = unique_key;
 
     [err, user] = await to (User.create(userInfo));
-    if (err) TE('존재하는 ID입니다.');
+    if (err) TE('생성 중 오류가 발생했습니다.');
 
     User.beforeSave(user);
     return user;
