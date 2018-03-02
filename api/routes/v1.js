@@ -12,8 +12,8 @@ const path = require('path');
 
 console.log("Start v1.js");
 // User Routes
-router.get('/api/v1/', (req, res) => res.send('Hello!'));
-router.get('/api/v1/users', (req, res) => res.send('Hello World!'))
+router.get('/', (req, res) => res.send('Hello!'));
+router.get('/users', (req, res) => res.send('Hello World!'))
 
 // router.post('/users', UserController.create); //create   
 
