@@ -5,10 +5,14 @@ const create = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     const body = req.body;
 
-    if (!body.unique_key && !body.email && !body.phone) {
-        return ReE(res, 'Please enter an email or phone number to register.');
-    } else if (!body.password) {
-        return ReE(res, 'Please enter a password to register.');
+    // if (!body.unique_key && !body.email && !body.phone) {
+    //     return ReE(res, 'Please enter an email or phone number to register.');
+    // } else if (!body.password) {
+    //     return ReE(res, 'Please enter a password to register.');
+    if(!body.ID) {
+        return ReE(res, '아이디를 입력해주세요.');
+    } else if (!body.Password) {
+        return ReR(res, '비밀번호를 입력해주세요.');
     } else {
         let err, user;
 
