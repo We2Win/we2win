@@ -34,7 +34,8 @@ const get = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     let user = req.user;
 
-    return ReS(res, { user: user.toWeb() });
+    return { user: user.toWeb() };
+    // return ReS(res, { user: user.toWeb() });
 }
 module.exports.get = get;
 
