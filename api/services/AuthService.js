@@ -15,7 +15,7 @@ const createUser = async function (userInfo) {
     auth_info.status = 'create';
 
     unique_key = getUniqueKeyFromBody(userInfo);
-    if (!unique_key) TE('존재하는 ID입니다.');
+    if (!unique_key) TE('ID를 입력하지 않았습니다.');
 
     auth_info.method = 'ID';
     userInfo.ID = unique_key;
