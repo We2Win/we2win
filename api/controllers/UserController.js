@@ -32,12 +32,12 @@ module.exports.create = create;
 
 const get = async function (req, res) {
   // res.setHeader('Content-Type', 'application/json');
-  // let user = req;
+  let user = req.toJSON();
 
   // console.log('user: ', user);
 
   return ReS(res, {
-    message: req.toJSON(),
+    message: user,
   });
 
   // return ReS(res, { user: user.toWeb() });
