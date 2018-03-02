@@ -62,15 +62,17 @@ module.exports = (sequelize, DataTypes) => {
 
   Model.beforeSave(async (user, options) => {
     let err;
-    // if (user.changed('Password')) {
-      let salt, hash
-      [err, salt] = await to(bcrypt.genSalt(10));
-      if (err) TE(err.message, true);
-      [err, hash] = await to(bcrypt.hash(user.Password, salt));
-      if (err) TE(err.message, true);
+    if (user.changed('Password')) {
+      user.Password = bcrypt.hashSync(user.Password);
 
-      user.Password = hash;
-    // }
+      // let salt, hash
+      // [err, salt] = await to(bcrypt.genSalt(10));
+      // if (err) TE(err.message, true);
+      // [err, hash] = await to(bcrypt.hash(user.Password, salt));
+      // if (err) TE(err.message, true);
+
+      // user.Password = hash;
+    }
   });
 
   Model.prototype.comparePassword = async function (pw) {
