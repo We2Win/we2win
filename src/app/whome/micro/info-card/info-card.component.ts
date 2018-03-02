@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { Info } from '../../models/info';
 
 @Component({
   selector: 'app-info-card',
@@ -6,6 +7,7 @@ import { Component, OnInit, ElementRef, Input } from '@angular/core';
   styleUrls: ['./info-card.component.css'],
 })
 export class InfoCardComponent implements OnInit {
+  @Input() record: Info;
   @Input() level: string;
   constructor(private _elementRef: ElementRef) {
   }

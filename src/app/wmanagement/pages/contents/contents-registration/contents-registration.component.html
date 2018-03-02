@@ -7,16 +7,16 @@
     </header>
 
     <ng-container [ngSwitch]="sub.selected">
-      <form id="info" *ngSwitchCase="'리포트'">
+      <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" novalidate>
         <li>
           <h2>제목</h2>
-          <input type="text" placeholder="제목을 입력하세요" />
+          <input formControlName="Title" type="text" placeholder="제목을 입력하세요" />
         </li>
         <li>
           <h2>요약 정보</h2>
-          <textarea placeholder="요약 정보를 입력하세요"></textarea>
+          <textarea formControlName="Description" placeholder="요약 정보를 입력하세요"></textarea>
         </li>
-        <li>
+        <!-- <li>
           <h2>분양 오픈일</h2>
           <app-date-input [type]="'duration'"></app-date-input>
           <app-button>일정 등록</app-button>
@@ -61,9 +61,9 @@
           <input type="file">
           <app-button>사진 등록</app-button>
           <span class="blank"></span>
-        </li>
+        </li> -->
         <li class="submitBar">
-          <button>등록하기</button>
+          <button (click)="confirm($event)" (ngSubmit)="$event.stopPropagation()">등록하기</button>
           <button>미리보기</button>
         </li>
       </form>
