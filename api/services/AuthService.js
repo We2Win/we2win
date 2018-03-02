@@ -72,6 +72,8 @@ const authUser = async function (userInfo) {//returns token
     if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
 
     let user;
+
+    [err, user] =await to (User.findOne({ where: { ID: unique_key }}));
     // if (validator.isEmail(unique_key)) {
     //     auth_info.method = 'email';
 
