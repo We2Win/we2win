@@ -37,7 +37,7 @@ const get = async function (req, res) {
   // console.log('user: ', user);
 
   return ReS(res, {
-    message: 'done'
+    message: req.toJSON(),
   });
 
   // return ReS(res, { user: user.toWeb() });
