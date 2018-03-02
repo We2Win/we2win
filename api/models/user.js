@@ -104,5 +104,6 @@ module.exports = (sequelize, DataTypes) => {
     return JSON;
   };
 
+  console.log(JSON.stringify(Model));
   return Model;
 };
