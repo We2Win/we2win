@@ -26,7 +26,7 @@ module.exports.create = create;
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Content.findOne({
+  Content.findAll({
       where: {
         // Title: body.Title
       }
