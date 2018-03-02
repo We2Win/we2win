@@ -27,7 +27,7 @@ router.post('/users/login', UserController.login);
 router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
 
 
-router.post('/info', InfoController.create);
+router.post('/infos', InfoController.create);
 
 // // Company Routes
 // router.post('/companies',
