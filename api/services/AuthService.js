@@ -13,7 +13,7 @@ const createContent = async function (data) {
     let unique_key, auth_info, err;
 
     console.log(JSON.stringify(data));
-    [err, info] = await to(Content.create(data));
+    [err, info] = await to(Content.create({ Title: 'hi', Description: 'sample'}));
     if (err) TE('생성 중 오류가 발생했습니다.');
 
     console.log('createInfo()');
