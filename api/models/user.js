@@ -97,7 +97,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Model.prototype.toWeb = function () {
     console.log('this: ', this);
-    return this;
+    return this.id;
   };
 
   return Model;
