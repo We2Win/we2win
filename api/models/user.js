@@ -96,8 +96,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Model.prototype.toWeb = function (pw) {
-    let json = pw.toJSON();
-    return json;
+    // let json = pw.toJSON();
+    return 'testing';
   };
 
   return Model;
