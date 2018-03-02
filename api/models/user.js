@@ -96,8 +96,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Model.prototype.toWeb = function () {
-    console.log('this: ', this, JSON.parse(this));
-    return JSON.parse(this);
+    console.log('this: ', this);
+    return this;
   };
 
   return Model;
