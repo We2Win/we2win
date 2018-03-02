@@ -18,7 +18,7 @@ const create = async function (req, res) {
 
         [err, user] = await to(authService.createUser(body));
 
-        console.log(user);
+        console.log('user: ', user);
 
         if (err) return ReE(res, err, 422);
         return ReS(res, { message: 'Successfully created new user.', user: user.toWeb(), token: user.getJWT() }, 201);
