@@ -28,7 +28,7 @@ module.exports.create = create;
 
 const get = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
-    return ReS(res, req);
+    return ReS(res, JSON.stringify(req));
     // let user = req.user;
     
     // console.log(user);
