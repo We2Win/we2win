@@ -37,7 +37,7 @@ const get = async function (req, res) {
       'Password': req.Password
     }
 
-    return { user: user2 };
+    return ReS(res, { user: user2 });
     // return ReS(res, { user: user.toWeb() });
 }
 module.exports.get = get;
