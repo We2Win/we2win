@@ -13,7 +13,7 @@ const v1 = require('./routes/v1');
 const app = express();
 
 // print the request log on console
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
@@ -22,7 +22,6 @@ app.use(passport.initialize());
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
     console.log('Connected to SQL database.');
-    console.log('end11');
     models.sequelize.sync();
 
 }).catch( err => {
@@ -30,9 +29,7 @@ models.sequelize.authenticate().then(() => {
 })
 if(CONFIG.app === 'We2Win') {
     // creates tables from models
-    console.log('starting');
     // models.sequelize.sync();
-    console.log('end');
     // for testing:
     // models.sequelize.sync({ force: true });
 }
