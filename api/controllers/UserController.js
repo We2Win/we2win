@@ -31,8 +31,10 @@ const get = async function (req, res) {
     let user = req;
     
     console.log('user: ', user);
+
+    return ReS(res, 'done');
     
-    return ReS(res, { user: user.toWeb() });
+    // return ReS(res, { user: user.toWeb() });
 }
 module.exports.get = get;
 
