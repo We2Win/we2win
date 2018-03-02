@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "we2win",
   "version": "0.0.1",
   "description": "Restful API Serverscripts for We2Win",
   "main": "index.js",
@@ -23,5 +23,6 @@
     "parse-error": "^0.2.0",
     "passport": "^0.4.0",
     "sequelize": "^4.35.0"
-  }
+  },
+  "devDependencies": {}
 }
