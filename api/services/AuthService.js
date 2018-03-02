@@ -66,10 +66,10 @@ const authUser = async function (userInfo) {//returns token
     auth_info.status = 'login';
     unique_key = getUniqueKeyFromBody(userInfo);
 
-    if (!unique_key) TE('Please enter an email or phone number to login');
+    if (!unique_key) TE('ID를 올바르게 입력해주세요.');
 
 
-    if (!userInfo.password) TE('Please enter a password to login');
+    if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
 
     let user;
     // if (validator.isEmail(unique_key)) {
