@@ -25,13 +25,10 @@ module.exports.create = create;
 
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  let body = req.body;
-
-  console.log('title: ', JSON.stringify(req.body));
 
   Content.findOne({
       where: {
-        Title: body.Title
+        // Title: body.Title
       }
     })
     .then((content) => {
