@@ -16,7 +16,9 @@ const create = async function (req, res) {
   } else {
     let err, user;
 
+    console.log('hi');
     [err, user] = await to(authService.createUser(body));
+    console.log('bye');
 
     if (err) return ReE(res, err, 422);
     return ReS(res, {
