@@ -10,19 +10,18 @@ const UserController = require('./../controllers/UserController');
 const passport = require('passport');
 const path = require('path');
 
-console.log("Start v1.js");
 // User Routes
-router.get('/', (req, res) => res.send('Hello!'));
-router.get('/users', (req, res) => res.send('Hello World!'))
 
-// router.post('/users', UserController.create); //create   
+router.post('/users', UserController.create); //create   
 
-// router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
+router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
 
-// router.put('/users', passport.authenticate('jwt', { session: false }), UserController.update); //update
+router.put('/users', passport.authenticate('jwt', { session: false }), UserController.update); //update
 
-// router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
-// router.post('/users/login', UserController.login);
+router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
+router.post('/users/login', UserController.login);
+
+router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
 
 // // Company Routes
 // router.post('/companies',
