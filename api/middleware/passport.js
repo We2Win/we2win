@@ -9,8 +9,8 @@ module.exports = function (passport) {
 
     passport.use(new JwtStrategy(opts, async function (jwt_payload, done) {
         let err, user;
-        [err, user] = await to(User.findById(jwt_payload.user_id));
-        console.log('user', user.id);
+        [err, user] = await to(User.findById(jwt_payload.ID));
+        console.log('user', user.ID);
         if (err) return done(err, false);
         if (user) {
             return done(null, user);
