@@ -2,19 +2,6 @@ const User = require('./../models').User;
 const validator = require('validator');
 
 const getUniqueKeyFromBody = function (body) {
-    // this is so they can send in 3 options unique_key, email, or phone and it will work
-    // let unique_key = body.unique_key;
-    // if (typeof unique_key === 'undefined') {
-    //     if (typeof body.email != 'undefined') {
-    //         unique_key = body.email
-    //     } else if (typeof body.phone != 'undefined') {
-    //         unique_key = body.phone
-    //     } else {
-    //         unique_key = null;
-    //     }
-    // }
-    // return unique_key;
-
     let unique_key = body.ID;
 
     return unique_key;
@@ -38,26 +25,6 @@ const createUser = async function (userInfo) {
 
     User.beforeSave(user);
     return user;
-    // if (validator.isEmail(unique_key)) {
-    //     auth_info.method = 'email';
-    //     userInfo.email = unique_key;
-
-    //     [err, user] = await to(User.create(userInfo));
-    //     if (err) TE('user already exists with that email');
-
-    //     return user;
-
-    // } else if (validator.isMobilePhone(unique_key, 'any')) {
-    //     auth_info.method = 'phone';
-    //     userInfo.phone = unique_key;
-
-    //     [err, user] = await to(User.create(userInfo));
-    //     if (err) TE('user already exists with that phone number');
-
-    //     return user;
-    // } else {
-    //     TE('A valid email or phone number was not entered.');
-    // }
 }
 module.exports.createUser = createUser;
 
@@ -68,35 +35,17 @@ const authUser = async function (userInfo) {//returns token
     unique_key = getUniqueKeyFromBody(userInfo);
 
     if (!unique_key) TE('ID를 올바르게 입력해주세요.');
-
-
     if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
 
     let user;
 
     [err, user] =await to (User.findOne({ where: { ID: unique_key }}));
-    // if (validator.isEmail(unique_key)) {
-    //     auth_info.method = 'email';
-
-    //     [err, user] = await to(User.findOne({ where: { email: unique_key } }));
-    //     console.log(err, user, unique_key);
-    //     if (err) TE(err.message);
-
-    // } else if (validator.isMobilePhone(unique_key, 'any')) {//checks if only phone number was sent
-    //     auth_info.method = 'phone';
-
-    //     [err, user] = await to(User.findOne({ where: { phone: unique_key } }));
-    //     if (err) TE(err.message);
-
-    // } else {
-    //     TE('A valid email or phone number was not entered');
-    // }
 
     if (!user) TE('Not registered');
 
     console.log(user.Password, userInfo.Password);
 
-    [err, user] = await to(user.comparePassword(userInfo.Password));
+    // [err, user] = await to(user.comparePassword(userInfo.Password));
 
     if (err) TE(err.message);
 
