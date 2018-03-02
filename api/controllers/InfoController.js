@@ -12,8 +12,8 @@ const create = async function (req, res) {
     } else {
         let err, info;
 
-        // [err, user] = await to(authService.createUser(body));
-        info = body;
+        [err, info] = await to(authService.createInfo(body));
+        // info = body;
         
         if (err) return ReE(res, err, 422);
         return ReS(res, {
