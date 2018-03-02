@@ -17,7 +17,7 @@ const create = async function (req, res) {
         if (err) return ReE(res, err, 422);
         return ReS(res, {
             message: 'Successfully created new content data.',
-            content: Content.toWeb(),
+            content: JSON.stringify(content),
         }, 201);
     }
 }
