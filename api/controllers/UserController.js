@@ -1,47 +1,57 @@
-import { async } from 'q';
+import {
+  async
+} from 'q';
 
 const User = require('../models').User;
 const authService = require('./../services/AuthService');
 
 const create = async function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    const body = req.body;
+  res.setHeader('Content-Type', 'application/json');
+  const body = req.body;
 
-    // if (!body.unique_key && !body.email && !body.phone) {
-    //     return ReE(res, 'Please enter an email or phone number to register.');
-    // } else if (!body.password) {
-    //     return ReE(res, 'Please enter a password to register.');
-    if(!body.ID) {
-        return ReE(res, '아이디를 입력해주세요.');
-    } else if (!body.Password) {
-        return ReR(res, '비밀번호를 입력해주세요.');
-    } else {
-        let err, user;
+  // if (!body.unique_key && !body.email && !body.phone) {
+  //     return ReE(res, 'Please enter an email or phone number to register.');
+  // } else if (!body.password) {
+  //     return ReE(res, 'Please enter a password to register.');
+  if (!body.ID) {
+    return ReE(res, '아이디를 입력해주세요.');
+  } else if (!body.Password) {
+    return ReR(res, '비밀번호를 입력해주세요.');
+  } else {
+    let err, user;
 
-        [err, user] = await to(authService.createUser(body));
+    [err, user] = await to(authService.createUser(body));
 
-        console.log('user: ', user);
+    console.log('user: ', user);
 
-        if (err) return ReE(res, err, 422);
-        return ReS(res, { message: 'Successfully created new user.', user: user.toWeb(), token: user.getJWT() }, 201);
-    }
+    if (err) return ReE(res, err, 422);
+    return ReS(res, {
+      message: 'Successfully created new user.',
+      user: user.toWeb(),
+      token: user.getJWT()
+    }, 201);
+  }
 }
 module.exports.create = create;
 
 const get = async function (req, res) {
-    // res.setHeader('Content-Type', 'application/json');
-    // let user = req;
-    
-    // console.log('user: ', user);
+  // res.setHeader('Content-Type', 'application/json');
+  // let user = req;
 
-    return ReS(res, { message: 'done' });
-    
-    // return ReS(res, { user: user.toWeb() });
+  // console.log('user: ', user);
+
+  return ReS(res, {
+    message: 'done'
+  });
+
+  // return ReS(res, { user: user.toWeb() });
 }
 module.exports.get = get;
 
 const update = async function (req, res) {
-    return ReS(res, { message: 'hi' });
+  return ReS(res, {
+    message: 'hi'
+  });
 }
 
 // const update = async function (req, res) {
@@ -60,23 +70,28 @@ const update = async function (req, res) {
 // module.exports.update = update;
 
 const remove = async function (req, res) {
-    let user, err;
-    user = req.user;
+  let user, err;
+  user = req.user;
 
-    [err, user] = await to(user.destroy());
-    if (err) return ReE(res, 'error occured trying to delete user');
+  [err, user] = await to(user.destroy());
+  if (err) return ReE(res, 'error occured trying to delete user');
 
-    return ReS(res, { message: 'Deleted User' }, 204);
+  return ReS(res, {
+    message: 'Deleted User'
+  }, 204);
 }
 module.exports.remove = remove;
 
 const login = async function (req, res) {
-    const body = req.body;
-    let err, user;
+  const body = req.body;
+  let err, user;
 
-    [err, user] = await to(authService.authUser(req.body));
-    if (err) return ReE(res, err, 422);
+  [err, user] = await to(authService.authUser(req.body));
+  if (err) return ReE(res, err, 422);
 
-    return ReS(res, { token: user.getJWT(), user: user.toWeb() });
+  return ReS(res, {
+    token: user.getJWT(),
+    user: user.toWeb()
+  });
 }
 module.exports.login = login;
