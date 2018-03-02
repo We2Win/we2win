@@ -78,6 +78,7 @@ module.exports = (sequelize, DataTypes) => {
     if (!this.Password) TE('Password not set');
 
     [err, pw] = await to(bcrypt.hash(pw, bcrypt.genSalt(10)));
+    if (err) TE(err.message, true);
 
     [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
     TE(pw + this.Password + 'done'+pass);
