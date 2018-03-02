@@ -1,4 +1,4 @@
-const Info = require('../models').Info;
+const Content = require('../models').Content;
 const authService = require('./../services/AuthService');
 
 const create = async function (req, res) {
@@ -12,13 +12,12 @@ const create = async function (req, res) {
     } else {
         let err, info;
 
-        [err, info] = await to(authService.createInfo(body));
-        // info = body;
+        [err, content] = await to(authService.createContent(body));
         
         if (err) return ReE(res, err, 422);
         return ReS(res, {
-            message: 'Successfully created new info data.',
-            info: Info.toWeb(),
+            message: 'Successfully created new content data.',
+            content: Content.toWeb(),
         }, 201);
     }
 }
