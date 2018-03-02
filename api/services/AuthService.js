@@ -19,6 +19,8 @@ const createInfo = async function (data) {
     console.log('createInfo()');
     return info;
 }
+module.exports.createInfo = createInfo;
+
 
 const createUser = async function (userInfo) {
     console.log('createUser1()');
