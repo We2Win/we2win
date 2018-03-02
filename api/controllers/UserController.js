@@ -1,3 +1,5 @@
+import { async } from 'q';
+
 const User = require('../models').User;
 const authService = require('./../services/AuthService');
 
@@ -27,7 +29,7 @@ const create = async function (req, res) {
 module.exports.create = create;
 
 const get = async function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
+    // res.setHeader('Content-Type', 'application/json');
     // let user = req;
     
     // console.log('user: ', user);
@@ -39,19 +41,23 @@ const get = async function (req, res) {
 module.exports.get = get;
 
 const update = async function (req, res) {
-    let err, user, data
-    user = req.user;
-    data = req.body;
-    user.set(data);
-
-    [err, user] = await to(user.save());
-    if (err) {
-        if (err.message == 'Validation error') err = 'The email address or phone number is already in use';
-        return ReE(res, err);
-    }
-    return ReS(res, { message: 'Updated User: ' + user.email });
+    return ReS(res, { message: 'hi' });
 }
-module.exports.update = update;
+
+// const update = async function (req, res) {
+//     let err, user, data
+//     user = req.user;
+//     data = req.body;
+//     user.set(data);
+
+//     [err, user] = await to(user.save());
+//     if (err) {
+//         if (err.message == 'Validation error') err = 'The email address or phone number is already in use';
+//         return ReE(res, err);
+//     }
+//     return ReS(res, { message: 'Updated User: ' + user.email });
+// }
+// module.exports.update = update;
 
 const remove = async function (req, res) {
     let user, err;
