@@ -7,7 +7,8 @@
     </header>
 
     <ng-container [ngSwitch]="sub.selected">
-      <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" novalidate>
+      <form [formGroup]="infoForm" id="info" (ngSubmit)="onSubmit()" novalidate>
+      <!-- <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" novalidate> -->
         <li class="form-group">
           <h2>제목</h2>
           <input class="form-control" formControlName="Title" type="text" placeholder="제목을 입력하세요" />
