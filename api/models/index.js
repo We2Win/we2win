@@ -28,12 +28,14 @@ fs
   })
   .forEach(file => {
     var model = sequelize['import'](path.join(__dirname, file));
-    db[tablename[model.name]] = model;
+    var name = tablename[model.name];
+    db[name] = model;
   });
 
 Object.keys(db).forEach(modelName => {
-  if (db[tablename[modelName]].associate) {
-    db[tablename[modelName]].associate(db);
+  let name = tablename[modelName];
+  if (db[name].associate) {
+    db[name].associate(db);
   }
 });
 
