@@ -12,12 +12,12 @@ const create = async function (req, res) {
   } else {
     let err, info;
 
-    [err, content] = await to(authService.createContent(body));
+    [err, info] = await to(authService.createInfo(body));
 
     if (err) return ReE(res, err, 422);
     return ReS(res, {
-      message: 'Successfully created new content data.',
-      content: content.toWeb(),
+      message: 'Successfully created new info data.',
+      info: info.toWeb(),
     }, 201);
   }
 }
@@ -26,11 +26,10 @@ module.exports.create = create;
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Content.findAll()
-    .then((content) => {
-      // console.log('Content: ', content.dataValues);
+  Info.findAll()
+    .then((info) => {
       return ReS(res, {
-        content: content.dataValues
+        info: info.dataValues
       })
     });
 }
@@ -54,14 +53,14 @@ const update = async function (req, res) {
 module.exports.update = update;
 
 const remove = async function (req, res) {
-  let content, err;
-  content = req.content;
+  let info, err;
+  info = req.info;
 
-  [err, content] = await to(content.destroy());
-  if (err) return ReE(res, 'error occured trying to delete content');
+  [err, info] = await to(info.destroy());
+  if (err) return ReE(res, 'error occured trying to delete info');
 
   return ReS(res, {
-    message: 'Deleted content'
+    message: 'Deleted info'
   }, 204);
 }
 module.exports.remove = remove;

@@ -9,7 +9,7 @@ var tablename = {
 }
 
 module.exports = (sequelize, DataTypes) => {
-  var Model = sequelize.define(tablename['Info'], {
+  var Model = sequelize.define('Info', {
     Title: {
       type: DataTypes.STRING,
       allowNull: false,
