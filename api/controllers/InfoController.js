@@ -5,9 +5,6 @@ const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
 
-  console.log(JSON.stringify(req));
-  console.log(body);
-
   if (!body.Title) {
     return ReE(res, '제목을 입력해주세요.');
   } else if (!body.Description) {
