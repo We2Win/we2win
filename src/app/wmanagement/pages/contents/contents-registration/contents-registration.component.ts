@@ -40,6 +40,7 @@ export class ContentsRegistrationComponent implements OnInit {
         .subscribe(
         data => {
           alert('done!');
+          console.log('data');
         },
         error => {
           alert('불러오기에 실패하였습니다.');
