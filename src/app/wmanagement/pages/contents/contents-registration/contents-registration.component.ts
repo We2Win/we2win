@@ -38,7 +38,7 @@ export class ContentsRegistrationComponent implements OnInit {
         // this.userService.try()
         .subscribe(
         data => {
-          alert('done!');
+          alert((data.success) ? 'success!' : 'failed..');
           console.log(data);
         },
         error => {
