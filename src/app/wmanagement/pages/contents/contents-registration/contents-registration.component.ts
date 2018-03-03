@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } 
 import { Info } from '../../../models/info';
 import { InfoService } from '../../../services/info.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contents-registration',
@@ -19,7 +20,8 @@ export class ContentsRegistrationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private infoService: InfoService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
