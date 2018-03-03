@@ -2,9 +2,14 @@
 const bcrypt = require('bcrypt');
 const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
+var tablename = {
+  'User': '`01011803`',
+  'Info': '`02011803`',
+  'Content': 'sample'
+}
 
 module.exports = (sequelize, DataTypes) => {
-  var Model = sequelize.define('Info', {
+  var Model = sequelize.define(tablename['Info'], {
     Title: {
       type: DataTypes.STRING,
       allowNull: false,
