@@ -164,6 +164,7 @@ button {
   float: right;
   padding: 1em;
   transition: background 0.5s;
+  outline: none;
 }
 
 button:hover {
