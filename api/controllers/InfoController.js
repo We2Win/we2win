@@ -28,8 +28,9 @@ const get = async function (req, res) {
 
   Info.findAll ()
     .then((info) => {
+      console.log(JSON.stringify(info));
       return ReS(res, {
-        info: info.dataValues.toWeb(),
+        info: JSON.stringify(info.dataValues),
       })
     });
 }
