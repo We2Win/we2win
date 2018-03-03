@@ -5,7 +5,7 @@ const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
 
-  console.log(JSON.stringify(body));
+  console.log(JSON.stringify(req));
   console.log(body);
 
   if (!body.Title) {
