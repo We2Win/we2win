@@ -27,6 +27,7 @@ export class ContentsRegistrationComponent implements OnInit {
       Title: new FormControl('', [Validators.required, Validators.minLength(4)]),
       Description: new FormControl('', [Validators.required, Validators.minLength(4)]),
     });
+    console.log(this.infoForm);
   }
 
   onSubmit() {

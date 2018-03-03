@@ -6,8 +6,8 @@
       <app-select [type]="'하위 카테고리'" #sub [isSub]="true" [topCategory]="top.selected"></app-select>
     </header>
 
-    <ng-container [ngSwitch]="sub.selected">
-      <form [formGroup]="infoForm" id="info" (ngSubmit)="onSubmit()" novalidate>
+    <!-- <ng-container [ngSwitch]="sub.selected"> -->
+      <form [formGroup]="infoForm" (ngSubmit)="onSubmit();alert('hi');" novalidate>
       <!-- <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" novalidate> -->
         <li class="form-group">
           <h2>제목</h2>
@@ -68,6 +68,7 @@
           <button>미리보기</button>
         </li>
       </form>
+    <ng-container [ngSwitch]="sub.selected">
 
       <form id="news" *ngSwitchCase="'부동산 뉴스'">
         <li>
