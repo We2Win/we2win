@@ -19,8 +19,8 @@ export class InfoService {
     return this.http.get('/api');
   }
   create(data: Info) {
-    // const bodyString = data;
-    const bodyString = JSON.stringify(data);
+    const bodyString = data;
+    // const bodyString = JSON.stringify(data);
     console.log('bodyString: ', bodyString);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
