@@ -26,7 +26,7 @@ module.exports.create = create;
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Info.findAll({})
+  Info.findOne({})
     .then((info) => {
       return ReS(res, {
         info: info.dataValues
