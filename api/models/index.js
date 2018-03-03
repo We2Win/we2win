@@ -33,9 +33,8 @@ fs
   });
 
 Object.keys(db).forEach(modelName => {
-  let name = tablename[modelName];
-  if (db[name].associate) {
-    db[name].associate(db);
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
   }
 });
 
