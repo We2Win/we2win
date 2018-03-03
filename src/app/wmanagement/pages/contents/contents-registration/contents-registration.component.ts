@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Info } from '../../../models/info';
 import { InfoService } from '../../../services/info.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contents-registration',
