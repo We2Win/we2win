@@ -36,26 +36,29 @@ export class ContentsRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-      this.sample = this.http.get<Info>('/api/infos');
-      console.log(this.sample);
+      // this.sample = this.http.get<Info>('/api/infos');
+      // console.log(this.sample);
+    this.infoService.getAll()
+      .subscribe(
+        data => { console.log(data); } );
 
-    // if (this.infoForm.valid) {
-    //   this.info = this.infoForm.value;
-    //   console.log(JSON.stringify(this.info));
-    //   this.infoService.create(this.info)
-    //     // this.userService.try()
-    //     .subscribe(
-    //     data => {
-    //       alert((data) ? 'success!' : 'failed..');
-    //       console.log(data);
-    //     },
-    //     error => {
-    //       alert('불러오기에 실패하였습니다.');
-    //       console.log('error: ', error);
-    //     }
-    //     );
-    // } else {
-    //   alert('양식에 맞게 작성해주세요');
-    // }
+    if (this.infoForm.valid) {
+      this.info = this.infoForm.value;
+      console.log(JSON.stringify(this.info));
+      this.infoService.create(this.info)
+        // this.userService.try()
+        .subscribe(
+        data => {
+          alert((data) ? 'success!' : 'failed..');
+          console.log(data);
+        },
+        error => {
+          alert('불러오기에 실패하였습니다.');
+          console.log('error: ', error);
+        }
+        );
+    } else {
+      alert('양식에 맞게 작성해주세요');
+    }
   }
 }

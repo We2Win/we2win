@@ -13,7 +13,7 @@ export class InfoService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get<Info[]>('/api');
+    return this.http.get<Info[]>('/api/v1/infos');
   }
   getById(id: string) {
     return this.http.get('/api');
@@ -25,7 +25,7 @@ export class InfoService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('/api/v1/infos', bodyString);
+    return this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/infos', bodyString);
     // .map((res: User) => JSON.stringify(res))
     // .catch((error: any) => Observable.throw(error.message));
   }
@@ -36,7 +36,6 @@ export class InfoService {
     return this.http.delete('/api');
   }
   try() {
-    // return this.http.get('http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api/');
     return this.http.get('/api');
   }
 
