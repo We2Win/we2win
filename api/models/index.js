@@ -7,8 +7,8 @@ var Sequelize = require('sequelize');
 var basename = path.basename(__filename);
 var db = {};
 var tablename = {
-  'User': '01011803',
-  'Info': '02011803',
+  'User': '`01011803`',
+  'Info': '`02011803`',
   'Content': 'sample'
 }
 
