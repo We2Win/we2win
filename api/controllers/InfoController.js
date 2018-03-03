@@ -30,7 +30,7 @@ const get = async function (req, res) {
     .then((info) => {
       console.log(JSON.stringify(info));
       return ReS(res, {
-        info: JSON.stringify(info.dataValues),
+        info: JSON.stringify(info),
       })
     });
 }
