@@ -6,6 +6,11 @@ var path = require('path');
 var Sequelize = require('sequelize');
 var basename = path.basename(__filename);
 var db = {};
+var tablename = {
+  'User': '01011803',
+  'Info': '02011803',
+  'Content': 'sample'
+}
 
 const sequelize = new Sequelize(CONFIG.db_name, CONFIG.db_user,
   CONFIG.db_password, {
@@ -23,13 +28,12 @@ fs
   })
   .forEach(file => {
     var model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
-    console.log(JSON.stringify(db), model.name);
+    db[tablename[model.name]] = model;
   });
 
 Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+  if (db[tablename[modelName]].associate) {
+    db[tablename[modelName]].associate(db);
   }
 });
 

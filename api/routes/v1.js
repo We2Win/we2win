@@ -30,6 +30,10 @@ router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
+router.post('/infos', InfoController.create);
+router.get('/infos', InfoController.get);
+router.delete('/infos', InfoController.remove);
+
 // // Company Routes
 // router.post('/companies',
 //     passport.authenticate('jwt', { session: false }), CompanyController.create);
