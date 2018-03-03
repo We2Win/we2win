@@ -29,7 +29,8 @@ export class ContentsRegistrationComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  ngOnSubmit() {
+    alert('doing..');
     if (this.infoForm.valid) {
       this.info = this.infoForm.value;
       console.log(JSON.stringify(this.info));
