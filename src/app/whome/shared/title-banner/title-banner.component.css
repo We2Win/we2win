@@ -7,23 +7,23 @@
   text-align: center;
 }
 
-.info {
+:host(.info) {
   background: url('/assets/img/key_info.png');
 }
 
-.site {
+:host(.site) {
   background: url('/assets/img/key_site.png');
 }
 
-.employee {
+:host(.employee) {
   background: url('/assets/img/key_employee.png');
 }
 
-.employer {
+:host(.employer) {
   background: url('/assets/img/key_employer.png');
 }
 
-.meeting {
+:host(.meeting) {
   background: url('/assets/img/key_meeting.png');
 }
 
