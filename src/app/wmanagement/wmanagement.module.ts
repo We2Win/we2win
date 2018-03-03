@@ -27,13 +27,14 @@ import { ChartComponent } from './micro/chart/chart.component';
 import { AnalysisUserRecordComponent } from './micro/analysis-user-record/analysis-user-record.component';
 import { AnalysisContentsRecordComponent } from './micro/analysis-contents-record/analysis-contents-record.component';
 import { Error404Component } from './pages/error404/error404.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     WmanagementRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     WmanagementComponent,
