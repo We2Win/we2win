@@ -13,7 +13,7 @@ const createInfo = async function (data) {
     console.log('createInfo() Starting');
     
     console.log(JSON.stringify(data));
-    [err, info] = await to (Info.create(data)):
+    [err, info] = await to (Info.create(data));
     if(err) TE('생성 중 오류가 발생했습니다.');
 
     console.log('createInfo() Terminated');
