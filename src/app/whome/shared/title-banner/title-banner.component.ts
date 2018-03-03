@@ -35,7 +35,7 @@ export class TitleBannerComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         const routePath = event.urlAfterRedirects;
         this.updateData(routePath);
-        this._elementRef.nativeElement.querySelector('section').className = this.route[this.dataset['title']];
+        this._elementRef.nativeElement.className = this.route[this.dataset['title']];
         console.log(this.route[this.dataset['title']]);
       }
     });
