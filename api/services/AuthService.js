@@ -1,6 +1,6 @@
 const User = require('./../models').User;
 const Content = require('./../models').Content;
-const Info = require('./../models').Content;
+const Info = require('./../models').Info;
 const validator = require('validator');
 
 const getUniqueKeyFromBody = function (body) {
