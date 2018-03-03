@@ -27,7 +27,6 @@ const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   Info.findAll ({
-    where: { Title: 'hello' }
   })
     .then((info) => {
       return ReS(res, {
