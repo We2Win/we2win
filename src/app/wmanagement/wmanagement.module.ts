@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { WmanagementRoutingModule } from './wmanagement-routing.module';
 import { WmanagementComponent } from './wmanagement.component';
@@ -36,6 +37,7 @@ import { InfoService } from './services/info.service';
     WmanagementRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   declarations: [
     WmanagementComponent,
