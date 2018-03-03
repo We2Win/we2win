@@ -26,7 +26,9 @@ module.exports.create = create;
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Content.findAll()
+  Content.findAll({
+    where: { Title: 'hello' }
+  })
     .then((content) => {
       // console.log('Content: ', content.dataValues);
       return ReS(res, {
