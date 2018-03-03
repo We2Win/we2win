@@ -28,7 +28,7 @@ import { AnalysisUserRecordComponent } from './micro/analysis-user-record/analys
 import { AnalysisContentsRecordComponent } from './micro/analysis-contents-record/analysis-contents-record.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InfoService } from '../whome/services/info.service';
+import { InfoService } from './services/info.service';
 
 @NgModule({
   imports: [
