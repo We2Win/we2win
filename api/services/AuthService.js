@@ -19,6 +19,7 @@ const createInfo = async function (data) {
     console.log('createInfo() Terminated');
     return info;
 }
+module.exports.createInfo = createInfo;
 
 const createContent = async function (data) {
     console.log('createContent1()');
