@@ -31,7 +31,6 @@ export class ContentsRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    alert('doing..');
     if (this.infoForm.valid) {
       this.info = this.infoForm.value;
       console.log(JSON.stringify(this.info));
@@ -40,7 +39,7 @@ export class ContentsRegistrationComponent implements OnInit {
         .subscribe(
         data => {
           alert('done!');
-          console.log('data');
+          console.log(data);
         },
         error => {
           alert('불러오기에 실패하였습니다.');

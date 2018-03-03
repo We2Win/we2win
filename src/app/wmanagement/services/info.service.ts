@@ -18,12 +18,12 @@ export class InfoService {
   getById(id: string) {
     return this.http.get('/api');
   }
-  create(data: Info) {
+  create(data: Info): Observable<any> {
     const bodyString = JSON.stringify(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('/api/v1/infos/', bodyString)
+    return this.http.post('/api/v1/infos', bodyString)
     // .map((res: User) => JSON.stringify(res))
     .catch((error: any) => Observable.throw(error.message));
   }
