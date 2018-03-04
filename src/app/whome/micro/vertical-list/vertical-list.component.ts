@@ -25,9 +25,9 @@ export class VerticalListComponent implements OnInit, OnChanges, AfterViewInit, 
   interval: any;
 
   constructor(
-    _elementRef: ElementRef,
+    private _elementRef: ElementRef,
     private infoService: InfoService
-    ) {
+  ) {
     this._toptitle = this.toptitle;
   }
 
@@ -37,24 +37,22 @@ export class VerticalListComponent implements OnInit, OnChanges, AfterViewInit, 
   }
 
   startCard() {
-    this.intervalId = setInterval(() => {
-      this.dataIndex = (this.dataIndex === this.dataItems.length)
-        ? 0 : this.dataIndex + 1;
+    // this.intervalId = setInterval(() => {
+    //   this.dataIndex = (this.dataIndex === this.dataItems.length)
+    //     ? 0 : this.dataIndex + 1;
 
+    //   this.infoService.loadComponent(
+    //     this.infoCardComponent.viewContainerRef, this.dataItems[this.dataIndex]);
+    // }, 2000);
+
+    // tslint:disable-next-line:forin
+    for (let i in this.dataItems) {
       this.infoService.loadComponent(
-        this.infoCardComponent.viewContainerRef, this.dataItems[this.dataIndex]);
-    }, 2000);
+        this.infoCardComponent.viewContainerRef, this.dataItems[i]);
+    }
   }
 
   ngOnInit() {
-    this.interval = setInterval(() => {
-      console.log(this.records);
-    }, 1000);
-    this.addCards();
-  }
-
-  addCards() {
-
   }
 
   ngOnChanges() {

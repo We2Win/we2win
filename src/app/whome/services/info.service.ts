@@ -31,6 +31,17 @@ export class InfoService {
         card.data = dataItem.data;
     }
 
+    createComponent(
+        viewContainerRef: ViewContainerRef,
+        dataItem: DataItem
+    ) {
+        const componentFactory = this.componentFactoryResolver
+            .resolveComponentFactory(dataItem.component);
+        const componentRef = viewContainerRef.createComponent(componentFactory);
+        const card: Card = <Card>componentRef.instance;
+        card.data = dataItem.data;
+    }
+
     getSample() {
         return [
             new DataItem(InfoCardComponent, {
