@@ -11,6 +11,7 @@ import { Data } from '../../../models/data';
 
 export class InfoMainComponent implements OnInit {
   recentRecords: Object;
+  weeklyRecords: Object;
 
   constructor(private infoService: InfoService) {
   }
@@ -18,6 +19,10 @@ export class InfoMainComponent implements OnInit {
   ngOnInit() {
     this.infoService.getAll().subscribe(
       (data: Data) => { this.recentRecords = data.data; },
+      error => { console.log('error: ', error); }
+    );
+    this.infoService.getAll().subscribe(
+      (data: Data) => { this.weeklyRecords = data.data; },
       error => { console.log('error: ', error); }
     );
   }
