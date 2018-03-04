@@ -14,31 +14,27 @@ export class UserService {
 
   getAll () {
     // return this.http.get<User[]>('/api');
-    return this.http.get('/api')
+    return this.http.get('/api/v1/infos')
       .map(data => { console.log('map: ', data); });
   }
   getById(id: string) {
-    return this.http.get('/api');
+    return this.http.get('/api/v1/infos');
   }
   create(user: User) {
     const bodyString = JSON.stringify(user);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('api/', bodyString);
+    return this.http.post('api/v1/infos', bodyString);
       // .map((res: User) => JSON.stringify(res))
       // .catch((error: any) => Observable.throw(error.message));
   }
   update(user: User) {
-    return this.http.put('/api', user);
+    return this.http.put('/api/v1/infos', user);
   }
 
   delete(id: string) {
-    return this.http.delete('/api');
-  }
-  try() {
-    // return this.http.get('http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api/');
-    return this.http.get('/api');
+    return this.http.delete('/api/v1/infos');
   }
 
   private handleError(error: HttpErrorResponse) {
