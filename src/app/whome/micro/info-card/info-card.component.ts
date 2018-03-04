@@ -7,7 +7,7 @@ import { Info } from '../../models/info';
   styleUrls: ['./info-card.component.css'],
 })
 export class InfoCardComponent implements OnInit {
-  private record: Info = {
+  record: Info = {
     Title: 'No name',
     Description: 'nothing.'
   };

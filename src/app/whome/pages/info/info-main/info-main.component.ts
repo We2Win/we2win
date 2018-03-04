@@ -8,7 +8,7 @@ import { InfoService } from '../../../services/info.service';
   providers: [InfoService]
 })
 export class InfoMainComponent implements OnInit {
-  private recentRecords;
+  recentRecords;
 
   constructor(private infoService: InfoService) {
   }

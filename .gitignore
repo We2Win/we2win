@@ -44,3 +44,4 @@ Thumbs.db
 
 # Sercurity Infos
 /api/.env
+/api/node_modules
