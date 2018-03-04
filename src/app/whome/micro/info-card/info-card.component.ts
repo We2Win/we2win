@@ -12,10 +12,10 @@ export class InfoCardComponent implements OnInit, Card {
     Title: 'No name',
     Description: 'nothing.'
   };
-  @Input() level: string;
+  @Input() level = 'standard';
 
   // for Card interface
-  @Input() data: Card;
+  @Input() card: Card;
   // data;
 
   constructor(
@@ -25,9 +25,13 @@ export class InfoCardComponent implements OnInit, Card {
   }
 
   ngOnInit() {
-    this.record.Title = this.data.data.Title;
+    // this.record.Title = this.data.data.Title;
     this.record.Description = 'This is testing description';
     // console.log('records from vertical to info-card: ', this.records);
+
+    setTimeout(() => {
+      this.record.Title = this.card.data.Title;
+    }, 3000);
 
   }
 
