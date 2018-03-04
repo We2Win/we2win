@@ -19,7 +19,7 @@ const create = async function (req, res) {
     if (err) return ReE(res, err, 422);
     return ReS(res, {
       message: 'Successfully created new info data.',
-      info: info.toWeb(),
+      data: info.toWeb(),
     }, 201);
   }
 }
@@ -32,7 +32,7 @@ const get = async function (req, res) {
     .then((info) => {
       console.log(JSON.stringify(info));
       return ReS(res, {
-        info: info,
+        data: info,
       })
     });
 }
