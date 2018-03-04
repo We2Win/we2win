@@ -15,7 +15,7 @@ export class InfoCardComponent implements OnInit, Card {
   @Input() level = 'standard';
 
   // for Card interface
-  @Input() card: Card;
+  @Input() data: any;
   // data;
 
   constructor(
@@ -30,7 +30,7 @@ export class InfoCardComponent implements OnInit, Card {
     // console.log('records from vertical to info-card: ', this.records);
 
     setTimeout(() => {
-      this.record.Title = this.card.data.Title;
+      this.record.Title = this.data.Title;
     }, 3000);
 
   }
