@@ -32,7 +32,8 @@ export class UserService {
   update(user: User) {
     return this.http.put('/api', user);
   }
-  delete(id: string); {
+
+  delete(id: string) {
     return this.http.delete('/api');
   }
   try() {
