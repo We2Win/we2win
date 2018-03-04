@@ -7,13 +7,18 @@ import { Info } from '../../models/info';
   styleUrls: ['./info-card.component.css'],
 })
 export class InfoCardComponent implements OnInit {
-  @Input() record: Info;
+  private record: Info = {
+    Title: 'No name',
+    Description: 'nothing.'
+  };
   @Input() level: string;
+
   constructor(private _elementRef: ElementRef) {
   }
 
   ngOnInit() {
-    // console.log('pla: ', this.level);
+    this.record.Title = 'Testing';
+    this.record.Description = 'This is testing description';
   }
 
   bookmark() {

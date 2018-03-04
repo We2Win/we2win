@@ -8,7 +8,7 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
 export class VerticalListComponent implements OnInit {
   _toptitle: String;
 
-  @Input() toptitle = 'hi';
+  @Input() toptitle = '무제';
 
   constructor(el: ElementRef) {
     this._toptitle = this.toptitle;

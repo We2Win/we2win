@@ -6,9 +6,11 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const passport = require('passport');
 const v1 = require('./routes/v1');
+const cors = require('cors');
 
 const app = express();
 
+// CORS 설정
 // print the request log on console
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extend: false}));
@@ -30,27 +32,28 @@ if(CONFIG.app === 'We2Win') {
     // models.sequelize.sync({ force: true });
 }
 
-// CORS
-app.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods',
-    'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers',
-    'X-Requested-With, content-type, Authorization, Content-Type');
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    // Pass to next layer of middleware
-    next();
-});
-console.log('app.js > routing');
+app.use(cors());
+
+// // CORS
+// app.use(function (req, res, next) {
+//     // Website you wish to allow to connect
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     // Request methods you wish to allow
+//     res.setHeader('Access-Control-Allow-Methods',
+//     'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//     // Request headers you wish to allow
+//     res.setHeader('Access-Control-Allow-Headers',
+//     'X-Requested-With, content-type, Authorization, Content-Type');
+//     // Set to true if you need the website to include cookies in the requests sent
+//     // to the API (e.g. in case you use sessions)
+//     res.setHeader('Access-Control-Allow-Credentials', true);
+//     // Pass to next layer of middleware
+//     next();
+// });
+
 // Setup Routes and handle errors
 app.use('/api/v1/', v1);
 
-console.log('app.js > /');
 app.use('/api/', function (req, res) {
     res.statusCode = 200;//send the appropriate status code
     res.json({ status: "success", message: "Parcel Pending API", data: {} })
