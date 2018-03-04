@@ -15,7 +15,7 @@ export class InfoMainComponent implements OnInit {
 
   ngOnInit() {
     this.infoService.getAll().subscribe(
-      data => { this.recentRecords = data.data;  console.log(this.recentRecords); },
+      data => { this.recentRecords = data;  console.log(this.recentRecords); },
       error => { console.log('error: ', error); }
     );
   }
