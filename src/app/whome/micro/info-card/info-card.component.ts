@@ -15,7 +15,7 @@ export class InfoCardComponent implements OnInit, Card {
   @Input() level: string;
 
   // for Card interface
-  @Input() data: any;
+  @Input() data: Card;
   // data;
 
   constructor(
@@ -25,9 +25,10 @@ export class InfoCardComponent implements OnInit, Card {
   }
 
   ngOnInit() {
-    this.record.Title = 'Testing';
+    this.record.Title = this.data.data.Title;
     this.record.Description = 'This is testing description';
     // console.log('records from vertical to info-card: ', this.records);
+
   }
 
   bookmark() {
