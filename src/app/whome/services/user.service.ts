@@ -13,7 +13,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAll () {
-    return this.http.get<User[]>('/api');
+    // return this.http.get<User[]>('/api');
+    return this.http.get('/api')
+      .map(data => { console.log('map: ', data); });
   }
   getById(id: string) {
     return this.http.get('/api');
@@ -30,7 +32,7 @@ export class UserService {
   update(user: User) {
     return this.http.put('/api', user);
   }
-  delete(id: string) {
+  delete(id: string); {
     return this.http.delete('/api');
   }
   try() {
