@@ -25,13 +25,13 @@ export class InfoCardComponent implements OnInit, Card {
   }
 
   ngOnInit() {
-    // this.record.Title = this.data.data.Title;
-    this.record.Description = 'This is testing description';
+    this.record.Title = this.data.Title;
+    this.record.Description = this.data.Description;
     // console.log('records from vertical to info-card: ', this.records);
 
-    setTimeout(() => {
-      this.record.Title = this.data.Title;
-    }, 3000);
+    // setTimeout(() => {
+    //   this.record.Title = this.data.Title;
+    // }, 3000);
 
   }
 
