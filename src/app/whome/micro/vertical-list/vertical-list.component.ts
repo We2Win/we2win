@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-vertical-list',
@@ -16,7 +17,7 @@ export class VerticalListComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(console.log('records form parent to vertical-list: ', this.records), 1000);
+    setInterval(() => { console.log('records form parent to vertical-list: ', this.records); }, 1000);
   }
 
 }
