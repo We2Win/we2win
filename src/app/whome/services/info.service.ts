@@ -13,10 +13,12 @@ export class InfoService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<Info[]>('/api/v1/infos');
+        // return this.http.get<Info[]>('/api/v1/infos')
+        return this.http.get('/api/v1/infos')
+            .map(data => { console.log('map: ', data); });
     }
     getById(id: string) {
-        return this.http.get('/api');
+        return this.http.get('/api/v1/infos');
     }
 
     private handleError(error: HttpErrorResponse) {
