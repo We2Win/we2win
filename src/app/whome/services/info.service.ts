@@ -14,8 +14,7 @@ export class InfoService {
 
     getAll() {
         // return this.http.get<Info[]>('/api/v1/infos')
-        return this.http.get('/api/v1/infos')
-            .map(data => { console.log('map: ', data); });
+        return this.http.get('/api/v1/infos');
     }
     getById(id: string) {
         return this.http.get('/api/v1/infos');
