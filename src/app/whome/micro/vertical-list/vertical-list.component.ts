@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-vertical-list',
   templateUrl: './vertical-list.component.html',
   styleUrls: ['./vertical-list.component.css']
 })
-export class VerticalListComponent implements OnInit {
+export class VerticalListComponent implements OnInit, OnChanges {
   _toptitle: String;
 
   @Input() toptitle = '무제';
@@ -18,7 +18,7 @@ export class VerticalListComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngOnChange() {
+  ngOnChanges() {
     console.log('records at vertical-list: ', this.records);
   }
 
