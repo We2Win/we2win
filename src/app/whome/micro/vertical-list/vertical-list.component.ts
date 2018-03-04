@@ -17,7 +17,10 @@ export class VerticalListComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(() => { console.log('records form parent to vertical-list: ', this.records); }, 1000);
+  }
+
+  ngOnChange() {
+    console.log('records at vertical-list: ', this.records);
   }
 
 }
