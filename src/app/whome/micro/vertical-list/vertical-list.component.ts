@@ -1,9 +1,8 @@
 import { Component, OnInit, OnChanges, Input, ElementRef, ViewContainerRef } from '@angular/core';
-import { AfterViewInit, OnDestroy } from '@angular/core/';
+import { AfterViewInit, OnDestroy, ViewChild } from '@angular/core/';
 import { Info } from '../../models/info';
 import { DataItem } from '../../models/data-item';
 import { InfoService } from '../../services/info.service';
-import { ViewChild } from '@angular/core/src/metadata/di';
 import { InfoCardComponent } from '../info-card/info-card.component';
 
 @Component({
@@ -12,6 +11,7 @@ import { InfoCardComponent } from '../info-card/info-card.component';
   styleUrls: ['./vertical-list.component.css']
 })
 export class VerticalListComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+
   @ViewChild(InfoCardComponent)
   private infoCardComponent: InfoCardComponent;
 
