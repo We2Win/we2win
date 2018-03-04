@@ -28,7 +28,7 @@ export class InfoService {
         viewContainerRef.clear();
         const componentRef = viewContainerRef.createComponent(componentFactory);
         const card: Card = <Card>componentRef.instance;
-        card.data = DataItem.data;
+        card.data = dataItem.data;
     }
 
     getSample() {

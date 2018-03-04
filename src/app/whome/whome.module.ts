@@ -122,6 +122,7 @@ import { InfoService } from './services/info.service';
     InfoDetailComponent,
     ChartComponent,
     NotifierComponent,
+    InfoCardComponent
   ],
   entryComponents: [
     InfoCardComponent

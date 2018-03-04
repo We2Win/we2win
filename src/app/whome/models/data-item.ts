@@ -4,5 +4,5 @@ export class DataItem {
     constructor(
         public component: Type<any>,
         public data: any
-    ) {}
+    ) { }
 }
