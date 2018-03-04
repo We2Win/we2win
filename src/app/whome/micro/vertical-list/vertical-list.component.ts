@@ -47,7 +47,7 @@ export class VerticalListComponent implements OnInit, OnChanges, AfterViewInit, 
 
     // tslint:disable-next-line:forin
     for (let i in this.dataItems) {
-      this.infoService.loadComponent(
+      this.infoService.createComponent(
         this.infoCardComponent.viewContainerRef, this.dataItems[i]);
     }
   }
