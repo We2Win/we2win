@@ -59,6 +59,7 @@ import { UserService } from './services/user.service';
 import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
 import { ChartComponent } from './micro/chart/chart.component';
 import { NotifierComponent } from './micro/notifier/notifier.component';
+import { InfoService } from './services/info.service';
 
 
 @NgModule({
@@ -106,7 +107,6 @@ import { NotifierComponent } from './micro/notifier/notifier.component';
     MeetingCardComponent,
     MeetingDetailComponent,
     SiteCardComponent,
-    InfoCardComponent,
     LevelDirective,
     ReportDetailComponent,
     NewsDetailComponent,
@@ -123,10 +123,14 @@ import { NotifierComponent } from './micro/notifier/notifier.component';
     ChartComponent,
     NotifierComponent,
   ],
+  entryComponents: [
+    InfoCardComponent
+  ],
   providers: [
     PageInfoService,
     AuthService,
-    UserService
+    UserService,
+    InfoService
   ]
 })
 export class WhomeModule {

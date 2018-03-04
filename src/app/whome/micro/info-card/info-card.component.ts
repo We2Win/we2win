@@ -1,20 +1,27 @@
-import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
 import { Info } from '../../models/info';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-info-card',
   templateUrl: './info-card.component.html',
   styleUrls: ['./info-card.component.css'],
 })
-export class InfoCardComponent implements OnInit {
-  record: Info = {
+export class InfoCardComponent implements OnInit, Card {
+  @Input() record: Info = {
     Title: 'No name',
     Description: 'nothing.'
   };
   @Input() level: string;
-  // @Input() records;
 
-  constructor(private _elementRef: ElementRef) {
+  // for Card interface
+  @Input() data: any;
+  // data;
+
+  constructor(
+    private _elementRef: ElementRef,
+    public viewContainerRef: ViewContainerRef
+  ) {
   }
 
   ngOnInit() {
