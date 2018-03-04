@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
 export class RankingListComponent implements OnInit {
   @Input() toptitle = 'noname';
   @Input() more;
+  @Input() records;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    console.log('records form parent to ranking-list: ', this.records);
   }
 
   onClickMore() {
