@@ -12,6 +12,7 @@ export class InfoCardComponent implements OnInit {
     Description: 'nothing.'
   };
   @Input() level: string;
+  @Input() records;
 
   constructor(private _elementRef: ElementRef) {
   }
@@ -19,6 +20,7 @@ export class InfoCardComponent implements OnInit {
   ngOnInit() {
     this.record.Title = 'Testing';
     this.record.Description = 'This is testing description';
+    console.log('records from vertical to info-card: ', this.records);
   }
 
   bookmark() {

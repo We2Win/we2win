@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoService } from '../../../services/info.service';
+import { Data } from '../../../models/data';
 
 @Component({
   selector: 'app-info-main',
@@ -7,15 +8,16 @@ import { InfoService } from '../../../services/info.service';
   styleUrls: ['./info-main.component.css'],
   providers: [InfoService]
 })
+
 export class InfoMainComponent implements OnInit {
-  recentRecords;
+  recentRecords: Object;
 
   constructor(private infoService: InfoService) {
   }
 
   ngOnInit() {
     this.infoService.getAll().subscribe(
-      data => { this.recentRecords = data;  console.log(this.recentRecords); },
+      (data: Data) => { this.recentRecords = data.data; },
       error => { console.log('error: ', error); }
     );
   }

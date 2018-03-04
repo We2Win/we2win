@@ -9,13 +9,14 @@ export class VerticalListComponent implements OnInit {
   _toptitle: String;
 
   @Input() toptitle = '무제';
+  @Input() records;
 
-  constructor(el: ElementRef) {
+  constructor( _elementRef: ElementRef) {
     this._toptitle = this.toptitle;
   }
 
   ngOnInit() {
-
+    console.log('records form parent to vertical-list: ', this.records);
   }
 
 }
