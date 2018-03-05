@@ -1,3 +1,5 @@
+import { read } from 'fs';
+
 require('./config/config');
 require('./global_functions');
 
@@ -5,6 +7,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const passport = require('passport');
+const multer = require('multer');
 const v1 = require('./routes/v1');
 const cors = require('cors');
 
@@ -16,6 +19,24 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
+
+
+const DIR = '/uploads/';
+// const upload = multer({dest: DIR}).single('photo');
+const storage = multer.diskStorage({
+    destination: function(request, file, callback) {
+        callback(null, __dirname + DIR);
+    },
+    filename: function(request, file, callback) {
+        let dateTimeStamp = Date.now();
+        let originalFileName = file.originalname;
+
+        originalFileName = originalFileName.split('.');
+        let originalName = originalFileName[originalFileName.length - 1];
+
+        callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
+    }
+})
 
 
 const models = require('./models');

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ContentsService } from '../../../services/contents.service';
+import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 @Component({
   selector: 'app-contents-registration',
@@ -24,6 +25,11 @@ export class ContentsRegistrationComponent implements OnInit {
   employeeForm: FormGroup;
 
   private forms: object;
+  // private symbols: object;
+  public uploader: FileUploader = new FileUploader({
+    url: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/',
+    // itemAlias: 'photo'
+  });
 
   private selectedData = {
     type: '',
@@ -74,7 +80,10 @@ export class ContentsRegistrationComponent implements OnInit {
       'I-around-size': new FormControl('', [Validators.required]),
       'I-around-amount': new FormControl('', [Validators.required]),
       'I-report': new FormControl('', [Validators.required]),
-      // 'I-image': new FormControl('', [Validators.required]),
+      'I-image': new FormControl('', [Validators.required]),
+      'I-subimage1': new FormControl(''),
+      'I-subimage2': new FormControl(''),
+      'I-subimage3': new FormControl(''),
     });
     this.siteForm = new FormGroup({
       'S-type': new FormControl('', [Validators.required]),
@@ -90,28 +99,29 @@ export class ContentsRegistrationComponent implements OnInit {
       'S-around-size': new FormControl('', [Validators.required]),
       'S-around-amount': new FormControl('', [Validators.required]),
       'S-report': new FormControl('', [Validators.required]),
-      // 'S-image': new FormControl('', [Validators.required]),
+      'S-image': new FormControl('', [Validators.required]),
+      'S-subImage1': new FormControl(''),
+      'S-subImage2': new FormControl(''),
+      'S-subImage3': new FormControl(''),
     });
     this.newsForm = new FormGroup({
       'N-title': new FormControl('', [Validators.required]),
-      // 'N-image': new FormControl('', [Validators.required]),
+      'N-image': new FormControl('', [Validators.required]),
       'N-sub-title': new FormControl('', [Validators.required]),
       'N-sub-description': new FormControl('', [Validators.required]),
       'N-analysis-title': new FormControl('', [Validators.required]),
       'N-analysis-description': new FormControl('', [Validators.required]),
     });
     this.lawForm = new FormGroup({
-      'L-id': new FormControl('', [Validators.required]),
       'L-title': new FormControl('', [Validators.required]),
       'L-summary': new FormControl('', [Validators.required]),
       'L-url': new FormControl('', [Validators.required]),
-      // 'L-file': new FormControl('', [Validators.required]),
+      'L-file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
-      'M-id': new FormControl('', [Validators.required]),
       'M-title': new FormControl('', [Validators.required]),
       'M-summary': new FormControl('', [Validators.required]),
-      // 'M-poster': new FormControl('', [Validators.required]),
+      'M-image': new FormControl('', [Validators.required]),
       'M-host': new FormControl('', [Validators.required]),
       'M-apply-start': new FormControl('', [Validators.required]),
       'M-apply-end': new FormControl('', [Validators.required]),
@@ -121,9 +131,9 @@ export class ContentsRegistrationComponent implements OnInit {
       'M-personnel': new FormControl('', [Validators.required]),
       'M-cost': new FormControl('', [Validators.required]),
       'M-detail': new FormControl('', [Validators.required]),
+      'M-material': new FormControl('', [Validators.required]),
     });
     this.employerForm = new FormGroup({
-      'R-id': new FormControl('', [Validators.required]),
       'R-part-name': new FormControl('', [Validators.required]),
       'R-part-description': new FormControl('', [Validators.required]),
       'R-age-start': new FormControl('', [Validators.required]),
@@ -142,10 +152,10 @@ export class ContentsRegistrationComponent implements OnInit {
       'R-CP': new FormControl('', [Validators.required]),
     });
     this.employeeForm = new FormGroup({
-      'E-id': new FormControl('', [Validators.required]),
       'E-name': new FormControl('', [Validators.required]),
       'E-sex': new FormControl('', [Validators.required]),
-      'E-age': new FormControl('', [Validators.required]),
+      'E-age-start': new FormControl('', [Validators.required]),
+      'E-age-end': new FormControl('', [Validators.required]),
       'E-CP': new FormControl('', [Validators.required]),
       'E-HP': new FormControl('', [Validators.required]),
       'E-email': new FormControl('', [Validators.required]),
@@ -174,16 +184,36 @@ export class ContentsRegistrationComponent implements OnInit {
       '구인': this.employerForm,
       '구직': this.employeeForm
     };
+
+    // this.symbols = {
+    //   '리포트': 'R',
+    //   '부동산 뉴스': 'N',
+    //   '법률 및 정책': 'L',
+    //   '아파트': 'S',
+    //   '오피스텔': 'S',
+    //   '상가/호텔': 'S',
+    //   '토지': 'S',
+    //   '오프라인 모임': 'M',
+    //   '구인': 'R',
+    //   '구직': 'E',
+    // };
+
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('ImageUpload:uploaded: ', item, status, response);
+      // console.log(JSON.parse(response));
+    };
   }
 
-  onFileChange(event) {
+  onFileChange(event, selector) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files.item(0);
       reader.readAsDataURL(file);
       reader.onload = () => {
         console.log(file);
-        this.infoForm.addControl('I-image', new FormControl({
+        const sType = this.selectedData.type;
+        this.forms[sType].setControl(selector, new FormControl({
           filename: file.name,
           filetype: file.type,
           value: reader.result.split(',')[1]
@@ -193,59 +223,14 @@ export class ContentsRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.forms[this.selectedData.type]);
+    // console.log(this.forms[this.selectedData.type]);
     if (this.forms[this.selectedData.type].valid) {
       this.selectedData.body = this.forms[this.selectedData.type].value;
       console.log(this.selectedData);
-
-      this.postData(this.selectedData);
+      // this.postData(this.selectedData);
     } else {
       alert('양식이 모두 입력되지 않았습니다.');
     }
-
-    // this.sample = this.http.get<Info>('/api/infos');
-    // console.log(this.sample);
-    // this.infoService.getAll()
-    //   .subscribe(
-    //     data => { console.log(data); } );
-
-
-    // if (!this.sub.selected) {
-    //   alert('세부 카테고리가 선택되지 않았습니다.');
-    //   return -1;
-    // }
-
-    // if (this.top.selected === '분양 현장') {
-    //   this.siteForm.addControl('S-type', new FormControl(this.sub.selected));
-    // } else {
-    //   switch (this.sub.selected) {
-    //     case '리포트':
-    //       console.log(this.infoForm.value);
-    //       this.postData(this.infoForm);
-    //       break;
-    //     case '뉴스':
-    //       console.log(this.newsForm.value);
-    //       this.postData(this.newsForm);
-    //       break;
-    //     case '법률 및 정책':
-    //       console.log(this.lawForm.value);
-    //       this.postData(this.lawForm);
-    //       break;
-    //     case '오프라인 모임':
-    //       console.log(this.meetingForm.value);
-    //       this.postData(this.meetingForm);
-    //       break;
-    //     case '구인':
-    //       console.log(this.employerForm.value);
-    //       this.postData(this.employerForm);
-    //       break;
-    //     case '구직':
-    //       console.log(this.employeeForm.value);
-    //       this.postData(this.employeeForm);
-    //       break;
-    //   }
-    // }
-
   }
 
   postData(selectedData) {

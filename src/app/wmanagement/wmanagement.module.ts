@@ -31,6 +31,7 @@ import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoService } from './services/info.service';
 import { ContentsService } from './services/contents.service';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload/ng2-file-upload';
 
 @NgModule({
   imports: [
@@ -66,6 +67,8 @@ import { ContentsService } from './services/contents.service';
     AnalysisUserRecordComponent,
     AnalysisContentsRecordComponent,
     Error404Component,
+    FileSelectDirective,
+    FileDropDirective,
   ],
   providers: [
     InfoService,

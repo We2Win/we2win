@@ -3,7 +3,6 @@ const router = express.Router();
 
 const UserController = require('./../controllers/UserController');
 const ContentController = require('./../controllers/ContentController');
-const InfoController = require('./../controllers/InfoController');
 // const CompanyController = require('./../controllers/CompanyController');
 // const HomeController = require('./../controllers/HomeController');
 
@@ -30,11 +29,6 @@ router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
 router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
-
-router.post('/infos', InfoController.create);
-router.get('/infos', InfoController.get);
-router.delete('/infos', InfoController.remove);
-
 
 // // Company Routes
 // router.post('/companies',
