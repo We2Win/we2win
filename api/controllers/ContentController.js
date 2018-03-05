@@ -10,6 +10,8 @@ const create = async function (req, res) {
   [err, content] = await to(authService.createContent(body));
 
   if (err) return ReE(res, err, 422);
+
+  content = JSON.stringify(content);
   return ReS(res, {
     message: 'Successfully created new content data.',
     body: content,
