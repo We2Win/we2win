@@ -89,16 +89,16 @@ export class InfoService {
         ];
     }
 
-    getAll() {
-        // return this.http.get<Info[]>('/api/v1/infos')
-        return this.http.get('/api/v1/infos')
-            .map(data =>
-                new DataItem(InfoCardComponent, data)
-            );
-    }
-    getById(id: string) {
-        return this.http.get('/api/v1/infos');
-    }
+    // getAll() {
+    //     // return this.http.get<Info[]>('/api/v1/infos')
+    //     return this.http.get('/api/v1/infos')
+    //         .map(data =>
+    //             new DataItem(InfoCardComponent, data)
+    //         );
+    // }
+    // getById(id: string) {
+    //     return this.http.get('/api/v1/infos');
+    // }
 
     private handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {

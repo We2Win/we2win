@@ -60,7 +60,7 @@ export class VerticalListComponent implements OnInit, OnChanges, AfterViewInit, 
   }
 
   ngOnDestroy() {
-    clearInterval(this.intervalId);
+    // clearInterval(this.intervalId);
   }
 
 }

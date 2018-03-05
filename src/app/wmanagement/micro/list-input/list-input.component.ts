@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListInputComponent implements OnInit {
   @Input() type: string;
+  @Input() controlName: string;
 
   categories: Object = {
     '평형': ['40평형', '45평형', '50평형', '60평형', '70평형'],

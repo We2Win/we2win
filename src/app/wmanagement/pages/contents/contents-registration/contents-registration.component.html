@@ -6,32 +6,32 @@
       <app-select [type]="'하위 카테고리'" #sub [isSub]="true" [topCategory]="top.selected"></app-select>
     </header>
 
-    <!-- <ng-container [ngSwitch]="sub.selected"> -->
-      <form [formGroup]="infoForm" (ngSubmit)="onSubmit()" novalidate>
-      <!-- <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" novalidate> -->
+    <ng-container [ngSwitch]="sub.selected">
+      <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" novalidate>
         <li class="form-group">
           <h2>제목</h2>
-          <input class="form-control" formControlName="Title" type="text" placeholder="제목을 입력하세요" />
+          <input class="form-control" formControlName="I-title" type="text" placeholder="제목을 입력하세요" />
         </li>
         <li class="form-group">
           <h2>요약 정보</h2>
-          <textarea class="form-control" formControlName="Description" placeholder="요약 정보를 입력하세요"></textarea>
+          <textarea class="form-control" formControlName="I-summary" placeholder="요약 정보를 입력하세요"></textarea>
         </li>
-        <!-- <li>
+        <li>
           <h2>분양 오픈일</h2>
-          <app-date-input [type]="'duration'"></app-date-input>
+          <input type="date" formControlName="I-open-start" placeholder="이름">
+          <input type="date" formControlName="I-open-end" placeholder="이름">
           <app-button>일정 등록</app-button>
         </li>
         <li>
           <h2>분양가</h2>
-          <input type="number">
+          <input type="number" formControlName="I-ammount" step="10000">
           <h3>원</h3>
           <span class="blank"></span>
         </li>
         <li>
           <h2>담당자 정보</h2>
-          <input type="text">
-          <input type="text">
+          <input type="text" formControlName="I-manager-name" placeholder="이름">
+          <input type="text" formControlName="I-manager-contact" placeholder="연락처">
           <span class="blank"></span>
         </li>
         <li>
@@ -40,37 +40,105 @@
             <div class="wrapper">
               <h4>#1 현재 시세</h4>
               <span class="listContainer">
-                <app-list-input [type]="'평형'"></app-list-input>
-                <app-list-input [type]="'시세'"></app-list-input>
+                <input type="text" formControlName="I-current-size">
+                <input type="text" formControlName="I-current-amount">
               </span>
             </div>
             <div class="wrapper">
               <h4>#2 주위 시세</h4>
               <span class="listContainer">
-                <app-list-input [type]="'평형'"></app-list-input>
-                <app-list-input [type]="'시세'"></app-list-input>
+                <input type="text" formControlName="I-around-size">
+                <input type="text" formControlName="I-around-amount">
               </span>
             </div>
           </div>
         </li>
         <li>
           <h2>현장 리포트</h2>
-          <textarea placeholder="상세 정보를 입력하세요"></textarea>
+          <textarea placeholder="상세 정보를 입력하세요" formControlName="I-report"></textarea>
         </li>
         <li>
           <h2>현장 사진</h2>
-          <input type="file">
-          <app-button>사진 등록</app-button>
+          <!-- <input type="file" formControlName="I-image"> -->
+          <input type="file" (change)="onFileChange($event)" accept="image/*" #fileInput>
+          <app-button (click)="fileInput.click()">사진 등록</app-button>
           <span class="blank"></span>
-        </li> -->
+        </li>
+
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
           <button>미리보기</button>
         </li>
       </form>
-    <ng-container [ngSwitch]="sub.selected">
 
-      <form id="news" *ngSwitchCase="'부동산 뉴스'">
+      <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장'" (ngSubmit)="onSubmit()" novalidate>
+        <li class="form-group">
+          <input class="form-control" formControlName="S-type" type="hidden"/>
+        </li>
+        <li class="form-group">
+          <h2>제목</h2>
+          <input class="form-control" formControlName="S-title" type="text" placeholder="제목을 입력하세요" />
+        </li>
+        <li class="form-group">
+          <h2>요약 정보</h2>
+          <textarea class="form-control" formControlName="S-summary" placeholder="요약 정보를 입력하세요"></textarea>
+        </li>
+        <li>
+          <h2>분양 오픈일</h2>
+          <input type="date" formControlName="S-open-start" placeholder="이름">
+          <input type="date" formControlName="S-open-end" placeholder="이름">
+          <app-button>일정 등록</app-button>
+        </li>
+        <li>
+          <h2>분양가</h2>
+          <input type="number" formControlName="S-ammount" step="10000">
+          <h3>원</h3>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2>담당자 정보</h2>
+          <input type="text" formControlName="S-manager-name" placeholder="이름">
+          <input type="text" formControlName="S-manager-contact" placeholder="연락처">
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2>현장 시세</h2>
+          <div class="container">
+            <div class="wrapper">
+              <h4>#1 현재 시세</h4>
+              <span class="listContainer">
+                <input type="text" formControlName="S-current-size">
+                <input type="text" formControlName="S-current-amount">
+              </span>
+            </div>
+            <div class="wrapper">
+              <h4>#2 주위 시세</h4>
+              <span class="listContainer">
+                <input type="text" formControlName="S-around-size">
+                <input type="text" formControlName="S-around-amount">
+              </span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h2>현장 리포트</h2>
+          <textarea placeholder="상세 정보를 입력하세요" formControlName="S-report"></textarea>
+        </li>
+        <li>
+          <h2>현장 사진</h2>
+          <!-- <input type="file" formControlName="S-image"> -->
+          <input type="file" (change)="onFileChange($event)" accept="image/*" #fileInput>
+          <app-button (click)="fileInput.click()">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+
+        <li class="submitBar">
+          <button [type]="'submit'">등록하기</button>
+          <button>미리보기</button>
+        </li>
+      </form>
+
+      <form [formGroup]="newsForm" id="news" *ngSwitchCase="'부동산 뉴스'" (ngSubmit)="onSubmit()" novalidate>
         <li>
           <h2>컨텐츠 제목</h2>
           <input type="text" placeholder="제목을 입력하세요" />
@@ -97,12 +165,12 @@
           <input type="text" placeholder="뉴스 분석내용을 입력하세요">
         </li>
         <li class="submitBar">
-          <button>등록하기</button>
+          <button [type]="'submit'">등록하기</button>
           <button>미리보기</button>
         </li>
       </form>
 
-      <form id="law" *ngSwitchCase="'법률 및 정책'">
+      <form id="law" *ngSwitchCase="'법률 및 정책'" (ngSubmit)="onSubmit()" novalidate>
         <li>
           <h2>제목</h2>
           <input type="text" placeholder="제목을 입력하세요" />
@@ -129,12 +197,12 @@
           <app-button>사진 업로드</app-button>
         </li>
         <li class="submitBar">
-          <button>등록하기</button>
+          <button [type]="'submit'">등록하기</button>
           <button>미리보기</button>
         </li>
       </form>
 
-      <form id="meeting" *ngSwitchCase="'오프라인 모임'">
+      <form id="meeting" *ngSwitchCase="'오프라인 모임'" (ngSubmit)="onSubmit()" novalidate>
         <li>
           <h2>제목</h2>
           <input type="text" placeholder="제목을 입력하세요" />
@@ -161,7 +229,7 @@
           <app-button>사진 업로드</app-button>
         </li>
         <li class="submitBar">
-          <button>등록하기</button>
+          <button [type]="'submit'">등록하기</button>
           <button>미리보기</button>
         </li>
       </form>
