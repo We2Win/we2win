@@ -8,13 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { DbConnectService } from './db-connect.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FileSelectDirective,
-    // FileDropDirective,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +21,7 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
   ],
   providers: [DbConnectService],
   bootstrap: [AppComponent]
