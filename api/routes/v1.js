@@ -35,6 +35,7 @@ router.post('/infos', InfoController.create);
 router.get('/infos', InfoController.get);
 router.delete('/infos', InfoController.remove);
 
+
 // // Company Routes
 // router.post('/companies',
 //     passport.authenticate('jwt', { session: false }), CompanyController.create);

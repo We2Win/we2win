@@ -5,21 +5,15 @@ const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
 
-  if (!body.Title) {
-    return ReE(res, '제목을 입력해주세요.');
-  } else if (!body.Description) {
-    return ReE(res, '설명을 입력해주세요.');
-  } else {
-    let err, info;
+  let err, content;
 
-    [err, content] = await to(authService.createContent(body));
+  [err, content] = await to(authService.createContent(body));
 
-    if (err) return ReE(res, err, 422);
-    return ReS(res, {
-      message: 'Successfully created new content data.',
-      content: content.toWeb(),
-    }, 201);
-  }
+  if (err) return ReE(res, err, 422);
+  return ReS(res, {
+    message: 'Successfully created new content data.',
+    body: content.toWeb(),
+  }, 201);
 }
 module.exports.create = create;
 
@@ -27,8 +21,10 @@ const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   Content.findAll({
-    where: { Title: 'hello' }
-  })
+      where: {
+        Title: 'hello'
+      }
+    })
     .then((content) => {
       // console.log('Content: ', content.dataValues);
       return ReS(res, {

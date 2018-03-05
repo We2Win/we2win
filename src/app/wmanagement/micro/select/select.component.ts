@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChange, Input, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChange, Input, Output, EventEmitter } from '@angular/core';
 import { ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
@@ -10,6 +10,7 @@ export class SelectComponent implements OnInit, OnChanges {
   @Input() type: string;
   @Input() isSub: boolean;
   @Input() topCategory: string;
+  @Output() change = new EventEmitter();
   selected: string;
 
   categories: Object = {
@@ -53,11 +54,12 @@ export class SelectComponent implements OnInit, OnChanges {
   selectValue(ev) {
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
+      this.change.emit(this.selected);
 
-      console.log(this.selected);
+      // console.log(this.selected);
 
       if (this.selected === '하위 카테고리') {
-        console.log(this.topCategory);
+        // console.log(this.topCategory);
       }
     }
     this.hideUl(false);

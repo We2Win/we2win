@@ -30,6 +30,7 @@ import { AnalysisContentsRecordComponent } from './micro/analysis-contents-recor
 import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoService } from './services/info.service';
+import { ContentsService } from './services/contents.service';
 
 @NgModule({
   imports: [
@@ -67,7 +68,8 @@ import { InfoService } from './services/info.service';
     Error404Component,
   ],
   providers: [
-    InfoService
+    InfoService,
+    ContentsService
   ]
 })
 export class WmanagementModule { }

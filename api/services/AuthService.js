@@ -1,6 +1,12 @@
 const User = require('./../models').User;
 const Content = require('./../models').Content;
 const Info = require('./../models').Info;
+const News = require('./../models').News;
+const Law = require('./../models').Law;
+const Site = require('./../models').Site;
+const Meeting = require('./../models').Meeting;
+const Employer = require('./../models').Employer;
+const Employee = require('./../models').Employee;
 const validator = require('validator');
 
 const getUniqueKeyFromBody = function (body) {
@@ -26,8 +32,38 @@ const createContent = async function (data) {
     console.log('createContent1()');
     let unique_key, auth_info, err;
 
-    console.log(JSON.stringify(data));
-    [err, content] = await to(Content.create(data));
+    switch(data.type) {
+        case '리포트':
+            [err, content] = await to (Info.create(data.body));
+        break;
+        case '부동산 뉴스':
+            [err, content] = await to(News.create(data.body));
+        break;
+        case '법률 및 정책':
+            [err, content] = await to(Law.create(data.body));
+        break;
+        case '아파트':
+            [err, content] = await to(Site.create(data.body));
+        break;
+        case '오피스텔':
+            [err, content] = await to(Site.create(data.body));
+        break;
+        case '상가/호텔':
+            [err, content] = await to(Site.create(data.body));
+        break;
+        case '토지':
+            [err, content] = await to(Site.create(data.body));
+        break;
+        case '오프라인 모임':
+            [err, content] = await to(Meeting.create(data.body));
+        break;
+        case '구인':
+            [err, content] = await to(Employer.create(data.body));
+        break;
+        case '구직':
+            [err, content] = await to(Employee.create(data.body));
+        break;
+    }
     if (err) TE('생성 중 오류가 발생했습니다.');
 
     console.log('createcontent()');
