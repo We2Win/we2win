@@ -249,6 +249,7 @@ export class ContentsRegistrationComponent implements OnInit {
   }
 
   postData(selectedData) {
+    console.log('selectedData: ', selectedData);
     this.contentsService.create(selectedData)
       .subscribe(
       data => {

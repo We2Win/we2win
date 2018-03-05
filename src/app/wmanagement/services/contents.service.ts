@@ -19,14 +19,11 @@ export class ContentsService {
     return this.http.get('/api');
   }
   create(_data: any) {
-    const type = _data.type;
-    const bodyString = _data.body;
     // const bodyString = JSON.stringify(data);
-    console.log('bodyString: ', bodyString);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/contents', bodyString);
+    return this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/contents', _data);
     // .map((res: User) => JSON.stringify(res))
     // .catch((error: any) => Observable.throw(error.message));
   }

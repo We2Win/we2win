@@ -3,7 +3,7 @@ const authService = require('./../services/AuthService');
 
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  const body = req;
+  const body = req.body;
 
   let err, content;
 
