@@ -32,6 +32,8 @@ const createContent = async function (data) {
     console.log('createContent1()');
     let unique_key, auth_info, err, content;
 
+    console.log('data.type: ', data.type);
+    console.log('data.body: ', JSON.stringify(data.body));
     switch(data.type) {
         case '리포트':
             [err, content] = await to (Info.create(data.body));
