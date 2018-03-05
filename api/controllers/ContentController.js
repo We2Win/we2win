@@ -12,6 +12,7 @@ const create = async function (req, res) {
   if (err) return ReE(res, err, 422);
 
   content = JSON.stringify(content);
+  console.log(content);
   return ReS(res, {
     message: 'Successfully created new content data.',
     body: content,
