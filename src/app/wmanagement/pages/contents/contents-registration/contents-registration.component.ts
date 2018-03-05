@@ -194,7 +194,7 @@ export class ContentsRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.forms[this.selectedData.type].valid) {
+    if (!this.forms[this.selectedData.type].valid) {
       this.selectedData.body = this.forms[this.selectedData.type].value;
       console.log(this.selectedData);
 
