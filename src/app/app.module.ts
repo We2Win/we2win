@@ -14,7 +14,7 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
   declarations: [
     AppComponent,
     FileSelectDirective,
-    FileDropDirective,
+    // FileDropDirective,
   ],
   imports: [
     BrowserModule,
