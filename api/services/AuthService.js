@@ -30,7 +30,7 @@ module.exports.createInfo = createInfo;
 
 const createContent = async function (data) {
     console.log('createContent1()');
-    let unique_key, auth_info, err;
+    let unique_key, auth_info, err, content;
 
     switch(data.type) {
         case '리포트':
