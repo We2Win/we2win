@@ -207,10 +207,9 @@ export class ContentsRegistrationComponent implements OnInit {
     const files: Array<File> = this.filesToUpload;
     console.log(files);
 
-    // for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[0], files[0]['name']);
-    // }
-    console.log('form data variable : ' + JSON.stringify(formData));
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files[]', files[0], files[0]['name']);
+    }
     // formData.append("uploads[]", files[0], files[0]['name']);
     // this.address.documents = files.toString();
 
