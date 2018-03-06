@@ -129,6 +129,10 @@ textarea {
   height: 7em;
 }
 
+:host /deep/ .fr-box {
+  flex: 1;
+}
+
 .listContainer li {
   margin: 0;
   padding: 0;

@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { DbConnectService } from './db-connect.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,6 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FroalaEditorModule,
-    FroalaViewModule,
   ],
   providers: [DbConnectService],
   bootstrap: [AppComponent]

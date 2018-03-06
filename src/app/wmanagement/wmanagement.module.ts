@@ -42,6 +42,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     ReactiveFormsModule,
     HttpClientModule,
     FileUploadModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
   ],
   declarations: [
     WmanagementComponent,

@@ -92,8 +92,8 @@
         </li>
         <li>
           <h2>현장 리포트</h2>
-          <div [FroalaEditor]></div>
-          <!-- <textarea [FroalaEditor] placeholder="상세 정보를 입력하세요" formControlName="I-report"></textarea> -->
+          <textarea formControlName="I-report" [froalaEditor]></textarea>
+          <!-- <textarea [froalaEditor] placeholder="상세 정보를 입력하세요" formControlName="I-report"></textarea> -->
         </li>
         <li>
           <h2>현장 사진</h2>
@@ -143,6 +143,10 @@
         novalidate>
         <li class="form-group">
           <input class="form-control" formControlName="S-type" type="hidden" />
+        </li>
+        <li class="form-group">
+          <h2>컨텐츠 등급</h2>
+          <app-select #level [type]="'컨텐츠 등급'"></app-select>
         </li>
         <li class="form-group">
           <h2>제목</h2>
@@ -207,9 +211,9 @@
       </form>
 
       <form [formGroup]="newsForm" id="news" *ngSwitchCase="'부동산 뉴스'" (ngSubmit)="onSubmit()" novalidate>
-        <li>
-          <h2>등급</h2>
-          <app-select [type]="'회원 등급'"></app-select>
+        <li class="form-group">
+          <h2>컨텐츠 등급</h2>
+          <app-select #level [type]="'컨텐츠 등급'"></app-select>
         </li>
         <li>
           <h2>컨텐츠 제목</h2>
@@ -227,8 +231,8 @@
         </li>
         <li>
           <h2>뉴스 상세내용</h2>
-          <!-- <textarea type="text" formControlName="N-sub-description" placeholder="뉴스 상세내용을 입력하세요" [FroalaEditor]> -->
-          <div [FroalaEditor]></div>
+          <!-- <textarea type="text" formControlName="N-sub-description" placeholder="뉴스 상세내용을 입력하세요" [froalaEditor]> -->
+          <textarea formControlName="N-sub-description" [froalaEditor]></textarea>
         </li>
         <li>
           <h2>뉴스 분석제목</h2>
@@ -236,7 +240,7 @@
         </li>
         <li>
           <h2>뉴스 분석내용</h2>
-          <div [FroalaEditor]></div>
+          <textarea formControlName="N-analysis-description" [froalaEditor]></textarea>
           <!-- <teaxtarea type="text" formControlName="N-analysis-description" placeholder="뉴스 분석내용을 입력하세요"> -->
         </li>
         <li class="submitBar">
@@ -246,9 +250,9 @@
       </form>
 
       <form [formGroup]="lawForm" id="law" *ngSwitchCase="'법률 및 정책'" (ngSubmit)="onSubmit()" novalidate>
-        <li>
-          <h2>등급</h2>
-          <app-select [type]="'회원 등급'"></app-select>
+        <li class="form-group">
+          <h2>컨텐츠 등급</h2>
+          <app-select #level [type]="'컨텐츠 등급'"></app-select>
         </li>
         <li>
           <h2>제목</h2>
@@ -275,9 +279,9 @@
       </form>
 
       <form [formGroup]="meetingForm" id="meeting" *ngSwitchCase="'오프라인 모임'" (ngSubmit)="onSubmit()" novalidate>
-        <li>
-          <h2>등급</h2>
-          <app-select [type]="'회원 등급'"></app-select>
+        <li class="form-group">
+          <h2>컨텐츠 등급</h2>
+          <app-select #level [type]="'컨텐츠 등급'"></app-select>
         </li>
         <li>
           <h2>제목</h2>
