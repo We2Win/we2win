@@ -33,24 +33,23 @@ router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
 
-console.log(__dirname + 'uploads/');
-const DIR = 'uploads/';
-// const upload = multer({dest: DIR}).single('photo');
-const storage = multer.diskStorage({
-    destination: function (request, file, callback) {
-        callback(null, __dirname + DIR);
-    },
-    filename: function (request, file, callback) {
-        let dateTimeStamp = Date.now();
-        let originalFileName = file.originalname;
+const DIR = '/uploads/';
+const upload = multer({dest: __dirname + DIR});
+// const storage = multer.diskStorage({
+//     destination: function (request, file, callback) {
+//         callback(null, __dirname + DIR);
+//     },
+//     filename: function (request, file, callback) {
+//         let dateTimeStamp = Date.now();
+//         let originalFileName = file.originalname;
 
-        originalFileName = originalFileName.split('.');
-        let originalName = originalFileName[originalFileName.length - 1];
+//         originalFileName = originalFileName.split('.');
+//         let originalName = originalFileName[originalFileName.length - 1];
 
-        callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
-    }
-});
-const upload = multer({ storage: storage });
+//         callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
+//     }
+// });
+// const upload = multer({ storage: storage });
 
 // console.log(upload.array('uploads[]', 12));
 
