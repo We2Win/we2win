@@ -34,7 +34,7 @@ router.delete('/contents', ContentController.remove);
 
 
 
-const DIR = '/uploads/';
+const DIR = 'uploads/';
 // const upload = multer({dest: DIR}).single('photo');
 const storage = multer.diskStorage({
     destination: function (request, file, callback) {
