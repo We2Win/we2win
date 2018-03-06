@@ -15,6 +15,7 @@ export class SelectComponent implements OnInit, OnChanges {
 
   categories: Object = {
     '회원 등급': ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'],
+    '컨텐츠 등급': ['STANDARD', 'PREMIUM', 'PLATINUM'],
     '금액': ['ALL', '5,000만원 미만', '1억 미만', '3억 미만', '5억 미만', '5억 이상'],
     '카테고리': ['부동산 뉴스', '리포트', '법과 정책'],
     '상위 카테고리': ['부동산 정보', '분양 현장', '오프라인 모임', '구인 구직'],

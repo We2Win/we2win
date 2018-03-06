@@ -44,6 +44,9 @@ export class ContentsRegistrationComponent implements OnInit {
   @ViewChild('sub') sub: any = {
     selected: ''
   };
+  @ViewChild('level') level: any = {
+    selected: ''
+  };
   // sample: Observable<Info>;
 
   @ViewChild('fileInput') fileInput: ElementRef;
@@ -70,6 +73,7 @@ export class ContentsRegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.infoForm = new FormGroup({
+      'I-level': new FormControl('', [Validators.required]),
       'I-title': new FormControl('', [Validators.required]),
       'I-summary': new FormControl('', [Validators.required]),
       'I-open-start': new FormControl('', [Validators.required]),

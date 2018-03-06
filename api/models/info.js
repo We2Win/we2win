@@ -5,6 +5,10 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Meeting', {
+    'I-level': {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     'I-id': {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -59,23 +63,23 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'I-current-amount1': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-current-amount2': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-current-amount3': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-current-amount4': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-current-amount5': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-around-size1': {
@@ -99,27 +103,27 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'I-around-amount1': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-around-amount2': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-around-amount3': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-around-amount4': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-around-amount5': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     'I-report': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     // 'I-image': {

@@ -22,6 +22,7 @@
   width: 93px;
   height: 25px;
   padding-left: 1em;
+  cursor: pointer;
 }
 
 #managerInfo {

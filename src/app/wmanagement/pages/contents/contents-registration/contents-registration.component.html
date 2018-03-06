@@ -15,11 +15,11 @@
       <form [formGroup]="infoForm" id="info" *ngSwitchCase="sub.selected === '' || '리포트'" (ngSubmit)="onSubmit()" enctype="multipart/form-data"
         novalidate>
         <li class="form-group">
-          <h2>등급</h2>
-          <app-select [type]="'회원 등급'"></app-select>
+          <h2>컨텐츠 등급</h2>
+          <app-select #level [type]="'컨텐츠 등급'"></app-select>
         </li>
         <li class="form-group">
-          <h2>제목</h2>
+          <h2>컨텐츠 제목</h2>
           <input class="form-control" formControlName="I-title" type="text" placeholder="제목을 입력하세요" />
         </li>
         <li class="form-group">
@@ -47,7 +47,7 @@
           <h2>현장 시세</h2>
           <div class="container">
             <div class="wrapper">
-              <h4>#1 현재 시세</h4>
+              <h4>현재 시세<br><b>(천만원)</b></h4>
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
@@ -59,16 +59,16 @@
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
-                  <input type="text" class="box" formControlName="I-current-amount1" placeholder="액수">
-                  <input type="text" class="box" formControlName="I-current-amount2" placeholder="액수">
-                  <input type="text" class="box" formControlName="I-current-amount3" placeholder="액수">
-                  <input type="text" class="box" formControlName="I-current-amount4" placeholder="액수">
-                  <input type="text" class="box" formControlName="I-current-amount5" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-current-amount1" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-current-amount2" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-current-amount3" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-current-amount4" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-current-amount5" placeholder="액수">
                 </li>
               </span>
             </div>
             <div class="wrapper">
-              <h4>#2 주위 시세</h4>
+              <h4>주위 시세<br><b>(천만원)</b></h4>
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
@@ -80,11 +80,11 @@
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
-                  <input type="text" class="box" formControlName="I-around-amount1" placeholder="액수">
-                  <input type="text" class="box" formControlName="I-around-amount2" placeholder="액수">
-                  <input type="text" class="box" formControlName="I-around-amount3" placeholder="액수">
-                  <input type="text" class="box" formControlName="I-around-amount4" placeholder="액수">
-                  <input type="text" class="box" formControlName="I-around-amount5" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-around-amount1" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-around-amount2" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-around-amount3" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-around-amount4" placeholder="액수">
+                  <input type="number" class="box" formControlName="I-around-amount5" placeholder="액수">
                 </li>
               </span>
             </div>

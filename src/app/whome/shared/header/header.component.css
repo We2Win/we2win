@@ -20,6 +20,7 @@ section {
   height: 30px;
   margin: 0;
   flex: none;
+  cursor: pointer;
 }
 
 #wrapper {
