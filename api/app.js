@@ -7,6 +7,7 @@ const logger = require('morgan');
 const passport = require('passport');
 const multer = require('multer');
 const path = require('path');
+const jade = require('jade');
 const v1 = require('./routes/v1');
 const cors = require('cors');
 
