@@ -23,6 +23,7 @@
     "mysql2": "^1.5.2",
     "parse-error": "^0.2.0",
     "passport": "^0.4.0",
+    "path": "^0.12.7",
     "sequelize": "^4.35.0"
   },
   "devDependencies": {}
