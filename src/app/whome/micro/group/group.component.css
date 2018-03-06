@@ -23,7 +23,7 @@
 
 :host /deep/ .subGroup {
   display: flex;
-  align-items: baseline;
+  /* align-items: baseline; */
   flex: 1;
   flex-direction: row;
   margin-top: 0.5em;
@@ -176,4 +176,27 @@
   overflow-x: hidden;
   overflow-y: scroll;
   resize: none;
+}
+
+:host /deep/ .navigator {
+  flex: none !important;
+}
+
+:host /deep/ .navigator img {
+  flex: 1;
+  width: 100px;
+  height: 120px;
+  margin: 0.2em;
+}
+
+:host /deep/ .shower img {
+  flex: 1;
+  margin: 0.2em;
+  height: auto;
+}
+
+:host /deep/ .shower label {
+  padding-top: 1em;
+  font-size: 1.2em;
+  text-align: center;
 }
