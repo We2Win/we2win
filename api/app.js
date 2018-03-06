@@ -65,7 +65,7 @@ const upload = multer({ storage: storage }).array('userPhoto', 5);
 // console.log(upload.array('uploads[]', 12));
 
 // router.post('/upload', upload.array('uploads[]', 12), UploadController.upload);
-app.post('/upload', upload.single('cin'), (req, res) => {
+app.post('/upload', (req, res) => {
     upload(req, res, function(err) {
         console.log('req.body: ', req.body);
         console.log('req.files: ', req.files);
