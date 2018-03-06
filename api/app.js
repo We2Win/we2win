@@ -20,23 +20,6 @@ app.use(passport.initialize());
 
 
 app.use(express.static(path.join(__dirname, 'uploads')));
-const DIR = './uploads/';
-// const upload = multer({dest: DIR}).single('photo');
-const storage = multer.diskStorage({
-    destination: function(request, file, callback) {
-        callback(null, DIR);
-    },
-    filename: function(request, file, callback) {
-        let dateTimeStamp = Date.now();
-        let originalFileName = file.originalname;
-
-        originalFileName = originalFileName.split('.');
-        let originalName = originalFileName[originalFileName.length - 1];
-
-        callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
-    }
-});
-const upload = multer({ storage: storage });
 
 
 const models = require('./models');

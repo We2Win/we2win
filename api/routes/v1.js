@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 
 const UserController = require('./../controllers/UserController');
@@ -29,6 +30,26 @@ router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
 router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
+
+
+
+const DIR = './uploads/';
+// const upload = multer({dest: DIR}).single('photo');
+const storage = multer.diskStorage({
+    destination: function (request, file, callback) {
+        callback(null, DIR);
+    },
+    filename: function (request, file, callback) {
+        let dateTimeStamp = Date.now();
+        let originalFileName = file.originalname;
+
+        originalFileName = originalFileName.split('.');
+        let originalName = originalFileName[originalFileName.length - 1];
+
+        callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
+    }
+});
+const upload = multer({ storage: storage });
 
 router.post('/upload', upload.array('uploads[]', 12), function (req, res) {
     console.log('files: ', req.files);
