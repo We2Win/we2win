@@ -19,6 +19,10 @@ app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+//swap jade for ejs etc
+
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 
