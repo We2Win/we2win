@@ -33,7 +33,7 @@ router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
 
-
+console.log(__dirname + 'uploads/');
 const DIR = 'uploads/';
 // const upload = multer({dest: DIR}).single('photo');
 const storage = multer.diskStorage({
@@ -52,9 +52,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-console.log(upload.array('uploads[]', 12));
+// console.log(upload.array('uploads[]', 12));
 
-router.post('/upload', upload.array('uploads[]', 12), UploadController.upload);
+// router.post('/upload', upload.array('uploads[]', 12), UploadController.upload);
+router.post('/upload', upload.single('cin'), UploadController.upload);
 
 // // Company Routes
 // router.post('/companies',
