@@ -162,15 +162,9 @@
         </li>
         <li>
           <h2>현장 사진</h2>
-          <input type="file" (change)="onFileChange($event, 's-image')" accept="image/*" #imageInput>
-          <app-button (click)="fileInput.click()">사진 등록</app-button>
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
-        </li>
-        <li>
-          <h2>세부 사진</h2>
-          <input type="file" (change)="onFileChange($event, 's-subimage1')" accept="image/*" #imageInput>
-          <input type="file" (change)="onFileChange($event, 's-subimage2')" accept="image/*" #imageInput>
-          <input type="file" (change)="onFileChange($event, 's-subimage3')" accept="image/*" #imageInput>
         </li>
 
         <li class="submitBar">
@@ -186,8 +180,9 @@
         </li>
         <li>
           <h2>사진</h2>
-          <input type="file" (change)="onFileChange($event, 'N-image')" accept="image/*" #imageInput>
-          <app-button (click)="fileInput.click()">사진 업로드</app-button>
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
         </li>
         <li>
           <h2>뉴스 제목</h2>
@@ -224,10 +219,12 @@
           <h2>URL</h2>
           <input type="text" formControlName="L-url" placeholder="뉴스 상세내용을 입력하세요">
         </li>
+
         <li>
           <h2>첨부파일</h2>
-          <input type="file" (change)="onFileChange($event, 'L-file')" accept="*" #fileInput>
-          <app-button>파일 업로드</app-button>
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup.showPopup();">파일 업로드</app-button>
+          <span class="blank"></span>
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>

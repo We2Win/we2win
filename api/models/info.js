@@ -58,10 +58,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'I-image': {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+    // 'I-image': {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // },
   });
 
   Records.prototype.toWeb = function () {
