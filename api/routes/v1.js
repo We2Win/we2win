@@ -53,10 +53,7 @@ const upload = multer({dest: DIR});
 // console.log(upload.array('uploads[]', 12));
 
 // router.post('/upload', upload.array('uploads[]', 12), UploadController.upload);
-router.post('/upload', 'hello', function(req, res) {
-    console.log('hi');
-    console.log(req.file);
-});
+router.post('/upload', upload.single('cin'), UploadController.upload);
 
 // // Company Routes
 // router.post('/companies',
