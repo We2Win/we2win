@@ -12,7 +12,6 @@ const UploadController = require('./../controllers/UploadController');
 // const custom = require('./../middleware/custom');
 
 const passport = require('passport');
-const path = require('path');
 
 // User Routes
 
