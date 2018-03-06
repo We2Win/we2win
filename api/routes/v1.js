@@ -32,29 +32,6 @@ router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
-const DIR = './uploads/';
-const upload = multer({dest: DIR});
-// const storage = multer.diskStorage({
-//     destination: function (request, file, callback) {
-//         callback(null, DIR);
-//     },
-//     filename: function (request, file, callback) {
-//         let dateTimeStamp = Date.now();
-//         let originalFileName = file.originalname;
-
-//         originalFileName = originalFileName.split('.');
-//         let originalName = originalFileName[originalFileName.length - 1];
-
-//         callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
-//     }
-// });
-// const upload = multer({ storage: storage });
-
-// console.log(upload.array('uploads[]', 12));
-
-// router.post('/upload', upload.array('uploads[]', 12), UploadController.upload);
-router.post('/upload', upload.single('cin'), UploadController.upload);
-
 // // Company Routes
 // router.post('/companies',
 //     passport.authenticate('jwt', { session: false }), CompanyController.create);

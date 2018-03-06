@@ -214,7 +214,7 @@ export class ContentsRegistrationComponent implements OnInit {
     // formData.append("uploads[]", files[0], files[0]['name']);
     // this.address.documents = files.toString();
 
-    this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/upload', formData)
+    this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/upload', files)
       .subscribe( result => console.log('result', result) );
   }
 
