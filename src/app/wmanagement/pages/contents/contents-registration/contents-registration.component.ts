@@ -60,6 +60,14 @@ export class ContentsRegistrationComponent implements OnInit {
   ) { }
 
 
+  public options: Object = {
+    charCounterCount: true,
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+  };
+
   onTopChange() {
     this.sub.selected = '하위 카테고리';
     this.selectedData.type = '';

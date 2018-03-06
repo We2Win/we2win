@@ -19,7 +19,7 @@ export class SelectComponent implements OnInit, OnChanges {
     '금액': ['ALL', '5,000만원 미만', '1억 미만', '3억 미만', '5억 미만', '5억 이상'],
     '카테고리': ['부동산 뉴스', '리포트', '법과 정책'],
     '상위 카테고리': ['부동산 정보', '분양 현장', '오프라인 모임', '구인 구직'],
-    '하위 카테고리': ['상위 카테고리를 선택하세요'],
+    '하위 카테고리': [],
     '컨텐츠 제목': ['이 주의 분양 핫이슈는?', '53차 경남 분양 오피스텔에 대해서 알아보자']
   };
   subcategories: Object = {
@@ -33,6 +33,13 @@ export class SelectComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.selected = this.type;
+
+    // set initial value
+    if (this.selected === '상위 카테고리') {
+      this.selected = '부동산 정보';
+    } else if (this.selected === '하위 카테고리') {
+      this.selected = '리포트'
+    }
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {

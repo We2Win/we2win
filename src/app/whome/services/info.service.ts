@@ -45,8 +45,8 @@ export class InfoService {
     getSample() {
         return [
             new DataItem(InfoCardComponent, {
-                'Title': 'afacascsac',
-                'Description': 'csacsac',
+                'Title': '[제83호] 경주 라마다 호텔 분양대금 ABL 8차',
+                'Description': '부동산 뉴스',
                 'createdAt': '2018-03-03T14:33:41.000Z',
                 'updatedAt': '2018-03-03T14:33:41.000Z'
             }),
