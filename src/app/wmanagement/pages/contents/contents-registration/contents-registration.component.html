@@ -12,7 +12,12 @@
           <h2>카테고리를 선택해주세요!</h2>
         </li>
       </ng-container> -->
-      <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+      <form [formGroup]="infoForm" id="info" *ngSwitchCase="sub.selected === '' || '리포트'" (ngSubmit)="onSubmit()" enctype="multipart/form-data"
+        novalidate>
+        <li class="form-group">
+          <h2>등급</h2>
+          <app-select [type]="'회원 등급'"></app-select>
+        </li>
         <li class="form-group">
           <h2>제목</h2>
           <input class="form-control" formControlName="I-title" type="text" placeholder="제목을 입력하세요" />
@@ -25,12 +30,11 @@
           <h2>분양 오픈일</h2>
           <input type="date" formControlName="I-open-start" placeholder="이름">
           <input type="date" formControlName="I-open-end" placeholder="이름">
-          <app-button>일정 등록</app-button>
         </li>
         <li>
           <h2>분양가</h2>
-          <input type="number" formControlName="I-ammount" step="10000">
-          <h3>원</h3>
+          <input type="number" lang='en-150' formControlName="I-ammount" step="10000">
+          <h3>백만원</h3>
           <span class="blank"></span>
         </li>
         <li>
@@ -45,15 +49,43 @@
             <div class="wrapper">
               <h4>#1 현재 시세</h4>
               <span class="listContainer">
-                <input type="text" formControlName="I-current-size">
-                <input type="text" formControlName="I-current-amount">
+                <li>
+                  <span class="spanTitle">기간</span>
+                  <input type="text" class="box" formControlName="I-current-size1" placeholder="기간">
+                  <input type="text" class="box" formControlName="I-current-size2" placeholder="기간">
+                  <input type="text" class="box" formControlName="I-current-size3" placeholder="기간">
+                  <input type="text" class="box" formControlName="I-current-size4" placeholder="기간">
+                  <input type="text" class="box" formControlName="I-current-size5" placeholder="기간">
+                </li>
+                <li>
+                  <span class="spanTitle">액수</span>
+                  <input type="text" class="box" formControlName="I-current-amount1" placeholder="액수">
+                  <input type="text" class="box" formControlName="I-current-amount2" placeholder="액수">
+                  <input type="text" class="box" formControlName="I-current-amount3" placeholder="액수">
+                  <input type="text" class="box" formControlName="I-current-amount4" placeholder="액수">
+                  <input type="text" class="box" formControlName="I-current-amount5" placeholder="액수">
+                </li>
               </span>
             </div>
             <div class="wrapper">
               <h4>#2 주위 시세</h4>
               <span class="listContainer">
-                <input type="text" formControlName="I-around-size">
-                <input type="text" formControlName="I-around-amount">
+                <li>
+                  <span class="spanTitle">기간</span>
+                  <input type="text" class="box" formControlName="I-around-size1" placeholder="기간">
+                  <input type="text" class="box" formControlName="I-around-size2" placeholder="기간">
+                  <input type="text" class="box" formControlName="I-around-size3" placeholder="기간">
+                  <input type="text" class="box" formControlName="I-around-size4" placeholder="기간">
+                  <input type="text" class="box" formControlName="I-around-size5" placeholder="기간">
+                </li>
+                <li>
+                  <span class="spanTitle">액수</span>
+                  <input type="text" class="box" formControlName="I-around-amount1" placeholder="액수">
+                  <input type="text" class="box" formControlName="I-around-amount2" placeholder="액수">
+                  <input type="text" class="box" formControlName="I-around-amount3" placeholder="액수">
+                  <input type="text" class="box" formControlName="I-around-amount4" placeholder="액수">
+                  <input type="text" class="box" formControlName="I-around-amount5" placeholder="액수">
+                </li>
               </span>
             </div>
           </div>
@@ -87,8 +119,8 @@
         <form [formGroup]="uploadForm" id="upload" action="/api/v1/upload" method="post">
           <li>
             <h2>현장 사진</h2>
-            <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*" multiple
-              #imageInput>
+            <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*"
+              multiple #imageInput>
             <app-button (click)="upload()">사진 등록</app-button>
           </li>
           <li>
@@ -175,6 +207,10 @@
 
       <form [formGroup]="newsForm" id="news" *ngSwitchCase="'부동산 뉴스'" (ngSubmit)="onSubmit()" novalidate>
         <li>
+          <h2>등급</h2>
+          <app-select [type]="'회원 등급'"></app-select>
+        </li>
+        <li>
           <h2>컨텐츠 제목</h2>
           <input type="text" formControlName="N-title" placeholder="제목을 입력하세요" />
         </li>
@@ -208,6 +244,10 @@
 
       <form [formGroup]="lawForm" id="law" *ngSwitchCase="'법률 및 정책'" (ngSubmit)="onSubmit()" novalidate>
         <li>
+          <h2>등급</h2>
+          <app-select [type]="'회원 등급'"></app-select>
+        </li>
+        <li>
           <h2>제목</h2>
           <input type="text" formControlName="L-title" placeholder="제목을 입력하세요" />
         </li>
@@ -219,7 +259,6 @@
           <h2>URL</h2>
           <input type="text" formControlName="L-url" placeholder="뉴스 상세내용을 입력하세요">
         </li>
-
         <li>
           <h2>첨부파일</h2>
           <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
@@ -233,6 +272,10 @@
       </form>
 
       <form [formGroup]="meetingForm" id="meeting" *ngSwitchCase="'오프라인 모임'" (ngSubmit)="onSubmit()" novalidate>
+        <li>
+          <h2>등급</h2>
+          <app-select [type]="'회원 등급'"></app-select>
+        </li>
         <li>
           <h2>제목</h2>
           <input type="text" formControlName="M-title" placeholder="제목을 입력하세요" />

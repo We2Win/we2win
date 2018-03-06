@@ -38,19 +38,83 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'I-current-size': {
+    'I-current-size1': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'I-current-amount': {
+    'I-current-size2': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'I-around-size': {
+    'I-current-size3': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'I-around-amount': {
+    'I-current-size4': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-current-size5': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-current-amount1': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-current-amount2': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-current-amount3': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-current-amount4': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-current-amount5': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-size1': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-size2': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-size3': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-size4': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-size5': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-amount1': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-amount2': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-amount3': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-amount4': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'I-around-amount5': {
       type: DataTypes.STRING,
       allowNull: false
     },

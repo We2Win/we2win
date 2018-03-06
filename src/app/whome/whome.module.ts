@@ -60,6 +60,7 @@ import { InfoDetailComponent } from './pages/info/info-detail/info-detail.compon
 import { ChartComponent } from './micro/chart/chart.component';
 import { NotifierComponent } from './micro/notifier/notifier.component';
 import { InfoService } from './services/info.service';
+import { NewsCardComponent } from './micro/news-card/news-card.component';
 
 
 @NgModule({
@@ -122,7 +123,8 @@ import { InfoService } from './services/info.service';
     InfoDetailComponent,
     ChartComponent,
     NotifierComponent,
-    InfoCardComponent
+    InfoCardComponent,
+    NewsCardComponent
   ],
   entryComponents: [
     InfoCardComponent

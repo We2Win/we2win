@@ -1,43 +1,34 @@
 #top {
-  display: flex;
-  padding: 5em 0 2em 0;
+  padding: 2em;
+  background: url('/assets/img/news_sample.png')
 }
 
-#top>div {
-  flex: 1 1 auto;
-}
-
-#top #imgNav {
-  margin-right: 2em;
+#top #levelBar {
+  width: 150px;
+  padding: 0.5em 1em;
+  margin: 0;
+  background: var(--level-platinum-gradient);
+  color: white;
 }
 
 #top h1 {
-  margin-bottom: 1em;
+  margin: 3em 0;
+  color: white;
 }
 
-#top p {
-  margin-bottom: 2em;
+#optionBar {
+  display: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: right;
+  padding: 1em 2em 0 2em;
 }
 
-#top li {
-  display: flex;
+#optionBar img {
+  margin: 0 1em;
 }
 
-#top li h2 {
-  width: 150px;
-  font-size: 0.9em;
-  line-height: 200%;
-}
-
-#top li h3 {
-  flex: 1;
-  font-size: 0.9em;
-  line-height: 200%;
-}
-
-#top app-button {
-  display: block;
-  margin: 1em auto;
+#optionBar img + #optionBar img {
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .part {
