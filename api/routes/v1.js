@@ -32,13 +32,37 @@ router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
-// // Company Routes
-// router.post('/companies',
-//     passport.authenticate('jwt', { session: false }), CompanyController.create);
-// router.get('/companies', passport.authenticate('jwt', { session: false }), CompanyController.getAll);
 
-// router.get('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.get);
-// router.put('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.update);
-// router.delete('/companies/:company_id', passport.authenticate('jwt', { session: false }), custom.company, CompanyController.remove);
+const DIR = './uploads/';
+// const upload = multer({ dest: DIR });
+const storage = multer.diskStorage({
+    destination: function (request, file, callback) {
+        callback(null, DIR);
+    },
+    filename: function (request, file, callback) {
+        let dateTimeStamp = Date.now();
+        let originalFileName = file.originalname;
+
+        originalFileName = originalFileName.split('.');
+        let originalName = originalFileName[originalFileName.length - 1];
+
+        callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
+    }
+});
+const upload = multer({ storage: storage }).array('userPhoto', 5);
+
+// console.log(upload.array('uploads[]', 12));
+
+// router.post('/upload', upload.array('uploads[]', 12), UploadController.upload);
+router.post('/upload', (req, res) => {
+    upload(req, res, function (err) {
+        console.log('req.body: ', req.body);
+        console.log('req.files: ', req.files);
+        if (err) {
+            return res.end('Error uploading file.');
+        }
+        res.end('File is uploaded');
+    });
+});
 
 module.exports = router;

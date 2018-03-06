@@ -44,39 +44,6 @@ if(CONFIG.app === 'We2Win') {
 app.use(cors());
 
 
-const DIR = './uploads/';
-// const upload = multer({ dest: DIR });
-const storage = multer.diskStorage({
-    destination: function (request, file, callback) {
-        callback(null, DIR);
-    },
-    filename: function (request, file, callback) {
-        let dateTimeStamp = Date.now();
-        let originalFileName = file.originalname;
-
-        originalFileName = originalFileName.split('.');
-        let originalName = originalFileName[originalFileName.length - 1];
-
-        callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
-    }
-});
-const upload = multer({ storage: storage }).array('userPhoto', 5);
-
-// console.log(upload.array('uploads[]', 12));
-
-// router.post('/upload', upload.array('uploads[]', 12), UploadController.upload);
-app.post('/v1/upload', (req, res) => {
-    upload(req, res, function(err) {
-        console.log('req.body: ', req.body);
-        console.log('req.files: ', req.files);
-        if (err) {
-            return res.end('Error uploading file.');
-        }
-        res.end('File is uploaded');
-    });
-});
-
-
 // // CORS
 // app.use(function (req, res, next) {
 //     // Website you wish to allow to connect
