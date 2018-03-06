@@ -27,10 +27,10 @@ export class ContentsRegistrationComponent implements OnInit {
 
   private forms: object;
   // private symbols: object;
-  public uploader: FileUploader = new FileUploader({
-    url: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/',
-    // itemAlias: 'photo'
-  });
+  // public uploader: FileUploader = new FileUploader({
+  //   url: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/',
+  //   // itemAlias: 'photo'
+  // });
   filesToUpload: Array<File> = [];
 
   private selectedData = {
@@ -200,12 +200,6 @@ export class ContentsRegistrationComponent implements OnInit {
     //   '구인': 'R',
     //   '구직': 'E',
     // };
-
-    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log('ImageUpload:uploaded: ', item, status, response);
-      // console.log(JSON.parse(response));
-    };
   }
 
   upload() {
@@ -216,13 +210,12 @@ export class ContentsRegistrationComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
       formData.append('uploads[]', files[i], files[i]['name']);
     }
-    console.log('form data variable : ' + formData.toString());
+    console.log('form data variable : ' + formData);
     // formData.append("uploads[]", files[0], files[0]['name']);
     // this.address.documents = files.toString();
 
     this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/upload', formData)
-      // .map( files => JSON.parse(files) );
-      .subscribe( files => console.log('files', files) );
+      .subscribe( result => console.log('result', result) );
   }
 
   fileChangeEvent(fileInput: any) {

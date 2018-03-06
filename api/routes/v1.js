@@ -4,6 +4,7 @@ const router = express.Router();
 
 const UserController = require('./../controllers/UserController');
 const ContentController = require('./../controllers/ContentController');
+const UploadController = require('./../controllers/UploadController');
 // const CompanyController = require('./../controllers/CompanyController');
 // const HomeController = require('./../controllers/HomeController');
 
@@ -51,10 +52,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-router.post('/upload', upload.array('uploads[]', 12), function (req, res) {
-    console.log('files: ', req.files);
-    res.send(req.files);
-})
+router.post('/upload', upload.array('uploads[]', 12), UploadController.upload);
 
 // // Company Routes
 // router.post('/companies',

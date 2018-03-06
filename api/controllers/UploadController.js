@@ -1,6 +1,10 @@
 const upload = async function (req, res) {
     console.log('files: ', req.files);
-    res.send(req.files);
+    // res.send(req.files);
+    return ReS(res, {
+        message: 'Successfully uploaded files.',
+        body: req.files
+    }, 201);
     
     // res.setHeader('Content-Type', 'application/json');
     // const body = req.body;
