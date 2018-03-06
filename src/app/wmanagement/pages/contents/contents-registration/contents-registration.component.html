@@ -84,7 +84,7 @@
       </form>
 
       <app-popup #imagePopup>
-        <form [formGroup]="uploadForm" id="upload" enctype="multipart/form-data" action="/api/upload" method="post">
+        <form [formGroup]="uploadForm" id="upload" enctype="multipart/form-data" action="/api/v1/upload" method="post">
           <li>
             <h2>현장 사진</h2>
             <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*" multiple
