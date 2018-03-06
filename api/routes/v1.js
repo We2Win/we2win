@@ -33,11 +33,11 @@ router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
 
-const DIR = '/uploads/';
-const upload = multer({dest: __dirname + DIR});
+const DIR = '../uploads/';
+const upload = multer({dest: DIR});
 // const storage = multer.diskStorage({
 //     destination: function (request, file, callback) {
-//         callback(null, __dirname + DIR);
+//         callback(null, DIR);
 //     },
 //     filename: function (request, file, callback) {
 //         let dateTimeStamp = Date.now();
