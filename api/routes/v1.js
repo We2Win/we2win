@@ -32,7 +32,7 @@ router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
-const DIR = '../uploads/';
+const DIR = './uploads/';
 const upload = multer({dest: DIR});
 // const storage = multer.diskStorage({
 //     destination: function (request, file, callback) {
