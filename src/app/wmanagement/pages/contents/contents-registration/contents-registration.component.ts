@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ContentsService } from '../../../services/contents.service';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
@@ -203,18 +203,18 @@ export class ContentsRegistrationComponent implements OnInit {
   }
 
   upload() {
-    const formData: any = new FormData();
+    const formData: FormData = new FormData();
     const files: Array<File> = this.filesToUpload;
     console.log(files);
 
-    for (let i = 0; i < files.length; i++) {
-      formData.append('uploads[]', files[i], files[i]['name']);
-    }
-    console.log('form data variable : ' + formData);
+    // for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[0], files[0]['name']);
+    // }
+    console.log('form data variable : ' + JSON.stringify(formData));
     // formData.append("uploads[]", files[0], files[0]['name']);
     // this.address.documents = files.toString();
 
-    this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/upload', files)
+    this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/upload', formData)
       .subscribe( result => console.log('result', result) );
   }
 
