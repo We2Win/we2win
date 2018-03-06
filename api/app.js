@@ -35,7 +35,8 @@ const storage = multer.diskStorage({
 
         callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
     }
-})
+});
+const upload = multer({ storage: storage });
 
 
 const models = require('./models');
