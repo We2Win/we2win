@@ -49,7 +49,7 @@ const storage = multer.diskStorage({
         callback(null, file.fieldname + '-' + dateTimeStamp + '.' + originalName);
     }
 });
-const upload = multer({ storage: storage }).array('userPhoto', 5);
+const upload = multer({ storage: storage }).array('cin', 5);
 
 // console.log(upload.array('uploads[]', 12));
 
