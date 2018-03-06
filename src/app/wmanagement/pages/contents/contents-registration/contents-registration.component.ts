@@ -214,7 +214,7 @@ export class ContentsRegistrationComponent implements OnInit {
     // formData.append("uploads[]", files[0], files[0]['name']);
     // this.address.documents = files.toString();
 
-    this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/upload', formData)
+    this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/upload', formData)
       .subscribe( result => console.log('result', result) );
   }
 
@@ -223,29 +223,29 @@ export class ContentsRegistrationComponent implements OnInit {
     // this.product.photo = fileInput.target.files[0]['name'];
   }
 
-  onFileChange(event, selector) {
-    const reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files.item(0);
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        console.log(file);
-        const sType = this.selectedData.type;
-        this.forms[sType].setControl(selector, new FormControl({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        }, [Validators.required]));
-      };
-    }
-  }
+  // onFileChange(event, selector) {
+  //   const reader = new FileReader();
+  //   if (event.target.files && event.target.files.length > 0) {
+  //     const file = event.target.files.item(0);
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       console.log(file);
+  //       const sType = this.selectedData.type;
+  //       this.forms[sType].setControl(selector, new FormControl({
+  //         filename: file.name,
+  //         filetype: file.type,
+  //         value: reader.result.split(',')[1]
+  //       }, [Validators.required]));
+  //     };
+  //   }
+  // }
 
   onSubmit() {
     // console.log(this.forms[this.selectedData.type]);
     if (this.forms[this.selectedData.type].valid) {
       this.selectedData.body = this.forms[this.selectedData.type].value;
       console.log(this.selectedData);
-      // this.postData(this.selectedData);
+      this.postData(this.selectedData);
     } else {
       alert('양식이 모두 입력되지 않았습니다.');
     }

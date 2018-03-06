@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use(express.static(path.join(__dirname, 'uploads')));
 
