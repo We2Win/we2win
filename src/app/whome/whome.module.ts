@@ -124,7 +124,8 @@ import { NewsCardComponent } from './micro/news-card/news-card.component';
     ChartComponent,
     NotifierComponent,
     InfoCardComponent,
-    NewsCardComponent
+    NewsCardComponent,
+    LawComponent
   ],
   entryComponents: [
     InfoCardComponent
