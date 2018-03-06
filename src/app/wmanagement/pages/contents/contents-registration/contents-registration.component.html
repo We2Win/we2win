@@ -12,7 +12,7 @@
           <h2>카테고리를 선택해주세요!</h2>
         </li>
       </ng-container>
-      <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" novalidate>
+      <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
         <li class="form-group">
           <h2>제목</h2>
           <input class="form-control" formControlName="I-title" type="text" placeholder="제목을 입력하세요" />
@@ -65,17 +65,17 @@
         <li>
           <h2>현장 사진</h2>
           <!-- <input type="file" (change)="onFileChange($event, 'I-image')" accept="image/*" #imageInput> -->
-          <input type="file" name="single" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput>
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
           <!-- <app-button (click)="imageInput.click()">사진 등록</app-button> -->
-          <app-button (click)="uploader.uploadAll()">사진 등록</app-button>
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
-        <li>
+        <!-- <li>
           <h2>세부 사진</h2>
-          <input type="file" (change)="onFileChange($event, 'I-subimage1')" accept="image/*" #imageInput>
-          <input type="file" (change)="onFileChange($event, 'I-subimage2')" accept="image/*" #imageInput>
-          <input type="file" (change)="onFileChange($event, 'I-subimage3')" accept="image/*" #imageInput>
-        </li>
+          <input type="file" (change)="onFileChange($event, 'I-subimage1')" accept="image/*">
+          <input type="file" (change)="onFileChange($event, 'I-subimage2')" accept="image/*">
+          <input type="file" (change)="onFileChange($event, 'I-subimage3')" accept="image/*">
+        </li> -->
 
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
@@ -83,7 +83,31 @@
         </li>
       </form>
 
-      <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()" novalidate>
+      <app-popup #imagePopup>
+        <form [formGroup]="uploadForm" id="upload">
+          <li>
+            <h2>현장 사진</h2>
+            <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*"
+              #imageInput>
+            <app-button (click)="upload()">사진 등록</app-button>
+          </li>
+          <li>
+            <h2>세부 사진</h2>
+            <input type="file" name="single" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput>
+            <input type="file" name="single" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput>
+            <input type="file" name="single" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput>
+          </li>
+          <li>
+            <h2></h2>
+            <input type="file" name="single" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput>
+            <input type="file" name="single" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput>
+            <app-button (click)="uploader.uploadAll()">사진 등록</app-button>
+          </li>
+        </form>
+      </app-popup>
+
+      <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()"
+        novalidate>
         <li class="form-group">
           <input class="form-control" formControlName="S-type" type="hidden" />
         </li>

@@ -23,6 +23,7 @@ export class ContentsRegistrationComponent implements OnInit {
   meetingForm: FormGroup;
   employerForm: FormGroup;
   employeeForm: FormGroup;
+  uploadForm: FormGroup;
 
   private forms: object;
   // private symbols: object;
@@ -30,6 +31,7 @@ export class ContentsRegistrationComponent implements OnInit {
     url: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/',
     // itemAlias: 'photo'
   });
+  filesToUpload: Array<File> = [];
 
   private selectedData = {
     type: '',
@@ -80,10 +82,10 @@ export class ContentsRegistrationComponent implements OnInit {
       'I-around-size': new FormControl('', [Validators.required]),
       'I-around-amount': new FormControl('', [Validators.required]),
       'I-report': new FormControl('', [Validators.required]),
-      'I-image': new FormControl('', [Validators.required]),
-      'I-subimage1': new FormControl(''),
-      'I-subimage2': new FormControl(''),
-      'I-subimage3': new FormControl(''),
+      // 'I-image': new FormControl('', [Validators.required]),
+      // 'I-subimage1': new FormControl(''),
+      // 'I-subimage2': new FormControl(''),
+      // 'I-subimage3': new FormControl(''),
     });
     this.siteForm = new FormGroup({
       'S-type': new FormControl('', [Validators.required]),
@@ -171,6 +173,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'E-intro': new FormControl('', [Validators.required]),
       'E-etc': new FormControl('', [Validators.required]),
     });
+    this.uploadForm = new FormGroup({});
 
     this.forms = {
       '리포트': this.infoForm,
@@ -203,6 +206,28 @@ export class ContentsRegistrationComponent implements OnInit {
       console.log('ImageUpload:uploaded: ', item, status, response);
       // console.log(JSON.parse(response));
     };
+  }
+
+  upload() {
+    const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+    console.log(files);
+
+    for (let i = 0; i < files.length; i++) {
+      formData.append('uploads[]', files[i], files[i]['name']);
+    }
+    console.log('form data variable : ' + formData.toString());
+    // formData.append("uploads[]", files[0], files[0]['name']);
+    // this.address.documents = files.toString();
+
+    this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/upload', formData)
+      // .map( files => JSON.parse(files) );
+      .subscribe( files => console.log('files', files) );
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    // this.product.photo = fileInput.target.files[0]['name'];
   }
 
   onFileChange(event, selector) {

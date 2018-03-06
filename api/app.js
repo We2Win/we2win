@@ -1,5 +1,3 @@
-import { read } from 'fs';
-
 require('./config/config');
 require('./global_functions');
 
@@ -21,11 +19,12 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 
-const DIR = '/uploads/';
+app.use(express.static(path.join(__dirname, 'uploads')));
+const DIR = './uploads/';
 // const upload = multer({dest: DIR}).single('photo');
 const storage = multer.diskStorage({
     destination: function(request, file, callback) {
-        callback(null, __dirname + DIR);
+        callback(null, DIR);
     },
     filename: function(request, file, callback) {
         let dateTimeStamp = Date.now();

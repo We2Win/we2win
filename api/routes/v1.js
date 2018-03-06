@@ -30,6 +30,11 @@ router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
+router.post('/upload', upload.array('uploads[]', 12), function (req, res) {
+    console.log('files: ', req.files);
+    res.send(req.files);
+})
+
 // // Company Routes
 // router.post('/companies',
 //     passport.authenticate('jwt', { session: false }), CompanyController.create);
