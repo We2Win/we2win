@@ -7,11 +7,11 @@
     </header>
 
     <ng-container [ngSwitch]="sub.selected">
-      <ng-container *ngSwitchCase="'하위 카테고리'">
+      <!-- <ng-container *ngSwitchCase="'하위 카테고리'">
         <li>
           <h2>카테고리를 선택해주세요!</h2>
         </li>
-      </ng-container>
+      </ng-container> -->
       <form [formGroup]="infoForm" id="info" *ngSwitchCase="'리포트'" (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
         <li class="form-group">
           <h2>제목</h2>

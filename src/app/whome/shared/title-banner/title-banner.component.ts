@@ -18,7 +18,15 @@ export class TitleBannerComponent implements OnInit {
   };
   route: Object = {
     '부동산 정보': 'info',
+    '리포트': 'info',
+    '부동산 뉴스': 'news',
+    '법률 및 정책': 'law',
+    '주간 순위': 'weekly',
     '분양 현장': 'site',
+    '아파트': 'apartment',
+    '오피스텔': 'officetel',
+    '상가/호텔': 'commercial',
+    '토지': 'ground',
     '구인 정보': 'employee',
     '구직 정보': 'employer',
     '오프라인 모임': 'meeting'
