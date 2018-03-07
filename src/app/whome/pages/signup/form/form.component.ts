@@ -24,7 +24,7 @@ export class FormComponent implements OnInit {
   fullRoadAddr;
   jibunAddress;
 
-  private loginType = '';
+  loginType = '';
 
   @ViewChild('AAmount') AAmount;
   @ViewChild('Location') Location;
