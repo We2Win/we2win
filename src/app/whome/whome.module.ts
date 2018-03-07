@@ -14,7 +14,6 @@ import { ApartmentComponent } from './pages/site/apartment/apartment.component';
 import { OfficetelComponent } from './pages/site/officetel/officetel.component';
 import { CommercialComponent } from './pages/site/commercial/commercial.component';
 import { GroundComponent } from './pages/site/ground/ground.component';
-import { LawComponent } from './pages/info/law/law.component';
 import { NewsComponent } from './pages/info/news/news.component';
 import { ReportComponent } from './pages/info/report/report.component';
 import { WeeklyComponent } from './pages/info/weekly/weekly.component';
@@ -61,6 +60,7 @@ import { ChartComponent } from './micro/chart/chart.component';
 import { NotifierComponent } from './micro/notifier/notifier.component';
 import { InfoService } from './services/info.service';
 import { NewsCardComponent } from './micro/news-card/news-card.component';
+import { LawComponent } from './pages/info/law/law.component';
 
 
 @NgModule({
@@ -125,7 +125,6 @@ import { NewsCardComponent } from './micro/news-card/news-card.component';
     NotifierComponent,
     InfoCardComponent,
     NewsCardComponent,
-    LawComponent
   ],
   entryComponents: [
     InfoCardComponent
