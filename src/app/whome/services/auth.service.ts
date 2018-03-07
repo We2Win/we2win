@@ -21,7 +21,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
-  appUrl = environment.apiUrl;
+  appUrl = '';
   TOKEN_NAME;
 
   constructor(
