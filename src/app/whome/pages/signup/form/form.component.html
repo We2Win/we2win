@@ -1,8 +1,17 @@
 <section>
   <app-group>
     <h1>회원 가입</h1>
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
-      <div class="subGroup">
+    <!-- <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate> -->
+    <form [formGroup]="signupForm" novalidate>
+      <article>
+        <div class="form-group row">
+          <label>SNS 계정 연동</label>
+          <app-social-button [type]="'google'" (click)="setLoginType('google')">일반 로그인</app-social-button>
+          <app-social-button [type]="'naver'" (click)="setLoginType('naver')">네이버 로그인</app-social-button>
+          <app-social-button [type]="'kakao'" (click)="setLoginType('kakao')">카카오 로그인</app-social-button>
+        </div>
+      </article>
+      <div class="subGroup" [ngClass]="{'halfOpacity': loginType === ''}">
         <label>기본정보
           <br>
           <b> * 필수사항</b>
@@ -48,12 +57,15 @@
             <input class="form-control" type="text" formControlName="Email" placeholder="연락처를 입력하세요">
             <div class="blank"></div>
           </div>
-          <!-- <div class="form-group row">
+          <div id="levelBox" class="form-group row">
             <label>신청등급</label>
-            <div class="card platinum">
-              <div id="level">PLATINUM</div>
-              <p>오프라인 모임과 함께 다양한 형태로 정보를 수집하고 분석 할 수 있다.</p>
-              <p id="price">10,000원/월</p>
+            <div class="card standard">
+              <div id="level">STANDARD</div>
+              <p>부동산 및 분양 정보를 수집할 수 있다.
+                <br>
+                <br>
+              </p>
+              <p id="price">무료/월</p>
             </div>
             <div class="card premium">
               <div id="level">PREMIUM</div>
@@ -62,16 +74,16 @@
               </p>
               <p id="price">5,000원/월</p>
             </div>
-            <div class="card standard">
-              <div id="level">STANDARD</div>
-              <p>부동산 및 분양 정보를 수집할 수 있다.
+            <div class="card platinum">
+              <div id="level">PLATINUM</div>
+              <p>오프라인 모임과 함께 다양한 형태로 정보를 수집하고 분석 할 수 있다.
                 <br>
               </p>
-              <p id="price">무료/월</p>
+              <p id="price">10,000원/월</p>
             </div>
-          </div> -->
+          </div>
           <div class="form-group row">
-            <label>신청등급</label>
+            <label></label>
             <div class="checkboxGroup">
               <label class="sublabel" for="01">PLATINUM</label>
               <input class="form-control" name="ULevel" id="01" type="radio">
@@ -101,29 +113,42 @@
               <input class="form-control" name="Site" id="22" type="radio">
               <label class="sublabel" for="23">상가/호텔</label>
               <input class="form-control" name="Site" id="23" type="radio">
-              <label class="sublabel" for="24">모두 해당</label>
+              <label class="sublabel" for="23">토지</label>
               <input class="form-control" name="Site" id="24" type="radio">
+              <label class="sublabel" for="24">모두 해당</label>
+              <input class="form-control" name="Site" id="25" type="radio">
             </div>
           </div>
           <div class="form-group row">
             <label>관심지역</label>
-            <input class="form-control" formControlName="Location" type="text" placeholder="예) 서울, 경기 / 도, 시단위로 기입">
+            <app-select #Location [type]="'관심지역'"></app-select>
+            <!-- <app-select [type]="'관심지역'" class="form-control" formControlName="Location"></app-select> -->
+            <div class="blank"></div>
           </div>
           <div class="form-group row">
             <label>관심금액</label>
-            <input class="form-control" formControlName="Amount" type="text" placeholder="">
+            <app-select #Amount [type]="'관심금액'"></app-select>
+            <!-- <app-select [type]="'관심금액'" class="form-control" formControlName="Amount"></app-select> -->
+            <div class="blank"></div>
           </div>
         </article>
       </div>
 
-      <div class="subGroup">
+      <div class="subGroup" [ngClass]="{'halfOpacity': loginType === ''}">
         <label>선택정보</label>
         <article>
           <div class="form-group row">
             <label>집주소</label>
-            <input class="form-control" formControlName="HA" type="text" placeholder="주소를 입력해주세요.">
-            <div class="blank"></div>
-            <!-- <app-button>주소 검색</app-button> -->
+            <input type="text" id="s_postcode" placeholder="우편번호">
+            <app-button type="button" (click)="execDaumPostcode()">우편번호 찾기</app-button>
+          </div>
+          <div class="form-group row">
+            <label></label>
+            <input class="form-control" type="text" formControlName="HA" placeholder="도로명주소">
+            <input class="form-control" type="text" placeholder="지번주소">
+          </div>
+          <div class="form-group row">
+            <span id="guide" style="color:#999"></span>
           </div>
           <div class="form-group row">
             <label>집전화번호</label>
@@ -150,11 +175,13 @@
               <input class="form-control" name="InfoA" id="32" type="radio">
               <label class="sublabel" for="33">미수신</label>
               <input class="form-control" name="InfoA" id="33" type="radio">
+              <label class="sublabel" for="33">모두 해당</label>
+              <input class="form-control" name="InfoA" id="34" type="radio">
             </div>
           </div>
           <div class="form-group row">
             <label>가용자산</label>
-            <input class="form-control" formControlName="AAmount" type="text" placeholder="">
+            <app-select class="form-control" #AAmount [type]="'가용자산'"></app-select>
             <div class="blank"></div>
           </div>
         </article>
@@ -163,7 +190,7 @@
         입력하신 내용을 다시한번 확인 하시고,
         <br>가입하기를 눌러주시면 회원가입이 완료됩니다.
       </div>
-      <app-button [type]="'submit'">회원 가입 완료</app-button>
+      <app-button [type]="'submit'" (click)="onSubmit()">회원 가입 완료</app-button>
     </form>
   </app-group>
 </section>

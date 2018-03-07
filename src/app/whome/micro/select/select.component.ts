@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ElementRef, Renderer2 } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-select',
@@ -7,15 +8,22 @@ import { ElementRef, Renderer2 } from '@angular/core';
   styleUrls: ['./select.component.css']
 })
 export class SelectComponent implements OnInit {
-  type: Array<String> = ['클릭수', '댓글수', '공유횟수', '스크랩'];
-  selected: String = this.type[0];
-  divHover: Boolean = false;
-  ulHover: Boolean = false;
+  @Input() type: string;
+  @Output() change = new EventEmitter();
+  selected: string;
 
-  constructor(private _elementRef: ElementRef) { }
+  constructor(private _elementRef: ElementRef) {}
+
+  categories: Object = {
+    '가용자산': ['2000만원', '5000만원', '1억', '3억', '5억 이상'],
+    '관심지역': ['수도권', '대전광역시', '대구광역시', '부산광역시', '광주광역시', '강원도', '충청도', '전라도', '경상도'],
+    '관심금액': ['ALL', '5,000만원 미만', '1억 미만', '3억 미만', '5억 미만', '5억 이상'],
+  };
 
   ngOnInit() {
+    this.selected = this.type;
   }
+
 
   viewUl(isDiv) {
     this._elementRef.nativeElement.querySelector('ul').classList.add('show');
@@ -26,13 +34,20 @@ export class SelectComponent implements OnInit {
   }
 
   hideUl(isDiv) {
-      this._elementRef.nativeElement.querySelector('ul').classList.remove('show');
-      this._elementRef.nativeElement.querySelector('ul').classList.remove('semiShow');
+    this._elementRef.nativeElement.querySelector('ul').classList.remove('show');
+    this._elementRef.nativeElement.querySelector('ul').classList.remove('semiShow');
   }
 
   selectValue(ev) {
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
+      this.change.emit(this.selected);
+
+      // console.log(this.selected);
+
+      if (this.selected === '하위 카테고리') {
+        // console.log(this.topCategory);
+      }
     }
     this.hideUl(false);
   }

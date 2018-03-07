@@ -17,7 +17,7 @@ export class PolicyComponent implements OnInit {
 
   checkAgreement() {
     if (this.agree1 && this.agree2) {
-      this.router.navigate(['/signup', 'social']);
+      this.router.navigate(['/signup', 'form']);
     } else {
       alert('약관에 모두 동의하셔야 가입 가능합니다.');
     }

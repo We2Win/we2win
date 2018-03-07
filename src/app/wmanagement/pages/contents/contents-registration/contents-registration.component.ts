@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ContentsService } from '../../../services/contents.service';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import * as Quill from 'quill';
 
 @Component({
   selector: 'app-contents-registration',
@@ -24,6 +25,8 @@ export class ContentsRegistrationComponent implements OnInit {
   employerForm: FormGroup;
   employeeForm: FormGroup;
   uploadForm: FormGroup;
+
+  _editor;
 
   private forms: object;
   // private symbols: object;
@@ -51,22 +54,15 @@ export class ContentsRegistrationComponent implements OnInit {
 
   @ViewChild('fileInput') fileInput: ElementRef;
   fileToUpload: File = null;
+  @ViewChild('editor') editor: ElementRef;
 
   constructor(
     private fb: FormBuilder,
     private contentsService: ContentsService,
     private router: Router,
-    private http: HttpClient
-  ) { }
-
-
-  public options: Object = {
-    charCounterCount: true,
-    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
-    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
-    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
-    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
-  };
+    private http: HttpClient,
+  ) {
+  }
 
   onTopChange() {
     this.sub.selected = '하위 카테고리';
@@ -231,6 +227,7 @@ export class ContentsRegistrationComponent implements OnInit {
     //   '구인': 'R',
     //   '구직': 'E',
     // };
+    this._editor = new Quill('#editor');
   }
 
   upload() {
@@ -245,7 +242,7 @@ export class ContentsRegistrationComponent implements OnInit {
     // this.address.documents = files.toString();
 
     this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/upload', formData)
-      .subscribe( result => console.log('result', result) );
+      .subscribe(result => console.log('result', result));
   }
 
   fileChangeEvent(fileInput: any) {
@@ -253,22 +250,22 @@ export class ContentsRegistrationComponent implements OnInit {
     // this.product.photo = fileInput.target.files[0]['name'];
   }
 
-  // onFileChange(event, selector) {
-  //   const reader = new FileReader();
-  //   if (event.target.files && event.target.files.length > 0) {
-  //     const file = event.target.files.item(0);
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => {
-  //       console.log(file);
-  //       const sType = this.selectedData.type;
-  //       this.forms[sType].setControl(selector, new FormControl({
-  //         filename: file.name,
-  //         filetype: file.type,
-  //         value: reader.result.split(',')[1]
-  //       }, [Validators.required]));
-  //     };
-  //   }
-  // }
+  onFileChange(event, selector) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files.item(0);
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        console.log(file);
+        const sType = this.selectedData.type;
+        this.forms[sType].setControl(selector, new FormControl({
+          filename: file.name,
+          filetype: file.type,
+          value: reader.result.split(',')[1]
+        }, [Validators.required]));
+      };
+    }
+  }
 
   onSubmit() {
     // console.log(this.forms[this.selectedData.type]);

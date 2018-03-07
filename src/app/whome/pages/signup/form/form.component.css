@@ -9,20 +9,27 @@
 
 .facebook {
   background: #30559E;
+}
 
+#levelBox {
+  height: 150px;
+  padding: 1em 0;
+  cursor: default;
 }
 
 .platinum {
-  margin-right: 1em;
   border: 1px solid #d8d8d8;
   border-top: 3px solid var(--level-platinum);
 }
+
 .premium {
   margin-right: 1em;
   border: 1px solid #d8d8d8;
   border-top: 3px solid var(--level-premium);
 }
+
 .standard {
+  margin-right: 1em;
   border: 1px solid #d8d8d8;
   border-top: 3px solid var(--level-standard);
 }
@@ -40,6 +47,7 @@ p {
   flex-basis: 1.5em;
   color: white;
 }
+
 .premium #level {
   background: var(--level-premium-gradient);
   font-size: 0.8em;
@@ -48,6 +56,7 @@ p {
   flex-basis: 1.5em;
   color: white;
 }
+
 .standard #level {
   background: var(--level-standard-gradient);
   font-size: 0.8em;
@@ -55,6 +64,10 @@ p {
   flex: none;
   flex-basis: 1.5em;
   color: white;
+}
+
+#levelBox {
+  flex: auto;
 }
 
 #price {
@@ -66,7 +79,6 @@ p {
   flex: none;
   flex-basis: 1em;
 }
-
 #lastWarning {
   padding: 3em 0 1em 0;
   font-size: 0.9em;
@@ -76,4 +88,9 @@ p {
 
 .alert {
   color: red;
+}
+
+.halfOpacity {
+  opacity: 0.3;
+  pointer-events: none;
 }

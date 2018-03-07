@@ -32,7 +32,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoService } from './services/info.service';
 import { ContentsService } from './services/contents.service';
 import { FileUploadModule } from 'ng2-file-upload';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   imports: [
@@ -42,8 +41,6 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     ReactiveFormsModule,
     HttpClientModule,
     FileUploadModule,
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),
   ],
   declarations: [
     WmanagementComponent,

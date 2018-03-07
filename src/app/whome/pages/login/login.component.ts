@@ -3,8 +3,15 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { JwtHelper } from 'angular2-jwt';
+
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/shareReplay';
 
 import { User } from '../../models/user';
+import { Token } from '../../models/token';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +25,14 @@ export class LoginComponent implements OnInit {
   post: any;
   private user: User;
 
+  appUrl = '';
+  TOKEN_NAME = 'jwt_token';
+
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelper
   ) {
     this.loginForm = fb.group({
       'ID': [null, Validators.required],

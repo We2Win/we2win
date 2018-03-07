@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-social-button',

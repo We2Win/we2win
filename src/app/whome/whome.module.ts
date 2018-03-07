@@ -61,6 +61,7 @@ import { NotifierComponent } from './micro/notifier/notifier.component';
 import { InfoService } from './services/info.service';
 import { NewsCardComponent } from './micro/news-card/news-card.component';
 import { LawComponent } from './pages/info/law/law.component';
+import { LawCardComponent } from './micro/law-card/law-card.component';
 
 
 @NgModule({
@@ -125,6 +126,7 @@ import { LawComponent } from './pages/info/law/law.component';
     NotifierComponent,
     InfoCardComponent,
     NewsCardComponent,
+    LawCardComponent,
   ],
   entryComponents: [
     InfoCardComponent
