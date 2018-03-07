@@ -5,14 +5,14 @@
     <form [formGroup]="signupForm" novalidate>
       <article>
         <div class="form-group row">
-          <label>SNS 계정 연동</label>
+          <label>가입 정보</label>
           <app-social-button [type]="'google'" (click)="setLoginType('google')">일반 로그인</app-social-button>
           <app-social-button [type]="'naver'" (click)="setLoginType('naver')">네이버 로그인</app-social-button>
           <app-social-button [type]="'kakao'" (click)="setLoginType('kakao')">카카오 로그인</app-social-button>
         </div>
       </article>
       <div class="subGroup" [ngClass]="{'halfOpacity': loginType === ''}">
-        <label>기본정보
+        <label>기본 정보
           <br>
           <b> * 필수사항</b>
         </label>
@@ -58,14 +58,14 @@
             <div class="blank"></div>
           </div>
           <div id="levelBox" class="form-group row">
-            <label>신청등급</label>
+            <label>신청 등급</label>
             <div class="card standard">
               <div id="level">STANDARD</div>
               <p>부동산 및 분양 정보를 수집할 수 있다.
                 <br>
                 <br>
               </p>
-              <p id="price">무료/월</p>
+              <p id="price">무료</p>
             </div>
             <div class="card premium">
               <div id="level">PREMIUM</div>
@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label>가입목적</label>
+            <label>가입 목적</label>
             <div class="checkboxGroup">
               <label class="sublabel" for="11">투자</label>
               <input class="form-control" name="Hope" id="11" type="radio">
@@ -105,7 +105,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label>관심분야</label>
+            <label>관심 분야</label>
             <div class="checkboxGroup">
               <label class="sublabel" for="21">아파트</label>
               <input class="form-control" name="Site" id="21" type="radio">
@@ -120,13 +120,14 @@
             </div>
           </div>
           <div class="form-group row">
-            <label>관심지역</label>
-            <app-select #Location [type]="'관심지역'"></app-select>
+            <label>관심 지역</label>
+            <app-select #Location1 [type]="'관심지역'"></app-select>
+            <app-select #Location2 [type]="'관심지역'"></app-select>
             <!-- <app-select [type]="'관심지역'" class="form-control" formControlName="Location"></app-select> -->
             <div class="blank"></div>
           </div>
           <div class="form-group row">
-            <label>관심금액</label>
+            <label>관심 매물</label>
             <app-select #Amount [type]="'관심금액'"></app-select>
             <!-- <app-select [type]="'관심금액'" class="form-control" formControlName="Amount"></app-select> -->
             <div class="blank"></div>
@@ -135,7 +136,7 @@
       </div>
 
       <div class="subGroup" [ngClass]="{'halfOpacity': loginType === ''}">
-        <label>선택정보</label>
+        <label>선택 정보</label>
         <article>
           <div class="form-group row">
             <label>집주소</label>
@@ -180,7 +181,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label>가용자산</label>
+            <label>가용 자산</label>
             <app-select class="form-control" #AAmount [type]="'가용자산'"></app-select>
             <div class="blank"></div>
           </div>

@@ -75,7 +75,7 @@ export class FormComponent implements OnInit {
           this.router.navigate(['signup', 'done']);
         },
         error => {
-          alert('불러오기에 실패하였습니다.');
+          alert('기본 정보는 필수사항입니다.');
           console.log('error: ', error);
         }
         );
@@ -87,7 +87,8 @@ export class FormComponent implements OnInit {
   setSelectValue() {
     this.signupForm.addControl('AAmount', new FormControl(this.AAmount.selected));
     this.signupForm.addControl('Amount', new FormControl(this.Amount.selected));
-    this.signupForm.addControl('Location', new FormControl(this.Location.selected));
+    this.signupForm.addControl('Location1', new FormControl(this.Location.selected));
+    this.signupForm.addControl('Location2', new FormControl(this.Location.selected));
   }
 
   confirm(e) {
