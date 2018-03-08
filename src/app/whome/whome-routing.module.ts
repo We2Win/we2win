@@ -29,18 +29,18 @@ import { DoneComponent } from './pages/signup/done/done.component';
 import { PolicyComponent } from './pages/signup/policy/policy.component';
 import { FormComponent } from './pages/signup/form/form.component';
 import { Error404Component } from './pages/error404/error404.component';
-import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { SocialComponent } from './pages/signup/social/social.component';
 import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
 import { NewsDetailComponent } from './pages/info/news-detail/news-detail.component';
-
+import { JwtHelper } from 'angular2-jwt';
 
 const routes: Routes = [
   {
     path: '',
     component: WhomeComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -213,6 +213,7 @@ const routes: Routes = [
   providers: [
     PageInfoService,
     AuthGuard,
+    JwtHelper,
   ]
 })
 export class WhomeRoutingModule {

@@ -19,7 +19,6 @@ button {
   cursor: default;
 }
 
-button:hover {
+button:hover, button:focus {
   background: var(--main-bg-color-highlight);
 }
-

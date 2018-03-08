@@ -1,23 +1,33 @@
 <section>
   <app-group>
     <h1>로그인</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
-      <article>
+    <article class="articleNarrow" *ngIf="!loginType">
+      <div class="row">
+        <app-social-button [type]="'google'" (click)="setLoginType('google')">일반 회원 로그인</app-social-button>
+      </div>
+      <div class="row">
+        <app-social-button [type]="'naver'" (click)="setLoginType('naver')">네이버 아이디로 로그인</app-social-button>
+      </div>
+      <div class="row">
+        <app-social-button [type]="'kakao'" (click)="setLoginType('kakao')">카카오 아이디로 로그인</app-social-button>
+      </div>
+    </article>
+    <article class="articleNarrow" *ngIf="loginType==='google'">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
         <div class="row">
-          <div class="blank"></div>
           <label>아이디</label>
           <input name="ID" formControlName="ID" required>
-          <div class="blank"></div>
         </div>
         <div class="row">
-          <div class="blank"></div>
           <label>비밀번호</label>
-          <input name="Password"
-            type="password" formControlName="Password" required>
-          <div class="blank"></div>
+          <input name="Password" type="password" formControlName="Password" required>
         </div>
-      </article>
-      <app-button [type]="'submit'">로그인</app-button>
-    </form>
+        <div class="row">
+          <label></label>
+          <div class="blank method" (click)="loginType=''">다른 방법으로 로그인</div>
+        </div>
+        <app-button [type]="'submit'">로그인</app-button>
+      </form>
+    </article>
   </app-group>
 </section>

@@ -118,7 +118,7 @@
 }
 
 :host /deep/ .card {
-  min-height: 190px;
+  min-height: 160px;
 }
 
 :host /deep/ .checkboxGroup {
@@ -199,4 +199,10 @@
   padding-top: 1em;
   font-size: 1.2em;
   text-align: center;
+}
+
+:host /deep/ .disable {
+  pointer-events: none;
+  background: #ccc;
+  opacity: 0.3;
 }

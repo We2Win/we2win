@@ -22,7 +22,8 @@
       "styles.css"
     ],
     "scripts": [
-      "./assets/js/postcode.v2.js"
+      "./assets/js/postcode.v2.js",
+      "./assets/js/naveridlogin.js"
     ],
     "environmentSource": "environments/environment.ts",
     "environments": {

@@ -21,7 +21,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
-  appUrl = '';
+  appUrl = environment.apiUrl;
   TOKEN_NAME;
 
   constructor(
@@ -31,7 +31,7 @@ export class AuthService {
 
   auth: boolean;
   checkAuth(): Observable<boolean> {
-    return this.http.get('api/index.php')
+    return this.http.get(this.appUrl)
       .map(response => {
         console.log(response);
         if (response['auth'] === 1) {
@@ -46,7 +46,7 @@ export class AuthService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('api/', bodyString);
+    return this.http.post(environment.apiUrl, bodyString);
       // .map(response => {
       //   console.log(response);
       //   if (response['auth'] === 1) {

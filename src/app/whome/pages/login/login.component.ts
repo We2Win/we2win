@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  // providers: [AuthService]
+  providers: [AuthService, JwtHelper]
 })
 export class LoginComponent implements OnInit {
   // we want to actually subscribe to the boolean of the observable
@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
 
   appUrl = '';
   TOKEN_NAME = 'jwt_token';
+
+  loginType;
 
   constructor(
     private authService: AuthService,
@@ -52,6 +54,17 @@ export class LoginComponent implements OnInit {
       Password: new FormControl('', [Validators.required]),
     });
 
+  }
+
+  setLoginType(loginType) {
+    this.loginType = loginType;
+    if (this.loginType === 'naver') {
+      alert('네이버 로그인 팝업');
+      this.router.navigate(['/']);
+    } else if (this.loginType === 'kakao') {
+      alert('카카오 로그인 팝업');
+      this.router.navigate(['/']);
+    }
   }
 
   onSubmit(user): void {

@@ -12,9 +12,30 @@
 }
 
 #levelBox {
-  height: 150px;
   padding: 1em 0;
   cursor: default;
+}
+
+.card {
+  height: auto;
+  min-height: auto;
+  transition: box-shadow 0.5s, opacity 0.5s;;
+  opacity: 1;
+  outline: none;
+}
+
+.card.notSelected {
+  opacity: 0.5;
+}
+
+.card:hover, .card:focus {
+  box-shadow: 0 0 10px #ccc;
+  opacity: 1;
+}
+
+.card.checked {
+  box-shadow: 0 0 10px #ccc;
+  opacity: 1 !important;
 }
 
 .platinum {
@@ -74,7 +95,7 @@ p {
   border-top: 1px solid #d8d8d8;
   padding: 1em;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1em;
   color: red;
   flex: none;
   flex-basis: 1em;
@@ -88,9 +109,19 @@ p {
 
 .alert {
   color: red;
+  font-size: 0.9em;
+}
+
+.red {
+  color: red;
 }
 
 .halfOpacity {
   opacity: 0.3;
   pointer-events: none;
+}
+
+input + input,
+app-select + app-select {
+  margin-left: 0.5em;
 }
