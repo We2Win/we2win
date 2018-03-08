@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   apiUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api',
   naver: {
     clientId: 'zPiOoVFmvkQiuxQw1Ven',

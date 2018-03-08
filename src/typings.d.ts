@@ -4,5 +4,5 @@ interface NodeModule {
   id: string;
 }
 
-declare var naver: any;
-declare var daum: any;
+declare var naver;
+declare var daum;
