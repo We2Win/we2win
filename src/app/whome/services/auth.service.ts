@@ -46,7 +46,7 @@ export class AuthService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post(environment.apiUrl, bodyString);
+    return this.http.post(environment.apiUrl+'/login', bodyString);
       // .map(response => {
       //   console.log(response);
       //   if (response['auth'] === 1) {
