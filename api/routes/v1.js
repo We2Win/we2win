@@ -33,6 +33,10 @@ router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
 
+router.post('/login', UserController.login); //login   
+
+
+
 const DIR = './uploads/';
 // const upload = multer({ dest: DIR });
 const storage = multer.diskStorage({
