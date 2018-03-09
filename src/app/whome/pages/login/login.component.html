@@ -26,7 +26,7 @@
           <label></label>
           <div class="blank method" (click)="loginType=''">다른 방법으로 로그인</div>
         </div>
-        <app-button [type]="'submit'">로그인</app-button>
+        <app-button [type]="'submit'" (click)="$event.preventDefault();onSubmit(loginForm.value);">로그인1</app-button>
       </form>
     </article>
   </app-group>
