@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
   post: any;
   private user: User;
 
-  appUrl = '';
   TOKEN_NAME = 'jwt_token';
 
   loginType;
@@ -76,7 +75,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(user).subscribe(auth => {
         console.log(auth);
         if (auth) {
-          this.router.navigate(['/']);
+          // this.router.navigate(['/']);
         }
       });
     } else {
