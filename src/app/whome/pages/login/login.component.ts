@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(user): void {
+    alert('why!!');
       console.log(user);
     if (this.loginForm.valid) {
       user = this.loginForm.value;
