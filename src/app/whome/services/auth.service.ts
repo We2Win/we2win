@@ -46,6 +46,8 @@ export class AuthService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
+    alert(environment.apiUrl + '/login');
+
     return this.http.post(environment.apiUrl + '/login', bodyString);
       // .map(response => {
       //   console.log(response);
