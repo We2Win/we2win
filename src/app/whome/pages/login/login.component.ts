@@ -68,18 +68,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit(user): void {
     alert('why!!');
-      console.log(user);
-    // if (this.loginForm.valid) {
-    //   user = this.loginForm.value;
-    //   user.isLogin = true;
-    //   this.authService.login(user).subscribe(auth => {
-    //     console.log(auth);
-    //     if (auth) {
-    //       // this.router.navigate(['/']);
-    //     }
-    //   });
-    // } else {
-    //   console.log('loginForm not valid!');
-    // }
+    console.log(user);
+    if (this.loginForm.valid) {
+      user = this.loginForm.value;
+      user.isLogin = true;
+      this.authService.login(user).subscribe(auth => {
+        console.log(auth);
+        if (auth) {
+          // this.router.navigate(['/']);
+        }
+      });
+    } else {
+      console.log('loginForm not valid!');
+    }
   }
 }
