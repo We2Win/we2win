@@ -68,11 +68,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(user): void {
-      console.log(this.user);
+      console.log(user);
     if (this.loginForm.valid) {
-      this.user = this.loginForm.value;
-      this.user.isLogin = true;
-      this.authService.login(this.user).subscribe(auth => {
+      user = this.loginForm.value;
+      user.isLogin = true;
+      this.authService.login(user).subscribe(auth => {
         console.log(auth);
         if (auth) {
           this.router.navigate(['/']);
