@@ -5,9 +5,9 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { FormControl } from '@angular/forms';
 import { JwtHelper } from 'angular2-jwt';
 
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/shareReplay';
+// import 'rxjs/add/observable/of';
+// import 'rxjs/add/operator/do';
+// import 'rxjs/add/operator/shareReplay';
 
 import { User } from '../../models/user';
 import { Token } from '../../models/token';
