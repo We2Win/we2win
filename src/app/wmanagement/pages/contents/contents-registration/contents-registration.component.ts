@@ -26,7 +26,6 @@ export class ContentsRegistrationComponent implements OnInit {
   employeeForm: FormGroup;
   uploadForm: FormGroup;
 
-  _editor;
 
   private forms: object;
   // private symbols: object;
@@ -50,17 +49,23 @@ export class ContentsRegistrationComponent implements OnInit {
   @ViewChild('level') level: any = {
     selected: ''
   };
+
+  @ViewChild('NLevel') NLevel: any = {
+    selected: ''
+  };
   // sample: Observable<Info>;
 
   @ViewChild('fileInput') fileInput: ElementRef;
   fileToUpload: File = null;
-  @ViewChild('editor') editor: ElementRef;
+  _editor;
+  editor;
 
   constructor(
     private fb: FormBuilder,
     private contentsService: ContentsService,
     private router: Router,
     private http: HttpClient,
+    private elementRef: ElementRef
   ) {
   }
 
@@ -75,9 +80,19 @@ export class ContentsRegistrationComponent implements OnInit {
     this.selectedData.body = {};
   }
 
+  onLevelChange(type) {
+    switch (type) {
+      case 'N':
+        this.selectedData.body['N-level'] = this.NLevel;
+        break;
+      default:
+        break;
+    }
+  }
+
   ngOnInit() {
     this.infoForm = new FormGroup({
-      'I-level': new FormControl('', [Validators.required]),
+      // 'I-level': new FormControl(''),
       'I-title': new FormControl('', [Validators.required]),
       'I-summary': new FormControl('', [Validators.required]),
       'I-open-start': new FormControl('', [Validators.required]),
@@ -101,7 +116,6 @@ export class ContentsRegistrationComponent implements OnInit {
       'I-around-size3': new FormControl('', [Validators.required]),
       'I-around-size4': new FormControl('', [Validators.required]),
       'I-around-size5': new FormControl('', [Validators.required]),
-      'I-around-amount': new FormControl('', [Validators.required]),
       'I-around-amount1': new FormControl('', [Validators.required]),
       'I-around-amount2': new FormControl('', [Validators.required]),
       'I-around-amount3': new FormControl('', [Validators.required]),
@@ -134,6 +148,7 @@ export class ContentsRegistrationComponent implements OnInit {
       // 'S-subImage3': new FormControl(''),
     });
     this.newsForm = new FormGroup({
+      // 'N-level': new FormControl('', [Validators.required]),
       'N-title': new FormControl('', [Validators.required]),
       // 'N-image': new FormControl('', [Validators.required]),
       'N-sub-title': new FormControl('', [Validators.required]),
@@ -227,7 +242,7 @@ export class ContentsRegistrationComponent implements OnInit {
     //   '구인': 'R',
     //   '구직': 'E',
     // };
-    this._editor = new Quill('#editor');
+
   }
 
   upload() {
@@ -268,14 +283,18 @@ export class ContentsRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.forms[this.selectedData.type]);
-    if (this.forms[this.selectedData.type].valid) {
-      this.selectedData.body = this.forms[this.selectedData.type].value;
-      console.log(this.selectedData);
-      this.postData(this.selectedData);
-    } else {
-      alert('양식이 모두 입력되지 않았습니다.');
-    }
+    this.selectedData.body = this.forms[this.selectedData.type].value;
+    console.log(this.forms[this.selectedData.type]);
+
+    console.log(this.selectedData);
+
+    // if (this.forms[this.selectedData.type].valid) {
+    //   this.selectedData.body = this.forms[this.selectedData.type].value;
+    //   console.log(this.selectedData);
+    //   this.postData(this.selectedData);
+    // } else {
+    //   alert('양식이 모두 입력되지 않았습니다.');
+    // }
   }
 
   postData(selectedData) {

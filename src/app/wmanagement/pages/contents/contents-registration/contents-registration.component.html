@@ -16,7 +16,7 @@
         novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
-          <app-select #level [type]="'컨텐츠 등급'"></app-select>
+          <!-- <app-select #level [type]="'컨텐츠 등급'"></app-select> -->
         </li>
         <li class="form-group">
           <h2>컨텐츠 제목</h2>
@@ -92,8 +92,8 @@
         </li>
         <li>
           <h2>현장 리포트</h2>
-          <textarea formControlName="I-report" id="editor" #editor></textarea>
-          <!-- <textarea placeholder="상세 정보를 입력하세요" formControlName="I-report"></textarea> -->
+          <!-- <app-quill></app-quill> -->
+          <textarea class="form-control" placeholder="상세 정보를 입력하세요" formControlName="I-report"></textarea>
         </li>
         <li>
           <h2>현장 사진</h2>
@@ -213,7 +213,7 @@
       <form [formGroup]="newsForm" id="news" *ngSwitchCase="'부동산 뉴스'" (ngSubmit)="onSubmit()" novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
-          <app-select #level [type]="'컨텐츠 등급'"></app-select>
+          <app-select #NLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('news')"></app-select>
         </li>
         <li>
           <h2>컨텐츠 제목</h2>

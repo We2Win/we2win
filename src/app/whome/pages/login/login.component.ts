@@ -76,6 +76,8 @@ export class LoginComponent implements OnInit {
         console.log(auth);
         if (auth) {
           // this.router.navigate(['/']);
+        } else {
+          alert('아이디 또는 비밀번호가 맞지 않습니다.');
         }
       });
     } else {

@@ -40,7 +40,7 @@ const routes: Routes = [
   {
     path: '',
     component: WhomeComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',

@@ -32,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoService } from './services/info.service';
 import { ContentsService } from './services/contents.service';
 import { FileUploadModule } from 'ng2-file-upload';
+import { QuillComponent } from './micro/quill/quill.component';
 
 @NgModule({
   imports: [
@@ -68,6 +69,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     AnalysisUserRecordComponent,
     AnalysisContentsRecordComponent,
     Error404Component,
+    QuillComponent,
   ],
   providers: [
     InfoService,
