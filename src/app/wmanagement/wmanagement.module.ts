@@ -31,8 +31,8 @@ import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoService } from './services/info.service';
 import { ContentsService } from './services/contents.service';
-import { FileUploadModule } from 'ng2-file-upload';
 import { QuillComponent } from './micro/quill/quill.component';
+import { UploadFileService } from './services/upload-file.service';
 
 @NgModule({
   imports: [
@@ -41,7 +41,6 @@ import { QuillComponent } from './micro/quill/quill.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FileUploadModule,
   ],
   declarations: [
     WmanagementComponent,
@@ -73,7 +72,8 @@ import { QuillComponent } from './micro/quill/quill.component';
   ],
   providers: [
     InfoService,
-    ContentsService
+    ContentsService,
+    UploadFileService,
   ]
 })
 export class WmanagementModule { }

@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ContentsService } from '../../../services/contents.service';
-import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import * as Quill from 'quill';
+import { UploadFileService } from '../../../services/upload-file.service';
+
 
 @Component({
   selector: 'app-contents-registration',
@@ -14,7 +15,10 @@ import * as Quill from 'quill';
     './contents-registration.component.css',
     '../../pages.css'
   ],
-  providers: [ContentsService]
+  providers: [
+    ContentsService,
+    UploadFileService
+  ]
 })
 export class ContentsRegistrationComponent implements OnInit {
   infoForm: FormGroup;
@@ -28,62 +32,69 @@ export class ContentsRegistrationComponent implements OnInit {
 
 
   private forms: object;
-  // private symbols: object;
-  // public uploader: FileUploader = new FileUploader({
-  //   url: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/',
-  //   // itemAlias: 'photo'
-  // });
+
   filesToUpload: Array<File> = [];
 
   private selectedData = {
-    type: '',
+    type: '리포트',
     body: {},
   };
+  private selectBoxData = {};
 
-  @ViewChild('top') top: any = {
-    selected: ''
-  };
-  @ViewChild('sub') sub: any = {
-    selected: ''
-  };
-  @ViewChild('level') level: any = {
-    selected: ''
-  };
+  @ViewChild('top') top: any = { selected: '' };
+  @ViewChild('sub') sub: any = { selected: '' };
 
-  @ViewChild('NLevel') NLevel: any = {
-    selected: ''
-  };
+  @ViewChild('ILevel') ILevel: any = { selected: '' };
+  @ViewChild('SLevel') SLevel: any = { selected: '' };
+  @ViewChild('NLevel') NLevel: any = { selected: '' };
+  @ViewChild('LLevel') LLevel: any = { selected: '' };
+  @ViewChild('MLevel') MLevel: any = { selected: '' };
   // sample: Observable<Info>;
 
-  @ViewChild('fileInput') fileInput: ElementRef;
-  fileToUpload: File = null;
+  selectedFiles: FileList;
   _editor;
   editor;
 
   constructor(
     private fb: FormBuilder,
     private contentsService: ContentsService,
+    private uploadService: UploadFileService,
     private router: Router,
     private http: HttpClient,
     private elementRef: ElementRef
   ) {
   }
 
+
   onTopChange() {
     this.sub.selected = '하위 카테고리';
     this.selectedData.type = '';
     this.selectedData.body = {};
+    this.selectBoxData = {};
   }
 
   onSubChange(selected) {
     this.selectedData.type = selected;
     this.selectedData.body = {};
+    this.selectBoxData = {};
   }
 
   onLevelChange(type) {
     switch (type) {
-      case 'N':
-        this.selectedData.body['N-level'] = this.NLevel;
+      case 'info':
+        this.selectBoxData['I-level'] = this.ILevel.selected;
+        break;
+      case 'site':
+        this.selectBoxData['S-level'] = this.SLevel.selected;
+        break;
+      case 'news':
+        this.selectBoxData['N-level'] = this.NLevel.selected;
+        break;
+      case 'law':
+        this.selectBoxData['L-level'] = this.LLevel.selected;
+        break;
+      case 'meeting':
+        this.selectBoxData['M-level'] = this.MLevel.selected;
         break;
       default:
         break;
@@ -105,7 +116,6 @@ export class ContentsRegistrationComponent implements OnInit {
       'I-current-size3': new FormControl('', [Validators.required]),
       'I-current-size4': new FormControl('', [Validators.required]),
       'I-current-size5': new FormControl('', [Validators.required]),
-      'I-current-amount': new FormControl('', [Validators.required]),
       'I-current-amount1': new FormControl('', [Validators.required]),
       'I-current-amount2': new FormControl('', [Validators.required]),
       'I-current-amount3': new FormControl('', [Validators.required]),
@@ -229,72 +239,27 @@ export class ContentsRegistrationComponent implements OnInit {
       '구인': this.employerForm,
       '구직': this.employeeForm
     };
-
-    // this.symbols = {
-    //   '리포트': 'R',
-    //   '부동산 뉴스': 'N',
-    //   '법률 및 정책': 'L',
-    //   '아파트': 'S',
-    //   '오피스텔': 'S',
-    //   '상가/호텔': 'S',
-    //   '토지': 'S',
-    //   '오프라인 모임': 'M',
-    //   '구인': 'R',
-    //   '구직': 'E',
-    // };
-
   }
 
   upload() {
-    const formData: FormData = new FormData();
-    const files: Array<File> = this.filesToUpload;
-    console.log(files);
-
-    for (let i = 0; i < files.length; i++) {
-      formData.append('files[]', files[0], files[0]['name']);
-    }
-    // formData.append("uploads[]", files[0], files[0]['name']);
-    // this.address.documents = files.toString();
-
-    this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/upload', formData)
-      .subscribe(result => console.log('result', result));
+    const file = this.selectedFiles.item(0);
+    this.uploadService.uploadfile(file);
   }
 
-  fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
-    // this.product.photo = fileInput.target.files[0]['name'];
-  }
-
-  onFileChange(event, selector) {
-    const reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files.item(0);
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        console.log(file);
-        const sType = this.selectedData.type;
-        this.forms[sType].setControl(selector, new FormControl({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        }, [Validators.required]));
-      };
-    }
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
 
   onSubmit() {
     this.selectedData.body = this.forms[this.selectedData.type].value;
-    console.log(this.forms[this.selectedData.type]);
-
+    this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
     console.log(this.selectedData);
 
-    // if (this.forms[this.selectedData.type].valid) {
-    //   this.selectedData.body = this.forms[this.selectedData.type].value;
-    //   console.log(this.selectedData);
-    //   this.postData(this.selectedData);
-    // } else {
-    //   alert('양식이 모두 입력되지 않았습니다.');
-    // }
+    if (this.forms[this.selectedData.type].valid) {
+      // this.postData(this.selectedData);
+    } else {
+      alert('양식이 모두 입력되지 않았습니다.');
+    }
   }
 
   postData(selectedData) {

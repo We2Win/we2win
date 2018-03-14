@@ -16,7 +16,7 @@
         novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
-          <!-- <app-select #level [type]="'컨텐츠 등급'"></app-select> -->
+          <app-select #ILevel [type]="'컨텐츠 등급'" (change)="onLevelChange('info')"></app-select>
         </li>
         <li class="form-group">
           <h2>컨텐츠 제목</h2>
@@ -120,9 +120,11 @@
         <form [formGroup]="uploadForm" id="upload" action="/api/v1/upload" method="post">
           <li>
             <h2>현장 사진</h2>
-            <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*"
-              multiple #imageInput>
-            <app-button (click)="upload()">사진 등록</app-button>
+            <input type="file" (change)="selectFile($event)">
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles}" (click)="upload()">Upload</app-button>
+            <!-- <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*"
+              multiple #imageInput> -->
+            <!-- <app-button (click)="upload()">사진 등록</app-button> -->
           </li>
           <li>
             <h2>세부 사진</h2>
@@ -146,7 +148,7 @@
         </li>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
-          <app-select #level [type]="'컨텐츠 등급'"></app-select>
+          <app-select #SLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('site')"></app-select>
         </li>
         <li class="form-group">
           <h2>제목</h2>
@@ -252,7 +254,7 @@
       <form [formGroup]="lawForm" id="law" *ngSwitchCase="'법률 및 정책'" (ngSubmit)="onSubmit()" novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
-          <app-select #level [type]="'컨텐츠 등급'"></app-select>
+          <app-select #LLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('law')"></app-select>
         </li>
         <li>
           <h2>제목</h2>
@@ -281,7 +283,7 @@
       <form [formGroup]="meetingForm" id="meeting" *ngSwitchCase="'오프라인 모임'" (ngSubmit)="onSubmit()" novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
-          <app-select #level [type]="'컨텐츠 등급'"></app-select>
+          <app-select #MLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('meeting')"></app-select>
         </li>
         <li>
           <h2>제목</h2>

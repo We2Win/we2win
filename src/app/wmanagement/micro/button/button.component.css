@@ -18,3 +18,7 @@
   background: var(--main-bg-color-highlight);
 }
 
+:host.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
