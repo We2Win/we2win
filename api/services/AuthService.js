@@ -85,7 +85,7 @@ const createUser = async function (userInfo) {
     auth_info.method = 'ID';
 
     console.log(JSON.stringify(userInfo));
-    [err, user] = await to (User.create(userInfo));
+    [err, user] = await to (model.User.create(userInfo));
     if (err) TE('생성 중 오류가 발생했습니다.');
 
     console.log('createUser()');
@@ -103,7 +103,7 @@ const authUser = async function (userInfo) {//returns token
 
     let user;
 
-    [err, user] =await to (User.findOne({ where: { ID: unique_key }}));
+    [err, user] =await to (model.User.findOne({ where: { ID: unique_key }}));
 
     if (!user) TE('Not registered');
 
@@ -119,7 +119,7 @@ const authUser = async function (userInfo) {//returns token
 module.exports.authUser = authUser;
 
 const hasUser = async function (userInfo) {
-    [err, user] = await to(User.findOne({ where: { ID: userInfo.ID } }));
+    [err, user] = await to(model.User.findOne({ where: { ID: userInfo.ID } }));
     
     if (user) return true;
     else return false;
