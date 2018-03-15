@@ -9,10 +9,11 @@ const create = async function (req, res) {
   //     return ReE(res, 'Please enter an email or phone number to register.');
   // } else if (!body.password) {
   //     return ReE(res, 'Please enter a password to register.');
+  console.log('body: ', body);
   if (!body.ID) {
     return ReE(res, '아이디를 입력해주세요.');
   } else if (!body.Password) {
-    return ReR(res, '비밀번호를 입력해주세요.');
+    return ReE(res, '비밀번호를 입력해주세요.');
   } else {
     let err, user;
 

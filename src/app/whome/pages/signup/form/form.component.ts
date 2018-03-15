@@ -118,7 +118,8 @@ export class FormComponent implements OnInit {
     this.userService.create(this.user)
       .subscribe(
       data => {
-        this.router.navigate(['signup', 'done']);
+        console.log('data: ', data);
+        // this.router.navigate(['signup', 'done']);
       },
       error => {
         alert('회원 가입중 문제가 발생했습니다.');
