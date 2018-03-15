@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     Email: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      // allowNull: false,
       // unique: true,
       validate: {
         isEmail: {
@@ -58,23 +58,23 @@ module.exports = (sequelize, DataTypes) => {
     },
     Hope: {
       type: DataTypes.TINYINT(1),
-      allowNull: false
+      // allowNull: false
     },
     Site: {
       type: DataTypes.TINYINT(1),
-      allowNull: false
+      // allowNull: false
     },
     Location1: {
       type: DataTypes.STRING(20),
-      allowNull: false
+      // allowNull: false
     },
     Location2: {
       type: DataTypes.STRING(20),
-      allowNull: false
+      // allowNull: false
     },
     Amount: {
       type: DataTypes.INTEGER(15),
-      allowNull: false
+      // allowNull: false
     },
     HA: DataTypes.STRING(100),
     HP: DataTypes.INTEGER(11),

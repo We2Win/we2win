@@ -116,6 +116,7 @@ export class FormComponent implements OnInit {
     this.user = {
       ID: this.signupForm.controls['ID'].value,
       Password: this.signupForm.controls['Password'].value,
+      Name: this.signupForm.controls['Name'].value,
       CP: this.signupForm.controls['CP'].value,
       ULevel: 1,
       Email: this.signupForm.controls['Email'].value,
@@ -123,11 +124,13 @@ export class FormComponent implements OnInit {
       Site: this.signupForm.controls['Site'].value,
       Location1: this.Location1.selected,
       Location2: this.Location2.selected,
+      Amount: this.Amount.selected,
       HA: this.signupForm.controls['HA'].value,
       HP: this.signupForm.controls['HP'].value,
       OA: this.signupForm.controls['OA'].value,
       OP: this.signupForm.controls['OP'].value,
       InfoA: this.signupForm.controls['InfoA'].value,
+      AAmount: this.AAmount.selected,
     };
     console.log(this.user);
     this.userService.create(this.user)
