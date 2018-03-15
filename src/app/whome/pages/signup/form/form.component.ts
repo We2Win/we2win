@@ -121,7 +121,7 @@ export class FormComponent implements OnInit {
     console.log('ID: ', this.ID);
     e.stopPropagation();
     const userInfo = {
-      ID: this.ID
+      ID: this.ID.value
     };
     console.log('hasId(): ', this.userService.hasId(userInfo));
   }
