@@ -85,7 +85,7 @@ module.exports = (sequelize, DataTypes) => {
     ASns: DataTypes.TINYINT(1),
     UWord: DataTypes.STRING(40),
   }, {
-    charser: 'utf8',
+    charset: 'utf8',
     collate: 'utf8_unicode_ci',
   });
 
