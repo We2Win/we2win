@@ -15,7 +15,7 @@ const passport = require('passport');
 
 // User Routes
 
-router.post('/users', UserController.create(req, res)); //create   
+router.post('/users', UserController.create); //create   
 
 
 // router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
