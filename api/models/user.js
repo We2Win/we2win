@@ -81,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
     OA: DataTypes.STRING(100),
     OP: DataTypes.INTEGER(11),
     InfoA: DataTypes.TINYINT(1),
-    AAmount: DataTypes.INTEGER(15),
+    AAmount: DataTypes.STRING(15),
     ASns: DataTypes.TINYINT(1),
     UWord: DataTypes.STRING(40),
   });
