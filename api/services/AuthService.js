@@ -1,4 +1,4 @@
-const User = require('./../models').User;
+let User = require('./../models').User;
 const Content = require('./../models').Content;
 const Info = require('./../models').Info;
 const News = require('./../models').News;
@@ -73,7 +73,7 @@ const createContent = async function (data) {
 }
 module.exports.createContent = createContent;
 
-const createUser = async function (userInfo) {
+let createUser = async function (userInfo) {
     console.log('createUser1()');
     let auth_info, err;
 
