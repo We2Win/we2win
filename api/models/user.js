@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     Password: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false
     },
     Name: {
       type: DataTypes.STRING(15),
       allowNull: false,
-    },      
+    },
     CP: {
       type: DataTypes.STRING(20),
       allowNull: true,
@@ -84,6 +84,9 @@ module.exports = (sequelize, DataTypes) => {
     AAmount: DataTypes.STRING(15),
     ASns: DataTypes.TINYINT(1),
     UWord: DataTypes.STRING(40),
+  }, {
+    charser: 'utf8',
+    collate: 'utf8_unicode_ci',
   });
 
   // Model.associate = function (models) {
@@ -112,7 +115,7 @@ module.exports = (sequelize, DataTypes) => {
     if (!this.Password) TE('Password not set');
 
     [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
-    TE(pw + this.Password + 'done'+pass);
+    TE(pw + this.Password + 'done' + pass);
     if (err) TE(err);
 
     if (!pass) TE('invalid Password');
