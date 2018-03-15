@@ -96,7 +96,8 @@ const createUser = async function (userInfo) {
 module.exports.createUser = createUser;
 
 const authUser = async function (userInfo) {//returns token
-    let unique_key, err;
+    console.log('authUser1()');
+    let unique_key, err, user;
     const auth_info = {};
     auth_info.status = 'login';
 
@@ -105,20 +106,18 @@ const authUser = async function (userInfo) {//returns token
     if (!userInfo.ID) TE('ID를 올바르게 입력해주세요.');
     if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
 
-    let user;
 
-    [err, user] =await to (User.findOne({ where: { ID: unique_key }}));
+    console.log('before await');
+
+    [err, user] = await to (User.findOne({ where: { ID: unique_key }}));
 
     if (!user) TE('Not registered');
 
-    console.log(user.Password, userInfo.Password);
+    console.log('after await');
 
     // [err, user] = await to(user.comparePassword(userInfo.Password));
-
     if (err) TE(err.message);
-
     return user;
-
 }
 module.exports.authUser = authUser;
 
