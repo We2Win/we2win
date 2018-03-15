@@ -20,7 +20,7 @@ export class UploadFileService {
     );
 
     const params = {
-      Bucket: 'jsa-angular4-bucket',
+      Bucket: 'we2winimage',
       Key: this.FOLDER + file.name,
       Body: file
     };
