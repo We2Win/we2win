@@ -101,6 +101,7 @@ const getUserList = async function (userInfo) {
 
     return users;
 }
+module.exports.getUserList = getUserList;
 
 const authUser = async function (userInfo) {//returns token
     console.log('authUser1()');
