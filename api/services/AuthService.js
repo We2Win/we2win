@@ -75,7 +75,7 @@ module.exports.createContent = createContent;
 
 let createUser = async function (userInfo) {
     console.log('createUser1()');
-    let auth_info, user, err;
+    let auth_info, err;
 
     auth_info = {}
     auth_info.status = 'create';
@@ -85,13 +85,12 @@ let createUser = async function (userInfo) {
     auth_info.method = 'ID';
 
     console.log(JSON.stringify(userInfo));
-    User.create(userInfo);
-    // [err, user] = await to (User.create(userInfo));
+    [err, data] = await to (User.create(userInfo));
     if (err) TE('생성 중 오류가 발생했습니다.' + JSON.stringify(err));
 
     console.log('createUser()');
-    User.beforeSave(user);
-    return user;
+    User.beforeSave(data);
+    return data;
 }
 module.exports.createUser = createUser;
 
