@@ -32,24 +32,22 @@ export class AuthService {
   auth: boolean;
   checkAuth() {
   // checkAuth(): Observable<boolean> {
-    return this.http.get(this.appUrl)
-      .map(response => {
-        console.log(response);
-        if (response['auth'] === 1) {
+    return this.http.get(this.appUrl + '/users')
+      .map(res => {
+        console.log(res);
+        if (res['auth'] === 1) {
           return true;
         } else {
           return false;
         }
       });
   }
+
   login(user: User) {
     const bodyString = JSON.stringify(user);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: headers });
+    const headers = { headers: { 'Content-Type': 'application/json' }};
 
-    alert(environment.apiUrl + '/login');
-
-    return this.http.post(environment.apiUrl + '/login', bodyString);
+    return this.http.post(environment.apiUrl + '/login', bodyString, headers);
       // .map(response => {
       //   console.log(response);
       //   if (response['auth'] === 1) {

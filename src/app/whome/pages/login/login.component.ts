@@ -42,11 +42,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.checkAuth().subscribe(auth => {
-      if (auth) {
-        this.router.navigate(['/']);
-      }
-    });
+    // this.authService.checkAuth().subscribe(auth => {
+    //   if (auth) {
+    //     this.router.navigate(['/']);
+    //   }
+    // });
 
     this.loginForm = new FormGroup({
       ID: new FormControl('', [Validators.required]),
@@ -67,19 +67,24 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(user): void {
-    alert('why!!');
     console.log(user);
     if (this.loginForm.valid) {
       user = this.loginForm.value;
       user.isLogin = true;
-      this.authService.login(user).subscribe(auth => {
-        console.log(auth);
-        if (auth) {
-          // this.router.navigate(['/']);
-        } else {
-          alert('아이디 또는 비밀번호가 맞지 않습니다.');
+      this.authService.login(user).subscribe(
+        auth => {
+          console.log(auth);
+          if (auth) {
+            alert('성공!');
+            // this.router.navigate(['/']);
+          } else {
+            alert('아이디 또는 비밀번호가 맞지 않습니다.');
+          }
+        },
+        err => {
+          alert('로그인 중 오류가 발생했습니다.');
         }
-      });
+      );
     } else {
       console.log('loginForm not valid!');
     }

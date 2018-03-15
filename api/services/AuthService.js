@@ -96,8 +96,11 @@ const createUser = async function (userInfo) {
 module.exports.createUser = createUser;
 
 const authUser = async function (userInfo) {//returns token
+    let unique_key, err;
     const auth_info = {};
     auth_info.status = 'login';
+
+    unique_key = getUniqueKeyFromBody(userInfo);
 
     if (!userInfo.ID) TE('ID를 올바르게 입력해주세요.');
     if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
