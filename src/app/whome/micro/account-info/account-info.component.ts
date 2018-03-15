@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
   ]
 })
 export class AccountInfoComponent implements OnInit {
-  private isLogin = false;
+  isLogin = false;
   private user = {
     id: 'noname',
     point: '-'

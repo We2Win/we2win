@@ -34,9 +34,20 @@ module.exports.create = create;
 
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  let user = req.user;
+  let body = req.body;
 
-  return ReS(res, { user: user.toWeb() });
+  console.log('body: ', JSON.stringify(body));
+
+  [err, users] = await to(authService.getUserList(body));
+  
+  if (err) return ReE(res, err, 422);
+  
+  return ReS(res, {
+    message: 'Successfully loading user lists.',
+    list: JSON.stringify(users),
+    // user: user.toWeb(),
+    // token: User.getJWT()
+  }, 201);
 }
 module.exports.get = get;
 

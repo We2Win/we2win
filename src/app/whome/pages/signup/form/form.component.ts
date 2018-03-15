@@ -59,22 +59,22 @@ export class FormComponent implements OnInit {
       Name: new FormControl(),
       CP: new FormControl(),
       ULevel: new FormControl(),
-      UPoint: new FormControl(),
+      // UPoint: new FormControl(),
       Email: new FormControl(),
       Hope: new FormControl(),
       Site: new FormControl(),
-      // Location: new FormControl(),
+      // Location1: new FormControl(),
+      // Location2: new FormControl(),
       // Amount: new FormControl(),
-      OP: new FormControl(),
+      HA: new FormControl(),
       HP: new FormControl(),
       OA: new FormControl(),
-      HA: new FormControl(),
+      OP: new FormControl(),
       InfoA: new FormControl(),
       // AAmount: new FormControl(),
       ASns: new FormControl(),
       UWord: new FormControl(),
     });
-    this.ULevel = this.signupForm.controls['ULevel'];
 
     const Naver = new naver.LoginWithNaverId(
       {
@@ -90,8 +90,6 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.setSelectValue();
-
     // check id validation
     if (this.checkId === undefined) {
       alert('아이디 확인을 해주세요.');
@@ -102,7 +100,7 @@ export class FormComponent implements OnInit {
     }
 
     // check password validation
-    if (this.signupForm.controls['Password'].value !== this.signupForm.controls['PasswordV'].value){
+    if (this.signupForm.controls['Password'].value !== this.signupForm.controls['PasswordV'].value) {
       alert('비밀번호를 확인해주세요.');
       scroll(0, 200);
       return false;
@@ -113,19 +111,30 @@ export class FormComponent implements OnInit {
       return false;
     }
 
+    // this.setSelectValue();
     // this.user = this.signupForm.value;
     this.user = {
       ID: this.signupForm.controls['ID'].value,
       Password: this.signupForm.controls['Password'].value,
       CP: this.signupForm.controls['CP'].value,
-      Email: this.signupForm.controls['Email'].value
+      ULevel: 1,
+      Email: this.signupForm.controls['Email'].value,
+      Hope: this.signupForm.controls['Hope'].value,
+      Site: this.signupForm.controls['Site'].value,
+      Location1: this.Location1.selected,
+      Location2: this.Location2.selected,
+      HA: this.signupForm.controls['HA'].value,
+      HP: this.signupForm.controls['HP'].value,
+      OA: this.signupForm.controls['OA'].value,
+      OP: this.signupForm.controls['OP'].value,
+      InfoA: this.signupForm.controls['InfoA'].value,
     };
     console.log(this.user);
     this.userService.create(this.user)
       .subscribe(
       data => {
+        this.router.navigate(['signup', 'done']);
         console.log('data: ', data);
-        // this.router.navigate(['signup', 'done']);
       },
       error => {
         alert('회원 가입중 문제가 발생했습니다.');
@@ -240,8 +249,7 @@ export class FormComponent implements OnInit {
   }
 
   setLevel(level) {
-    this.signupForm.controls['ULevel'].setValue(level);
-    console.log(this.signupForm.controls['ULevel'].value);
+    this.ULevel = level;
   }
 
   setLevelOnKeyDown(level, event) {
