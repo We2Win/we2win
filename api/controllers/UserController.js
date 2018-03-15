@@ -85,6 +85,8 @@ const hasId = async function (req, res) {
   const body = req.body;
   let err, user;
 
+  console.log('ID from hasId(): ', body);
+
   [err, hasUser] = await to(authService.hasUser(req.body));
   if (err) return ReE(res, err, 422);
 

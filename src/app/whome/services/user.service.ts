@@ -22,6 +22,7 @@ export class UserService {
     return this.http.get('/api/v1/infos');
   }
   create(user: User) {
+    console.log('user form create(): ', user);
     const bodyString = JSON.stringify(user);
     // const headers = new Headers({ 'Content-Type': 'application/json' });
     // const options = new RequestOptions({ headers: headers });
