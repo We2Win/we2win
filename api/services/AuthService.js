@@ -85,7 +85,7 @@ const createUser = async function (userInfo) {
     auth_info.method = 'ID';
 
     console.log(JSON.stringify(userInfo));
-    [err, user] = await to (User.create(JSON.stringify(userInfo)));
+    [err, user] = await to (User.create(userInfo));
     if (err) TE('생성 중 오류가 발생했습니다.');
 
     console.log('createUser()');
