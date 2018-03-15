@@ -8,10 +8,14 @@ import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { environment } from '../../../environments/environment.prod';
+import { JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private jwtHelper: JwtHelper
+  ) { }
 
   getAll () {
     // return this.http.get<User[]>('/api');

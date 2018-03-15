@@ -1,37 +1,47 @@
 .signed,
 .unsigned {
-  min-width: 10em;
   padding: 0.3em 0em;
   font-size: 0.7em;
   flex: auto;
   box-sizing: border-box;
-  display: none;
-}
-
-.signed {
-  border-bottom: 1px solid var(--header-border-solid);
-}
-
-.show {
   display: inline-flex;
 }
 
+.unsigned {
+  min-width: 10em;
+}
+
+.signed {
+  min-width: 20em;
+  border-bottom: 1px solid var(--header-border-solid);
+}
+
 img {
-  width: 0.7em;
-  height: 0.7em;
+  width: 0.9em;
+  height: 0.9em;
   margin: 0 0.5em;
-  flex: 1 1 auto;
+  flex: none;
+}
+
+div {
+  margin: 0 0.5em;
 }
 
 #user {
   line-height: 100%;
   flex: 1;
+  flex-basis: 7em;
 }
 
 #point {
   width: 5em;
   color: white;
   flex: 1 1 auto;
+}
+
+#logout {
+  width: 4em;
+  cursor: pointer;
 }
 
 .unsigned div {

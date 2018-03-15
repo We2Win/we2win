@@ -22,7 +22,7 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class AuthService {
   appUrl = environment.apiUrl;
-  TOKEN_NAME;
+  TOKEN_NAME = 'jwt_token';
 
   constructor(
     private http: HttpClient,
@@ -47,18 +47,9 @@ export class AuthService {
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' }};
 
-    return this.http.post(environment.apiUrl + '/login', bodyString, headers);
-      // .map(response => {
-      //   console.log(response);
-      //   if (response['auth'] === 1) {
-      //     return true;
-      //   } else {
-      //     return false;
-      //   }
-      // }).catch(() => {
-      //   console.log('Could not login');
-      //   return Observable.of(false);
-      // });
+    return this.http.post(environment.apiUrl + '/login', bodyString, headers)
+      .do((res: any) => this.setToken(res.token))
+      .shareReplay();
   }
 
   // signin(credential: User) {
@@ -68,8 +59,10 @@ export class AuthService {
       .shareReplay();
   }
 
-  signout(): void {
-    this.removeToken();
+  logout(): void {
+    if (confirm('로그아웃 하시겠습니까?')) {
+      this.removeToken();
+    }
   }
 
   // 토큰 유효성 검증
@@ -82,6 +75,9 @@ export class AuthService {
     return localStorage.getItem(this.TOKEN_NAME);
   }
 
+  getUserId(): string {
+    return this.jwtHelper.decodeToken(this.getToken()).ID;
+  }
   setToken(token: string): void {
     localStorage.setItem(this.TOKEN_NAME, token);
   }

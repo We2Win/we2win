@@ -46,7 +46,7 @@ export class TitleBannerComponent implements OnInit {
         if (this.dataset['title']) {
           this._elementRef.nativeElement.className = this.route[this.dataset['title']];
         }
-        console.log(this.route[this.dataset['title']]);
+        // console.log(this.route[this.dataset['title']]);
       }
     });
   }

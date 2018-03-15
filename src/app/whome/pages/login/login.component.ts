@@ -42,11 +42,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.authService.checkAuth().subscribe(auth => {
-    //   if (auth) {
-    //     this.router.navigate(['/']);
-    //   }
-    // });
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
 
     this.loginForm = new FormGroup({
       ID: new FormControl('', [Validators.required]),
@@ -75,8 +73,7 @@ export class LoginComponent implements OnInit {
         auth => {
           console.log(auth);
           if (auth) {
-            alert('성공!');
-            // this.router.navigate(['/']);
+            this.router.navigate(['/']);
           } else {
             alert('아이디 또는 비밀번호가 맞지 않습니다.');
           }

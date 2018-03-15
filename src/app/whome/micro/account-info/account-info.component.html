@@ -1,10 +1,11 @@
-<div class="signed">
+<div class="signed" *ngIf="isLogin">
   <img src="/assets/img/icon_profile.png" alt="">
-  <div id="user">님</div>
-  <div id="point"> P</div>
+  <div id="user">{{user.id}} 님</div>
+  <div id="point">{{user.point}} P</div>
+  <div id="logout" (click)="logout()">로그아웃</div>
 </div>
 
-<div class="unsigned show">
+<div class="unsigned" *ngIf="!isLogin">
   <div routerLink="/login">로그인</div>
   <div routerLink="/signup">회원가입</div>
 </div>
