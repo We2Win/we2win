@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
     },
-    // Name: DataTypes.STRING,
+    Name: DataTypes.STRING,
     CP: {
       type: DataTypes.STRING,
-      // allowNull: true,
+      allowNull: true,
       // unique: true,
       // validate: {
       //   len: {
@@ -29,73 +29,73 @@ module.exports = (sequelize, DataTypes) => {
       //   }
       // }
     },
-    // Hope: DataTypes.INTEGER,
-    // Site: DataTypes.INTEGER,
-    // Location: DataTypes.STRING,
-    // Amount: DataTypes.INTEGER,
-    // OP: DataTypes.INTEGER,
-    // HP: DataTypes.INTEGER,
-    // OA: DataTypes.STRING,
-    // HA: DataTypes.STRING,
-    // InfoA: DataTypes.INTEGER,
-    // AAmount: DataTypes.INTEGER,
-    // ASns: DataTypes.INTEGER,
-    // UWord: DataTypes.STRING,
+    Hope: DataTypes.INTEGER,
+    Site: DataTypes.INTEGER,
+    Location: DataTypes.STRING,
+    Amount: DataTypes.INTEGER,
+    OP: DataTypes.INTEGER,
+    HP: DataTypes.INTEGER,
+    OA: DataTypes.STRING,
+    HA: DataTypes.STRING,
+    InfoA: DataTypes.INTEGER,
+    AAmount: DataTypes.INTEGER,
+    ASns: DataTypes.INTEGER,
+    UWord: DataTypes.STRING,
     Email: {
       type: DataTypes.STRING,
-      // allowNull: true,
-      // unique: true,
-      // validate: {
-      //   isEmail: {
-      //     msg: "이메일이 아닙니다."
-      //   }
-      // }
+      allowNull: true,
+      unique: true,
+      validate: {
+        isEmail: {
+          msg: "이메일이 아닙니다."
+        }
+      }
     },
   });
 
-  // Model.associate = function (models) {
-  //   // this.Companies = this.belongsToMany(models.Company, {
-  //   //   through: 'UserCompany'
-  //   // });
-  // };
+  Model.associate = function (models) {
+    // this.Companies = this.belongsToMany(models.Company, {
+    //   through: 'UserCompany'
+    // });
+  };
 
-  // Model.beforeSave(async (user, options) => {
-  //   let err;
-  //   if (user.changed('Password')) {
-  //     user.Password = bcrypt.hashSync(user.Password);
+  Model.beforeSave(async (user, options) => {
+    let err;
+    if (user.changed('Password')) {
+      user.Password = bcrypt.hashSync(user.Password);
 
-  //     // let salt, hash
-  //     // [err, salt] = await to(bcrypt.genSalt(10));
-  //     // if (err) TE(err.message, true);
-  //     // [err, hash] = await to(bcrypt.hash(user.Password, salt));
-  //     // if (err) TE(err.message, true);
+      // let salt, hash
+      // [err, salt] = await to(bcrypt.genSalt(10));
+      // if (err) TE(err.message, true);
+      // [err, hash] = await to(bcrypt.hash(user.Password, salt));
+      // if (err) TE(err.message, true);
 
-  //     // user.Password = hash;
-  //   }
-  // });
+      // user.Password = hash;
+    }
+  });
 
-  // Model.prototype.comparePassword = async function (pw) {
-  //   let err, pass
-  //   if (!this.Password) TE('Password not set');
+  Model.prototype.comparePassword = async function (pw) {
+    let err, pass
+    if (!this.Password) TE('Password not set');
 
-  //   [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
-  //   TE(pw + this.Password + 'done'+pass);
-  //   if (err) TE(err);
+    [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
+    TE(pw + this.Password + 'done'+pass);
+    if (err) TE(err);
 
-  //   if (!pass) TE('invalid Password');
+    if (!pass) TE('invalid Password');
 
-  //   return this;
-  // }
+    return this;
+  }
 
-  // Model.prototype.getJWT = function () {
-  //   let expiration_time = parseInt(CONFIG.jwt_expiration);
-  //   return "Bearer " + jwt.sign({
-  //       user_id: this.id
-  //     },
-  //     CONFIG.jwt_encryption, {
-  //       expiresIn: expiration_time
-  //     });
-  // };
+  Model.prototype.getJWT = function () {
+    let expiration_time = parseInt(CONFIG.jwt_expiration);
+    return "Bearer " + jwt.sign({
+        user_id: this.id
+      },
+      CONFIG.jwt_encryption, {
+        expiresIn: expiration_time
+      });
+  };
 
   Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
