@@ -68,7 +68,7 @@ export class PageInfoService {
         currentData = this.navTree[path[2]][path[3]];
       }
       return currentData[data];
-    } catch {
+    } catch (e) {
       return 0;
     }
   }

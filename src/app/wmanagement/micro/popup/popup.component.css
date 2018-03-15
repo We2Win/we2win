@@ -11,9 +11,11 @@
   margin: auto;
   padding: 2em;
   width: 50vw;
+  min-width: 600px;
   max-height: 80vh;
   top: 10vh;
-  left: 25vw;
+  left: 50vw;
+  transform: translate(-50%, 0);
   background: #fff;
   z-index: 11;
   text-align: left;

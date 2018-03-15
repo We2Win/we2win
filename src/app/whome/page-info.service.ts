@@ -72,7 +72,7 @@ export class PageInfoService {
         currentData = this.dataset[path[1]][path[2]];
       }
       return currentData[data];
-    } catch {
+    } catch (e) {
       return 0;
     }
   }

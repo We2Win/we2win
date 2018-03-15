@@ -11,7 +11,7 @@ import { JwtHelper } from 'angular2-jwt';
 
 import { User } from '../../models/user';
 import { Token } from '../../models/token';
-import { Observable } from 'rxjs/Observable';
+// yimport { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',

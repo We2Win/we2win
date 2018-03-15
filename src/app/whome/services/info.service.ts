@@ -2,7 +2,7 @@ import { Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Info } from '../models/info';
 import { Headers, RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+// yimport { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';

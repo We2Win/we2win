@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   providers: [PageInfoService]
 })
 export class TitleBannerComponent implements OnInit {
-  // @Input() type;
+  @Input() type;
   dataset: Object = {
     'title': '',
     'description': '',
@@ -43,8 +43,9 @@ export class TitleBannerComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         const routePath = event.urlAfterRedirects;
         this.updateData(routePath);
-        if (this.dataset['title'])
+        if (this.dataset['title']) {
           this._elementRef.nativeElement.className = this.route[this.dataset['title']];
+        }
         console.log(this.route[this.dataset['title']]);
       }
     });

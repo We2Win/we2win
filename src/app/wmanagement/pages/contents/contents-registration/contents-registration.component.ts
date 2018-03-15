@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+// yimport { Observable } from 'rxjs/Observable';
 import { ContentsService } from '../../../services/contents.service';
 import * as Quill from 'quill';
 import { UploadFileService } from '../../../services/upload-file.service';
@@ -36,7 +36,7 @@ export class ContentsRegistrationComponent implements OnInit {
   filesToUpload: Array<File> = [];
 
   private selectedData = {
-    type: '리포트',
+    type: '',
     body: {},
   };
   private selectBoxData = {};
@@ -68,7 +68,7 @@ export class ContentsRegistrationComponent implements OnInit {
 
   onTopChange() {
     this.sub.selected = '하위 카테고리';
-    this.selectedData.type = '';
+    this.selectedData.type = '리포트';
     this.selectedData.body = {};
     this.selectBoxData = {};
   }

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError, retry } from 'rxjs/operators';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+// import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+// import { catchError, retry } from 'rxjs/operators';
+// import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/catch';
 
 import { JwtHelper } from 'angular2-jwt';
 
@@ -30,7 +30,8 @@ export class AuthService {
   ) { }
 
   auth: boolean;
-  checkAuth(): Observable<boolean> {
+  checkAuth() {
+  // checkAuth(): Observable<boolean> {
     return this.http.get(this.appUrl)
       .map(response => {
         console.log(response);
@@ -62,6 +63,7 @@ export class AuthService {
       // });
   }
 
+  // signin(credential: User) {
   signin(credential: User): Observable<Token> {
     return this.http.post<Token>(`${this.appUrl}/auth/signin`, credential)
       .do(res => this.setToken(res.token))

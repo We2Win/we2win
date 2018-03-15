@@ -232,7 +232,7 @@ export class ChartComponent implements OnInit {
 
     try {
       const chart = new Chart(canvas, this.chartData[this.type][this.num]);
-    } catch {
+    } catch (e) {
 
     }
   }
