@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('User', {
     ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(15),
       allowNull: false,
       primaryKey: true
     },
@@ -14,36 +14,42 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
     },
-    Name: DataTypes.STRING,
+    Name: {
+      type: DataTypes.STRING(15),
+      allowNull: false,
+    },      
     CP: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: true,
       // unique: true,
-      // validate: {
-      //   len: {
-      //     args: [7, 20],
-      //     msg: "휴대번호 길이가 짧습니다."
-      //   },
-      //   isNumeric: {
-      //     msg: "유효한 번호가 아닙니다."
-      //   }
-      // }
+      validate: {
+        len: {
+          args: [7, 20],
+          msg: "휴대번호 길이가 짧습니다."
+        },
+        isNumeric: {
+          msg: "유효한 번호가 아닙니다."
+        }
+      }
     },
-    Hope: DataTypes.INTEGER,
-    Site: DataTypes.INTEGER,
-    Location: DataTypes.STRING,
-    Amount: DataTypes.INTEGER,
-    OP: DataTypes.INTEGER,
-    HP: DataTypes.INTEGER,
-    OA: DataTypes.STRING,
-    HA: DataTypes.STRING,
-    InfoA: DataTypes.INTEGER,
-    AAmount: DataTypes.INTEGER,
-    ASns: DataTypes.INTEGER,
-    UWord: DataTypes.STRING,
+    ULevel: {
+      type: DataTypes.TINYINT(1),
+      defaultValue: 0
+    },
+    ULevelStart: {
+      type: DataTypes.DATE,
+      defaultValue: new date()
+    },
+    ULevelEnd: {
+      type: DataTypes.DATE
+    },
+    UPoint: {
+      type: DataTypes.DECIMAL(7),
+      defaultValue: 0
+    },
     Email: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.STRING(50),
+      allowNull: false,
       // unique: true,
       validate: {
         isEmail: {
@@ -51,6 +57,34 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    Hope: {
+      type: DataTypes.TINYINT(1),
+      allowNull: false
+    },
+    Site: {
+      type: DataTypes.TINYINT(1),
+      allowNull: false
+    },
+    Location1: {
+      type: DataTypes.STRING(20),
+      allowNull: false
+    },
+    Location2: {
+      type: DataTypes.STRING(20),
+      allowNull: false
+    },
+    Amount: {
+      type: DataTypes.INTEGER(15),
+      allowNull: false
+    },
+    HA: DataTypes.STRING(100),
+    HP: DataTypes.INTEGER(11),
+    OA: DataTypes.STRING(100),
+    OP: DataTypes.INTEGER(11),
+    InfoA: DataTypes.TINYINT(1),
+    AAmount: DataTypes.INTEGER(15),
+    ASns: DataTypes.TINYINT(1),
+    UWord: DataTypes.STRING(40),
   });
 
   // Model.associate = function (models) {
@@ -91,7 +125,8 @@ module.exports = (sequelize, DataTypes) => {
     let expiration_time = parseInt(CONFIG.jwt_expiration);
     return "Bearer " + jwt.sign({
         user_id: this.ID,
-        testing: 'testing'
+        user_point: this.UPoint,
+        user_name: this.Name
       },
       CONFIG.jwt_encryption, {
         expiresIn: expiration_time

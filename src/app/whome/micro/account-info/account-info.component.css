@@ -34,7 +34,7 @@ div {
 }
 
 #point {
-  width: 5em;
+  width: auto;
   color: white;
   flex: 1 1 auto;
 }
