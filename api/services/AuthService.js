@@ -1,4 +1,4 @@
-let User = require('./../models').User;
+const User = require('./../models').User;
 const Content = require('./../models').Content;
 const Info = require('./../models').Info;
 const News = require('./../models').News;
@@ -10,7 +10,7 @@ const Employee = require('./../models').Employee;
 const validator = require('validator');
 
 const getUniqueKeyFromBody = function (body) {
-    let unique_key = body.ID;
+    const unique_key = body.ID;
 
     return unique_key;
 }
@@ -73,9 +73,9 @@ const createContent = async function (data) {
 }
 module.exports.createContent = createContent;
 
-let createUser = async function (userInfo) {
+const createUser = async function (userInfo) {
     console.log('createUser1()');
-    let auth_info, err;
+    const auth_info, err;
 
     auth_info = {}
     auth_info.status = 'create';
@@ -95,13 +95,13 @@ let createUser = async function (userInfo) {
 module.exports.createUser = createUser;
 
 const authUser = async function (userInfo) {//returns token
-    let auth_info = {};
+    const auth_info = {};
     auth_info.status = 'login';
 
     if (!userInfo.ID) TE('ID를 올바르게 입력해주세요.');
     if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
 
-    let user;
+    const user;
 
     [err, user] =await to (User.findOne({ where: { ID: unique_key }}));
 
