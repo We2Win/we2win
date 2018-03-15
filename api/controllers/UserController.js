@@ -81,7 +81,7 @@ const login = async function (req, res) {
 }
 module.exports.login = login;
 
-const findId = async function (req, res) {
+const hasId = async function (req, res) {
   const body = req.body;
   let err, user;
 
@@ -92,3 +92,4 @@ const findId = async function (req, res) {
     'available': available
   });
 }
+module.exports.hasId = hasId;
