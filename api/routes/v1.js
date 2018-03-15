@@ -5,7 +5,6 @@ const router = express.Router();
 
 const UserController = require('./../controllers/UserController');
 const ContentController = require('./../controllers/ContentController');
-const UploadController = require('./../controllers/UploadController');
 // const CompanyController = require('./../controllers/CompanyController');
 // const HomeController = require('./../controllers/HomeController');
 
