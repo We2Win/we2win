@@ -80,6 +80,8 @@ const createUser = async function (userInfo) {
     auth_info = {}
     auth_info.status = 'create';
 
+    console.log('AuthService -> userInfo: ', userInfo);
+
     if (!userInfo.ID) TE('ID를 입력하지 않았습니다.');
 
     auth_info.method = 'ID';

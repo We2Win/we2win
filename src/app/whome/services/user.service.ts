@@ -24,10 +24,9 @@ export class UserService {
   create(user: User) {
     console.log('user form create(): ', user);
     const bodyString = JSON.stringify(user);
-    // const headers = new Headers({ 'Content-Type': 'application/json' });
-    // const options = new RequestOptions({ headers: headers });
+    const headers = { headers: { 'Content-Type': 'application/json' } };
 
-    return this.http.post(environment.apiUrl + '/users', bodyString)
+    return this.http.post(environment.apiUrl + '/users', bodyString, headers)
       .map((res: User) => res )
       .catch((error: any) => Observable.throw(error.message));
   }
@@ -40,9 +39,11 @@ export class UserService {
   }
 
   hasId(user) {
-    console.log(environment.apiUrl + '/hasid', user);
+    console.log('user from hasId(): ', user);
     const bodyString = JSON.stringify(user);
-    return this.http.post(environment.apiUrl + '/hasid', bodyString)
+    const headers = { headers: { 'Content-Type': 'application/json' }};
+
+    return this.http.post(environment.apiUrl + '/hasid', bodyString, headers)
       .map((data: any) => data.available )
       .catch((error: any) => Observable.throw(error.message));
   }

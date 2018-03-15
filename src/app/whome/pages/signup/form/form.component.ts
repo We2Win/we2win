@@ -21,7 +21,7 @@ import { environment } from '../../../../../environments/environment';
 })
 export class FormComponent implements OnInit {
   signupForm: FormGroup;
-  private user: User;
+  private user: any;
   zonecode; // 5자리 새우편번호 사용
   fullRoadAddr;
   jibunAddress;
@@ -113,7 +113,13 @@ export class FormComponent implements OnInit {
       return false;
     }
 
-    this.user = this.signupForm.value;
+    // this.user = this.signupForm.value;
+    this.user = {
+      ID: this.signupForm.controls['ID'].value,
+      Password: this.signupForm.controls['Password'].value,
+      CP: this.signupForm.controls['CP'].value,
+      Email: this.signupForm.controls['Email'].value
+    };
     console.log(this.user);
     this.userService.create(this.user)
       .subscribe(
