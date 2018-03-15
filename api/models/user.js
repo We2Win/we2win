@@ -59,10 +59,10 @@ module.exports = (sequelize, DataTypes) => {
   //   // });
   // };
 
-  Model.prototype.beforeSave(async (user, options) => {
-    let err;
-    if (user.changed('Password')) {
-      user.Password = bcrypt.hashSync(user.Password);
+  Model.beforeSave(async (user, options) => {
+    // let err;
+    // if (user.changed('Password')) {
+    //   user.Password = bcrypt.hashSync(user.Password);
 
       // let salt, hash
       // [err, salt] = await to(bcrypt.genSalt(10));
