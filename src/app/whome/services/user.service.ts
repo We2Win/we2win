@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../models/user';
 import { Headers, RequestOptions, Response } from '@angular/http';
-// yimport { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable()
 export class UserService {
@@ -22,12 +23,12 @@ export class UserService {
   }
   create(user: User) {
     const bodyString = JSON.stringify(user);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: headers });
+    // const headers = new Headers({ 'Content-Type': 'application/json' });
+    // const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('api/v1/infos', bodyString);
-      // .map((res: User) => JSON.stringify(res))
-      // .catch((error: any) => Observable.throw(error.message));
+    return this.http.post(environment.apiUrl + '/infos', bodyString)
+      .map((res: User) => JSON.stringify(res))
+      .catch((error: any) => Observable.throw(error.message));
   }
   update(user: User) {
     return this.http.put('/api/v1/infos', user);
@@ -38,8 +39,17 @@ export class UserService {
   }
 
   hasId(user) {
+    console.log(environment.apiUrl + '/hasid', user);
     const bodyString = JSON.stringify(user);
-    return this.http.post('api/v1/hasid', bodyString);
+    return this.http.post(environment.apiUrl + '/hasid', bodyString)
+      .map((data: any) => data.available )
+      .catch((error: any) => Observable.throw(error.message));
+  }
+
+  testing() {
+    console.log('testing...');
+    return this.http.get(environment.apiUrl + '/testing')
+      .map(data => { console.log('testing(): ', data); });
   }
 
   private handleError(error: HttpErrorResponse) {

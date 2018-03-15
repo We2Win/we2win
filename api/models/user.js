@@ -13,44 +13,44 @@ module.exports = (sequelize, DataTypes) => {
     Password: {
         type: DataTypes.STRING,
         allowNull: false
-    }
-    // Name: DataTypes.STRING,
-    // CP: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   unique: true,
-    //   validate: {
-    //     len: {
-    //       args: [7, 20],
-    //       msg: "휴대번호 길이가 짧습니다."
-    //     },
-    //     isNumeric: {
-    //       msg: "유효한 번호가 아닙니다."
-    //     }
-    //   }
-    // },
-    // Hope: DataTypes.INTEGER,
-    // Site: DataTypes.INTEGER,
-    // Location: DataTypes.STRING,
-    // Amount: DataTypes.INTEGER,
-    // OP: DataTypes.INTEGER,
-    // HP: DataTypes.INTEGER,
-    // OA: DataTypes.STRING,
-    // HA: DataTypes.STRING,
-    // InfoA: DataTypes.INTEGER,
-    // AAmount: DataTypes.INTEGER,
-    // ASns: DataTypes.INTEGER,
-    // UWord: DataTypes.STRING,
-    // Email: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   unique: true,
-    //   validate: {
-    //     isEmail: {
-    //       msg: "이메일이 아닙니다."
-    //     }
-    //   }
-    // },
+    },
+    Name: DataTypes.STRING,
+    CP: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      // validate: {
+      //   len: {
+      //     args: [7, 20],
+      //     msg: "휴대번호 길이가 짧습니다."
+      //   },
+      //   isNumeric: {
+      //     msg: "유효한 번호가 아닙니다."
+      //   }
+      // }
+    },
+    Hope: DataTypes.INTEGER,
+    Site: DataTypes.INTEGER,
+    Location: DataTypes.STRING,
+    Amount: DataTypes.INTEGER,
+    OP: DataTypes.INTEGER,
+    HP: DataTypes.INTEGER,
+    OA: DataTypes.STRING,
+    HA: DataTypes.STRING,
+    InfoA: DataTypes.INTEGER,
+    AAmount: DataTypes.INTEGER,
+    ASns: DataTypes.INTEGER,
+    UWord: DataTypes.STRING,
+    Email: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      // validate: {
+      //   isEmail: {
+      //     msg: "이메일이 아닙니다."
+      //   }
+      // }
+    },
   });
 
   Model.associate = function (models) {

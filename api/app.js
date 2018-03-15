@@ -24,12 +24,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 //swap jade for ejs etc
 
-app.use(express.static(path.join(__dirname, 'uploads')));
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// app.use(express.static(path.join(__dirname, 'uploads')));
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
@@ -93,4 +93,4 @@ app.use(function (err, req, res, next) {
 });
 
 // module.exports = app;
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+app.listen(3000, () => console.log('App listening on port 3000!'));

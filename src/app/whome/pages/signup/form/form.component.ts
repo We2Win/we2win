@@ -28,6 +28,7 @@ export class FormComponent implements OnInit {
 
   loginType = '';
   ULevel;
+  checkId: boolean;
 
   @ViewChild('ID') ID;
   @ViewChild('Password') Password;
@@ -49,7 +50,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      ID: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      ID: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
       // PW: new FormGroup({
       Password: new FormControl('', [Validators.required, Validators.minLength(4)]),
       PasswordV: new FormControl(),
@@ -90,24 +91,40 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     this.setSelectValue();
-    if (this.signupForm.valid) {
-      this.user = this.signupForm.value;
-      console.log(JSON.stringify(this.user));
-      this.userService.create(this.user)
-        // this.userService.try()
-        .subscribe(
-        data => {
-          this.router.navigate(['signup', 'done']);
-        },
-        error => {
-          alert('회원 가입중 문제가 발생했습니다.');
-          console.log('error: ', error);
-        }
-        );
-    } else {
+
+    // check id validation
+    if (this.checkId === undefined) {
+      alert('아이디 확인을 해주세요.');
+      return false;
+    } else if (this.checkId === false) {
+      alert('중복된 아이디가 존재합니다.');
+      return false;
+    }
+
+    // check password validation
+    if (this.signupForm.controls['Password'].value !== this.signupForm.controls['PasswordV'].value){
+      alert('비밀번호를 확인해주세요.');
+      scroll(0, 200);
+      return false;
+    }
+    if (!this.signupForm.valid) {
       alert('기본 정보는 필수사항입니다.');
       scroll(0, 200);
+      return false;
     }
+
+    this.user = this.signupForm.value;
+    console.log(JSON.stringify(this.user));
+    this.userService.create(this.user)
+      .subscribe(
+      data => {
+        this.router.navigate(['signup', 'done']);
+      },
+      error => {
+        alert('회원 가입중 문제가 발생했습니다.');
+        console.log('error: ', error);
+      }
+      );
   }
 
   setSelectValue() {
@@ -118,12 +135,36 @@ export class FormComponent implements OnInit {
   }
 
   hasId(e) {
-    console.log('ID: ', this.ID);
     e.stopPropagation();
+
+    const checkValue = this.signupForm.controls['ID'].hasError('minlength')
+      || this.signupForm.controls['ID'].hasError('maxlength')
+      || this.signupForm.controls['ID'].hasError('required');
+    if (checkValue) {
+      alert('4글자 ~ 15글자 이내로 아이디를 적어주세요.');
+      return false;
+    }
+
     const userInfo = {
-      ID: this.ID.value
+      ID: this.signupForm.controls['ID'].value
     };
-    console.log('hasId(): ', this.userService.hasId(userInfo));
+    // this.userService.hasId(userInfo);
+    this.userService.hasId(userInfo)
+      .subscribe(
+        data => {
+          if (data) {
+            this.checkId = true;
+            alert('사용가능한 ID입니다.');
+          } else {
+            this.checkId = false;
+            alert('이미 존재하는 ID입니다.');
+          }
+        },
+        error => {
+          // console.log('error: ', error);
+          alert('오류가 발생했습니다.');
+        }
+      );
   }
 
   setLoginType(type) {
