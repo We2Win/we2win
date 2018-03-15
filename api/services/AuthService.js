@@ -75,7 +75,7 @@ module.exports.createContent = createContent;
 
 const createUser = async function (userInfo) {
     console.log('createUser1()');
-    const auth_info, err;
+    let auth_info, err;
 
     auth_info = {}
     auth_info.status = 'create';
