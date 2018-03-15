@@ -1,7 +1,7 @@
 let User = require('../models').User;
-const authService = require('./../services/AuthService');
+let authService = require('./../services/AuthService');
 
-const create = async function (req, res) {
+let create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   let body = req.body;
 
