@@ -86,7 +86,7 @@ const createUser = async function (userInfo) {
 
     console.log(JSON.stringify(userInfo));
     [err, user] = await to (User.create(userInfo));
-    if (err) TE('생성 중 오류가 발생했습니다.');
+    if (err) TE('생성 중 오류가 발생했습니다. (createUser())');
 
     console.log('createUser()');
     User.beforeSave(user);

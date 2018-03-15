@@ -17,14 +17,14 @@ const create = async function (req, res) {
   } else {
     let err, user;
 
-    console.log('hi');
+    // console.log('hi');
     [err, user] = await to(authService.createUser(body));
-    console.log('completed: ', user);
+    // console.log('completed: ', user);
 
     if (err) return ReE(res, err, 422);
     return ReS(res, {
       message: 'Successfully created new user.',
-      user: user,
+      user: JSON.stringify(user),
       // user: user.toWeb(),
       // token: User.getJWT()
     }, 201);
