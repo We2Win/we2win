@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const User = require('../models').User;
 const authService = require('./../services/AuthService');
 
@@ -18,7 +19,7 @@ const create = async function (req, res) {
     let err, user;
 
     body.Password = brypt.hashSync(req.body.password, 8);
-    
+
     // console.log('hi');
     [err, user] = await to(authService.createUser(body));
     // console.log('completed: ', user);
