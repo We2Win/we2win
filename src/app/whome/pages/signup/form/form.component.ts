@@ -130,7 +130,8 @@ export class FormComponent implements OnInit {
       OA: this.signupForm.controls['OA'].value,
       OP: this.signupForm.controls['OP'].value,
       InfoA: this.signupForm.controls['InfoA'].value,
-      AAmount: this.AAmount.selected,
+      // tslint:disable-next-line:radix
+      AAmount: parseInt(this.AAmount.selected),
     };
     console.log(this.user);
     this.userService.create(this.user)
