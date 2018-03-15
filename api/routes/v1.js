@@ -27,7 +27,7 @@ router.delete('/users', passport.authenticate('jwt', { session: false }), UserCo
 router.post('/users/login', UserController.login);
 
 router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
-router.post('/testing', (req, res) => { res.send(JSON.stringify(req)); });
+router.post('/testing', (req, res) => { res.send(JSON.stringify(req.body)); });
 
 router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
