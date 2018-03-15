@@ -80,3 +80,15 @@ const login = async function (req, res) {
   });
 }
 module.exports.login = login;
+
+const findId = async function (req, res) {
+  const body = req.body;
+  let err, user;
+
+  [err, available] = await to(authService.hasUser(req.body));
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    'available': available
+  });
+}

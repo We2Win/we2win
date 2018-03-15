@@ -75,16 +75,14 @@ module.exports.createContent = createContent;
 
 const createUser = async function (userInfo) {
     console.log('createUser1()');
-    let unique_key, auth_info, err;
+    let auth_info, err;
 
     auth_info = {}
     auth_info.status = 'create';
 
-    unique_key = getUniqueKeyFromBody(userInfo);
-    if (!unique_key) TE('ID를 입력하지 않았습니다.');
+    if (!userInfo.ID) TE('ID를 입력하지 않았습니다.');
 
     auth_info.method = 'ID';
-    userInfo.ID = unique_key;
 
     console.log(JSON.stringify(userInfo));
     [err, user] = await to (User.create(userInfo));
@@ -97,12 +95,10 @@ const createUser = async function (userInfo) {
 module.exports.createUser = createUser;
 
 const authUser = async function (userInfo) {//returns token
-    let unique_key;
     let auth_info = {};
     auth_info.status = 'login';
-    unique_key = getUniqueKeyFromBody(userInfo);
 
-    if (!unique_key) TE('ID를 올바르게 입력해주세요.');
+    if (!userInfo.ID) TE('ID를 올바르게 입력해주세요.');
     if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
 
     let user;
@@ -121,6 +117,13 @@ const authUser = async function (userInfo) {//returns token
 
 }
 module.exports.authUser = authUser;
+
+const hasUser = async function (userInfo) {
+    [err, user] = await to(User.findOne({ where: { ID: userInfo.ID } }));
+    
+    if (user) return true;
+    else return false;
+}
 
 // const Company = require('../models').Company;
 
