@@ -117,9 +117,13 @@ export class FormComponent implements OnInit {
     this.signupForm.addControl('Location2', new FormControl(this.Location2.selected));
   }
 
-  confirm(e) {
+  hasId(e) {
+    console.log('ID: ', this.ID);
     e.stopPropagation();
-    alert('가능합니다.');
+    const userInfo = {
+      ID: this.ID
+    };
+    console.log('hasId(): ', this.userService.hasId(userInfo));
   }
 
   setLoginType(type) {

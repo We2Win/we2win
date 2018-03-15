@@ -37,6 +37,11 @@ export class UserService {
     return this.http.delete('/api/v1/infos');
   }
 
+  hasId(user) {
+    const bodyString = JSON.stringify(user);
+    return this.http.post('api/v1/hasid', bodyString);
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
