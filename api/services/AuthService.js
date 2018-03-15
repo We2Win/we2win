@@ -20,7 +20,7 @@ const createInfo = async function (data) {
     console.log('createInfo() Starting');
     
     console.log(JSON.stringify(data));
-    [err, info] = await to (Info.create(data));
+    // [err, info] = await to (Info.create(data));
     if(err) TE('생성 중 오류가 발생했습니다.');
 
     console.log('createInfo() Terminated');
@@ -75,14 +75,14 @@ module.exports.createContent = createContent;
 
 const createUser = async function (userInfo) {
     console.log('createUser1()');
-    let auth_info, err;
+    // let auth_info, err;
 
-    auth_info = {}
-    auth_info.status = 'create';
+    // auth_info = {}
+    // auth_info.status = 'create';
 
     if (!userInfo.ID) TE('ID를 입력하지 않았습니다.');
 
-    auth_info.method = 'ID';
+    // auth_info.method = 'ID';
 
     console.log(JSON.stringify(userInfo));
     [err, data] = await to (User.create(userInfo));
