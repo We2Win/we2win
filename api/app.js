@@ -16,7 +16,7 @@ const app = express();
 // CORS 설정
 // print the request log on console
 app.use(logger('dev'));
-// app.use(bodyParser.urlencoded({extend: false}));
+app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
