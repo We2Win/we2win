@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     // Name: DataTypes.STRING,
     CP: {
       type: DataTypes.STRING,
-      allowNull: true,
-      unique: true,
+      // allowNull: true,
+      // unique: true,
       // validate: {
       //   len: {
       //     args: [7, 20],
@@ -43,8 +43,8 @@ module.exports = (sequelize, DataTypes) => {
     // UWord: DataTypes.STRING,
     Email: {
       type: DataTypes.STRING,
-      allowNull: true,
-      unique: true,
+      // allowNull: true,
+      // unique: true,
       // validate: {
       //   isEmail: {
       //     msg: "이메일이 아닙니다."

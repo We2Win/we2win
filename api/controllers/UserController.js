@@ -25,6 +25,7 @@ const create = async function (req, res) {
     return ReS(res, {
       message: 'Successfully created new user.',
       user: user,
+      // user: user.toWeb(),
       // token: User.getJWT()
     }, 201);
   }
