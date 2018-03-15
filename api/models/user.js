@@ -71,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
       // if (err) TE(err.message, true);
 
       // user.Password = hash;
-    }
+    // }
   });
 
   // Model.prototype.comparePassword = async function (pw) {
