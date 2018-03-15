@@ -91,6 +91,7 @@ module.exports = (sequelize, DataTypes) => {
     let expiration_time = parseInt(CONFIG.jwt_expiration);
     return "Bearer " + jwt.sign({
         user_id: this.ID,
+        testing: 'testing'
       },
       CONFIG.jwt_encryption, {
         expiresIn: expiration_time

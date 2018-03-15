@@ -76,7 +76,8 @@ export class AuthService {
   }
 
   getUserId(): string {
-    return this.jwtHelper.decodeToken(this.getToken()).ID;
+    console.log(this.getToken());
+    return this.jwtHelper.decodeToken(this.getToken()).user_id;
   }
   setToken(token: string): void {
     localStorage.setItem(this.TOKEN_NAME, token);
