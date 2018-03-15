@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0
     },
     ULevelStart: {
-      type: DataTypes.NOW,
+      type: DataTypes.DATE,
     },
     ULevelEnd: {
       type: DataTypes.DATE
