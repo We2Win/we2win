@@ -74,28 +74,28 @@ module.exports = (sequelize, DataTypes) => {
   //   // }
   // });
 
-  // Model.prototype.comparePassword = async function (pw) {
-  //   let err, pass
-  //   if (!this.Password) TE('Password not set');
+  Model.prototype.comparePassword = async function (pw) {
+    let err, pass
+    if (!this.Password) TE('Password not set');
 
-  //   [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
-  //   TE(pw + this.Password + 'done'+pass);
-  //   if (err) TE(err);
+    [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
+    TE(pw + this.Password + 'done'+pass);
+    if (err) TE(err);
 
-  //   if (!pass) TE('invalid Password');
+    if (!pass) TE('invalid Password');
 
-  //   return this;
-  // }
+    return this;
+  }
 
-  // Model.prototype.getJWT = function () {
-  //   let expiration_time = parseInt(CONFIG.jwt_expiration);
-  //   return "Bearer " + jwt.sign({
-  //       user_id: this.id
-  //     },
-  //     CONFIG.jwt_encryption, {
-  //       expiresIn: expiration_time
-  //     });
-  // };
+  Model.prototype.getJWT = function () {
+    let expiration_time = parseInt(CONFIG.jwt_expiration);
+    return "Bearer " + jwt.sign({
+        user_id: this.id
+      },
+      CONFIG.jwt_encryption, {
+        expiresIn: expiration_time
+      });
+  };
 
   Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
