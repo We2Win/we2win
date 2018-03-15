@@ -9,7 +9,7 @@ const create = async function (req, res) {
   //     return ReE(res, 'Please enter an email or phone number to register.');
   // } else if (!body.password) {
   //     return ReE(res, 'Please enter a password to register.');
-  console.log('body: ', body);
+  console.log('body: ', JSON.stringify(body));
   if (!body.ID) {
     return ReE(res, '아이디를 입력해주세요.');
   } else if (!body.Password) {
@@ -85,7 +85,7 @@ const hasId = async function (req, res) {
   const body = req.body;
   let err, user;
 
-  console.log('ID from hasId(): ', body);
+  console.log('ID from hasId(): ', JSON.stringify(body));
 
   [err, hasUser] = await to(authService.hasUser(req.body));
   if (err) return ReE(res, err, 422);
