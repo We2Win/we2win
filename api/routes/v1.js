@@ -35,6 +35,6 @@ router.delete('/contents', ContentController.remove);
 
 router.post('/login', UserController.login); //login   
 
-router.post('/hasid', UserController.hasId);
+// router.post('/hasid', UserController.hasId);
 
 module.exports = router;
