@@ -124,6 +124,7 @@ const hasUser = async function (userInfo) {
     if (user) return true;
     else return false;
 }
+module.exports.hasUser = hasUser;
 
 // const Company = require('../models').Company;
 
