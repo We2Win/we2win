@@ -77,12 +77,14 @@
             <label>핸드폰
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="text" formControlName="CP" placeholder="예) 010-000-0000">
+            <input class="form-control" type="text" formControlName="CP" (change)="setHyphen('CP')" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="예) 010-000-0000">
             <div class="blank"></div>
           </div>
           <div class="row alert">
             <label></label>
             <div *ngIf="signupForm.get('CP').hasError('required') && signupForm.get('CP').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('CP').hasError('minlength') && signupForm.get('CP').touched">올바른 번호를 입력해주세요.</div>
+            <div *ngIf="signupForm.get('CP').hasError('maxlength') && signupForm.get('CP').touched">올바른 번호를 입력해주세요.</div>
           </div>
           <div class="form-group row">
             <label>E-Mail
@@ -94,6 +96,7 @@
           <div class="row alert">
             <label></label>
             <div *ngIf="signupForm.get('Email').hasError('required') && signupForm.get('Email').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('Email').hasError('email') && signupForm.get('Email').touched">이메일 형식에 맞게 입력해주세요.</div>
           </div>
           <div id="levelBox" class="form-group row">
             <label>신청 등급

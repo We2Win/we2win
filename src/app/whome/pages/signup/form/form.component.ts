@@ -40,6 +40,8 @@ export class FormComponent implements OnInit {
   @ViewChild('Location2') Location2;
   @ViewChild('Amount') Amount;
 
+  phone;
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -56,11 +58,11 @@ export class FormComponent implements OnInit {
       PasswordV: new FormControl(),
       // confirmPassword: new FormControl(),
       // }),
-      Name: new FormControl(),
-      CP: new FormControl(),
+      Name: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      CP: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]),
       ULevel: new FormControl(),
       // UPoint: new FormControl(),
-      Email: new FormControl(),
+      Email: new FormControl('', [Validators.required, Validators.email]),
       Hope: new FormControl(),
       Site: new FormControl(),
       // Location1: new FormControl(),
@@ -171,19 +173,19 @@ export class FormComponent implements OnInit {
     // this.userService.hasId(userInfo);
     this.userService.hasId(userInfo)
       .subscribe(
-        data => {
-          if (data) {
-            this.checkId = true;
-            alert('사용가능한 ID입니다.');
-          } else {
-            this.checkId = false;
-            alert('이미 존재하는 ID입니다.');
-          }
-        },
-        error => {
-          // console.log('error: ', error);
-          alert('오류가 발생했습니다.');
+      data => {
+        if (data) {
+          this.checkId = true;
+          alert('사용가능한 ID입니다.');
+        } else {
+          this.checkId = false;
+          alert('이미 존재하는 ID입니다.');
         }
+      },
+      error => {
+        // console.log('error: ', error);
+        alert('오류가 발생했습니다.');
+      }
       );
   }
 
@@ -260,6 +262,18 @@ export class FormComponent implements OnInit {
     if (event.keyCode === 0 || event.keyCode === 32 || event.keyCode === 13) {
       event.preventDefault();
       this.setLevel(level);
+    }
+  }
+
+  setHyphen(input) {
+    if (input === 'CP') {
+      let str = this.signupForm.controls['CP'].value;
+      if (str.length === 11) {
+        str = str.substring(0, 3) + '-' + str.substring(3, 7) + '-' + str.substring(7, str.length);
+      } else if (str.length === 10) {
+        str = str.substring(0, 3) + '-' + str.substring(3, 6) + '-' + str.substring(6, str.length);
+      }
+      this.signupForm.controls['CP'].setValue(str);
     }
   }
 
