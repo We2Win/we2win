@@ -24,12 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       // unique: true,
       validate: {
         len: {
-          args: [7, 20],
+          args: [8, 15],
           msg: "휴대번호 길이가 짧습니다."
         },
-        isNumeric: {
-          msg: "유효한 번호가 아닙니다."
-        }
       }
     },
     ULevel: {

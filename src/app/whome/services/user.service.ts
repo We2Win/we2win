@@ -32,7 +32,7 @@ export class UserService {
 
     return this.http.post(environment.apiUrl + '/users', bodyString, headers)
       .map((res: User) => res )
-      .catch((error: any) => Observable.throw(error.message));
+      .catch((error: any) => this.handleError(error.message));
   }
   update(user: User) {
     return this.http.put('/api/v1/infos', user);

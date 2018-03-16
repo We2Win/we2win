@@ -59,7 +59,7 @@ export class FormComponent implements OnInit {
       // confirmPassword: new FormControl(),
       // }),
       Name: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      CP: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]),
+      CP: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
       ULevel: new FormControl(),
       // UPoint: new FormControl(),
       Email: new FormControl('', [Validators.required, Validators.email]),
@@ -118,6 +118,7 @@ export class FormComponent implements OnInit {
     this.user = {
       ID: this.signupForm.controls['ID'].value,
       Password: this.signupForm.controls['Password'].value,
+      PasswordV: this.signupForm.controls['PasswordV'].value,
       Name: this.signupForm.controls['Name'].value,
       CP: this.signupForm.controls['CP'].value,
       ULevel: 1,
