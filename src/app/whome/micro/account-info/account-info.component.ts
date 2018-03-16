@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { DbConnectService } from '../../../db-connect.service';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-info',
@@ -25,7 +26,8 @@ export class AccountInfoComponent implements OnInit {
   };
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -35,6 +37,9 @@ export class AccountInfoComponent implements OnInit {
       const userInfo: any = this.authService.getUserInfo();
       this.user.id = userInfo.user_id;
       this.user.point = userInfo.user_point;
+      this.user.name = userInfo.user_name;
+      this.user.start = userInfo.user_start;
+      this.user.end = userInfo.user_end;
     }
   }
 
@@ -43,6 +48,11 @@ export class AccountInfoComponent implements OnInit {
       this.isLogin = false;
       this.showProfile = false;
     }
+  }
+
+  editProfile() {
+    this.router.navigate(['/portfolio']);
+    this.showProfile = false;
   }
 
 }

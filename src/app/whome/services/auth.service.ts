@@ -104,8 +104,4 @@ export class AuthService {
   isTokenExpired(token: string) {
     return this.jwtHelper.isTokenExpired(token);
   }
-
-  getUserid(): string {
-    return this.jwtHelper.decodeToken(this.getToken()).userid;
-  }
 }
