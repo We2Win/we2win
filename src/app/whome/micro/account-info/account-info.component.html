@@ -1,11 +1,32 @@
-<div class="signed" *ngIf="isLogin">
+<div class="signed" *ngIf="isLogin" (click)="showProfile = !showProfile">
   <img src="/assets/img/icon_profile.png" alt="">
   <div id="user">{{user.id}} 님</div>
   <div id="point">{{user.point}} P</div>
-  <div id="logout" (click)="logout()">로그아웃</div>
+  <!-- <div id="logout" (click)="logout()">로그아웃</div> -->
 </div>
 
 <div class="unsigned" *ngIf="!isLogin">
   <div routerLink="/login">로그인</div>
   <div routerLink="/signup">회원가입</div>
+</div>
+
+<div id="account" class="popup" [ngClass]="{'show': showProfile}" (blur)="showProfile = !showProfile">
+  <div id="profile">
+    <div class="left">
+      <img src="/assets/img/icon_person.png">
+      <div class="platinum">PLATINUM</div>
+    </div>
+    <div>
+      <h1>{{user.name}}</h1>
+      <h2>회원님</h2>
+      <h3>포인트</h3>
+      <h4>{{user.point}} Point</h4>
+      <h5 *ngIf="user.start">{{user.start}} ~ {{user.end}}</h5>
+      <h5 *ngIf="!user.start">무제한</h5>
+    </div>
+  </div>
+  <div id="buttons">
+    <button (click)="logout()">로그아웃</button>
+    <button id="edit">회원정보 수정</button>
+  </div>
 </div>

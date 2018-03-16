@@ -15,9 +15,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AccountInfoComponent implements OnInit {
   isLogin = false;
+  showProfile = false;
   private user = {
-    id: 'noname',
-    point: '-'
+    id: '-',
+    name: '이름없음',
+    point: '-',
+    start: '',
+    end: ''
   };
 
   constructor(
@@ -28,13 +32,17 @@ export class AccountInfoComponent implements OnInit {
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
       this.isLogin = true;
-      this.user.id = this.authService.getUserId();
+      const userInfo: any = this.authService.getUserInfo();
+      this.user.id = userInfo.user_id;
+      this.user.point = userInfo.user_point;
     }
   }
 
   logout() {
-    this.authService.logout();
-    this.isLogin = false;
+    if (this.authService.logout()) {
+      this.isLogin = false;
+      this.showProfile = false;
+    }
   }
 
 }

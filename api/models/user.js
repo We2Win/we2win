@@ -125,7 +125,10 @@ module.exports = (sequelize, DataTypes) => {
     return "Bearer " + jwt.sign({
         user_id: this.ID,
         user_point: this.UPoint,
-        user_name: this.Name
+        user_name: this.Name,
+        user_level: this.ULevel,
+        user_start: this.ULevelStart,
+        user_end: this.ULevelEnd
       },
       CONFIG.jwt_encryption, {
         expiresIn: expiration_time

@@ -1,7 +1,7 @@
 .signed,
 .unsigned {
   padding: 0.3em 0em;
-  font-size: 0.7em;
+  font-size: 0.8em;
   flex: auto;
   box-sizing: border-box;
   display: inline-flex;
@@ -12,18 +12,19 @@
 }
 
 .signed {
-  min-width: 20em;
+  min-width: 15em;
   border-bottom: 1px solid var(--header-border-solid);
+  cursor: pointer;
 }
 
-img {
+.signed img {
   width: 0.9em;
   height: 0.9em;
   margin: 0 0.5em;
   flex: none;
 }
 
-div {
+.signed div, .unsigned div {
   margin: 0 0.5em;
 }
 
@@ -39,11 +40,6 @@ div {
   flex: 1 1 auto;
 }
 
-#logout {
-  width: 4em;
-  cursor: pointer;
-}
-
 .unsigned div {
   font-size: 1em;
   color: #aaa;
@@ -56,4 +52,108 @@ div {
 
 .unsigned div:hover {
   color: white;
+}
+
+.popup {
+  position: absolute;
+  display: none;
+  margin-top: 0em;
+  margin-left: -4em;
+  width: 256px;
+  height: 167px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px #000;
+  background: white;
+  color: #333;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+#account #profile {
+  display: flex;
+  padding: 1em;
+}
+#account .left {
+  flex: none;
+  width: 70px;
+  margin: 0 1.5em 0 0.5em;
+  text-align: center;
+}
+
+#account img {
+  flex: none;
+  width: 70px;
+  height: 70px;
+}
+
+.platinum {
+  display: inline-block;
+  background: linear-gradient(-25deg, rgba(213, 177, 94, 0.4), rgba(213, 177, 94, 1));
+  color: white;
+  font-size: 0.7em;
+  padding: 0.25em 0.4em;
+  margin: 0.25em;
+}
+
+#account div {
+  flex: 1;
+  text-align: left;
+}
+
+#account h1, h2{
+  display: inline-block;
+  font-size: 1.2em;
+  margin: 0.25em 0;
+}
+
+#account h2 {
+  margin-left: 0.5em;
+  font-size: 0.9em;
+}
+
+#account h3 {
+  font-size: 0.7em;
+  color: #666;
+}
+
+#account h4 {
+  font-size: 1.3em;
+  color: #D3000D;
+}
+
+#account h5 {
+  font-size: 0.6em;
+  color: #999;
+}
+
+#account #buttons {
+  background: #333;
+  text-align: center;
+}
+
+#account button {
+  display: inline-block;
+  width: 40%;
+  height: 2.5em;
+  box-sizing: border-box;
+  padding: 0.5em 0;
+  margin: 0;
+  font-size: 0.9em;
+  font-weight: normal;
+  cursor: pointer;
+  color: #ccc;
+  background: #333;
+  border: none;
+  outline: none;
+  transition: color 0.5s;
+}
+
+#account button:hover {
+  color: white;
+}
+
+.show {
+  display: block;
+  opacity: 1;
 }

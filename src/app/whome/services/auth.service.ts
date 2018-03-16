@@ -59,10 +59,12 @@ export class AuthService {
       .shareReplay();
   }
 
-  logout(): void {
+  logout(): boolean {
     if (confirm('로그아웃 하시겠습니까?')) {
       this.removeToken();
+      return true;
     }
+    return false;
   }
 
   // 토큰 유효성 검증
@@ -75,10 +77,11 @@ export class AuthService {
     return localStorage.getItem(this.TOKEN_NAME);
   }
 
-  getUserId(): string {
-    console.log(this.getToken());
-    return this.jwtHelper.decodeToken(this.getToken()).user_id;
+  getUserInfo(): string {
+    // console.log(this.getToken());
+    return this.jwtHelper.decodeToken(this.getToken());
   }
+
   setToken(token: string): void {
     localStorage.setItem(this.TOKEN_NAME, token);
   }
