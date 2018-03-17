@@ -15,8 +15,6 @@ const passport = require('passport');
 // User Routes
 
 router.post('/users', UserController.create); //create   
-
-
 // router.get('/users', passport.authenticate('jwt', { session: false }), UserController.get);  //read
 // router.get('/users', UserController.get);
 
@@ -31,7 +29,7 @@ router.post('/testing', (req, res) => { res.send(JSON.stringify(req.body)); });
 router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
-
+router.get('/contents/news', ContentController.getNewsList);
 
 router.post('/login', UserController.login); //login   
 

@@ -39,6 +39,17 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
+const getNewsList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Content.findAll({}).then((contentList) => {
+    return ReS(res, {
+      contents: contentList.dataValues
+    })
+  });
+}
+module.exports.getNewsList = getNewsList;
+
 const update = async function (req, res) {
   let err, user, data
   user = req.user;

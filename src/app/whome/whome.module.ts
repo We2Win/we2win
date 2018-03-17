@@ -62,6 +62,7 @@ import { InfoService } from './services/info.service';
 import { NewsCardComponent } from './micro/news-card/news-card.component';
 import { LawComponent } from './pages/info/law/law.component';
 import { LawCardComponent } from './micro/law-card/law-card.component';
+import { MypostDirective } from './directives/mypost.directive';
 
 
 @NgModule({
@@ -127,6 +128,7 @@ import { LawCardComponent } from './micro/law-card/law-card.component';
     InfoCardComponent,
     NewsCardComponent,
     LawCardComponent,
+    MypostDirective,
   ],
   entryComponents: [
     InfoCardComponent
