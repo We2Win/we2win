@@ -46,16 +46,84 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
+const getInfoList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Info.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getInfoList = getInfoList;
+
 const getNewsList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  News.findAll({}).then((contentList) => {
+  // News.findAll({ attributes: ['ID', 'Name', 'Email', 'ULevel', 'UPoint', 'ULevelStart', 'ULevelEnd'] })
+  News.findAll({  })
+  .then((contentList) => {
     return ReS(res, {
       list: JSON.stringify(contentList)
     })
   });
 }
 module.exports.getNewsList = getNewsList;
+
+const getLawList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Law.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getLawList = getLawList;
+
+const getSiteList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Site.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getSiteList = getSiteList;
+
+const getMeetingList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Meeting.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getMeetingList = getMeetingList;
+
+const getEmployeeList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Employee.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getEmployeeList = getEmployeeList;
+
+const getEmployerList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Employer.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getEmployerList = getEmployerList;
 
 const update = async function (req, res) {
   let err, user, data

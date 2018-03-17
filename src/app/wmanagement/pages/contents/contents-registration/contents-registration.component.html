@@ -47,15 +47,18 @@
           <h2>현장 시세</h2>
           <div class="container">
             <div class="wrapper">
-              <h4>현재 시세<br><b>(천만원)</b></h4>
+              <h4>현재 시세
+                <br>
+                <b>(천만원)</b>
+              </h4>
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
-                  <input type="text" class="box size" formControlName="I-current-size1" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-size2" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-size3" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-size4" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-size5" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-current-duration1" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-current-duration2" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-current-duration3" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-current-duration4" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-current-duration5" placeholder="기간">
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
@@ -68,15 +71,18 @@
               </span>
             </div>
             <div class="wrapper">
-              <h4>주위 시세<br><b>(천만원)</b></h4>
+              <h4>주위 시세
+                <br>
+                <b>(천만원)</b>
+              </h4>
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
-                  <input type="text" class="box size" formControlName="I-around-size1" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-size2" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-size3" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-size4" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-size5" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-around-duration1" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-around-duration2" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-around-duration3" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-around-duration4" placeholder="기간">
+                  <input type="text" class="box size" formControlName="I-around-duration5" placeholder="기간">
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
@@ -218,8 +224,17 @@
           <app-select #NLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('news')"></app-select>
         </li>
         <li>
-          <h2>컨텐츠 제목</h2>
+          <h2>제목</h2>
           <input type="text" formControlName="N-title" placeholder="제목을 입력하세요" />
+        </li>
+        <li>
+          <h2>핵심</h2>
+          <input type="text" formControlName="N-sub-title" placeholder="뉴스 제목을 입력하세요">
+        </li>
+        <li>
+          <h2>핵심 상세</h2>
+          <!-- <textarea type="text" formControlName="N-sub-description" placeholder="뉴스 상세내용을 입력하세요"> -->
+          <textarea formControlName="N-sub-description"></textarea>
         </li>
         <li>
           <h2>사진</h2>
@@ -228,20 +243,11 @@
           <span class="blank"></span>
         </li>
         <li>
-          <h2>뉴스 제목</h2>
-          <input type="text" formControlName="N-sub-title" placeholder="뉴스 제목을 입력하세요">
-        </li>
-        <li>
-          <h2>뉴스 상세내용</h2>
-          <!-- <textarea type="text" formControlName="N-sub-description" placeholder="뉴스 상세내용을 입력하세요"> -->
-          <textarea formControlName="N-sub-description"></textarea>
-        </li>
-        <li>
-          <h2>뉴스 분석제목</h2>
+          <h2>분석</h2>
           <input type="text" formControlName="N-analysis-title" placeholder="뉴스 분석제목을 입력하세요">
         </li>
         <li>
-          <h2>뉴스 분석내용</h2>
+          <h2>분석 상세</h2>
           <textarea formControlName="N-analysis-description"></textarea>
           <!-- <teaxtarea type="text" formControlName="N-analysis-description" placeholder="뉴스 분석내용을 입력하세요"> -->
         </li>
