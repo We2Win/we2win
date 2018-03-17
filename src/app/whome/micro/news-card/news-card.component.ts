@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ElementRef, ViewContainerRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-news-card',
@@ -9,6 +10,7 @@ export class NewsCardComponent implements OnInit {
   @Input('record') record;
   @Input() level = 'standard';
 
+  imageUrl;
   // for Card interface
   // @Input() data: any;
   // data;
@@ -21,6 +23,8 @@ export class NewsCardComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.record);
+    this.imageUrl = environment.bucket.downloadUrl + this.record['N-image'];
+    console.log(this.imageUrl);
     // if (this.data) {
     //   this.record.Title = this.data.Title;
     //   this.record.Description = this.data.Description;

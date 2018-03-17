@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     'S-level': {
-      type: DataTypes.TINYINT(1),
-      allowNull: false,
+      type: DataTypes.STRING(10),
+      defaultValue: 'STANDARD'
     },
     'S-title': {
       type: DataTypes.STRING(50),

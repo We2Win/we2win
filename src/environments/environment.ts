@@ -13,6 +13,7 @@ export const environment = {
   bucket: {
     accessKeyId: 'AKIAJLDOFMO2PAHE675Q',
     secretAccessKey: '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',
-    region: 'ap-northeast-2'
+    region: 'ap-northeast-2',
+    downloadUrl: 'https://we2winimage.s3.ap-northeast-2.amazonaws.com/'
   }
 };

@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     'N-level': {
-      type: DataTypes.TINYINT(1),
-      defaultValue: 0
+      type: DataTypes.STRING(10),
+      defaultValue: 'STANDARD'
     },
     'N-title': {
       type: DataTypes.STRING(50),
