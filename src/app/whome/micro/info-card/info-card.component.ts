@@ -1,22 +1,18 @@
 import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
 import { Info } from '../../models/info';
 import { Card } from '../../models/card';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-info-card',
   templateUrl: './info-card.component.html',
   styleUrls: ['./info-card.component.css'],
 })
-export class InfoCardComponent implements OnInit, Card {
-  @Input() record: Info = {
-    Title: 'No name',
-    Description: 'nothing.'
-  };
+export class InfoCardComponent implements OnInit {
+  @Input('record') record;
   @Input() level = 'standard';
 
-  // for Card interface
-  @Input() data: any;
-  // data;
+  imageUrl;
 
   constructor(
     private _elementRef: ElementRef,
@@ -25,16 +21,9 @@ export class InfoCardComponent implements OnInit, Card {
   }
 
   ngOnInit() {
-    if (this.data){
-      this.record.Title = this.data.Title;
-      this.record.Description = this.data.Description;
-    }
-    // console.log('records from vertical to info-card: ', this.records);
-
-    // setTimeout(() => {
-    //   this.record.Title = this.data.Title;
-    // }, 3000);
-
+    console.log(this.record);
+    this.imageUrl = environment.bucket.downloadUrl + this.record['I-image'];
+    this._elementRef.nativeElement.classList.add(this.record['I-level'].toLowerCase());
   }
 
   bookmark() {

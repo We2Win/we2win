@@ -11,9 +11,6 @@ export class NewsCardComponent implements OnInit {
   @Input() level = 'standard';
 
   imageUrl;
-  // for Card interface
-  // @Input() data: any;
-  // data;
 
   constructor(
     private _elementRef: ElementRef,
@@ -24,12 +21,7 @@ export class NewsCardComponent implements OnInit {
   ngOnInit() {
     console.log(this.record);
     this.imageUrl = environment.bucket.downloadUrl + this.record['N-image'];
-    console.log(this.imageUrl);
-    // if (this.data) {
-    //   this.record.Title = this.data.Title;
-    //   this.record.Description = this.data.Description;
-    // }
-
+    this._elementRef.nativeElement.classList.add(this.record['N-level'].toLowerCase());
   }
 
   bookmark() {

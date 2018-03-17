@@ -96,12 +96,15 @@
   font-size: 1em;
   font-weight: 600;
   text-align: left;
+  line-height: 1.5em;
+  min-height: 3em;
 }
 
 .card>h3 {
-  margin: 1em;
-  font-size: 1.1em;
+  margin: 1em 1.5em;
+  font-size: 0.7em;
   font-weight: 500;
   text-align: left;
+  color: rgb(36, 134, 199);
 }
 

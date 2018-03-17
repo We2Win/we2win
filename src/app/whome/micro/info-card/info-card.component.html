@@ -1,12 +1,12 @@
-<div class="card" routerLink="/info/info-detail/1">
-  <div id="levelBar">{{ level }}</div>
+<div class="card" [routerLink]="'/info/info-detail/'+record['I-id']">
+  <div id="levelBar">{{ record['I-level'] }}</div>
   <div id="imgFrame">
-    <img src="/assets/img/info_sample.png" alt="부동산 사진">
+    <img [src]="imageUrl" alt="부동산 사진">
   </div>
   <div id="buttonBar">
     <img id="bookmark" (click)="bookmark(); $event.stopPropagation();" src="/assets/img/icon_bookmark.png" />
     <img src="/assets/img/icon_share.png" />
   </div>
-  <h2>{{ record.Title }}</h2>
-  <h3>{{ record.Description }}</h3>
+  <h3>리포트</h3>
+  <h2>{{ record['I-title'] }}</h2>
 </div>

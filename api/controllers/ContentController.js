@@ -81,7 +81,7 @@ const getLawList = async function (req, res) {
 }
 module.exports.getLawList = getLawList;
 
-const getSiteList = async function (req, res) {
+const getApartmentList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   Site.findAll({}).then((contentList) => {
@@ -90,7 +90,40 @@ const getSiteList = async function (req, res) {
     })
   });
 }
-module.exports.getSiteList = getSiteList;
+module.exports.getApartmentList = getApartmentList;
+
+const getOfficetelList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Site.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getOfficetelList = getOfficetelList;
+const getCommercialList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Site.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getCommercialList = getCommercialList;
+
+const getGroundList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Site.findAll({}).then((contentList) => {
+    return ReS(res, {
+      list: JSON.stringify(contentList)
+    })
+  });
+}
+module.exports.getGroundList = getGroundList;
+
 
 const getMeetingList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');

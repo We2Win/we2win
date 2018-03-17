@@ -1,30 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { InfoService } from '../../../services/info.service';
-import { Data } from '../../../models/data';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ContentsService } from '../../../services/contents.service';
+import { PostingService } from '../../../services/posting.service';
+import { MypostDirective } from '../../../directives/mypost.directive';
+import { PostItem } from '../../../models/post-item';
+import { InfoCardComponent } from '../../../micro/info-card/info-card.component';
 
 @Component({
   selector: 'app-info-main',
   templateUrl: './info-main.component.html',
   styleUrls: ['./info-main.component.css'],
-  providers: [InfoService]
+  providers: [ContentsService, PostingService]
 })
 
 export class InfoMainComponent implements OnInit {
-  recentRecords: Object;
-  weeklyRecords: Object;
+  List: Array<object>;
 
-  constructor(private infoService: InfoService) {
-  }
+  @ViewChild(MypostDirective)
+  private mypostDirective: MypostDirective;
+
+  postItems: PostItem[];
+
+  constructor(
+    private contentsService: ContentsService,
+    private postingService: PostingService
+  ) { }
 
   ngOnInit() {
-    // this.infoService.getAll().subscribe(
-    //   (data: Data) => { this.recentRecords = data.data; },
-    //   error => { console.log('error: ', error); }
-    // );
-    // this.infoService.getAll().subscribe(
-    //   (data: Data) => { this.weeklyRecords = data.data; },
-    //   error => { console.log('error: ', error); }
-    // );
+    this.contentsService.getInfoList().subscribe(
+      data => {
+        if (data.list) {
+          // console.log(data);
+          this.List = JSON.parse(data.list);
+          this.addRecord(this.List);
+        }
+      }
+    );
   }
 
+  addRecord(records) {
+    // tslint:disable-next-line:forin
+    for (const record in records) {
+      // console.log('record: ', records[record]);
+      this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+        new PostItem(InfoCardComponent, records[record]));
+    }
+  }
 }

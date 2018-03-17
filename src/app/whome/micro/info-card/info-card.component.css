@@ -8,15 +8,15 @@
   flex-grow: 0;
 }
 
-:host.platinum .card{
+:host.platinum .card {
   border-top: 4px solid var(--level-platinum);
 }
 
-:host.premium .card{
+:host.premium .card {
   border-top: 4px solid var(--level-premium);
 }
 
-:host.standard .card{
+:host.standard .card {
   border-top: 4px solid var(--level-standard);
 }
 
@@ -35,24 +35,20 @@
 }
 
 :host.platinum #levelBar {
-
   background: var(--level-platinum-gradient);
 }
 
 :host.premium #levelBar {
-
   background: var(--level-premium-gradient);
 }
 
 :host.standard #levelBar {
-
   background: var(--level-standard-gradient);
 }
 
 .card:hover #levelBar {
   opacity: 1;
 }
-
 
 #imgFrame {
   height: 135px;
@@ -100,11 +96,15 @@
   font-size: 1em;
   font-weight: 600;
   text-align: left;
+  line-height: 1.5em;
+  min-height: 3em;
 }
 
 .card>h3 {
-  margin: 1em;
-  font-size: 1.1em;
+  margin: 1em 1.5em;
+  font-size: 0.7em;
   font-weight: 500;
   text-align: left;
+  color: rgb(36, 134, 199);
 }
+
