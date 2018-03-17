@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'M-cost': {
-      type: DataTypes.INT(15),
+      type: DataTypes.INTEGER(15),
       allowNull: false
     },
     'M-detail': {
