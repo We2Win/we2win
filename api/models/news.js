@@ -1,7 +1,4 @@
 'use strict';
-const bcrypt = require('bcrypt');
-const bcrypt_p = require('bcrypt-promise');
-const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('News', {
@@ -14,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // 'N-image': {
-    //     type: DataTypes.STRING,
-    //     allowNull: false
-    // },
+    'N-image': {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     'N-sub-title': {
       type: DataTypes.STRING,
       allowNull: false
