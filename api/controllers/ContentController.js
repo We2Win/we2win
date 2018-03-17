@@ -102,6 +102,7 @@ const getOfficetelList = async function (req, res) {
   });
 }
 module.exports.getOfficetelList = getOfficetelList;
+
 const getCommercialList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -123,7 +124,6 @@ const getGroundList = async function (req, res) {
   });
 }
 module.exports.getGroundList = getGroundList;
-
 
 const getMeetingList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
