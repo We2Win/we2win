@@ -1,4 +1,11 @@
 const Content = require('../models').Content;
+const Info = require('../models').Info;
+const News = require('../models').News;
+const Law = require('../models').Law;
+const Site = require('../models').Site;
+const Meeting = require('../models').Meeting;
+const Employee = require('../models').Employee;
+const Employer = require('../models').Employer;
 const authService = require('./../services/AuthService');
 
 const create = async function (req, res) {
