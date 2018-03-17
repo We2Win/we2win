@@ -51,7 +51,7 @@ const getNewsList = async function (req, res) {
 
   News.findAll({}).then((contentList) => {
     return ReS(res, {
-      list: contentList
+      list: JSON.stringify(contentList)
     })
   });
 }

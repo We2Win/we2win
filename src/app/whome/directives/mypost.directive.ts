@@ -1,5 +1,4 @@
-import { Directive } from '@angular/core';
-import { ViewContainerRef } from '@angular/core/src/linker/view_container_ref';
+import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
   selector: '[appMypost]'
