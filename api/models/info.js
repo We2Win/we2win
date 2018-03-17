@@ -5,131 +5,131 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Info', {
-    'I-level': {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     'I-id': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(10),
       autoIncrement: true,
       primaryKey: true
     },
+    'I-level': {
+      type: DataTypes.TINYINT(1),
+      allowNull: false,
+    },
     'I-title': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     'I-summary': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     'I-open-start': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'I-open-end': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'I-ammount': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER(15),
       allowNull: false
     },
     'I-manager-name': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false
     },
     'I-manager-contact': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false
     },
-    'I-current-size1': {
-      type: DataTypes.STRING,
+    'I-current-duration1': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-current-size2': {
-      type: DataTypes.STRING,
+    'I-current-duration2': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-current-size3': {
-      type: DataTypes.STRING,
+    'I-current-duration3': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-current-size4': {
-      type: DataTypes.STRING,
+    'I-current-duration4': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-current-size5': {
-      type: DataTypes.STRING,
+    'I-current-duration5': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-current-amount1': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-current-amount2': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-current-amount3': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-current-amount4': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-current-amount5': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-around-size1': {
-      type: DataTypes.STRING,
+    'I-around-duration1': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-around-size2': {
-      type: DataTypes.STRING,
+    'I-around-duration2': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-around-size3': {
-      type: DataTypes.STRING,
+    'I-around-duration3': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-around-size4': {
-      type: DataTypes.STRING,
+    'I-around-duration4': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'I-around-size5': {
-      type: DataTypes.STRING,
+    'I-around-duration5': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-around-amount1': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-around-amount2': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-around-amount3': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-around-amount4': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-around-amount5': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'I-report': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
-    // 'I-image': {
-    //   type: DataTypes.STRING,
-    //   allowNull: false
-    // },
+    'I-image': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',

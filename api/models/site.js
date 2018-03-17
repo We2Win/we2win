@@ -6,62 +6,130 @@ const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Site', {
     'S-id': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(10),
       autoIncrement: true,
       primaryKey: true
     },
+    'S-level': {
+      type: DataTypes.TINYINT(1),
+      allowNull: false,
+    },
     'S-title': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     'S-summary': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     'S-open-start': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'S-open-end': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'S-ammount': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER(15),
       allowNull: false
     },
     'S-manager-name': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false
     },
     'S-manager-contact': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false
     },
-    'S-current-size': {
-      type: DataTypes.STRING,
+    'S-current-duration1': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'S-current-amount': {
-      type: DataTypes.STRING,
+    'S-current-duration2': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'S-around-size': {
-      type: DataTypes.STRING,
+    'S-current-duration3': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
-    'S-around-amount': {
-      type: DataTypes.STRING,
+    'S-current-duration4': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-current-duration5': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-current-amount1': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-current-amount2': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-current-amount3': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-current-amount4': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-current-amount5': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-duration1': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-duration2': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-duration3': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-duration4': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-duration5': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-amount1': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-amount2': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-amount3': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-amount4': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'S-around-amount5': {
+      type: DataTypes.STRING(15),
       allowNull: false
     },
     'S-report': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // 'S-image': {
-    //     type: DataTypes.STRING,
-    //     allowNull: false
-    // },
+    'S-image': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',

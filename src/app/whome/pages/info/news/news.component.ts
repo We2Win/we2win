@@ -27,9 +27,9 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
     this.contentsService.getNewsList().subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.List = JSON.parse(data.list);
-        // this.addRecord(this.List);
+        this.addRecord(this.List);
       }
     );
   }
@@ -37,7 +37,7 @@ export class NewsComponent implements OnInit {
   addRecord(records) {
     // tslint:disable-next-line:forin
     for (const record in records) {
-      console.log('record: ', records[record]);
+      // console.log('record: ', records[record]);
       this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
         new PostItem(NewsCardComponent, records[record]));
     }

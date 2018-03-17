@@ -6,12 +6,12 @@ const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Employer', {
     'R-id': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(10),
       autoIncrement: true,
       primaryKey: true
     },
     'R-part-name': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     'R-part-description': {
@@ -19,19 +19,19 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'R-age-start': {
-      type: DataTypes.STRING,
+      type: DataTypes.TINYINT(3),
       allowNull: false
     },
     'R-age-end': {
-      type: DataTypes.STRING,
+      type: DataTypes.TINYINT(3),
       allowNull: false
     },
     'R-requirement': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     'R-personnel': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER(5),
       allowNull: false
     },
     'R-method': {
@@ -39,11 +39,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'R-apply-start': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'R-apply-end': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'R-detail': {
@@ -51,27 +51,27 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'R-location-name': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     'R-location-address': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     'R-manager-name': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false
     },
     'R-manager-contact': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false
     },
     'R-HP': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false
     },
     'R-CP': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false
     },
   }, {

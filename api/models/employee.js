@@ -6,36 +6,41 @@ const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Employee', {
     'E-id': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(10),
       autoIncrement: true,
       primaryKey: true
     },
     'E-name': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
     },
     'E-sex': {
-      type: DataTypes.STRING,
+      type: DataTypes.TINYINT(1),
       allowNull: false
     },
     'E-age': {
-      type: DataTypes.STRING,
+      type: DataTypes.TINYINT(3),
       allowNull: false
     },
     'E-CP': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false
     },
     'E-HP': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false
     },
     'E-email': {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      validate: {
+        isEmail: {
+          msg: "이메일이 아닙니다."
+        }
+      }
     },
     'E-homepage': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     'E-address': {
@@ -43,11 +48,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'E-part': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     'E-location': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     'E-career': {
@@ -59,15 +64,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'E-networking': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER(5),
       allowNull: false
     },
     'E-available-start': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'E-available-end': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'E-intro': {

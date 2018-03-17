@@ -6,12 +6,16 @@ const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Law', {
     'L-id': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(10),
       autoIncrement: true,
       primaryKey: true
     },
+    'L-level': {
+      type: DataTypes.TINYINT(1),
+      allowNull: false,
+    },
     'L-title': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     'L-summary': {
@@ -22,10 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // 'L-file': {
-    //     type: DataTypes.STRING,
-    //     allowNull: false
-    // },
+    'L-file': {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',

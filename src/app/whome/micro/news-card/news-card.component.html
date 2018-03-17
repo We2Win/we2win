@@ -7,6 +7,6 @@
     <img id="bookmark" (click)="bookmark(); $event.stopPropagation();" src="/assets/img/icon_bookmark.png" />
     <img src="/assets/img/icon_share.png" />
   </div>
-  <h2>{{ record.Title }}</h2>
-  <h3>{{ record.Description }}</h3>
+  <h2>{{ record['N-title'] }}</h2>
+  <h3>{{ record['N-analysis-description'] }}</h3>
 </div>

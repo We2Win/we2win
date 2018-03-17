@@ -6,12 +6,16 @@ const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Meeting', {
     'M-id': {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(10),
       autoIncrement: true,
       primaryKey: true
     },
+    'M-level': {
+      type: DataTypes.TINYINT(1),
+      allowNull: false,
+    },
     'M-title': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     'M-summary': {
@@ -23,35 +27,35 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'M-host': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false
     },
     'M-apply-start': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'M-apply-end': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'M-duration-start': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'M-duration-end': {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false
     },
     'M-location': {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     'M-personnel': {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER(5),
       allowNull: false
     },
     'M-cost': {
-      type: DataTypes.STRING,
+      type: DataTypes.INT(15),
       allowNull: false
     },
     'M-detail': {

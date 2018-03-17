@@ -5,20 +5,20 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('User', {
-    ID: {
+    'ID': {
       type: DataTypes.STRING(15),
       allowNull: false,
       primaryKey: true
     },
-    Password: {
+    'Password': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Name: {
+    'Name': {
       type: DataTypes.STRING(15),
       allowNull: false,
     },
-    CP: {
+    'CP': {
       type: DataTypes.STRING(20),
       allowNull: true,
       // unique: true,
@@ -29,21 +29,21 @@ module.exports = (sequelize, DataTypes) => {
         },
       }
     },
-    ULevel: {
+    'U-level': {
       type: DataTypes.TINYINT(1),
       defaultValue: 0
     },
-    ULevelStart: {
+    'U-level-start': {
       type: DataTypes.DATE,
     },
-    ULevelEnd: {
+    'U-level-end': {
       type: DataTypes.DATE
     },
-    UPoint: {
+    'U-point': {
       type: DataTypes.DECIMAL(7),
       defaultValue: 0
     },
-    Email: {
+    'Email': {
       type: DataTypes.STRING(50),
       // allowNull: false,
       // unique: true,
@@ -53,34 +53,34 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    Hope: {
+    'Hope': {
       type: DataTypes.TINYINT(1),
       // allowNull: false
     },
-    Site: {
+    'Site': {
       type: DataTypes.TINYINT(1),
       // allowNull: false
     },
-    Location1: {
+    'Location1': {
       type: DataTypes.STRING(20),
       // allowNull: false
     },
-    Location2: {
+    'Location2': {
       type: DataTypes.STRING(20),
       // allowNull: false
     },
-    Amount: {
+    'Amount': {
       type: DataTypes.STRING(15),
       // allowNull: false
     },
-    HA: DataTypes.STRING(100),
-    HP: DataTypes.INTEGER(11),
-    OA: DataTypes.STRING(100),
-    OP: DataTypes.INTEGER(11),
-    InfoA: DataTypes.TINYINT(1),
-    AAmount: DataTypes.STRING(15),
-    ASns: DataTypes.TINYINT(1),
-    UWord: DataTypes.STRING(40),
+    'HA': DataTypes.STRING(100),
+    'HP': DataTypes.STRING(20),
+    'OA': DataTypes.STRING(100),
+    'OP': DataTypes.STRING(20),
+    'Info-a': DataTypes.TINYINT(1),
+    'A-amount': DataTypes.STRING(15),
+    'A-sns': DataTypes.TINYINT(1),
+    'U-word': DataTypes.STRING(40),
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',

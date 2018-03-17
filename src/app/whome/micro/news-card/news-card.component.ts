@@ -6,14 +6,11 @@ import { Component, OnInit, Input, ElementRef, ViewContainerRef } from '@angular
   styleUrls: ['./news-card.component.css']
 })
 export class NewsCardComponent implements OnInit {
-  @Input() record = {
-    Title: 'No name',
-    Description: 'nothing.'
-  };
+  @Input('record') record;
   @Input() level = 'standard';
 
   // for Card interface
-  @Input() data: any;
+  // @Input() data: any;
   // data;
 
   constructor(
@@ -23,15 +20,11 @@ export class NewsCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.data) {
-      this.record.Title = this.data.Title;
-      this.record.Description = this.data.Description;
-    }
-    // console.log('records from vertical to info-card: ', this.records);
-
-    // setTimeout(() => {
+    console.log(this.record);
+    // if (this.data) {
     //   this.record.Title = this.data.Title;
-    // }, 3000);
+    //   this.record.Description = this.data.Description;
+    // }
 
   }
 

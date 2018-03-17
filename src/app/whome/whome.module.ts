@@ -131,7 +131,13 @@ import { MypostDirective } from './directives/mypost.directive';
     MypostDirective,
   ],
   entryComponents: [
-    InfoCardComponent
+    InfoCardComponent,
+    NewsCardComponent,
+    SiteCardComponent,
+    LawCardComponent,
+    EmployeeCardComponent,
+    EmployerCardComponent,
+    MeetingCardComponent
   ],
   providers: [
     PageInfoService,
