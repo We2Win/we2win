@@ -30,16 +30,16 @@ router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
-router.get('/contents/report', ContentController.getReportList);
+router.get('/contents/report', ContentController.getInfoList);
 router.get('/contents/news', ContentController.getNewsList);
-// router.get('/contents/law', ContentController.getLawList);
-// router.get('/contents/apartment', ContentController.getApartmentList);
-// router.get('/contents/officetel', ContentController.getOfficetelList);
-// router.get('/contents/commercial', ContentController.getCommercialList);
-// router.get('/contents/ground', ContentController.getGroundList);
-// router.get('/contents/employee', ContentController.getEmployeeList);
-// router.get('/contents/employer', ContentController.getEmployerList);
-// router.get('/contents/meeting', ContentController.getMeetingList);
+router.get('/contents/law', ContentController.getLawList);
+router.get('/contents/apartment', ContentController.getApartmentList);
+router.get('/contents/officetel', ContentController.getOfficetelList);
+router.get('/contents/commercial', ContentController.getCommercialList);
+router.get('/contents/ground', ContentController.getGroundList);
+router.get('/contents/employee', ContentController.getEmployeeList);
+router.get('/contents/employer', ContentController.getEmployerList);
+router.get('/contents/meeting', ContentController.getMeetingList);
 
 router.post('/login', UserController.login); //login   
 
