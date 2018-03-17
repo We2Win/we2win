@@ -4,7 +4,7 @@ const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
-  var Records = sequelize.define('Meeting', {
+  var Records = sequelize.define('Info', {
     'I-level': {
       type: DataTypes.STRING,
       allowNull: false,

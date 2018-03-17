@@ -2,10 +2,11 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// yimport { Observable } from 'rxjs/Observable';
 import { ContentsService } from '../../../services/contents.service';
 import * as Quill from 'quill';
 import { UploadFileService } from '../../../services/upload-file.service';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class ContentsRegistrationComponent implements OnInit {
   filesToUpload: Array<File> = [];
 
   private selectedData = {
-    type: '',
+    type: '리포트',
     body: {},
   };
   private selectBoxData = {};
@@ -49,9 +50,10 @@ export class ContentsRegistrationComponent implements OnInit {
   @ViewChild('NLevel') NLevel: any = { selected: '' };
   @ViewChild('LLevel') LLevel: any = { selected: '' };
   @ViewChild('MLevel') MLevel: any = { selected: '' };
-  // sample: Observable<Info>;
 
   selectedFiles: FileList;
+  subscription: Subscription;
+
   _editor;
   editor;
 
@@ -68,7 +70,7 @@ export class ContentsRegistrationComponent implements OnInit {
 
   onTopChange() {
     this.sub.selected = '하위 카테고리';
-    this.selectedData.type = '리포트';
+    this.selectedData.type = '';
     this.selectedData.body = {};
     this.selectBoxData = {};
   }
@@ -133,7 +135,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'I-around-amount5': new FormControl('', [Validators.required]),
       'I-report': new FormControl('', [Validators.required]),
 
-      // 'I-image': new FormControl('', [Validators.required]),
+      'I-image': new FormControl('', [Validators.required]),
       // 'I-subimage1': new FormControl(''),
       // 'I-subimage2': new FormControl(''),
       // 'I-subimage3': new FormControl(''),
@@ -241,16 +243,25 @@ export class ContentsRegistrationComponent implements OnInit {
     };
   }
 
-  upload() {
-    const file = this.selectedFiles.item(0);
-    this.uploadService.uploadfile(file).subscribe(
-      data => { console.log('data: ', data); },
-      error => { console.log('err: ', error); }
-    );
-  }
-
   selectFile(event) {
     this.selectedFiles = event.target.files;
+  }
+
+  upload() {
+    const file = this.selectedFiles.item(0);
+
+    this.uploadService.uploadFile(file);
+    this.subscription = this.uploadService.getFileName()
+      .map(
+        data => data.Key
+      ).subscribe(
+        name => {
+          console.log('name: ', name);
+          this.newsForm.controls['N-image'].setValue(name);
+          // this.forms['부동산 뉴스'].controls['I-image'].value = name;
+        }
+      );
+
   }
 
   onSubmit() {
@@ -279,4 +290,5 @@ export class ContentsRegistrationComponent implements OnInit {
       }
       );
   }
+
 }
