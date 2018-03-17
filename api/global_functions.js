@@ -9,7 +9,7 @@ to = function (promise) {
 
 pe = require('parse-error');
 
-TE = function (err_message, log) { // TE stands for Throw Error
+TE = function (err_message, log) { // TE stands for Throw Error 
     if (log === true) {
         console.error(err_message);
     }

@@ -16,3 +16,12 @@ h4 b {
   font-size: 0.6em;
   color: #666;
 }
+
+.size {
+  border-left: none;
+  border-bottom: none;
+}
+
+.amount {
+  border-left: none;
+}

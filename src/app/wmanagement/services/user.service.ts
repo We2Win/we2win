@@ -6,11 +6,11 @@ import { JwtHelper } from 'angular2-jwt';
 
 import { User } from '../models/user';
 import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
   appUrl = environment.apiUrl;
-  TOKEN_NAME = 'jwt_token';
 
   constructor(
     private http: HttpClient,
@@ -22,12 +22,13 @@ export class UserService {
       .map((res: any) => res);
   }
 
-  getToken(): string {
-    return localStorage.getItem(this.TOKEN_NAME);
-  }
+  deleteUser(user: User):Observable<User> {
+    const url = environment.apiUrl + '/users/' + user.ID;
+    const bodyString = JSON.stringify(user);
+    const headers = { headers: { 'Content-Type': 'application/json' } };
 
-  getUserInfo(): string {
-    // console.log(this.getToken());
-    return this.jwtHelper.decodeToken(this.getToken());
+    return this.http.delete<User>(url, headers)
+      .map((res: User) => res);
+      // .catch((error: any) => { console.log(error.message); });
   }
 }

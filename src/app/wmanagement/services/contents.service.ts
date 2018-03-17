@@ -7,6 +7,7 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ContentsService {
@@ -23,7 +24,7 @@ export class ContentsService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/contents', _data);
+    return this.http.post(environment.apiUrl + '/contents', _data);
     // .map((res: User) => JSON.stringify(res))
     // .catch((error: any) => Observable.throw(error.message));
   }

@@ -12,6 +12,7 @@
 .cell {
   display: table-cell;
   padding: 0.5em 0.3em;
+  padding-top: 1em;
 }
 
 .cell img {
@@ -23,17 +24,29 @@
 .edit, .delete {
   display: inline-block;
   line-height: 100%;
-  margin: 0 0.5em;
-  width: 5em;
+  margin: 0.25em 0.5em;
+  padding: 0.25em;
+  width: 4em;
   font-size: 0.8em;  
+  cursor: pointer;
 }
 
 .edit {
   color: #063590;
+  margin-left: 2em;
+}
+.edit:hover {
+  color: white;
+  background: #063590;
 }
 
 .delete {
   color: #AE1212;
+  margin-right: 2em;
+}
+.delete:hover {
+  color: white;
+  background: #AE1212;
 }
 
 li {
@@ -54,7 +67,11 @@ li {
 
 .standard {
   background: var(--level-standard-gradient);
+}
 
+.manager, .admin {
+  background: var(--level-manager-gradient);
+  color: white;
 }
 
 .point {

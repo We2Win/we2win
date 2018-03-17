@@ -160,7 +160,7 @@ export class ContentsRegistrationComponent implements OnInit {
     this.newsForm = new FormGroup({
       // 'N-level': new FormControl('', [Validators.required]),
       'N-title': new FormControl('', [Validators.required]),
-      // 'N-image': new FormControl('', [Validators.required]),
+      'N-image': new FormControl('', [Validators.required]),
       'N-sub-title': new FormControl('', [Validators.required]),
       'N-sub-description': new FormControl('', [Validators.required]),
       'N-analysis-title': new FormControl('', [Validators.required]),
@@ -243,7 +243,10 @@ export class ContentsRegistrationComponent implements OnInit {
 
   upload() {
     const file = this.selectedFiles.item(0);
-    this.uploadService.uploadfile(file);
+    this.uploadService.uploadfile(file).subscribe(
+      data => { console.log('data: ', data); },
+      error => { console.log('err: ', error); }
+    );
   }
 
   selectFile(event) {
@@ -256,7 +259,7 @@ export class ContentsRegistrationComponent implements OnInit {
     console.log(this.selectedData);
 
     if (this.forms[this.selectedData.type].valid) {
-      // this.postData(this.selectedData);
+      this.postData(this.selectedData);
     } else {
       alert('양식이 모두 입력되지 않았습니다.');
     }

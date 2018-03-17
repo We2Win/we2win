@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -14,7 +14,9 @@ export class TableComponent implements OnInit {
     'tracking': ['No.', '아이디', '이름', '이메일', '직종', '금액', '희망 연봉']
   };
 
-  constructor() { }
+  constructor(
+    public viewContainerRef: ViewContainerRef
+  ) { }
 
   ngOnInit() {
 

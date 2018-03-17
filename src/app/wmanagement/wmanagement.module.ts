@@ -33,6 +33,7 @@ import { InfoService } from './services/info.service';
 import { ContentsService } from './services/contents.service';
 import { QuillComponent } from './micro/quill/quill.component';
 import { UploadFileService } from './services/upload-file.service';
+import { MypostDirective } from './directives/mypost.directive';
 
 @NgModule({
   imports: [
@@ -69,6 +70,10 @@ import { UploadFileService } from './services/upload-file.service';
     AnalysisContentsRecordComponent,
     Error404Component,
     QuillComponent,
+    MypostDirective,
+  ],
+  entryComponents: [
+    AccountRecordComponent
   ],
   providers: [
     InfoService,

@@ -22,7 +22,8 @@ export class UserService {
     return this.http.get('/api/v1/infos')
       .map(data => { console.log('map: ', data); });
   }
-  getById(id: string) {
+  getById(id:
+     string) {
     return this.http.get('/api/v1/infos');
   }
   create(user: User) {

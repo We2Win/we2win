@@ -2,7 +2,27 @@
   <input type="checkbox" />
 </span>
 
-<span class="cell" *ngFor="let record of recordData" [ngSwitch]="record.type">
+<span class="cell">
+  <div>{{ record.ID }}</div>
+  <div>
+    <span class="edit">EDIT</span>
+    <span class="delete" (click)="deleteUser()">DELETE</span>
+  </div>
+</span>
+<span class="cell">{{ record.Name }}</span>
+<span class="cell">{{ record.Email }}</span>
+<span class="cell">
+      <li *ngIf="record.ULevel===1" class="standard">STANDARD</li>
+      <li *ngIf="record.ULevel===2" class="premium">PREMIUM</li>
+      <li *ngIf="record.ULevel===3" class="platinum">PLATINUM</li>
+      <li *ngIf="record.ULevel===4" class="manager">MANAGER</li>
+      <li *ngIf="record.ULevel===5" class="admin">ADMIN</li>
+</span>
+<span class="cell">{{ record.UPoint }}</span>
+<span class="cell" *ngIf="record.ULevelStart">{{ record.ULevelStart + ' ~ ' + record.ULevelEnd }}</span>
+<span class="cell" *ngIf="!record.ULevelStart">무제한</span>
+
+<!-- <span class="cell" *ngFor="let record of recordData" [ngSwitch]="record.type">
   <ng-container *ngSwitchCase="'id'">
     <div>{{ record.value }}</div>
     <div>
@@ -18,4 +38,4 @@
   <ng-container *ngSwitchDefault>
     {{ record.value }}
   </ng-container>
-</span>
+</span> -->
