@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewContainerRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-site-card',
@@ -6,11 +7,21 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
   styleUrls: ['./site-card.component.css']
 })
 export class SiteCardComponent implements OnInit {
-  @Input() level: string;
+  @Input('record') record;
+  @Input() level = 'standard';
 
-  constructor(private _elementRef: ElementRef) { }
+  imageUrl;
+
+  constructor(
+    private _elementRef: ElementRef,
+    public viewContainerRef: ViewContainerRef
+  ) {
+  }
 
   ngOnInit() {
+    console.log(this.record);
+    this.imageUrl = environment.bucket.downloadUrl + this.record['S-image'];
+    this._elementRef.nativeElement.classList.add(this.record['S-level'].toLowerCase());
   }
 
   bookmark() {

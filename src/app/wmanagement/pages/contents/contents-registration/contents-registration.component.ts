@@ -85,7 +85,7 @@ export class ContentsRegistrationComponent implements OnInit {
       case '오피스텔':
       case '상가/호텔':
       case '토지':
-        this.forms[selected].controls['S-type'].setValue(selected);
+        this.siteForm.controls['S-type'].setValue(selected);
         break;
     }
   }

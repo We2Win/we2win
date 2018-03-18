@@ -38,7 +38,7 @@ export class SelectComponent implements OnInit, OnChanges {
     if (this.selected === '상위 카테고리') {
       this.selected = '부동산 정보';
     } else if (this.selected === '하위 카테고리') {
-      this.selected = '리포트'
+      this.selected = '리포트';
     }
   }
 

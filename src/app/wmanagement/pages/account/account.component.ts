@@ -38,6 +38,7 @@ export class AccountComponent implements OnInit, AfterViewInit {
     this.userService.getUserList().subscribe(
       data => {
         this.List = JSON.parse(data.list);
+        console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
       }

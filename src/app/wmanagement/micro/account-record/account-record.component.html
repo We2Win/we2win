@@ -12,6 +12,7 @@
 <span class="cell">{{ record.Name }}</span>
 <span class="cell">{{ record.Email }}</span>
 <span class="cell">
+      <li *ngIf="record.ULevel===0" class="standard">STANDARD</li>
       <li *ngIf="record.ULevel===1" class="standard">STANDARD</li>
       <li *ngIf="record.ULevel===2" class="premium">PREMIUM</li>
       <li *ngIf="record.ULevel===3" class="platinum">PLATINUM</li>

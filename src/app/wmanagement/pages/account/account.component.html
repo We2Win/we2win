@@ -1,7 +1,7 @@
 <section>
   <article>
     <header>
-      <h1>전체 {{total}}명</h1>
+      <h1>전체 {{total || '0'}}명</h1>
       <app-select [type]="'회원 등급'"></app-select>
       <app-select [type]="'금액'"></app-select>
       <input class="search" type="text" placeholder="아이디 검색"/>
