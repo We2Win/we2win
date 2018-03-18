@@ -26,7 +26,7 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getInfoList().subscribe(
+    this.contentsService.getReportList().subscribe(
       data => {
         if (data.list) {
           // console.log(data);

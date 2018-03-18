@@ -127,13 +127,13 @@
           <li>
             <h2>현장 사진</h2>
             <input type="file" (change)="selectFile($event)">
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles}" (click)="upload()">Upload</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles}" (click)="upload(selectedData.type)">Upload</app-button>
             <!-- <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*"
               multiple #imageInput> -->
             <!-- <app-button (click)="upload()">사진 등록</app-button> -->
           </li>
           <li>
-            <h2>세부 사진</h2>
+            <!-- <h2>세부 사진</h2> -->
             <!-- <input type="file" name="single1" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
             <!-- <input type="file" name="single2" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
             <!-- <input type="file" name="single3" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
@@ -147,7 +147,7 @@
         </form>
       </app-popup>
 
-      <form [formGroup]="siteForm" id="site" *ngSwitchCase="sub.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()" enctype="multipart/form-data"
+      <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()" enctype="multipart/form-data"
         novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
@@ -155,27 +155,27 @@
         </li>
         <li class="form-group">
           <h2>컨텐츠 제목</h2>
-          <input class="form-control" formControlName="I-title" type="text" placeholder="제목을 입력하세요" />
+          <input class="form-control" formControlName="S-title" type="text" placeholder="제목을 입력하세요" />
         </li>
         <li class="form-group">
           <h2>요약 정보</h2>
-          <textarea class="form-control" formControlName="I-summary" placeholder="요약 정보를 입력하세요"></textarea>
+          <textarea class="form-control" formControlName="S-summary" placeholder="요약 정보를 입력하세요"></textarea>
         </li>
         <li>
           <h2>분양 오픈일</h2>
-          <input type="date" formControlName="I-open-start" placeholder="이름">
-          <input type="date" formControlName="I-open-end" placeholder="이름">
+          <input type="date" formControlName="S-open-start" placeholder="이름">
+          <input type="date" formControlName="S-open-end" placeholder="이름">
         </li>
         <li>
           <h2>분양가</h2>
-          <input type="number" lang='en-150' formControlName="I-ammount" step="10000">
+          <input type="number" lang='en-150' formControlName="S-ammount" step="10000">
           <h3>백만원</h3>
           <span class="blank"></span>
         </li>
         <li>
           <h2>담당자 정보</h2>
-          <input type="text" formControlName="I-manager-name" placeholder="이름">
-          <input type="text" formControlName="I-manager-contact" placeholder="연락처">
+          <input type="text" formControlName="S-manager-name" placeholder="이름">
+          <input type="text" formControlName="S-manager-contact" placeholder="연락처">
           <span class="blank"></span>
         </li>
         <li>
@@ -189,19 +189,19 @@
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
-                  <input type="text" class="box size" formControlName="I-current-duration1" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-duration2" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-duration3" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-duration4" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-duration5" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-current-duration1" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-current-duration2" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-current-duration3" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-current-duration4" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-current-duration5" placeholder="기간">
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
-                  <input type="number" class="box amount" formControlName="I-current-amount1" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-current-amount2" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-current-amount3" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-current-amount4" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-current-amount5" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-current-amount1" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-current-amount2" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-current-amount3" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-current-amount4" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-current-amount5" placeholder="액수">
                 </li>
               </span>
             </div>
@@ -213,19 +213,19 @@
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
-                  <input type="text" class="box size" formControlName="I-around-duration1" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-duration2" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-duration3" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-duration4" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-duration5" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-around-duration1" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-around-duration2" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-around-duration3" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-around-duration4" placeholder="기간">
+                  <input type="text" class="box size" formControlName="S-around-duration5" placeholder="기간">
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
-                  <input type="number" class="box amount" formControlName="I-around-amount1" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-around-amount2" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-around-amount3" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-around-amount4" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-around-amount5" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-around-amount1" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-around-amount2" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-around-amount3" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-around-amount4" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="S-around-amount5" placeholder="액수">
                 </li>
               </span>
             </div>
@@ -234,11 +234,11 @@
         <li>
           <h2>현장 리포트</h2>
           <!-- <app-quill></app-quill> -->
-          <textarea class="form-control" placeholder="상세 정보를 입력하세요" formControlName="I-report"></textarea>
+          <textarea class="form-control" placeholder="상세 정보를 입력하세요" formControlName="S-report"></textarea>
         </li>
         <li>
           <h2>현장 사진</h2>
-          <!-- <input type="file" (change)="onFileChange($event, 'I-image')" accept="image/*" #imageInput> -->
+          <!-- <input type="file" (change)="onFileChange($event, 'S-image')" accept="image/*" #imageInput> -->
           <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
           <!-- <app-button (click)="imageInput.click()">사진 등록</app-button> -->
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
@@ -246,9 +246,9 @@
         </li>
         <!-- <li>
                 <h2>세부 사진</h2>
-                <input type="file" (change)="onFileChange($event, 'I-subimage1')" accept="image/*">
-                <input type="file" (change)="onFileChange($event, 'I-subimage2')" accept="image/*">
-                <input type="file" (change)="onFileChange($event, 'I-subimage3')" accept="image/*">
+                <input type="file" (change)="onFileChange($event, 'S-subimage1')" accept="image/*">
+                <input type="file" (change)="onFileChange($event, 'S-subimage2')" accept="image/*">
+                <input type="file" (change)="onFileChange($event, 'S-subimage3')" accept="image/*">
               </li> -->
       
         <li class="submitBar">
@@ -257,7 +257,7 @@
         </li>
       </form>
 
-      <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()"
+      <!-- <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()"
         novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
@@ -323,7 +323,7 @@
           <button [type]="'submit'">등록하기</button>
           <button>미리보기</button>
         </li>
-      </form>
+      </form> -->
 
       <form [formGroup]="newsForm" id="news" *ngSwitchCase="'부동산 뉴스'" (ngSubmit)="onSubmit()" novalidate>
         <li class="form-group">

@@ -1,9 +1,9 @@
 <section>
   <div id="top">
     <div id="levelBar">
-      PLATINUM
+      {{Data['N-level']}}
     </div>
-    <h1>'주춤'하던 아파트 거래량 상승세… 대책 여파 극복했나</h1>
+    <h1>{{Data['N-title']}}</h1>
     <div id="optionBar">
       <img src="/assets/img/icon_bookmark.png" />
       <img src="/assets/img/icon_facebook.png" />
@@ -12,27 +12,23 @@
   <app-group>
     <article>
       <div class="row">
-        <label>뉴스 제목</label>
-        <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가
-          승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.
-          이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</p>
+        <label>{{Data['N-sub-title']}}</label>
+        <p>{{Data['N-sub-description']}}</p>
       </div>
     </article>
     <article>
       <div class="row">
-        <label>뉴스제목</label>
-        <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가
-          승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.
-          이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</p>
+        <label>{{Data['N-analysis-title']}}</label>
+        <p>{{Data['N-analysis-description']}}</p>
       </div>
     </article>
     <article>
       <div class="row">
         <label>관련 부동산 뉴스</label>
         <span>
+          <!-- <app-news-card></app-news-card>
           <app-news-card></app-news-card>
-          <app-news-card></app-news-card>
-          <app-news-card></app-news-card>
+          <app-news-card></app-news-card> -->
         </span>
       </div>
     </article>

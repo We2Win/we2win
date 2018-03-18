@@ -79,6 +79,15 @@ export class ContentsRegistrationComponent implements OnInit {
     this.selectedData.type = selected;
     this.selectedData.body = {};
     this.selectBoxData = {};
+
+    switch (selected) {
+      case '아파트':
+      case '오피스텔':
+      case '상가/호텔':
+      case '토지':
+        this.forms[selected].controls['S-type'].setValue(selected);
+        break;
+    }
   }
 
   onLevelChange(type) {
@@ -141,6 +150,7 @@ export class ContentsRegistrationComponent implements OnInit {
       // 'I-subimage3': new FormControl(''),
     });
     this.siteForm = new FormGroup({
+      'S-type': new FormControl('', [Validators.required]),
       // 'S-level': new FormControl(''),
       'S-title': new FormControl('', [Validators.required]),
       'S-summary': new FormControl('', [Validators.required]),
@@ -264,7 +274,8 @@ export class ContentsRegistrationComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  upload() {
+  upload(type) {
+    console.log('type: ', type);
     const file = this.selectedFiles.item(0);
 
     this.uploadService.uploadFile(file);
@@ -274,7 +285,39 @@ export class ContentsRegistrationComponent implements OnInit {
       ).subscribe(
         name => {
           console.log('name: ', name);
-          this.newsForm.controls['N-image'].setValue(name);
+          switch (type) {
+            case '리포트':
+              this.forms[type].controls['I-image'].setValue(name);
+            break;
+            case '부동산 뉴스':
+              this.forms[type].controls['N-image'].setValue(name);
+            break;
+            case '법률 및 정책':
+              this.forms[type].controls['L-image'].setValue(name);
+            break;
+            case '아파트':
+              this.forms[type].controls['S-image'].setValue(name);
+            break;
+            case '오피스텔':
+              this.forms[type].controls['S-image'].setValue(name);
+            break;
+            case '상가/호텔':
+              this.forms[type].controls['S-image'].setValue(name);
+            break;
+            case '토지':
+              this.forms[type].controls['S-image'].setValue(name);
+            break;
+            case '오프라인 모임':
+              this.forms[type].controls['M-image'].setValue(name);
+            break;
+            case '구인':
+              this.forms[type].controls['R-image'].setValue(name);
+            break;
+            case '구직':
+              this.forms[type].controls['E-image'].setValue(name);
+            break;
+          }
+          // this.newsForm.controls['N-image'].setValue(name);
           // this.forms['부동산 뉴스'].controls['I-image'].value = name;
         }
       );

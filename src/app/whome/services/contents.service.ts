@@ -9,14 +9,28 @@ export class ContentsService {
     private http: HttpClient
   ) { }
 
-  getInfoList() {
-    return this.http.get(environment.apiUrl + '/contents/info')
-      .map((res: any) => res);
+  getReportList(id?: any) {
+    if (id) {
+      console.log('with id');
+      return this.http.get(environment.apiUrl + '/contents/report/' + id)
+        .map((res: any) => res);
+    } else {
+      console.log('without id');
+      return this.http.get(environment.apiUrl + '/contents/report')
+        .map((res: any) => res);
+    }
   }
 
-  getNewsList() {
-    return this.http.get(environment.apiUrl + '/contents/news')
-      .map((res: any) => res);
+  getNewsList(id?: any) {
+    if (id) {
+      console.log('with id');
+      return this.http.get(environment.apiUrl + '/contents/news/' + id)
+        .map((res: any) => res);
+    } else {
+      console.log('without id');
+      return this.http.get(environment.apiUrl + '/contents/news')
+        .map((res: any) => res);
+    }
   }
 
   getLawList() {

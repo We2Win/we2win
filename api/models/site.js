@@ -5,6 +5,11 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Site', {
+    'S-type': {
+      type: DataTypes.STRING(10),
+      autoIncrement: true,
+      primaryKey: true
+    },
     'S-id': {
       type: DataTypes.INTEGER(10),
       autoIncrement: true,

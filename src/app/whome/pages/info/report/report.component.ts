@@ -25,10 +25,10 @@ export class ReportComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getInfoList().subscribe(
+    this.contentsService.getReportList().subscribe(
       data => {
         if (data.list) {
-          // console.log(data);
+          console.log(data);
           this.List = JSON.parse(data.list);
           this.addRecord(this.List);
         }
