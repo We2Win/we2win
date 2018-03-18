@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Site', {
     'S-type': {
       type: DataTypes.STRING(10),
-      allowNull: false;
+      allowNull: false
     },
     'S-id': {
       type: DataTypes.INTEGER(10),
