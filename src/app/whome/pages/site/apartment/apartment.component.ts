@@ -25,7 +25,7 @@ export class ApartmentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getSiteList().subscribe(
+    this.contentsService.getApartmentList().subscribe(
       data => {
         if (data.list) {
           // console.log(data);

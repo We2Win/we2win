@@ -19,7 +19,7 @@ const create = async function (req, res) {
 
   if (err) return ReE(res, err, 422);
 
-  console.log('content.json: ', content);  
+  console.log('content.json: ', content);
   content = JSON.stringify(content);
   console.log('content.string: ', content);
   return ReS(res, {
@@ -49,112 +49,242 @@ module.exports.get = get;
 const getInfoList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Info.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
-    })
-  });
+  if (req.params.id) {
+    Info.findOne({
+        where: {
+          'I-id': req.params.id
+        }
+      })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Info.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getInfoList = getInfoList;
 
 const getNewsList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  // News.findAll({ attributes: ['ID', 'Name', 'Email', 'ULevel', 'UPoint', 'ULevelStart', 'ULevelEnd'] })
-  News.findAll({  })
-  .then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
-    })
-  });
+  if (req.params.id) {
+    News.findOne({
+        where: {
+          'N-id': req.params.id
+        }
+      })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    // News.findAll({ attributes: ['ID', 'Name', 'Email', 'ULevel', 'UPoint', 'ULevelStart', 'ULevelEnd'] })
+    News.findAll({})
+      .then((contentList) => {
+        return ReS(res, {
+          list: JSON.stringify(contentList)
+        })
+      });
+  }
 }
 module.exports.getNewsList = getNewsList;
 
 const getLawList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Law.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
-    })
-  });
+  if (req.params.id) {
+    Law.findOne({
+        where: {
+          'L-id': req.params.id
+        }
+      })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Law.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getLawList = getLawList;
 
 const getApartmentList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Site.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
-    })
-  });
+  if (req.params.id) {
+    Site.findOne({
+        where: {
+          'S-id': req.params.id
+        }
+      })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Site.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getApartmentList = getApartmentList;
 
 const getOfficetelList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Site.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
+  if (req.params.id) {
+    Site.findOne({
+      where: {
+        'S-id': req.params.id
+      }
     })
-  });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Site.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getOfficetelList = getOfficetelList;
 
 const getCommercialList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Site.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
+  if (req.params.id) {
+    Site.findOne({
+      where: {
+        'S-id': req.params.id
+      }
     })
-  });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Site.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getCommercialList = getCommercialList;
 
 const getGroundList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Site.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
+  if (req.params.id) {
+    Site.findOne({
+      where: {
+        'S-id': req.params.id
+      }
     })
-  });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Site.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getGroundList = getGroundList;
 
 const getMeetingList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Meeting.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
+  if (req.params.id) {
+    Meeting.findOne({
+      where: {
+        'M-id': req.params.id
+      }
     })
-  });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Meeting.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getMeetingList = getMeetingList;
 
 const getEmployeeList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Employee.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
+  if (req.params.id) {
+    Employee.findOne({
+      where: {
+        'E-id': req.params.id
+      }
     })
-  });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Employee.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getEmployeeList = getEmployeeList;
 
 const getEmployerList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Employer.findAll({}).then((contentList) => {
-    return ReS(res, {
-      list: JSON.stringify(contentList)
+  if (req.params.id) {
+    Employer.findOne({
+      where: {
+        'R-id': req.params.id
+      }
     })
-  });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Employer.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
 }
 module.exports.getEmployerList = getEmployerList;
 

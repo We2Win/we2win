@@ -1,15 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ContentsService } from '../../../services/contents.service';
+import { PostingService } from '../../../services/posting.service';
+import { MypostDirective } from '../../../directives/mypost.directive';
+import { PostItem } from '../../../models/post-item';
+import { SiteCardComponent } from '../../../micro/site-card/site-card.component';
 
 @Component({
   selector: 'app-officetel',
   templateUrl: './officetel.component.html',
-  styleUrls: ['./officetel.component.css']
+  styleUrls: ['./officetel.component.css'],
+  providers: [ContentsService, PostingService]
 })
 export class OfficetelComponent implements OnInit {
+  List: Array<object>;
 
-  constructor() { }
+  @ViewChild(MypostDirective)
+  private mypostDirective: MypostDirective;
+
+  postItems: PostItem[];
+
+  constructor(
+    private contentsService: ContentsService,
+    private postingService: PostingService
+  ) { }
 
   ngOnInit() {
+    this.contentsService.getOfficetelList().subscribe(
+      data => {
+        if (data.list) {
+          // console.log(data);
+          this.List = JSON.parse(data.list);
+          this.addRecord(this.List);
+        }
+      }
+    );
+  }
+
+  addRecord(records) {
+    // tslint:disable-next-line:forin
+    for (const record in records) {
+      // console.log('record: ', records[record]);
+      this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+        new PostItem(SiteCardComponent, records[record]));
+    }
   }
 
 }
