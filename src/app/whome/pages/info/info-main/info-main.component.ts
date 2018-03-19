@@ -14,6 +14,8 @@ import { InfoCardComponent } from '../../../micro/info-card/info-card.component'
 
 export class InfoMainComponent implements OnInit {
   List: Array<object>;
+  recentRecords;
+  weeklyRecords;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;

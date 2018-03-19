@@ -36,7 +36,7 @@ export class ContentsRegistrationComponent implements OnInit {
 
   filesToUpload: Array<File> = [];
 
-  private selectedData = {
+  selectedData = {
     type: '리포트',
     body: {},
   };

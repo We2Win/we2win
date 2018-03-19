@@ -63,6 +63,7 @@ import { NewsCardComponent } from './micro/news-card/news-card.component';
 import { LawComponent } from './pages/info/law/law.component';
 import { LawCardComponent } from './micro/law-card/law-card.component';
 import { MypostDirective } from './directives/mypost.directive';
+import { FbShareService } from './services/fb-share.service';
 
 
 @NgModule({
@@ -143,7 +144,8 @@ import { MypostDirective } from './directives/mypost.directive';
     PageInfoService,
     AuthService,
     UserService,
-    InfoService
+    InfoService,
+    FbShareService
   ]
 })
 export class WhomeModule {

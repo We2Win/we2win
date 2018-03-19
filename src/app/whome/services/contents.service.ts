@@ -9,6 +9,16 @@ export class ContentsService {
     private http: HttpClient
   ) { }
 
+  getRecentReportList() {
+    return this.http.get(environment.apiUrl + '/contents/recentReport')
+      .map((res: any) => res);
+  }
+
+  getWeeklyList() {
+    return this.http.get(environment.apiUrl + '/contents/weekly')
+      .map((res: any) => res);
+  }
+
   getReportList(id?: any) {
     if (id) {
       console.log('with id');

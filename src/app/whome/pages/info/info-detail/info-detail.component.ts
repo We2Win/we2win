@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute } from '@angular/router';
+import { Info } from '../../../models/info';
 
 @Component({
   selector: 'app-info-detail',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   providers: [ContentsService]
 })
 export class InfoDetailComponent implements OnInit {
-  Data: object;
+  Data: Info;
   id: number;
 
   constructor(

@@ -1,5 +1,6 @@
 :host {
   display: block;
+  flex: 1;
   padding: 0;
 }
 
@@ -20,14 +21,13 @@ button {
 .naver:before {
   content: '';
   display: inline-block;
-  width: 1em;
-  height: 1.1em;
+  width: 1.5em;
+  height: 1.5em;
   background: url('../../../../assets/img/icon_naver.png');
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: 0.9em 0.9em;
-  margin-left: 10%;
-  margin-right: 10%;
+  background-size: 1.5em;
+  margin: -0.25em 10%;
 }
 
 .naver:hover, .naver:focus {
@@ -35,43 +35,41 @@ button {
 }
 
 .google {
-  background: #ccc;
-  color: #333;
+  background: #D5B15E;
+  color: white;
 }
 
 .google:before {
   content: '';
   display: inline-block;
-  width: 1em;
-  height: 1.1em;
+  width: 6em;
+  height: 1.5em;
+  background: url('../../../../assets/img/logo_white.png');
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: 0.9em 0.9em;
-  margin-left: 10%;
-  margin-right: 10%;
+  background-size: 6em 1.5em;
+  margin: -0.1em 5% -0.4em 10%;
 }
 
 .google:hover, .google:focus {
-  background: #ddd;
+  background: rgb(240, 200, 106);
 }
 
 .kakao {
   background: #ffeb00;
-
   color: #333;
 }
 
 .kakao:before {
   content: '';
   display: inline-block;
-  width: 1.1em;
-  height: 1.1em;
+  width: 1.5em;
+  height: 1.5em;
   background: url('../../../../assets/img/icon_kakao.png');
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: 1.1em 1em;
-  margin-left: 10%;
-  margin-right: 10%;
+  background-size: 1.5em;
+  margin: -0.25em 10%;
 }
 
 

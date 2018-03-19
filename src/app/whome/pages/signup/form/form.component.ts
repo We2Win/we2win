@@ -88,7 +88,7 @@ export class FormComponent implements OnInit {
     );
 
     /* 설정정보를 초기화하고 연동을 준비 */
-    Naver.init();
+    // Naver.init();
   }
 
   onSubmit() {
@@ -97,7 +97,7 @@ export class FormComponent implements OnInit {
       alert('아이디 확인을 해주세요.');
       return false;
     } else if (this.checkId === false) {
-      alert('중복된 아이디가 존재합니다.');
+      alert('중복된 아이디가 존재하거나 아이디 확인을 하지 않으셨습니다.');
       return false;
     }
 
@@ -205,17 +205,20 @@ export class FormComponent implements OnInit {
       // sample code
       if (type === 'naver') {
         this.loginWithNaver();
-        // alert('네이버 아이디로 로그인 팝업');
+      } else if (type === 'naverSample') {
+        alert('네이버 아이디로 로그인 팝업');
         this.signupForm.controls['ID'].setValue('NAVER_ID');
         this.signupForm.controls['Password'].setValue('NAVER_Password');
+        this.signupForm.controls['PasswordV'].setValue('NAVER_Password');
         this.signupForm.controls['Name'].setValue('NAVER_Name');
         this.signupForm.controls['Email'].setValue('NAVER_Email');
 
         this.ID.nativeElement.classList.add('disable');
         this.Password.nativeElement.classList.add('disable');
+        this.PasswordV.nativeElement.classList.add('disable');
         this.Name.nativeElement.classList.add('disable');
         this.Email.nativeElement.classList.add('disable');
-      } else if (type === 'kakao') {
+      } else if (type === 'kakaoSample') {
         alert('카카오 아이디로 로그인 팝업');
         this.signupForm.controls['ID'].setValue('KAKAO_ID');
         this.signupForm.controls['Password'].setValue('KAKAO_Password');
@@ -268,7 +271,8 @@ export class FormComponent implements OnInit {
 
   setHyphen(input) {
     if (input === 'CP') {
-      let str = this.signupForm.controls['CP'].value;
+      let str = this.signupForm.controls['CP'].value.replace(/\-/g, '');
+    console.log(str);
       if (str.length === 11) {
         str = str.substring(0, 3) + '-' + str.substring(3, 7) + '-' + str.substring(7, str.length);
       } else if (str.length === 10) {

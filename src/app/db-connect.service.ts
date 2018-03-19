@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { environment } from '../environments/environment';
 // import { Observable } from 'rxjs/observable';
 
 @Injectable()
 export class DbConnectService {
-  apiURL = 'http://ec2-13-124-14-176.ap-northeast-2.compute.amazonaws.com/api';
+  apiURL = environment.apiUrl;
 
   constructor(private http: Http) { }
   saveUsers(users: any[]) {

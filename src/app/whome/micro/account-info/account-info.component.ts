@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class AccountInfoComponent implements OnInit {
   isLogin = false;
   showProfile = false;
-  private user = {
+  user = {
     id: '-',
     name: '이름없음',
     point: '-',

@@ -8,10 +8,10 @@
       <article>
         <div class="form-group row">
           <label>가입 정보</label>
-          <app-social-button [type]="'google'" (click)="setLoginType('google')">일반 로그인</app-social-button>
-          <div id="naverIdLogin"></div>
-          <!-- <app-social-button [type]="'naver'" (click)="setLoginType('naver')">네이버 로그인</app-social-button> -->
-          <app-social-button [type]="'kakao'" (click)="setLoginType('kakao')">카카오 로그인</app-social-button>
+          <app-social-button [type]="'google'" (click)="setLoginType('google')">로그인</app-social-button>
+          <!-- <div id="naverIdLogin"></div> -->
+          <app-social-button [type]="'naver'" (click)="setLoginType('naverSample')">네이버 로그인</app-social-button>
+          <app-social-button [type]="'kakao'" (click)="setLoginType('kakaoSample')">카카오 로그인</app-social-button>
         </div>
       </article>
       <div class="subGroup" [ngClass]="{'halfOpacity': loginType === ''}">
@@ -24,7 +24,7 @@
             <label>아이디
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="text" formControlName="ID" #ID placeholder="최소 4글자 최대 15글자" />
+            <input class="form-control" type="text" formControlName="ID" #ID placeholder="최소 4글자 최대 15글자" (change)="checkId=false" />
             <app-button (click)="hasId($event)" (ngSubmit)="$event.stopPropagation()" [type]="'none'" *ngIf="loginType==='google'">아이디 확인</app-button>
             <div class="blank" *ngIf="loginType!=='google'"></div>
           </div>
@@ -262,11 +262,11 @@
           </div>
         </article>
       </div>
-      <div id="lastWarning">
+      <div id="lastWarning" [ngClass]="{'halfOpacity': loginType === ''}">
         입력하신 내용을 다시한번 확인 하시고,
         <br>가입하기를 눌러주시면 회원가입이 완료됩니다.
       </div>
-      <app-button [type]="'submit'" (click)="onSubmit()">회원 가입 완료</app-button>
+      <app-button [type]="'submit'" (click)="onSubmit()" [ngClass]="{'halfOpacity': loginType === ''}">회원 가입 완료</app-button>
     </form>
   </app-group>
 </section>

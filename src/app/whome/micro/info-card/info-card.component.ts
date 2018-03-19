@@ -2,11 +2,13 @@ import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular
 import { Info } from '../../models/info';
 import { Card } from '../../models/card';
 import { environment } from '../../../../environments/environment';
+import { FbShareService } from '../../services/fb-share.service';
 
 @Component({
   selector: 'app-info-card',
   templateUrl: './info-card.component.html',
   styleUrls: ['./info-card.component.css'],
+  providers: [FbShareService]
 })
 export class InfoCardComponent implements OnInit {
   @Input('record') record;
@@ -16,7 +18,8 @@ export class InfoCardComponent implements OnInit {
 
   constructor(
     private _elementRef: ElementRef,
-    public viewContainerRef: ViewContainerRef
+    public viewContainerRef: ViewContainerRef,
+    private fbShareService: FbShareService
   ) {
   }
 
@@ -36,6 +39,10 @@ export class InfoCardComponent implements OnInit {
       bookmark.src = '/assets/img/icon_bookmark_selected.png';
       bookmark.classList.add('selected');
     }
+  }
+
+  fbShare() {
+    this.fbShareService.share();
   }
 
 }

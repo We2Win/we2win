@@ -8,7 +8,7 @@ import { Card } from '../../models/card';
   styleUrls: ['./law-card.component.css']
 })
 export class LawCardComponent implements OnInit, Card {
-  @Input() record: Info = {
+  @Input() record: any = {
     Title: 'No name',
     Description: 'nothing.'
   };

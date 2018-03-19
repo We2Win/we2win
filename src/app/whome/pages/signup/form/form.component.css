@@ -125,3 +125,7 @@ input + input,
 app-select + app-select {
   margin-left: 0.5em;
 }
+
+app-social-button + app-social-button {
+  margin-left: 0.5em;
+}
