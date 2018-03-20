@@ -104,24 +104,24 @@ const getUserList = async function (userInfo) {
 module.exports.getUserList = getUserList;
 
 const authUser = async function (userInfo) {//returns token
-    // console.log('authUser1()');
-    // let unique_key, err, user;
-    // const auth_info = {};
-    // auth_info.status = 'login';
+    console.log('authUser1()');
+    let unique_key, err, user;
+    const auth_info = {};
+    auth_info.status = 'login';
 
-    // unique_key = getUniqueKeyFromBody(userInfo);
+    unique_key = getUniqueKeyFromBody(userInfo);
 
-    // if (!userInfo.ID) TE('ID를 올바르게 입력해주세요.');
-    // if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
+    if (!userInfo.ID) TE('ID를 올바르게 입력해주세요.');
+    if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
 
-    // [err, user] = await to (User.findOne({ where: { ID: unique_key }}));
-    // if (!user) TE('Not registered');
+    [err, user] = await to (User.findOne({ where: { ID: unique_key }}));
+    if (!user) TE('Not registered');
 
-    // console.log('before await');
-    // [err, user] = await to (User.comparePassword(userInfo.Password));
-    // console.log('after await');
+    console.log('before await');
+    [err, user] = await to (User.comparePassword(userInfo.Password));
+    console.log('after await');
     
-    // if (err) TE(err.message);
+    if (err) TE(err.message);
     return user;
 }
 module.exports.authUser = authUser;
