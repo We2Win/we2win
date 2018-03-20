@@ -109,19 +109,15 @@ module.exports = (sequelize, DataTypes) => {
 
   Model.prototype.comparePassword = async function (pw) {
     let err, pass
-    console.log('start comparing password');
+    // console.log('start comparing password');
     if (!this.Password) TE('Password not set');
 
-    // pw = bcrypt.hashSync(pw, 8);
-
     [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
-    console.log('comparePassword: ', pass? 'passed' : 'failed');
-    // TE(pw + this.Password + 'done' + pass);
+    // console.log('comparePassword: ', pass? 'passed' : 'failed');
     if (err) TE(err);
 
     if (!pass) TE('invalid Password');
 
-    console.log('return: ', this);
 
     return this;
   }
