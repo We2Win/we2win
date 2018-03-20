@@ -123,7 +123,7 @@ const authUser = async function (userInfo) {//returns token
 
     console.log('after await');
 
-    // [err, user] = await to(user.comparePassword(userInfo.Password));
+    [err, user] = await to(user.comparePassword(userInfo.Password));
     if (err) TE(err.message);
     return user;
 }

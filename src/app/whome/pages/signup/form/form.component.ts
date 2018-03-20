@@ -5,6 +5,8 @@ import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 
+// import * as Kakao from 'http://developers.kakao.com/sdk/js/kakao.min.js';
+
 // declare let addressAPI: any;
 
 // addressAPI.import('http://dmaps.daum.net/map_js_init/postcode.v2.js')
@@ -14,12 +16,23 @@ import { environment } from '../../../../../environments/environment';
 
 // declare var daum: any;/
 
+
+// declare var Kakao: any;
+// this.Kakao.import('http://developers.kakao.com/sdk/js/kakao.min.js');
+  // .then(xJS => {
+  //   // xJS.open();
+  // });
+
+declare const Kakao;
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  loadAPI: Promise<any>;
+
   signupForm: FormGroup;
   private user: any;
   zonecode; // 5자리 새우편번호 사용
@@ -48,7 +61,35 @@ export class FormComponent implements OnInit {
     private router: Router,
     private renderer: Renderer,
     private elementRef: ElementRef
-  ) { }
+  ) {
+    this.loadAPI = new Promise((resolve) => {
+        this.loadScript();
+        resolve(true);
+      });
+  }
+
+  public loadScript() {
+    let isFound = false;
+    const scripts = document.getElementsByTagName('script');
+    for (let i = 0; i < scripts.length; ++i) {
+      if (scripts[i].getAttribute('src') != null && scripts[i].getAttribute('src').includes('loader')) {
+        isFound = true;
+      }
+    }
+
+    if (!isFound) {
+      const dynamicScripts = ['http://developers.kakao.com/sdk/js/kakao.min.js'];
+
+      for (let i = 0; i < dynamicScripts.length; i++) {
+        const node = document.createElement('script');
+        node.src = dynamicScripts[i];
+        node.type = 'text/javascript';
+        node.async = false;
+        node.charset = 'utf-8';
+        document.getElementsByTagName('head')[0].appendChild(node);
+      }
+    }
+  }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -89,6 +130,7 @@ export class FormComponent implements OnInit {
 
     /* 설정정보를 초기화하고 연동을 준비 */
     // Naver.init();
+    Kakao.init('b560ff0ff0ea7935612a6555fb53c516');
   }
 
   onSubmit() {
@@ -256,6 +298,19 @@ export class FormComponent implements OnInit {
 
     /* 설정정보를 초기화하고 연동을 준비 */
     naverLogin.init();
+  }
+
+  loginWithKakao() {
+    console.log('initiated');
+    // 로그인 창을 띄웁니다.
+    Kakao.Auth.login({
+      success: function (authObj) {
+        alert(JSON.stringify(authObj));
+      },
+      fail: function (err) {
+        alert(JSON.stringify(err));
+      }
+    });
   }
 
   setLevel(level) {

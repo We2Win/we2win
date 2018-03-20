@@ -1,5 +1,25 @@
 <!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script> -->
 <!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+  //<![CDATA[
+  // 사용할 앱의 JavaScript 키를 설정해 주세요.
+  // Kakao.init('b560ff0ff0ea7935612a6555fb53c516');
+  // function loginWithKakao() {
+  //   // 로그인 창을 띄웁니다.
+  //   console.log('initiated Kakkao.');
+  //   Kakao.Auth.login({
+  //     success: function (authObj) {
+  //       alert(JSON.stringify(authObj));
+  //     },
+  //     fail: function (err) {
+  //       alert(JSON.stringify(err));
+  //     }
+  //   });
+  // };
+  //]]>
+</script>
+
 <section>
   <app-group>
     <h1>회원 가입</h1>
@@ -11,7 +31,7 @@
           <app-social-button [type]="'google'" (click)="setLoginType('google')">로그인</app-social-button>
           <!-- <div id="naverIdLogin"></div> -->
           <app-social-button [type]="'naver'" (click)="setLoginType('naverSample')">네이버 로그인</app-social-button>
-          <app-social-button [type]="'kakao'" (click)="setLoginType('kakaoSample')">카카오 로그인</app-social-button>
+          <app-social-button [type]="'kakao'" (click)="loginWithKakao()">카카오 로그인</app-social-button>
         </div>
       </article>
       <div class="subGroup" [ngClass]="{'halfOpacity': loginType === ''}">
