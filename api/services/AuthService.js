@@ -115,15 +115,15 @@ const authUser = async function (userInfo) {//returns token
     if (!userInfo.Password) TE('비밀번호를 올바르게 입력해주세요.');
 
 
-    console.log('before await');
 
     [err, user] = await to (User.findOne({ where: { ID: unique_key }}));
 
     if (!user) TE('Not registered');
 
-    console.log('after await');
-
+    console.log('before await');
     [err, user] = await to (User.comparePassword(userInfo.Password));
+    console.log('after await');
+    
     if (err) TE(err.message);
     return user;
 }
