@@ -89,6 +89,8 @@ const login = async function (req, res) {
   [err, user] = await to(authService.authUser(req.body));
   if (err) return ReE(res, err, 422);
 
+  console.log('login successful: ', user);
+
   return ReS(res, {
     token: user.getJWT(),
     user: user.toWeb()

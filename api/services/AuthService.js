@@ -120,6 +120,8 @@ const authUser = async function (userInfo) {//returns token
 
     console.log('before await');
     [err, user] = await to (user.comparePassword(userInfo.Password));
+    console.log(user);
+    if (!user) TE('Password is incorrect');
     console.log('after await');
     
     if (err) TE(err.message);
