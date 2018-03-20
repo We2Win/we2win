@@ -79,7 +79,11 @@ export class LoginComponent implements OnInit {
           }
         },
         err => {
-          alert('로그인 중 오류가 발생했습니다.');
+          if (err.status === 422) {
+            alert('아이디 또는 비밀번호가 맞지 않습니다.');
+          } else {
+            alert('로그인 중 오류가 발생했습니다.');
+          }
         }
       );
     } else {

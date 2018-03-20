@@ -23,7 +23,7 @@ import { environment } from '../../../../../environments/environment';
   //   // xJS.open();
   // });
 
-declare const Kakao;
+// declare const Kakao;
 
 @Component({
   selector: 'app-form',
@@ -130,7 +130,7 @@ export class FormComponent implements OnInit {
 
     /* 설정정보를 초기화하고 연동을 준비 */
     // Naver.init();
-    Kakao.init('b560ff0ff0ea7935612a6555fb53c516');
+    // Kakao.init('b560ff0ff0ea7935612a6555fb53c516');
   }
 
   onSubmit() {
@@ -301,16 +301,16 @@ export class FormComponent implements OnInit {
   }
 
   loginWithKakao() {
-    console.log('initiated');
-    // 로그인 창을 띄웁니다.
-    Kakao.Auth.login({
-      success: function (authObj) {
-        alert(JSON.stringify(authObj));
-      },
-      fail: function (err) {
-        alert(JSON.stringify(err));
-      }
-    });
+    // console.log('initiated');
+    // // 로그인 창을 띄웁니다.
+    // Kakao.Auth.login({
+    //   success: function (authObj) {
+    //     alert(JSON.stringify(authObj));
+    //   },
+    //   fail: function (err) {
+    //     alert(JSON.stringify(err));
+    //   }
+    // });
   }
 
   setLevel(level) {
