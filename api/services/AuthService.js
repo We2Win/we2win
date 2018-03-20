@@ -118,7 +118,7 @@ const authUser = async function (userInfo) {//returns token
     if (!user) TE('Not registered');
 
     console.log('before await');
-    [err, user] = await to (User.comparePassword(userInfo.Password));
+    [err, user] = await to (user.comparePassword(userInfo.Password));
     console.log('after await');
     
     if (err) TE(err.message);
