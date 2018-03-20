@@ -114,13 +114,14 @@ module.exports = (sequelize, DataTypes) => {
 
     // pw = bcrypt.hashSync(pw, 8);
 
-    console.log(this.Password, pw);
     [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
-    console.log(err, pass);
+    console.log('comparePassword: ', pass? 'passed' : 'failed');
     TE(pw + this.Password + 'done' + pass);
     if (err) TE(err);
 
     if (!pass) TE('invalid Password');
+
+    console.log('return: ', this);
 
     return this;
   }
