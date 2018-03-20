@@ -108,18 +108,18 @@ module.exports = (sequelize, DataTypes) => {
   // });
 
   Model.prototype.comparePassword = async function (pw) {
-    let err, pass
-    console.log('start comparing password');
-    if (!this.Password) TE('Password not set');
+    // let err, pass
+    // console.log('start comparing password');
+    // if (!this.Password) TE('Password not set');
 
-    [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
-    // console.log (this.Password, pw);
-    TE(pw + this.Password + 'done' + pass);
-    if (err) TE(err);
+    // [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
+    // // console.log (this.Password, pw);
+    // TE(pw + this.Password + 'done' + pass);
+    // if (err) TE(err);
 
-    if (!pass) TE('invalid Password');
+    // if (!pass) TE('invalid Password');
 
-    return this;
+    // return this;
   }
 
   Model.prototype.getJWT = function () {
