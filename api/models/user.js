@@ -116,7 +116,7 @@ module.exports = (sequelize, DataTypes) => {
 
     [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
     console.log('comparePassword: ', pass? 'passed' : 'failed');
-    TE(pw + this.Password + 'done' + pass);
+    // TE(pw + this.Password + 'done' + pass);
     if (err) TE(err);
 
     if (!pass) TE('invalid Password');
