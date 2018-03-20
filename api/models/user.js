@@ -113,7 +113,7 @@ module.exports = (sequelize, DataTypes) => {
     if (!this.Password) TE('Password not set');
 
     [err, pass] = await to(bcrypt_p.compare(pw, this.Password));
-    console.log (this.Password, pw);
+    // console.log (this.Password, pw);
     TE(pw + this.Password + 'done' + pass);
     if (err) TE(err);
 
