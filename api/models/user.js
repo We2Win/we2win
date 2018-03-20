@@ -122,7 +122,7 @@ module.exports = (sequelize, DataTypes) => {
 
     if (!pass) TE('invalid Password');
 
-    return this;
+    return pass;
   }
 
   Model.prototype.getJWT = function () {
