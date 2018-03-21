@@ -16,10 +16,7 @@ import { Subscription } from 'rxjs/Subscription';
     './contents-registration.component.css',
     '../../pages.css'
   ],
-  providers: [
-    ContentsService,
-    UploadFileService
-  ]
+
 })
 export class ContentsRegistrationComponent implements OnInit {
   infoForm: FormGroup;
@@ -30,9 +27,28 @@ export class ContentsRegistrationComponent implements OnInit {
   employerForm: FormGroup;
   employeeForm: FormGroup;
   uploadForm: FormGroup;
-
+  uploadForm2: FormGroup;
 
   private forms: object;
+  private symbols = {
+    '리포트': 'I',
+    '부동산 뉴스': 'N',
+    '법률 및 정책': 'L',
+    '아파트': 'S',
+    '오피스텔': 'S',
+    '상가/호텔': 'S',
+    '토지': 'S',
+    '오프라인 모임': 'M',
+    '구인': 'R',
+    '구직': 'E',
+    'info': 'I',
+    'news': 'N',
+    'law': 'L',
+    'site': 'S',
+    'meeting': 'M',
+    'employer': 'R',
+    'employee': 'E'
+  };
 
   filesToUpload: Array<File> = [];
 
@@ -51,7 +67,32 @@ export class ContentsRegistrationComponent implements OnInit {
   @ViewChild('LLevel') LLevel: any = { selected: '' };
   @ViewChild('MLevel') MLevel: any = { selected: '' };
 
-  selectedFiles: FileList;
+  @ViewChild('I1') I1;
+  @ViewChild('I2') I2;
+  @ViewChild('I3') I3;
+  @ViewChild('I4') I4;
+  @ViewChild('I5') I5;
+  @ViewChild('I6') I6;
+
+  inputs = {
+    '-image': this.I1,
+    '-subImage1': this.I2,
+    '-subImage2': this.I3,
+    '-subImage3': this.I4,
+    '-subImage4': this.I5,
+    '-subImage5': this.I6,
+  };
+
+  // selectedFiles: FileList;
+  selectedFiles = {
+    '-image': '',
+    '-subImage1': '',
+    '-subImage2': '',
+    '-subImage3': '',
+    '-subImage4': '',
+    '-subImage5': '',
+  };
+
   subscription: Subscription;
 
   _editor;
@@ -93,19 +134,19 @@ export class ContentsRegistrationComponent implements OnInit {
   onLevelChange(type) {
     switch (type) {
       case 'info':
-        this.selectBoxData['I-level'] = this.ILevel.selected;
+        this.selectBoxData[this.symbols[type] + '-level'] = this.ILevel.selected;
         break;
       case 'site':
-        this.selectBoxData['S-level'] = this.SLevel.selected;
+        this.selectBoxData[this.symbols[type] + '-level'] = this.SLevel.selected;
         break;
       case 'news':
-        this.selectBoxData['N-level'] = this.NLevel.selected;
+        this.selectBoxData[this.symbols[type] + '-level'] = this.NLevel.selected;
         break;
       case 'law':
-        this.selectBoxData['L-level'] = this.LLevel.selected;
+        this.selectBoxData[this.symbols[type] + '-level'] = this.LLevel.selected;
         break;
       case 'meeting':
-        this.selectBoxData['M-level'] = this.MLevel.selected;
+        this.selectBoxData[this.symbols[type] + '-level'] = this.MLevel.selected;
         break;
       default:
         break;
@@ -145,9 +186,11 @@ export class ContentsRegistrationComponent implements OnInit {
       'I-report': new FormControl('', [Validators.required]),
 
       'I-image': new FormControl('', [Validators.required]),
-      // 'I-subimage1': new FormControl(''),
-      // 'I-subimage2': new FormControl(''),
-      // 'I-subimage3': new FormControl(''),
+      'I-subImage1': new FormControl(''),
+      'I-subImage2': new FormControl(''),
+      'I-subImage3': new FormControl(''),
+      'I-subImage4': new FormControl(''),
+      'I-subImage5': new FormControl(''),
     });
     this.siteForm = new FormGroup({
       'S-type': new FormControl('', [Validators.required]),
@@ -182,9 +225,11 @@ export class ContentsRegistrationComponent implements OnInit {
       'S-report': new FormControl('', [Validators.required]),
 
       'S-image': new FormControl('', [Validators.required]),
-      // 'S-subimage1': new FormControl(''),
-      // 'S-subimage2': new FormControl(''),
-      // 'S-subimage3': new FormControl(''),
+      'S-subImage1': new FormControl(''),
+      'S-subImage2': new FormControl(''),
+      'S-subImage3': new FormControl(''),
+      'S-subImage4': new FormControl(''),
+      'S-subImage5': new FormControl(''),
     });
     this.newsForm = new FormGroup({
       // 'N-level': new FormControl('', [Validators.required]),
@@ -255,6 +300,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'E-etc': new FormControl('', [Validators.required]),
     });
     this.uploadForm = new FormGroup({});
+    this.uploadForm2 = new FormGroup({});
 
     this.forms = {
       '리포트': this.infoForm,
@@ -270,58 +316,34 @@ export class ContentsRegistrationComponent implements OnInit {
     };
   }
 
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
+  selectFile(event, columnName) {
+    this.selectedFiles[columnName] = event.target.files.item(0);
+    // this.selectedFiles = event.target.files;
+    console.log(this.selectedFiles);
   }
 
-  upload(type) {
+  upload(type, columnName) {
     console.log('type: ', type);
-    const file = this.selectedFiles.item(0);
+    const file = this.selectedFiles[columnName];
 
-    this.uploadService.uploadFile(file);
-    this.subscription = this.uploadService.getFileName()
-      .map(
+    if (file) {
+      this.uploadService.uploadFile(file);
+      this.subscription = this.uploadService.getFileName()
+        .map(
         data => data.Key
-      ).subscribe(
+        ).subscribe(
         name => {
           console.log('name: ', name);
-          switch (type) {
-            case '리포트':
-              this.forms[type].controls['I-image'].setValue(name);
-            break;
-            case '부동산 뉴스':
-              this.forms[type].controls['N-image'].setValue(name);
-            break;
-            case '법률 및 정책':
-              this.forms[type].controls['L-image'].setValue(name);
-            break;
-            case '아파트':
-              this.forms[type].controls['S-image'].setValue(name);
-            break;
-            case '오피스텔':
-              this.forms[type].controls['S-image'].setValue(name);
-            break;
-            case '상가/호텔':
-              this.forms[type].controls['S-image'].setValue(name);
-            break;
-            case '토지':
-              this.forms[type].controls['S-image'].setValue(name);
-            break;
-            case '오프라인 모임':
-              this.forms[type].controls['M-image'].setValue(name);
-            break;
-            case '구인':
-              this.forms[type].controls['R-image'].setValue(name);
-            break;
-            case '구직':
-              this.forms[type].controls['E-image'].setValue(name);
-            break;
-          }
-          // this.newsForm.controls['N-image'].setValue(name);
-          // this.forms['부동산 뉴스'].controls['I-image'].value = name;
+          console.log(this.forms[type].controls[this.symbols[type] + columnName]);
+          this.forms[type].controls[this.symbols[type] + columnName].setValue(name);
+          // this.inputs[columnName].nativeElement.value = name;
+          this.selectedFiles[columnName] = '-done';
+          // alert('업로드 되었습니다.');
         }
-      );
-
+        );
+    } else {
+      alert('선택한 파일이 없습니다.');
+    }
   }
 
   onSubmit() {
@@ -341,7 +363,7 @@ export class ContentsRegistrationComponent implements OnInit {
     this.contentsService.create(selectedData)
       .subscribe(
       data => {
-        alert((data) ? 'success!' : 'failed..');
+        alert((data) ? '컨텐츠가 등록되었습니다.' : '오류가 발생했습니다.');
         console.log(data);
       },
       error => {

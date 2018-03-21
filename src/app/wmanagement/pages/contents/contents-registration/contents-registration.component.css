@@ -25,3 +25,16 @@ h4 b {
 .amount {
   border-left: none;
 }
+
+.subTitleBar {
+  display: block;
+  min-width: 100%;
+}
+
+#upload input {
+  margin: 0 0 0.5em 0;
+}
+
+#upload app-button {
+  margin: 0 0 0.5em 0.5em;
+}

@@ -6,7 +6,8 @@ import { Info } from '../../../models/info';
 @Component({
   selector: 'app-site-detail',
   templateUrl: './site-detail.component.html',
-  styleUrls: ['./site-detail.component.css']
+  styleUrls: ['./site-detail.component.css'],
+  providers: [ContentsService]
 })
 export class SiteDetailComponent implements OnInit {
   Data: Info;

@@ -1,4 +1,4 @@
-<div class="card" routerLink="/info/info-detail/1">
+<div class="card" [routerLink]="'/site/site-detail/'+record['S-id']">
   <div id="levelBar">{{ record['S-level'] }}</div>
   <div id="imgFrame">
     <img src="/assets/img/site_sample.png" alt="부동산 사진">

@@ -13,7 +13,7 @@
         </li>
       </ng-container> -->
       <form [formGroup]="infoForm" id="info" *ngSwitchCase="sub.selected === '' || '리포트'" (ngSubmit)="onSubmit()" enctype="multipart/form-data"
-        novalidate>        
+        novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
           <app-select #ILevel [type]="'컨텐츠 등급'" (change)="onLevelChange('info')"></app-select>
@@ -113,6 +113,31 @@
           <h2>세부 사진</h2>
           <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
         </li>
 
         <li class="submitBar">
@@ -124,21 +149,30 @@
       <app-popup #imagePopup>
         <form [formGroup]="uploadForm" id="upload" action="/api/v1/upload" method="post">
           <li>
-            <h2>현장 사진</h2>
-            <input type="file" (change)="selectFile($event)">
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles}" (click)="upload(selectedData.type)">Upload</app-button>
+            <h2 class="subTitleBar">현장 사진</h2>
+            <input type="file" (change)="selectFile($event, '-image')" #I1>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-image'] && selectedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <!-- <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*"
               multiple #imageInput> -->
             <!-- <app-button (click)="upload()">사진 등록</app-button> -->
           </li>
           <li>
-            <h2>세부 사진</h2>
-            <input type="file" (change)="selectFile($event)">
-            <input type="file" (change)="selectFile($event)">
-            <input type="file" (change)="selectFile($event)">
-            <input type="file" (change)="selectFile($event)">
-            <input type="file" (change)="selectFile($event)">
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles}" (click)="upload(selectedData.type)">Upload</app-button>
+            <h2 class="subTitleBar">세부 사진</h2>
+            <input type="file" (change)="selectFile($event, '-subImage1')" #I2>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage1'] && selectedFiles['-subImage1']==='-done'}"
+              (click)="upload(selectedData.type, '-subImage1')">{{selectedFiles['-subImage1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, '-subImage2')" #I3>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage2'] && selectedFiles['-subImage2']==='-done'}"
+              (click)="upload(selectedData.type, '-subImage2')">{{selectedFiles['-subImage2']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, '-subImage3')" #I4>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage3'] && selectedFiles['-subImage3']==='-done'}"
+              (click)="upload(selectedData.type, '-subImage3')">{{selectedFiles['-subImage3']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, '-subImage4')" #I5>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage4'] && selectedFiles['-subImage4']==='-done'}"
+              (click)="upload(selectedData.type, '-subImage4')">{{selectedFiles['-subImage4']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, '-subImage5')" #I6>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage5'] && selectedFiles['-subImage5']==='-done'}"
+              (click)="upload(selectedData.type, '-subImage5')">{{selectedFiles['-subImage5']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <!-- <input type="file" name="single1" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
             <!-- <input type="file" name="single2" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
             <!-- <input type="file" name="single3" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
@@ -146,8 +180,8 @@
         </form>
       </app-popup>
 
-      <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()" enctype="multipart/form-data"
-        novalidate>
+      <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()"
+        enctype="multipart/form-data" novalidate>
         <input class="form-control" formControlName="S-type" type="hidden" placeholder="제목을 입력하세요" />
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
@@ -250,7 +284,7 @@
                 <input type="file" (change)="onFileChange($event, 'S-subimage2')" accept="image/*">
                 <input type="file" (change)="onFileChange($event, 'S-subimage3')" accept="image/*">
               </li> -->
-      
+
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
           <button>미리보기</button>
@@ -345,8 +379,8 @@
         </li>
         <li>
           <h2>사진</h2>
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
-          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <input type="file" (click)="imagePopup2.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup2.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
@@ -383,8 +417,8 @@
         </li>
         <li>
           <h2>첨부파일</h2>
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
-          <app-button (click)="imagePopup.showPopup();">파일 업로드</app-button>
+          <input type="file" (click)="imagePopup2.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup2.showPopup();">파일 업로드</app-button>
           <span class="blank"></span>
         </li>
         <li class="submitBar">
@@ -392,6 +426,16 @@
           <button>미리보기</button>
         </li>
       </form>
+
+      <app-popup #imagePopup2>
+        <form [formGroup]="uploadForm2" id="upload" action="/api/v1/upload" method="post">
+          <li>
+            <h2 class="subTitleBar">현장 사진</h2>
+            <input type="file" (change)="selectFile($event, '-image')" #I1>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-image'] && selectedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+          </li>
+        </form>
+      </app-popup>
 
       <form [formGroup]="meetingForm" id="meeting" *ngSwitchCase="'오프라인 모임'" (ngSubmit)="onSubmit()" novalidate>
         <li class="form-group">
