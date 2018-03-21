@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Router, RoutesRecognized } from '@angular/router';
 
-
 import { HeaderComponent } from './shared/header/header.component';
 import { WhomeComponent } from './whome.component';
 import { LawComponent } from './pages/info/law/law.component';
@@ -35,12 +34,12 @@ import { SocialComponent } from './pages/signup/social/social.component';
 import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
 import { NewsDetailComponent } from './pages/info/news-detail/news-detail.component';
 import { JwtHelper } from 'angular2-jwt';
+import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
 
 const routes: Routes = [
   {
     path: '',
     component: WhomeComponent,
-    // canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -72,11 +71,13 @@ const routes: Routes = [
           },
           {
             path: 'info-detail/:id',
-            component: InfoDetailComponent
+            component: InfoDetailComponent,
+            canActivate: [AuthGuard],
           },
           {
             path: 'news-detail/:id',
-            component: NewsDetailComponent
+            component: NewsDetailComponent,
+            canActivate: [AuthGuard],
           }
         ]
       },
@@ -102,6 +103,11 @@ const routes: Routes = [
           {
             path: 'officetel',
             component: OfficetelComponent
+          },
+          {
+            path: 'site-detail/:id',
+            component: SiteDetailComponent,
+            canActivate: [AuthGuard],
           }
         ]
       },

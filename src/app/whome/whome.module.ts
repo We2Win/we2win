@@ -41,7 +41,6 @@ import { MeetingDetailComponent } from './pages/meeting/meeting-detail/meeting-d
 import { SiteCardComponent } from './micro/site-card/site-card.component';
 import { InfoCardComponent } from './micro/info-card/info-card.component';
 import { LevelDirective } from './directive/level.directive';
-import { ReportDetailComponent } from './pages/info/report/report-detail/report-detail.component';
 import { NewsDetailComponent } from './pages/info/news-detail/news-detail.component';
 import { DescriptionComponent } from './micro/description/description.component';
 import { TableComponent } from './micro/table/table.component';
@@ -64,6 +63,7 @@ import { LawComponent } from './pages/info/law/law.component';
 import { LawCardComponent } from './micro/law-card/law-card.component';
 import { MypostDirective } from './directives/mypost.directive';
 import { FbShareService } from './services/fb-share.service';
+import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
 
 
 @NgModule({
@@ -112,7 +112,6 @@ import { FbShareService } from './services/fb-share.service';
     MeetingDetailComponent,
     SiteCardComponent,
     LevelDirective,
-    ReportDetailComponent,
     NewsDetailComponent,
     DescriptionComponent,
     TableComponent,
@@ -130,6 +129,7 @@ import { FbShareService } from './services/fb-share.service';
     NewsCardComponent,
     LawCardComponent,
     MypostDirective,
+    SiteDetailComponent,
   ],
   entryComponents: [
     InfoCardComponent,

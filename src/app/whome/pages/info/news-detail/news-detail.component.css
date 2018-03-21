@@ -1,6 +1,7 @@
 #top {
   padding: 2em;
-  background: url('/assets/img/news_sample.png')
+  background: url('/assets/img/news_sample.png');
+  background-size: cover;
 }
 
 #top #levelBar {

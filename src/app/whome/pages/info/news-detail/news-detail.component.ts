@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-news-detail',
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class NewsDetailComponent implements OnInit {
   Data: object;
   id: number;
+  @ViewChild('top') top;
 
   constructor(
     private contentsService: ContentsService,
@@ -24,6 +26,10 @@ export class NewsDetailComponent implements OnInit {
       data => {
         if (data) {
           this.Data = JSON.parse(data.body);
+          // this.top.nativeElement.style.background = 'red';
+          this.top.nativeElement.style.background = 'url("' + environment.bucket.downloadUrl + this.Data['N-image'] + '")';
+          this.top.nativeElement.style.backgroundSize = 'cover';
+          this.top.nativeElement.style.backgroundPosition = 'center';
           console.log(this.Data);
         }
       }

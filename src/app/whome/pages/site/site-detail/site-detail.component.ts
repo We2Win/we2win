@@ -2,18 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute } from '@angular/router';
 import { Info } from '../../../models/info';
-import { environment } from '../../../../../environments/environment';
 
 @Component({
-  selector: 'app-info-detail',
-  templateUrl: './info-detail.component.html',
-  styleUrls: ['./info-detail.component.css'],
-  providers: [ContentsService]
+  selector: 'app-site-detail',
+  templateUrl: './site-detail.component.html',
+  styleUrls: ['./site-detail.component.css']
 })
-export class InfoDetailComponent implements OnInit {
+export class SiteDetailComponent implements OnInit {
   Data: Info;
   id: number;
-  imgUrl;
 
   constructor(
     private contentsService: ContentsService,
@@ -28,9 +25,9 @@ export class InfoDetailComponent implements OnInit {
         if (data) {
           this.Data = JSON.parse(data.body);
           console.log(this.Data);
-          this.imgUrl = environment.bucket.downloadUrl + this.Data['I-image'];
         }
       }
     );
   }
+
 }

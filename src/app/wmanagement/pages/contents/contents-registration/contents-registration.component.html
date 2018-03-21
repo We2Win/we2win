@@ -109,12 +109,11 @@
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
-        <!-- <li>
+        <li>
           <h2>세부 사진</h2>
-          <input type="file" (change)="onFileChange($event, 'I-subimage1')" accept="image/*">
-          <input type="file" (change)="onFileChange($event, 'I-subimage2')" accept="image/*">
-          <input type="file" (change)="onFileChange($event, 'I-subimage3')" accept="image/*">
-        </li> -->
+          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+        </li>
 
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
@@ -133,16 +132,16 @@
             <!-- <app-button (click)="upload()">사진 등록</app-button> -->
           </li>
           <li>
-            <!-- <h2>세부 사진</h2> -->
+            <h2>세부 사진</h2>
+            <input type="file" (change)="selectFile($event)">
+            <input type="file" (change)="selectFile($event)">
+            <input type="file" (change)="selectFile($event)">
+            <input type="file" (change)="selectFile($event)">
+            <input type="file" (change)="selectFile($event)">
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles}" (click)="upload(selectedData.type)">Upload</app-button>
             <!-- <input type="file" name="single1" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
             <!-- <input type="file" name="single2" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
             <!-- <input type="file" name="single3" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
-          </li>
-          <li>
-            <h2></h2>
-            <!-- <input type="file" name="single4" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
-            <!-- <input type="file" name="single5" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
-            <!-- <app-button (click)="uploader.uploadAll()">사진 등록</app-button> -->
           </li>
         </form>
       </app-popup>

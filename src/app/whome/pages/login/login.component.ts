@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,15 +11,20 @@ import { JwtHelper } from 'angular2-jwt';
 
 import { User } from '../../models/user';
 import { Token } from '../../models/token';
+import { fadeInAnimation } from '../../../animations/animation';
 // yimport { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthService, JwtHelper]
+  providers: [AuthService, JwtHelper],
+  animations: [fadeInAnimation],
+  // host: { '[@animations]': '' }
 })
 export class LoginComponent implements OnInit {
+  @HostBinding('@fadeInAnimation') fadeInAnimation;
+
   // we want to actually subscribe to the boolean of the observable
   loginForm: FormGroup;
   post: any;
@@ -65,13 +70,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(user): void {
-    console.log(user);
+    // console.log(user);
     if (this.loginForm.valid) {
       user = this.loginForm.value;
       user.isLogin = true;
       this.authService.login(user).subscribe(
         auth => {
-          console.log(auth);
+          // console.log(auth);
           if (auth) {
             this.router.navigate(['/']);
           } else {
@@ -87,7 +92,7 @@ export class LoginComponent implements OnInit {
         }
       );
     } else {
-      console.log('loginForm not valid!');
+      alert('아이디 또는 비밀번호를 입력하지 않으셨습니다.');
     }
   }
 }

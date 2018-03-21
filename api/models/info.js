@@ -130,6 +130,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    'I-subImage1': {
+      type: DataTypes.STRING,
+    },
+    'I-subImage2': {
+      type: DataTypes.STRING,
+    },
+    'I-subImage3': {
+      type: DataTypes.STRING,
+    },
+    'I-subImage4': {
+      type: DataTypes.STRING,
+    },
+    'I-subImage5': {
+      type: DataTypes.STRING,
+    },
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',

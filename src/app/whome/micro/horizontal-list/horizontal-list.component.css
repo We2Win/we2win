@@ -21,11 +21,6 @@ h1 {
 
 .contents {
   width: calc(var(--main-width) - 160px);
-}
-
-:host /deep/ .contents .c1,
-:host /deep/ .contents .c2
-{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

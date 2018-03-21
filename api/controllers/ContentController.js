@@ -125,17 +125,21 @@ const getApartmentList = async function (req, res) {
 
   if (req.params.id) {
     Site.findOne({
-        where: {
-          'S-id': req.params.id
-        }
+      where: {
+        'S-id': req.params.id
+      }
+    })
+    .then((content) => {
+      return ReS(res, {
+        body: JSON.stringify(content)
       })
-      .then((content) => {
-        return ReS(res, {
-          body: JSON.stringify(content)
-        })
-      });
+    });
   } else {
-    Site.findAll({}).then((contentList) => {
+    Site.findAll({
+      where: {
+        'S-type': '아파트'
+      }
+    }).then((contentList) => {
       return ReS(res, {
         list: JSON.stringify(contentList)
       })
@@ -153,13 +157,17 @@ const getOfficetelList = async function (req, res) {
         'S-id': req.params.id
       }
     })
-      .then((content) => {
-        return ReS(res, {
-          body: JSON.stringify(content)
-        })
-      });
+    .then((content) => {
+      return ReS(res, {
+        body: JSON.stringify(content)
+      })
+    });
   } else {
-    Site.findAll({}).then((contentList) => {
+    Site.findAll({
+      where: {
+        'S-type': '오피스텔'
+      }
+    }).then((contentList) => {
       return ReS(res, {
         list: JSON.stringify(contentList)
       })
@@ -177,13 +185,17 @@ const getCommercialList = async function (req, res) {
         'S-id': req.params.id
       }
     })
-      .then((content) => {
-        return ReS(res, {
-          body: JSON.stringify(content)
-        })
-      });
+    .then((content) => {
+      return ReS(res, {
+        body: JSON.stringify(content)
+      })
+    });
   } else {
-    Site.findAll({}).then((contentList) => {
+    Site.findAll({
+      where: {
+        'S-type': '상가/호텔'
+      }
+    }).then((contentList) => {
       return ReS(res, {
         list: JSON.stringify(contentList)
       })
@@ -201,13 +213,17 @@ const getGroundList = async function (req, res) {
         'S-id': req.params.id
       }
     })
-      .then((content) => {
-        return ReS(res, {
-          body: JSON.stringify(content)
-        })
-      });
+    .then((content) => {
+      return ReS(res, {
+        body: JSON.stringify(content)
+      })
+    });
   } else {
-    Site.findAll({}).then((contentList) => {
+    Site.findAll({
+      where: {
+        'S-type': '토지'
+      }
+    }).then((contentList) => {
       return ReS(res, {
         list: JSON.stringify(contentList)
       })
@@ -221,10 +237,10 @@ const getMeetingList = async function (req, res) {
 
   if (req.params.id) {
     Meeting.findOne({
-      where: {
-        'M-id': req.params.id
-      }
-    })
+        where: {
+          'M-id': req.params.id
+        }
+      })
       .then((content) => {
         return ReS(res, {
           body: JSON.stringify(content)
@@ -245,10 +261,10 @@ const getEmployeeList = async function (req, res) {
 
   if (req.params.id) {
     Employee.findOne({
-      where: {
-        'E-id': req.params.id
-      }
-    })
+        where: {
+          'E-id': req.params.id
+        }
+      })
       .then((content) => {
         return ReS(res, {
           body: JSON.stringify(content)
@@ -269,10 +285,10 @@ const getEmployerList = async function (req, res) {
 
   if (req.params.id) {
     Employer.findOne({
-      where: {
-        'R-id': req.params.id
-      }
-    })
+        where: {
+          'R-id': req.params.id
+        }
+      })
       .then((content) => {
         return ReS(res, {
           body: JSON.stringify(content)
