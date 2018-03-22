@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   reply.associate = function (models) {
-    reply.belongsTo(models.post, {
+    reply.belongsTo(models.Law, {
       foreignKey: "L-id"
     })
   };
