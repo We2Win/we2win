@@ -17,4 +17,13 @@ export class PostingService {
     const myPost: any = <any>componentRef.instance;
     myPost.record = postItem.data;
   }
+
+  loadChart(viewContainerRef: ViewContainerRef, postItem: PostItem) {
+    const componentFactory = this.componentFactoryResolver
+      .resolveComponentFactory(postItem.component);
+    // viewContainerRef.clear();
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+    const myPost: any = <any>componentRef.instance;
+    myPost.record = postItem.data;
+  }
 }

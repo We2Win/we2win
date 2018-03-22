@@ -73,6 +73,45 @@ const createContent = async function (data) {
 }
 module.exports.createContent = createContent;
 
+const createReply = async function (data) {
+    console.log('createReply1()');
+    let unique_key, auth_info, err, content;
+
+    console.log('data.type: ', data.type);
+    console.log('data.body: ', JSON.stringify(data.body));
+    switch (data.type) {
+        case '리포트':
+            [err, content] = await to(Ireply.create(data.body));
+            break;
+        case '부동산 뉴스':
+            [err, content] = await to(Nreply.create(data.body));
+            break;
+        case '법률 및 정책':
+            [err, content] = await to(Lreply.create(data.body));
+            break;
+        case '아파트':
+            [err, content] = await to(Sreply.create(data.body));
+            break;
+        case '오피스텔':
+            [err, content] = await to(Sreply.create(data.body));
+            break;
+        case '상가/호텔':
+            [err, content] = await to(Sreply.create(data.body));
+            break;
+        case '토지':
+            [err, content] = await to(Sreply.create(data.body));
+            break;
+        case '오프라인 모임':
+            [err, content] = await to(Mreply.create(data.body));
+            break;
+    }
+    if (err) TE('생성 중 오류가 발생했습니다.');
+
+    console.log('createReply()');
+    return content;
+}
+module.exports.createReply = createReply;
+
 const createUser = async function (userInfo) {
     console.log('createUser1()');
     let unique_key, auth_info, err;

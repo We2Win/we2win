@@ -7,33 +7,34 @@
     </header>
 
     <ng-container [ngSwitch]="sub.selected">
-      <!-- <ng-container *ngSwitchCase="'하위 카테고리'">
-        <li>
-          <h2>카테고리를 선택해주세요!</h2>
-        </li>
-      </ng-container> -->
       <form [formGroup]="infoForm" id="info" *ngSwitchCase="sub.selected === '' || '리포트'" (ngSubmit)="onSubmit()" enctype="multipart/form-data"
         novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
           <app-select #ILevel [type]="'컨텐츠 등급'" (change)="onLevelChange('info')"></app-select>
+          <div class="checkboxGroup">
+            <input type="checkbox" formControlName="I-notification" id="I-notification">
+            <label for="I-notification">현재 컨텐츠를 공지로 설정</label>
+          </div>
         </li>
         <li class="form-group">
           <h2>컨텐츠 제목</h2>
-          <input class="form-control" formControlName="I-title" type="text" placeholder="제목을 입력하세요" />
+          <input class="form-control" formControlName="I-title" type="text" placeholder="제목을 입력해주세요" />
         </li>
         <li class="form-group">
           <h2>요약 정보</h2>
-          <textarea class="form-control" formControlName="I-summary" placeholder="요약 정보를 입력하세요"></textarea>
+          <!-- <textarea class="form-control" formControlName="I-summary" placeholder="요약 정보를 입력하세요"></textarea> -->
+          <quill-editor class="form-control short" formControlName="I-summary" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>분양 오픈일</h2>
           <input type="date" formControlName="I-open-start" placeholder="이름">
           <input type="date" formControlName="I-open-end" placeholder="이름">
+          <div class="blank"></div>
         </li>
         <li>
           <h2>분양가</h2>
-          <input type="number" lang='en-150' formControlName="I-ammount" step="10000">
+          <input type="number" lang='en-150' formControlName="I-ammount" step="10000" placeholder="금액">
           <h3>백만원</h3>
           <span class="blank"></span>
         </li>
@@ -98,44 +99,41 @@
         </li>
         <li>
           <h2>현장 리포트</h2>
-          <!-- <app-quill></app-quill> -->
-          <textarea class="form-control" placeholder="상세 정보를 입력하세요" formControlName="I-report"></textarea>
+          <quill-editor class="form-control" formControlName="I-report" [options]="editorOptions"></quill-editor>
         </li>
         <li>
-          <h2>현장 사진</h2>
-          <!-- <input type="file" (change)="onFileChange($event, 'I-image')" accept="image/*" #imageInput> -->
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
-          <!-- <app-button (click)="imageInput.click()">사진 등록</app-button> -->
+          <h2>Master 사진</h2>
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
-          <h2>세부 사진</h2>
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
-          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
-          <span class="blank"></span>
-        </li>
-        <li>
-          <h2></h2>
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <h2>Slave 사진</h2>
+          <input class="fileName2" type="text" readonly="readonly" [placeholder]="inputs['-subImage1']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <input class="fileName3" type="text" readonly="readonly" [placeholder]="inputs['-subImage2']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <input class="fileName4" type="text" readonly="readonly" [placeholder]="inputs['-subImage3']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
+          <input class="fileName5" type="text" readonly="readonly" [placeholder]="inputs['-subImage4']" (click)="imagePopup.showPopup();">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input class="fileName6" type="text" readonly="readonly" [placeholder]="inputs['-subImage5']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
@@ -149,33 +147,23 @@
       <app-popup #imagePopup>
         <form [formGroup]="uploadForm" id="upload" action="/api/v1/upload" method="post">
           <li>
-            <h2 class="subTitleBar">현장 사진</h2>
+            <h2 class="subTitleBar">Master 사진</h2>
             <input type="file" (change)="selectFile($event, '-image')" #I1>
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-image'] && selectedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
-            <!-- <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*"
-              multiple #imageInput> -->
-            <!-- <app-button (click)="upload()">사진 등록</app-button> -->
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['-image']!=='파일 없음'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <!-- <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*" -->
           </li>
           <li>
-            <h2 class="subTitleBar">세부 사진</h2>
+            <h2 class="subTitleBar">Slave 사진</h2>
             <input type="file" (change)="selectFile($event, '-subImage1')" #I2>
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage1'] && selectedFiles['-subImage1']==='-done'}"
-              (click)="upload(selectedData.type, '-subImage1')">{{selectedFiles['-subImage1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage1']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage1')">{{selectedFiles['-subImage1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <input type="file" (change)="selectFile($event, '-subImage2')" #I3>
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage2'] && selectedFiles['-subImage2']==='-done'}"
-              (click)="upload(selectedData.type, '-subImage2')">{{selectedFiles['-subImage2']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage2']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage2')">{{selectedFiles['-subImage2']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <input type="file" (change)="selectFile($event, '-subImage3')" #I4>
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage3'] && selectedFiles['-subImage3']==='-done'}"
-              (click)="upload(selectedData.type, '-subImage3')">{{selectedFiles['-subImage3']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage3']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage3')">{{selectedFiles['-subImage3']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <input type="file" (change)="selectFile($event, '-subImage4')" #I5>
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage4'] && selectedFiles['-subImage4']==='-done'}"
-              (click)="upload(selectedData.type, '-subImage4')">{{selectedFiles['-subImage4']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage4']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage4')">{{selectedFiles['-subImage4']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <input type="file" (change)="selectFile($event, '-subImage5')" #I6>
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-subImage5'] && selectedFiles['-subImage5']==='-done'}"
-              (click)="upload(selectedData.type, '-subImage5')">{{selectedFiles['-subImage5']==='-done'?'등록 완료':'사진 등록'}}</app-button>
-            <!-- <input type="file" name="single1" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
-            <!-- <input type="file" name="single2" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
-            <!-- <input type="file" name="single3" ng2FileSelect [uploader]="uploader" accept="image/*" #imageInput> -->
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage5']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage5')">{{selectedFiles['-subImage5']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
@@ -186,6 +174,10 @@
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
           <app-select #SLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('site')"></app-select>
+          <div class="checkboxGroup">
+            <input type="checkbox" formControlName="S-notification" id="S-notification">
+            <label for="S-notification">현재 컨텐츠를 공지로 설정</label>
+          </div>
         </li>
         <li class="form-group">
           <h2>컨텐츠 제목</h2>
@@ -193,16 +185,17 @@
         </li>
         <li class="form-group">
           <h2>요약 정보</h2>
-          <textarea class="form-control" formControlName="S-summary" placeholder="요약 정보를 입력하세요"></textarea>
+          <quill-editor class="form-control short" formControlName="S-summary" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>분양 오픈일</h2>
           <input type="date" formControlName="S-open-start" placeholder="이름">
           <input type="date" formControlName="S-open-end" placeholder="이름">
+          <div class="blank"></div>
         </li>
         <li>
           <h2>분양가</h2>
-          <input type="number" lang='en-150' formControlName="S-ammount" step="10000">
+          <input type="number" lang='en-150' formControlName="S-ammount" step="10000" placeholder="금액">
           <h3>백만원</h3>
           <span class="blank"></span>
         </li>
@@ -267,23 +260,44 @@
         </li>
         <li>
           <h2>현장 리포트</h2>
-          <!-- <app-quill></app-quill> -->
-          <textarea class="form-control" placeholder="상세 정보를 입력하세요" formControlName="S-report"></textarea>
+          <quill-editor class="form-control" formControlName="S-report" [options]="editorOptions"></quill-editor>
         </li>
         <li>
-          <h2>현장 사진</h2>
-          <!-- <input type="file" (change)="onFileChange($event, 'S-image')" accept="image/*" #imageInput> -->
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
-          <!-- <app-button (click)="imageInput.click()">사진 등록</app-button> -->
+          <h2>Master 사진</h2>
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
-        <!-- <li>
-                <h2>세부 사진</h2>
-                <input type="file" (change)="onFileChange($event, 'S-subimage1')" accept="image/*">
-                <input type="file" (change)="onFileChange($event, 'S-subimage2')" accept="image/*">
-                <input type="file" (change)="onFileChange($event, 'S-subimage3')" accept="image/*">
-              </li> -->
+        <li>
+          <h2>Slave 사진</h2>
+          <input class="fileName2" type="text" readonly="readonly" [placeholder]="inputs['-subImage1']" (click)="imagePopup.showPopup();">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input class="fileName3" type="text" readonly="readonly" [placeholder]="inputs['-subImage2']" (click)="imagePopup.showPopup();">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input class="fileName4" type="text" readonly="readonly" [placeholder]="inputs['-subImage3']" (click)="imagePopup.showPopup();">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input class="fileName5" type="text" readonly="readonly" [placeholder]="inputs['-subImage4']" (click)="imagePopup.showPopup();">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2></h2>
+          <input class="fileName6" type="text" readonly="readonly" [placeholder]="inputs['-subImage5']" (click)="imagePopup.showPopup();">
+          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
 
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
@@ -291,78 +305,14 @@
         </li>
       </form>
 
-      <!-- <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()"
-        novalidate>
-        <li class="form-group">
-          <h2>컨텐츠 등급</h2>
-          <app-select #SLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('site')"></app-select>
-        </li>
-        <li class="form-group">
-          <h2>제목</h2>
-          <input class="form-control" formControlName="S-title" type="text" placeholder="제목을 입력하세요" />
-        </li>
-        <li class="form-group">
-          <h2>요약 정보</h2>
-          <textarea class="form-control" formControlName="S-summary" placeholder="요약 정보를 입력하세요"></textarea>
-        </li>
-        <li>
-          <h2>분양 오픈일</h2>
-          <input type="date" formControlName="S-open-start" placeholder="이름">
-          <input type="date" formControlName="S-open-end" placeholder="이름">
-          <app-button>일정 등록</app-button>
-        </li>
-        <li>
-          <h2>분양가</h2>
-          <input type="number" formControlName="S-ammount" step="10000">
-          <h3>원</h3>
-          <span class="blank"></span>
-        </li>
-        <li>
-          <h2>담당자 정보</h2>
-          <input type="text" formControlName="S-manager-name" placeholder="이름">
-          <input type="text" formControlName="S-manager-contact" placeholder="연락처">
-          <span class="blank"></span>
-        </li>
-        <li>
-          <h2>현장 시세</h2>
-          <div class="container">
-            <div class="wrapper">
-              <h4>#1 현재 시세</h4>
-              <span class="listContainer">
-                <input type="text" formControlName="S-current-size">
-                <input type="text" formControlName="S-current-amount">
-              </span>
-            </div>
-            <div class="wrapper">
-              <h4>#2 주위 시세</h4>
-              <span class="listContainer">
-                <input type="text" formControlName="S-around-size">
-                <input type="text" formControlName="S-around-amount">
-              </span>
-            </div>
-          </div>
-        </li>
-        <li>
-          <h2>현장 리포트</h2>
-          <textarea placeholder="상세 정보를 입력하세요" formControlName="S-report"></textarea>
-        </li>
-        <li>
-          <h2>현장 사진</h2>
-          <input type="file" (click)="imagePopup.showPopup(); $event.preventDefault(); ">
-          <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
-          <span class="blank"></span>
-        </li>
-
-        <li class="submitBar">
-          <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
-        </li>
-      </form> -->
-
       <form [formGroup]="newsForm" id="news" *ngSwitchCase="'부동산 뉴스'" (ngSubmit)="onSubmit()" novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
           <app-select #NLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('news')"></app-select>
+          <div class="checkboxGroup">
+            <input type="checkbox" formControlName="N-notification" id="N-notification">
+            <label for="N-notification">현재 컨텐츠를 공지로 설정</label>
+          </div>
         </li>
         <li>
           <h2>제목</h2>
@@ -374,12 +324,17 @@
         </li>
         <li>
           <h2>핵심 상세</h2>
-          <!-- <textarea type="text" formControlName="N-sub-description" placeholder="뉴스 상세내용을 입력하세요"> -->
-          <textarea formControlName="N-sub-description"></textarea>
+          <quill-editor class="form-control short" formControlName="N-sub-description" [options]="editorOptions"></quill-editor>
         </li>
         <li>
-          <h2>사진</h2>
-          <input type="file" (click)="imagePopup2.showPopup(); $event.preventDefault(); ">
+          <h2>Master 사진</h2>
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup2.showPopup();">
+          <app-button (click)="imagePopup2.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2>Slave 사진</h2>
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-subImage1']" (click)="imagePopup2.showPopup();">
           <app-button (click)="imagePopup2.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
@@ -389,37 +344,7 @@
         </li>
         <li>
           <h2>분석 상세</h2>
-          <textarea formControlName="N-analysis-description"></textarea>
-          <!-- <teaxtarea type="text" formControlName="N-analysis-description" placeholder="뉴스 분석내용을 입력하세요"> -->
-        </li>
-        <li class="submitBar">
-          <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
-        </li>
-      </form>
-
-      <form [formGroup]="lawForm" id="law" *ngSwitchCase="'법률 및 정책'" (ngSubmit)="onSubmit()" novalidate>
-        <li class="form-group">
-          <h2>컨텐츠 등급</h2>
-          <app-select #LLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('law')"></app-select>
-        </li>
-        <li>
-          <h2>제목</h2>
-          <input type="text" formControlName="L-title" placeholder="제목을 입력하세요" />
-        </li>
-        <li>
-          <h2>요약정보</h2>
-          <textarea formControlName="L-summary" placeholder="요약 정보를 입력하세요"></textarea>
-        </li>
-        <li>
-          <h2>URL</h2>
-          <input type="text" formControlName="L-url" placeholder="뉴스 상세내용을 입력하세요">
-        </li>
-        <li>
-          <h2>첨부파일</h2>
-          <input type="file" (click)="imagePopup2.showPopup(); $event.preventDefault(); ">
-          <app-button (click)="imagePopup2.showPopup();">파일 업로드</app-button>
-          <span class="blank"></span>
+          <quill-editor class="form-control" formControlName="N-analysis-description" [options]="editorOptions"></quill-editor>
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
@@ -428,19 +353,67 @@
       </form>
 
       <app-popup #imagePopup2>
-        <form [formGroup]="uploadForm2" id="upload" action="/api/v1/upload" method="post">
+        <form [formGroup]="uploadForm2" id="upload2" action="/api/v1/upload" method="post">
           <li>
-            <h2 class="subTitleBar">현장 사진</h2>
-            <input type="file" (change)="selectFile($event, '-image')" #I1>
-            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-image'] && selectedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <h2 class="subTitleBar">Master 사진</h2>
+            <input type="file" (change)="selectFile($event, '-image')" #I7>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['-image']!=='파일 없음'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+          </li>
+          <li>
+            <h2 class="subTitleBar">Slave 사진</h2>
+            <input type="file" (change)="selectFile($event, '-subImage1')" #I8>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage1']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage1')">{{selectedFiles['-subImage1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
+      </app-popup>
+
+      <form [formGroup]="lawForm" id="law" *ngSwitchCase="'법률 및 정책'" (ngSubmit)="onSubmit()" novalidate>
+        <li class="form-group">
+          <h2>컨텐츠 등급</h2>
+          <app-select #LLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('law')"></app-select>
+          <div class="checkboxGroup">
+            <input type="checkbox" formControlName="L-notification" id="L-notification">
+            <label for="L-notification">현재 컨텐츠를 공지로 설정</label>
+          </div>
+        </li>
+        <li>
+          <h2>제목</h2>
+          <input type="text" formControlName="L-title" placeholder="제목을 입력하세요" />
+        </li>
+        <li>
+          <h2>요약정보</h2>
+          <quill-editor class="form-control short" formControlName="L-summary" [options]="editorOptions"></quill-editor>
+        </li>
+        <li>
+          <h2>첨부파일</h2>
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="filePopup.showPopup();">
+          <app-button (click)="filePopup.showPopup();">파일 등록</app-button>
+          <span class="blank"></span>
+        </li>
+        <li class="submitBar">
+          <button [type]="'submit'">등록하기</button>
+          <button>미리보기</button>
+        </li>
+      </form>
+
+      <app-popup #filePopup>
+        <!-- <form [formGroup]="uploadForm3" id="upload3" action="/api/v1/upload" method="post"> -->
+          <li>
+            <h2 class="subTitleBar">파일 등록</h2>
+            <input type="file" (change)="selectFile($event, '-image')" #I9>
+            <app-button [ngClass]="{disabled: !selectedFiles['-image'] && selectedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'파일 등록'}}</app-button>
+          </li>
+        <!-- </form> -->
       </app-popup>
 
       <form [formGroup]="meetingForm" id="meeting" *ngSwitchCase="'오프라인 모임'" (ngSubmit)="onSubmit()" novalidate>
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
           <app-select #MLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('meeting')"></app-select>
+          <div class="checkboxGroup">
+            <input type="checkbox" formControlName="M-notification" id="M-notification">
+            <label for="M-notification">현재 컨텐츠를 공지로 설정</label>
+          </div>
         </li>
         <li>
           <h2>제목</h2>
@@ -448,35 +421,44 @@
         </li>
         <li>
           <h2>요약정보</h2>
-          <textarea formControlName="M-summary" placeholder="요약 정보를 입력하세요"></textarea>
+          <quill-editor class="form-control short" formControlName="M-summary" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>주최측</h2>
           <input type="text" formControlName="M-host" placeholder="주최측을 입력하세요">
+          <span class="blank"></span>
         </li>
         <li>
           <h2>신청기간</h2>
           <input type="date" formControlName="M-apply-start" placeholder="시작">
           <input type="date" formControlName="M-apply-end" placeholder="종료">
-          <app-button>일정 등록</app-button>
+          <div class="blank"></div>
         </li>
         <li>
           <h2>주최일시</h2>
           <input type="date" formControlName="M-duration-start" placeholder="시작">
           <input type="date" formControlName="M-duration-end" placeholder="종료">
-          <app-button>일정 등록</app-button>
+          <div class="blank"></div>
         </li>
         <li>
           <h2>모집정원</h2>
           <input type="number" formControlName="M-personnel" placeholder="정원">
+          <div class="blank"></div>
         </li>
         <li>
           <h2>참가비</h2>
           <input type="number" step="1000" formControlName="M-cost" placeholder="참가비">
+          <div class="blank"></div>
+        </li>
+        <li>
+          <h2>Master 사진</h2>
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup3.showPopup();">
+          <app-button (click)="imagePopup3.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
         </li>
         <li>
           <h2>세부사항</h2>
-          <input type="text" formControlName="M-detail" placeholder="세부사항을 입력하세요">
+          <quill-editor class="form-control" formControlName="M-detail" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>준비물</h2>
@@ -488,6 +470,16 @@
         </li>
       </form>
 
+      <app-popup #imagePopup3>
+        <form [formGroup]="uploadForm4" id="upload4" action="/api/v1/upload" method="post">
+          <li>
+            <h2 class="subTitleBar">Master 사진</h2>
+            <input type="file" (change)="selectFile($event, '-image')" #I10>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-image'] && selectedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+          </li>
+        </form>
+      </app-popup>
+
       <form [formGroup]="employerForm" id="employer" *ngSwitchCase="'구인'" (ngSubmit)="onSubmit()" novalidate>
         <li>
           <h2>업무</h2>
@@ -495,20 +487,23 @@
         </li>
         <li>
           <h2>업무내용</h2>
-          <textarea formControlName="R-part-description" placeholder="업무내용"></textarea>
+          <quill-editor class="form-control" formControlName="R-part-description" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>나이</h2>
           <input type="number" formControlName="R-age-start" placeholder="나이대 시작">
           <input type="number" formControlName="R-age-end" placeholder="나이대 종료">
+          <span class="blank"></span>
         </li>
         <li>
           <h2>응시요건</h2>
           <input type="text" formControlName="R-requirement" placeholder="요건을 입력하세요." />
+          <span class="blank"></span>
         </li>
         <li>
           <h2>모집인원</h2>
           <input type="number" formControlName="R-personnel" placeholder="숫자만 입력" />
+          <span class="blank"></span>
         </li>
         <li>
           <h2>채용방법</h2>
@@ -521,28 +516,33 @@
         </li>
         <li>
           <h2>상세요건</h2>
-          <input type="text" formControlName="R-detail" placeholder="상세 요건을 입력하세요.">
+          <quill-editor class="form-control" formControlName="R-detail" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>현장명</h2>
           <input type="text" formControlName="R-location-name" placeholder="현장명을 입력하세요.">
+          <span class="blank"></span>
         </li>
         <li>
           <h2>소재지</h2>
           <input type="text" formControlName="R-location-address" placeholder="소재지를 입력하세요.">
+          <span class="blank"></span>
         </li>
         <li>
           <h2>담당자 정보</h2>
           <input type="text" formControlName="R-manager-name" placeholder="담당자 이름">
           <input type="text" formControlName="R-manager-contact" placeholder="담당자 연락처">
+          <span class="blank"></span>
         </li>
         <li>
           <h2>전화</h2>
           <input type="text" formControlName="R-HP" placeholder="전화번호">
+          <span class="blank"></span>
         </li>
         <li>
           <h2>핸드폰</h2>
           <input type="text" formControlName="R-CP" placeholder="핸드폰 번호">
+          <span class="blank"></span>
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
@@ -563,6 +563,12 @@
           <h2>나이</h2>
           <input type="number" formControlName="E-age-start" placeholder="나이대 시작">
           <input type="number" formControlName="E-age-end" placeholder="나이대 종료">
+        </li>
+        <li>
+          <h2>사진</h2>
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup4.showPopup();">
+          <app-button (click)="imagePopup4.showPopup();">사진 등록</app-button>
+          <span class="blank"></span>
         </li>
         <li>
           <h2>전화</h2>
@@ -624,7 +630,15 @@
         </li>
       </form>
 
+      <app-popup #imagePopup4>
+        <form [formGroup]="uploadForm5" id="upload5" action="/api/v1/upload" method="post">
+          <li>
+            <h2 class="subTitleBar">Master 사진</h2>
+            <input type="file" (change)="selectFile($event, '-image')" #I11>
+            <app-button accept="image/*" [ngClass]="{disabled: !selectedFiles['-image'] && selectedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+          </li>
+        </form>
+      </app-popup>
     </ng-container>
-
   </article>
 </section>

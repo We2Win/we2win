@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(10),
       defaultValue: 'STANDARD'
     },
+    'S-notification': {
+      type: DataTypes.TINYINT(1),
+      allowNull: false,
+    },
     'S-title': {
       type: DataTypes.STRING(50),
       allowNull: false,
@@ -153,6 +157,10 @@ module.exports = (sequelize, DataTypes) => {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   });
+
+  Records.associate = function (models) {
+    Records.hasMany(models.Sreply);
+  };
 
   Records.prototype.toWeb = function () {
     let JSON = this.toJSON();

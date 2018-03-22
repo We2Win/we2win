@@ -29,6 +29,27 @@ const create = async function (req, res) {
 }
 module.exports.create = create;
 
+const createReply = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  const body = req.body;
+
+  let err, content;
+
+  console.log('body: ', JSON.stringify(body));
+  [err, content] = await to(authService.createReply(body));
+
+  if (err) return ReE(res, err, 422);
+
+  console.log('content.json: ', content);
+  content = JSON.stringify(content);
+  console.log('content.string: ', content);
+  return ReS(res, {
+    message: 'Successfully created new content data.',
+    body: content,
+  }, 201);
+}
+module.exports.create = create;
+
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -70,6 +91,30 @@ const getInfoList = async function (req, res) {
 }
 module.exports.getInfoList = getInfoList;
 
+const getIreplyList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.params.id) {
+    Ireply.findOne({
+      where: {
+        'I-id': req.params.id
+      }
+    })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Ireply.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
+}
+module.exports.getIreplyList = getIreplyList;
+
 const getNewsList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -96,6 +141,31 @@ const getNewsList = async function (req, res) {
 }
 module.exports.getNewsList = getNewsList;
 
+const getNreplyList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.params.id) {
+    Nreply.findOne({
+        where: {
+          'N-id': req.params.id
+        }
+      })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Nreply.findAll({})
+      .then((contentList) => {
+        return ReS(res, {
+          list: JSON.stringify(contentList)
+        })
+      });
+  }
+}
+module.exports.getNreplyList = getNreplyList;
+
 const getLawList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -119,6 +189,30 @@ const getLawList = async function (req, res) {
   }
 }
 module.exports.getLawList = getLawList;
+
+const getLreplyList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.params.id) {
+    Lreply.findOne({
+        where: {
+          'L-id': req.params.id
+        }
+      })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Lreply.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
+}
+module.exports.getLreplyList = getLreplyList;
 
 const getApartmentList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -147,6 +241,34 @@ const getApartmentList = async function (req, res) {
   }
 }
 module.exports.getApartmentList = getApartmentList;
+
+const getSreplyList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.params.id) {
+    Sreply.findOne({
+      where: {
+        'S-id': req.params.id
+      }
+    })
+    .then((content) => {
+      return ReS(res, {
+        body: JSON.stringify(content)
+      })
+    });
+  } else {
+    Sreply.findAll({
+      where: {
+        'S-type': '아파트'
+      }
+    }).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
+}
+module.exports.getSreplyList = getSreplyList;
 
 const getOfficetelList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -255,6 +377,30 @@ const getMeetingList = async function (req, res) {
   }
 }
 module.exports.getMeetingList = getMeetingList;
+
+const getMreplyList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.params.id) {
+    Mreply.findOne({
+        where: {
+          'M-id': req.params.id
+        }
+      })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  } else {
+    Mreply.findAll({}).then((contentList) => {
+      return ReS(res, {
+        list: JSON.stringify(contentList)
+      })
+    });
+  }
+}
+module.exports.getMreplyList = getMreplyList;
 
 const getEmployeeList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');

@@ -5,10 +5,10 @@
 
 #top>div {
   flex: 1 1 auto;
+  flex-basis: 450px;
 }
 
 #top #imgNav {
-  max-width: 470px;
   margin-right: 2em;
 }
 

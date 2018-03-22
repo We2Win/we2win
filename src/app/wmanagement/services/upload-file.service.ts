@@ -9,7 +9,14 @@ import { Subject } from 'rxjs/Subject';
 export class UploadFileService {
   FOLDER = 'user-s3/';
 
-  private subject = new Subject<any>();
+  private dataList = {
+    '-image': new Subject<any>(),
+    '-subImage1': new Subject<any>(),
+    '-subImage2': new Subject<any>(),
+    '-subImage3': new Subject<any>(),
+    '-subImage4': new Subject<any>(),
+    '-subImage5': new Subject<any>(),
+  };
 
   bucket = new S3(
     {
@@ -21,7 +28,7 @@ export class UploadFileService {
 
   constructor() { }
 
-  uploadFile(file) {
+  uploadFile(file, columnName) {
     const params = {
       Bucket: 'we2winimage',
       Key: this.FOLDER + file.name,
@@ -33,12 +40,20 @@ export class UploadFileService {
         console.log('There was an error uploading your file: ', err);
       } else {
         console.log('Successfully uploaded file.', data);
-        this.subject.next(data);
+        console.log(this.dataList);
+        this.dataList[columnName].next(data);
       }
     });
   }
 
-  getFileName(): Observable<any> {
-    return this.subject.asObservable();
+  getFileName(columnName): Observable<any> {
+    return this.dataList[columnName].asObservable();
+  }
+
+  resetFile() {
+    // tslint:disable-next-line:forin
+    for (const i in this.dataList) {
+      this.dataList[i] = new Subject<any>();
+    }
   }
 }

@@ -5,6 +5,23 @@
   padding: 1em;
 }
 
+quill-editor {
+  flex: 1;
+  margin-bottom: 3em;
+}
+
+quill-editor /deep/ .ql-container {
+  border: 1px solid #d8d8d8;  
+}
+
+quill-editor /deep/ .ql-editor:focus {
+  outline: var(--company-color) auto 5px;
+}
+
+quill-editor.short /deep/ .ql-editor {
+  min-height: 4em !important;
+}
+
 section {
   width: calc(var(--main-width) - 225px);
   margin: 0 0 auto 0;
@@ -19,7 +36,7 @@ section {
   flex-wrap: wrap;
 }
 
-.wrapper + .wrapper {
+.wrapper+.wrapper {
   margin-top: 0.5em;
 }
 
@@ -51,6 +68,10 @@ h1 {
   flex: 1;
   font-size: 1.2em;
   line-height: 180%;
+}
+
+h2 {
+  padding-top: 0.5em;
 }
 
 #title {
@@ -85,7 +106,7 @@ li h2 {
 li h3 {
   display: block;
   flex: none;
-  line-height: 200%;
+  line-height: 150%;
   font-size: 0.9em;
   margin: 0;
   padding: 0.5em 1em;
@@ -106,6 +127,28 @@ li h4 {
 input[type="checkbox"] {
   display: inline-block;
   width: auto;
+}
+
+.checkboxGroup {
+  padding: 1.1em 0;
+  flex: 1;
+}
+
+.checkboxGroup * {
+  float: right;
+}
+
+.checkboxGroup input {
+  margin: 0.15em 0;
+}
+
+.checkboxGroup label {
+  font-size: 0.9em;
+  margin-right: 1em;
+}
+
+input[type="date"] {
+  height: 2em;
 }
 
 input#search {
@@ -146,8 +189,9 @@ input.box {
   min-width: 3em;
   margin: 0;
 }
+
 input.box+input.box {
-  margin-left: 0;  
+  margin-left: 0;
 }
 
 input.search {

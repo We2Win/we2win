@@ -71,7 +71,7 @@ import { SiteDetailComponent } from './pages/site/site-detail/site-detail.compon
     CommonModule,
     WhomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     HeaderComponent,
@@ -138,7 +138,8 @@ import { SiteDetailComponent } from './pages/site/site-detail/site-detail.compon
     LawCardComponent,
     EmployeeCardComponent,
     EmployerCardComponent,
-    MeetingCardComponent
+    MeetingCardComponent,
+    ChartComponent
   ],
   providers: [
     PageInfoService,

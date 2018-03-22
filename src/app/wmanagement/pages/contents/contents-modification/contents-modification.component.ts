@@ -30,6 +30,9 @@ export class ContentsModificationComponent implements OnInit {
   employeeForm: FormGroup;
   uploadForm: FormGroup;
   uploadForm2: FormGroup;
+  uploadForm3: FormGroup;
+  uploadForm4: FormGroup;
+  uploadForm5: FormGroup;
 
   private forms: object;
   private symbols = {
@@ -52,7 +55,7 @@ export class ContentsModificationComponent implements OnInit {
     'employee': 'E'
   };
 
-  filesToUpload: Array<File> = [];
+  filesToUpload: Array<File>;
 
   selectedData = {
     type: '리포트',
@@ -60,14 +63,14 @@ export class ContentsModificationComponent implements OnInit {
   };
   private selectBoxData = {};
 
-  @ViewChild('top') top: any = { selected: '' };
-  @ViewChild('sub') sub: any = { selected: '' };
+  @ViewChild('top') top: { selected };
+  @ViewChild('sub') sub: { selected };
 
-  @ViewChild('ILevel') ILevel: any = { selected: '' };
-  @ViewChild('SLevel') SLevel: any = { selected: '' };
-  @ViewChild('NLevel') NLevel: any = { selected: '' };
-  @ViewChild('LLevel') LLevel: any = { selected: '' };
-  @ViewChild('MLevel') MLevel: any = { selected: '' };
+  @ViewChild('ILevel') ILevel: { selected };
+  @ViewChild('SLevel') SLevel: { selected };
+  @ViewChild('NLevel') NLevel: { selected };
+  @ViewChild('LLevel') LLevel: { selected };
+  @ViewChild('MLevel') MLevel: { selected };
 
   @ViewChild('I1') I1;
   @ViewChild('I2') I2;
@@ -75,30 +78,43 @@ export class ContentsModificationComponent implements OnInit {
   @ViewChild('I4') I4;
   @ViewChild('I5') I5;
   @ViewChild('I6') I6;
+  @ViewChild('I7') I7;
+  @ViewChild('I8') I8;
+  @ViewChild('I9') I9;
+  @ViewChild('I10') I10;
+  @ViewChild('I11') I11;
+  @ViewChild('I12') I12;
 
-  inputs = {
-    '-image': this.I1,
-    '-subImage1': this.I2,
-    '-subImage2': this.I3,
-    '-subImage3': this.I4,
-    '-subImage4': this.I5,
-    '-subImage5': this.I6,
-  };
+  inputs: object;
 
-  // selectedFiles: FileList;
   selectedFiles = {
     '-image': '',
     '-subImage1': '',
     '-subImage2': '',
     '-subImage3': '',
     '-subImage4': '',
-    '-subImage5': '',
+    '-subImage5': ''
   };
 
   subscription: Subscription;
 
-  _editor;
-  editor;
+  // _editor;
+  public editor;
+  private toolbarOptions = [
+    ['bold', 'italic', 'underline', 'strike', { 'color': [] }],        // toggled buttons
+    [{ 'align': [] }, { 'list': 'ordered' }, { 'list': 'bullet' }],
+    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+    ['blockquote', { 'script': 'sub' }, { 'script': 'super' }],
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] },
+    { 'header': 1 }, { 'header': 2 }],
+    ['clean'],                                        // remove formatting button
+  ];
+  public editorOptions = {
+    placeholder: '내용을 입력해 주세요.',
+    modules: {
+      toolbar: this.toolbarOptions
+    },
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -131,6 +147,15 @@ export class ContentsModificationComponent implements OnInit {
         this.siteForm.controls['S-type'].setValue(selected);
         break;
     }
+
+    // tslint:disable-next-line:forin
+    for (const i in this.selectedFiles) {
+      this.selectedFiles[i] = '';
+    }
+    // tslint:disable-next-line:forin
+    for (const i in this.inputs) {
+      this.inputs[i] = '파일 없음';
+    }
   }
 
   onLevelChange(type) {
@@ -158,6 +183,7 @@ export class ContentsModificationComponent implements OnInit {
   ngOnInit() {
     this.infoForm = new FormGroup({
       // 'I-level': new FormControl(''),
+      'I-notification': new FormControl('', [Validators.required]),
       'I-title': new FormControl('', [Validators.required]),
       'I-summary': new FormControl('', [Validators.required]),
       'I-open-start': new FormControl('', [Validators.required]),
@@ -197,6 +223,7 @@ export class ContentsModificationComponent implements OnInit {
     this.siteForm = new FormGroup({
       'S-type': new FormControl('', [Validators.required]),
       // 'S-level': new FormControl(''),
+      'S-notification': new FormControl('', [Validators.required]),
       'S-title': new FormControl('', [Validators.required]),
       'S-summary': new FormControl('', [Validators.required]),
       'S-open-start': new FormControl('', [Validators.required]),
@@ -235,6 +262,7 @@ export class ContentsModificationComponent implements OnInit {
     });
     this.newsForm = new FormGroup({
       // 'N-level': new FormControl('', [Validators.required]),
+      'N-notification': new FormControl('', [Validators.required]),
       'N-title': new FormControl('', [Validators.required]),
       'N-sub-title': new FormControl('', [Validators.required]),
       'N-sub-description': new FormControl('', [Validators.required]),
@@ -243,12 +271,14 @@ export class ContentsModificationComponent implements OnInit {
       'N-analysis-description': new FormControl('', [Validators.required]),
     });
     this.lawForm = new FormGroup({
+      'L-notification': new FormControl('', [Validators.required]),
       'L-title': new FormControl('', [Validators.required]),
       'L-summary': new FormControl('', [Validators.required]),
       'L-url': new FormControl('', [Validators.required]),
       // 'L-file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
+      'M-notification': new FormControl('', [Validators.required]),
       'M-title': new FormControl('', [Validators.required]),
       'M-summary': new FormControl('', [Validators.required]),
       // 'M-image': new FormControl('', [Validators.required]),
@@ -286,6 +316,7 @@ export class ContentsModificationComponent implements OnInit {
       'E-sex': new FormControl('', [Validators.required]),
       'E-age-start': new FormControl('', [Validators.required]),
       'E-age-end': new FormControl('', [Validators.required]),
+      'E-Image': new FormControl('', [Validators.required]),
       'E-CP': new FormControl('', [Validators.required]),
       'E-HP': new FormControl('', [Validators.required]),
       'E-email': new FormControl('', [Validators.required]),
@@ -303,6 +334,9 @@ export class ContentsModificationComponent implements OnInit {
     });
     this.uploadForm = new FormGroup({});
     this.uploadForm2 = new FormGroup({});
+    this.uploadForm3 = new FormGroup({});
+    this.uploadForm4 = new FormGroup({});
+    this.uploadForm5 = new FormGroup({});
 
     this.forms = {
       '리포트': this.infoForm,
@@ -316,12 +350,22 @@ export class ContentsModificationComponent implements OnInit {
       '구인': this.employerForm,
       '구직': this.employeeForm
     };
+
+    this.inputs = {
+      '-image': '파일 없음',
+      '-subImage1': '파일 없음',
+      '-subImage2': '파일 없음',
+      '-subImage3': '파일 없음',
+      '-subImage4': '파일 없음',
+      '-subImage5': '파일 없음',
+    };
   }
 
   selectFile(event, columnName) {
     this.selectedFiles[columnName] = event.target.files.item(0);
-    // this.selectedFiles = event.target.files;
-    console.log(this.selectedFiles);
+    this.inputs[columnName] = '파일 없음';
+
+    // console.log(this.selectedFiles);
   }
 
   upload(type, columnName) {
@@ -329,16 +373,16 @@ export class ContentsModificationComponent implements OnInit {
     const file = this.selectedFiles[columnName];
 
     if (file) {
-      this.uploadService.uploadFile(file);
-      this.subscription = this.uploadService.getFileName()
+      this.uploadService.uploadFile(file, columnName);
+      this.subscription = this.uploadService.getFileName(columnName)
         .map(
         data => data.Key
         ).subscribe(
         name => {
           console.log('name: ', name);
-          console.log(this.forms[type].controls[this.symbols[type] + columnName]);
           this.forms[type].controls[this.symbols[type] + columnName].setValue(name);
-          // this.inputs[columnName].nativeElement.value = name;
+          this.inputs[columnName] = name.split('/')[1];
+          console.log(this.inputs);
           this.selectedFiles[columnName] = '-done';
           // alert('업로드 되었습니다.');
         }
@@ -374,5 +418,4 @@ export class ContentsModificationComponent implements OnInit {
       }
       );
   }
-
 }

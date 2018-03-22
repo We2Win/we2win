@@ -31,9 +31,9 @@ import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoService } from './services/info.service';
 import { ContentsService } from './services/contents.service';
-import { QuillComponent } from './micro/quill/quill.component';
 import { UploadFileService } from './services/upload-file.service';
 import { MypostDirective } from './directives/mypost.directive';
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 @NgModule({
   imports: [
@@ -42,6 +42,7 @@ import { MypostDirective } from './directives/mypost.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    QuillEditorModule
   ],
   declarations: [
     WmanagementComponent,
@@ -69,7 +70,6 @@ import { MypostDirective } from './directives/mypost.directive';
     AnalysisUserRecordComponent,
     AnalysisContentsRecordComponent,
     Error404Component,
-    QuillComponent,
     MypostDirective,
   ],
   entryComponents: [

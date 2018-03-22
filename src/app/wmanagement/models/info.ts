@@ -1,4 +1,35 @@
 export class Info {
-    Title: string;
-    Description: string;
+    'I-id' = '';
+    'I-level' = '';
+    'I-title' = '';
+    'I-summary' = '';
+    'I-open-start' = '';
+    'I-open-end' = '';
+    'I-ammount' = 0;
+    'I-manager-name' = '';
+    'I-manager-contact' = '';
+    'I-current-duration1' = '';
+    'I-current-duration2' = '';
+    'I-current-duration3' = '';
+    'I-current-duration4' = '';
+    'I-current-duration5' = '';
+    'I-current-amount1' = '';
+    'I-current-amount2' = '';
+    'I-current-amount3' = '';
+    'I-current-amount4' = '';
+    'I-current-amount5' = '';
+    'I-around-duration1' = '';
+    'I-around-duration2' = '';
+    'I-around-duration3' = '';
+    'I-around-duration4' = '';
+    'I-around-duration5' = '';
+    'I-around-amount1' = '';
+    'I-around-amount2' = '';
+    'I-around-amount3' = '';
+    'I-around-amount4' = '';
+    'I-around-amount5' = '';
+    'I-report' = '';
+    'I-image' = '';
+    'createdAt' = '';
+    'updatedAt' = '';
 }

@@ -49,27 +49,12 @@ export class AccountComponent implements OnInit, AfterViewInit {
     // tslint:disable-next-line:forin
     for (const record in records) {
       console.log('record: ', records[record]);
-      // this.postItems.push(new PostItem(AccountRecordComponent, records[record]));
       this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
-      // this.postingService.loadComponent(this.tableComponent.viewContainerRef,
         new PostItem(AccountRecordComponent, records[record]));
-      // console.log('loaded.');
     }
 
-    // tslint:disable-next-line:forin
-    // for (const item in this.postItems) {
-      // this.postingService.loadComponent(this.tableComponent.viewContainerRef, this.postItems[item]);
-    // }
   }
 
   ngAfterViewInit() {
-    // this.postItems = [
-    //   new PostItem(AccountRecordComponent, { ID: 'testing' }),
-    //   new PostItem(AccountRecordComponent, { ID: 'testing' }),
-    //   new PostItem(AccountRecordComponent, { ID: 'testing' }),
-    //   new PostItem(AccountRecordComponent, { ID: 'testing' }),
-    // ];
-
-    // this.postingService.loadComponent(this.tableComponent.viewContainerRef, this.postItems[0]);
   }
 }

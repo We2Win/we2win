@@ -9,6 +9,7 @@ import { Chart } from 'chart.js';
 export class ChartComponent implements OnInit {
   @Input() type: string;
   @Input() num: string;
+  @Input() record: any;
 
   optionA: object = {
     legend: {
@@ -97,7 +98,6 @@ export class ChartComponent implements OnInit {
     ]
   };
 
-
   constructor(private _elementRef: ElementRef) {
   }
 
@@ -120,8 +120,14 @@ export class ChartComponent implements OnInit {
     this.chartData['infoDetail'][1].data.datasets[0]['backgroundColor'] =
       [fillStandard, fillStandard, fillStandard, fillPremium, fillPlatinum];
 
+    const data = this.chartData[this.record.type][this.record.num];
+    data.data.labels = this.record.labels;
+    data.data.datasets = this.record.datasets;
+    data.data.datasets[0]['backgroundColor'] = 
+      [fillStandard, fillStandard, fillStandard, fillPremium, fillPlatinum];
+    console.log('data at chart:', data);
     try {
-      const chart = new Chart(canvas, this.chartData[this.type][this.num]);
+      const chart = new Chart(canvas, data);
     } catch (e) {
 
     }
