@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     'M-notification': {
       type: DataTypes.TINYINT(1),
-      allowNull: false,
+      defaultValue: false
     },
     'M-title': {
       type: DataTypes.STRING(50),

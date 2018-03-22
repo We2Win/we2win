@@ -178,7 +178,7 @@ export class ContentsRegistrationComponent implements OnInit {
   ngOnInit() {
     this.infoForm = new FormGroup({
       // 'I-level': new FormControl(''),
-      'I-notification': new FormControl('', [Validators.required]),
+      'I-notification': new FormControl(''),
       'I-title': new FormControl('', [Validators.required]),
       'I-summary': new FormControl('', [Validators.required]),
       'I-open-start': new FormControl('', [Validators.required]),
@@ -218,7 +218,7 @@ export class ContentsRegistrationComponent implements OnInit {
     this.siteForm = new FormGroup({
       'S-type': new FormControl('', [Validators.required]),
       // 'S-level': new FormControl(''),
-      'S-notification': new FormControl('', [Validators.required]),
+      'S-notification': new FormControl(''),
       'S-title': new FormControl('', [Validators.required]),
       'S-summary': new FormControl('', [Validators.required]),
       'S-open-start': new FormControl('', [Validators.required]),
@@ -257,7 +257,7 @@ export class ContentsRegistrationComponent implements OnInit {
     });
     this.newsForm = new FormGroup({
       // 'N-level': new FormControl('', [Validators.required]),
-      'N-notification': new FormControl('', [Validators.required]),
+      'N-notification': new FormControl(''),
       'N-title': new FormControl('', [Validators.required]),
       'N-sub-title': new FormControl('', [Validators.required]),
       'N-sub-description': new FormControl('', [Validators.required]),
@@ -266,14 +266,14 @@ export class ContentsRegistrationComponent implements OnInit {
       'N-analysis-description': new FormControl('', [Validators.required]),
     });
     this.lawForm = new FormGroup({
-      'L-notification': new FormControl('', [Validators.required]),
+      'L-notification': new FormControl(''),
       'L-title': new FormControl('', [Validators.required]),
       'L-summary': new FormControl('', [Validators.required]),
       'L-url': new FormControl('', [Validators.required]),
       // 'L-file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
-      'M-notification': new FormControl('', [Validators.required]),
+      'M-notification': new FormControl(''),
       'M-title': new FormControl('', [Validators.required]),
       'M-summary': new FormControl('', [Validators.required]),
       // 'M-image': new FormControl('', [Validators.required]),
