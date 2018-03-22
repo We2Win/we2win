@@ -397,13 +397,13 @@
       </form>
 
       <app-popup #filePopup>
-        <!-- <form [formGroup]="uploadForm3" id="upload3" action="/api/v1/upload" method="post"> -->
+        <form [formGroup]="uploadForm3" id="upload3" action="/api/v1/upload" method="post">
           <li>
             <h2 class="subTitleBar">파일 등록</h2>
             <input type="file" (change)="selectFile($event, '-image')" #I9>
             <app-button [ngClass]="{disabled: !selectedFiles['-image'] && selectedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{selectedFiles['-image']==='-done'?'등록 완료':'파일 등록'}}</app-button>
           </li>
-        <!-- </form> -->
+        </form>
       </app-popup>
 
       <form [formGroup]="meetingForm" id="meeting" *ngSwitchCase="'오프라인 모임'" (ngSubmit)="onSubmit()" novalidate>

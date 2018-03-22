@@ -3,7 +3,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('News', {
     'N-id': {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },

@@ -6,11 +6,11 @@ var path = require('path');
 var Sequelize = require('sequelize');
 var basename = path.basename(__filename);
 var db = {};
-var tablename = {
-  'User': '`01011803`',
-  'Info': '`02011803`',
-  'Content': 'sample'
-}
+// var tablename = {
+//   'User': '`01011803`',
+//   'Info': '`02011803`',
+//   'Content': 'sample'
+// }
 
 const sequelize = new Sequelize(CONFIG.db_name, CONFIG.db_user,
   CONFIG.db_password, {

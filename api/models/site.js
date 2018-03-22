@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'S-id': {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },

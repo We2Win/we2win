@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Meeting', {
     'M-id': {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
