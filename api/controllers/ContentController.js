@@ -77,8 +77,13 @@ const getCount = async function(req, res) {
     include: [{
       model: Sensor, attributes: []
     }]
+  }).then((content) => {
+    return ReS(res, {
+      content: content.dataValues
+    })
   });
 }
+module.exports.getCount = getCount;
 
 const getDashboard = async function(req, res) {
   res.setHeader('Content-Type', 'application/json');
