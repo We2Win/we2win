@@ -33,7 +33,7 @@ app.set('view engine', 'jade');
 
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
-    console.log('Connected to SQL database.');
+    console.log('Connected to SQL database..');
 
 }).catch( err => {
     console.error('Error loading SQL database:', err);
