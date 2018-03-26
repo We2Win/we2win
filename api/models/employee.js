@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     'E-id': {
       type: DataTypes.INTEGER(10),
       autoIncrement: true,
-      primaryKey: true
     },
     'E-name': {
       type: DataTypes.STRING(30),

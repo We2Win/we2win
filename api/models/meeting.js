@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     'M-id': {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
     },
     'M-level': {
       type: DataTypes.STRING(10),

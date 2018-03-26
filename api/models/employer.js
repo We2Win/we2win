@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     'R-id': {
       type: DataTypes.INTEGER(10),
       autoIncrement: true,
-      primaryKey: true
     },
     'R-part-name': {
       type: DataTypes.STRING(50),
