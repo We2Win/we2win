@@ -60,9 +60,9 @@ module.exports = (sequelize, DataTypes) => {
     collate: 'utf8_unicode_ci',
   });
 
-  Records.associate = function (models) {
-    Records.hasMany(models.Comments);
-  };
+  // Records.associate = function (models) {
+  //   Records.hasMany(models.Comments);
+  // };
 
   Records.prototype.toWeb = function () {
     let JSON = this.toJSON();
