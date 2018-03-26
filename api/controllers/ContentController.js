@@ -7,8 +7,10 @@ const Meeting = require('../models').Meeting;
 const Employee = require('../models').Employee;
 const Employer = require('../models').Employer;
 const authService = require('./../services/AuthService');
-const Sequelize = require('sequelize');
 
+// temporary
+const Sequelize = require('sequelize');
+const db = require('../models/index');
 
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -73,12 +75,12 @@ const getCount = async function(req, res) {
   res.setHeader('Content-Type', 'application/json');
   
   Info.findAll({
-    attributes: {
-      include: [[Sequelize.fn("COUNT", Sequelize.col("User.ID")), "sensorCount"]]
-    },
-    include: [{
-      model: Sensor, attributes: []
-    }]
+    include: [
+      // { model: }
+      // { model: db.Room, attributes: ['DisplayLabel'] },
+      // { model: db.Periods, attributes: ['DisplayLabel'] },
+      // { model: db.Subjects, attributes: ['Name'] }
+    ]
   }).then((content) => {
     return ReS(res, {
       content: content.dataValues
