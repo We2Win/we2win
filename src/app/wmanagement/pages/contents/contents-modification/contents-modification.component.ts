@@ -156,6 +156,8 @@ export class ContentsModificationComponent implements OnInit {
     for (const i in this.inputs) {
       this.inputs[i] = '파일 없음';
     }
+
+    
   }
 
   onLevelChange(type) {

@@ -64,6 +64,17 @@ article header * {
   flex: 1;
 }
 
+article .contentsBar {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5em 2em;
+  display: flex;
+  align-items: flex-end;
+}
+article .contentsBar * {
+  flex: 1;
+  font-size: 0.9em;
+}
+
 h1 {
   flex: 1;
   font-size: 1.2em;

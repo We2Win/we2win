@@ -1,1 +1,27 @@
 <span class="cell" *ngFor="let sample of sampleData" [ngClass]="sample.data">{{ sample.value }}</span>
+
+<span class="cell">
+    <input type="checkbox" />
+</span>
+
+<span class="cell">
+    <div>{{ record.ID }}</div>
+    <div>
+        <span class="edit">EDIT</span>
+        <span class="delete" (click)="deleteUser()">DELETE</span>
+    </div>
+</span>
+<span class="cell">{{ record.Name }}</span>
+<span class="cell">{{ record.Email }}</span>
+<span class="cell">
+    <li *ngIf="record['U-level']===0" class="standard">STANDARD</li>
+    <li *ngIf="record['U-level']===1" class="standard">STANDARD</li>
+    <li *ngIf="record['U-level']===2" class="premium">PREMIUM</li>
+    <li *ngIf="record['U-level']===3" class="platinum">PLATINUM</li>
+    <li *ngIf="record['U-level']===4" class="manager">MANAGER</li>
+    <li *ngIf="record['U-level']===5" class="admin">ADMIN</li>
+</span>
+<span class="cell">{{ record['U-point'] }}</span>
+<span class="cell">{{ record['U-point'] }}</span>
+<span class="cell" *ngIf="record['U-level-start']">{{ record['U-level-start'] + ' ~ ' + record['U-level-end'] }}</span>
+<span class="cell" *ngIf="!record['U-level-start']">무제한</span>

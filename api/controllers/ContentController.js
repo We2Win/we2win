@@ -67,6 +67,19 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
+const getCount = async function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  
+  Content.findAll({
+    attributes: {
+      include: [[Sequelize.fn("COUNT", Sequelize.col("User.ID")), "sensorCount"]]
+    },
+    include: [{
+      model: Sensor, attributes: []
+    }]
+  });
+}
+
 const getDashboard = async function(req, res) {
   res.setHeader('Content-Type', 'application/json');
 

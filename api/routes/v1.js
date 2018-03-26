@@ -58,4 +58,6 @@ router.post('/hasid', UserController.hasId);
 
 router.get('/mng/users', UserController.get);
 // router.get('/mng/dashboard', ContentController.getDashboard);
+router.get('/mng/contents/count', ContentController.getCount);
+
 module.exports = router;

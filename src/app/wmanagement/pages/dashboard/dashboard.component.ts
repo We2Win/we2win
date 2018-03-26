@@ -13,7 +13,8 @@ import { ChartComponent } from '../../micro/chart/chart.component';
   styleUrls: [
     './dashboard.component.css',
     '../pages.css'
-  ]
+  ],
+  providers: [PostingService]
 })
 export class DashboardComponent implements OnInit {
 
