@@ -7,6 +7,8 @@ const Meeting = require('../models').Meeting;
 const Employee = require('../models').Employee;
 const Employer = require('../models').Employer;
 const authService = require('./../services/AuthService');
+const Sequelize = require('sequelize');
+
 
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
