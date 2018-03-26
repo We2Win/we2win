@@ -74,3 +74,8 @@
 #levelBar.standard {
   background: var(--level-standard-gradient);
 }
+
+.shower img {
+  width: 517px;
+  height: 310px;
+}

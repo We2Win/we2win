@@ -37,15 +37,15 @@
       <label>현장 사진</label>
       <article>
         <div class="row navigator">
-          <img src="/assets/img/info_detail_sample.png" />
-          <img src="/assets/img/info_detail_sample.png" />
-          <img src="/assets/img/info_detail_sample.png" />
-          <img src="/assets/img/info_detail_sample.png" />
-          <img src="/assets/img/info_detail_sample.png" />
+          <img [src]="subImgUrl[1]" (click)="selectImg(1)" />
+          <img [src]="subImgUrl[2]" (click)="selectImg(2)" />
+          <img [src]="subImgUrl[3]" (click)="selectImg(3)" />
+          <img [src]="subImgUrl[4]" (click)="selectImg(4)" />
+          <img [src]="subImgUrl[5]" (click)="selectImg(5)" />
         </div>
         <div class="row shower">
-          <label> 1 / 5 </label>
-          <img src="/assets/img/info_detail_sample.png" />
+          <label> {{selectedNum}} / 5 </label>
+          <img [src]="selectedImgUrl" />
         </div>
       </article>
     </div>
@@ -64,8 +64,8 @@
         </div>
         <div class="row">
           <label>Amberyi_0523</label>
-          <input type="text">
-          <app-button>댓글 입력</app-button>
+          <input type="text" #NewComment>
+          <app-button (click)="addComment">댓글 입력</app-button>
         </div>
       </article>
     </div>

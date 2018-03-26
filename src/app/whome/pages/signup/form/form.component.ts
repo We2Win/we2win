@@ -391,10 +391,10 @@ export class FormComponent implements OnInit {
         }
 
         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-        this.signupForm.controls['HA'].setValue(this.fullRoadAddr);
         this.zonecode = data.zonecode; // 5자리 새우편번호 사용
-        this.fullRoadAddr = fullRoadAddr;
+        this.fullRoadAddr = data.roadAddress;
         this.jibunAddress = data.jibunAddress;
+        this.signupForm.controls['HA'].setValue(this.fullRoadAddr);
 
         console.log(this.zonecode, this.fullRoadAddr, this.jibunAddress);
 

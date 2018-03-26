@@ -51,7 +51,7 @@
   <div class="signed" *ngIf="isLogin" (click)="showProfile = true">
     <img src="/assets/img/icon_profile.png" alt="">
     <div id="user">{{user.id}} 님</div>
-    <div id="point">{{user.point}} P</div>
+    <div id="point">{{user.point?user.point:'0'}} P</div>
     <!-- <div id="logout" (click)="logout()">로그아웃</div> -->
   </div>
 
@@ -70,7 +70,7 @@
         <h1>{{user.name}}</h1>
         <h2>회원님</h2>
         <h3>포인트</h3>
-        <h4>{{user.point}} Point</h4>
+        <h4>{{user.point?user.point:'0'}} Point</h4>
         <h5 *ngIf="user.start">{{user.start}} ~ {{user.end}}</h5>
         <h5 *ngIf="!user.start">무제한</h5>
       </div>

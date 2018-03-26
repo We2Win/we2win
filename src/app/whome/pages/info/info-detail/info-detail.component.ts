@@ -7,6 +7,7 @@ import { PostItem } from '../../../models/post-item';
 import { Info } from '../../../models/info';
 import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-info-detail',
@@ -18,14 +19,20 @@ export class InfoDetailComponent implements OnInit {
   Data = new Info();
   id: number;
   imgUrl;
+  subImgUrl = ['', '', '', '', ''];
+  selectedImgUrl = '';
+  selectedNum = '';
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
+
+  @ViewChild('NewComment') NewComment;
 
   constructor(
     private viewContainerRef: ViewContainerRef,
     private contentsService: ContentsService,
     private postingService: PostingService,
+    private auth: AuthService,
     private route: ActivatedRoute
   ) {
     this.id = this.route.params['value'].id;
@@ -81,15 +88,31 @@ export class InfoDetailComponent implements OnInit {
           this.addChart(around);
 
           this.imgUrl = environment.bucket.downloadUrl + this.Data['I-image'];
+          this.subImgUrl[1] = environment.bucket.downloadUrl + this.Data['I-subImage1'];
+          this.subImgUrl[2] = environment.bucket.downloadUrl + this.Data['I-subImage2'];
+          this.subImgUrl[3] = environment.bucket.downloadUrl + this.Data['I-subImage3'];
+          this.subImgUrl[4] = environment.bucket.downloadUrl + this.Data['I-subImage4'];
+          this.subImgUrl[5] = environment.bucket.downloadUrl + this.Data['I-subImage5'];
+          this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['I-subImage1'];
+
+          console.log('data: ', this.Data);
         }
       }
     );
-    console.log(this.Data);
+  }
+
+  selectImg(num) {
+    this.selectedImgUrl = this.subImgUrl[num];
+    this.selectedNum = num;
   }
 
   addChart(record) {
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
       new PostItem(ChartComponent, record));
+  }
+
+  addComment() {
+    console.log(this.auth.getUserInfo());
   }
 }
 
