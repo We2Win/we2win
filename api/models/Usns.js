@@ -2,10 +2,10 @@
 
 module.exports = (sequelize, DataTypes) => {
     var data = sequelize.define('Usns', {
-        'ID': {
-            type: DataTypes.STRING(15),
-            allowNull: false,
-        },
+        // 'ID': {
+        //     type: DataTypes.STRING(15),
+        //     allowNull: false,
+        // },
         'number': {
             type: DataTypes.INTEGER,
             allowNull: false,
