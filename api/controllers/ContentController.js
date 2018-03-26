@@ -70,7 +70,7 @@ module.exports.get = get;
 const getCount = async function(req, res) {
   res.setHeader('Content-Type', 'application/json');
   
-  Content.findAll({
+  Info.findAll({
     attributes: {
       include: [[Sequelize.fn("COUNT", Sequelize.col("User.ID")), "sensorCount"]]
     },
