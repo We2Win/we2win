@@ -153,6 +153,22 @@ module.exports = (sequelize, DataTypes) => {
     'S-subImage5': {
       type: DataTypes.STRING,
     },
+    'S-data-click': {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    'S-data-reply': {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    'S-data-sns': {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    'S-data-scrap': {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    }
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',

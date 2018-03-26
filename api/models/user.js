@@ -86,6 +86,12 @@ module.exports = (sequelize, DataTypes) => {
     collate: 'utf8_unicode_ci',
   });
 
+  Model.associate = function (models) {
+    // Model.hasMany(models.Uclick);
+    // Model.hasMany(models.Ureply);
+    // Model.hasMany(models.Uscrap);
+    // Model.hasMany(models.Usns);
+  };
   // Model.associate = function (models) {
   //   // this.Companies = this.belongsToMany(models.Company, {
   //   //   through: 'UserCompany'

@@ -6,7 +6,7 @@
     </div>
     <div>
       <h1>{{Data['I-title']}}</h1>
-      <p>{{Data['I-summary']}}</p>
+      <p [innerHtml]="Data['I-summary']"></p>
       <div>
         <label>분양모집일</label>
         <p>{{Data['I-open-start'].slice(0,10)}} - {{Data['I-open-end'].slice(0,10)}}</p>
@@ -30,7 +30,7 @@
     <article>
       <div class="row">
         <label>현장 리포트</label>
-        <p>{{Data[['I-report']]}}</p>
+        <p [innerHtml]="Data['I-report']"></p>
       </div>
     </article>
     <div class="subGroup">

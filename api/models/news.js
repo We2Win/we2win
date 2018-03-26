@@ -39,6 +39,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    'N-data-click': {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    'N-data-reply': {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    'N-data-sns': {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    'N-data-scrap': {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    }
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',

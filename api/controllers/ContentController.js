@@ -67,6 +67,23 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
+const getDashboard = async function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Content.findAll({
+    where: {
+      Title: 'hello'
+    }
+  })
+    .then((content) => {
+      // console.log('Content: ', content.dataValues);
+      return ReS(res, {
+        content: content.dataValues
+      })
+    });
+}
+module.exports.getDashboard = getDashboard;
+
 const getInfoList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 

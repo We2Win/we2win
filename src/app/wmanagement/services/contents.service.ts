@@ -19,6 +19,9 @@ export class ContentsService {
   getById(id: string) {
     return this.http.get('/api');
   }
+  getDashboardData() {
+    return this.http.get(environment.apiUrl + '/mng/dashbard');
+  }
   create(_data: any) {
     // const bodyString = JSON.stringify(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });

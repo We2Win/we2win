@@ -19,9 +19,9 @@ import { environment } from '../../../../../environments/environment';
 
 // declare var Kakao: any;
 // this.Kakao.import('http://developers.kakao.com/sdk/js/kakao.min.js');
-  // .then(xJS => {
-  //   // xJS.open();
-  // });
+// .then(xJS => {
+//   // xJS.open();
+// });
 
 // declare const Kakao;
 
@@ -41,6 +41,27 @@ export class FormComponent implements OnInit {
 
   loginType = '';
   ULevel;
+  ULevelName = ['GUEST', 'STANDARD', 'PREMIUM', 'PLATINUM'];
+  ULevelPrice = [0, 0, 5000, 10000];
+  // ULevelInfo = [
+  //   {
+  //     'name': 'GUEST',
+  //   },
+  //   {
+  //     'name': 'STANDARD',
+  //     'price': 0,
+  //   },
+  //   {
+  //     'name': 'PREMIUM',
+  //     'price': 5000,
+  //     'U-level-start': new Date(),
+  //   },
+  //   {
+  //     'name': 'PLATINUM',
+  //     'price': 10000,
+  //     'U-level-start': new Date(),
+  //   }
+  // ];
   checkId: boolean;
 
   @ViewChild('ID') ID;
@@ -63,9 +84,9 @@ export class FormComponent implements OnInit {
     private elementRef: ElementRef
   ) {
     this.loadAPI = new Promise((resolve) => {
-        this.loadScript();
-        resolve(true);
-      });
+      this.loadScript();
+      resolve(true);
+    });
   }
 
   public loadScript() {
@@ -131,6 +152,7 @@ export class FormComponent implements OnInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     // Naver.init();
     // Kakao.init('b560ff0ff0ea7935612a6555fb53c516');
+    window['IMP'].init('imp78270348');
   }
 
   onSubmit() {
@@ -158,38 +180,78 @@ export class FormComponent implements OnInit {
     // this.setSelectValue();
     // this.user = this.signupForm.value;
     this.user = {
-      ID: this.signupForm.controls['ID'].value,
-      Password: this.signupForm.controls['Password'].value,
-      PasswordV: this.signupForm.controls['PasswordV'].value,
-      Name: this.signupForm.controls['Name'].value,
-      CP: this.signupForm.controls['CP'].value,
-      ULevel: 1,
-      Email: this.signupForm.controls['Email'].value,
-      Hope: this.signupForm.controls['Hope'].value,
-      Site: this.signupForm.controls['Site'].value,
-      Location1: this.Location1.selected,
-      Location2: this.Location2.selected,
-      Amount: this.Amount.selected,
-      HA: this.signupForm.controls['HA'].value,
-      HP: this.signupForm.controls['HP'].value,
-      OA: this.signupForm.controls['OA'].value,
-      OP: this.signupForm.controls['OP'].value,
-      InfoA: this.signupForm.controls['InfoA'].value,
+      'ID': this.signupForm.controls['ID'].value,
+      'Password': this.signupForm.controls['Password'].value,
+      'Name': this.signupForm.controls['Name'].value,
+      'CP': this.signupForm.controls['CP'].value,
+      'U-level': this.ULevel,
+      'Email': this.signupForm.controls['Email'].value,
+      'Hope': this.signupForm.controls['Hope'].value,
+      'Site': this.signupForm.controls['Site'].value,
+      'Location1': this.Location1.selected,
+      'Location2': this.Location2.selected,
+      'Amount': this.Amount.selected,
+      'HA': this.signupForm.controls['HA'].value,
+      'HP': this.signupForm.controls['HP'].value,
+      'OA': this.signupForm.controls['OA'].value,
+      'OP': this.signupForm.controls['OP'].value,
+      'Info-a': this.signupForm.controls['InfoA'].value,
       // tslint:disable-next-line:radix
-      AAmount: parseInt(this.AAmount.selected),
+      'A-amount': parseInt(this.AAmount.selected),
     };
     console.log(this.user);
+
+    if (this.user['U-level'] === 1) {
+      this.createUser(this.user);
+    } else {
+      this.payFee(this.user);
+    }
+  }
+
+  createUser(userInfo) {
     this.userService.create(this.user)
       .subscribe(
       data => {
-        this.router.navigate(['signup', 'done']);
         console.log('data: ', data);
+        this.router.navigate(['signup', 'done']);
       },
       error => {
         alert('회원 가입중 문제가 발생했습니다.');
         console.log('error: ', error);
       }
       );
+  }
+
+  payFee(userInfo) {
+    // IMP.request_pay(param, callback) 호출
+    window['IMP'].request_pay({ // param
+      pg: 'kcp',
+      pay_method: 'card',
+      merchant_uid: 'WE' + new Date(),
+      name: '회원등급' + this.ULevelName[userInfo['U-level']],
+      amount: this.ULevelPrice[userInfo['U-level']],
+      buyer_email: userInfo['Email'],
+      buyer_name: userInfo['Name'],
+      buyer_tel: userInfo['CP'],
+      buyer_addr: userInfo['Address'],
+      // buyer_postcode: userInfo.
+    }, (rsp) => { // callback
+      if (rsp.success) {
+        // alert('success!');
+        const now = new Date();
+        let current;
+        if (now.getMonth() === 11) {
+          current = new Date(now.getFullYear() + 1, 0, 1);
+        } else {
+          current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+        }
+        userInfo['U-level-start'] = now;
+        userInfo['U-level-end'] = current;
+      } else {
+        alert('failed...');
+        console.log(rsp);
+      }
+    });
   }
 
   setSelectValue() {
@@ -327,7 +389,7 @@ export class FormComponent implements OnInit {
   setHyphen(input) {
     if (input === 'CP') {
       let str = this.signupForm.controls['CP'].value.replace(/\-/g, '');
-    console.log(str);
+      console.log(str);
       if (str.length === 11) {
         str = str.substring(0, 3) + '-' + str.substring(3, 7) + '-' + str.substring(7, str.length);
       } else if (str.length === 10) {

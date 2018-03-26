@@ -57,4 +57,5 @@ router.post('/login', UserController.login); //login
 router.post('/hasid', UserController.hasId);
 
 router.get('/mng/users', UserController.get);
+router.get('/mng/dashboard', ContentController.getDashboard);
 module.exports = router;
