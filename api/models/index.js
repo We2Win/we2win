@@ -33,11 +33,21 @@ fs
     db[name] = model;
   });
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+// Object.keys(db).forEach(modelName => {
+//   if (db[modelName].associate) {
+//     db[modelName].associate(db);
+//   }
+// });
+db['Comments'].belongsTo(db['Info']);
+db['Comments'].belongsTo(db['Law']);
+db['Comments'].belongsTo(db['Meeting']);
+db['Comments'].belongsTo(db['News']);
+db['Comments'].belongsTo(db['Site']);
+db['Info'].hasMany(db['Comments']);
+db['Law'].hasMany(db['Comments']);
+db['Meeting'].hasMany(db['Comments']);
+db['News'].hasMany(db['Comments']);
+db['Site'].hasMany(db['Comments']);
 
 // Export Sequelize
 db.sequelize = sequelize;
