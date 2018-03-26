@@ -7,12 +7,12 @@ module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Employer', {
     'post-id': {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false
     },
     'R-id': {
       type: DataTypes.INTEGER(10),
+      primaryKey: true,
       autoIncrement: true,
     },
     'R-part-name': {

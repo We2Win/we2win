@@ -4,12 +4,12 @@ module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('News', {
     'post-id': {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false
     },
     'N-id': {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       autoIncrement: true,
     },
     'N-level': {

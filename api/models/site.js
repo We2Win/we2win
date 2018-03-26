@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Site', {
     'post-id': {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false
     },
@@ -17,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     'S-id': {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       autoIncrement: true,
     },
     'S-level': {
