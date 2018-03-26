@@ -20,7 +20,7 @@ router.post('/users', UserController.create); //create
 
 router.put('/users', passport.authenticate('jwt', { session: false }), UserController.update); //update
 
-router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
+// router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
 router.post('/users/login', UserController.login);
 
 router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
@@ -57,6 +57,8 @@ router.post('/login', UserController.login); //login
 router.post('/hasid', UserController.hasId);
 
 router.get('/mng/users', UserController.get);
+router.delete('/mng/users', UserController.remove); //delete
+
 // router.get('/mng/dashboard', ContentController.getDashboard);
 router.get('/mng/contents/count', ContentController.getCount);
 

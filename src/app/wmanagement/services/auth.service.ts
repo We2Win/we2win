@@ -25,4 +25,15 @@ export class AuthService {
     // console.log(this.getToken());
     return this.jwtHelper.decodeToken(this.getToken());
   }
+
+  // 토큰 유효성 검증
+  isAuthenticated(): boolean {
+    const token = this.getToken();
+    return token ? !this.isTokenExpired(token) : false;
+  }
+
+  isTokenExpired(token: string) {
+    return this.jwtHelper.isTokenExpired(token);
+  }
+
 }

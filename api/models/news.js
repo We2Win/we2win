@@ -2,6 +2,12 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('News', {
+    'post-id': {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false
+    },
     'N-id': {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -61,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   
   Records.associate = function (models) {
-    Records.hasMany(models.Nreply);
+    Records.hasMany(models.Reply);
   };
 
   Records.prototype.toWeb = function () {

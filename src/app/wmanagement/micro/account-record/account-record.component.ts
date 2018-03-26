@@ -11,41 +11,6 @@ import { environment } from '../../../../environments/environment';
 })
 export class AccountRecordComponent implements OnInit {
   @Input('record') record;
-  // record: object = {
-  //   'ID': '-',
-  //   'Name': '-',
-  //   'Email': '-',
-  //   'ULevel': '-',
-  //   'UPoint': '-',
-  //   'ULevelStart': '',
-  //   'ULevelEnd': ''
-  // };
-  // recordData: Array<Object> = [
-  //   {
-  //     'value': 'Christian_Red',
-  //     'type': 'id'
-  //   },
-  //   {
-  //     'value': '이유정',
-  //     'type': 'plain'
-  //   },
-  //   {
-  //     'value': 'Christian_red@hanmail.net',
-  //     'type': 'plain'
-  //   },
-  //   {
-  //     'value': 'PLATINUM',
-  //     'type': 'level'
-  //   },
-  //   {
-  //     'value': '999,999',
-  //     'type': 'point'
-  //   },
-  //   {
-  //     'value': '2017.12.31 ~ 2018.12.30',
-  //     'type': 'plain'
-  //   }
-  // ];
 
   constructor(
     private userService: UserService

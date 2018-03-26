@@ -42,9 +42,9 @@ const get = async function (req, res) {
   console.log('body: ', JSON.stringify(body));
 
   [err, users] = await to(authService.getUserList(body));
-  
+
   if (err) return ReE(res, err, 422);
-  
+
   return ReS(res, {
     message: 'Successfully loading user lists.',
     list: JSON.stringify(users),
@@ -55,30 +55,46 @@ const get = async function (req, res) {
 module.exports.get = get;
 
 const update = async function (req, res) {
-    let err, user, data
-    user = req.user;
-    data = req.body;
-    user.set(data);
+  let err, user, data
+  user = req.user;
+  data = req.body;
+  user.set(data);
 
-    [err, user] = await to(user.save());
-    if (err) {
-        if (err.message == 'Validation error') err = 'The email address or phone number is already in use';
-        return ReE(res, err);
-    }
-    return ReS(res, { message: 'Updated User: ' + user.email });
+  [err, user] = await to(user.save());
+  if (err) {
+    if (err.message == 'Validation error') err = 'The email address or phone number is already in use';
+    return ReE(res, err);
+  }
+  return ReS(res, {
+    message: 'Updated User: ' + user.email
+  });
 }
 module.exports.update = update;
 
 const remove = async function (req, res) {
-  let user, err;
-  user = req.user;
+  // let user, err;
+  // user = req.user;
 
-  [err, user] = await to(user.destroy());
-  if (err) return ReE(res, 'error occured trying to delete user');
+  // [err, user] = await to(user.destroy());
+  // if (err) return ReE(res, 'error occured trying to delete user');
 
-  return ReS(res, {
-    message: 'Deleted User'
-  }, 204);
+  // return ReS(res, {
+  //   message: 'Deleted User'
+  // }, 204);
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.params.id) {
+    User.findOne({
+        where: {
+          'ID': req.params.id
+        }
+      })
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
+  }
 }
 module.exports.remove = remove;
 

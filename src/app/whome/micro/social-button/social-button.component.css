@@ -27,7 +27,7 @@ button {
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 1.5em;
-  margin: -.25em 10% -.25em 27%;
+  margin: -.25em 10% -.25em 15%;
 }
 
 .naver:hover, .naver:focus {
@@ -42,13 +42,13 @@ button {
 .google:before {
   content: '';
   display: inline-block;
-  width: 6em;
+  width: 1.5em;
   height: 1.5em;
-  background: url('../../../../assets/img/logo_white.png');
+  background: url('../../../../assets/img/logo_white_simple.png');
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: 6em 1.5em;
-  margin: -0.1em 5% -0.4em 18%;
+  background-size: 1.5em 1.5em;
+  margin: -.25em 10% -.25em 15%;
 }
 
 .google:hover, .google:focus {
@@ -69,7 +69,7 @@ button {
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 1.5em;
-  margin: -.25em 10% -.25em 27%;
+  margin: -.25em 10% -.25em 15%;
 }
 
 .kakao:hover, .kakao:focus {

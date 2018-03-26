@@ -21,11 +21,11 @@ export class ContentsService {
 
   getReportList(id?: any) {
     if (id) {
-      console.log('with id');
+      // console.log('with id');
       return this.http.get(environment.apiUrl + '/contents/report/' + id)
         .map((res: any) => res);
     } else {
-      console.log('without id');
+      // console.log('without id');
       return this.http.get(environment.apiUrl + '/contents/report')
         .map((res: any) => res);
     }
@@ -33,11 +33,11 @@ export class ContentsService {
 
   getNewsList(id?: any) {
     if (id) {
-      console.log('with id');
+      // console.log('with id');
       return this.http.get(environment.apiUrl + '/contents/news/' + id)
         .map((res: any) => res);
     } else {
-      console.log('without id');
+      // console.log('without id');
       return this.http.get(environment.apiUrl + '/contents/news')
         .map((res: any) => res);
     }

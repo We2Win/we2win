@@ -19,11 +19,19 @@
   display: flex;
 }
 
+#composition span {
+  flex: 1;
+}
+
+#composition span + span {
+  text-align: right;
+}
+
 #composition progress[value] {
-  width: 100%;
+  width: calc(100% - 2em);
   height: 1em;
   border: none;
-  margin: 0;
+  margin: 0 1em;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

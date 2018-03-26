@@ -17,6 +17,9 @@ import { Router } from '@angular/router';
 export class AccountInfoComponent implements OnInit {
   isLogin = false;
   showProfile = false;
+  showMail = false;
+  showNotification = false;
+
   user = {
     id: '-',
     name: '이름없음',

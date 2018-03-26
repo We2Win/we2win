@@ -12,11 +12,14 @@ import { AnalysisContentsComponent } from './pages/analysis/analysis-contents/an
 import { SettingsComponent } from './pages/settings/settings.component';
 import { NotificationComponent } from './pages/notification/notification.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { AuthGuard } from './guards/auth.guard';
+import { JwtHelper } from 'angular2-jwt';
 
 const routes: Routes = [
   {
     path: '',
     component: WmanagementComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -114,6 +117,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AuthGuard,
+    JwtHelper
+  ]
 })
 export class WmanagementRoutingModule { }

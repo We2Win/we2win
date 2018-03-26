@@ -52,7 +52,6 @@ export class AccountComponent implements OnInit, AfterViewInit {
       this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
         new PostItem(AccountRecordComponent, records[record]));
     }
-
   }
 
   ngAfterViewInit() {

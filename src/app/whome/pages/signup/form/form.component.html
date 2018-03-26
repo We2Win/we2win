@@ -27,7 +27,7 @@
       <article>
         <div class="form-group row">
           <label>가입 정보</label>
-          <app-social-button [type]="'google'" (click)="setLoginType('google')">로그인</app-social-button>
+          <app-social-button [type]="'google'" (click)="setLoginType('google')">We2Win 로그인</app-social-button>
           <!-- <div id="naverIdLogin"></div> -->
           <app-social-button [type]="'naver'" (click)="setLoginType('naverSample')">네이버 로그인</app-social-button>
           <app-social-button [type]="'kakao'" (click)="loginWithKakao()">카카오 로그인</app-social-button>
@@ -234,13 +234,13 @@
         <article>
           <div class="form-group row">
             <label>집주소</label>
-            <input type="text" id="s_postcode" placeholder="우편번호">
+            <input type="text" [placeholder]="zonecode" (click)="execDaumPostcode()">
             <app-button type="button" (click)="execDaumPostcode()">우편번호 찾기</app-button>
           </div>
           <div class="form-group row">
             <label></label>
-            <input class="form-control" type="text" formControlName="HA" placeholder="도로명주소">
-            <input class="form-control" type="text" placeholder="지번주소">
+            <input class="form-control" type="text" formControlName="HA" [placeholder]="fullRoadAddr">
+            <input class="form-control" type="text" [placeholder]="jibunAddress">
           </div>
           <div class="form-group row">
             <span id="guide" style="color:#999"></span>

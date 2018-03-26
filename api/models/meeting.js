@@ -5,6 +5,12 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
   var Records = sequelize.define('Meeting', {
+    'post-id': {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false
+    },
     'M-id': {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -92,7 +98,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Records.associate = function (models) {
-    Records.hasMany(models.Mreply);
+    Records.hasMany(models.Reply);
   };
 
   Records.prototype.toWeb = function () {

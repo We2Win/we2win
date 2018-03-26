@@ -7,6 +7,7 @@ import { Chart } from 'chart.js';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
+  public chartObject;
   @Input() type: string;
   @Input() num: string;
 
@@ -35,7 +36,8 @@ export class ChartComponent implements OnInit {
         type: 'pie',
         data: {
           datasets: [{
-            data: [54, 24, 22],
+            data: [0, 0, 0],
+            // data: [54, 24, 22],
           }],
 
           // These labels appear in the legend and in the tooltips when hovering different arcs
@@ -50,7 +52,7 @@ export class ChartComponent implements OnInit {
         type: 'pie',
         data: {
           datasets: [{
-            data: [100, 22, 22, 22, 5]
+            // data: [100, 22, 22, 22, 5]
           }],
 
           labels: [
@@ -231,7 +233,7 @@ export class ChartComponent implements OnInit {
       [fillPlatinum, fillPremium, fillStandard];
 
     try {
-      const chart = new Chart(canvas, this.chartData[this.type][this.num]);
+      this.chartObject = new Chart(canvas, this.chartData[this.type][this.num]);
     } catch (e) {
 
     }

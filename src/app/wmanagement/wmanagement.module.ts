@@ -34,6 +34,7 @@ import { ContentsService } from './services/contents.service';
 import { UploadFileService } from './services/upload-file.service';
 import { MypostDirective } from './directives/mypost.directive';
 import { QuillEditorModule } from 'ngx-quill-editor';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   imports: [
@@ -73,12 +74,14 @@ import { QuillEditorModule } from 'ngx-quill-editor';
     MypostDirective,
   ],
   entryComponents: [
-    AccountRecordComponent
+    AccountRecordComponent,
+    AnalysisUserRecordComponent
   ],
   providers: [
     InfoService,
     ContentsService,
     UploadFileService,
+    AuthService
   ]
 })
 export class WmanagementModule { }

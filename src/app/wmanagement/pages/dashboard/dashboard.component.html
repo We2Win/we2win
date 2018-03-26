@@ -3,49 +3,49 @@
     <article>
       <header>
         <span id="title">회원 정보</span>
-        <span id="date">2017. 12</span>
+        <span id="date">{{ date.getFullYear() + '. ' + (date.getMonth()+1) }}</span>
       </header>
-      <app-chart id="infoPie" [type]="'dashboard'" [num]="'0'"></app-chart>
+      <app-chart #infoPie id="infoPie" [type]="'dashboard'" [num]="'0'"></app-chart>
     </article>
     <article>
       <header>
         <span id="title">컨텐츠 구성</span>
-        <span id="date">2017. 12</span>
+        <span id="date">{{ date.getFullYear() + '. ' + (date.getMonth()+1) }}</span>
       </header>
       <div id="composition">
         <li>
           <span id="title">전체 컨텐츠 개수</span>
-          <span>3000개</span>
+          <span>0개</span>
         </li>
-        <progress value="100" max="100"></progress>
+        <progress value="0" max="100"></progress>
         <li>
           <span id="title">부동산 정보</span>
-          <span>1000개</span>
+          <span>0개</span>
         </li>
-        <progress value="20" max="100"></progress>
+        <progress value="0" max="100"></progress>
         <li>
           <span id="title">분양 현황</span>
-          <span>500개</span>
+          <span>0개</span>
         </li>
-        <progress value="10" max="100"></progress>
+        <progress value="0" max="100"></progress>
         <li>
           <span id="title">구인 구직</span>
-          <span>1200개</span>
+          <span>0개</span>
         </li>
-        <progress value="25" max="100"></progress>
+        <progress value="0" max="100"></progress>
         <li>
           <span id="title">오프라인 모임</span>
-          <span>300개</span>
+          <span>0개</span>
         </li>
-        <progress value="7" max="100"></progress>
+        <progress value="0" max="100"></progress>
       </div>
     </article>
   </div>
   <article>
     <header>
       <span id="title">사용자 활동</span>
-      <span id="date">2017. 12</span>
+      <span id="date">{{ date.getFullYear() + '. ' + (date.getMonth()+1) }}</span>
     </header>
-    <app-chart [type]="'dashboard'" [num]="'2'"></app-chart>
+    <app-chart #infoBar id="infoBar" [type]="'dashboard'" [num]="'2'"></app-chart>
   </article>
 </section>

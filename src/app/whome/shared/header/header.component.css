@@ -31,54 +31,7 @@ section {
   flex-direction: column;
 }
 
-#topBar {
-  height: 0.7em;
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  text-align: right;
-}
 
-#iconSet {
-  flex: auto;
-}
-
-#iconSet button {
-  width: 1.2em;
-  height: 1.2em;
-  border: none;
-  opacity: 0.6;
-  margin: 0 0.5em;
-  transition: opacity 0.5s;
-  outline: none;
-  cursor: pointer;
-}
-
-#iconSet button:hover {
-  opacity: 1;
-}
-
-#iconSet button#mail {
-  background: url('/assets/img/icon_mail.png');
-  background-size: 1.2em auto;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-#iconSet button#dashboard {
-  background: url('/assets/img/icon_dashboard.png');
-  background-size: 1.2em auto;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-#iconSet button#notification {
-  background: url('/assets/img/icon_notification.png');
-  background-size: auto 1.2em;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 #mainMenu, .subMenu {
   display: flex;
