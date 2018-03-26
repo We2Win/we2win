@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Records.associate = function (models) {
-    Records.hasMany(models.Reply);
+    Records.hasMany(models.Comments);
   };
 
   Records.prototype.toWeb = function () {
