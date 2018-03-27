@@ -64,6 +64,7 @@ import { LawCardComponent } from './micro/law-card/law-card.component';
 import { MypostDirective } from './directives/mypost.directive';
 import { FbShareService } from './services/fb-share.service';
 import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
+import { RankingpostDirective } from './directives/rankingpost.directive';
 
 
 @NgModule({
@@ -130,6 +131,7 @@ import { SiteDetailComponent } from './pages/site/site-detail/site-detail.compon
     LawCardComponent,
     MypostDirective,
     SiteDetailComponent,
+    RankingpostDirective,
   ],
   entryComponents: [
     InfoCardComponent,

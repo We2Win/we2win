@@ -55,13 +55,14 @@ export class LoginComponent implements OnInit {
       ID: new FormControl('', [Validators.required]),
       Password: new FormControl('', [Validators.required]),
     });
-
+    window['Kakao'].init('b560ff0ff0ea7935612a6555fb53c516');
   }
 
   setLoginType(loginType) {
     this.loginType = loginType;
     if (this.loginType === 'naver') {
-      alert('네이버 로그인 팝업');
+      // alert('네이버 로그인 팝업');
+      
       this.router.navigate(['/']);
     } else if (this.loginType === 'kakao') {
       alert('카카오 로그인 팝업');

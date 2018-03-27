@@ -4,6 +4,7 @@ import { PostingService } from '../../../services/posting.service';
 import { MypostDirective } from '../../../directives/mypost.directive';
 import { PostItem } from '../../../models/post-item';
 import { InfoCardComponent } from '../../../micro/info-card/info-card.component';
+import { RankingpostDirective } from '../../../directives/rankingpost.directive';
 
 @Component({
   selector: 'app-info-main',
@@ -13,12 +14,14 @@ import { InfoCardComponent } from '../../../micro/info-card/info-card.component'
 })
 
 export class InfoMainComponent implements OnInit {
-  List: Array<object>;
-  recentRecords;
-  weeklyRecords;
+  WeeklyList: Array<object>;
+  RankingList: Array<object>;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
+
+  @ViewChild(RankingpostDirective)
+  private rankingpostDirective: RankingpostDirective;
 
   postItems: PostItem[];
 
@@ -32,18 +35,37 @@ export class InfoMainComponent implements OnInit {
       data => {
         if (data.list) {
           // console.log(data);
-          this.List = JSON.parse(data.list);
-          this.addRecord(this.List);
+          this.WeeklyList = JSON.parse(data.list);
+          this.addNewlyRecord(this.WeeklyList);
+        }
+      }
+    );
+    this.contentsService.getReportList().subscribe(
+      data => {
+        if (data.list) {
+          this.RankingList = JSON.parse(data.list);
+          this.addRankingRecord(this.RankingList);
         }
       }
     );
   }
 
-  addRecord(records) {
+  addNewlyRecord(records) {
     // tslint:disable-next-line:forin
     for (const record in records) {
       // console.log('record: ', records[record]);
       this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+        new PostItem(InfoCardComponent, records[record]));
+    }
+  }
+
+  addRankingRecord(records) {
+    let count = ['first', 'second', 'third'];
+    // tslint:disable-next-line:forin
+    for (const record in records) {
+      records[record]['rank'] = count[record];
+      // console.log('record: ', records[record]);
+      this.postingService.loadComponent(this.rankingpostDirective.viewContainerRef,
         new PostItem(InfoCardComponent, records[record]));
     }
   }

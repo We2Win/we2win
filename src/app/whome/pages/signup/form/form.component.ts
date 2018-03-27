@@ -325,16 +325,16 @@ export class FormComponent implements OnInit {
   }
 
   loginWithKakao() {
-    // console.log('initiated');
-    // // 로그인 창을 띄웁니다.
-    // Kakao.Auth.login({
-    //   success: function (authObj) {
-    //     alert(JSON.stringify(authObj));
-    //   },
-    //   fail: function (err) {
-    //     alert(JSON.stringify(err));
-    //   }
-    // });
+    console.log('initiated');
+    // 로그인 창을 띄웁니다.
+    window['Kakao'].Auth.login({
+      success: function (authObj) {
+        alert(JSON.stringify(authObj));
+      },
+      fail: function (err) {
+        alert(JSON.stringify(err));
+      }
+    });
   }
 
   setLevel(level) {
