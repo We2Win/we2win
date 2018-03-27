@@ -1,7 +1,7 @@
-<div class="card" [routerLink]="'/site/site-detail/'+record['S-id']">
+<div class="card" [ngClass]="record['rank']" [routerLink]="'/site/site-detail/'+record['S-id']">
   <div id="levelBar">{{ record['S-level'] }}</div>
   <div id="imgFrame">
-    <img src="/assets/img/site_sample.png" alt="부동산 사진">
+    <img [src]="imageUrl" alt="부동산 사진">
   </div>
   <div id="buttonBar">
     <img id="bookmark" (click)="bookmark(); $event.stopPropagation();" src="/assets/img/icon_bookmark.png" />

@@ -18,6 +18,7 @@ import { AnalysisUserRecordComponent } from '../../../micro/analysis-user-record
 export class AnalysisUserComponent implements OnInit {
   List: Array<object>;
   total: number;
+  date = new Date();
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;

@@ -65,6 +65,7 @@ import { MypostDirective } from './directives/mypost.directive';
 import { FbShareService } from './services/fb-share.service';
 import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
 import { RankingpostDirective } from './directives/rankingpost.directive';
+import { SearchComponent } from './pages/search/search.component';
 
 
 @NgModule({
@@ -132,6 +133,7 @@ import { RankingpostDirective } from './directives/rankingpost.directive';
     MypostDirective,
     SiteDetailComponent,
     RankingpostDirective,
+    SearchComponent,
   ],
   entryComponents: [
     InfoCardComponent,

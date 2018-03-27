@@ -190,6 +190,96 @@ export class ChartComponent implements OnInit {
         },
         options: this.optionA,
       },
+      {
+        type: 'line',
+        data: {
+          datasets: [
+            {
+              data: ['3.20', '8.10', '7.10', '9.90'],
+              backgroundColor: '#D4805D33',
+            },
+            {
+              data: ['7.00', '3.20', '4.50', '3.00']
+            },
+            {
+              data: ['1.00', '2.00', '1.20', '3.00']
+            }
+          ],
+        },
+        options: this.optionA,
+      },
+      {
+        type: 'line',
+        data: {
+          datasets: [
+            {
+              data: ['3.20', '8.10', '7.10', '9.90'],
+              backgroundColor: '#D4805D33',
+            },
+            {
+              data: ['7.00', '3.20', '4.50', '3.00']
+            },
+            {
+              data: ['1.00', '2.00', '1.20', '3.00']
+            }
+          ],
+        },
+        options: this.optionA,
+      },
+      {
+        type: 'line',
+        data: {
+          datasets: [
+            {
+              data: ['3.20', '8.10', '7.10', '9.90'],
+              backgroundColor: '#D4805D33',
+            },
+            {
+              data: ['7.00', '3.20', '4.50', '3.00']
+            },
+            {
+              data: ['1.00', '2.00', '1.20', '3.00']
+            }
+          ],
+        },
+        options: this.optionA,
+      },
+      {
+        type: 'line',
+        data: {
+          datasets: [
+            {
+              data: ['3.20', '8.10', '7.10', '9.90'],
+              backgroundColor: '#D4805D33',
+            },
+            {
+              data: ['7.00', '3.20', '4.50', '3.00']
+            },
+            {
+              data: ['1.00', '2.00', '1.20', '3.00']
+            }
+          ],
+        },
+        options: this.optionA,
+      },
+      {
+        type: 'line',
+        data: {
+          datasets: [
+            {
+              data: ['3.20', '8.10', '7.10', '9.90'],
+              backgroundColor: '#D4805D33',
+            },
+            {
+              data: ['7.00', '3.20', '4.50', '3.00']
+            },
+            {
+              data: ['1.00', '2.00', '1.20', '3.00']
+            }
+          ],
+        },
+        options: this.optionA,
+      },
     ],
     tracking: [
       {

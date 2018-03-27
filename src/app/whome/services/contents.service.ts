@@ -48,9 +48,16 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
-  getApartmentList() {
-    return this.http.get(environment.apiUrl + '/contents/apartment')
-      .map((res: any) => res);
+  getApartmentList(id?: any) {
+    if (id) {
+      // console.log('with id');
+      return this.http.get(environment.apiUrl + '/contents/apartment/' + id)
+        .map((res: any) => res);
+    } else {
+      // console.log('without id');
+      return this.http.get(environment.apiUrl + '/contents/apartment')
+        .map((res: any) => res);
+    }
   }
   getOfficetelList() {
     return this.http.get(environment.apiUrl + '/contents/officetel')

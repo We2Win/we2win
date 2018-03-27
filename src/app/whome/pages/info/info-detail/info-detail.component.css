@@ -12,8 +12,9 @@
   margin-right: 2em;
 }
 
-#top img {
+#top #imgNav img {
   max-width: 100%;
+  height: 311px;
 }
 
 #top h1 {
