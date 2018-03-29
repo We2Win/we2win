@@ -160,15 +160,16 @@ const getList = (name) =>
     const symbolId = contentsInfo[name].symbol + '-id';
     const db = contentsInfo[name].db;
     const WHERE = {};
-    WHERE[symbolId] = req.params.id;
+    if (req.params.id) {
+      WHERE[symbolId] = req.params.id;
+    }
     if (symbolId === 'S-id') {
       WHERE['S-type'] = contentsInfo[name].type;
     }
 
     if (req.params.id) {
       db.findOne({
-          where: {
-          }
+          where: WHERE
         })
         .then((content) => {
           return ReS(res, {
@@ -176,11 +177,14 @@ const getList = (name) =>
           })
         });
     } else {
-      db.findAll({}).then((contentList) => {
-        return ReS(res, {
-          list: JSON.stringify(contentList)
+      db.findAll({
+          where: WHERE
         })
-      });
+        .then((contentList) => {
+          return ReS(res, {
+            list: JSON.stringify(contentList)
+          })
+        });
     }
   };
 module.exports.getList = getList;
@@ -203,13 +207,15 @@ const updateList = (name) =>
 
     console.log('where to update: ', symbolId, req.body.body);
 
-    db.update(req.body.body, { where: WHERE })
-    .then(result => {
-      res.json(result);
-    })
-    .catch(err => {
-      console.error(err);
-    });
+    db.update(req.body.body, {
+        where: WHERE
+      })
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   };
 module.exports.updateList = updateList;
 
