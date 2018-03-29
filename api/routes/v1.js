@@ -30,16 +30,22 @@ router.post('/contents', ContentController.create);
 router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
-router.get('/contents/report', ContentController.getInfoList);
-router.get('/contents/news', ContentController.getNewsList);
-router.get('/contents/law', ContentController.getLawList);
-router.get('/contents/apartment', ContentController.getApartmentList);
-router.get('/contents/officetel', ContentController.getOfficetelList);
-router.get('/contents/commercial', ContentController.getCommercialList);
-router.get('/contents/ground', ContentController.getGroundList);
-router.get('/contents/employee', ContentController.getEmployeeList);
-router.get('/contents/employer', ContentController.getEmployerList);
-router.get('/contents/meeting', ContentController.getMeetingList);
+const contentsList = ['report', 'news', 'law', 'apartment', 'officetel','commercial', 'ground', 'employee', 'employee', 'employer', 'meeting'];
+
+for (const contents in contentsList) {
+    let selected = contentsList[contents];
+    router.get('/contents/' + selected, ContentController.getList[selected]);
+}
+// router.get('/contents/report', ContentController.getInfoList);
+// router.get('/contents/news', ContentController.getNewsList);
+// router.get('/contents/law', ContentController.getLawList);
+// router.get('/contents/apartment', ContentController.getApartmentList);
+// router.get('/contents/officetel', ContentController.getOfficetelList);
+// router.get('/contents/commercial', ContentController.getCommercialList);
+// router.get('/contents/ground', ContentController.getGroundList);
+// router.get('/contents/employee', ContentController.getEmployeeList);
+// router.get('/contents/employer', ContentController.getEmployerList);
+// router.get('/contents/meeting', ContentController.getMeetingList);
 
 router.get('/contents/report/:id', ContentController.getInfoList);
 router.get('/contents/news/:id', ContentController.getNewsList);

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { PostingService } from '../../../services/posting.service';
 import { MypostDirective } from '../../../directives/mypost.directive';
@@ -16,6 +16,8 @@ import { RankingpostDirective } from '../../../directives/rankingpost.directive'
 export class InfoMainComponent implements OnInit {
   WeeklyList: Array<object>;
   RankingList: Array<object>;
+  @Input() recentRecords;
+  @Input() weeklyRecords;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;

@@ -82,13 +82,14 @@ export class ContentsRegistrationComponent implements OnInit {
 
   inputs: object;
 
-  selectedFiles = {
+  uploadedFiles = {
     '-image': '',
     '-subImage1': '',
     '-subImage2': '',
     '-subImage3': '',
     '-subImage4': '',
-    '-subImage5': ''
+    '-subImage5': '',
+    '-file': '',
   };
 
   subscription: Subscription;
@@ -144,8 +145,8 @@ export class ContentsRegistrationComponent implements OnInit {
     }
 
     // tslint:disable-next-line:forin
-    for (const i in this.selectedFiles) {
-      this.selectedFiles[i] = '';
+    for (const i in this.uploadedFiles) {
+      this.uploadedFiles[i] = '';
     }
     // tslint:disable-next-line:forin
     for (const i in this.inputs) {
@@ -207,7 +208,6 @@ export class ContentsRegistrationComponent implements OnInit {
       'I-around-amount4': new FormControl('', [Validators.required]),
       'I-around-amount5': new FormControl('', [Validators.required]),
       'I-report': new FormControl('', [Validators.required]),
-
       'I-image': new FormControl('', [Validators.required]),
       'I-subImage1': new FormControl(''),
       'I-subImage2': new FormControl(''),
@@ -269,7 +269,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'L-notification': new FormControl(''),
       'L-title': new FormControl('', [Validators.required]),
       'L-summary': new FormControl('', [Validators.required]),
-      'L-url': new FormControl('', [Validators.required]),
+      'L-file': new FormControl('', [Validators.required]),
       // 'L-file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
@@ -353,19 +353,20 @@ export class ContentsRegistrationComponent implements OnInit {
       '-subImage3': '파일 없음',
       '-subImage4': '파일 없음',
       '-subImage5': '파일 없음',
+      '-file': '파일 없음'
     };
   }
 
   selectFile(event, columnName) {
-    this.selectedFiles[columnName] = event.target.files.item(0);
+    this.uploadedFiles[columnName] = event.target.files.item(0);
     this.inputs[columnName] = '파일 없음';
 
-    // console.log(this.selectedFiles);
+    // console.log(this.uploadedFiles);
   }
 
   upload(type, columnName) {
     console.log('type: ', type);
-    const file = this.selectedFiles[columnName];
+    const file = this.uploadedFiles[columnName];
 
     if (file) {
       this.uploadService.uploadFile(file, columnName);
@@ -375,10 +376,11 @@ export class ContentsRegistrationComponent implements OnInit {
         ).subscribe(
         name => {
           console.log('name: ', name);
+          console.log(this.forms[type], this.symbols[type] + columnName);
           this.forms[type].controls[this.symbols[type] + columnName].setValue(name);
           this.inputs[columnName] = name.split('/')[1];
           console.log(this.inputs);
-          this.selectedFiles[columnName] = '-done';
+          this.uploadedFiles[columnName] = '-done';
           // alert('업로드 되었습니다.');
         }
         );

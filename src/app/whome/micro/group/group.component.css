@@ -83,6 +83,7 @@
 :host /deep/ .left {
   text-align: left;
 }
+
 /* 
 :host /deep/ h2 {
   display: inline-block;
@@ -136,6 +137,7 @@
   margin: 0 0 0 1em;
   font-size: 0.9em;
 }
+
 /* 
 :host /deep/ li label {
   flex: none;
@@ -154,7 +156,8 @@
 }
 
 :host /deep/ input,
-:host /deep/ textarea {
+:host /deep/ textarea,
+:host /deep/ pre {
   height: 1.5em;
   flex: 1;
   border: 1px solid #d8d8d8;
@@ -174,6 +177,14 @@
 :host /deep/ textarea:read-only {
   outline: none;
   overflow-x: hidden;
+  overflow-y: scroll;
+  resize: none;
+}
+
+:host /deep/ pre {
+  height: 15em;
+  outline: none;
+  white-space: pre-wrap;
   overflow-y: scroll;
   resize: none;
 }

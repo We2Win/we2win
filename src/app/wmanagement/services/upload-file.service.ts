@@ -16,6 +16,7 @@ export class UploadFileService {
     '-subImage3': new Subject<any>(),
     '-subImage4': new Subject<any>(),
     '-subImage5': new Subject<any>(),
+    '-file': new Subject<any>()
   };
 
   bucket = new S3(

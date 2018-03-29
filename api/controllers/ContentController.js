@@ -71,9 +71,9 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
-const getCount = async function(req, res) {
+const getCount = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  
+
   Info.findAll({
     include: [
       // { model: }
@@ -89,14 +89,14 @@ const getCount = async function(req, res) {
 }
 module.exports.getCount = getCount;
 
-const getDashboard = async function(req, res) {
+const getDashboard = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   Content.findAll({
-    where: {
-      Title: 'hello'
-    }
-  })
+      where: {
+        Title: 'hello'
+      }
+    })
     .then((content) => {
       // console.log('Content: ', content.dataValues);
       return ReS(res, {
@@ -105,6 +105,30 @@ const getDashboard = async function(req, res) {
     });
 }
 module.exports.getDashboard = getDashboard;
+
+const getList = (name) =>
+  async function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    if (req.params.id) {
+      Info.findOne({
+          where: {
+            'I-id': req.params.id
+          }
+        })
+        .then((content) => {
+          return ReS(res, {
+            body: JSON.stringify(content)
+          })
+        });
+    } else {
+      Info.findAll({}).then((contentList) => {
+        return ReS(res, {
+          list: JSON.stringify(contentList)
+        })
+      });
+    }
+  }
 
 const getInfoList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -135,10 +159,10 @@ const getIreplyList = async function (req, res) {
 
   if (req.params.id) {
     Ireply.findOne({
-      where: {
-        'I-id': req.params.id
-      }
-    })
+        where: {
+          'I-id': req.params.id
+        }
+      })
       .then((content) => {
         return ReS(res, {
           body: JSON.stringify(content)
@@ -258,15 +282,15 @@ const getApartmentList = async function (req, res) {
 
   if (req.params.id) {
     Site.findOne({
-      where: {
-        'S-id': req.params.id
-      }
-    })
-    .then((content) => {
-      return ReS(res, {
-        body: JSON.stringify(content)
+        where: {
+          'S-id': req.params.id
+        }
       })
-    });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
   } else {
     Site.findAll({
       where: {
@@ -286,15 +310,15 @@ const getSreplyList = async function (req, res) {
 
   if (req.params.id) {
     Sreply.findOne({
-      where: {
-        'S-id': req.params.id
-      }
-    })
-    .then((content) => {
-      return ReS(res, {
-        body: JSON.stringify(content)
+        where: {
+          'S-id': req.params.id
+        }
       })
-    });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
   } else {
     Sreply.findAll({
       where: {
@@ -314,15 +338,15 @@ const getOfficetelList = async function (req, res) {
 
   if (req.params.id) {
     Site.findOne({
-      where: {
-        'S-id': req.params.id
-      }
-    })
-    .then((content) => {
-      return ReS(res, {
-        body: JSON.stringify(content)
+        where: {
+          'S-id': req.params.id
+        }
       })
-    });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
   } else {
     Site.findAll({
       where: {
@@ -342,15 +366,15 @@ const getCommercialList = async function (req, res) {
 
   if (req.params.id) {
     Site.findOne({
-      where: {
-        'S-id': req.params.id
-      }
-    })
-    .then((content) => {
-      return ReS(res, {
-        body: JSON.stringify(content)
+        where: {
+          'S-id': req.params.id
+        }
       })
-    });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
   } else {
     Site.findAll({
       where: {
@@ -370,15 +394,15 @@ const getGroundList = async function (req, res) {
 
   if (req.params.id) {
     Site.findOne({
-      where: {
-        'S-id': req.params.id
-      }
-    })
-    .then((content) => {
-      return ReS(res, {
-        body: JSON.stringify(content)
+        where: {
+          'S-id': req.params.id
+        }
       })
-    });
+      .then((content) => {
+        return ReS(res, {
+          body: JSON.stringify(content)
+        })
+      });
   } else {
     Site.findAll({
       where: {

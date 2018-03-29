@@ -19,6 +19,12 @@ export class ContentsService {
   getById(id: string) {
     return this.http.get('/api');
   }
+
+  getContentsList(type) {
+    return this.http.get(environment.apiUrl + '/contents/' + type)
+      .map((res: any) => res);
+  }
+
   getDashboardData() {
     return this.http.get(environment.apiUrl + '/mng/dashbard');
   }

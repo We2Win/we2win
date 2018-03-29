@@ -11,7 +11,13 @@ export class SelectComponent implements OnInit, OnChanges {
   @Input() isSub: boolean;
   @Input() topCategory: string;
   @Output() change = new EventEmitter();
+  @Output() contentsChange = new EventEmitter();
+
   selected: string;
+  @Input()
+  set _selected(value: string) {
+    this.selected = value;
+  }
 
   categories: Object = {
     '회원 등급': ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'],
@@ -20,7 +26,7 @@ export class SelectComponent implements OnInit, OnChanges {
     '카테고리': ['부동산 뉴스', '리포트', '법과 정책'],
     '상위 카테고리': ['부동산 정보', '분양 현장', '오프라인 모임', '구인 구직'],
     '하위 카테고리': [],
-    '컨텐츠 제목': ['이 주의 분양 핫이슈는?', '53차 경남 분양 오피스텔에 대해서 알아보자']
+    '컨텐츠 제목': []
   };
   subcategories: Object = {
     '부동산 정보': ['리포트', '부동산 뉴스', '법률 및 정책'],
@@ -63,6 +69,7 @@ export class SelectComponent implements OnInit, OnChanges {
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
       this.change.emit(this.selected);
+      this.contentsChange.emit(this.categories['컨텐츠 제목'].indexOf(this.selected));
 
       // console.log(this.selected);
 
