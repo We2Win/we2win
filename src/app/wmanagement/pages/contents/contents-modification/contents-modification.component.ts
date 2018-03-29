@@ -7,6 +7,7 @@ import { ContentsService } from '../../../services/contents.service';
 import { UploadFileService } from '../../../services/upload-file.service';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-contents-modification',
@@ -84,6 +85,13 @@ export class ContentsModificationComponent implements OnInit {
   @ViewChild('NLevel') NLevel: { selected };
   @ViewChild('LLevel') LLevel: { selected };
   @ViewChild('MLevel') MLevel: { selected };
+  levels = {
+    'I-level': this.ILevel,
+    'S-level': this.SLevel,
+    'N-level': this.NLevel,
+    'L-level': this.LLevel,
+    'M-level': this.MLevel,
+  };
 
   @ViewChild('I1') I1;
   @ViewChild('I2') I2;
@@ -157,6 +165,15 @@ export class ContentsModificationComponent implements OnInit {
 
     this.updateContents(selected);
 
+    switch (selected) {
+      case '아파트':
+      case '오피스텔':
+      case '상가/호텔':
+      case '토지':
+        this.siteForm.controls['S-type'].setValue(selected);
+        break;
+    }
+
     // tslint:disable-next-line:forin
     for (const i in this.uploadedFiles) {
       this.uploadedFiles[i] = '';
@@ -168,7 +185,6 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   updateContents(selected) {
-    console.log('updated: ', selected);
     this.contentsService.getContentsList(this.engType[selected]).subscribe(
       data => {
         const titles = [];
@@ -184,31 +200,28 @@ export class ContentsModificationComponent implements OnInit {
           this.contents.categories['컨텐츠 제목'] = [];
           this.contents.selected = '컨텐츠가 없습니다.';
         }
+        console.log('updated: ', this.loadedData);
       },
       error => {
         console.log('error loading contents');
       }
     );
-
-    switch (selected) {
-      case '아파트':
-      case '오피스텔':
-      case '상가/호텔':
-      case '토지':
-        this.siteForm.controls['S-type'].setValue(selected);
-        break;
-    }
   }
 
   onContentsChange(num) {
-    console.log('apply: ', this.loadedData[num]);
+    // console.log('apply: ', this.loadedData[num]);
     const form = this.forms[this.selectedData.type];
-
+    // const symbol = form.controls;
+    // console.log(symbol);
     // tslint:disable-next-line:forin
     for (const control in form.controls) {
-      const lastname = control.split('-')[2];
-      if ( lastname === 'start' || lastname === 'end') {
+      let lastname: any = control.split('-');
+      lastname = lastname[lastname.length - 1];
+      if (lastname === 'start' || lastname === 'end') {
         form.controls[control].setValue(this.loadedData[num][control].slice(0, 10));
+      } else if (lastname === 'level') {
+        console.log(lastname, this.levels[control].selected);
+        this.levels[control].selected = this.selectBoxData[control];
       } else {
         form.controls[control].setValue(this.loadedData[num][control]);
         this.inputs[control.slice(1)] = this.loadedData[num][control];
@@ -216,26 +229,28 @@ export class ContentsModificationComponent implements OnInit {
     }
   }
 
-  onLevelChange(type) {
-    switch (type) {
-      case 'info':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.ILevel.selected;
-        break;
-      case 'site':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.SLevel.selected;
-        break;
-      case 'news':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.NLevel.selected;
-        break;
-      case 'law':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.LLevel.selected;
-        break;
-      case 'meeting':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.MLevel.selected;
-        break;
-      default:
-        break;
-    }
+  onLevelChange(_type) {
+    const type = this.symbols[_type] + '-level';
+    this.selectBoxData[type] = this.levels[type].selected;
+    // switch (type) {
+    //   case 'info':
+    //     this.selectBoxData[this.symbols[type] + '-level'] = this[this.symbols[type] + '-level'].selected;
+    //     break;
+    //   case 'site':
+    //     this.selectBoxData[this.symbols[type] + '-level'] = this.SLevel.selected;
+    //     break;
+    //   case 'news':
+    //     this.selectBoxData[this.symbols[type] + '-level'] = this.NLevel.selected;
+    //     break;
+    //   case 'law':
+    //     this.selectBoxData[this.symbols[type] + '-level'] = this.LLevel.selected;
+    //     break;
+    //   case 'meeting':
+    //     this.selectBoxData[this.symbols[type] + '-level'] = this.MLevel.selected;
+    //     break;
+    //   default:
+    //     break;
+    // }
   }
 
   ngOnInit() {
@@ -465,7 +480,6 @@ export class ContentsModificationComponent implements OnInit {
 
     if (this.forms[this.selectedData.type].valid) {
       this.putData(this.selectedData);
-      setTimeout(this.updateContents(this.selectedData.type), 1000);
     } else {
       alert('양식이 모두 입력되지 않았습니다.');
     }
@@ -477,6 +491,7 @@ export class ContentsModificationComponent implements OnInit {
       .subscribe(
       data => {
         alert((data) ? '컨텐츠가 수정되었습니다.' : '오류가 발생했습니다.');
+        this.updateContents(this.selectedData.type);
         console.log(data);
       },
       error => {
