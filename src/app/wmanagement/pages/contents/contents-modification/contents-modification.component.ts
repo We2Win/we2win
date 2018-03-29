@@ -200,10 +200,10 @@ export class ContentsModificationComponent implements OnInit {
     const form = this.forms[this.selectedData.type];
     // tslint:disable-next-line:forin
     for (const control in form.controls) {
-      console.log(form.controls[control], control);
+      // console.log(form.controls[control], control);
       form.controls[control].setValue(this.loadedData[num][control]);
       this.inputs[control.slice(1)] = this.loadedData[num][control];
-      console.log(control.slice(1));
+      // console.log(control.slice(1));
       // this.inputs['-' + control.split['-'][1]] = 'Hello';
     }
   }
@@ -232,6 +232,7 @@ export class ContentsModificationComponent implements OnInit {
 
   ngOnInit() {
     this.infoForm = new FormGroup({
+      'I-id': new FormControl('', [Validators.required]),
       // 'I-level': new FormControl(''),
       'I-notification': new FormControl(''),
       'I-title': new FormControl('', [Validators.required]),
@@ -270,6 +271,7 @@ export class ContentsModificationComponent implements OnInit {
       'I-subImage5': new FormControl(''),
     });
     this.siteForm = new FormGroup({
+      'S-id': new FormControl('', [Validators.required]),
       'S-type': new FormControl('', [Validators.required]),
       // 'S-level': new FormControl(''),
       'S-notification': new FormControl(''),
@@ -310,6 +312,7 @@ export class ContentsModificationComponent implements OnInit {
       'S-subImage5': new FormControl(''),
     });
     this.newsForm = new FormGroup({
+      'N-id': new FormControl('', [Validators.required]),
       // 'N-level': new FormControl('', [Validators.required]),
       'N-notification': new FormControl(''),
       'N-title': new FormControl('', [Validators.required]),
@@ -320,6 +323,7 @@ export class ContentsModificationComponent implements OnInit {
       'N-analysis-description': new FormControl('', [Validators.required]),
     });
     this.lawForm = new FormGroup({
+      'L-id': new FormControl('', [Validators.required]),
       'L-notification': new FormControl(''),
       'L-title': new FormControl('', [Validators.required]),
       'L-summary': new FormControl('', [Validators.required]),
@@ -327,6 +331,7 @@ export class ContentsModificationComponent implements OnInit {
       // 'L-file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
+      'M-id': new FormControl('', [Validators.required]),
       'M-notification': new FormControl(''),
       'M-title': new FormControl('', [Validators.required]),
       'M-summary': new FormControl('', [Validators.required]),
@@ -343,6 +348,7 @@ export class ContentsModificationComponent implements OnInit {
       'M-material': new FormControl('', [Validators.required]),
     });
     this.employerForm = new FormGroup({
+      'R-id': new FormControl('', [Validators.required]),
       'R-part-name': new FormControl('', [Validators.required]),
       'R-part-description': new FormControl('', [Validators.required]),
       'R-age-start': new FormControl('', [Validators.required]),
@@ -361,6 +367,7 @@ export class ContentsModificationComponent implements OnInit {
       'R-CP': new FormControl('', [Validators.required]),
     });
     this.employeeForm = new FormGroup({
+      'E-id': new FormControl('', [Validators.required]),
       'E-name': new FormControl('', [Validators.required]),
       'E-sex': new FormControl('', [Validators.required]),
       'E-age-start': new FormControl('', [Validators.required]),
@@ -449,18 +456,18 @@ export class ContentsModificationComponent implements OnInit {
     console.log(this.selectedData);
 
     if (this.forms[this.selectedData.type].valid) {
-      this.postData(this.selectedData);
+      this.putData(this.selectedData);
     } else {
       alert('양식이 모두 입력되지 않았습니다.');
     }
   }
 
-  postData(selectedData) {
+  putData(selectedData) {
     console.log('selectedData: ', selectedData);
-    this.contentsService.create(selectedData)
+    this.contentsService.update(selectedData, this.engType[this.selectedData.type])
       .subscribe(
       data => {
-        alert((data) ? '컨텐츠가 등록되었습니다.' : '오류가 발생했습니다.');
+        alert((data) ? '컨텐츠가 수정되었습니다.' : '오류가 발생했습니다.');
         console.log(data);
       },
       error => {

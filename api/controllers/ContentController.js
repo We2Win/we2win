@@ -184,10 +184,12 @@ const updateList = (name) =>
     const symbolId = contentsInfo[name].symbol + '-id';
     const db = contentsInfo[name].db;
 
-    console.log('req.body in updateList(): ', JSON.stringify(req.body));
+    // console.log('req.body in updateList(): ', JSON.stringify(req.body));
 
     const WHERE = { where: {} };
     WHERE.where[symbolId] = req.body[symbolId];
+
+    console.log('where to update: ', symbolId, req.body[symbolId]);
 
     db.update(req.body, WHERE)
     .then(result => {

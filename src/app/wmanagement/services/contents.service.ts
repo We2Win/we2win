@@ -37,8 +37,11 @@ export class ContentsService {
     // .map((res: User) => JSON.stringify(res))
     // .catch((error: any) => Observable.throw(error.message));
   }
-  update(user: any) {
-    return this.http.put('/api', user);
+  update(_data: any, type: string) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.put(environment.apiUrl + '/contents/' + type, _data);
   }
   delete(id: string) {
     return this.http.delete('/api');
