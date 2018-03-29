@@ -153,12 +153,12 @@ const getList = (name) =>
   async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    const symbol = contentsInfo[name].symbol + '-id';
+    const symbolId = contentsInfo[name].symbol + '-id';
     const db = contentsInfo[name].db;
     if (req.params.id) {
       db.findOne({
           where: {
-            symbol: req.params.id
+            symbolId: req.params.id
           }
         })
         .then((content) => {
@@ -181,14 +181,17 @@ const updateList = (name) =>
     let err, data
     data = req.body;
 
-    const symbol = contentsInfo[name].symbol + '-id';
+    const symbolId = contentsInfo[name].symbol + '-id';
     const db = contentsInfo[name].db;
-    [err, contents] = await to(db.save());
-    if (err) {
-      return ReE(res, err);
-    }
-    return ReS(res, {
-      message: 'Updated Contents: ' + contents
+
+    console.log('req.body in updateList(): ', JSON.stringify(req.body));
+
+    db.update(req.body, { where: { symbolId: req.body[symbolId] } })
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      console.error(err);
     });
   };
 module.exports.updateList = updateList;
