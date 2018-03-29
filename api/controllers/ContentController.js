@@ -191,7 +191,7 @@ const updateList = (name) =>
 
     console.log('where to update: ', symbolId, req.body.body);
 
-    db.update(req.body, WHERE)
+    db.update(req.body.body, WHERE)
     .then(result => {
       res.json(result);
     })
