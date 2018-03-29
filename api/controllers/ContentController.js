@@ -189,7 +189,7 @@ const updateList = (name) =>
     const WHERE = { where: {} };
     WHERE.where[symbolId] = req.body[symbolId];
 
-    console.log('where to update: ', symbolId, req.body[symbolId]);
+    console.log('where to update: ', symbolId, req.body);
 
     db.update(req.body, WHERE)
     .then(result => {
