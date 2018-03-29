@@ -162,7 +162,7 @@ const getList = (name) =>
     const WHERE = {};
     WHERE[symbolId] = req.params.id;
     if (symbolId === 'S-id') {
-      WHERE['S-type'] = ;
+      WHERE['S-type'] = contentsInfo[name].type;
     }
 
     if (req.params.id) {
