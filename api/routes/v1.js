@@ -49,16 +49,16 @@ for (const contents in contentsList) {
 // router.get('/contents/employer', ContentController.getEmployerList);
 // router.get('/contents/meeting', ContentController.getMeetingList);
 
-router.get('/contents/report/:id', ContentController.getInfoList);
-router.get('/contents/news/:id', ContentController.getNewsList);
-router.get('/contents/law/:id', ContentController.getLawList);
-router.get('/contents/apartment/:id', ContentController.getApartmentList);
-router.get('/contents/officetel/:id', ContentController.getOfficetelList);
-router.get('/contents/commercial/:id', ContentController.getCommercialList);
-router.get('/contents/ground/:id', ContentController.getGroundList);
-router.get('/contents/employee/:id', ContentController.getEmployeeList);
-router.get('/contents/employer/:id', ContentController.getEmployerList);
-router.get('/contents/meeting/:id', ContentController.getMeetingList);
+// router.get('/contents/report/:id', ContentController.getInfoList);
+// router.get('/contents/news/:id', ContentController.getNewsList);
+// router.get('/contents/law/:id', ContentController.getLawList);
+// router.get('/contents/apartment/:id', ContentController.getApartmentList);
+// router.get('/contents/officetel/:id', ContentController.getOfficetelList);
+// router.get('/contents/commercial/:id', ContentController.getCommercialList);
+// router.get('/contents/ground/:id', ContentController.getGroundList);
+// router.get('/contents/employee/:id', ContentController.getEmployeeList);
+// router.get('/contents/employer/:id', ContentController.getEmployerList);
+// router.get('/contents/meeting/:id', ContentController.getMeetingList);
 
 router.post('/login', UserController.login); //login   
 
