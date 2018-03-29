@@ -128,7 +128,8 @@ const getList = (name) =>
         })
       });
     }
-  }
+  };
+module.exports.getList = getList;
 
 const getInfoList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
