@@ -186,7 +186,10 @@ const updateList = (name) =>
 
     console.log('req.body in updateList(): ', JSON.stringify(req.body));
 
-    db.update(req.body, { where: { symbolId: req.body[symbolId] } })
+    const WHERE = { where: {} };
+    WHERE.where[symbolId] = req.body[symbolId];
+
+    db.update(req.body, WHERE)
     .then(result => {
       res.json(result);
     })
