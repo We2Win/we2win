@@ -61,7 +61,7 @@ export class ContentsModificationComponent implements OnInit {
     '아파트': 'apartment',
     '오피스텔': 'officetel',
     '상가/호텔': 'commercial',
-    '토지': 'site',
+    '토지': 'ground',
     '오프라인 모임': 'meeting',
     '구인': 'employee',
     '구직': 'employer',
@@ -155,6 +155,20 @@ export class ContentsModificationComponent implements OnInit {
     this.selectedData.body = {};
     this.selectBoxData = {};
 
+    this.updateContents(selected);
+
+    // tslint:disable-next-line:forin
+    for (const i in this.uploadedFiles) {
+      this.uploadedFiles[i] = '';
+    }
+    // tslint:disable-next-line:forin
+    for (const i in this.inputs) {
+      this.inputs[i] = '파일 없음';
+    }
+  }
+
+  updateContents(selected) {
+    console.log('updated: ', selected);
     this.contentsService.getContentsList(this.engType[selected]).subscribe(
       data => {
         const titles = [];
@@ -184,27 +198,21 @@ export class ContentsModificationComponent implements OnInit {
         this.siteForm.controls['S-type'].setValue(selected);
         break;
     }
-
-    // tslint:disable-next-line:forin
-    for (const i in this.uploadedFiles) {
-      this.uploadedFiles[i] = '';
-    }
-    // tslint:disable-next-line:forin
-    for (const i in this.inputs) {
-      this.inputs[i] = '파일 없음';
-    }
   }
 
   onContentsChange(num) {
     console.log('apply: ', this.loadedData[num]);
     const form = this.forms[this.selectedData.type];
+
     // tslint:disable-next-line:forin
     for (const control in form.controls) {
-      // console.log(form.controls[control], control);
-      form.controls[control].setValue(this.loadedData[num][control]);
-      this.inputs[control.slice(1)] = this.loadedData[num][control];
-      // console.log(control.slice(1));
-      // this.inputs['-' + control.split['-'][1]] = 'Hello';
+      const lastname = control.split('-')[2];
+      if ( lastname === 'start' || lastname === 'end') {
+        form.controls[control].setValue(this.loadedData[num][control].slice(0, 10));
+      } else {
+        form.controls[control].setValue(this.loadedData[num][control]);
+        this.inputs[control.slice(1)] = this.loadedData[num][control];
+      }
     }
   }
 
@@ -457,6 +465,7 @@ export class ContentsModificationComponent implements OnInit {
 
     if (this.forms[this.selectedData.type].valid) {
       this.putData(this.selectedData);
+      setTimeout(this.updateContents(this.selectedData.type), 1000);
     } else {
       alert('양식이 모두 입력되지 않았습니다.');
     }

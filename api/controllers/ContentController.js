@@ -27,18 +27,22 @@ const contentsInfo = {
   },
   'apartment': {
     symbol: 'S',
+    type: '아파트',
     db: Site
   },
   'officetel': {
     symbol: 'S',
+    type: '오피스텔',
     db: Site
   },
   'commercial': {
     symbol: 'S',
+    type: '상가/호텔',
     db: Site
   },
   'ground': {
     symbol: 'S',
+    type: '토지',
     db: Site
   },
   'meeting': {
@@ -155,10 +159,15 @@ const getList = (name) =>
 
     const symbolId = contentsInfo[name].symbol + '-id';
     const db = contentsInfo[name].db;
+    const WHERE = {};
+    WHERE[symbolId] = req.params.id;
+    if (symbolId === 'S-id') {
+      WHERE['S-type'] = ;
+    }
+
     if (req.params.id) {
       db.findOne({
           where: {
-            symbolId: req.params.id
           }
         })
         .then((content) => {
@@ -186,12 +195,15 @@ const updateList = (name) =>
 
     // console.log('req.body in updateList(): ', JSON.stringify(req.body));
 
-    const WHERE = { where: {} };
-    WHERE.where[symbolId] = req.body.body[symbolId];
+    const WHERE = {};
+    WHERE[symbolId] = req.body.body[symbolId];
+    if (symbolId === 'S-id') {
+      WHERE['S-type'] = req.body.body['S-type'];
+    }
 
     console.log('where to update: ', symbolId, req.body.body);
 
-    db.update(req.body.body, WHERE)
+    db.update(req.body.body, { where: WHERE })
     .then(result => {
       res.json(result);
     })
