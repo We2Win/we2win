@@ -13,7 +13,7 @@ const Sequelize = require('sequelize');
 const db = require('../models/index');
 
 const contentsInfo = {
-  'info': {
+  'report': {
     symbol: 'I',
     db: Info
   },
