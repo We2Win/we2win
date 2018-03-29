@@ -12,6 +12,49 @@ const authService = require('./../services/AuthService');
 const Sequelize = require('sequelize');
 const db = require('../models/index');
 
+const contentsInfo= {
+  'info': {
+    symbol: 'I',
+    db: Info
+  },
+  'news': {
+    symbol: 'N',
+    db: News
+  },
+  'law': {
+    symbol: 'L',
+    db: Law
+  },
+  'apartment': {
+    symbol: 'S',
+    db: Site
+  },
+  'officetel': {
+    symbol: 'S',
+    db: Site
+  },
+  'commercial': {
+    symbol: 'S',
+    db: Site
+  },
+  'ground': {
+    symbol: 'S',
+    db: Site
+  },
+  'meeting': {
+    symbol: 'M',
+    db: Meeting
+  },
+  'employer': {
+    symbol: 'R',
+    db: Employer
+  },
+  'employee': {
+    symbol: 'E',
+    db: Employee
+  }
+};
+
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
@@ -110,10 +153,12 @@ const getList = (name) =>
   async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
+    const symbol = contentsInfo[name].symbol + '-id';
+    const db = contentsInfo[name].db;
     if (req.params.id) {
-      Info.findOne({
+      db.findOne({
           where: {
-            'I-id': req.params.id
+            symbol: req.params.id
           }
         })
         .then((content) => {
@@ -122,7 +167,7 @@ const getList = (name) =>
           })
         });
     } else {
-      Info.findAll({}).then((contentList) => {
+      db.findAll({}).then((contentList) => {
         return ReS(res, {
           list: JSON.stringify(contentList)
         })
