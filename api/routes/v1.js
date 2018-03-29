@@ -34,7 +34,7 @@ const contentsList = ['report', 'news', 'law', 'apartment', 'officetel','commerc
 
 for (const contents in contentsList) {
     let selected = contentsList[contents];
-    router.get('/contents/' + selected, ContentController.getList[selected]);
+    router.get('/contents/' + selected, ContentController.getList(selected));
 }
 // router.get('/contents/report', ContentController.getInfoList);
 // router.get('/contents/news', ContentController.getNewsList);
