@@ -90,15 +90,15 @@ h3 {
   box-sizing: border-box;
 }
 
-:host /deep/ .first .card:before {
+:host /deep/ .first.card:before {
   content: '1위';
 }
 
-:host /deep/ .second .card:before {
+:host /deep/ .second.card:before {
   content: '2위';
 }
 
-:host /deep/ .third .card:before {
+:host /deep/ .third.card:before {
   content: '3위';
 }
 
