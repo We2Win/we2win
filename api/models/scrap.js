@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  var model = sequelize.define('Comments', {
+  var model = sequelize.define('Scrap', {
     'id': {
       type: DataTypes.UUID,
       primaryKey: true,
