@@ -63,12 +63,13 @@ export class InfoMainComponent implements OnInit {
 
   addRankingRecord(records) {
     const count = ['first', 'second', 'third'];
-    // tslint:disable-next-line:forin
     for (const num in count) {
-      records[num]['rank'] = count[num];
-      // console.log('record: ', records[record]);
-      this.postingService.loadComponent(this.rankingpostDirective.viewContainerRef,
-        new PostItem(InfoCardComponent, records[num]));
+      if (records[num]) {
+        records[num]['rank'] = count[num];
+        // console.log('record: ', records[record]);
+        this.postingService.loadComponent(this.rankingpostDirective.viewContainerRef,
+          new PostItem(InfoCardComponent, records[num]));
+      }
     }
   }
 }

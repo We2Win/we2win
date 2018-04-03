@@ -172,7 +172,7 @@ const getList = (name) =>
           where: WHERE
         })
         .update({
-          'data-click': sequelize.literal('data-click + 1')
+          'data-click': Sequelize.literal('data-click + 1')
         })
         .then((content) => {
           return ReS(res, {
