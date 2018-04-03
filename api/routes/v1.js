@@ -27,7 +27,7 @@ router.get('/testing', (req, res) => { res.send('Testing Successful.'); });
 router.post('/testing', (req, res) => { res.send(JSON.stringify(req.body)); });
 
 router.post('/contents', ContentController.create);
-router.get('/contents', ContentController.get);
+// router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
 const contentsList = ['report', 'news', 'law', 'apartment', 'officetel','commercial', 'ground', 'employee', 'employee', 'employer', 'meeting'];
