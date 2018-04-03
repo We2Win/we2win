@@ -75,19 +75,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'M-data-click': {
+    'data-click': {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
-    'M-data-reply': {
+    'data-reply': {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    'M-data-sns': {
+    'data-sns': {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    'M-data-scrap': {
+    'data-scrap': {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     }

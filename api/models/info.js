@@ -154,19 +154,19 @@ module.exports = (sequelize, DataTypes) => {
     'I-subImage5': {
       type: DataTypes.STRING,
     },
-    'I-data-click': {
+    'data-click': {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
-    'I-data-reply': {
+    'data-reply': {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    'I-data-sns': {
+    'data-sns': {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    'I-data-scrap': {
+    'data-scrap': {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     }

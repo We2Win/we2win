@@ -156,7 +156,8 @@ const getList = (name) =>
   async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    const symbolId = contentsInfo[name].symbol + '-id';
+    const symbol = contentsInfo[name].symbol;
+    const symbolId = symbol + '-id';
     const db = contentsInfo[name].db;
     const WHERE = {};
     if (req.params.id) {
@@ -169,6 +170,9 @@ const getList = (name) =>
     if (req.params.id) {
       db.findOne({
           where: WHERE
+        })
+        .update({
+          'data-click': sequelize.literal('data-click + 1')
         })
         .then((content) => {
           return ReS(res, {

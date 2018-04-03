@@ -28,6 +28,7 @@ export class AccountRecordComponent implements OnInit {
         .subscribe(
         data => {
           console.log(data);
+          // refresh current page
           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
             this.router.navigate(['mng', 'account']));
         });

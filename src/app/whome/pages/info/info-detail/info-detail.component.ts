@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostingService } from '../../../services/posting.service';
 import { MypostDirective } from '../../../directives/mypost.directive';
 import { PostItem } from '../../../models/post-item';
@@ -25,6 +25,7 @@ export class InfoDetailComponent implements OnInit {
   selectedNum = 1;
 
   private userInfo;
+  comments = [];
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -36,7 +37,8 @@ export class InfoDetailComponent implements OnInit {
     private contentsService: ContentsService,
     private postingService: PostingService,
     private auth: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.id = this.route.params['value'].id;
   }
@@ -99,7 +101,7 @@ export class InfoDetailComponent implements OnInit {
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['I-subImage1'];
 
           console.log('data: ', this.Data);
-          console.log(this.getComments());
+          this.getComments();
         }
       }
     );
@@ -127,12 +129,24 @@ export class InfoDetailComponent implements OnInit {
       alert('댓글 내용이 없습니다.');
     } else {
       this.contentsService.addComments(body);
+
+      // refresh current page
+      const currentUrl = this.router.url + '#commentBox';
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+        this.router.navigateByUrl(currentUrl));
     }
 
   }
 
   getComments() {
-    console.log(this.contentsService.getComments(this.Data['post-id']));
+    this.contentsService.getComments(this.Data['post-id']).subscribe(
+      data => {
+        if (data.content[0]) {
+          this.comments = data.content;
+          // console.log(this.comments);
+        }
+      }
+    );
   }
 }
 

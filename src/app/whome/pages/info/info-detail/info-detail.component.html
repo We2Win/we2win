@@ -52,20 +52,22 @@
     <div class="subGroup">
       <label>현장 댓글</label>
       <article>
-        <div class="row">
-          <label></label>
-          <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-          <span>2017-12-23</span>
+        <div class="row" *ngIf="comments.length > 0">
+          <label>{{comments[0]['commenter-id']}}</label>
+          <p>{{comments[0]['contents']}}</p>
+          <span>{{comments[0]['createdAt'].slice(0,10)}}</span>
         </div>
-        <div class="row">
-          <label></label>
-          <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-          <span>2017-12-23</span>
+        <div class="row" *ngIf="comments.length > 1">
+          <label>{{comments[1]['commenter-id']}}</label>
+          <p>{{comments[1]['contents']}}</p>
+          <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
         </div>
-        <div class="row">
-          <label>{{userInfo['user_id']}}</label>
-          <input type="text" #NewComment>
-          <app-button (click)="addComment()">댓글 입력</app-button>
+        <div name="commentBox" class="row">
+          <form class="commentForm" (submit)="addComment()">
+            <label>{{userInfo['user_id']}}</label>
+            <input type="text" class="commentInput" #NewComment>
+            <app-button (click)="addComment()">댓글 입력</app-button>
+          </form>
         </div>
       </article>
     </div>
