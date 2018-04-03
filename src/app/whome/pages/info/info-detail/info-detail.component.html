@@ -63,9 +63,9 @@
           <span>2017-12-23</span>
         </div>
         <div class="row">
-          <label>Amberyi_0523</label>
+          <label>{{userInfo['user_id']}}</label>
           <input type="text" #NewComment>
-          <app-button (click)="addComment">댓글 입력</app-button>
+          <app-button (click)="addComment()">댓글 입력</app-button>
         </div>
       </article>
     </div>

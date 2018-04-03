@@ -74,7 +74,7 @@ const createContent = async function (data) {
 }
 module.exports.createContent = createContent;
 
-const createReply = async function (data) {
+const createComment = async function (data) {
     let unique_key, auth_info, err, content;
 
     console.log('createReply(): data.type: ', data.type);

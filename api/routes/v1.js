@@ -37,6 +37,8 @@ for (const contents in contentsList) {
     router.get('/contents/' + selected, ContentController.getList(selected));
     router.get('/contents/' + selected + '/:id', ContentController.getList(selected));
     router.put('/contents/' + selected, ContentController.updateList(selected));
+    router.put('/contents/', + selected + '/:id' + '/comments', ConetnetController.createComment());
+    router.get('/contents/', + selected + '/:id' + '/comments', ConetnetController.getComments());
 }
 // router.get('/contents/report', ContentController.getInfoList);
 // router.get('/contents/news', ContentController.getNewsList);

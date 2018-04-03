@@ -4,10 +4,18 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ContentsService {
-
   constructor(
     private http: HttpClient
   ) { }
+
+  addComments(id, body) {
+    const bodyString = JSON.stringify(body);
+    const headers = { headers: { 'Content-Type': 'application/json' } };
+
+    return this.http.post(environment.apiUrl + '/contents/' + id + '/comments/', bodyString, headers).subscribe(
+      res => { console.log(res); }
+    );
+  }
 
   getRecentReportList() {
     return this.http.get(environment.apiUrl + '/contents/recentReport')

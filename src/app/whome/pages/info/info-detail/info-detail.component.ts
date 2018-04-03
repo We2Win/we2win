@@ -8,12 +8,13 @@ import { Info } from '../../../models/info';
 import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-info-detail',
   templateUrl: './info-detail.component.html',
   styleUrls: ['./info-detail.component.css'],
-  providers: [ContentsService, PostingService]
+  providers: [ContentsService, PostingService, AuthService]
 })
 export class InfoDetailComponent implements OnInit {
   Data = new Info();
@@ -21,7 +22,9 @@ export class InfoDetailComponent implements OnInit {
   imgUrl;
   subImgUrl = ['', '', '', '', ''];
   selectedImgUrl = '';
-  selectedNum = '';
+  selectedNum = 1;
+
+  private userInfo;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -43,7 +46,7 @@ export class InfoDetailComponent implements OnInit {
       data => {
         if (data) {
           this.Data = JSON.parse(data.body);
-          console.log(this.Data);
+          // console.log(this.Data);
           const current = {
             type: 'infoDetail',
             num: '0',
@@ -99,6 +102,7 @@ export class InfoDetailComponent implements OnInit {
         }
       }
     );
+    this.userInfo = this.auth.getUserInfo();
   }
 
   selectImg(num) {
@@ -112,7 +116,16 @@ export class InfoDetailComponent implements OnInit {
   }
 
   addComment() {
-    console.log(this.auth.getUserInfo());
+    const body = {
+      'post-id': this.Data['post-id'],
+      'commenter-id': this.userInfo['user_id'],
+      'contents': this.NewComment.nativeElement.value
+    };
+    console.log(body);
+    if (body.contents) { alert('댓글 내용이 없습니다.'); }
+
+    this.contentsService.addComments(this.Data['I-id'], body);
+    // this.userInfo['user_id'];
   }
 }
 

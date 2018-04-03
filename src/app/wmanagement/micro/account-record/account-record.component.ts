@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/user';
 import { environment } from '../../../../environments/environment';
+import { Router } from '@angular/router/';
 
 @Component({
   selector: 'app-account-record',
@@ -13,8 +14,9 @@ export class AccountRecordComponent implements OnInit {
   @Input('record') record;
 
   constructor(
-    private userService: UserService
-  ) {}
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     console.log('record in accountRecordComponent: ', this.record);
@@ -24,9 +26,11 @@ export class AccountRecordComponent implements OnInit {
     if (confirm('정말로 해당 이용자를 삭제하시겠습니까?')) {
       this.userService.deleteUser(this.record)
         .subscribe(
-          data => { console.log(data); }
-        );
+        data => {
+          console.log(data);
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+            this.router.navigate(['mng', 'account']));
+        });
     }
-    // window.location.reload();
   }
 }
