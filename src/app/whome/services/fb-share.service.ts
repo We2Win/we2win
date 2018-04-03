@@ -3,13 +3,14 @@ import { environment } from '../../../environments/environment.prod';
 
 @Injectable()
 export class FbShareService implements OnInit {
+
   constructor() { }
 
   ngOnInit() {
   }
 
   share() {
-    FB.ui(
+    window['FB'].ui(
       {
         method: 'share',
         href: 'https://developers.facebook.com/docs/'

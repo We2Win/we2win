@@ -24,7 +24,7 @@ export class InfoDetailComponent implements OnInit {
   selectedImgUrl = '';
   selectedNum = 1;
 
-  private userInfo;
+  userInfo;
   comments = [];
 
   @ViewChild(MypostDirective)

@@ -216,7 +216,7 @@ const routes: Routes = [
         component: PrivacyComponent
       }
     ]
-  }
+  },
   // temporary state
   {
     path: 'mng',
