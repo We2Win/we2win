@@ -80,7 +80,7 @@ const create = async function (req, res) {
 }
 module.exports.create = create;
 
-const createComments = async function (req, res) {
+const createComment = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
 
@@ -99,7 +99,7 @@ const createComments = async function (req, res) {
     body: comment,
   }, 201);
 }
-module.exports.createComments = createComments;
+module.exports.createComment = createComment;
 
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
