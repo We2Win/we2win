@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostingService } from '../../../services/posting.service';
@@ -38,7 +39,8 @@ export class InfoDetailComponent implements OnInit {
     private postingService: PostingService,
     private auth: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private meta: Meta
   ) {
     this.id = this.route.params['value'].id;
   }
@@ -101,6 +103,12 @@ export class InfoDetailComponent implements OnInit {
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['I-subImage1'];
 
           console.log('data: ', this.Data);
+
+          this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
+          this.meta.addTag({ name: 'og:title', content: this.Data['I-title']});
+          this.meta.addTag({ name: 'og:description', content: this.Data['I-summary'] });
+          this.meta.addTag({ name: 'og:image', content: this.imgUrl });
+
           this.getComments();
         }
       }

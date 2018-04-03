@@ -9,11 +9,11 @@ export class FbShareService implements OnInit {
   ngOnInit() {
   }
 
-  share() {
+  share(url) {
     window['FB'].ui(
       {
         method: 'share',
-        href: 'https://developers.facebook.com/docs/'
+        href: url
       }, function (response) { });
   }
 }
