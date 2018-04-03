@@ -66,6 +66,8 @@ import { FbShareService } from './services/fb-share.service';
 import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
 import { RankingpostDirective } from './directives/rankingpost.directive';
 import { SearchComponent } from './pages/search/search.component';
+import { UseComponent } from './pages/policy/use/use.component';
+import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
 
 
 @NgModule({
@@ -134,6 +136,8 @@ import { SearchComponent } from './pages/search/search.component';
     SiteDetailComponent,
     RankingpostDirective,
     SearchComponent,
+    UseComponent,
+    PrivacyComponent,
   ],
   entryComponents: [
     InfoCardComponent,

@@ -35,6 +35,8 @@ import { InfoDetailComponent } from './pages/info/info-detail/info-detail.compon
 import { NewsDetailComponent } from './pages/info/news-detail/news-detail.component';
 import { JwtHelper } from 'angular2-jwt';
 import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
+import { UseComponent } from './pages/policy/use/use.component';
+import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
 
 const routes: Routes = [
   {
@@ -196,6 +198,25 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'policy',
+    component: WhomeComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'use',
+        pathMatch: 'full'
+      },
+      {
+        path: 'use',
+        component: UseComponent
+      },
+      {
+        path: 'privacy',
+        component: PrivacyComponent
+      }
+    ]
+  }
   // temporary state
   {
     path: 'mng',
