@@ -101,6 +101,11 @@ const createComments = async function (req, res) {
 }
 module.exports.createComments = createComments;
 
+const getComments = async function (req, res) {
+
+}
+module.exports.getComments = getComments;
+
 const get = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
