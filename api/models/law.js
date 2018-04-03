@@ -36,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'L-file': {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false
     },
     'L-data-click': {
       type: DataTypes.INTEGER,

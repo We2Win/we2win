@@ -1,3 +1,8 @@
+pre {
+  font-family: inherit;
+  font-size: 0.9em;
+}
+
 pre h1 {
   text-align: center;
   margin: 1.5em 0 1.5em 0;

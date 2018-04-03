@@ -86,7 +86,7 @@ const remove = async function (req, res) {
   if (req.params.id) {
     User.findOne({
         where: {
-          'ID': req.params.id
+          'ID': req.params.id 
         }
       })
       .then((content) => {

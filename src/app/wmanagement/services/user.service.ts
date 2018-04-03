@@ -22,13 +22,13 @@ export class UserService {
       .map((res: any) => res);
   }
 
-  deleteUser(user: User):Observable<User> {
-    const url = environment.apiUrl + '/users/' + user.ID;
+  deleteUser(user: User): Observable<User> {
+    const url = environment.apiUrl + '/mng/users/' + user.ID;
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
-    return this.http.delete<User>(url, headers)
-      .map((res: User) => res);
+  return this.http.delete<User>(url, headers)
+    .map((res: User) => { console.log(res); return res; });
       // .catch((error: any) => { console.log(error.message); });
   }
 }

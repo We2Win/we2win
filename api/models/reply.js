@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
     },
     'post-id': {
       type: DataTypes.UUID,
@@ -17,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     'content': {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     }
   });
