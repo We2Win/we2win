@@ -77,7 +77,7 @@ module.exports.createContent = createContent;
 const createComment = async function (body) {
     let unique_key, auth_info, err, content;
 
-    console.log('createComment(): body: ', JSON.stringify(body.body));
+    console.log('createComment(): body: ', JSON.stringify(body));
     
     [err, content] = await to (Comments.create(body));
     if (err) TE('생성 중 오류가 발생했습니다.');
