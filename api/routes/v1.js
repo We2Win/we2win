@@ -32,14 +32,14 @@ router.delete('/contents', ContentController.remove);
 
 const contentsList = ['report', 'news', 'law', 'apartment', 'officetel','commercial', 'ground', 'employee', 'employee', 'employer', 'meeting'];
 
-router.post('/contents/' + selected + '/comments', ContentController.createComments());
+router.post('/contents/comments', ContentController.createComments());
 
 for (const contents in contentsList) {
     let selected = contentsList[contents];
     router.get('/contents/' + selected, ContentController.getList(selected));
     router.get('/contents/' + selected + '/:id', ContentController.getList(selected));
     router.put('/contents/' + selected, ContentController.updateList(selected));
-    router.get('/contents/' + selected + '/:id' + '/comments', ContentController.getComments());
+    // router.get('/contents/' + selected + '/:id' + '/comments', ContentController.getComments());
 }
 // router.get('/contents/report', ContentController.getInfoList);
 // router.get('/contents/news', ContentController.getNewsList);
