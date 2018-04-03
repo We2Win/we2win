@@ -132,7 +132,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'I-report': {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     'I-image': {
