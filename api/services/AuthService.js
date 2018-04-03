@@ -7,6 +7,7 @@ const Site = require('./../models').Site;
 const Meeting = require('./../models').Meeting;
 const Employer = require('./../models').Employer;
 const Employee = require('./../models').Employee;
+const Comment = require('./../models').Comment;
 const Reply = require('./../models').Reply;
 const validator = require('validator');
 
