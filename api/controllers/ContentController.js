@@ -173,9 +173,9 @@ const getList = (name) =>
         })
         .then((content) => {
           content.update({
-            'data-click': Sequelize.literal('data-click + 1')
+            'data-click': Sequelize.literal('`data-click` + 1')
           });
-          
+
           return ReS(res, {
             body: JSON.stringify(content)
           })
