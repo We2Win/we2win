@@ -6,7 +6,7 @@ const Site = require('../models').Site;
 const Meeting = require('../models').Meeting;
 const Employee = require('../models').Employee;
 const Employer = require('../models').Employer;
-const Comments = require('../models').Comments;
+const Comment = require('../models').Comment;
 const authService = require('./../services/AuthService');
 
 // temporary
@@ -105,7 +105,7 @@ module.exports.createComments = createComments;
 const getComments = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    Comments.findAll({
+    Comment.findAll({
       where: {
         'post-id': req.params.postId
       }
