@@ -22,7 +22,10 @@ export class AccountRecordComponent implements OnInit {
 
   deleteUser() {
     if (confirm('정말로 해당 이용자를 삭제하시겠습니까?')) {
-      this.userService.deleteUser(this.record);
+      this.userService.deleteUser(this.record)
+        .subscribe(
+          data => { console.log(data); }
+        );
     }
     // window.location.reload();
   }

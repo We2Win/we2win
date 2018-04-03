@@ -28,7 +28,7 @@ export class UserService {
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
   return this.http.delete<User>(url, headers)
-    .map((res: User) => { console.log(res); return res; });
+    .map((res: User) => res);
       // .catch((error: any) => { console.log(error.message); });
   }
 }

@@ -86,13 +86,16 @@ const remove = async function (req, res) {
   if (req.params.id) {
     User.findOne({
         where: {
-          'ID': req.params.id 
+          'ID': req.params.id
         }
       })
-      .then((content) => {
+      .then((user) => {
+        [err, user] = await to(user.destroy());
+        if (err) return ReE(res, 'error occured trying to delete user');
+
         return ReS(res, {
-          body: JSON.stringify(content)
-        })
+          message: 'Deleted User'
+        }, 204);
       });
   }
 }
