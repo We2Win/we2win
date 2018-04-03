@@ -101,13 +101,12 @@ const createComments = async function (req, res) {
 }
 module.exports.createComments = createComments;
 
-const getComments = (postId) =>
-  async function (req, res) {
+const getComments = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     Comments.findAll({
       where: {
-        'post-id': postId
+        'post-id': req.params.postId
       }
     }).then((content) => {
       return ReS(res, {

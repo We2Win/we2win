@@ -40,7 +40,7 @@ for (const contents in contentsList) {
 }
 
 router.post('/contents/comments', ContentController.createComments);
-router.get('/contents/comments', ContentController.getComments(postId));
+router.get('/contents/comments/:postId', ContentController.getComments);
 
 router.post('/login', UserController.login); //login   
 
