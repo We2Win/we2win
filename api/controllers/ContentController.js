@@ -111,7 +111,7 @@ const getComments = async function (req, res) {
       }
     }).then((content) => {
       return ReS(res, {
-        content: content.dataValues
+        content: content
       })
     })
   }
