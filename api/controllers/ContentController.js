@@ -171,10 +171,11 @@ const getList = (name) =>
       db.findOne({
           where: WHERE
         })
-        .update({
-          'data-click': Sequelize.literal('data-click + 1')
-        })
         .then((content) => {
+          content.update({
+            'data-click': Sequelize.literal('data-click + 1')
+          });
+          
           return ReS(res, {
             body: JSON.stringify(content)
           })
