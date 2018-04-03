@@ -79,11 +79,11 @@ export class InfoDetailComponent implements OnInit {
             ],
             datasets: [{
               data: [
-               parseInt( this.Data['I-around-amount1'], 10),
-               parseInt( this.Data['I-around-amount2'], 10),
-               parseInt( this.Data['I-around-amount3'], 10),
-               parseInt( this.Data['I-around-amount4'], 10),
-               parseInt( this.Data['I-around-amount5'], 10),
+                parseInt(this.Data['I-around-amount1'], 10),
+                parseInt(this.Data['I-around-amount2'], 10),
+                parseInt(this.Data['I-around-amount3'], 10),
+                parseInt(this.Data['I-around-amount4'], 10),
+                parseInt(this.Data['I-around-amount5'], 10),
               ]
             }]
           };
@@ -99,7 +99,7 @@ export class InfoDetailComponent implements OnInit {
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['I-subImage1'];
 
           console.log('data: ', this.Data);
-          this.getComments();
+          console.log(this.getComments());
         }
       }
     );
@@ -123,9 +123,12 @@ export class InfoDetailComponent implements OnInit {
       'contents': this.NewComment.nativeElement.value
     };
     console.log(body);
-    if (body.contents) { alert('댓글 내용이 없습니다.'); }
+    if (!body.contents) {
+      alert('댓글 내용이 없습니다.');
+    } else {
+      this.contentsService.addComments(body);
+    }
 
-    this.contentsService.addComments(body);
   }
 
   getComments() {

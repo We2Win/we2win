@@ -74,13 +74,12 @@ const createContent = async function (data) {
 }
 module.exports.createContent = createContent;
 
-const createComment = async function (data) {
+const createComment = async function (body) {
     let unique_key, auth_info, err, content;
 
-    console.log('createReply(): data.type: ', data.type);
-    console.log('createReply(): data.body: ', JSON.stringify(data.body));
+    console.log('createComment(): body: ', JSON.stringify(body.body));
     
-    [err, content] = await to (Comments.create(data.body));
+    [err, content] = await to (Comments.create(body));
     if (err) TE('생성 중 오류가 발생했습니다.');
     return content;
 }
