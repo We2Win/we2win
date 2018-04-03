@@ -124,8 +124,11 @@ export class InfoDetailComponent implements OnInit {
     console.log(body);
     if (body.contents) { alert('댓글 내용이 없습니다.'); }
 
-    this.contentsService.addComments(this.Data['I-id'], body);
-    // this.userInfo['user_id'];
+    this.contentsService.addComments(body);
+  }
+
+  getComments() {
+    console.log(this.contentsService.getComments(this.Data['post-id']));
   }
 }
 

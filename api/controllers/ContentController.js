@@ -101,27 +101,21 @@ const createComments = async function (req, res) {
 }
 module.exports.createComments = createComments;
 
-const getComments = async function (req, res) {
+const getComments = (postId) =>
+  async function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
 
-}
-module.exports.getComments = getComments;
-
-const get = async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-
-  Content.findAll({
+    Comments.findAll({
       where: {
-        Title: 'hello'
+        'post-id': postId
       }
-    })
-    .then((content) => {
-      // console.log('Content: ', content.dataValues);
+    }).then((content) => {
       return ReS(res, {
         content: content.dataValues
       })
-    });
-}
-module.exports.get = get;
+    })
+  }
+module.exports.getComments = getComments;
 
 const getCount = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -253,17 +247,3 @@ const remove = async function (req, res) {
   }, 204);
 }
 module.exports.remove = remove;
-
-// const login = async function (req, res) {
-//     const body = req.body;
-//     let err, user;
-
-//     [err, user] = await to(authService.authUser(req.body));
-//     if (err) return ReE(res, err, 422);
-
-//     return ReS(res, {
-//         token: user.getJWT(),
-//         user: user.toWeb()
-//     });
-// }
-// module.exports.login = login;

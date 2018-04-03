@@ -8,13 +8,18 @@ export class ContentsService {
     private http: HttpClient
   ) { }
 
-  addComments(id, body) {
+  addComments(body) {
     const bodyString = JSON.stringify(body);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
-    return this.http.post(environment.apiUrl + '/contents/' + id + '/comments/', bodyString, headers).subscribe(
+    return this.http.post(environment.apiUrl + '/contents/comments/', bodyString, headers).subscribe(
       res => { console.log(res); }
     );
+  }
+
+  getComments(postId) {
+    return this.http.get(environment.apiUrl + '/contents/comments/' + postId)
+      .map((res: any) => res);
   }
 
   getRecentReportList() {

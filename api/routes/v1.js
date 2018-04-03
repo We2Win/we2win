@@ -32,36 +32,15 @@ router.delete('/contents', ContentController.remove);
 
 const contentsList = ['report', 'news', 'law', 'apartment', 'officetel','commercial', 'ground', 'employee', 'employee', 'employer', 'meeting'];
 
-
 for (const contents in contentsList) {
     let selected = contentsList[contents];
     router.get('/contents/' + selected, ContentController.getList(selected));
     router.get('/contents/' + selected + '/:id', ContentController.getList(selected));
     router.put('/contents/' + selected, ContentController.updateList(selected));
-    router.post('/contents/' + selected + '/:id' + '/comments', ContentController.createComments);
-    // router.get('/contents/' + selected + '/:id' + '/comments', ContentController.getComments());
 }
-// router.get('/contents/report', ContentController.getInfoList);
-// router.get('/contents/news', ContentController.getNewsList);
-// router.get('/contents/law', ContentController.getLawList);
-// router.get('/contents/apartment', ContentController.getApartmentList);
-// router.get('/contents/officetel', ContentController.getOfficetelList);
-// router.get('/contents/commercial', ContentController.getCommercialList);
-// router.get('/contents/ground', ContentController.getGroundList);
-// router.get('/contents/employee', ContentController.getEmployeeList);
-// router.get('/contents/employer', ContentController.getEmployerList);
-// router.get('/contents/meeting', ContentController.getMeetingList);
 
-// router.get('/contents/report/:id', ContentController.getInfoList);
-// router.get('/contents/news/:id', ContentController.getNewsList);
-// router.get('/contents/law/:id', ContentController.getLawList);
-// router.get('/contents/apartment/:id', ContentController.getApartmentList);
-// router.get('/contents/officetel/:id', ContentController.getOfficetelList);
-// router.get('/contents/commercial/:id', ContentController.getCommercialList);
-// router.get('/contents/ground/:id', ContentController.getGroundList);
-// router.get('/contents/employee/:id', ContentController.getEmployeeList);
-// router.get('/contents/employer/:id', ContentController.getEmployerList);
-// router.get('/contents/meeting/:id', ContentController.getMeetingList);
+router.post('/contents/comments', ContentController.createComments);
+router.get('/contents/comments', ContentController.getComments(postId));
 
 router.post('/login', UserController.login); //login   
 
