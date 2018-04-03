@@ -6,6 +6,7 @@ const Site = require('../models').Site;
 const Meeting = require('../models').Meeting;
 const Employee = require('../models').Employee;
 const Employer = require('../models').Employer;
+const Comments = require('../models').Comments;
 const authService = require('./../services/AuthService');
 
 // temporary
