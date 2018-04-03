@@ -84,7 +84,7 @@ const createComment = async function (data) {
     if (err) TE('생성 중 오류가 발생했습니다.');
     return content;
 }
-module.exports.createReply = createReply;
+module.exports.createComment = createComment;
 
 const createUser = async function (userInfo) {
     console.log('createUser1()');
