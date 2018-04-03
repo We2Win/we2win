@@ -99,6 +99,7 @@ export class InfoDetailComponent implements OnInit {
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['I-subImage1'];
 
           console.log('data: ', this.Data);
+          this.getComments();
         }
       }
     );
