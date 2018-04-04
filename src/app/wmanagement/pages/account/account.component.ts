@@ -26,6 +26,7 @@ export class AccountComponent implements OnInit, AfterViewInit {
   private mypostDirective: MypostDirective;
 
   @ViewChild('sample') sample;
+  @ViewChild('popupCsv') popupCsv;
 
   postItems: PostItem[];
 
@@ -55,5 +56,17 @@ export class AccountComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+  }
+
+  viewPopup() {
+    this.popupCsv.showPopup();
+  }
+
+  sendSMS() {
+
+  }
+
+  sendMail() {
+    
   }
 }

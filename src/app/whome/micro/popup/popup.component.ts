@@ -12,6 +12,10 @@ export class PopupComponent implements OnInit {
   ngOnInit() {
   }
 
+  showPopup() {
+    this._elementRef.nativeElement.classList.add('show');
+  }
+
   hidePopup() {
     this._elementRef.nativeElement.classList.remove('show');
   }

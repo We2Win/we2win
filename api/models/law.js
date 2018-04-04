@@ -31,10 +31,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'L-url': {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     'L-file': {
       type: DataTypes.STRING,
       allowNull: false
