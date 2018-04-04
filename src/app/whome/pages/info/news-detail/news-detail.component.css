@@ -1,15 +1,36 @@
+#background {
+  position: relative;
+  margin-bottom: -318px;
+  width: 100%;
+  height: 318px;
+  object-fit: cover;
+  filter: brightness(50%);
+  z-index: -1;
+}
 #top {
+  height: 318px;
   padding: 2em;
-  background: url('/assets/img/news_sample.png');
-  background-size: cover;
+  z-index: 2;
+  box-sizing: border-box;
+  /* background: url('/assets/img/news_sample.png'); */
+  /* background-size: cover; */
 }
 
 #top #levelBar {
   width: 150px;
   padding: 0.5em 1em;
   margin: 0;
-  background: var(--level-platinum-gradient);
   color: white;
+}
+
+#top #levelBar.PREMIUM {
+  background: var(--level-premium-gradient);  
+}
+#top #levelBar.PLATINUM {
+  background: var(--level-platinum-gradient);  
+}
+#top #levelBar.STANDARD {
+  background: var(--level-standard-gradient);  
 }
 
 #top h1 {
@@ -90,4 +111,3 @@
   display: flex;
   justify-content: space-between;
 }
-

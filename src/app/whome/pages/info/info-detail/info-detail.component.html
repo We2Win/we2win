@@ -19,12 +19,10 @@
     </div>
   </div>
   <app-group>
-    <article>
+    <article *ngIf="showCharts">
       <div class="row">
         <label>현장 시세</label>
         <ng-container appMypost></ng-container>
-        <!-- <app-chart [type]="'infoDetail'" [num]="'0'" #current></app-chart> -->
-        <!-- <app-chart [type]="'infoDetail'" [num]="'1'" #around></app-chart> -->
       </div>
     </article>
     <article>

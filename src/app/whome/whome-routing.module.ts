@@ -56,31 +56,31 @@ const routes: Routes = [
             component: InfoMainComponent
           },
           {
-            path: 'law',
-            component: LawComponent
+            path: 'report',
+            component: ReportComponent,
           },
           {
-            path: 'report',
-            component: ReportComponent
+            path: 'report/:id',
+            component: InfoDetailComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'news',
+            component: NewsComponent,
+          },
+          {
+            path: 'news/:id',
+            component: NewsDetailComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'law',
+            component: LawComponent
           },
           {
             path: 'weekly',
             component: WeeklyComponent
           },
-          {
-            path: 'news',
-            component: NewsComponent
-          },
-          {
-            path: 'info-detail/:id',
-            component: InfoDetailComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'news-detail/:id',
-            component: NewsDetailComponent,
-            canActivate: [AuthGuard],
-          }
         ]
       },
       {

@@ -54,7 +54,10 @@
   line-height: 200%;
   font-size: 1em;
   margin: 0;
+  padding-right: 3em;
+  font-weight: 600;
   flex: none;
+  box-sizing: border-box;
 }
 
 :host /deep/ .row {

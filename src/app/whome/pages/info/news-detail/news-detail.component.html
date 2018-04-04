@@ -1,6 +1,7 @@
 <section>
+  <img id="background" #background>
   <div id="top" #top>
-    <div id="levelBar">
+    <div id="levelBar" [ngClass]="Data['N-level']">
       {{Data['N-level']}}
     </div>
     <h1>{{Data['N-title']}}</h1>
@@ -13,13 +14,13 @@
     <article>
       <div class="row">
         <label>{{Data['N-sub-title']}}</label>
-        <p>{{Data['N-sub-description']}}</p>
+        <p [innerHtml]="Data['N-sub-description']"></p>
       </div>
     </article>
     <article>
       <div class="row">
         <label>{{Data['N-analysis-title']}}</label>
-        <p>{{Data['N-analysis-description']}}</p>
+        <p [innerHtml]="Data['N-analysis-description']"></p>
       </div>
     </article>
     <article>

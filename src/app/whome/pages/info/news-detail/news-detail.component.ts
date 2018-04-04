@@ -12,6 +12,7 @@ import { environment } from '../../../../../environments/environment';
 export class NewsDetailComponent implements OnInit {
   Data: object;
   id: number;
+  @ViewChild('background') background;
   @ViewChild('top') top;
 
   constructor(
@@ -27,9 +28,9 @@ export class NewsDetailComponent implements OnInit {
         if (data) {
           this.Data = JSON.parse(data.body);
           // this.top.nativeElement.style.background = 'red';
-          this.top.nativeElement.style.background = 'url("' + environment.bucket.downloadUrl + this.Data['N-image'] + '")';
-          this.top.nativeElement.style.backgroundSize = 'cover';
-          this.top.nativeElement.style.backgroundPosition = 'center';
+          this.background.nativeElement.src = environment.bucket.downloadUrl + this.Data['N-image'];
+          // this.top.nativeElement.style.backgroundSize = 'cover';
+          // this.top.nativeElement.style.backgroundPosition = 'center';
           console.log(this.Data);
         }
       }

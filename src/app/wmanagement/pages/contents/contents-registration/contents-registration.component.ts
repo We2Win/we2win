@@ -262,6 +262,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'N-sub-title': new FormControl('', [Validators.required]),
       'N-sub-description': new FormControl('', [Validators.required]),
       'N-image': new FormControl('', [Validators.required]),
+      'N-subImage1': new FormControl('', [Validators.required]),
       'N-analysis-title': new FormControl('', [Validators.required]),
       'N-analysis-description': new FormControl('', [Validators.required]),
     });

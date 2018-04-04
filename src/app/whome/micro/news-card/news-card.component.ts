@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ElementRef, ViewContainerRef } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { FbShareService } from '../../services/fb-share.service';
 
 @Component({
   selector: 'app-news-card',
@@ -14,7 +15,8 @@ export class NewsCardComponent implements OnInit {
 
   constructor(
     private _elementRef: ElementRef,
-    public viewContainerRef: ViewContainerRef
+    public viewContainerRef: ViewContainerRef,
+    private fbShareService: FbShareService
   ) {
   }
 
@@ -34,5 +36,9 @@ export class NewsCardComponent implements OnInit {
       bookmark.src = '/assets/img/icon_bookmark_selected.png';
       bookmark.classList.add('selected');
     }
+  }
+
+  fbShare() {
+    this.fbShareService.share(environment.homeUrl + '/info/news' + this.record['N-id']);
   }
 }

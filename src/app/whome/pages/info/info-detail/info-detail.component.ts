@@ -24,6 +24,7 @@ export class InfoDetailComponent implements OnInit {
   subImgUrl = ['', '', '', '', ''];
   selectedImgUrl = '';
   selectedNum = 1;
+  showCharts = false;
 
   userInfo;
   comments = [];
@@ -51,48 +52,10 @@ export class InfoDetailComponent implements OnInit {
         if (data) {
           this.Data = JSON.parse(data.body);
           // console.log(this.Data);
-          const current = {
-            type: 'infoDetail',
-            num: '0',
-            labels: [
-              this.Data['I-current-duration1'],
-              this.Data['I-current-duration2'],
-              this.Data['I-current-duration3'],
-              this.Data['I-current-duration4'],
-              this.Data['I-current-duration5'],
-            ],
-            datasets: [{
-              data: [
-                parseInt(this.Data['I-current-amount1'], 10),
-                parseInt(this.Data['I-current-amount2'], 10),
-                parseInt(this.Data['I-current-amount3'], 10),
-                parseInt(this.Data['I-current-amount4'], 10),
-                parseInt(this.Data['I-current-amount5'], 10),
-              ]
-            }]
-          };
-          const around = {
-            type: 'infoDetail',
-            num: '1',
-            labels: [
-              this.Data['I-around-duration1'],
-              this.Data['I-around-duration2'],
-              this.Data['I-around-duration3'],
-              this.Data['I-around-duration4'],
-              this.Data['I-around-duration5'],
-            ],
-            datasets: [{
-              data: [
-                parseInt(this.Data['I-around-amount1'], 10),
-                parseInt(this.Data['I-around-amount2'], 10),
-                parseInt(this.Data['I-around-amount3'], 10),
-                parseInt(this.Data['I-around-amount4'], 10),
-                parseInt(this.Data['I-around-amount5'], 10),
-              ]
-            }]
-          };
-          this.addChart(current);
-          this.addChart(around);
+          if (this.Data['I-current-duration1'] || this.Data['I-around-duration1']) {
+            this.showCharts = true;
+            this.addChart();
+          }
 
           this.imgUrl = environment.bucket.downloadUrl + this.Data['I-image'];
           this.subImgUrl[1] = environment.bucket.downloadUrl + this.Data['I-subImage1'];
@@ -121,9 +84,51 @@ export class InfoDetailComponent implements OnInit {
     this.selectedNum = num;
   }
 
-  addChart(record) {
+  addChart() {
+    const current = {
+      type: 'infoDetail',
+      num: '0',
+      labels: [
+        this.Data['I-current-duration1'],
+        this.Data['I-current-duration2'],
+        this.Data['I-current-duration3'],
+        this.Data['I-current-duration4'],
+        this.Data['I-current-duration5'],
+      ],
+      datasets: [{
+        data: [
+          parseInt(this.Data['I-current-amount1'], 10),
+          parseInt(this.Data['I-current-amount2'], 10),
+          parseInt(this.Data['I-current-amount3'], 10),
+          parseInt(this.Data['I-current-amount4'], 10),
+          parseInt(this.Data['I-current-amount5'], 10),
+        ]
+      }]
+    };
+    const around = {
+      type: 'infoDetail',
+      num: '1',
+      labels: [
+        this.Data['I-around-duration1'],
+        this.Data['I-around-duration2'],
+        this.Data['I-around-duration3'],
+        this.Data['I-around-duration4'],
+        this.Data['I-around-duration5'],
+      ],
+      datasets: [{
+        data: [
+          parseInt(this.Data['I-around-amount1'], 10),
+          parseInt(this.Data['I-around-amount2'], 10),
+          parseInt(this.Data['I-around-amount3'], 10),
+          parseInt(this.Data['I-around-amount4'], 10),
+          parseInt(this.Data['I-around-amount5'], 10),
+        ]
+      }]
+    };
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
-      new PostItem(ChartComponent, record));
+      new PostItem(ChartComponent, current));
+    this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+      new PostItem(ChartComponent, around));
   }
 
   addComment() {
