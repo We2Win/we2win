@@ -411,7 +411,7 @@ export class ContentsRegistrationComponent implements OnInit {
         console.log(data);
       },
       error => {
-        alert('불러오기에 실패하였습니다.');
+        alert('컨텐츠 등록에 실패하였습니다.');
         console.log('error: ', error);
       }
       );

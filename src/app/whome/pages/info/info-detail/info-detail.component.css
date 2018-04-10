@@ -89,3 +89,13 @@
 .commentInput {
   flex: 3;
 }
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex /deep/ app-info-card {
+  width: 227px;
+  flex: none;
+}

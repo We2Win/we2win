@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
 import { Info } from '../../models/info';
 import { Card } from '../../models/card';
+import { FbShareService } from '../../services/fb-share.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-law-card',
@@ -8,33 +10,26 @@ import { Card } from '../../models/card';
   styleUrls: ['./law-card.component.css']
 })
 export class LawCardComponent implements OnInit, Card {
-  @Input() record: any = {
-    Title: 'No name',
-    Description: 'nothing.'
-  };
-  @Input() level = 'standard';
-
   // for Card interface
   @Input() data: any;
   // data;
 
+  @Input('record') record;
+  @Input() level = 'standard';
+
+  imageUrl;
+
   constructor(
     private _elementRef: ElementRef,
-    public viewContainerRef: ViewContainerRef
+    public viewContainerRef: ViewContainerRef,
+    private fbShareService: FbShareService
   ) {
   }
 
   ngOnInit() {
-    if (this.data) {
-      this.record.Title = this.data.Title;
-      this.record.Description = this.data.Description;
-    }
-    // console.log('records from vertical to info-card: ', this.records);
-
-    // setTimeout(() => {
-    //   this.record.Title = this.data.Title;
-    // }, 3000);
-
+    console.log(this.record);
+    this.imageUrl = environment.bucket.downloadUrl + this.record['I-image'];
+    this._elementRef.nativeElement.classList.add(this.record['I-level'].toLowerCase());
   }
 
   bookmark() {
@@ -47,6 +42,10 @@ export class LawCardComponent implements OnInit, Card {
       bookmark.src = '/assets/img/icon_bookmark_selected.png';
       bookmark.classList.add('selected');
     }
+  }
+
+  fbShare() {
+    this.fbShareService.share(environment.homeUrl + '/info/report' + this.record['I-id']);
   }
 
 }

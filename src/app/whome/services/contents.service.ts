@@ -92,7 +92,7 @@ export class ContentsService {
 
   getEmployerList() {
     return this.http.get(environment.apiUrl + '/contents/employer')
-      .map((res: any) => res);
+      .map((res: any) => {console.log(JSON.parse(res.list)); return res; });
   }
 
   getEmployeeList() {

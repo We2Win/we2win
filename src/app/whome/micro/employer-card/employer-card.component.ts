@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 
 @Component({
   selector: 'app-employer-card',
@@ -6,8 +6,12 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   styleUrls: ['./employer-card.component.css']
 })
 export class EmployerCardComponent implements OnInit {
+  @Input('record') record;
 
-  constructor(private _elementRef: ElementRef) { }
+  constructor(
+    private _elementRef: ElementRef,
+  ) {
+  }
 
   ngOnInit() {
   }

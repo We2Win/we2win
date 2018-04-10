@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, Input } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostingService } from '../../../services/posting.service';
+import { RankingpostDirective } from '../../../directives/rankingpost.directive';
 import { MypostDirective } from '../../../directives/mypost.directive';
 import { PostItem } from '../../../models/post-item';
 import { Info } from '../../../models/info';
@@ -10,6 +11,7 @@ import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../models/user';
+import { InfoCardComponent } from '../../../micro/info-card/info-card.component';
 
 @Component({
   selector: 'app-info-detail',
@@ -29,10 +31,18 @@ export class InfoDetailComponent implements OnInit {
   userInfo;
   comments = [];
 
+  @ViewChild('NewComment') NewComment;
+
+  WeeklyList: Array<object>;
+  RankingList: Array<object>;
+  @Input() recentRecords;
+  @Input() weeklyRecords;
+
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
 
-  @ViewChild('NewComment') NewComment;
+  @ViewChild(RankingpostDirective)
+  private rankingpostDirective: RankingpostDirective;
 
   constructor(
     private viewContainerRef: ViewContainerRef,
@@ -47,6 +57,23 @@ export class InfoDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = this.route.params['value'].id;
+      this.updateDetail();
+    });
+    this.contentsService.getReportList().subscribe(
+      data => {
+        if (data.list) {
+          this.RankingList = JSON.parse(data.list);
+          this.addRankingRecord(this.RankingList);
+        }
+      }
+    );
+
+    this.userInfo = this.auth.getUserInfo();
+  }
+
+  updateDetail() {
     this.contentsService.getReportList(this.id).subscribe(
       data => {
         if (data) {
@@ -68,7 +95,7 @@ export class InfoDetailComponent implements OnInit {
           console.log('data: ', this.Data);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
-          this.meta.addTag({ name: 'og:title', content: this.Data['I-title']});
+          this.meta.addTag({ name: 'og:title', content: this.Data['I-title'] });
           this.meta.addTag({ name: 'og:description', content: this.Data['I-summary'] });
           this.meta.addTag({ name: 'og:image', content: this.imgUrl });
 
@@ -76,7 +103,6 @@ export class InfoDetailComponent implements OnInit {
         }
       }
     );
-    this.userInfo = this.auth.getUserInfo();
   }
 
   selectImg(num) {
@@ -160,6 +186,18 @@ export class InfoDetailComponent implements OnInit {
         }
       }
     );
+  }
+
+  addRankingRecord(records) {
+    const count = ['first', 'second', 'third'];
+    for (const num in count) {
+      if (records[num]) {
+        records[num]['rank'] = count[num];
+        // console.log('record: ', records[record]);
+        this.postingService.loadComponent(this.rankingpostDirective.viewContainerRef,
+          new PostItem(InfoCardComponent, records[num]));
+      }
+    }
   }
 }
 

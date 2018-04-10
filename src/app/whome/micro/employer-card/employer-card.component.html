@@ -1,20 +1,20 @@
 <div class="namecard p" (click)="viewPopup();">
-  <h3>오피스텔</h3>
+  <h3>{{ record['R-part-name'] }}</h3>
   <div>
-    <h1>김철수</h1>
-    <h2>본부장</h2>
+    <h1>{{ record['R-manager-name'].split(' ')[0] }}</h1>
+    <h2>{{ record['R-manager-name'].split(' ')[1] }}</h2>
   </div>
-  <div>
+  <div class="flex">
     <h4>현장명</h4>
-    <p>동탄 2기 현대힐스테이트 2차</p>
+    <p>{{ record['R-location-name'] }}</p>
   </div>
-  <div>
+  <div class="flex">
     <h4>소재지</h4>
-    <p>2동탄 01 블럭</p>
+    <p>{{ record['R-location-address'] }}</p>
   </div>
-  <div>
+  <div class="flex">
     <h4>연락처</h4>
-    <p class="hp">010-****-3478</p>
+    <p class="hp">{{ record['R-HP'] }}</p>
   </div>
 </div>
 
@@ -22,16 +22,16 @@
   <h1>구인 상세보기</h1>
   <div>
     <li>
-      <h2>오피스텔</h2>
-      <h3>김철수 본부장</h3>
+      <h2>{{ record['R-part-name'] }}</h2>
+      <h3>{{ record['R-manager-name'] }}</h3>
     </li>
     <li>
       <h2>현장명</h2>
-      <h3>동탄 2기 현대힐스테이트 2차</h3>
+      <h3>{{ record['R-location-name'] }}</h3>
     </li>
     <li>
       <h2>소재지</h2>
-      <h3>동탄 01블럭</h3>
+      <h3>{{ record['R-location-address'] }}</h3>
     </li>
   </div>
 
@@ -39,35 +39,35 @@
   <div>
     <li>
       <h5>업무</h5>
-      <p>분양</p>
+      <p>{{ record['R-part-name'] }}</p>
     </li>
     <li>
       <h5>업무 내용</h5>
-      <p>홍보 분양</p>
+      <p [innerHtml]="record['R-part-description']"></p>
     </li>
     <li>
       <h5>나이</h5>
-      <p>20 - 40</p>
+      <p>{{ record['R-age-start'] + '-' + record['R-age-end'] }}</p>
     </li>
     <li>
       <h5>응시 요건</h5>
-      <p>상가 분양 경력자</p>
+      <p>{{ record['R-requirement'] }}</p>
     </li>
     <li>
       <h5>모집인원</h5>
-      <p>9명</p>
+      <p>{{ record['R-personnel'] }}명</p>
     </li>
     <li>
       <h5>채용 방법</h5>
-      <p>전화 후 면접</p>
+      <p>{{ record['R-method'] }}</p>
     </li>
     <li>
       <h5>모집 기간</h5>
-      <p>2017. 12. 09 ~ 2018. 01. 09</p>
+      <p>{{ record['R-apply-start'].slice(0, 10) + '~' + record['R-apply-end'].slice(0, 10) }}</p>
     </li>
     <li>
       <h5>상세요건</h5>
-      <pre>반갑습니다.<br>분양 일을 천직으로 알고...</pre>
+      <p>{{ record['R-detail'] }}</p>
     </li>
   </div>
 
@@ -75,23 +75,23 @@
   <div>
     <li>
       <h5>현장명</h5>
-      <p>동탄 2기 현대힐스테이트 2차</p>
+      <p>{{ record['R-location-name'] }}</p>
     </li>
     <li>
       <h5>소재지</h5>
-      <p>동탄 01블럭</p>
+      <p>{{ record['R-location-address'] }}</p>
     </li>
     <li>
       <h5>담당자 정보</h5>
-      <p>김철수 본부장</p>
+      <p>{{ record['R-manager-name'] }}</p>
     </li>
     <li>
       <h5>전화</h5>
-      <p>02 - 123 - 4567</p>
+      <p>{{ record['R-HP'] }}</p>
     </li>
     <li>
       <h5>핸드폰</h5>
-      <p>010 - 1234 - 5678</p>
+      <p>{{ record['R-CP'] }}</p>
     </li>
   </div>
 </app-popup>
