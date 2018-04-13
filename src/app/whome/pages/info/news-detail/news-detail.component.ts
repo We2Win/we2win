@@ -8,6 +8,7 @@ import { PostingService } from '../../../services/posting.service';
 import { PostItem } from '../../../models/post-item';
 import { AuthService } from '../../../services/auth.service';
 import { News } from '../../../models/news';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-news-detail',
@@ -30,12 +31,29 @@ export class NewsDetailComponent implements OnInit {
     private contentsService: ContentsService,
     private route: ActivatedRoute,
     private postingService: PostingService,
-    private auth: AuthService
+    private auth: AuthService,
+    private meta: Meta
   ) {
     this.id = this.route.params['value'].id;
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = this.route.params['value'].id;
+      this.updateDetail();
+    });
+    
+    this.contentsService.getNewsList().subscribe(
+      data => {
+        if (data.list) {
+          this.RankingList = JSON.parse(data.list);
+          this.addRankingRecord(this.RankingList);
+        }
+      }
+    );
+  }
+
+  updateDetail() {
     this.contentsService.getNewsList(this.id).subscribe(
       data => {
         if (data) {
@@ -44,12 +62,12 @@ export class NewsDetailComponent implements OnInit {
           this.background.nativeElement.src = environment.bucket.downloadUrl + this.Data['N-image'];
           // this.top.nativeElement.style.backgroundSize = 'cover';
           // this.top.nativeElement.style.backgroundPosition = 'center';
-          console.log(this.Data);
-        }
-        if (data.list) {
-          this.RankingList = JSON.parse(data.list);
-          console.log('list: ', this.RankingList);
-          this.addRankingRecord(this.RankingList);
+          console.log('data: ', this.Data);
+
+          this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
+          this.meta.addTag({ name: 'og:title', content: this.Data['I-title'] });
+          this.meta.addTag({ name: 'og:description', content: this.Data['I-summary'] });
+          this.meta.addTag({ name: 'og:image', content: this.imgUrl });
         }
       }
     );

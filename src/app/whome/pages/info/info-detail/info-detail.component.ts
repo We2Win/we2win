@@ -27,6 +27,7 @@ export class InfoDetailComponent implements OnInit {
   selectedImgUrl = '';
   selectedNum = 1;
   showCharts = false;
+  showMoreReport = false;
 
   userInfo;
   comments = [];
@@ -198,6 +199,10 @@ export class InfoDetailComponent implements OnInit {
           new PostItem(InfoCardComponent, records[num]));
       }
     }
+  }
+
+  showMore(event) {
+    this.showMoreReport = true;
   }
 }
 

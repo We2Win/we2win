@@ -29,8 +29,8 @@
       <div class="row">
         <label>현장 리포트</label>
         <div>
-          <p class="shortener" [innerHtml]="Data['I-report']"></p>
-          <app-button>더보기</app-button>
+          <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['I-report']"></p>
+          <app-button *ngIf="!showMoreReport" (click)="showMore($event)">더보기</app-button>
         </div>
       </div>
     </article>

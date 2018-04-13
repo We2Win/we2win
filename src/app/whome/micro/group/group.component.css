@@ -137,7 +137,8 @@
 
 :host /deep/ article app-button {
   width: auto;
-  margin: 0 0 0 1em;
+  margin: 0;
+  /* margin: 0 0 0 1em; */
   font-size: 0.9em;
 }
 
