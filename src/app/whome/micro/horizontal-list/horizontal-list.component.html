@@ -3,8 +3,6 @@
   <h1></h1>
   <div class="contents">
     <ng-content></ng-content>
-    <!-- <ng-container select=".c1"></ng-container> -->
-    <!-- <ng-container select=".c2"></ng-container> -->
   </div>
-  <app-button (click)="showMore()">더보기</app-button>
+  <app-button *ngIf="hiddenNum" (click)="showMore()">더보기</app-button>
 </section>

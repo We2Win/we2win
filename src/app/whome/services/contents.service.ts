@@ -61,6 +61,18 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  getSiteList(id?: any) {
+    if (id) {
+      // console.log('with id');
+      return this.http.get(environment.apiUrl + '/contents/apartment/' + id)
+        .map((res: any) => res);
+    } else {
+      // console.log('without id');
+      return this.http.get(environment.apiUrl + '/contents/apartment')
+        .map((res: any) => res);
+    }
+  }
+
   getApartmentList(id?: any) {
     if (id) {
       // console.log('with id');
@@ -72,17 +84,39 @@ export class ContentsService {
         .map((res: any) => res);
     }
   }
-  getOfficetelList() {
-    return this.http.get(environment.apiUrl + '/contents/officetel')
-      .map((res: any) => res);
+
+  getOfficetelList(id?: any) {
+    if (id) {
+      // console.log('with id');
+      return this.http.get(environment.apiUrl + '/contents/officetel/' + id)
+        .map((res: any) => res);
+    } else {
+      // console.log('without id');
+      return this.http.get(environment.apiUrl + '/contents/officetel')
+        .map((res: any) => res);
+    }
   }
-  getCommercialList() {
-    return this.http.get(environment.apiUrl + '/contents/commercial')
-      .map((res: any) => res);
+  getCommercialList(id?: any) {
+    if (id) {
+      // console.log('with id');
+      return this.http.get(environment.apiUrl + '/contents/commercial/' + id)
+        .map((res: any) => res);
+    } else {
+      // console.log('without id');
+      return this.http.get(environment.apiUrl + '/contents/commercial')
+        .map((res: any) => res);
+    }
   }
-  getGroundList() {
-    return this.http.get(environment.apiUrl + '/contents/ground')
-      .map((res: any) => res);
+  getGroundList(id?: any) {
+    if (id) {
+      // console.log('with id');
+      return this.http.get(environment.apiUrl + '/contents/ground/' + id)
+        .map((res: any) => res);
+    } else {
+      // console.log('without id');
+      return this.http.get(environment.apiUrl + '/contents/ground')
+        .map((res: any) => res);
+    }
   }
 
   getMeetingList() {

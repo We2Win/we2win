@@ -7,8 +7,10 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
 })
 export class HorizontalListComponent implements OnInit {
   _toptitle: String;
+  hiddenNum;
 
   @Input() toptitle = 'hi';
+  @Input('records') records;
 
   constructor(
     private _elementRef: ElementRef
@@ -17,7 +19,7 @@ export class HorizontalListComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this.records);
   }
 
   showMore() {

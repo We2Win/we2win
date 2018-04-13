@@ -28,7 +28,10 @@
     <article>
       <div class="row">
         <label>현장 리포트</label>
-        <p [innerHtml]="Data['I-report']"></p>
+        <div>
+          <p class="shortener" [innerHtml]="Data['I-report']"></p>
+          <app-button>더보기</app-button>
+        </div>
       </div>
     </article>
     <div class="subGroup">
@@ -74,9 +77,6 @@
         <label>관련 분양 리포트</label>
         <div class="row flex">
           <ng-container appRankingpost></ng-container>
-          <!-- <app-info-card [level]="'platinum'"></app-info-card>
-          <app-info-card [level]="'platinum'"></app-info-card>
-          <app-info-card [level]="'platinum'"></app-info-card> -->
         </div>
       </div>
     </article>

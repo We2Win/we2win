@@ -61,7 +61,7 @@ input {
 #search {
     display: inline-block;
     position: relative;
-    margin: 0em 8em 0em -8em;
+    margin: 0.5em 8em 0em -8em;
     width: 2.5em;
     height: 2em;
     background: url('/assets/img/search.png');

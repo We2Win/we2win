@@ -5,6 +5,39 @@
   padding: 1em;
 }
 
+#header {
+  display: block;
+  background: #ddd;
+  text-align: left;
+  cursor: default;
+  margin: -1em -1em 1em -1em;
+}
+
+#titleBar {
+  width: calc(var(--main-width) - 225px);
+  margin: 0 0 auto 0;
+  padding: 4em 1em 1em 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#titleBar h2 {
+  font-size: 1em;
+}
+
+#titleBar h2:after {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 1em;
+  background: url('/assets/img/icon_download.png');
+  background-size: 1em 1em;
+  background-repeat: no-repeat;
+}
+
 quill-editor {
   flex: 1;
   margin-bottom: 3em;
