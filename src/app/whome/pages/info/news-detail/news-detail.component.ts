@@ -42,7 +42,7 @@ export class NewsDetailComponent implements OnInit {
       this.id = this.route.params['value'].id;
       this.updateDetail();
     });
-    
+
     this.contentsService.getNewsList().subscribe(
       data => {
         if (data.list) {
@@ -65,9 +65,8 @@ export class NewsDetailComponent implements OnInit {
           console.log('data: ', this.Data);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
-          this.meta.addTag({ name: 'og:title', content: this.Data['I-title'] });
-          this.meta.addTag({ name: 'og:description', content: this.Data['I-summary'] });
-          this.meta.addTag({ name: 'og:image', content: this.imgUrl });
+          this.meta.addTag({ name: 'og:title', content: this.Data['N-title'] });
+          this.meta.addTag({ name: 'og:description', content: this.Data['N-summary'] });
         }
       }
     );
