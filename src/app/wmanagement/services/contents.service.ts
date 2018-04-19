@@ -28,6 +28,11 @@ export class ContentsService {
   getDashboardData() {
     return this.http.get(environment.apiUrl + '/mng/dashbard');
   }
+
+  getWeeklyList() {
+    return this.http.get(environment.apiUrl + '/')
+  }
+
   create(_data: any) {
     // const bodyString = JSON.stringify(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });

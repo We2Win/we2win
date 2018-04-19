@@ -58,10 +58,14 @@ export class InfoDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    // When routed to another info contents:
     this.route.params.subscribe(params => {
       this.id = this.route.params['value'].id;
+      this.showMoreReport = false;
+      window.scrollTo(0, 0);
       this.updateDetail();
     });
+    // To get ranking report list.
     this.contentsService.getReportList().subscribe(
       data => {
         if (data.list) {
@@ -203,6 +207,10 @@ export class InfoDetailComponent implements OnInit {
 
   showMore(event) {
     this.showMoreReport = true;
+  }
+
+  showFullComments() {
+    alert('준비중입니다.');
   }
 }
 

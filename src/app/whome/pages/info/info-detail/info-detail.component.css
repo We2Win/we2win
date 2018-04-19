@@ -90,15 +90,11 @@
   flex: 3;
 }
 
-.shortener {
-  height: 10em;
-  overflow-y: hidden;
-}
-
 .flex {
   display: flex;
   justify-content: space-between;
 }
+
 
 .flex /deep/ app-info-card {
   width: 227px;

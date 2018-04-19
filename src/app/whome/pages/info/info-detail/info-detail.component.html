@@ -53,6 +53,9 @@
     <div class="subGroup">
       <label>현장 댓글</label>
       <article>
+        <div class="row">
+          <p class="right more" (click)="showFullComments()">더보기 ></p>
+        </div>
         <div class="row" *ngIf="comments.length > 0">
           <label>{{comments[0]['commenter-id']}}</label>
           <p>{{comments[0]['contents']}}</p>

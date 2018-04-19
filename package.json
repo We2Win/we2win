@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^5.2.6",
     "@angular/router": "^5.2.6",
     "@ckeditor/ckeditor5-build-classic": "^1.0.0-alpha.2",
-    "angular2-json2csv": "^1.1.2",
+    "angular2-csv": "^0.2.5",
     "angular2-jwt": "^0.2.3",
     "aws-sdk": "^2.209.0",
     "chart.js": "^2.7.1",

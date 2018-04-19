@@ -5,6 +5,7 @@ import { PostingService } from '../../services/posting.service';
 import { PostItem } from '../../models/post-item';
 import { TableComponent } from '../../micro/table/table.component';
 import { MypostDirective } from '../../directives/mypost.directive';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-account',
@@ -67,6 +68,39 @@ export class AccountComponent implements OnInit, AfterViewInit {
   }
 
   sendMail() {
-    
+
+  }
+
+  download(type) {
+    switch (type) {
+      case 'all':
+        const data = [
+          {
+            name: 'Test 1',
+            age: 13,
+            average: 8.2,
+            approved: true,
+            description: 'using Content here, content here '
+          },
+          {
+            name: 'Test 2',
+            age: 11,
+            average: 8.2,
+            approved: true,
+            description: 'using Content here, content here '
+          },
+          {
+            name: 'Test 4',
+            age: 10,
+            average: 8.2,
+            approved: true,
+            description: 'using Content here, content here '
+          },
+        ];
+
+        // tslint:disable-next-line:no-unused-expression
+        new Angular2Csv(data, 'My Report');
+      break;
+    }
   }
 }

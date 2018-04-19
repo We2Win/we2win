@@ -81,7 +81,7 @@ import { AuthService } from './services/auth.service';
     InfoService,
     ContentsService,
     UploadFileService,
-    AuthService
+    AuthService,
   ]
 })
 export class WmanagementModule { }

@@ -64,7 +64,9 @@ import { LawCardComponent } from './micro/law-card/law-card.component';
 import { MypostDirective } from './directives/mypost.directive';
 import { FbShareService } from './services/fb-share.service';
 import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
-import { RankingpostDirective } from './directives/rankingpost.directive';
+import {
+  RankingpostDirective, Rankingpost1Directive,
+  Rankingpost2Directive, Rankingpost3Directive } from './directives/rankingpost.directive';
 import { SearchComponent } from './pages/search/search.component';
 import { UseComponent } from './pages/policy/use/use.component';
 import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
@@ -135,6 +137,9 @@ import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
     MypostDirective,
     SiteDetailComponent,
     RankingpostDirective,
+    Rankingpost1Directive,
+    Rankingpost2Directive,
+    Rankingpost3Directive,
     SearchComponent,
     UseComponent,
     PrivacyComponent,
