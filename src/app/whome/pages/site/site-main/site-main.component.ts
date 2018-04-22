@@ -22,8 +22,6 @@ export class SiteMainComponent implements OnInit {
   @ViewChild(Rankingpost1Directive)
   private rankingpost2Directive: Rankingpost2Directive;
 
-  postItems: PostItem[];
-
   constructor(
     private contentsService: ContentsService,
     private postingService: PostingService

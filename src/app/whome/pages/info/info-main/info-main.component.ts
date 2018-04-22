@@ -5,6 +5,8 @@ import { MypostDirective } from '../../../directives/mypost.directive';
 import { PostItem } from '../../../models/post-item';
 import { InfoCardComponent } from '../../../micro/info-card/info-card.component';
 import { Rankingpost1Directive, Rankingpost2Directive } from '../../../directives/rankingpost.directive';
+import { NewsCardComponent } from '../../../micro/news-card/news-card.component';
+import { LawCardComponent } from '../../../micro/law-card/law-card.component';
 
 @Component({
   selector: 'app-info-main',
@@ -23,8 +25,6 @@ export class InfoMainComponent implements OnInit {
   @ViewChild(Rankingpost2Directive)
   private rankingpost2Directive: Rankingpost2Directive;
 
-  postItems: PostItem[];
-
   constructor(
     private contentsService: ContentsService,
     private postingService: PostingService
@@ -34,8 +34,18 @@ export class InfoMainComponent implements OnInit {
     this.contentsService.getContentsList('info/newly', 1).subscribe(
       data => {
         if (data) {
-          console.log('Newly List: ', data);
-          this.NewlyList = data;
+          const list = [];
+          data.forEach(arrayList => {
+            arrayList.forEach(content => {
+              list.push(content);
+            });
+          });
+          list.forEach(content => {
+            content['createdAt'] = new Date(content['createdAt']);
+            content['updatedAt'] = new Date(content['createdAt']);
+          });
+          console.log('Newly List: ', list);
+          this.NewlyList = list;
           this.addNewlyRecord(this.NewlyList);
         }
       }
@@ -44,8 +54,18 @@ export class InfoMainComponent implements OnInit {
     this.contentsService.getContentsList('info/weekly', 1).subscribe(
       data => {
         if (data) {
-          console.log('Weekly List: ', data);
-          this.WeeklyList = data;
+          const list = [];
+          data.forEach(arrayList => {
+            arrayList.forEach(content => {
+              list.push(content);
+            });
+          });
+          list.forEach(content => {
+            content['createdAt'] = new Date(content['createdAt']);
+            content['updatedAt'] = new Date(content['createdAt']);
+          });
+          console.log('Weekly List: ', list);
+          this.WeeklyList = list;
           this.addWeeklyRecord(this.WeeklyList);
         }
       }
@@ -56,8 +76,17 @@ export class InfoMainComponent implements OnInit {
     // tslint:disable-next-line:forin
     for (const record in records) {
       // console.log('record: ', records[record]);
-      this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
-        new PostItem(InfoCardComponent, records[record]));
+      if (records[record]['I-id']) {
+        this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
+          new PostItem(InfoCardComponent, records[record]));
+      } else if (records[record]['N-id']) {
+        this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
+          new PostItem(NewsCardComponent, records[record]));
+      } else if (records[record]['L-id']) {
+        this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
+          new PostItem(LawCardComponent, records[record]));
+      }
+
     }
   }
 
@@ -67,8 +96,16 @@ export class InfoMainComponent implements OnInit {
       if (records[num]) {
         records[num]['rank'] = count[num];
         // console.log('record: ', records[record]);
-        this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-          new PostItem(InfoCardComponent, records[num]));
+        if (records[num]['I-id']) {
+          this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+            new PostItem(InfoCardComponent, records[num]));
+        } else if (records[num]['N-id']) {
+          this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+            new PostItem(NewsCardComponent, records[num]));
+        } else if (records[num]['L-id']) {
+          this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+            new PostItem(LawCardComponent, records[num]));
+        }
       }
     }
   }

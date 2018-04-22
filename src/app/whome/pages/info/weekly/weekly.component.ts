@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Rankingpost1Directive, Rankingpost2Directive, Rankingpost3Directive } from '../../../directives/rankingpost.directive';
 import { ContentsService } from '../../../../wmanagement/services/contents.service';
+import { PostingService } from '../../../services/posting.service';
 
 @Component({
   selector: 'app-weekly',
   templateUrl: './weekly.component.html',
   styleUrls: ['./weekly.component.css'],
-  providers: [ContentsService]
+  providers: [ContentsService, PostingService]
 })
 export class WeeklyComponent implements OnInit {
   @ViewChild(Rankingpost1Directive)
@@ -17,7 +18,8 @@ export class WeeklyComponent implements OnInit {
   private rankingpostDirective3: Rankingpost3Directive;
 
   constructor(
-    private contentsService: ContentsService
+    private contentsService: ContentsService,
+    private postingService: PostingService
   ) { }
 
   ngOnInit() {

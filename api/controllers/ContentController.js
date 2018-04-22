@@ -202,7 +202,7 @@ const getRankingList = (name) =>
 
     console.log(id);
     switch (name) {
-      case 'infoNewly':
+      case 'info/newly':
         Info.findAll({
             offset: id,
             limit: 8,
@@ -235,7 +235,7 @@ const getRankingList = (name) =>
               });
           });
         break;
-      case 'infoWeekly':
+      case 'info/weekly':
         Info.findAll({
             offset: id,
             limit: 1,
@@ -268,7 +268,7 @@ const getRankingList = (name) =>
               });
           });
         break;
-      case 'report':
+      case 'info/report':
         Info.findAll({
             offset: id,
             limit: 8,
@@ -280,7 +280,7 @@ const getRankingList = (name) =>
             return ReS(res, content);
           });
         break;
-      case 'news':
+      case 'info/news':
         News.findAll({
             offset: id,
             limit: 8,
@@ -292,7 +292,7 @@ const getRankingList = (name) =>
             return ReS(res, content);
           });
         break;
-      case 'law':
+      case 'indo/law':
         Law.findAll({
             offset: id,
             limit: 8,
@@ -304,7 +304,7 @@ const getRankingList = (name) =>
             return ReS(res, content);
           });
         break;
-      case 'siteNewly':
+      case 'site/newly':
         Site.findAll({
             offset: id,
             limit: 8,
@@ -316,7 +316,7 @@ const getRankingList = (name) =>
             return ReS(res, content);
           });
         break;
-      case 'siteWeekly':
+      case 'site/weekly':
         Site.findAll({
             offset: id,
             limit: 8,

@@ -25,7 +25,7 @@ export class LawCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.record);
+    // console.log(this.record);
     switch (this.record['L-file'].split('.')[1]) {
       case 'jpg':
       case 'png':
