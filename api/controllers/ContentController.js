@@ -230,6 +230,7 @@ const getRankingList = (name) =>
         //   });
         // });
           return ReS(res, content);
+        });
         break;
       case 'infoWeekly':
         Info.find({
