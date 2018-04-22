@@ -197,15 +197,15 @@ const getRankingList = (name) =>
   async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    const id = (req.params.id - 1) || '0';
+    const id = (req.params.id - 1) || 0;
     let contentList = [];
 
     switch (name) {
       case 'infoNewly':
         Info.findAll({
           // offset: id,
-          // limit: 8,
-          // order: [['createdAt', 'DESC']]
+          limit: 8,
+          order: [['createdAt', 'DESC']]
         })
         .then((content) => {
         //   contentList.push(content);
