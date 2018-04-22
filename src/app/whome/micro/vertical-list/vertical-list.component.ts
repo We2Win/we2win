@@ -36,22 +36,6 @@ export class VerticalListComponent implements OnInit, OnChanges, AfterViewInit, 
     // this.startCard();
   }
 
-  startCard() {
-    // // this.intervalId = setInterval(() => {
-    // //   this.dataIndex = (this.dataIndex === this.dataItems.length)
-    // //     ? 0 : this.dataIndex + 1;
-
-    // //   this.infoService.loadComponent(
-    // //     this.infoCardComponent.viewContainerRef, this.dataItems[this.dataIndex]);
-    // // }, 2000);
-
-    // // tslint:disable-next-line:forin
-    // for (let i in this.dataItems) {
-    //   this.infoService.createComponent(
-    //     this.infoCardComponent.viewContainerRef, this.dataItems[i]);
-    // }
-  }
-
   ngOnInit() {
   }
 

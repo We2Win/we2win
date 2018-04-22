@@ -198,23 +198,66 @@ const getRankingList = (name) =>
     res.setHeader('Content-Type', 'application/json');
 
     const id = (req.params.id - 1) || '0';
+    let contentList = [];
 
     switch (name) {
       case 'infoNewly':
         Info.find({
-          include: [News, Law],
           offset: id,
           limit: 8,
           order: 'createdAt desc'
+        })
+        .then((content) => {
+          contentList.push(content);
+          News.find({
+            offset: id,
+            limit: 8,
+            order: 'createdAt desc'
+          })
+          .then((content) => {
+            contentList.push(content);
+            Law.find({
+              offset: id,
+              limit: 8,
+              order: 'createdAt desc'
+            })
+            .then((content) => {
+              contentList.push(content);
+              return ReS(res, {
+                list: JSON.stringify(contentList)
+              })
+            });
+          });
         });
         break;
       case 'infoWeekly':
         Info.find({
-          include: [News, Law],
           offset: id,
-          limit: 8,
+          limit: 1,
           order: 'data-click desc'
-        });
+        })
+          .then((content) => {
+            contentList.push(content);
+            News.find({
+              offset: id,
+              limit: 1,
+              order: 'data-click desc'
+            })
+              .then((content) => {
+                contentList.push(content);
+                Law.find({
+                  offset: id,
+                  limit: 1,
+                  order: 'data-click desc'
+                })
+                  .then((content) => {
+                    contentList.push(content);
+                    return ReS(res, {
+                      list: JSON.stringify(contentList)
+                    })
+                  });
+              });
+          });
         break;
       case 'report':
         Info.find({
