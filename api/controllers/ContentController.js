@@ -204,53 +204,30 @@ const getRankingList = (name) =>
     switch (name) {
       case 'infoNewly':
         Info.findAll({
-          offset: id,
-          limit: 8,
-          order: [['createdAt', 'DESC']]
-        })
-        .then((content) => {
-          contentList.push(content);
-          News.find({
             offset: id,
             limit: 8,
-            order: [['createdAt', 'DESC']]
+            order: [
+              ['createdAt', 'DESC']
+            ]
           })
           .then((content) => {
             contentList.push(content);
-            Law.find({
-              offset: id,
-              limit: 8,
-              order: [['createdAt', 'DESC']]
-            })
-            .then((content) => {
-              contentList.push(content);
-              return ReS(res, {
-                list: JSON.stringify(contentList)
-              })
-            });
-          });
-        });
-        break;
-      case 'infoWeekly':
-        Info.find({
-          offset: id,
-          limit: 1,
-          order: ['data-click', 'DESC']
-        })
-          .then((content) => {
-            contentList.push(content);
             News.find({
-              offset: id,
-              limit: 1,
-              order: ['data-click', 'DESC']
-            })
+                offset: id,
+                limit: 8,
+                order: [
+                  ['createdAt', 'DESC']
+                ]
+              })
               .then((content) => {
                 contentList.push(content);
                 Law.find({
-                  offset: id,
-                  limit: 1,
-                  order: ['data-click', 'DESC']
-                })
+                    offset: id,
+                    limit: 8,
+                    order: [
+                      ['createdAt', 'DESC']
+                    ]
+                  })
                   .then((content) => {
                     contentList.push(content);
                     return ReS(res, {
@@ -260,40 +237,110 @@ const getRankingList = (name) =>
               });
           });
         break;
+      case 'infoWeekly':
+        Info.find({
+            offset: id,
+            limit: 1,
+            order: [
+              ['data-click', 'DESC']
+            ]
+          })
+          .then((content) => {
+            contentList.push(content);
+            News.find({
+                offset: id,
+                limit: 1,
+                order: [
+                  ['data-click', 'DESC']
+                ]
+              })
+              .then((content) => {
+                contentList.push(content);
+                Law.find({
+                    offset: id,
+                    limit: 1,
+                    order: [
+                      ['data-click', 'DESC']
+                    ]
+                  })
+                  .then((content) => {
+                    contentList.push(content);
+                    return ReS(res, {
+                      list: JSON.stringify(contentList)
+                    });
+                  });
+              });
+          });
+        break;
       case 'report':
         Info.find({
-          offset: id,
-          limit: 8,
-          order: ['data-click', 'DESC']
-        });
+            offset: id,
+            limit: 8,
+            order: [
+              ['data-click', 'DESC']
+            ]
+          })
+          .then((content) => {
+            return ReS(res, {
+              list: JSON.stringify(content)
+            });
+          });
         break;
       case 'news':
         News.find({
-          offset: id,
-          limit: 8,
-          order: ['data-click', 'DESC']
-        });
+            offset: id,
+            limit: 8,
+            order: [
+              ['data-click', 'DESC']
+            ]
+          })
+          .then((content) => {
+            return ReS(res, {
+              list: JSON.stringify(content)
+            });
+          });
         break;
       case 'law':
         Law.find({
-          offset: id,
-          limit: 8,
-          order: ['data-click', 'DESC']
-        });
+            offset: id,
+            limit: 8,
+            order: [
+              ['data-click', 'DESC']
+            ]
+          })
+          .then((content) => {
+            return ReS(res, {
+              list: JSON.stringify(content)
+            });
+          });
         break;
       case 'siteNewly':
         Site.find({
-          offset: id,
-          limit: 8,
-          order: ['createdAt', 'DESC']
-        })
+            offset: id,
+            limit: 8,
+            order: [
+              ['createdAt', 'DESC']
+            ]
+          })
+          .then((content) => {
+            return ReS(res, {
+              list: JSON.stringify(content)
+            });
+          });
         break;
       case 'siteWeekly':
         Site.find({
-          offset: id,
-          limit: 8,
-          order: ['data-click', 'DESC']
-        });
+            offset: id,
+            limit: 8,
+            order: [
+              ['data-click', 'DESC']
+            ]
+          })
+          .then((content) => {
+            return ReS(res, {
+              list: JSON.stringify(content)
+            });
+          });
         break;
     }
   };
