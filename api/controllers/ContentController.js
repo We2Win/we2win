@@ -208,27 +208,28 @@ const getRankingList = (name) =>
           order: ['createdAt', 'DESC']
         })
         .then((content) => {
-          contentList.push(content);
-          News.find({
-            offset: id,
-            limit: 8,
-            order: ['createdAt', 'DESC']
-          })
-          .then((content) => {
-            contentList.push(content);
-            Law.find({
-              offset: id,
-              limit: 8,
-              order: ['createdAt', 'DESC']
-            })
-            .then((content) => {
-              contentList.push(content);
-              return ReS(res, {
-                list: JSON.stringify(contentList)
-              })
-            });
-          });
-        });
+        //   contentList.push(content);
+        //   News.find({
+        //     offset: id,
+        //     limit: 8,
+        //     order: ['createdAt', 'DESC']
+        //   })
+        //   .then((content) => {
+        //     contentList.push(content);
+        //     Law.find({
+        //       offset: id,
+        //       limit: 8,
+        //       order: ['createdAt', 'DESC']
+        //     })
+        //     .then((content) => {
+        //       contentList.push(content);
+        //       return ReS(res, {
+        //         list: JSON.stringify(contentList)
+        //       })
+        //     });
+        //   });
+        // });
+          return ReS(res, content);
         break;
       case 'infoWeekly':
         Info.find({
