@@ -30,6 +30,7 @@
     z-index: 10;
     opacity: 0;
     transition: opacity 0.5s;
+    overflow-y: scroll;
 }
 
 :host.show #dim {

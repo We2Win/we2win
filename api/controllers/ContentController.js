@@ -292,7 +292,7 @@ const getRankingList = (name) =>
             return ReS(res, content);
           });
         break;
-      case 'indo/law':
+      case 'info/law':
         Law.findAll({
             offset: id,
             limit: 8,
