@@ -200,6 +200,7 @@ const getRankingList = (name) =>
     const id = (req.params.id - 1) || 0;
     let contentList = [];
 
+    console.log(id);
     switch (name) {
       case 'infoNewly':
         Info.findAll({
@@ -208,28 +209,26 @@ const getRankingList = (name) =>
           order: [['createdAt', 'DESC']]
         })
         .then((content) => {
-        //   contentList.push(content);
-        //   News.find({
-        //     offset: id,
-        //     limit: 8,
-        //     order: ['createdAt', 'DESC']
-        //   })
-        //   .then((content) => {
-        //     contentList.push(content);
-        //     Law.find({
-        //       offset: id,
-        //       limit: 8,
-        //       order: ['createdAt', 'DESC']
-        //     })
-        //     .then((content) => {
-        //       contentList.push(content);
-        //       return ReS(res, {
-        //         list: JSON.stringify(contentList)
-        //       })
-        //     });
-        //   });
-        // });
-          return ReS(res, content);
+          contentList.push(content);
+          News.find({
+            // offset: id,
+            limit: 8,
+            order: ['createdAt', 'DESC']
+          })
+          .then((content) => {
+            contentList.push(content);
+            Law.find({
+              // offset: id,
+              limit: 8,
+              order: ['createdAt', 'DESC']
+            })
+            .then((content) => {
+              contentList.push(content);
+              return ReS(res, {
+                list: JSON.stringify(contentList)
+              })
+            });
+          });
         });
         break;
       case 'infoWeekly':
