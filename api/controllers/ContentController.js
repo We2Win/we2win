@@ -205,7 +205,7 @@ const getRankingList = (name) =>
         Info.findAll({
           offset: id,
           limit: 8,
-          order: [['createdAt', 'DESC']]
+          // order: [['createdAt', 'DESC']]
         })
         .then((content) => {
         //   contentList.push(content);
