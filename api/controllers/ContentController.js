@@ -230,9 +230,7 @@ const getRankingList = (name) =>
                   })
                   .then((content) => {
                     contentList.push(content);
-                    return ReS(res, {
-                      list: JSON.stringify(contentList)
-                    })
+                    return ReS(res, contentList);
                   });
               });
           });
@@ -265,9 +263,7 @@ const getRankingList = (name) =>
                   })
                   .then((content) => {
                     contentList.push(content);
-                    return ReS(res, {
-                      list: JSON.stringify(contentList)
-                    });
+                    return ReS(res, contentList);
                   });
               });
           });
@@ -281,9 +277,7 @@ const getRankingList = (name) =>
             ]
           })
           .then((content) => {
-            return ReS(res, {
-              list: JSON.stringify(content)
-            });
+            return ReS(res, content);
           });
         break;
       case 'news':
@@ -295,9 +289,7 @@ const getRankingList = (name) =>
             ]
           })
           .then((content) => {
-            return ReS(res, {
-              list: JSON.stringify(content)
-            });
+            return ReS(res, content);
           });
         break;
       case 'law':
@@ -309,9 +301,7 @@ const getRankingList = (name) =>
             ]
           })
           .then((content) => {
-            return ReS(res, {
-              list: JSON.stringify(content)
-            });
+            return ReS(res, content);
           });
         break;
       case 'siteNewly':
@@ -323,9 +313,7 @@ const getRankingList = (name) =>
             ]
           })
           .then((content) => {
-            return ReS(res, {
-              list: JSON.stringify(content)
-            });
+            return ReS(res, content);
           });
         break;
       case 'siteWeekly':
@@ -337,9 +325,7 @@ const getRankingList = (name) =>
             ]
           })
           .then((content) => {
-            return ReS(res, {
-              list: JSON.stringify(content)
-            });
+            return ReS(res, content);
           });
         break;
     }
@@ -405,3 +391,4 @@ const remove = async function (req, res) {
   }, 204);
 }
 module.exports.remove = remove;
+
