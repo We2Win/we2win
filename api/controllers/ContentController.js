@@ -205,21 +205,21 @@ const getRankingList = (name) =>
         Info.find({
           offset: id,
           limit: 8,
-          order: 'createdAt desc'
+          order: ['createdAt', 'DESC']
         })
         .then((content) => {
           contentList.push(content);
           News.find({
             offset: id,
             limit: 8,
-            order: 'createdAt desc'
+            order: ['createdAt', 'DESC']
           })
           .then((content) => {
             contentList.push(content);
             Law.find({
               offset: id,
               limit: 8,
-              order: 'createdAt desc'
+              order: ['createdAt', 'DESC']
             })
             .then((content) => {
               contentList.push(content);
@@ -284,7 +284,7 @@ const getRankingList = (name) =>
         Site.find({
           offset: id,
           limit: 8,
-          order: 'createdAt desc'
+          order: ['createdAt', 'DESC']
         })
         break;
       case 'siteWeekly':
