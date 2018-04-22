@@ -32,9 +32,9 @@ export class SiteMainComponent implements OnInit {
   ngOnInit() {
     this.contentsService.getContentsList('site/newly', 1).subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           console.log('Newly List: ', data);
-          this.NewlyList = JSON.parse(data.list);
+          this.NewlyList = data;
           this.addNewlyRecord(this.NewlyList);
         }
       }
@@ -42,9 +42,9 @@ export class SiteMainComponent implements OnInit {
 
     this.contentsService.getContentsList('site/weekly', 1).subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           console.log('Weekly List: ', data);
-          this.WeeklyList = JSON.parse(data.list);
+          this.WeeklyList = data;
           this.addWeeklyRecord(this.WeeklyList);
         }
       }

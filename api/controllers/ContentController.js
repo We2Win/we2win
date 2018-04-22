@@ -212,7 +212,7 @@ const getRankingList = (name) =>
           })
           .then((content) => {
             contentList.push(content);
-            News.find({
+            News.findAll({
                 offset: id,
                 limit: 8,
                 order: [
@@ -221,7 +221,7 @@ const getRankingList = (name) =>
               })
               .then((content) => {
                 contentList.push(content);
-                Law.find({
+                Law.findAll({
                     offset: id,
                     limit: 8,
                     order: [
@@ -236,7 +236,7 @@ const getRankingList = (name) =>
           });
         break;
       case 'infoWeekly':
-        Info.find({
+        Info.findAll({
             offset: id,
             limit: 1,
             order: [
@@ -245,7 +245,7 @@ const getRankingList = (name) =>
           })
           .then((content) => {
             contentList.push(content);
-            News.find({
+            News.findAll({
                 offset: id,
                 limit: 1,
                 order: [
@@ -254,7 +254,7 @@ const getRankingList = (name) =>
               })
               .then((content) => {
                 contentList.push(content);
-                Law.find({
+                Law.findAll({
                     offset: id,
                     limit: 1,
                     order: [
@@ -269,7 +269,7 @@ const getRankingList = (name) =>
           });
         break;
       case 'report':
-        Info.find({
+        Info.findAll({
             offset: id,
             limit: 8,
             order: [
@@ -281,7 +281,7 @@ const getRankingList = (name) =>
           });
         break;
       case 'news':
-        News.find({
+        News.findAll({
             offset: id,
             limit: 8,
             order: [
@@ -293,7 +293,7 @@ const getRankingList = (name) =>
           });
         break;
       case 'law':
-        Law.find({
+        Law.findAll({
             offset: id,
             limit: 8,
             order: [
@@ -305,7 +305,7 @@ const getRankingList = (name) =>
           });
         break;
       case 'siteNewly':
-        Site.find({
+        Site.findAll({
             offset: id,
             limit: 8,
             order: [
@@ -317,7 +317,7 @@ const getRankingList = (name) =>
           });
         break;
       case 'siteWeekly':
-        Site.find({
+        Site.findAll({
             offset: id,
             limit: 8,
             order: [

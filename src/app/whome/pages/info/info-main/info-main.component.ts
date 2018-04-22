@@ -16,8 +16,6 @@ import { Rankingpost1Directive, Rankingpost2Directive } from '../../../directive
 export class InfoMainComponent implements OnInit {
   NewlyList: Array<object>;
   WeeklyList: Array<object>;
-  @Input() recentRecords;
-  @Input() weeklyRecords;
 
   @ViewChild(Rankingpost1Directive)
   private rankingpost1Directive: Rankingpost1Directive;
@@ -35,9 +33,9 @@ export class InfoMainComponent implements OnInit {
   ngOnInit() {
     this.contentsService.getContentsList('info/newly', 1).subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           console.log('Newly List: ', data);
-          this.NewlyList = JSON.parse(data.list);
+          this.NewlyList = data;
           this.addNewlyRecord(this.NewlyList);
         }
       }
@@ -45,9 +43,9 @@ export class InfoMainComponent implements OnInit {
 
     this.contentsService.getContentsList('info/weekly', 1).subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           console.log('Weekly List: ', data);
-          this.WeeklyList = JSON.parse(data.list);
+          this.WeeklyList = data;
           this.addWeeklyRecord(this.WeeklyList);
         }
       }
