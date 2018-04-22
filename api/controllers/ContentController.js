@@ -203,8 +203,8 @@ const getRankingList = (name) =>
     switch (name) {
       case 'infoNewly':
         Info.findAll({
-          offset: id,
-          limit: 8,
+          // offset: id,
+          // limit: 8,
           // order: [['createdAt', 'DESC']]
         })
         .then((content) => {
