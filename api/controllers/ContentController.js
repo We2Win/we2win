@@ -204,23 +204,23 @@ const getRankingList = (name) =>
     switch (name) {
       case 'infoNewly':
         Info.findAll({
-          // offset: id,
+          offset: id,
           limit: 8,
           order: [['createdAt', 'DESC']]
         })
         .then((content) => {
           contentList.push(content);
           News.find({
-            // offset: id,
+            offset: id,
             limit: 8,
-            order: ['createdAt', 'DESC']
+            order: [['createdAt', 'DESC']]
           })
           .then((content) => {
             contentList.push(content);
             Law.find({
-              // offset: id,
+              offset: id,
               limit: 8,
-              order: ['createdAt', 'DESC']
+              order: [['createdAt', 'DESC']]
             })
             .then((content) => {
               contentList.push(content);
