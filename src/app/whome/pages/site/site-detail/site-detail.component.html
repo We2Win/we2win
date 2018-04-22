@@ -4,7 +4,7 @@
       <div id="levelBar" [class]="Data['S-level'].toLowerCase()">{{Data['S-level']}}</div>
       <img [src]="imgUrl" />
     </div>
-    <div>
+    <div id="description">
       <h1>{{Data['S-title']}}</h1>
       <p [innerHtml]="Data['S-summary']"></p>
       <div>
@@ -16,32 +16,42 @@
         <p class="price">{{( Data['S-ammount']* 10000000).toLocaleString() }}원</p>
       </div>
       <app-button>담당자 | {{Data['S-manager-name']}} | {{Data['S-manager-contact']}}</app-button>
+      <div id="optionBar">
+        <img src="/assets/img/icon_bookmark_black.png">
+        <img src="/assets/img/icon_facebook_black.png">
+      </div>
     </div>
   </div>
   <app-group>
-    <article>
+    <article *ngIf="showCharts">
       <div class="row">
         <label>현장 시세</label>
         <ng-container appMypost></ng-container>
-        <!-- <app-chart [type]="'infoDetail'" [num]="'0'" #current></app-chart> -->
-        <!-- <app-chart [type]="'infoDetail'" [num]="'1'" #around></app-chart> -->
       </div>
     </article>
     <article>
       <div class="row">
-        <label>현장 리포트</label>
-        <p [innerHtml]="Data['S-report']"></p>
+        <label>현장 리포트
+          <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
+        </label>
+        <div class="editorContainer">
+          <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['S-report']"></p>
+        </div>
       </div>
     </article>
+    <app-popup #reportDetail>
+      <h1>현장 리포트</h1>
+      <p [innerHtml]="Data['S-report']"></p>
+    </app-popup>
     <div class="subGroup">
       <label>현장 사진</label>
       <article>
-        <div class="row navigator">
-          <img [src]="subImgUrl[1]" (click)="selectImg(1)" />
-          <img [src]="subImgUrl[2]" (click)="selectImg(2)" />
-          <img [src]="subImgUrl[3]" (click)="selectImg(3)" />
-          <img [src]="subImgUrl[4]" (click)="selectImg(4)" />
-          <img [src]="subImgUrl[5]" (click)="selectImg(5)" />
+        <div id="imgNavigator" class="row navigator" #imgNavigator>
+          <img id="i1" class="show" [src]="subImgUrl[1]" (click)="selectImg(1)" />
+          <img id="i2" [src]="subImgUrl[2]" (click)="selectImg(2)" />
+          <img id="i3" [src]="subImgUrl[3]" (click)="selectImg(3)" />
+          <img id="i4" [src]="subImgUrl[4]" (click)="selectImg(4)" />
+          <img id="i5" [src]="subImgUrl[5]" (click)="selectImg(5)" />
         </div>
         <div class="row shower">
           <label> {{selectedNum}} / 5 </label>
@@ -50,29 +60,43 @@
       </article>
     </div>
     <div class="subGroup">
-      <label>현장 댓글</label>
+      <label>현장 댓글
+        <p class="more" (click)="showMore(commentDetail)">더보기 ></p>
+      </label>
       <article>
         <div class="row">
-          <label>Amberyi_0523</label>
-          <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-          <span>2017-12-23</span>
         </div>
-        <div class="row">
-          <label>Amberyi_0523</label>
-          <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-          <span>2017-12-23</span>
+        <div class="row" *ngIf="comments.length > 0">
+          <label>{{comments[0]['commenter-id']}}</label>
+          <p>{{comments[0]['contents']}}</p>
+          <span>{{comments[0]['createdAt'].slice(0,10)}}</span>
         </div>
-        <div class="row">
-          <label>Amberyi_0523</label>
-          <input type="text" #NewComment>
-          <app-button (click)="addComment">댓글 입력</app-button>
+        <div class="row" *ngIf="comments.length > 1">
+          <label>{{comments[1]['commenter-id']}}</label>
+          <p>{{comments[1]['contents']}}</p>
+          <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
+        </div>
+        <div name="commentBox" class="row">
+          <form class="commentForm" (submit)="addComment()">
+            <label>{{userInfo['user_id']}}</label>
+            <input type="text" class="commentInput" #NewComment>
+            <app-button (click)="addComment()">댓글 입력</app-button>
+          </form>
         </div>
       </article>
     </div>
+    <app-popup #commentDetail>
+      <h1>현장 댓글</h1>
+      <div class="row" *ngFor="let comment of comments">
+        <label>{{comment['commenter-id']}}</label>
+        <p>{{comment['contents']}}</p>
+        <span>{{comment['createdAt'].slice(0,10)}}</span>
+      </div>
+    </app-popup>
     <article>
       <div class="row">
         <label>관련 분양 리포트</label>
-        <div class="row">
+        <div class="row flex">
           <ng-container appRankingpost></ng-container>
         </div>
       </div>

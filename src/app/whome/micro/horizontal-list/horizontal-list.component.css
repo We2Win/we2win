@@ -23,7 +23,7 @@ h1 {
   width: calc(var(--main-width) - 160px);
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 :host /deep/ .c2 {

@@ -5,7 +5,8 @@ import { ContentsService } from '../../../../wmanagement/services/contents.servi
 @Component({
   selector: 'app-weekly',
   templateUrl: './weekly.component.html',
-  styleUrls: ['./weekly.component.css']
+  styleUrls: ['./weekly.component.css'],
+  providers: [ContentsService]
 })
 export class WeeklyComponent implements OnInit {
   @ViewChild(Rankingpost1Directive)
@@ -20,7 +21,7 @@ export class WeeklyComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getWeeklyList()
+    this.contentsService.getWeeklyList();
   }
 
 }

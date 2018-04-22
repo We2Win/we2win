@@ -27,7 +27,19 @@ router.post('/contents', ContentController.create);
 // router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
-const contentsList = ['report', 'news', 'law', 'apartment', 'officetel', 'commercial', 'ground', 'employee', 'employee', 'employer', 'meeting'];
+const contentsList = [
+    'report',
+    'news',
+    'law',
+    'apartment',
+    'officetel',
+    'commercial',
+    'ground',
+    'employee',
+    'employee',
+    'employer',
+    'meeting'
+];
 for (const contents in contentsList) {
     let selected = contentsList[contents];
     router.get('/contents/' + selected, ContentController.getList(selected));
@@ -38,8 +50,13 @@ for (const contents in contentsList) {
 router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:postId', ContentController.getComments);
 
-router.get('/contents/weekly', ContentController.getRankingList('weekly'));
-router.get('/contents/newly', ContentController.getRankingList('date'))
+router.get('/contents/info/weekly/:id', ContentController.getRankingList('infoWeekly'));
+router.get('/contents/info/newly/:id', ContentController.getRankingList('infoNewly'));
+router.get('/contents/info/report/:id', ContentController.getRankingList('report'));
+router.get('/contents/info/news/:id', ContentController.getRankingList('news'));
+router.get('/contents/info/law/:id', ContentController.getRankingList('law'));
+router.get('/contents/site/weekly/:id', ContentController.getRankingList('siteWeekly'));
+router.get('/contents/site/newly/:id', ContentController.getRankingList('siteNewly'));
 
 router.post('/login', UserController.login); //login   
 router.post('/hasid', UserController.hasId);

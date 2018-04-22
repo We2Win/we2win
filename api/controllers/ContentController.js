@@ -103,18 +103,18 @@ const createComments = async function (req, res) {
 module.exports.createComments = createComments;
 
 const getComments = async function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-Type', 'application/json');
 
-    Comment.findAll({
-      where: {
-        'post-id': req.params.postId
-      }
-    }).then((content) => {
-      return ReS(res, {
-        content: content
-      })
+  Comment.findAll({
+    where: {
+      'post-id': req.params.postId
+    }
+  }).then((content) => {
+    return ReS(res, {
+      content: content
     })
-  }
+  })
+}
 module.exports.getComments = getComments;
 
 const getCount = async function (req, res) {
@@ -192,6 +192,68 @@ const getList = (name) =>
     }
   };
 module.exports.getList = getList;
+
+const getRankingList = (name) =>
+  async function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    const id = (req.params.id - 1) || '0';
+
+    switch (name) {
+      case 'infoNewly':
+        Info.find({
+          include: [News, Law],
+          offset: id,
+          limit: 8,
+          order: 'createdAt desc'
+        });
+        break;
+      case 'infoWeekly':
+        Info.find({
+          include: [News, Law],
+          offset: id,
+          limit: 8,
+          order: 'data-click desc'
+        });
+        break;
+      case 'report':
+        Info.find({
+          offset: id,
+          limit: 8,
+          order: 'data-click desc'
+        });
+        break;
+      case 'news':
+        News.find({
+          offset: id,
+          limit: 8,
+          order: 'data-click desc'
+        });
+        break;
+      case 'law':
+        Law.find({
+          offset: id,
+          limit: 8,
+          order: 'data-click desc'
+        });
+        break;
+      case 'siteNewly':
+        Site.find({
+          offset: id,
+          limit: 8,
+          order: 'createdAt desc'
+        })
+        break;
+      case 'siteWeekly':
+        Site.find({
+          offset: id,
+          limit: 8,
+          order: 'data-click desc'
+        });
+        break;
+    }
+  };
+module.exports.getRankingList = getRankingList;
 
 const updateList = (name) =>
   async function (req, res) {

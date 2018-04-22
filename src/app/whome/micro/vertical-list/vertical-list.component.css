@@ -6,7 +6,7 @@
 section {
   width: var(--main-width);
   margin: var(--main-margin);
-  padding: 2em 0;
+  padding: 120px 0;
   text-align: center;
 }
 
@@ -14,15 +14,15 @@ section {
   background: #d8d8d8;
 }
 
-section>div {
+section>.contentsBox {
   display: flex;
 }
 
 h1 {
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 28px;
   font-weight: 400;
-  margin: 2em 0 1.5em 0;
+  margin: 0 0 28px 0;
   text-align: center;
 }
 
@@ -31,10 +31,10 @@ app-select-filtering {
 }
 
 .contents {
-  width: calc(var(--main-width) - 160px);
+  width: 940px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 app-card {
@@ -43,19 +43,23 @@ app-card {
 
 .btnNav {
   width: 20px;
+  height: 42px;
   flex: none;
   border: none;
-  opacity: 0.3;
+  margin: 0;
+  padding: 0;
+  margin-top: 250px;
+  opacity: 0.2;
   transition: opacity 0.5s;
   outline: none;
 }
 
 .btnNav:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 #btnLeft {
-  background: url('/assets/img/back.svg');
+  background: url('/assets/img/arrow_left.png');
   background-size: 20px 42px;
   background-repeat: no-repeat;
   background-position: center;
@@ -63,7 +67,7 @@ app-card {
 }
 
 #btnRight {
-  background: url('/assets/img/next.svg');
+  background: url('/assets/img/arrow_right.png');
   background-size: 20px 42px;
   background-repeat: no-repeat;
   background-position: center;

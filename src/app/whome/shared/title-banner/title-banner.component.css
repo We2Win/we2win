@@ -9,40 +9,44 @@
 }
 
 :host(.info) {
-  background: url('/assets/img/key_info.png');
+  background: url('/assets/img/key_info.jpg');
   color: white;
 }
 
 :host(.site) {
-  background: url('/assets/img/key_site.png');
+  background: url('/assets/img/key_site.jpg');
   color: white;
 }
 
 :host(.employee) {
-  background: url('/assets/img/key_employee.png');
+  background: url('/assets/img/key_employee.jpg');
   color: white;
 }
 
 :host(.employer) {
-  background: url('/assets/img/key_employer.png');
+  background: url('/assets/img/key_employer.jpg');
   color: white;
 }
 
 :host(.meeting) {
-  background: url('/assets/img/key_meeting.png');
+  background: url('/assets/img/key_meeting.jpg');
   color: white;
 }
 
+section {
+  padding-top: 120px;
+}
+
 h1 {
-  font-size: 2em;
+  font-size: 36px;
   font-weight: normal;
   margin: 0;
-  padding: 3em 0 0.5em 0;
+  padding: 0 0 10px 0;
   text-shadow: 0 0 0.5em #000;
 }
 
 h2 {
-  font-size: 1em;
+  font-size: 14px;
   font-weight: 100;
   margin: 0;
   padding: 0;

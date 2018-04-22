@@ -24,6 +24,10 @@ export class SiteCardComponent implements OnInit {
     this._elementRef.nativeElement.classList.add(this.record['S-level'].toLowerCase());
   }
 
+  formatDate(dateStr) {
+    return dateStr.slice(0, 10).replace(/\-/gi, '.');
+  }
+
   bookmark() {
     const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
 

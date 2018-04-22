@@ -4,7 +4,7 @@
       <div id="levelBar" [class]="Data['I-level'].toLowerCase()">{{Data['I-level']}}</div>
       <img [src]="imgUrl" />
     </div>
-    <div>
+    <div id="description">
       <h1>{{Data['I-title']}}</h1>
       <p [innerHtml]="Data['I-summary']"></p>
       <div>
@@ -16,6 +16,10 @@
         <p class="price">{{( Data['I-ammount']* 10000000).toLocaleString() }}원</p>
       </div>
       <app-button>담당자 | {{Data['I-manager-name']}} | {{Data['I-manager-contact']}}</app-button>
+      <div id="optionBar">
+        <img src="/assets/img/icon_bookmark_black.png">
+        <img src="/assets/img/icon_facebook_black.png">
+      </div>
     </div>
   </div>
   <app-group>
@@ -27,22 +31,27 @@
     </article>
     <article>
       <div class="row">
-        <label>현장 리포트</label>
-        <div>
+        <label>현장 리포트
+          <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
+        </label>
+        <div class="editorContainer">
           <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['I-report']"></p>
-          <app-button *ngIf="!showMoreReport" (click)="showMore($event)">더보기</app-button>
         </div>
       </div>
     </article>
+    <app-popup #reportDetail>
+      <h1>현장 리포트</h1>
+      <p [innerHtml]="Data['I-report']"></p>
+    </app-popup>
     <div class="subGroup">
       <label>현장 사진</label>
       <article>
-        <div class="row navigator">
-          <img [src]="subImgUrl[1]" (click)="selectImg(1)" />
-          <img [src]="subImgUrl[2]" (click)="selectImg(2)" />
-          <img [src]="subImgUrl[3]" (click)="selectImg(3)" />
-          <img [src]="subImgUrl[4]" (click)="selectImg(4)" />
-          <img [src]="subImgUrl[5]" (click)="selectImg(5)" />
+        <div id="imgNavigator" class="row navigator" #imgNavigator>
+          <img id="i1" class="show" [src]="subImgUrl[1]" (click)="selectImg(1)" />
+          <img id="i2" [src]="subImgUrl[2]" (click)="selectImg(2)" />
+          <img id="i3" [src]="subImgUrl[3]" (click)="selectImg(3)" />
+          <img id="i4" [src]="subImgUrl[4]" (click)="selectImg(4)" />
+          <img id="i5" [src]="subImgUrl[5]" (click)="selectImg(5)" />
         </div>
         <div class="row shower">
           <label> {{selectedNum}} / 5 </label>
@@ -51,10 +60,11 @@
       </article>
     </div>
     <div class="subGroup">
-      <label>현장 댓글</label>
+      <label>현장 댓글
+        <p class="more" (click)="showMore(commentDetail)">더보기 ></p>
+      </label>
       <article>
         <div class="row">
-          <p class="right more" (click)="showFullComments()">더보기 ></p>
         </div>
         <div class="row" *ngIf="comments.length > 0">
           <label>{{comments[0]['commenter-id']}}</label>
@@ -75,6 +85,14 @@
         </div>
       </article>
     </div>
+    <app-popup #commentDetail>
+      <h1>현장 댓글</h1>
+      <div class="row" *ngFor="let comment of comments">
+        <label>{{comment['commenter-id']}}</label>
+        <p>{{comment['contents']}}</p>
+        <span>{{comment['createdAt'].slice(0,10)}}</span>
+      </div>
+    </app-popup>
     <article>
       <div class="row">
         <label>관련 분양 리포트</label>

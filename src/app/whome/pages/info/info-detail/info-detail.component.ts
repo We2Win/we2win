@@ -26,13 +26,15 @@ export class InfoDetailComponent implements OnInit {
   subImgUrl = ['', '', '', '', ''];
   selectedImgUrl = '';
   selectedNum = 1;
-  showCharts = false;
+  showCharts = true;
   showMoreReport = false;
 
   userInfo;
   comments = [];
 
   @ViewChild('NewComment') NewComment;
+  @ViewChild('reportDetail') reportDetail;
+  @ViewChild('imgNavigator') imgNavigator;
 
   WeeklyList: Array<object>;
   RankingList: Array<object>;
@@ -87,6 +89,8 @@ export class InfoDetailComponent implements OnInit {
           if (this.Data['I-current-duration1'] || this.Data['I-around-duration1']) {
             this.showCharts = true;
             this.addChart();
+          } else {
+            this.showCharts = false;
           }
 
           this.imgUrl = environment.bucket.downloadUrl + this.Data['I-image'];
@@ -113,6 +117,10 @@ export class InfoDetailComponent implements OnInit {
   selectImg(num) {
     this.selectedImgUrl = this.subImgUrl[num];
     this.selectedNum = num;
+    this.imgNavigator.nativeElement.querySelectorAll('img').forEach(element => {
+      element.classList.remove('show');
+    });
+    this.imgNavigator.nativeElement.querySelector('#i' + num).classList.add('show');
   }
 
   addChart() {
@@ -156,6 +164,7 @@ export class InfoDetailComponent implements OnInit {
         ]
       }]
     };
+    console.log(this.mypostDirective);
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
       new PostItem(ChartComponent, current));
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
@@ -205,8 +214,8 @@ export class InfoDetailComponent implements OnInit {
     }
   }
 
-  showMore(event) {
-    this.showMoreReport = true;
+  showMore(child) {
+    child._elementRef.nativeElement.classList.add('show');
   }
 
   showFullComments() {

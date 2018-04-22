@@ -4,7 +4,7 @@ import { PostingService } from '../../../services/posting.service';
 import { MypostDirective } from '../../../directives/mypost.directive';
 import { PostItem } from '../../../models/post-item';
 import { InfoCardComponent } from '../../../micro/info-card/info-card.component';
-import { RankingpostDirective } from '../../../directives/rankingpost.directive';
+import { Rankingpost1Directive, Rankingpost2Directive } from '../../../directives/rankingpost.directive';
 
 @Component({
   selector: 'app-info-main',
@@ -14,16 +14,16 @@ import { RankingpostDirective } from '../../../directives/rankingpost.directive'
 })
 
 export class InfoMainComponent implements OnInit {
+  NewlyList: Array<object>;
   WeeklyList: Array<object>;
-  RankingList: Array<object>;
   @Input() recentRecords;
   @Input() weeklyRecords;
 
-  @ViewChild(MypostDirective)
-  private mypostDirective: MypostDirective;
+  @ViewChild(Rankingpost1Directive)
+  private rankingpost1Directive: Rankingpost1Directive;
 
-  @ViewChild(RankingpostDirective)
-  private rankingpostDirective: RankingpostDirective;
+  @ViewChild(Rankingpost2Directive)
+  private rankingpost2Directive: Rankingpost2Directive;
 
   postItems: PostItem[];
 
@@ -33,20 +33,22 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getReportList().subscribe(
+    this.contentsService.getContentsList('info/newly', 1).subscribe(
       data => {
         if (data.list) {
-          // console.log(data);
-          this.WeeklyList = JSON.parse(data.list);
-          this.addNewlyRecord(this.WeeklyList);
+          console.log('Newly List: ', data);
+          this.NewlyList = JSON.parse(data.list);
+          this.addNewlyRecord(this.NewlyList);
         }
       }
     );
-    this.contentsService.getReportList().subscribe(
+
+    this.contentsService.getContentsList('info/weekly', 1).subscribe(
       data => {
         if (data.list) {
-          this.RankingList = JSON.parse(data.list);
-          this.addRankingRecord(this.RankingList);
+          console.log('Weekly List: ', data);
+          this.WeeklyList = JSON.parse(data.list);
+          this.addWeeklyRecord(this.WeeklyList);
         }
       }
     );
@@ -56,18 +58,18 @@ export class InfoMainComponent implements OnInit {
     // tslint:disable-next-line:forin
     for (const record in records) {
       // console.log('record: ', records[record]);
-      this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+      this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
         new PostItem(InfoCardComponent, records[record]));
     }
   }
 
-  addRankingRecord(records) {
+  addWeeklyRecord(records) {
     const count = ['first', 'second', 'third'];
     for (const num in count) {
       if (records[num]) {
         records[num]['rank'] = count[num];
         // console.log('record: ', records[record]);
-        this.postingService.loadComponent(this.rankingpostDirective.viewContainerRef,
+        this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
           new PostItem(InfoCardComponent, records[num]));
       }
     }

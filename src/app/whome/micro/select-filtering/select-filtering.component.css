@@ -1,27 +1,37 @@
-:host {
+/* :host {
   position: relative;
   width: 144px;
-  height: 4.3em;
+  height: 25px;
   float: right;
-  margin: 3.5em 0 0 -100%;
+  margin: 11px 0 11px 0;
   text-align: left;
   font-size: 0.8em;
   line-height: 200%;
   user-select: none;
+} */
+
+:host {
+  display: inline-block;  
+  width: 144px;
+  height: 25px;
+  margin: 11px 0 11px -224px;
+  float: right;
+  text-align: left;
+  font-size: 11px;
 }
 
-div {
-  width: 100%;
-  margin: 0 80px 0 0;
-  padding: 0.2em 1em;
+#container {
+  padding: 7px 1em;
+  font-weight: 200;
   border: 2px solid transparent;
   border-bottom: 1px solid black;
   box-sizing: border-box;
   transition: border 0.5s;
 }
 
-div:after {
+#container:after {
   content: '';
+  display: inline-block;
   width: 0.9em;
   height: 0.9em;
   margin: 0.5em 0;
@@ -40,7 +50,7 @@ ul {
   padding: 0;
   margin: 0;
   margin-top: -1px;
-  border: 2px solid #d8d8d8;
+  border: 1px solid black;
   background: rgba(255, 255, 255, 0.8);
   color: #666;
   box-sizing: border-box;
@@ -71,6 +81,6 @@ li {
 
 li:hover {
   background: rgba(200, 200, 200, 0.7);
-  color: white;
+  color: black;
 }
 

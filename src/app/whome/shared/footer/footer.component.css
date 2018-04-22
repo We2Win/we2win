@@ -2,9 +2,14 @@
   display: block;
   min-width: var(--main-width);
   background: var(--footer-bg-color);
-  padding: 3em 0;
+  padding: 0;
   color: var(--footer-font-normal);
   cursor: default;
+}
+
+section {
+  padding-top: 80px;
+  padding-bottom: 142px;
 }
 
 nav {

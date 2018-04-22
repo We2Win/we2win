@@ -7,8 +7,8 @@
     <img id="bookmark" (click)="bookmark(); $event.stopPropagation();" src="/assets/img/icon_bookmark.png" />
     <img src="/assets/img/icon_share.png" />
   </div>
-  <h2>{{ record['S-type'] }}</h2>
-  <h3>{{ record['S-title'] }}</h3>
-  <h2>모집일 {{ record['S-open-start'].slice(0, 10) }} ~ {{ record['S-open-end'].slice(0, 10) }}</h2>
-  <h4>{{ record['S-ammount'].toLocaleString() }} 백만원</h4>
+  <h3>{{ record['S-type'] }}</h3>
+  <h2>{{ record['S-title'] }}</h2>
+  <h4>모집일 {{ formatDate(record['S-open-start']) }} ~ {{ formatDate(record['S-open-end']) }}</h4>
+  <h5><b>{{ record['S-ammount'].toLocaleString() }}</b>백만원</h5>
 </div>

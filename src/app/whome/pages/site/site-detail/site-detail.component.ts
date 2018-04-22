@@ -1,16 +1,17 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, Input } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostingService } from '../../../services/posting.service';
+import { RankingpostDirective } from '../../../directives/rankingpost.directive';
 import { MypostDirective } from '../../../directives/mypost.directive';
 import { PostItem } from '../../../models/post-item';
-import { Info } from '../../../models/info';
+import { Site } from '../../../models/site';
 import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../models/user';
 import { SiteCardComponent } from '../../../micro/site-card/site-card.component';
-import { RankingpostDirective } from '../../../directives/rankingpost.directive';
-import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-site-detail',
@@ -19,19 +20,21 @@ import { Meta } from '@angular/platform-browser';
   providers: [ContentsService, PostingService]
 })
 export class SiteDetailComponent implements OnInit {
-  Data = new Info();
+  Data = new Site();
   id: number;
   imgUrl;
   subImgUrl = ['', '', '', '', ''];
   selectedImgUrl = '';
   selectedNum = 1;
-  showCharts = false;
+  showCharts = true;
+  showMoreReport = false;
 
   userInfo;
   comments = [];
 
   @ViewChild('NewComment') NewComment;
-
+  @ViewChild('reportDetail') reportDetail;
+  @ViewChild('imgNavigator') imgNavigator;
 
   WeeklyList: Array<object>;
   RankingList: Array<object>;
@@ -57,19 +60,24 @@ export class SiteDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    // When routed to another site contents:
     this.route.params.subscribe(params => {
       this.id = this.route.params['value'].id;
+      this.showMoreReport = false;
+      window.scrollTo(0, 0);
       this.updateDetail();
     });
-    this.contentsService.getSiteList(this.id).subscribe(
+    // To get ranking report list.
+    this.contentsService.getSiteList().subscribe(
       data => {
         if (data.list) {
           this.RankingList = JSON.parse(data.list);
           this.addRankingRecord(this.RankingList);
-          
         }
       }
     );
+
+    this.userInfo = this.auth.getUserInfo();
   }
 
   updateDetail() {
@@ -81,6 +89,8 @@ export class SiteDetailComponent implements OnInit {
           if (this.Data['S-current-duration1'] || this.Data['S-around-duration1']) {
             this.showCharts = true;
             this.addChart();
+          } else {
+            this.showCharts = false;
           }
 
           this.imgUrl = environment.bucket.downloadUrl + this.Data['S-image'];
@@ -94,8 +104,8 @@ export class SiteDetailComponent implements OnInit {
           console.log('data: ', this.Data);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
-          this.meta.addTag({ name: 'og:title', content: this.Data['I-title'] });
-          this.meta.addTag({ name: 'og:description', content: this.Data['I-summary'] });
+          this.meta.addTag({ name: 'og:title', content: this.Data['S-title'] });
+          this.meta.addTag({ name: 'og:description', content: this.Data['S-summary'] });
           this.meta.addTag({ name: 'og:image', content: this.imgUrl });
 
           this.getComments();
@@ -107,11 +117,15 @@ export class SiteDetailComponent implements OnInit {
   selectImg(num) {
     this.selectedImgUrl = this.subImgUrl[num];
     this.selectedNum = num;
+    this.imgNavigator.nativeElement.querySelectorAll('img').forEach(element => {
+      element.classList.remove('show');
+    });
+    this.imgNavigator.nativeElement.querySelector('#i' + num).classList.add('show');
   }
 
   addChart() {
     const current = {
-      type: 'infoDetail',
+      type: 'siteDetail',
       num: '0',
       labels: [
         this.Data['S-current-duration1'],
@@ -131,7 +145,7 @@ export class SiteDetailComponent implements OnInit {
       }]
     };
     const around = {
-      type: 'infoDetail',
+      type: 'siteDetail',
       num: '1',
       labels: [
         this.Data['S-around-duration1'],
@@ -150,6 +164,7 @@ export class SiteDetailComponent implements OnInit {
         ]
       }]
     };
+    console.log(this.mypostDirective);
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
       new PostItem(ChartComponent, current));
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
@@ -173,6 +188,7 @@ export class SiteDetailComponent implements OnInit {
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
         this.router.navigateByUrl(currentUrl));
     }
+
   }
 
   getComments() {
@@ -196,5 +212,13 @@ export class SiteDetailComponent implements OnInit {
           new PostItem(SiteCardComponent, records[num]));
       }
     }
+  }
+
+  showMore(child) {
+    child._elementRef.nativeElement.classList.add('show');
+  }
+
+  showFullComments() {
+    alert('준비중입니다.');
   }
 }

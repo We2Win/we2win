@@ -8,6 +8,11 @@ export class ContentsService {
     private http: HttpClient
   ) { }
 
+  getContentsList(name, page) {
+    return this.http.get(environment.apiUrl + '/contents/' + name + '/' + page)
+      .map((res: any) => res);
+  }
+  
   addComments(body) {
     const bodyString = JSON.stringify(body);
     const headers = { headers: { 'Content-Type': 'application/json' } };
@@ -64,11 +69,11 @@ export class ContentsService {
   getSiteList(id?: any) {
     if (id) {
       // console.log('with id');
-      return this.http.get(environment.apiUrl + '/contents/apartment/' + id)
+      return this.http.get(environment.apiUrl + '/contents/hotel/' + id)
         .map((res: any) => res);
     } else {
       // console.log('without id');
-      return this.http.get(environment.apiUrl + '/contents/apartment')
+      return this.http.get(environment.apiUrl + '/contents/hotel')
         .map((res: any) => res);
     }
   }
