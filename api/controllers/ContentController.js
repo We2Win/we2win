@@ -234,21 +234,21 @@ const getRankingList = (name) =>
         Info.find({
           offset: id,
           limit: 1,
-          order: 'data-click desc'
+          order: ['data-click', 'DESC']
         })
           .then((content) => {
             contentList.push(content);
             News.find({
               offset: id,
               limit: 1,
-              order: 'data-click desc'
+              order: ['data-click', 'DESC']
             })
               .then((content) => {
                 contentList.push(content);
                 Law.find({
                   offset: id,
                   limit: 1,
-                  order: 'data-click desc'
+                  order: ['data-click', 'DESC']
                 })
                   .then((content) => {
                     contentList.push(content);
@@ -263,21 +263,21 @@ const getRankingList = (name) =>
         Info.find({
           offset: id,
           limit: 8,
-          order: 'data-click desc'
+          order: ['data-click', 'DESC']
         });
         break;
       case 'news':
         News.find({
           offset: id,
           limit: 8,
-          order: 'data-click desc'
+          order: ['data-click', 'DESC']
         });
         break;
       case 'law':
         Law.find({
           offset: id,
           limit: 8,
-          order: 'data-click desc'
+          order: ['data-click', 'DESC']
         });
         break;
       case 'siteNewly':
@@ -291,7 +291,7 @@ const getRankingList = (name) =>
         Site.find({
           offset: id,
           limit: 8,
-          order: 'data-click desc'
+          order: ['data-click', 'DESC']
         });
         break;
     }
