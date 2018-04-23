@@ -26,6 +26,10 @@ const contentsInfo = {
     symbol: 'L',
     db: Law
   },
+  'site': {
+    symbol: 'S',
+    db: Site
+  },
   'apartment': {
     symbol: 'S',
     type: '아파트',
@@ -163,7 +167,7 @@ const getList = (name) =>
     if (req.params.id) {
       WHERE[symbolId] = req.params.id;
     }
-    if (symbolId === 'S-id') {
+    if (symbolId === 'S-id' && name !== 'site') {
       WHERE['S-type'] = contentsInfo[name].type;
     }
 
