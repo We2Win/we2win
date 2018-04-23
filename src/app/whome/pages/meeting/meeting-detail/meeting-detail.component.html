@@ -4,7 +4,8 @@
       <img src="/assets/img/meeting_sample.png" />
     </div>
     <div>
-      <h1>SOUNDS OF KOREA <br> INSIDE SOUL</h1>
+      <h1>SOUNDS OF KOREA
+        <br> INSIDE SOUL</h1>
       <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가
         승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</p>
       <li>
@@ -29,45 +30,70 @@
       </li>
       <li>
         <h2>참가비</h2>
-        <h3>19,000원</h3>
-      </li>
-      <app-button>모임 참가하기</app-button>
-    </div>
-  </div>
-  <div class="part">
-    <h2>세부사항</h2>
-    <p class="description">해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이
-      완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-  </div>
-  <div class="part">
-    <h2>준비물</h2>
-    <p class="description">해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이
-      완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</p>
-  </div>
-  <div class="part">
-    <h2 id="review">모임 후기</h2>
-    <div class="description">
-      <li>
-        <h3>Amberyi_0523</h3>
-        <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.</p>
+        <h3 class="price">19,000원</h3>
       </li>
       <li>
-        <h3>Amberyi_0523</h3>
-        <p>해당 상품은 지난 6월 대출 직후 건축 인허가</p>
+        <h2></h2>
+        <app-button>모임 참가하기</app-button>
       </li>
-      <li id="submit">
-        <h3>Amberyi_0523</h3>
-        <textarea></textarea>
-        <app-button>댓글 입력</app-button>
-      </li>
+      <div id="optionBar">
+        <img src="/assets/img/icon_schedule_black.png">
+        <img src="/assets/img/icon_facebook_black.png">
+      </div>
     </div>
   </div>
-  <div class="part">
-    <h2>관련 오프라인 모임</h2>
-    <div class="description cardList">
-      <app-meeting-card></app-meeting-card>
-      <app-meeting-card></app-meeting-card>
-      <app-meeting-card></app-meeting-card>
+  <app-group>
+    <article>
+      <div class="row">
+        <label>세부 사항</label>
+        <div class="editorContainer">
+          <p class="shortener">해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야
+            인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</p>
+        </div>
+      </div>
+    </article>
+    <article>
+      <div class="row">
+        <label>준비물</label>
+        <p class="row">
+          해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.
+          이번 12월에야 인허가 승인이 완료되었습니다.
+        </p>
+      </div>
+    </article>
+    <div class="subGroup">
+      <label>현장 댓글
+        <p class="more">더보기 ></p>
+      </label>
+      <article class="comments">
+        <div class="row" *ngIf="comments.length > 0">
+          <label>{{comments[0]['commenter-id']}}</label>
+          <p>{{comments[0]['contents']}}</p>
+          <span>{{comments[0]['createdAt'].slice(0,10)}}</span>
+        </div>
+        <div class="row" *ngIf="comments.length > 1">
+          <label>{{comments[1]['commenter-id']}}</label>
+          <p>{{comments[1]['contents']}}</p>
+          <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
+        </div>
+        <div name="commentBox" class="row">
+          <form class="commentForm" (submit)="addComment()">
+            <label>{{userInfo['user_id']}}</label>
+            <textarea type="text" class="commentInput" #NewComment></textarea>
+            <app-button (click)="addComment()">댓글 입력</app-button>
+          </form>
+        </div>
+      </article>
     </div>
-  </div>
+    <article>
+      <div class="row">
+        <label>관련 오프라인 모임</label>
+        <div class="row flex">
+          <app-meeting-card></app-meeting-card>
+          <app-meeting-card></app-meeting-card>
+          <app-meeting-card></app-meeting-card>
+        </div>
+      </div>
+    </article>
+  </app-group>
 </section>

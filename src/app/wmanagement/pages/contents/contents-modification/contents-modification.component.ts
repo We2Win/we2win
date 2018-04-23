@@ -127,8 +127,8 @@ export class ContentsModificationComponent implements OnInit {
     [{ 'align': [] }, { 'list': 'ordered' }, { 'list': 'bullet' }],
     [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
     ['blockquote', { 'script': 'sub' }, { 'script': 'super' }],
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] },
-    { 'header': 1 }, { 'header': 2 }],
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    // { 'header': 1 }, { 'header': 2 }],
     ['clean'],                                        // remove formatting button
   ];
   public editorOptions = {
@@ -188,7 +188,7 @@ export class ContentsModificationComponent implements OnInit {
     this.contentsService.getContentsList(this.engType[selected]).subscribe(
       data => {
         const titles = [];
-        this.loadedData = JSON.parse(data.list);
+        this.loadedData = data;
         // tslint:disable-next-line:forin
         for (const record in this.loadedData) {
           titles.push(this.loadedData[record][this.symbols[selected] + '-title']);
@@ -223,6 +223,7 @@ export class ContentsModificationComponent implements OnInit {
         console.log(lastname, this.levels[control].selected);
         this.levels[control].selected = this.selectBoxData[control];
       } else {
+        console.log(this.loadedData[num][control]);
         form.controls[control].setValue(this.loadedData[num][control]);
         this.inputs[control.slice(1)] = this.loadedData[num][control];
       }

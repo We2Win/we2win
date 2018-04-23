@@ -238,6 +238,7 @@
 }
 
 :host /deep/ .shortener {
+  min-height: 8em;
   max-height: 15em;
   overflow-y: hidden;
 }

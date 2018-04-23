@@ -1,6 +1,7 @@
 section {
   padding-top: 130px;
 }
+
 #top {
   display: flex;
   padding: 0 0 2em 0;
@@ -14,6 +15,10 @@ section {
   width: 517px;
   height: 310px;
   object-fit: cover;
+}
+
+#top app-button /deep/ button {
+  font-weight: 200;
 }
 
 #levelBar {
@@ -67,7 +72,7 @@ section {
 }
 
 #description label+p {
-  display: inline-block;  
+  display: inline-block;
   margin: 0;
 }
 
@@ -141,8 +146,6 @@ section {
   opacity: 0.5;
   transition: opacity 0.5s;
   border: 2px solid transparent;
-  width: 138px;
-  height: 124px;
 }
 
 #imgNavigator img.show {
@@ -150,13 +153,46 @@ section {
   border: 2px solid black;
 }
 
-.commentForm {
+.comments .row {
+  padding: 0 0 15px 0;
+}
+
+.comments .row+.row {
+  padding: 15px 0;
+  border-top: 1px solid #ccc;
+}
+
+.comments label {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.comments p,
+.comments span {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.comments .commentForm {
   flex: 1;
   display: flex;
 }
 
-.commentInput {
+.comments .commentInput {
   flex: 3;
+  min-height: 60px;
+  height: 60px;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.comments app-button /deep/ button {
+  height: 60px;
+  line-height: 300%;
+  font-size: 10px;
 }
 
 .flex {
@@ -164,23 +200,25 @@ section {
   justify-content: space-between;
 }
 
-
 .flex /deep/ app-info-card {
   width: 227px;
   flex: none;
 }
 
-app-popup /deep/ #popupBox {
-  height: 75vh;
-}
-
 app-popup /deep/ h1 {
   padding: 0;
-  padding-bottom: 3em;
-  margin: 2em 0;
-  border-bottom: 1px solid #999;
+  margin: 1em 0 2em 0;
 }
 
-app-popup /deep/ span {
-  font-size: 1em;
+app-popup /deep/ span,
+app-popup /deep/ p {
+  font-size: 14px;
+  font-weight: 300;
 }
+
+app-popup /deep/ .row+.row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+

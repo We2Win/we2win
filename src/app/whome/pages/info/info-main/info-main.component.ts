@@ -52,6 +52,18 @@ export class InfoMainComponent implements OnInit {
             content['createdAt'] = new Date(content['createdAt']);
             content['updatedAt'] = new Date(content['createdAt']);
           });
+
+          const compare = (a, b) => {
+            if (a.updatedAt < b.updatedAt) {
+              return -1;
+            }
+            if (a.updatedAt > b.updatedAt) {
+              return 1;
+            }
+            return 0;
+          };
+
+          list.sort(compare);
           console.log('Newly List: ', list);
           this.NewlyList = list;
           this.newlyPageNum = parseInt((this.NewlyList.length - 1) / 8 + 1 + '', 10);

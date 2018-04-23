@@ -17,6 +17,10 @@ section {
   object-fit: cover;
 }
 
+#top app-button /deep/ button {
+  font-weight: 200;
+}
+
 #levelBar {
   display: block;
   height: 25px;
@@ -149,13 +153,45 @@ section {
   border: 2px solid black;
 }
 
-.commentForm {
+.comments .row {
+  padding: 0 0 15px 0;
+}
+
+.comments .row + .row {
+  padding: 15px 0;
+  border-top: 1px solid #ccc;
+}
+
+.comments label{
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.comments p, .comments span {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.comments .commentForm {
   flex: 1;
   display: flex;
 }
 
-.commentInput {
+.comments .commentInput {
   flex: 3;
+  min-height: 60px;
+  height: 60px;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.comments app-button /deep/ button {
+  height: 60px;
+  line-height: 300%;
+  font-size: 10px;
 }
 
 .flex {
@@ -163,12 +199,24 @@ section {
   justify-content: space-between;
 }
 
-.flex /deep/ app-info-card {
+.flex /deep/ app-site-card {
   width: 227px;
   flex: none;
 }
 
-app-popup h1 {
+app-popup /deep/ h1 {
   padding: 0;
   margin: 1em 0 2em 0;
+}
+
+app-popup /deep/ span,
+app-popup /deep/ p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+app-popup /deep/ .row + .row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
 }

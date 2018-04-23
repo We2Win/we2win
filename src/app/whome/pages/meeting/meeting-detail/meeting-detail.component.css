@@ -12,19 +12,26 @@
 }
 
 #top h1 {
-  margin-bottom: 1em;
+  font-size: 28px;
+  line-height: 100%;
+  margin-bottom: 30px;
 }
 
 #top p {
-  margin-bottom: 2em;
+  font-size: 14px;
+  font-weight: 300;
+  height: 70px;
+  margin-bottom: 30px;
 }
 
 #top li {
+  font-size: 14px;
+  margin: 15px 0;
   display: flex;
 }
 
 #top li h2 {
-  width: 150px;
+  width: 90px;
   font-size: 0.9em;
   line-height: 200%;
 }
@@ -32,69 +39,136 @@
 #top li h3 {
   flex: 1;
   font-size: 0.9em;
-  line-height: 200%;
+  line-height: 100%;
+}
+
+#top li h3.price {
+  font-size: 28px;
+  font-weight: 300;
+  color: #d3000d;
 }
 
 #top app-button {
+  text-align: left;
   display: block;
-  margin: 1em auto;
-}
-
-.part {
-  border-top: 1px solid #999;
-  display: flex;
-  padding: 1em 2em;
-}
-
-.part h2 {
-  width: 200px;
-  font-size: 0.8em;
-  flex: none;
-}
-
-.part .description {
-    flex: 1;
-  font-size: 0.8em;
-}
-
-.part li {
-  display: flex;
-  padding: 0 0 1em 0;
-}
-
-.part li+li {
-  border-top: 1px solid #d8d8d8;
-  padding-top: 1em;
-}
-
-.part li#submit {
-  border-top: 1px solid #999;
-}
-
-.part li h3 {
-  width: 150px;
-  padding-left: 0.5em;
-}
-
-.part li p {
-  flex: 1;
-}
-
-.part textarea {
-  flex: 1;
-  min-height: 4em;
-  font-size: 1em;
-  padding: 0.5em 1em;
-  border: 1px solid #999;
-  resize: vertical;
-}
-
-.part app-button {
-  width: 100px;
+  width: 216px;
+  height: 50px;
   margin: 0;
 }
 
-.cardList {
+#optionBar {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ccc;
+  padding: 20px 0;
+}
+
+#optionBar img {
+  flex: none;
+  height: 15px;
+  padding: 0 21px;
+}
+
+#optionBar img+img {
+  border-left: 1px solid #ccc;
+}
+
+
+.editorContainer span {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.editorContainer:after {
+  content: '';
+  display: block;
+  position: relative;
+  height: 50px;
+  margin-top: -50px;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}
+
+.shower img {
+  width: 517px;
+  height: 310px;
+}
+
+#imgNavigator img {
+  opacity: 0.5;
+  transition: opacity 0.5s;
+  border: 2px solid transparent;
+}
+
+#imgNavigator img.show {
+  opacity: 1;
+  border: 2px solid black;
+}
+
+.comments .row {
+  padding: 0 0 15px 0;
+}
+
+.comments .row+.row {
+  padding: 15px 0;
+  border-top: 1px solid #ccc;
+}
+
+.comments label {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.comments p,
+.comments span {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.comments .commentForm {
+  flex: 1;
+  display: flex;
+}
+
+.comments .commentInput {
+  flex: 3;
+  min-height: 60px;
+  height: 60px;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.comments app-button /deep/ button {
+  height: 60px;
+  line-height: 300%;
+  font-size: 10px;
+}
+
+.flex {
   display: flex;
   justify-content: space-between;
+}
+
+.flex /deep/ app-site-card {
+  width: 227px;
+  flex: none;
+}
+
+app-popup /deep/ h1 {
+  padding: 0;
+  margin: 1em 0 2em 0;
+}
+
+app-popup /deep/ span,
+app-popup /deep/ p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+app-popup /deep/ .row+.row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
 }

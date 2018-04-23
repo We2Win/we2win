@@ -43,10 +43,10 @@ export class NewsDetailComponent implements OnInit {
       this.updateDetail();
     });
 
-    this.contentsService.getNewsList().subscribe(
+    this.contentsService.getContentsList('news').subscribe(
       data => {
-        if (data.list) {
-          this.RankingList = JSON.parse(data.list);
+        if (data) {
+          this.RankingList = data;
           this.addRankingRecord(this.RankingList);
         }
       }
@@ -54,10 +54,10 @@ export class NewsDetailComponent implements OnInit {
   }
 
   updateDetail() {
-    this.contentsService.getNewsList(this.id).subscribe(
+    this.contentsService.getContentsList('news', this.id).subscribe(
       data => {
         if (data) {
-          this.Data = JSON.parse(data.body);
+          this.Data = data;
           // this.top.nativeElement.style.background = 'red';
           this.background.nativeElement.src = environment.bucket.downloadUrl + this.Data['N-image'];
           // this.top.nativeElement.style.backgroundSize = 'cover';
