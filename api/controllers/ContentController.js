@@ -180,18 +180,14 @@ const getList = (name) =>
             'data-click': Sequelize.literal('`data-click` + 1')
           });
 
-          return ReS(res, {
-            body: JSON.stringify(content)
-          })
+          return ReS(res, content);
         });
     } else {
       db.findAll({
           where: WHERE
         })
         .then((contentList) => {
-          return ReS(res, {
-            list: JSON.stringify(contentList)
-          })
+          return ReS(res, contentList);
         });
     }
   };
