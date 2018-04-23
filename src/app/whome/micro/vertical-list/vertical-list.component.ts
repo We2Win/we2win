@@ -1,50 +1,40 @@
-import { Component, OnInit, OnChanges, Input, ElementRef, ViewContainerRef } from '@angular/core';
-import { AfterViewInit, OnDestroy, ViewChild } from '@angular/core/';
-import { Info } from '../../models/info';
-import { DataItem } from '../../models/data-item';
-import { InfoService } from '../../services/info.service';
-import { InfoCardComponent } from '../info-card/info-card.component';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-vertical-list',
   templateUrl: './vertical-list.component.html',
   styleUrls: ['./vertical-list.component.css']
 })
-export class VerticalListComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-
-  @ViewChild(InfoCardComponent)
-  private infoCardComponent: InfoCardComponent;
-
+export class VerticalListComponent implements OnInit, OnChanges {
   _toptitle: String;
 
   @Input() toptitle = '무제';
-  dataItems: DataItem[];
-  intervalId: any;
-  dataIndex = -1;
-  @Input() records;
-  interval: any;
+  @Input() maxCount;
+
+  @Output()
+  change: EventEmitter<number> = new EventEmitter<number>();
+
+  count = 0;
 
   constructor(
-    private _elementRef: ElementRef,
-    private infoService: InfoService
   ) {
     this._toptitle = this.toptitle;
-  }
-
-  ngAfterViewInit() {
-    // this.dataItems = this.infoService.getSample();
-    // this.startCard();
   }
 
   ngOnInit() {
   }
 
-  ngOnChanges() {
-    console.log('records at vertical-list: ', this.records);
+  increment() {
+    this.count = (this.count + 1) % this.maxCount;
+    this.change.emit(this.count);
   }
 
-  ngOnDestroy() {
-    // clearInterval(this.intervalId);
+  decrement() {
+    this.count = (this.count + this.maxCount - 1) % this.maxCount;
+    this.change.emit(this.count);
+  }
+
+  ngOnChanges() {
   }
 
 }

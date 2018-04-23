@@ -101,8 +101,8 @@ export class ContentsRegistrationComponent implements OnInit {
     [{ 'align': [] }, { 'list': 'ordered' }, { 'list': 'bullet' }],
     [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
     ['blockquote', { 'script': 'sub' }, { 'script': 'super' }],
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] },
-    { 'header': 1 }, { 'header': 2 }],
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    // [{ 'header': 1 }, { 'header': 2 }],
     ['clean'],                                        // remove formatting button
   ];
   public editorOptions = {

@@ -141,6 +141,8 @@ section {
   opacity: 0.5;
   transition: opacity 0.5s;
   border: 2px solid transparent;
+  width: 138px;
+  height: 124px;
 }
 
 #imgNavigator img.show {
@@ -168,7 +170,17 @@ section {
   flex: none;
 }
 
-app-popup h1 {
+app-popup /deep/ #popupBox {
+  height: 75vh;
+}
+
+app-popup /deep/ h1 {
   padding: 0;
-  margin: 1em 0 2em 0;
+  padding-bottom: 3em;
+  margin: 2em 0;
+  border-bottom: 1px solid #999;
+}
+
+app-popup /deep/ span {
+  font-size: 1em;
 }

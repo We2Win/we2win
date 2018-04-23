@@ -18,6 +18,25 @@
     z-index: 11;
     text-align: left;
     overflow-y: scroll;
+    box-shadow: 0 30px 50px #333;
+}
+
+:host.show #popupBox:before {
+    content: '닫기';
+    position: fixed;
+    top: calc(10vh - 50px);
+    left: 75vw;
+    font-size: 14px;
+    line-height: 500%;
+    width: 90px;
+    height: 90px;
+    color: white;
+    /* background: rgba(255, 255, 255, 0.3); */
+    border-radius: 50%;
+    cursor: default;
+    z-index: 20;
+    pointer-events: none;
+    text-align: center;
 }
 
 #dim {
@@ -31,6 +50,7 @@
     opacity: 0;
     transition: opacity 0.5s;
     overflow-y: scroll;
+    -webkit-backdrop-filter: blur(5px);
 }
 
 :host.show #dim {

@@ -1,5 +1,7 @@
-<app-vertical-list [toptitle]="'최신 정보'">
-  <ng-container appRankingpost1></ng-container>
+<app-vertical-list [toptitle]="'최신 정보'" [maxCount]="newlyPageNum" (change)="paging($event)">
+  <ng-container #newlyContainer>
+    <ng-container appRankingpost1></ng-container>
+  </ng-container>
 </app-vertical-list>
 <app-ranking-list [toptitle]="'주간 이슈'">
   <ng-container appRankingpost2></ng-container>

@@ -19,6 +19,9 @@ export class InfoMainComponent implements OnInit {
   NewlyList: Array<object>;
   WeeklyList: Array<object>;
 
+  newlyPageNum;
+  @ViewChild('newlyContainer') newlyContainer;
+
   @ViewChild(Rankingpost1Directive)
   private rankingpost1Directive: Rankingpost1Directive;
 
@@ -31,7 +34,12 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('info/newly', 1).subscribe(
+    this.getContentsListNewly(1);
+    this.getContentsListWeekly();
+  }
+
+  getContentsListNewly(page) {
+    this.contentsService.getContentsList('info/newly', page).subscribe(
       data => {
         if (data) {
           const list = [];
@@ -46,11 +54,14 @@ export class InfoMainComponent implements OnInit {
           });
           console.log('Newly List: ', list);
           this.NewlyList = list;
-          this.addNewlyRecord(this.NewlyList);
+          this.newlyPageNum = parseInt((this.NewlyList.length - 1) / 8 + 1 + '', 10);
+          this.addNewlyRecord(this.NewlyList.slice(0, 8));
         }
       }
     );
+  }
 
+  getContentsListWeekly() {
     this.contentsService.getContentsList('info/weekly', 1).subscribe(
       data => {
         if (data) {
@@ -70,6 +81,14 @@ export class InfoMainComponent implements OnInit {
         }
       }
     );
+  }
+
+  paging(count) {
+    // console.log(count);
+    const container = this.rankingpost1Directive.viewContainerRef;
+    container.clear();
+    const start = count * 8;
+    this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
   }
 
   addNewlyRecord(records) {

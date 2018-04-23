@@ -3,7 +3,7 @@ import { ContentsService } from '../../../services/contents.service';
 import { PostingService } from '../../../services/posting.service';
 import { PostItem } from '../../../models/post-item';
 import { SiteCardComponent } from '../../../micro/site-card/site-card.component';
-import { Rankingpost1Directive, Rankingpost2Directive } from '../../../directives/rankingpost.directive';
+import { Rankingpost1Directive, Rankingpost2Directive, Rankingpost3Directive } from '../../../directives/rankingpost.directive';
 
 @Component({
   selector: 'app-site-main',
@@ -19,8 +19,11 @@ export class SiteMainComponent implements OnInit {
   @ViewChild(Rankingpost1Directive)
   private rankingpost1Directive: Rankingpost1Directive;
 
-  @ViewChild(Rankingpost1Directive)
+  @ViewChild(Rankingpost2Directive)
   private rankingpost2Directive: Rankingpost2Directive;
+
+  @ViewChild(Rankingpost3Directive)
+  private rankingpost3Directive: Rankingpost3Directive;
 
   constructor(
     private contentsService: ContentsService,
@@ -34,6 +37,7 @@ export class SiteMainComponent implements OnInit {
           console.log('Newly List: ', data);
           this.NewlyList = data;
           this.addNewlyRecord(this.NewlyList);
+          this.addSampleRecord(this.NewlyList);
         }
       }
     );
@@ -49,12 +53,20 @@ export class SiteMainComponent implements OnInit {
     );
   }
 
-
   addNewlyRecord(records) {
     // tslint:disable-next-line:forin
     for (const record in records) {
       // console.log('record: ', records[record]);
       this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
+        new PostItem(SiteCardComponent, records[record]));
+    }
+  }
+
+  addSampleRecord(records) {
+    // tslint:disable-next-line:forin
+    for (const record in records) {
+      // console.log('record: ', records[record]);
+      this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
         new PostItem(SiteCardComponent, records[record]));
     }
   }
@@ -65,7 +77,7 @@ export class SiteMainComponent implements OnInit {
       if (records[num]) {
         records[num]['rank'] = count[num];
         // console.log('record: ', records[record]);
-        this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+        this.postingService.loadComponent(this.rankingpost3Directive.viewContainerRef,
           new PostItem(SiteCardComponent, records[num]));
       }
     }

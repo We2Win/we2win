@@ -68,10 +68,10 @@ export class SiteDetailComponent implements OnInit {
       this.updateDetail();
     });
     // To get ranking report list.
-    this.contentsService.getSiteList().subscribe(
+    this.contentsService.getContentsList('site').subscribe(
       data => {
-        if (data.list) {
-          this.RankingList = JSON.parse(data.list);
+        if (data) {
+          this.RankingList = data;
           this.addRankingRecord(this.RankingList);
         }
       }
@@ -81,11 +81,11 @@ export class SiteDetailComponent implements OnInit {
   }
 
   updateDetail() {
-    this.contentsService.getSiteList(this.id).subscribe(
+    this.contentsService.getContentsList('site', this.id).subscribe(
       data => {
         if (data) {
-          this.Data = JSON.parse(data.body);
-          // console.log(this.Data);
+          this.Data = data;
+          console.log(this.Data);
           if (this.Data['S-current-duration1'] || this.Data['S-around-duration1']) {
             this.showCharts = true;
             this.addChart();

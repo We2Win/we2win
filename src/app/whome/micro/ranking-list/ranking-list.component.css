@@ -114,15 +114,15 @@ h3 {
 }
 
 #btnLeft {
-  background: url('/assets/img/back.svg');
-  background-size: 10px 20px;
+  background: url('/assets/img/arrow_left.png');
+  background-size: 5px 11px;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #btnRight {
-  background: url('/assets/img/next.svg');
-  background-size: 10px 20px;
+  background: url('/assets/img/arrow_right.png');
+  background-size: 5px 11px;
   background-repeat: no-repeat;
   background-position: center;
 }
