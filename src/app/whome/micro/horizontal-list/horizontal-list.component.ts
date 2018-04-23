@@ -10,7 +10,6 @@ export class HorizontalListComponent implements OnInit {
   hiddenNum;
 
   @Input() toptitle = 'hi';
-  @Input('records') records;
 
   constructor(
     private _elementRef: ElementRef
@@ -19,7 +18,6 @@ export class HorizontalListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.records);
   }
 
   showMore() {

@@ -12,12 +12,10 @@ import { SiteCardComponent } from '../../../micro/site-card/site-card.component'
   providers: [ContentsService, PostingService]
 })
 export class GroundComponent implements OnInit {
-  List: Array<object>;
+  Data: Array<object>;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
-
-  postItems: PostItem[];
 
   constructor(
     private contentsService: ContentsService,
@@ -25,12 +23,12 @@ export class GroundComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getGroundList().subscribe(
+    this.contentsService.getContentsList('ground').subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           // console.log(data);
-          this.List = JSON.parse(data.list);
-          this.addRecord(this.List);
+          this.Data = data;
+          this.addRecord(this.Data);
         }
       }
     );

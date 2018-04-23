@@ -12,7 +12,7 @@ import { SiteCardComponent } from '../../../micro/site-card/site-card.component'
   providers: [ContentsService, PostingService]
 })
 export class CommercialComponent implements OnInit {
-  List: Array<object>;
+  Data: Array<object>;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -25,12 +25,12 @@ export class CommercialComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getCommercialList().subscribe(
+    this.contentsService.getContentsList('commercial').subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           // console.log(data);
-          this.List = JSON.parse(data.list);
-          this.addRecord(this.List);
+          this.Data = data;
+          this.addRecord(this.Data);
         }
       }
     );

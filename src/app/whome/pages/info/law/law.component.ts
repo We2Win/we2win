@@ -12,7 +12,7 @@ import { LawCardComponent } from '../../../micro/law-card/law-card.component';
   providers: [ContentsService, PostingService]
 })
 export class LawComponent implements OnInit {
-  List: Array<object>;
+  Data: Array<object>;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -25,12 +25,12 @@ export class LawComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getLawList().subscribe(
+    this.contentsService.getContentsList('law').subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           // console.log(data);
-          this.List = JSON.parse(data.list);
-          this.addRecord(this.List);
+          this.Data = data;
+          this.addRecord(this.Data);
         }
       }
     );

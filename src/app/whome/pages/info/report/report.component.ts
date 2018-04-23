@@ -12,12 +12,10 @@ import { InfoCardComponent } from '../../../micro/info-card/info-card.component'
   providers: [ContentsService, PostingService]
 })
 export class ReportComponent implements OnInit {
-  List: Array<object>;
+  Data: Array<object>;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
-
-  postItems: PostItem[];
 
   constructor(
     private contentsService: ContentsService,
@@ -25,12 +23,12 @@ export class ReportComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getReportList().subscribe(
+    this.contentsService.getContentsList('report').subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           console.log(data);
-          this.List = JSON.parse(data.list);
-          this.addRecord(this.List);
+          this.Data = data;
+          this.addRecord(this.Data);
         }
       }
     );

@@ -12,13 +12,10 @@ import { EmployerCardComponent } from '../../../micro/employer-card/employer-car
   providers: [ContentsService, PostingService]
 })
 export class EmployerComponent implements OnInit {
-
-  List: Array<object>;
+  Data: Array<object>;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
-
-  postItems: PostItem[];
 
   constructor(
     private contentsService: ContentsService,
@@ -26,12 +23,12 @@ export class EmployerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getEmployerList().subscribe(
+    this.contentsService.getContentsList('employer').subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           // console.log(data);
-          this.List = JSON.parse(data.list);
-          this.addRecord(this.List);
+          this.Data = data;
+          this.addRecord(this.Data);
         }
       }
     );

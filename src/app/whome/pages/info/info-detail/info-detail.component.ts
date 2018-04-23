@@ -68,10 +68,10 @@ export class InfoDetailComponent implements OnInit {
       this.updateDetail();
     });
     // To get ranking report list.
-    this.contentsService.getReportList().subscribe(
+    this.contentsService.getContentsList('report').subscribe(
       data => {
-        if (data.list) {
-          this.RankingList = JSON.parse(data.list);
+        if (data) {
+          this.RankingList = data;
           this.addRankingRecord(this.RankingList);
         }
       }
@@ -81,10 +81,10 @@ export class InfoDetailComponent implements OnInit {
   }
 
   updateDetail() {
-    this.contentsService.getReportList(this.id).subscribe(
+    this.contentsService.getContentsList('report', this.id).subscribe(
       data => {
         if (data) {
-          this.Data = JSON.parse(data.body);
+          this.Data = data;
           // console.log(this.Data);
           if (this.Data['I-current-duration1'] || this.Data['I-around-duration1']) {
             this.showCharts = true;

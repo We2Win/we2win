@@ -8,11 +8,11 @@ import { EmployeeCardComponent } from '../../../micro/employee-card/employee-car
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css'],
+  providers: [ContentsService, PostingService]
 })
 export class EmployeeComponent implements OnInit {
-
-  List: Array<object>;
+  Data: Array<object>;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -25,12 +25,12 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getEmployeeList().subscribe(
+    this.contentsService.getContentsList('employee').subscribe(
       data => {
-        if (data.list) {
+        if (data) {
           // console.log(data);
-          this.List = JSON.parse(data.list);
-          this.addRecord(this.List);
+          this.Data = data;
+          this.addRecord(this.Data);
         }
       }
     );
