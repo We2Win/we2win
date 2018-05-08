@@ -1,6 +1,6 @@
 <div id="iconSet">
   <button id="mail" (click)="showMail = true"></button>
-  <button id="dashboard" routerLink="/mng"></button>
+  <button id="dashboard" (click)="checkAdmin()"></button>
   <button id="notification" (click)="showNotification = true"></button>
 
   <div id="mail" class="popup" [ngClass]="{'show': showNotification}">

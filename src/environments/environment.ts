@@ -8,6 +8,10 @@ export const environment = {
   homeUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/',
   apiUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1',
   naver: {
+    reqUrl: 'https://nid.naver.com/oauth2.0/authorize?response_type=code&' +
+      'client_id=' + 's_brdfQHOF5ygOo6wszb' +
+      '&state=' + 'we2win_state' +
+      '&redirect_uri=' + 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/',
     clientId: 's_brdfQHOF5ygOo6wszb',
     callbackUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/'
   },

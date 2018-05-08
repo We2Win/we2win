@@ -4,6 +4,7 @@ import { Card } from '../../models/card';
 import { FbShareService } from '../../services/fb-share.service';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-law-card',
@@ -20,7 +21,8 @@ export class LawCardComponent implements OnInit {
     private _elementRef: ElementRef,
     public viewContainerRef: ViewContainerRef,
     private fbShareService: FbShareService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {
   }
 
@@ -57,7 +59,7 @@ export class LawCardComponent implements OnInit {
     if (this.auth.isAuthenticated()) {
       window.location.assign(environment.bucket.downloadUrl + this.record['L-file']);
     } else {
-      alert('로그인이 필요합니다.');
+      this.router.navigate(['login']);
     }
   }
 }

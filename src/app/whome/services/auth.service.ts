@@ -26,12 +26,14 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private jwtHelper: JwtHelper
-  ) { }
+    private jwtHelper: JwtHelper,
+  ) {
+
+  }
 
   auth: boolean;
   checkAuth() {
-  // checkAuth(): Observable<boolean> {
+    // checkAuth(): Observable<boolean> {
     return this.http.get(this.appUrl + '/users')
       .map(res => {
         console.log(res);
@@ -45,11 +47,21 @@ export class AuthService {
 
   login(user: User) {
     const bodyString = JSON.stringify(user);
-    const headers = { headers: { 'Content-Type': 'application/json' }};
+    const headers = { headers: { 'Content-Type': 'application/json' } };
 
     return this.http.post(environment.apiUrl + '/login', bodyString, headers)
       .do((res: any) => this.setToken(res.token))
       .shareReplay();
+  }
+
+  loginWithNaver() {
+
+    // Kakao.init('b560ff0ff0ea7935612a6555fb53c516');
+
+    return this.http.get(environment.naver.reqUrl)
+      .map(res => {
+        console.log(res);
+      });
   }
 
   // signin(credential: User) {

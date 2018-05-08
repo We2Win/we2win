@@ -7,7 +7,7 @@
 section {
   text-align: center;
   padding-top: 80px;
-  padding-bottom: 160px;
+  padding-bottom: 100px;
 }
 
 h1 {
@@ -120,7 +120,7 @@ h3 {
   background-position: center;
 }
 
-#btnRight {
+#btnRight { 
   background: url('/assets/img/arrow_right.png');
   background-size: 5px 11px;
   background-repeat: no-repeat;

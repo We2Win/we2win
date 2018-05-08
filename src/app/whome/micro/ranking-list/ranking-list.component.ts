@@ -14,7 +14,7 @@ export class RankingListComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log('records form parent to ranking-list: ', this.records);
+    // console.log('records form parent to ranking-list: ', this.records);
   }
 
   onClickMore() {

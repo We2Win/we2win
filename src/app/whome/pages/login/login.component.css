@@ -1,7 +1,60 @@
+h1 {
+  padding-top: 10px;
+}
+
 .articleNarrow {
-  padding: 2em 15em;
+  margin: 2em 237px 0 237px;
+  border-bottom: 1px solid #d8d8d8;
 }
 
 .method {
   cursor: pointer;
+}
+
+:host /deep/ label {
+  padding-top: 7px;
+  width: 100px;
+}
+
+:host /deep/ input {
+  height: 50px !important;
+}
+
+:host /deep/ button {
+  margin: 20px 0 0 0;
+  height: 50px !important;
+}
+
+:host /deep/ .row {
+  margin: 0 auto 1em auto !important;
+}
+
+:host /deep/ .snsButtons {
+  margin-top: -10px !important;
+}
+
+:host /deep/ #naverIdLogin {
+  border-radius: 0;
+  margin: 0;
+  height: 50px;
+  text-align: center;
+  margin-right: 5px;
+  /* background: #1fc900; */
+  overflow: hidden;
+}
+
+:host /deep/ #naverIdLogin img {
+  width: 222px;
+  height: auto;
+  overflow: hidden;
+}
+
+:host /deep/ #naverIdLogin img:hover {
+  filter: brightness(0.9);
+}
+
+:host /deep/ #kakaoIdLogin {
+  background: #ffeb00;
+  height: 48px;
+  overflow: hidden;
 }

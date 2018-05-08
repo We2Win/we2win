@@ -82,9 +82,9 @@
 
 #buttonBar {
   position: relative;
-  margin-top: -50px;
+  margin-top: -30px;
   height: 30px;
-  padding: 20px 1em 0 1em;
+  padding: 0px 1em 0 1em;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   text-align: right;
   opacity: 0;

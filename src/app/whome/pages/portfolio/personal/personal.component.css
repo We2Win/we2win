@@ -1,0 +1,189 @@
+:host {
+  display: block;
+  min-width: var(--main-width);
+  background: #eee;
+  padding: 3em 0;
+}
+
+section>div {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+}
+
+.contentBox1,
+.contentBox2 {
+  box-shadow: 0 0 10px #ddd;
+}
+
+.contentBox1+.contentBox2 {
+  margin-left: 2em;
+}
+
+.contentBox2+.contentBox1 {
+  margin-left: 2em;
+}
+
+.contentBox1 {
+  flex: 1;
+  background: white;
+}
+
+.contentBox2 {
+  flex: 2;
+  background: white;
+}
+
+#memberTitle {
+  background: var(--main-bg-color);
+  color: #ccc;
+  padding: 1em 1.5em;
+  display: flex;
+  font-size: 0.8em;
+}
+
+#memberTitle p {
+  flex: 1;
+}
+
+#memberTitle span {
+  float: right;
+  width: auto;
+}
+
+#memberInfo {
+  display: flex;
+  padding: 1em;
+}
+
+#memberInfo>div {
+  flex: 1 1 auto;
+}
+
+#memberInfo>div.left {
+  text-align: center;
+  margin-right: 1em;
+}
+
+#memberInfo img {
+  display: block;
+  margin: 0.5em auto;
+}
+
+.platinum {
+  display: inline-block;
+  background: linear-gradient(-25deg, rgba(213, 177, 94, 0.4), rgba(213, 177, 94, 1));
+  color: white;
+  font-size: 0.8em;
+  padding: 0.25em 0.4em;
+  margin: 0.25em;
+}
+
+#memberInfo h1 {
+  display: inline-block;
+  font-size: 1.6em;
+  line-height: 150%;
+  margin-top: 1em;
+}
+
+#memberInfo h1:after {
+  content: '회원님';
+  display: inline-block;
+  font-size: 0.6em;
+  margin-left: 1em;
+}
+
+#memberInfo h2 {
+  color: #D3000D;
+  font-size: 1.4em;
+}
+
+#memberInfo h2:before {
+  content: '포인트';
+  display: block;
+  color: black;
+  font-size: 0.6em;
+  line-height: 150%;
+}
+
+#memberInfo h2:after {
+  content: 'Point';
+  display: inline-block;
+  color: #D3000D;
+  font-size: 0.6em;
+  margin-left: 1em;
+}
+
+#memberInfo h3 {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 0.6em;
+}
+
+#memberLocation,
+#memberKeyword {
+  padding: 1em;
+  border-top: 1px solid #d8d8d8;
+}
+
+#memberLocation h1,
+#memberKeyword h1 {
+  font-size: 0.7em;
+}
+
+#memberLocation p,
+#memberKeyword p {
+  font-size: 1.2em;
+}
+
+.tabGroup {
+  display: flex;
+}
+
+.tabGroup li {
+  flex: 1;
+  font-size: 0.9em;
+  padding: 1em 2em;
+  color: #d8d8d8;
+  border-bottom: 2px solid #d8d8d8;
+}
+
+.tabGroup li.show {
+  color: var(--bg-main-color);
+  border-bottom: 2px solid var(--main-bg-color);
+}
+
+.contentBox2 div {
+  display: none;
+}
+
+.contentBox2 div.show {
+  display: flex;
+}
+
+.contentBox2 div li {
+  display: block;
+}
+
+.contentBox2 div span {
+  flex: 1 1 auto;
+  font-size: 0.8em;
+  line-height: 400%;
+  border-bottom: 1px solid #d8d8d8;
+  text-align: center;
+}
+
+.lTable {
+  display: table;
+  width: 100%;
+  background: none;
+  font-size: 1.2em;
+  /* word-wrap: break-word; */
+  /* border-spacing set instead of margin */
+  /* border-spacing: 10px; */
+  /* border-collapse: separat e; */
+}
+
+app-button {
+  width: calc(100% - 20px);
+  margin: 0 auto;
+}

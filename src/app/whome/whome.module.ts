@@ -70,6 +70,8 @@ import {
 import { SearchComponent } from './pages/search/search.component';
 import { UseComponent } from './pages/policy/use/use.component';
 import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
+import { AlertComponent } from './micro/alert/alert.component';
+import { AlertService } from './services/alert.service';
 
 
 @NgModule({
@@ -143,6 +145,7 @@ import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
     SearchComponent,
     UseComponent,
     PrivacyComponent,
+    AlertComponent,
   ],
   entryComponents: [
     InfoCardComponent,
@@ -159,7 +162,8 @@ import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
     AuthService,
     UserService,
     InfoService,
-    FbShareService
+    FbShareService,
+    AlertService
   ]
 })
 export class WhomeModule {

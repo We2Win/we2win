@@ -3,6 +3,7 @@ import { Info } from '../../models/info';
 import { Card } from '../../models/card';
 import { environment } from '../../../../environments/environment';
 import { FbShareService } from '../../services/fb-share.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-info-card',
@@ -19,7 +20,8 @@ export class InfoCardComponent implements OnInit {
   constructor(
     private _elementRef: ElementRef,
     public viewContainerRef: ViewContainerRef,
-    private fbShareService: FbShareService
+    private fbShareService: FbShareService,
+    private alertService: AlertService
   ) {
   }
 
@@ -27,6 +29,26 @@ export class InfoCardComponent implements OnInit {
     // console.log(this.record);
     this.imageUrl = environment.bucket.downloadUrl + this.record['I-image'];
     this._elementRef.nativeElement.classList.add(this.record['I-level'].toLowerCase());
+  }
+
+  success(message: string) {
+    this.alertService.success(message);
+  }
+
+  error(message: string) {
+    this.alertService.error(message);
+  }
+
+  info(message: string) {
+    this.alertService.info(message);
+  }
+
+  warn(message: string) {
+    this.alertService.warn(message);
+  }
+
+  clear() {
+    this.alertService.clear();
   }
 
   bookmark() {

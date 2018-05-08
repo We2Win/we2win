@@ -10,31 +10,37 @@
 
 :host(.info) {
   background: url('/assets/img/key_info.jpg');
+  background-position-x: 50%;
   color: white;
 }
 
 :host(.site) {
   background: url('/assets/img/key_site.jpg');
+  background-position-x: 50%;
   color: white;
 }
 
 :host(.employee) {
   background: url('/assets/img/key_employee.jpg');
+  background-position-x: 50%;
   color: white;
 }
 
 :host(.employer) {
   background: url('/assets/img/key_employer.jpg');
+  background-position-x: 50%;
   color: white;
 }
 
 :host(.meeting) {
   background: url('/assets/img/key_meeting.jpg');
+  background-position-x: 50%;
   color: white;
 }
 
 section {
   padding-top: 120px;
+  padding-bottom: 60px;
 }
 
 h1 {
@@ -56,14 +62,18 @@ h2 {
 
 input {
   width: 463px;
+  height: 60px;
   font-size: 1.2em;
   margin: 1em 2em;
   padding: 0.7em 1em;
   box-sizing: border-box;
+  color: black;
+  border: 2px solid #ccc;
 }
 
-#search {
+input:after {
     display: inline-block;
+    content: '';
     position: relative;
     margin: 0.5em 8em 0em -8em;
     width: 2.5em;

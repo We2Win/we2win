@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { String } from 'aws-sdk/clients/ecs';
 
 @Component({
   selector: 'app-header',
@@ -84,7 +85,6 @@ export class HeaderComponent implements OnInit {
       'main': 'portfolio'
     }
   ];
-
 
   constructor() { }
 

@@ -63,12 +63,14 @@ export class SiteMainComponent implements OnInit {
   }
 
   addSampleRecord(records) {
-    // tslint:disable-next-line:forin
-    for (const record in records) {
-      // console.log('record: ', records[record]);
-      this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-        new PostItem(SiteCardComponent, records[record]));
-    }
+    this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+      new PostItem(SiteCardComponent, records[0]));
+    this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+      new PostItem(SiteCardComponent, records[1]));
+    this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+      new PostItem(SiteCardComponent, records[2]));
+    this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+      new PostItem(SiteCardComponent, records[3]));
   }
 
   addWeeklyRecord(records) {

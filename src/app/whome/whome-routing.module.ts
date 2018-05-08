@@ -157,7 +157,18 @@ const routes: Routes = [
       },
       {
         path: 'portfolio',
-        component: ScrapComponent
+        children: [
+          {
+            path: '',
+            component: ScrapComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'personal',
+            component: PersonalComponent,
+            canActivate: [AuthGuard],
+          }
+        ]
       },
     ]
   },

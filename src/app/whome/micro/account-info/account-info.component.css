@@ -1,5 +1,5 @@
 :host {
-  height: 0.7em;
+  height: 40px;
   flex: 1;
   display: flex;
   flex-direction: row;
@@ -52,7 +52,7 @@
 .signed,
 .unsigned {
   padding: 0.3em 0em;
-  font-size: 0.8em;
+  font-size: 13px;
   flex: auto;
   box-sizing: border-box;
   display: inline-flex;

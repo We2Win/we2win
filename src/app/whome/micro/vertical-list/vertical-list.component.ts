@@ -7,6 +7,7 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angu
 })
 export class VerticalListComponent implements OnInit, OnChanges {
   _toptitle: String;
+  isBunyang = false;
 
   @Input() toptitle = '무제';
   @Input() maxCount;
@@ -22,6 +23,9 @@ export class VerticalListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    if (this.toptitle === '분양 리포트') {
+      this.isBunyang = true;
+    }
   }
 
   increment() {

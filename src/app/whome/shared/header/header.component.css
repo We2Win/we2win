@@ -9,7 +9,7 @@
 }
 
 section {
-  padding-bottom: 0;
+  padding: 0 80px;
   color: white;
   display: flex;
   border-bottom: 1px solid #1e1e1e;
@@ -63,7 +63,7 @@ li:hover {
 .subMenu {
   position: relative;
   height: 48px;
-  margin-bottom: -3em;
+  margin-bottom: -48px;
   background: #393939;
   border-bottom: 1px solid #1e1e1e;
   box-sizing: border-box;

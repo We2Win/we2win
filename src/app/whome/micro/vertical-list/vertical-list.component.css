@@ -73,3 +73,11 @@ app-card {
   background-position: center;
   margin-left: 60px;
 }
+
+.bunyang {
+  padding-top: 0;
+}
+
+.bunyang .btnNav {
+  margin-top: 120px;
+}

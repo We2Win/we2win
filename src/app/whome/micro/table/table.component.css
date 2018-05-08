@@ -47,3 +47,17 @@ header .cell {
 .red {
   color: red;
 }
+
+.h1:before {
+  display: block;
+  content: '';
+  position: relative;
+  width: 2em;
+  height: 2em;
+  margin-top: -2em;
+  margin-left: -2em;
+  
+  background: #243;
+  border-radius: 50%;
+  color: white;
+}
