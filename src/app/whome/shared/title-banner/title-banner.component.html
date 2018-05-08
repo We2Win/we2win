@@ -1,6 +1,8 @@
 <section *ngIf="dataset['title']" class="{{ route[dataset['title']] }}">
   <h1>{{ dataset['title'] }}</h1>
   <h2>{{ dataset['description'] }}</h2>
-  <input type="text" placeholder="검색어를 입력해 주세요."/>
+  <div id="searchBox">
+    <input type="text" placeholder="검색어를 입력해 주세요." />
+  </div>
   <!-- <button id="search"></button> -->
 </section>
