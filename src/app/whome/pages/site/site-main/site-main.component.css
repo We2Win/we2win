@@ -1,0 +1,7 @@
+app-vertical-list:nth-child(2) {
+  background: #ccc;
+}
+
+app-ranking-list {
+  background: transparent;
+}
