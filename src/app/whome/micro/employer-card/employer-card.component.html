@@ -1,12 +1,12 @@
 <div class="namecard p" (click)="viewPopup();">
-  <h3>{{ record['R-part-name'] }}</h3>
+  <h3>{{ record['R-location-name'] }}</h3>
   <div>
     <h1>{{ record['R-manager-name'].split(' ')[0] }}</h1>
     <h2>{{ record['R-manager-name'].split(' ')[1] }}</h2>
   </div>
   <div class="flex">
     <h4>현장명</h4>
-    <p>{{ record['R-location-name'] }}</p>
+    <p>{{ record['R-part-name'] }}</p>
   </div>
   <div class="flex">
     <h4>소재지</h4>

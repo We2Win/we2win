@@ -27,6 +27,20 @@ export class PageInfoService {
       ]
     },
     {
+      'title': 'people',
+      'description': '구인구직',
+      'children': [
+        {
+          'title': 'employer',
+          'description': '구인'
+        },
+        {
+          'title': 'employee',
+          'description': '구직'
+        }
+      ]
+    },
+    {
       'title': 'analysis',
       'description': '분석관리',
       'children': [

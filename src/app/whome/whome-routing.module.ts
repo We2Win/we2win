@@ -62,7 +62,7 @@ const routes: Routes = [
           {
             path: 'report/:id',
             component: InfoDetailComponent,
-            canActivate: [AuthGuard]
+            // canActivate: [AuthGuard]
           },
           {
             path: 'news',
@@ -71,7 +71,7 @@ const routes: Routes = [
           {
             path: 'news/:id',
             component: NewsDetailComponent,
-            canActivate: [AuthGuard]
+            // canActivate: [AuthGuard]
           },
           {
             path: 'law',
@@ -109,7 +109,7 @@ const routes: Routes = [
           {
             path: 'site-detail/:id',
             component: SiteDetailComponent,
-            canActivate: [AuthGuard],
+            // canActivate: [AuthGuard],
           }
         ]
       },

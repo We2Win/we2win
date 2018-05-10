@@ -35,6 +35,8 @@ import { UploadFileService } from './services/upload-file.service';
 import { MypostDirective } from './directives/mypost.directive';
 import { QuillEditorModule } from 'ngx-quill-editor';
 import { AuthService } from './services/auth.service';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { EmployerComponent } from './pages/employer/employer.component';
 
 @NgModule({
   imports: [
@@ -72,6 +74,8 @@ import { AuthService } from './services/auth.service';
     AnalysisContentsRecordComponent,
     Error404Component,
     MypostDirective,
+    EmployeeComponent,
+    EmployerComponent,
   ],
   entryComponents: [
     AccountRecordComponent,
