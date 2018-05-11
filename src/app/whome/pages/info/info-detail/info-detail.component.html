@@ -45,7 +45,7 @@
     </app-popup>
     <div class="subGroup">
       <label>현장 사진</label>
-      <article>
+      <article id="album">
         <div id="imgNavigator" class="row navigator" #imgNavigator>
           <img id="i1" class="show" [src]="subImgUrl[1]" (click)="selectImg(1)" />
           <img id="i2" [src]="subImgUrl[2]" (click)="selectImg(2)" />
@@ -83,7 +83,7 @@
         </div>
       </article>
     </div>
-    <app-popup #commentDetail>
+    <app-popup id="commentPopup" #commentDetail>
       <h1>현장 댓글</h1>
       <div class="row" *ngFor="let comment of comments">
         <label>{{comment['commenter-id']}}</label>
