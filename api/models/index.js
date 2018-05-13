@@ -11,6 +11,8 @@ var db = {};
 //   'Info': '`02011803`',
 //   'Content': 'sample'
 // }
+console.log('hi');
+
 
 const sequelize = new Sequelize(CONFIG.db_name, CONFIG.db_user,
   CONFIG.db_password, {
@@ -29,9 +31,10 @@ fs
   .forEach(file => {
     var model = sequelize['import'](path.join(__dirname, file));
     // var name = tablename[model.name];
-    console.log('name: ', model.name, model);
     var name = model.name;
     db[name] = model;
+    console.log('name: ', model.name, model);
+    
   });
 
 // Object.keys(db).forEach(modelName => {
@@ -50,8 +53,10 @@ fs
 // db['News'].hasMany(db['Comments']);
 // db['Site'].hasMany(db['Comments']);
 
+console.log('hi');
 // Export Sequelize
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+console.log('hi');
 
 module.exports = db;

@@ -40,7 +40,7 @@ models.sequelize.authenticate().then(() => {
 })
 if(CONFIG.app === 'We2Win') {
     // creates tables from models
-    // models.sequelize.sync();
+    models.sequelize.sync();
     // for testing:
     // models.sequelize.sync({ force: true });
 }
