@@ -78,6 +78,7 @@ const createContent = async function (data) {
         'title': data.body['title'],
         's-type': data.body['s-type']
     }
+    console.log('indexData: ', indexData);
     [err, indexContent] = await to(Content.create(indexData));
     if (err) TE('생성 중 오류가 발생했습니다.');
 
