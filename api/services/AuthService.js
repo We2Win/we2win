@@ -117,7 +117,6 @@ const getUserList = async function (userInfo) {
 module.exports.getUserList = getUserList;
 
 const authUser = async function (userInfo) {//returns token
-    console.log('authUser1()');
     let unique_key, err, user;
     const auth_info = {};
     auth_info.status = 'login';
@@ -126,14 +125,19 @@ const authUser = async function (userInfo) {//returns token
 
     if (!userInfo['u-id']) TE('ID를 올바르게 입력해주세요.');
     if (!userInfo['password']) TE('비밀번호를 올바르게 입력해주세요.');
+    console.log('authUser1()');
 
     [err, user] = await to (User.findOne({ where: { 'u-id': unique_key }}));
     if (!user) TE('등록되지 않았습니다.');
+    console.log('authUser1()');
 
     [err, user] = await to (user.comparePassword(userInfo['password']));
     if (!user) TE('패스워드가 맞지 않습니다.');
+    console.log('authUser1()');
     
     if (err) TE(err.message);
+    console.log('authUser1()');
+
     return user;
 }
 module.exports.authUser = authUser;
