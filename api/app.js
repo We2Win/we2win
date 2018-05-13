@@ -8,7 +8,8 @@ const passport = require('passport');
 const multer = require('multer');
 const path = require('path');
 const jade = require('jade');
-const v1 = require('./routes/v1');
+// const v1 = require('./routes/v1');
+const v2 = require('./routes/v2');
 const cors = require('cors');
 
 const app = express();
@@ -66,7 +67,8 @@ app.use(cors());
 // });
 
 // Setup Routes and handle errors
-app.use('/api/v1/', v1);
+// app.use('/api/v1/', v1);
+app.use('/api/v2/', v2);
 
 app.use('/api/', function (req, res) {
     res.statusCode = 200;//send the appropriate status code
