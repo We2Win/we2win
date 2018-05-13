@@ -11,17 +11,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(15),
       allowNull: false,
       references: {
-          model: 'user',
+          model: 'users',
           key: 'u-id'
       }
     },
     'c-id': {
       type: DataTypes.UUID,
       allowNull: false,
-      // references: {
-      //   model: 'contentsList',
-      //   key: 'c-id'
-      // }
+      references: {
+        model: 'contentsLists',
+        key: 'c-id'
+      }
     },
     'date': {
       type: DataTypes.STRING,

@@ -86,12 +86,12 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Model.associate = function (models) {
-    models.user.hasMany(models.message);
-    models.user.hasMany(models.notification);
-    models.user.hasMany(models.infoScrap);
-    models.user.hasMany(models.siteScrap);
-    models.user.hasMany(models.schedule);
-    models.user.hasMany(models.comment);
+    Model.hasMany(models.message);
+    Model.hasMany(models.notification);
+    Model.hasMany(models.infoScrap);
+    Model.hasMany(models.siteScrap);
+    Model.hasMany(models.schedule);
+    Model.hasMany(models.comment);
   };
 
   // Model.associate = function (models) {
