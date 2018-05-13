@@ -86,12 +86,12 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Model.associate = function (models) {
-    Model.hasMany(models.Message);
-    Model.hasMany(models.Notification);
-    Model.hasMany(models['Info-scrap']);
-    Model.hasMany(models['Site-scrap']);
-    Model.hasMany(models.Schedule);
-    Model.hasMany(models.Comment);
+    this.hasMany(models.Message);
+    this.hasMany(models.Notification);
+    this.hasMany(models['Info-scrap']);
+    this.hasMany(models['Site-scrap']);
+    this.hasMany(models.Schedule);
+    this.hasMany(models.Comment);
   };
 
   // Model.associate = function (models) {
