@@ -39,9 +39,8 @@ module.exports = (sequelize, DataTypes) => {
     collate: 'utf8_unicode_ci',
   });
 
-  // Law.associate = function (models) {
-  //   Law.hasMany(models.Comments);
-  // };
+  Model.associate = function (models) {
+  };
 
   Law.prototype.toWeb = function () {
     let JSON = this.toJSON();

@@ -92,6 +92,9 @@ module.exports = (sequelize, DataTypes) => {
     collate: 'utf8_unicode_ci',
   });
 
+  Model.associate = function (models) {
+  };
+  
   Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);

@@ -152,5 +152,8 @@ module.exports = (sequelize, DataTypes) => {
     return JSON;
   };
 
+  Model.associate = function (models) {
+  };
+
   return Model;
 };

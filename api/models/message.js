@@ -28,5 +28,8 @@ module.exports = (sequelize, DataTypes) => {
             collate: 'utf8_unicode_ci',
         });
 
+    Model.associate = function (models) {
+    };
+    
     return Model;
 };
