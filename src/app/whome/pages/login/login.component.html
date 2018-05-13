@@ -5,11 +5,11 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
           <div class="row">
             <label>아이디</label>
-            <input name="ID" formControlName="ID" required>
+            <input name="u-id" formControlName="u-id" required>
           </div>
           <div class="row">
             <label>비밀번호</label>
-            <input name="Password" type="password" formControlName="Password" required>
+            <input name="password" type="password" formControlName="password" required>
           </div>
           <div class="row">
             <app-button [type]="'submit'">로그인</app-button>

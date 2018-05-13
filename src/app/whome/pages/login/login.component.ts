@@ -50,8 +50,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private elementRef: ElementRef
   ) {
     this.loginForm = fb.group({
-      'ID': [null, Validators.required],
-      'Password': [null, Validators.required]
+      'u-id': [null, Validators.required],
+      'password': [null, Validators.required]
     });
   }
 
@@ -62,8 +62,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     this.info('로그인을 해주세요');
     this.loginForm = new FormGroup({
-      ID: new FormControl('', [Validators.required]),
-      Password: new FormControl('', [Validators.required]),
+      'u-id': new FormControl('', [Validators.required]),
+      'password': new FormControl('', [Validators.required]),
     });
   }
 
