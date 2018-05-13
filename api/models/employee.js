@@ -14,11 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    'id': {
-      type: DataTypes.INTEGER(10),
-      primaryKey: true,
-      autoIncrement: true,
-    },
     'name': {
       type: DataTypes.STRING(30),
       allowNull: false,
