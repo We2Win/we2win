@@ -32,7 +32,7 @@ fs
     // var name = tablename[model.name];
     var name = model.name;
     db[name] = model;
-    console.log('name: ', JSON.stringify(model), model);
+    console.log('name: ', JSON.stringify(model), model, model.name);
   });
 
 
