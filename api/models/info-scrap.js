@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(15),
             allowNull: false,
             references: {
-                model: models.User,
+                model: sequelize.model.User,
                 key: 'u-id'
             }
         },
