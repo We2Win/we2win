@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   homeUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/',
-  apiUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1',
+  apiUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v2',
   naver: {
     reqUrl: 'https://nid.naver.com/oauth2.0/authorize?response_type=code&' +
       'client_id=' + 's_brdfQHOF5ygOo6wszb' +
