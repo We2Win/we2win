@@ -1,5 +1,5 @@
 const User = require('./../models').user;
-const Content = require('./../models')['contents-index'];
+const Content = require('./../models').contentLists;
 const Report = require('./../models').report;
 const News = require('./../models').news;
 const Law = require('./../models').law;
