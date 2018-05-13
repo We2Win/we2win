@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
     },
     'no': {
       type: DataTypes.INTEGER,
       autoIncrement: true,
+      primaryKey: true,
     },
     'part-name': {
       type: DataTypes.STRING(50),

@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
     },
     'no': {
       type: DataTypes.INTEGER,
       autoIncrement: true,
+      primaryKey: true,
     },
     'name': {
       type: DataTypes.STRING(30),
@@ -94,7 +94,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Model.associate = function (models) {
   };
-  
+
   Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
