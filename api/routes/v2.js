@@ -3,8 +3,8 @@ const multer = require('multer');
 const path = require('path');
 const router = express.Router();
 
-// const UserController = require('./../controllers/UserController');
-// const ContentController = require('./../controllers/ContentController');
+const UserController = require('./../controllers/UserController');
+const ContentController = require('./../controllers/ContentController');
 
 const passport = require('passport');
 
