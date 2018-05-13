@@ -1,12 +1,12 @@
-const Content = require('../models').Content;
-const Info = require('../models').Info;
-const News = require('../models').News;
-const Law = require('../models').Law;
-const Site = require('../models').Site;
-const Meeting = require('../models').Meeting;
-const Employee = require('../models').Employee;
-const Employer = require('../models').Employer;
-const Comment = require('../models').Comment;
+// const Content = require('../models').content;
+const Report = require('../models').report;
+const News = require('../models').news;
+const Law = require('../models').law;
+const Site = require('../models').site;
+const Meeting = require('../models').meeting;
+const Employee = require('../models').employee;
+const Employer = require('../models').employer;
+const Comment = require('../models').comment;
 const authService = require('./../services/AuthService');
 
 // temporary
@@ -16,7 +16,7 @@ const db = require('../models/index');
 const contentsInfo = {
   'report': {
     symbol: 'I',
-    db: Info
+    db: Report
   },
   'news': {
     symbol: 'N',
@@ -124,7 +124,7 @@ module.exports.getComments = getComments;
 const getCount = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Info.findAll({
+  Report.findAll({
     include: [
       // { model: }
       // { model: db.Room, attributes: ['DisplayLabel'] },
@@ -139,22 +139,22 @@ const getCount = async function (req, res) {
 }
 module.exports.getCount = getCount;
 
-const getDashboard = async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
+// const getDashboard = async function (req, res) {
+//   res.setHeader('Content-Type', 'application/json');
 
-  Content.findAll({
-      where: {
-        Title: 'hello'
-      }
-    })
-    .then((content) => {
-      // console.log('Content: ', content.dataValues);
-      return ReS(res, {
-        content: content.dataValues
-      })
-    });
-}
-module.exports.getDashboard = getDashboard;
+//   Content.findAll({
+//       where: {
+//         Title: 'hello'
+//       }
+//     })
+//     .then((content) => {
+//       // console.log('Content: ', content.dataValues);
+//       return ReS(res, {
+//         content: content.dataValues
+//       })
+//     });
+// }
+// module.exports.getDashboard = getDashboard;
 
 const getList = (name) =>
   async function (req, res) {
@@ -203,7 +203,7 @@ const getRankingList = (name) =>
     console.log(id);
     switch (name) {
       case 'info/newly':
-        Info.findAll({
+        Report.findAll({
             offset: id,
             limit: 8,
             order: [
@@ -236,7 +236,7 @@ const getRankingList = (name) =>
           });
         break;
       case 'info/weekly':
-        Info.findAll({
+        Report.findAll({
             offset: id,
             limit: 1,
             order: [
@@ -269,7 +269,7 @@ const getRankingList = (name) =>
           });
         break;
       case 'info/report':
-        Info.findAll({
+        Report.findAll({
             offset: id,
             limit: 8,
             order: [

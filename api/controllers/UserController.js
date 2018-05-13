@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const User = require('../models').User;
+const User = require('../models').user;
 const authService = require('./../services/AuthService');
 
 const create = async function (req, res) {

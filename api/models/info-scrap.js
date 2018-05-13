@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    var Model = sequelize.define('Info-scrap', {
+    var Model = sequelize.define('info-scrap', {
         'is-id': {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(15),
             allowNull: false,
             references: {
-                model: sequelize.model.User,
+                model: sequelize.model.user,
                 key: 'u-id'
             }
         },
