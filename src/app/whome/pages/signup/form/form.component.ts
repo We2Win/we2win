@@ -115,7 +115,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     /* 설정정보를 초기화하고 연동을 준비 */
     // Naver.init();
-    window['Kakao'].init(environment.kakao.clientId);
+    if (!window['Kakao']) {
+      window['Kakao'].init(environment.kakao.clientId);
+    }
     window['IMP'].init('imp78270348');
   }
 
