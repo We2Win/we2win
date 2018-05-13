@@ -21,29 +21,29 @@ app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-//swap jade for ejs etc
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
+// //swap jade for ejs etc
 
-// app.use(express.static(path.join(__dirname, 'uploads')));
-// app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
+// // app.use(express.static(path.join(__dirname, 'uploads')));
+// // app.use(function (req, res, next) {
+// //     res.header("Access-Control-Allow-Origin", "*");
+// //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+// //     next();
+// // });
 
-const models = require('./models');
-models.sequelize.authenticate().then(() => {
-    console.log('Connected to SQL database..');
-}).catch( err => {
-    console.error('Error loading SQL database:', err);
-})
-if(CONFIG.app === 'We2Win') {
-    // creates tables from models
-    models.sequelize.sync();
-    // for testing:
-    // models.sequelize.sync({ force: true });
-}
+// const models = require('./models');
+// models.sequelize.authenticate().then(() => {
+//     console.log('Connected to SQL database..');
+// }).catch( err => {
+//     console.error('Error loading SQL database:', err);
+// })
+// if(CONFIG.app === 'We2Win') {
+//     // creates tables from models
+//     models.sequelize.sync();
+//     // for testing:
+//     // models.sequelize.sync({ force: true });
+// }
 
 
 app.use(cors());
@@ -67,13 +67,13 @@ app.use(cors());
 
 // Setup Routes and handle errors
 // app.use('/api/v1/', v1);
-// app.use('/api/v2/', v2);
+app.use('/api/v2/', v2);
 
 
-// app.use('/api/', function (req, res) {
-//     res.statusCode = 200;//send the appropriate status code
-//     res.json({ status: "success", message: "Parcel Pending API", data: {} })
-// });
+app.use('/api/', function (req, res) {
+    res.statusCode = 200;//send the appropriate status code
+    res.json({ status: "success", message: "Parcel Pending API", data: {} })
+});
 
 
 // catch 404 and forward to error handler
