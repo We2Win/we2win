@@ -73,7 +73,7 @@ const createContent = async function (data) {
     }
 
     const indexData = {
-        'c-id': data.body['c-id'],
+        'c-id': content['c-id'],
         'c-type': cType,
         'title': data.body['title'],
         's-type': data.body['s-type']
