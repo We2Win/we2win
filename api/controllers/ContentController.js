@@ -1,4 +1,4 @@
-// const Content = require('../models').content;
+const Content = require('../models').contentsList;
 const Report = require('../models').report;
 const News = require('../models').news;
 const Law = require('../models').law;
@@ -138,6 +138,14 @@ const getCount = async function (req, res) {
   });
 }
 module.exports.getCount = getCount;
+
+const getDashBoardData = async function (req, res) {
+  let ret = {};
+
+  res.setHeader('Content-Type', 'application/json');
+
+  Content.findAll
+}
 
 // const getDashboard = async function (req, res) {
 //   res.setHeader('Content-Type', 'application/json');
