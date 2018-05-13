@@ -11,7 +11,6 @@ var db = {};
 //   'Info': '`02011803`',
 //   'Content': 'sample'
 // }
-console.log('hi');
 
 
 const sequelize = new Sequelize(CONFIG.db_name, CONFIG.db_user,
@@ -34,7 +33,7 @@ fs
     var name = model.name;
     db[name] = model;
     console.log('name: ', model.name, model);
-    
+    console.log('db: ', JSON.stringify(db));
   });
 
 // Object.keys(db).forEach(modelName => {
@@ -53,10 +52,8 @@ fs
 // db['News'].hasMany(db['Comments']);
 // db['Site'].hasMany(db['Comments']);
 
-console.log('hi');
 // Export Sequelize
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-console.log('hi');
 
 module.exports = db;
