@@ -133,7 +133,7 @@ const authUser = async function (userInfo) {//returns token
 
     [err, user] = await to (user.comparePassword(userInfo['password']));
     if (!user) TE('패스워드가 맞지 않습니다.');
-    console.log('authUser1()');
+    console.log('authUser1()', JSON.stringify(err));
     
     if (err) TE(err.message);
     console.log('authUser1()');
