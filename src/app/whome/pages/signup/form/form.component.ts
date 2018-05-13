@@ -1,16 +1,17 @@
-import { Component, OnInit, ViewChild, Renderer, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, Renderer, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, AfterViewInit {
   loadAPI: Promise<any>;
 
   signupForm: FormGroup;
@@ -41,6 +42,7 @@ export class FormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private alertService: AlertService,
     private router: Router,
     private renderer: Renderer,
     private elementRef: ElementRef
@@ -102,39 +104,50 @@ export class FormComponent implements OnInit {
       UWord: new FormControl(),
     });
 
-    const Naver = new naver.LoginWithNaverId(
-      {
-        clientId: environment.naver.clientId,
-        callbackUrl: environment.naver.callbackUrl,
-        isPopup: false, /* 팝업을 통한 연동처리 여부 */
-        loginButton: { color: 'green', type: 3, height: 54.59 } /* 로그인 버튼의 타입을 지정 */
-      }
-    );
+    // const Naver = new naver.LoginWithNaverId(
+    //   {
+    //     clientId: environment.naver.clientId,
+    //     callbackUrl: environment.naver.callbackUrl,
+    //     isPopup: true, /* 팝업을 통한 연동처리 여부 */
+    //     loginButton: { color: 'green', type: 3, height: 54.59 } /* 로그인 버튼의 타입을 지정 */
+    //   }
+    // );
 
     /* 설정정보를 초기화하고 연동을 준비 */
     // Naver.init();
-    // Kakao.init('b560ff0ff0ea7935612a6555fb53c516');
+    window['Kakao'].init(environment.kakao.clientId);
     window['IMP'].init('imp78270348');
+  }
+
+  ngAfterViewInit() {
+    const naver_id_login = new window['naver_id_login'](environment.naver.clientId, environment.naver.callbackUrl);
+
+    const state = naver_id_login.getUniqState();
+    naver_id_login.setButton('green', 3, 48);
+    naver_id_login.setDomain(environment.naver.reqUrl);
+    naver_id_login.setState(state);
+    naver_id_login.setPopup();
+    naver_id_login.init_naver_id_login();
   }
 
   onSubmit() {
     // check id validation
     if (this.checkId === undefined) {
-      alert('아이디 확인을 해주세요.');
+      this.info('아이디 확인을 해주세요.');
       return false;
     } else if (this.checkId === false) {
-      alert('중복된 아이디가 존재하거나 아이디 확인을 하지 않으셨습니다.');
+      this.info('중복된 아이디가 존재하거나 아이디 확인을 하지 않으셨습니다.');
       return false;
     }
 
     // check password validation
     if (this.signupForm.controls['Password'].value !== this.signupForm.controls['PasswordV'].value) {
-      alert('비밀번호를 확인해주세요.');
+      this.info('비밀번호를 확인해주세요.');
       scroll(0, 200);
       return false;
     }
     if (!this.signupForm.valid) {
-      alert('기본 정보는 필수사항입니다.');
+      this.info('기본 정보는 필수사항입니다.');
       scroll(0, 200);
       return false;
     }
@@ -178,7 +191,7 @@ export class FormComponent implements OnInit {
         this.router.navigate(['signup', 'done']);
       },
       error => {
-        alert('회원 가입중 문제가 발생했습니다.');
+        this.info('회원 가입중 문제가 발생했습니다.');
         console.log('error: ', error);
       }
       );
@@ -199,7 +212,7 @@ export class FormComponent implements OnInit {
       // buyer_postcode: userInfo.
     }, (rsp) => { // callback
       if (rsp.success) {
-        // alert('success!');
+        // this.info('success!');
         const now = new Date();
         let current;
         if (now.getMonth() === 11) {
@@ -210,7 +223,7 @@ export class FormComponent implements OnInit {
         userInfo['U-level-start'] = now;
         userInfo['U-level-end'] = current;
       } else {
-        alert('failed...');
+        this.info('failed...');
         console.log(rsp);
       }
     });
@@ -230,7 +243,7 @@ export class FormComponent implements OnInit {
       || this.signupForm.controls['ID'].hasError('maxlength')
       || this.signupForm.controls['ID'].hasError('required');
     if (checkValue) {
-      alert('4글자 ~ 15글자 이내로 아이디를 적어주세요.');
+      this.info('4글자 ~ 15글자 이내로 아이디를 적어주세요.');
       return false;
     }
 
@@ -243,54 +256,53 @@ export class FormComponent implements OnInit {
       data => {
         if (data) {
           this.checkId = true;
-          alert('사용가능한 ID입니다.');
+          this.info('사용가능한 ID입니다.');
         } else {
           this.checkId = false;
-          alert('이미 존재하는 ID입니다.');
+          this.warn('이미 존재하는 ID입니다.');
         }
       },
       error => {
         // console.log('error: ', error);
-        alert('오류가 발생했습니다.');
+        this.error('오류가 발생했습니다.');
       }
       );
   }
 
   setLoginType(type) {
     if (this.loginType) {
-      if (confirm('로그인 방식을 변경하시겠습니까?')) {
-
-      } else {
+      if (!confirm('로그인 방식을 변경하시겠습니까?')) {
         return;
       }
     }
 
     if (type) {
       this.loginType = type;
-
       // sample code
       if (type === 'naver') {
-        this.loginWithNaver();
-      } else if (type === 'naverSample') {
-        alert('네이버 아이디로 로그인 팝업');
-        this.signupForm.controls['ID'].setValue('NAVER_ID');
-        this.signupForm.controls['Password'].setValue('NAVER_Password');
-        this.signupForm.controls['PasswordV'].setValue('NAVER_Password');
-        this.signupForm.controls['Name'].setValue('NAVER_Name');
-        this.signupForm.controls['Email'].setValue('NAVER_Email');
 
         this.ID.nativeElement.classList.add('disable');
         this.Password.nativeElement.classList.add('disable');
         this.PasswordV.nativeElement.classList.add('disable');
         this.Name.nativeElement.classList.add('disable');
         this.Email.nativeElement.classList.add('disable');
-      } else if (type === 'kakaoSample') {
-        alert('카카오 아이디로 로그인 팝업');
-        this.signupForm.controls['ID'].setValue('KAKAO_ID');
-        this.signupForm.controls['Password'].setValue('KAKAO_Password');
-        this.signupForm.controls['PasswordV'].setValue('KAKAO_Password');
-        this.signupForm.controls['Name'].setValue('KAKAO_Name');
-        this.signupForm.controls['Email'].setValue('KAKAO_Email');
+      } else if (type === 'naverSample') {
+        this.info('네이버 아이디로 로그인 팝업');
+
+        this.ID.nativeElement.classList.add('disable');
+        this.Password.nativeElement.classList.add('disable');
+        this.PasswordV.nativeElement.classList.add('disable');
+        this.Name.nativeElement.classList.add('disable');
+        this.Email.nativeElement.classList.add('disable');
+      } else if (type === 'kakao') {
+        this.info('카카오 아이디로 로그인 팝업');
+
+        this.loginWithKakao();
+        // this.signupForm.controls['ID'].setValue('KAKAO_ID');
+        // this.signupForm.controls['Password'].setValue('KAKAO_Password');
+        // this.signupForm.controls['PasswordV'].setValue('KAKAO_Password');
+        // this.signupForm.controls['Name'].setValue('KAKAO_Name');
+        // this.signupForm.controls['Email'].setValue('KAKAO_Email');
 
         this.ID.nativeElement.classList.add('disable');
         this.PasswordV.nativeElement.classList.add('disable');
@@ -309,30 +321,15 @@ export class FormComponent implements OnInit {
     }
   }
 
-  loginWithNaver() {
-    const root = this.renderer.selectRootElement(this.elementRef.nativeElement);
-    const naverLogin = new root.naver.LoginWithNaverId(
-      {
-        clientId: environment.naver.clientId,
-        callbackUrl: environment.naver.callbackUrl,
-        isPopup: false, /* 팝업을 통한 연동처리 여부 */
-        loginButton: { color: 'green', type: 3, height: 60 } /* 로그인 버튼의 타입을 지정 */
-      }
-    );
-
-    /* 설정정보를 초기화하고 연동을 준비 */
-    naverLogin.init();
-  }
-
   loginWithKakao() {
     console.log('initiated');
     // 로그인 창을 띄웁니다.
     window['Kakao'].Auth.login({
-      success: function (authObj) {
-        alert(JSON.stringify(authObj));
+      success: (authObj) => {
+        this.info(JSON.stringify(authObj));
       },
-      fail: function (err) {
-        alert(JSON.stringify(err));
+      fail: (err) => {
+        this.error(JSON.stringify(err));
       }
     });
   }
@@ -418,5 +415,26 @@ export class FormComponent implements OnInit {
 
   selectLoginType($event) {
     console.log($event);
+  }
+
+
+  success(message: string) {
+    this.alertService.success(message);
+  }
+
+  error(message: string) {
+    this.alertService.error(message);
+  }
+
+  info(message: string) {
+    this.alertService.info(message);
+  }
+
+  warn(message: string) {
+    this.alertService.warn(message);
+  }
+
+  clear() {
+    this.alertService.clear();
   }
 }

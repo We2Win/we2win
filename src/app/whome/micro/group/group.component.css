@@ -11,8 +11,8 @@
 :host /deep/ h1 {
   font-size: 1.6em;
   font-weight: 300%;
-  margin: 3em 0 1em 0;
-  padding: 2em 0;
+  margin: 0 0 3em 0;
+  padding: 0;
   text-align: center;
   flex: 1;
 }
@@ -54,7 +54,7 @@
   line-height: 200%;
   font-size: 1em;
   margin: 0;
-  padding-right: 3em;
+  padding: 0 0.5em;
   font-weight: 500;
   flex: none;
   box-sizing: border-box;
@@ -132,7 +132,7 @@
 
 :host /deep/ app-button {
   display: block;
-  margin: 3em auto;
+  margin: 3em auto 0 auto;
 }
 
 :host /deep/ article app-button {
@@ -152,6 +152,7 @@
 
 :host /deep/ input[type="checkbox"],
 :host /deep/ input[type="radio"] {
+  display: inline-block;
   width: 1em;
   height: 1em;
   margin: 0 1em;
@@ -162,9 +163,11 @@
 :host /deep/ input,
 :host /deep/ textarea,
 :host /deep/ pre {
-  height: 1.5em;
+  height: 42px;
   flex: 1;
+  font-size: 12px;
   border: 1px solid #d8d8d8;
+  border-radius: 0;
   line-height: 150%;
   margin: 0;
   padding: 1em;

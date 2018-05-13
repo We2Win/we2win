@@ -10,6 +10,9 @@ export const environment = {
     clientId: 's_brdfQHOF5ygOo6wszb',
     callbackUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/'
   },
+  kakao: {
+    clientId: 'b560ff0ff0ea7935612a6555fb53c516'
+  },
   facebook: {
     appId: '129076064471163'
   },

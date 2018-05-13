@@ -29,8 +29,8 @@
           <label>가입 정보</label>
           <app-social-button [type]="'google'" (click)="setLoginType('google')">We2Win 로그인</app-social-button>
           <!-- <div id="naverIdLogin"></div> -->
-          <app-social-button [type]="'naver'" (click)="setLoginType('naverSample')">네이버 로그인</app-social-button>
-          <app-social-button [type]="'kakao'" (click)="loginWithKakao()">카카오 로그인</app-social-button>
+          <app-social-button id="naver_id_login" [type]="'naver'" (click)="setLoginType('naver')">네이버 로그인</app-social-button>
+          <app-social-button [type]="'kakao'" (click)="setLoginType('kakao')">카카오 로그인</app-social-button>
         </div>
       </article>
       <div class="subGroup" [ngClass]="{'halfOpacity': loginType === ''}">
@@ -43,7 +43,7 @@
             <label>아이디
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="text" formControlName="ID" #ID placeholder="최소 4글자 최대 15글자" (change)="checkId=false" />
+            <input class="form-control" type="text" formControlName="ID" #ID placeholder="최소 4글자 최대 15글자" (change)="checkId=false" (keyup)="$event.keyCode == 13 && hasId($event)"/>
             <app-button (click)="hasId($event)" (ngSubmit)="$event.stopPropagation()" [type]="'none'" *ngIf="loginType==='google'">아이디 확인</app-button>
             <div class="blank" *ngIf="loginType!=='google'"></div>
           </div>
