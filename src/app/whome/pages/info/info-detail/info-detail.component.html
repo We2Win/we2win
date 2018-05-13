@@ -1,21 +1,21 @@
 <section>
   <div id="top">
     <div id="imgNav">
-      <div id="levelBar" [class]="Data['I-level'].toLowerCase()">{{Data['I-level']}}</div>
+      <div id="levelBar" [class]="Data['level'].toLowerCase()">{{Data['level']}}</div>
       <img [src]="imgUrl" />
     </div>
     <div id="description">
-      <h1>{{Data['I-title']}}</h1>
-      <p [innerHtml]="Data['I-summary']"></p>
+      <h1>{{Data['title']}}</h1>
+      <p [innerHtml]="Data['summary']"></p>
       <div>
         <label>분양모집일</label>
-        <p>{{Data['I-open-start'].slice(0,10)}} - {{Data['I-open-end'].slice(0,10)}}</p>
+        <p>{{Data['open-start'].slice(0,10)}} - {{Data['open-end'].slice(0,10)}}</p>
       </div>
       <div>
         <label>분양가</label>
-        <p class="price">{{( Data['I-ammount']* 1000000).toLocaleString() }}원</p>
+        <p class="price">{{( Data['ammount']* 1000000).toLocaleString() }}원</p>
       </div>
-      <app-button>담당자 | {{Data['I-manager-name']}} | {{Data['I-manager-contact']}}</app-button>
+      <app-button>담당자 | {{Data['manager-name']}} | {{Data['manager-contact']}}</app-button>
       <div id="optionBar">
         <img src="/assets/img/icon_bookmark_black.png">
         <img src="/assets/img/icon_facebook_black.png">
@@ -35,13 +35,13 @@
           <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
         </label>
         <div class="editorContainer">
-          <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['I-report']"></p>
+          <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['report']"></p>
         </div>
       </div>
     </article>
     <app-popup #reportDetail>
       <h1>현장 리포트</h1>
-      <p [innerHtml]="Data['I-report']"></p>
+      <p [innerHtml]="Data['report']"></p>
     </app-popup>
     <div class="subGroup">
       <label>현장 사진</label>

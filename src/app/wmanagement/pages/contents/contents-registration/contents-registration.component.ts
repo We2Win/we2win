@@ -30,25 +30,25 @@ export class ContentsRegistrationComponent implements OnInit {
   uploadForm5: FormGroup;
 
   private forms: object;
-  private symbols = {
-    '리포트': 'I',
-    '부동산 뉴스': 'N',
-    '법률 및 정책': 'L',
-    '아파트': 'S',
-    '오피스텔': 'S',
-    '상가/호텔': 'S',
-    '토지': 'S',
-    '오프라인 모임': 'M',
-    '구인': 'R',
-    '구직': 'E',
-    'info': 'I',
-    'news': 'N',
-    'law': 'L',
-    'site': 'S',
-    'meeting': 'M',
-    'employer': 'R',
-    'employee': 'E'
-  };
+  // private symbols = {
+  //   '리포트': 'I',
+  //   '부동산 뉴스': 'N',
+  //   '법률 및 정책': 'L',
+  //   '아파트': 'S',
+  //   '오피스텔': 'S',
+  //   '상가/호텔': 'S',
+  //   '토지': 'S',
+  //   '오프라인 모임': 'M',
+  //   '구인': 'R',
+  //   '구직': 'E',
+  //   'info': 'I',
+  //   'news': 'N',
+  //   'law': 'L',
+  //   'site': 'S',
+  //   'meeting': 'M',
+  //   'employer': 'R',
+  //   'employee': 'E'
+  // };
 
   filesToUpload: Array<File>;
 
@@ -83,13 +83,13 @@ export class ContentsRegistrationComponent implements OnInit {
   inputs: object;
 
   uploadedFiles = {
-    '-image': '',
-    '-subImage1': '',
-    '-subImage2': '',
-    '-subImage3': '',
-    '-subImage4': '',
-    '-subImage5': '',
-    '-file': '',
+    'master-image': '',
+    'slave-image1': '',
+    'slave-image2': '',
+    'slave-image3': '',
+    'slave-image4': '',
+    'slave-image5': '',
+    'file': '',
   };
 
   subscription: Subscription;
@@ -140,7 +140,7 @@ export class ContentsRegistrationComponent implements OnInit {
       case '오피스텔':
       case '상가/호텔':
       case '토지':
-        this.siteForm.controls['S-type'].setValue(selected);
+        this.siteForm.controls['s-type'].setValue(selected);
         break;
     }
 
@@ -157,19 +157,19 @@ export class ContentsRegistrationComponent implements OnInit {
   onLevelChange(type) {
     switch (type) {
       case 'info':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.ILevel.selected;
+        this.selectBoxData['level'] = this.ILevel.selected;
         break;
       case 'site':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.SLevel.selected;
+        this.selectBoxData['level'] = this.SLevel.selected;
         break;
       case 'news':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.NLevel.selected;
+        this.selectBoxData['level'] = this.NLevel.selected;
         break;
       case 'law':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.LLevel.selected;
+        this.selectBoxData['level'] = this.LLevel.selected;
         break;
       case 'meeting':
-        this.selectBoxData[this.symbols[type] + '-level'] = this.MLevel.selected;
+        this.selectBoxData['level'] = this.MLevel.selected;
         break;
       default:
         break;
@@ -179,154 +179,153 @@ export class ContentsRegistrationComponent implements OnInit {
   ngOnInit() {
     this.infoForm = new FormGroup({
       // 'I-level': new FormControl(''),
-      'I-notification': new FormControl(''),
-      'I-title': new FormControl('', [Validators.required]),
-      'I-summary': new FormControl('', [Validators.required]),
-      'I-open-start': new FormControl('', [Validators.required]),
-      'I-open-end': new FormControl('', [Validators.required]),
-      'I-ammount': new FormControl('', [Validators.required]),
-      'I-manager-name': new FormControl('', [Validators.required]),
-      'I-manager-contact': new FormControl('', [Validators.required]),
-      'I-current-duration1': new FormControl(''),
-      'I-current-duration2': new FormControl(''),
-      'I-current-duration3': new FormControl(''),
-      'I-current-duration4': new FormControl(''),
-      'I-current-duration5': new FormControl(''),
-      'I-current-amount1': new FormControl(''),
-      'I-current-amount2': new FormControl(''),
-      'I-current-amount3': new FormControl(''),
-      'I-current-amount4': new FormControl(''),
-      'I-current-amount5': new FormControl(''),
-      'I-around-duration1': new FormControl(''),
-      'I-around-duration2': new FormControl(''),
-      'I-around-duration3': new FormControl(''),
-      'I-around-duration4': new FormControl(''),
-      'I-around-duration5': new FormControl(''),
-      'I-around-amount1': new FormControl(''),
-      'I-around-amount2': new FormControl(''),
-      'I-around-amount3': new FormControl(''),
-      'I-around-amount4': new FormControl(''),
-      'I-around-amount5': new FormControl(''),
-      'I-report': new FormControl('', [Validators.required]),
-      'I-image': new FormControl('', [Validators.required]),
-      'I-subImage1': new FormControl(''),
-      'I-subImage2': new FormControl(''),
-      'I-subImage3': new FormControl(''),
-      'I-subImage4': new FormControl(''),
-      'I-subImage5': new FormControl(''),
+      'notification': new FormControl(''),
+      'title': new FormControl('', [Validators.required]),
+      'summary': new FormControl('', [Validators.required]),
+      'open-start': new FormControl('', [Validators.required]),
+      'open-end': new FormControl('', [Validators.required]),
+      'ammount': new FormControl('', [Validators.required]),
+      'manager-name': new FormControl('', [Validators.required]),
+      'manager-contact': new FormControl('', [Validators.required]),
+      'current-duration1': new FormControl(''),
+      'current-duration2': new FormControl(''),
+      'current-duration3': new FormControl(''),
+      'current-duration4': new FormControl(''),
+      'current-duration5': new FormControl(''),
+      'current-amount1': new FormControl(''),
+      'current-amount2': new FormControl(''),
+      'current-amount3': new FormControl(''),
+      'current-amount4': new FormControl(''),
+      'current-amount5': new FormControl(''),
+      'around-duration1': new FormControl(''),
+      'around-duration2': new FormControl(''),
+      'around-duration3': new FormControl(''),
+      'around-duration4': new FormControl(''),
+      'around-duration5': new FormControl(''),
+      'around-amount1': new FormControl(''),
+      'around-amount2': new FormControl(''),
+      'around-amount3': new FormControl(''),
+      'around-amount4': new FormControl(''),
+      'around-amount5': new FormControl(''),
+      'report': new FormControl('', [Validators.required]),
+      'master-image': new FormControl('', [Validators.required]),
+      'slave-image1': new FormControl(''),
+      'slave-image2': new FormControl(''),
+      'slave-image3': new FormControl(''),
+      'slave-image4': new FormControl(''),
+      'slave-image5': new FormControl(''),
     });
     this.siteForm = new FormGroup({
-      'S-type': new FormControl('', [Validators.required]),
-      // 'S-level': new FormControl(''),
-      'S-notification': new FormControl(''),
-      'S-title': new FormControl('', [Validators.required]),
-      'S-summary': new FormControl('', [Validators.required]),
-      'S-open-start': new FormControl('', [Validators.required]),
-      'S-open-end': new FormControl('', [Validators.required]),
-      'S-ammount': new FormControl('', [Validators.required]),
-      'S-manager-name': new FormControl('', [Validators.required]),
-      'S-manager-contact': new FormControl('', [Validators.required]),
-      'S-current-duration1': new FormControl(''),
-      'S-current-duration2': new FormControl(''),
-      'S-current-duration3': new FormControl(''),
-      'S-current-duration4': new FormControl(''),
-      'S-current-duration5': new FormControl(''),
-      'S-current-amount1': new FormControl(''),
-      'S-current-amount2': new FormControl(''),
-      'S-current-amount3': new FormControl(''),
-      'S-current-amount4': new FormControl(''),
-      'S-current-amount5': new FormControl(''),
-      'S-around-duration1': new FormControl(''),
-      'S-around-duration2': new FormControl(''),
-      'S-around-duration3': new FormControl(''),
-      'S-around-duration4': new FormControl(''),
-      'S-around-duration5': new FormControl(''),
-      'S-around-amount1': new FormControl(''),
-      'S-around-amount2': new FormControl(''),
-      'S-around-amount3': new FormControl(''),
-      'S-around-amount4': new FormControl(''),
-      'S-around-amount5': new FormControl(''),
-      'S-report': new FormControl('', [Validators.required]),
-
-      'S-image': new FormControl('', [Validators.required]),
-      'S-subImage1': new FormControl(''),
-      'S-subImage2': new FormControl(''),
-      'S-subImage3': new FormControl(''),
-      'S-subImage4': new FormControl(''),
-      'S-subImage5': new FormControl(''),
+      'type': new FormControl('', [Validators.required]),
+      // 'level': new FormControl(''),
+      'notification': new FormControl(''),
+      'title': new FormControl('', [Validators.required]),
+      'summary': new FormControl('', [Validators.required]),
+      'open-start': new FormControl('', [Validators.required]),
+      'open-end': new FormControl('', [Validators.required]),
+      'ammount': new FormControl('', [Validators.required]),
+      'manager-name': new FormControl('', [Validators.required]),
+      'manager-contact': new FormControl('', [Validators.required]),
+      'current-duration1': new FormControl(''),
+      'current-duration2': new FormControl(''),
+      'current-duration3': new FormControl(''),
+      'current-duration4': new FormControl(''),
+      'current-duration5': new FormControl(''),
+      'current-amount1': new FormControl(''),
+      'current-amount2': new FormControl(''),
+      'current-amount3': new FormControl(''),
+      'current-amount4': new FormControl(''),
+      'current-amount5': new FormControl(''),
+      'around-duration1': new FormControl(''),
+      'around-duration2': new FormControl(''),
+      'around-duration3': new FormControl(''),
+      'around-duration4': new FormControl(''),
+      'around-duration5': new FormControl(''),
+      'around-amount1': new FormControl(''),
+      'around-amount2': new FormControl(''),
+      'around-amount3': new FormControl(''),
+      'around-amount4': new FormControl(''),
+      'around-amount5': new FormControl(''),
+      'report': new FormControl('', [Validators.required]),
+      'master-image': new FormControl('', [Validators.required]),
+      'slave-image1': new FormControl(''),
+      'slave-image2': new FormControl(''),
+      'slave-image3': new FormControl(''),
+      'slave-image4': new FormControl(''),
+      'slave-image5': new FormControl(''),
     });
     this.newsForm = new FormGroup({
       // 'N-level': new FormControl('', [Validators.required]),
-      'N-notification': new FormControl(''),
-      'N-title': new FormControl('', [Validators.required]),
-      'N-sub-title': new FormControl('', [Validators.required]),
-      'N-sub-description': new FormControl('', [Validators.required]),
-      'N-image': new FormControl('', [Validators.required]),
-      'N-subImage1': new FormControl('', [Validators.required]),
-      'N-analysis-title': new FormControl('', [Validators.required]),
-      'N-analysis-description': new FormControl('', [Validators.required]),
+      'notification': new FormControl(''),
+      'title': new FormControl('', [Validators.required]),
+      'main-title': new FormControl('', [Validators.required]),
+      'main-description': new FormControl('', [Validators.required]),
+      'master-image': new FormControl('', [Validators.required]),
+      'slave-image': new FormControl('', [Validators.required]),
+      'analysis-title': new FormControl('', [Validators.required]),
+      'analysis-description': new FormControl('', [Validators.required]),
     });
     this.lawForm = new FormGroup({
-      'L-notification': new FormControl(''),
-      'L-title': new FormControl('', [Validators.required]),
-      'L-summary': new FormControl('', [Validators.required]),
-      'L-file': new FormControl('', [Validators.required]),
-      // 'L-file': new FormControl('', [Validators.required]),
+      'notification': new FormControl(''),
+      'title': new FormControl('', [Validators.required]),
+      'summary': new FormControl('', [Validators.required]),
+      'file': new FormControl('', [Validators.required]),
+      // 'file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
-      'M-notification': new FormControl(''),
-      'M-title': new FormControl('', [Validators.required]),
-      'M-summary': new FormControl('', [Validators.required]),
-      // 'M-image': new FormControl('', [Validators.required]),
-      'M-host': new FormControl('', [Validators.required]),
-      'M-apply-start': new FormControl('', [Validators.required]),
-      'M-apply-end': new FormControl('', [Validators.required]),
-      'M-duration-start': new FormControl('', [Validators.required]),
-      'M-duration-end': new FormControl('', [Validators.required]),
-      'M-location': new FormControl('', [Validators.required]),
-      'M-personnel': new FormControl('', [Validators.required]),
-      'M-cost': new FormControl('', [Validators.required]),
-      'M-detail': new FormControl('', [Validators.required]),
-      'M-material': new FormControl('', [Validators.required]),
+      'notification': new FormControl(''),
+      'title': new FormControl('', [Validators.required]),
+      'summary': new FormControl('', [Validators.required]),
+      // 'image': new FormControl('', [Validators.required]),
+      'host': new FormControl('', [Validators.required]),
+      'apply-start': new FormControl('', [Validators.required]),
+      'apply-end': new FormControl('', [Validators.required]),
+      'duration-start': new FormControl('', [Validators.required]),
+      'duration-end': new FormControl('', [Validators.required]),
+      'location': new FormControl('', [Validators.required]),
+      'personnel': new FormControl('', [Validators.required]),
+      'cost': new FormControl('', [Validators.required]),
+      'detail': new FormControl('', [Validators.required]),
+      'material': new FormControl('', [Validators.required]),
     });
     this.employerForm = new FormGroup({
-      'R-part-name': new FormControl('', [Validators.required]),
-      'R-part-description': new FormControl('', [Validators.required]),
-      'R-age-start': new FormControl('', [Validators.required]),
-      'R-age-end': new FormControl('', [Validators.required]),
-      'R-requirement': new FormControl('', [Validators.required]),
-      'R-personnel': new FormControl('', [Validators.required]),
-      'R-method': new FormControl('', [Validators.required]),
-      'R-apply-start': new FormControl('', [Validators.required]),
-      'R-apply-end': new FormControl('', [Validators.required]),
-      'R-detail': new FormControl('', [Validators.required]),
-      'R-location-name': new FormControl('', [Validators.required]),
-      'R-location-address': new FormControl('', [Validators.required]),
-      'R-manager-name': new FormControl('', [Validators.required]),
-      'R-manager-contact': new FormControl('', [Validators.required]),
-      'R-HP': new FormControl('', [Validators.required]),
-      'R-CP': new FormControl('', [Validators.required]),
+      'part-name': new FormControl('', [Validators.required]),
+      'part-description': new FormControl('', [Validators.required]),
+      'age-start': new FormControl('', [Validators.required]),
+      'age-end': new FormControl('', [Validators.required]),
+      'requirement': new FormControl('', [Validators.required]),
+      'personnel': new FormControl('', [Validators.required]),
+      'method': new FormControl('', [Validators.required]),
+      'apply-start': new FormControl('', [Validators.required]),
+      'apply-end': new FormControl('', [Validators.required]),
+      'detail': new FormControl('', [Validators.required]),
+      'location-name': new FormControl('', [Validators.required]),
+      'location-address': new FormControl('', [Validators.required]),
+      'manager-name': new FormControl('', [Validators.required]),
+      'manager-contact': new FormControl('', [Validators.required]),
+      'hp': new FormControl('', [Validators.required]),
+      'cp': new FormControl('', [Validators.required]),
     });
     this.employeeForm = new FormGroup({
-      'E-name': new FormControl('', [Validators.required]),
-      'E-sex': new FormControl('', [Validators.required]),
-      'E-age-start': new FormControl('', [Validators.required]),
-      'E-age-end': new FormControl('', [Validators.required]),
-      'E-Image': new FormControl('', [Validators.required]),
-      'E-CP': new FormControl('', [Validators.required]),
-      'E-HP': new FormControl('', [Validators.required]),
-      'E-email': new FormControl('', [Validators.required]),
-      'E-homepage': new FormControl('', [Validators.required]),
-      'E-address': new FormControl('', [Validators.required]),
-      'E-part': new FormControl('', [Validators.required]),
-      'E-location': new FormControl('', [Validators.required]),
-      'E-career': new FormControl('', [Validators.required]),
-      'E-achievement': new FormControl('', [Validators.required]),
-      'E-networking': new FormControl('', [Validators.required]),
-      'E-available-start': new FormControl('', [Validators.required]),
-      'E-available-end': new FormControl('', [Validators.required]),
-      'E-intro': new FormControl('', [Validators.required]),
-      'E-etc': new FormControl('', [Validators.required]),
+      'name': new FormControl('', [Validators.required]),
+      'sex': new FormControl('', [Validators.required]),
+      'age-start': new FormControl('', [Validators.required]),
+      'age-end': new FormControl('', [Validators.required]),
+      'image': new FormControl('', [Validators.required]),
+      'cp': new FormControl('', [Validators.required]),
+      'hp': new FormControl('', [Validators.required]),
+      'email': new FormControl('', [Validators.required]),
+      'homepage': new FormControl('', [Validators.required]),
+      'address': new FormControl('', [Validators.required]),
+      'part': new FormControl('', [Validators.required]),
+      'location': new FormControl('', [Validators.required]),
+      'career': new FormControl('', [Validators.required]),
+      'achievement': new FormControl('', [Validators.required]),
+      'networking': new FormControl('', [Validators.required]),
+      'available-start': new FormControl('', [Validators.required]),
+      'available-end': new FormControl('', [Validators.required]),
+      'intro': new FormControl('', [Validators.required]),
+      'etc': new FormControl('', [Validators.required]),
     });
     this.uploadForm = new FormGroup({});
     this.uploadForm2 = new FormGroup({});
@@ -348,13 +347,13 @@ export class ContentsRegistrationComponent implements OnInit {
     };
 
     this.inputs = {
-      '-image': '파일 없음',
-      '-subImage1': '파일 없음',
-      '-subImage2': '파일 없음',
-      '-subImage3': '파일 없음',
-      '-subImage4': '파일 없음',
-      '-subImage5': '파일 없음',
-      '-file': '파일 없음'
+      'master-image': '파일 없음',
+      'slave-image1': '파일 없음',
+      'slave-image2': '파일 없음',
+      'slave-image3': '파일 없음',
+      'slave-image4': '파일 없음',
+      'slave-image5': '파일 없음',
+      'file': '파일 없음'
     };
   }
 
@@ -377,8 +376,8 @@ export class ContentsRegistrationComponent implements OnInit {
         ).subscribe(
         name => {
           console.log('name: ', name);
-          console.log(this.forms[type], this.symbols[type] + columnName);
-          this.forms[type].controls[this.symbols[type] + columnName].setValue(name);
+          console.log(this.forms[type], columnName);
+          this.forms[type].controls[columnName].setValue(name);
           this.inputs[columnName] = name.split('/')[1];
           console.log(this.inputs);
           this.uploadedFiles[columnName] = '-done';

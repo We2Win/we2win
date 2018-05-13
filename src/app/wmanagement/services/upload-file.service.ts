@@ -10,13 +10,13 @@ export class UploadFileService {
   FOLDER = 'user-s3/';
 
   private dataList = {
-    '-image': new Subject<any>(),
-    '-subImage1': new Subject<any>(),
-    '-subImage2': new Subject<any>(),
-    '-subImage3': new Subject<any>(),
-    '-subImage4': new Subject<any>(),
-    '-subImage5': new Subject<any>(),
-    '-file': new Subject<any>()
+    'master-image': new Subject<any>(),
+    'slave-image1': new Subject<any>(),
+    'slave-image2': new Subject<any>(),
+    'slave-image3': new Subject<any>(),
+    'slave-image4': new Subject<any>(),
+    'slave-image5': new Subject<any>(),
+    'file': new Subject<any>()
   };
 
   bucket = new S3(

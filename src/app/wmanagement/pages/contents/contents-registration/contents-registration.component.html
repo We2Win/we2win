@@ -19,35 +19,35 @@
           <h2>컨텐츠 등급</h2>
           <app-select #ILevel [type]="'컨텐츠 등급'" (change)="onLevelChange('info')"></app-select>
           <div class="checkboxGroup">
-            <input type="checkbox" formControlName="I-notification" id="I-notification">
-            <label for="I-notification">현재 컨텐츠를 공지로 설정</label>
+            <input type="checkbox" formControlName="notification" id="notification">
+            <label for="notification">현재 컨텐츠를 공지로 설정</label>
           </div>
         </li>
         <li class="form-group">
           <h2>컨텐츠 제목</h2>
-          <input class="form-control" formControlName="I-title" type="text" placeholder="제목을 입력해주세요" />
+          <input class="form-control" formControlName="title" type="text" placeholder="제목을 입력해주세요" />
         </li>
         <li class="form-group">
           <h2>요약 정보</h2>
-          <!-- <textarea class="form-control" formControlName="I-summary" placeholder="요약 정보를 입력하세요"></textarea> -->
-          <quill-editor class="form-control short" formControlName="I-summary" [options]="editorOptions"></quill-editor>
+          <!-- <textarea class="form-control" formControlName="summary" placeholder="요약 정보를 입력하세요"></textarea> -->
+          <quill-editor class="form-control short" formControlName="summary" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>분양 오픈일</h2>
-          <input type="date" formControlName="I-open-start" placeholder="이름">
-          <input type="date" formControlName="I-open-end" placeholder="이름">
+          <input type="date" formControlName="open-start" placeholder="이름">
+          <input type="date" formControlName="open-end" placeholder="이름">
           <div class="blank"></div>
         </li>
         <li>
           <h2>분양가</h2>
-          <input type="number" lang='en-150' formControlName="I-ammount" step="10000" placeholder="금액">
+          <input type="number" lang='en-150' formControlName="ammount" step="10000" placeholder="금액">
           <h3>백만원</h3>
           <span class="blank"></span>
         </li>
         <li>
           <h2>담당자 정보</h2>
-          <input type="text" formControlName="I-manager-name" placeholder="이름">
-          <input type="text" formControlName="I-manager-contact" placeholder="연락처">
+          <input type="text" formControlName="manager-name" placeholder="이름">
+          <input type="text" formControlName="manager-contact" placeholder="연락처">
           <span class="blank"></span>
         </li>
         <li>
@@ -61,19 +61,19 @@
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
-                  <input type="text" class="box size" formControlName="I-current-duration1" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-duration2" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-duration3" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-duration4" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-current-duration5" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration1" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration2" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration3" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration4" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration5" placeholder="기간">
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
-                  <input type="number" class="box amount" formControlName="I-current-amount1" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-current-amount2" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-current-amount3" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-current-amount4" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-current-amount5" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount1" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount2" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount3" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount4" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount5" placeholder="액수">
                 </li>
               </span>
             </div>
@@ -85,19 +85,19 @@
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
-                  <input type="text" class="box size" formControlName="I-around-duration1" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-duration2" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-duration3" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-duration4" placeholder="기간">
-                  <input type="text" class="box size" formControlName="I-around-duration5" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration1" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration2" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration3" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration4" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration5" placeholder="기간">
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
-                  <input type="number" class="box amount" formControlName="I-around-amount1" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-around-amount2" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-around-amount3" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-around-amount4" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="I-around-amount5" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount1" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount2" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount3" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount4" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount5" placeholder="액수">
                 </li>
               </span>
             </div>
@@ -105,41 +105,41 @@
         </li>
         <li>
           <h2>현장 리포트</h2>
-          <quill-editor class="form-control" formControlName="I-report" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control" formControlName="report" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>Master 사진</h2>
-          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup.showPopup();">
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['master-image']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2>Slave 사진</h2>
-          <input class="fileName2" type="text" readonly="readonly" [placeholder]="inputs['-subImage1']" (click)="imagePopup.showPopup();">
+          <input class="fileName2" type="text" readonly="readonly" [placeholder]="inputs['slave-image1']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input class="fileName3" type="text" readonly="readonly" [placeholder]="inputs['-subImage2']" (click)="imagePopup.showPopup();">
+          <input class="fileName3" type="text" readonly="readonly" [placeholder]="inputs['slave-image2']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input class="fileName4" type="text" readonly="readonly" [placeholder]="inputs['-subImage3']" (click)="imagePopup.showPopup();">
+          <input class="fileName4" type="text" readonly="readonly" [placeholder]="inputs['slave-image3']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input class="fileName5" type="text" readonly="readonly" [placeholder]="inputs['-subImage4']" (click)="imagePopup.showPopup();">
+          <input class="fileName5" type="text" readonly="readonly" [placeholder]="inputs['slave-image4']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input class="fileName6" type="text" readonly="readonly" [placeholder]="inputs['-subImage5']" (click)="imagePopup.showPopup();">
+          <input class="fileName6" type="text" readonly="readonly" [placeholder]="inputs['slave-image5']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
@@ -151,64 +151,64 @@
       </form>
 
       <app-popup #imagePopup>
-        <form [formGroup]="uploadForm" id="upload" action="/api/v1/upload" method="post">
+        <form [formGroup]="uploadForm" id="upload" action="/api/v2/upload" method="post">
           <li>
             <h2 class="subTitleBar">Master 사진</h2>
-            <input type="file" (change)="selectFile($event, '-image')" #I1>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['-image']!=='파일 없음'}" (click)="upload(selectedData.type, '-image')">{{uploadedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'master-image')" #I1>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['master-image']!=='파일 없음'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <!-- <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*" -->
           </li>
           <li>
             <h2 class="subTitleBar">Slave 사진</h2>
-            <input type="file" (change)="selectFile($event, '-subImage1')" #I2>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage1']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage1')">{{uploadedFiles['-subImage1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
-            <input type="file" (change)="selectFile($event, '-subImage2')" #I3>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage2']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage2')">{{uploadedFiles['-subImage2']==='-done'?'등록 완료':'사진 등록'}}</app-button>
-            <input type="file" (change)="selectFile($event, '-subImage3')" #I4>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage3']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage3')">{{uploadedFiles['-subImage3']==='-done'?'등록 완료':'사진 등록'}}</app-button>
-            <input type="file" (change)="selectFile($event, '-subImage4')" #I5>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage4']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage4')">{{uploadedFiles['-subImage4']==='-done'?'등록 완료':'사진 등록'}}</app-button>
-            <input type="file" (change)="selectFile($event, '-subImage5')" #I6>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage5']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage5')">{{uploadedFiles['-subImage5']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'slave-image1')" #I2>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image1']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image1')">{{uploadedFiles['slave-image1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'slave-image2')" #I3>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image2']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image2')">{{uploadedFiles['slave-image2']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'slave-image3')" #I4>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image3']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image3')">{{uploadedFiles['slave-image3']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'slave-image4')" #I5>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image4']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image4')">{{uploadedFiles['slave-image4']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'slave-image5')" #I6>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image5']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image5')">{{uploadedFiles['slave-image5']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
 
       <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()"
         enctype="multipart/form-data" novalidate>
-        <input class="form-control" formControlName="S-type" type="hidden" placeholder="제목을 입력하세요" />
+        <input class="form-control" formControlName="type" type="hidden" placeholder="제목을 입력하세요" />
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
           <app-select #SLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('site')"></app-select>
           <div class="checkboxGroup">
-            <input type="checkbox" formControlName="S-notification" id="S-notification">
-            <label for="S-notification">현재 컨텐츠를 공지로 설정</label>
+            <input type="checkbox" formControlName="notification" id="notification">
+            <label for="notification">현재 컨텐츠를 공지로 설정</label>
           </div>
         </li>
         <li class="form-group">
           <h2>컨텐츠 제목</h2>
-          <input class="form-control" formControlName="S-title" type="text" placeholder="제목을 입력하세요" />
+          <input class="form-control" formControlName="title" type="text" placeholder="제목을 입력하세요" />
         </li>
         <li class="form-group">
           <h2>요약 정보</h2>
-          <quill-editor class="form-control short" formControlName="S-summary" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control short" formControlName="summary" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>분양 오픈일</h2>
-          <input type="date" formControlName="S-open-start" placeholder="이름">
-          <input type="date" formControlName="S-open-end" placeholder="이름">
+          <input type="date" formControlName="open-start" placeholder="이름">
+          <input type="date" formControlName="open-end" placeholder="이름">
           <div class="blank"></div>
         </li>
         <li>
           <h2>분양가</h2>
-          <input type="number" lang='en-150' formControlName="S-ammount" step="10000" placeholder="금액">
+          <input type="number" lang='en-150' formControlName="ammount" step="10000" placeholder="금액">
           <h3>백만원</h3>
           <span class="blank"></span>
         </li>
         <li>
           <h2>담당자 정보</h2>
-          <input type="text" formControlName="S-manager-name" placeholder="이름">
-          <input type="text" formControlName="S-manager-contact" placeholder="연락처">
+          <input type="text" formControlName="manager-name" placeholder="이름">
+          <input type="text" formControlName="manager-contact" placeholder="연락처">
           <span class="blank"></span>
         </li>
         <li>
@@ -222,19 +222,19 @@
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
-                  <input type="text" class="box size" formControlName="S-current-duration1" placeholder="기간">
-                  <input type="text" class="box size" formControlName="S-current-duration2" placeholder="기간">
-                  <input type="text" class="box size" formControlName="S-current-duration3" placeholder="기간">
-                  <input type="text" class="box size" formControlName="S-current-duration4" placeholder="기간">
-                  <input type="text" class="box size" formControlName="S-current-duration5" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration1" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration2" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration3" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration4" placeholder="기간">
+                  <input type="text" class="box size" formControlName="current-duration5" placeholder="기간">
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
-                  <input type="number" class="box amount" formControlName="S-current-amount1" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="S-current-amount2" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="S-current-amount3" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="S-current-amount4" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="S-current-amount5" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount1" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount2" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount3" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount4" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="current-amount5" placeholder="액수">
                 </li>
               </span>
             </div>
@@ -246,19 +246,19 @@
               <span class="listContainer">
                 <li>
                   <span class="spanTitle">기간</span>
-                  <input type="text" class="box size" formControlName="S-around-duration1" placeholder="기간">
-                  <input type="text" class="box size" formControlName="S-around-duration2" placeholder="기간">
-                  <input type="text" class="box size" formControlName="S-around-duration3" placeholder="기간">
-                  <input type="text" class="box size" formControlName="S-around-duration4" placeholder="기간">
-                  <input type="text" class="box size" formControlName="S-around-duration5" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration1" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration2" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration3" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration4" placeholder="기간">
+                  <input type="text" class="box size" formControlName="around-duration5" placeholder="기간">
                 </li>
                 <li>
                   <span class="spanTitle">액수</span>
-                  <input type="number" class="box amount" formControlName="S-around-amount1" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="S-around-amount2" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="S-around-amount3" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="S-around-amount4" placeholder="액수">
-                  <input type="number" class="box amount" formControlName="S-around-amount5" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount1" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount2" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount3" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount4" placeholder="액수">
+                  <input type="number" class="box amount" formControlName="around-amount5" placeholder="액수">
                 </li>
               </span>
             </div>
@@ -266,41 +266,41 @@
         </li>
         <li>
           <h2>현장 리포트</h2>
-          <quill-editor class="form-control" formControlName="S-report" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control" formControlName="report" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>Master 사진</h2>
-          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup.showPopup();">
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['master-image']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2>Slave 사진</h2>
-          <input class="fileName2" type="text" readonly="readonly" [placeholder]="inputs['-subImage1']" (click)="imagePopup.showPopup();">
+          <input class="fileName2" type="text" readonly="readonly" [placeholder]="inputs['slave-image1']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input class="fileName3" type="text" readonly="readonly" [placeholder]="inputs['-subImage2']" (click)="imagePopup.showPopup();">
+          <input class="fileName3" type="text" readonly="readonly" [placeholder]="inputs['slave-image2']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input class="fileName4" type="text" readonly="readonly" [placeholder]="inputs['-subImage3']" (click)="imagePopup.showPopup();">
+          <input class="fileName4" type="text" readonly="readonly" [placeholder]="inputs['slave-image3']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input class="fileName5" type="text" readonly="readonly" [placeholder]="inputs['-subImage4']" (click)="imagePopup.showPopup();">
+          <input class="fileName5" type="text" readonly="readonly" [placeholder]="inputs['slave-image4']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2></h2>
-          <input class="fileName6" type="text" readonly="readonly" [placeholder]="inputs['-subImage5']" (click)="imagePopup.showPopup();">
+          <input class="fileName6" type="text" readonly="readonly" [placeholder]="inputs['slave-image5']" (click)="imagePopup.showPopup();">
           <app-button (click)="imagePopup.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
@@ -316,41 +316,41 @@
           <h2>컨텐츠 등급</h2>
           <app-select #NLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('news')"></app-select>
           <div class="checkboxGroup">
-            <input type="checkbox" formControlName="N-notification" id="N-notification">
-            <label for="N-notification">현재 컨텐츠를 공지로 설정</label>
+            <input type="checkbox" formControlName="notification" id="notification">
+            <label for="notification">현재 컨텐츠를 공지로 설정</label>
           </div>
         </li>
         <li>
           <h2>제목</h2>
-          <input type="text" formControlName="N-title" placeholder="제목을 입력하세요" />
+          <input type="text" formControlName="title" placeholder="제목을 입력하세요" />
         </li>
         <li>
           <h2>핵심</h2>
-          <input type="text" formControlName="N-sub-title" placeholder="뉴스 제목을 입력하세요">
+          <input type="text" formControlName="sub-title" placeholder="뉴스 제목을 입력하세요">
         </li>
         <li>
           <h2>핵심 상세</h2>
-          <quill-editor class="form-control short" formControlName="N-sub-description" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control short" formControlName="sub-description" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>Master 사진</h2>
-          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup2.showPopup();">
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['master-image']" (click)="imagePopup2.showPopup();">
           <app-button (click)="imagePopup2.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2>Slave 사진</h2>
-          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-subImage1']" (click)="imagePopup2.showPopup();">
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['slave-image1']" (click)="imagePopup2.showPopup();">
           <app-button (click)="imagePopup2.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2>분석</h2>
-          <input type="text" formControlName="N-analysis-title" placeholder="뉴스 분석제목을 입력하세요">
+          <input type="text" formControlName="analysis-title" placeholder="뉴스 분석제목을 입력하세요">
         </li>
         <li>
           <h2>분석 상세</h2>
-          <quill-editor class="form-control" formControlName="N-analysis-description" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control" formControlName="analysis-description" [options]="editorOptions"></quill-editor>
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
@@ -359,16 +359,16 @@
       </form>
 
       <app-popup #imagePopup2>
-        <form [formGroup]="uploadForm2" id="upload2" action="/api/v1/upload" method="post">
+        <form [formGroup]="uploadForm2" id="upload2" action="/api/v2/upload" method="post">
           <li>
             <h2 class="subTitleBar">Master 사진</h2>
-            <input type="file" (change)="selectFile($event, '-image')" #I7>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['-image']!=='파일 없음'}" (click)="upload(selectedData.type, '-image')">{{uploadedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'master-image')" #I7>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['master-image']!=='파일 없음'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
           <li>
             <h2 class="subTitleBar">Slave 사진</h2>
-            <input type="file" (change)="selectFile($event, '-subImage1')" #I8>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['-subImage1']!=='파일 없음'}" (click)="upload(selectedData.type, '-subImage1')">{{uploadedFiles['-subImage1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'slave-image1')" #I8>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image1']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image1')">{{uploadedFiles['slave-image1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
@@ -378,17 +378,17 @@
           <h2>컨텐츠 등급</h2>
           <app-select #LLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('law')"></app-select>
           <div class="checkboxGroup">
-            <input type="checkbox" formControlName="L-notification" id="L-notification">
-            <label for="L-notification">현재 컨텐츠를 공지로 설정</label>
+            <input type="checkbox" formControlName="notification" id="notification">
+            <label for="notification">현재 컨텐츠를 공지로 설정</label>
           </div>
         </li>
         <li>
           <h2>제목</h2>
-          <input type="text" formControlName="L-title" placeholder="제목을 입력하세요" />
+          <input type="text" formControlName="title" placeholder="제목을 입력하세요" />
         </li>
         <li>
           <h2>요약정보</h2>
-          <quill-editor class="form-control short" formControlName="L-summary" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control short" formControlName="summary" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>첨부파일</h2>
@@ -403,7 +403,7 @@
       </form>
 
       <app-popup #filePopup>
-        <form [formGroup]="uploadForm3" id="upload3" action="/api/v1/upload" method="post">
+        <form [formGroup]="uploadForm3" id="upload3" action="/api/v2/upload" method="post">
           <li>
             <h2 class="subTitleBar">파일 등록</h2>
             <input type="file" (change)="selectFile($event, '-file')" #I9>
@@ -417,58 +417,58 @@
           <h2>컨텐츠 등급</h2>
           <app-select #MLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('meeting')"></app-select>
           <div class="checkboxGroup">
-            <input type="checkbox" formControlName="M-notification" id="M-notification">
-            <label for="M-notification">현재 컨텐츠를 공지로 설정</label>
+            <input type="checkbox" formControlName="notification" id="notification">
+            <label for="notification">현재 컨텐츠를 공지로 설정</label>
           </div>
         </li>
         <li>
           <h2>제목</h2>
-          <input type="text" formControlName="M-title" placeholder="제목을 입력하세요" />
+          <input type="text" formControlName="title" placeholder="제목을 입력하세요" />
         </li>
         <li>
           <h2>요약정보</h2>
-          <quill-editor class="form-control short" formControlName="M-summary" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control short" formControlName="summary" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>주최측</h2>
-          <input type="text" formControlName="M-host" placeholder="주최측을 입력하세요">
+          <input type="text" formControlName="host" placeholder="주최측을 입력하세요">
           <span class="blank"></span>
         </li>
         <li>
           <h2>신청기간</h2>
-          <input type="date" formControlName="M-apply-start" placeholder="시작">
-          <input type="date" formControlName="M-apply-end" placeholder="종료">
+          <input type="date" formControlName="apply-start" placeholder="시작">
+          <input type="date" formControlName="apply-end" placeholder="종료">
           <div class="blank"></div>
         </li>
         <li>
           <h2>주최일시</h2>
-          <input type="date" formControlName="M-duration-start" placeholder="시작">
-          <input type="date" formControlName="M-duration-end" placeholder="종료">
+          <input type="date" formControlName="duration-start" placeholder="시작">
+          <input type="date" formControlName="duration-end" placeholder="종료">
           <div class="blank"></div>
         </li>
         <li>
           <h2>모집정원</h2>
-          <input type="number" formControlName="M-personnel" placeholder="정원">
+          <input type="number" formControlName="personnel" placeholder="정원">
           <div class="blank"></div>
         </li>
         <li>
           <h2>참가비</h2>
-          <input type="number" step="1000" formControlName="M-cost" placeholder="참가비">
+          <input type="number" step="1000" formControlName="cost" placeholder="참가비">
           <div class="blank"></div>
         </li>
         <li>
           <h2>Master 사진</h2>
-          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup3.showPopup();">
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['master-image']" (click)="imagePopup3.showPopup();">
           <app-button (click)="imagePopup3.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2>세부사항</h2>
-          <quill-editor class="form-control" formControlName="M-detail" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control" formControlName="detail" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>준비물</h2>
-          <input type="text" formControlName="M-material" placeholder="준비물을 입력하세요">
+          <input type="text" formControlName="material" placeholder="준비물을 입력하세요">
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
@@ -477,11 +477,11 @@
       </form>
 
       <app-popup #imagePopup3>
-        <form [formGroup]="uploadForm4" id="upload4" action="/api/v1/upload" method="post">
+        <form [formGroup]="uploadForm4" id="upload4" action="/api/v2/upload" method="post">
           <li>
             <h2 class="subTitleBar">Master 사진</h2>
-            <input type="file" (change)="selectFile($event, '-image')" #I10>
-            <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['-image'] && uploadedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{uploadedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'master-image')" #I10>
+            <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['master-image'] && uploadedFiles['master-image']==='-done'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
@@ -489,65 +489,65 @@
       <form [formGroup]="employerForm" id="employer" *ngSwitchCase="'구인'" (ngSubmit)="onSubmit()" novalidate>
         <li>
           <h2>업무</h2>
-          <input type="text" formControlName="R-part-name" placeholder="업무명" />
+          <input type="text" formControlName="part-name" placeholder="업무명" />
         </li>
         <li>
           <h2>업무내용</h2>
-          <quill-editor class="form-control" formControlName="R-part-description" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control" formControlName="part-description" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>나이</h2>
-          <input type="number" formControlName="R-age-start" placeholder="나이대 시작">
-          <input type="number" formControlName="R-age-end" placeholder="나이대 종료">
+          <input type="number" formControlName="age-start" placeholder="나이대 시작">
+          <input type="number" formControlName="age-end" placeholder="나이대 종료">
           <span class="blank"></span>
         </li>
         <li>
           <h2>응시요건</h2>
-          <input type="text" formControlName="R-requirement" placeholder="요건을 입력하세요." />
+          <input type="text" formControlName="requirement" placeholder="요건을 입력하세요." />
           <span class="blank"></span>
         </li>
         <li>
           <h2>모집인원</h2>
-          <input type="number" formControlName="R-personnel" placeholder="숫자만 입력" />
+          <input type="number" formControlName="personnel" placeholder="숫자만 입력" />
           <span class="blank"></span>
         </li>
         <li>
           <h2>채용방법</h2>
-          <input type="text" formControlName="R-method" placeholder="채용 방법을 입력하세요.">
+          <input type="text" formControlName="method" placeholder="채용 방법을 입력하세요.">
         </li>
         <li>
           <h2>모집기간</h2>
-          <input type="date" formControlName="R-apply-start" placeholder="모집기간 시작일">
-          <input type="date" formControlName="R-apply-end" placeholder="모집기간 종료일">
+          <input type="date" formControlName="apply-start" placeholder="모집기간 시작일">
+          <input type="date" formControlName="apply-end" placeholder="모집기간 종료일">
         </li>
         <li>
           <h2>상세요건</h2>
-          <quill-editor class="form-control" formControlName="R-detail" [options]="editorOptions"></quill-editor>
+          <quill-editor class="form-control" formControlName="detail" [options]="editorOptions"></quill-editor>
         </li>
         <li>
           <h2>현장명</h2>
-          <input type="text" formControlName="R-location-name" placeholder="현장명을 입력하세요.">
+          <input type="text" formControlName="location-name" placeholder="현장명을 입력하세요.">
           <span class="blank"></span>
         </li>
         <li>
           <h2>소재지</h2>
-          <input type="text" formControlName="R-location-address" placeholder="소재지를 입력하세요.">
+          <input type="text" formControlName="location-address" placeholder="소재지를 입력하세요.">
           <span class="blank"></span>
         </li>
         <li>
           <h2>담당자 정보</h2>
-          <input type="text" formControlName="R-manager-name" placeholder="담당자 이름">
-          <input type="text" formControlName="R-manager-contact" placeholder="담당자 연락처">
+          <input type="text" formControlName="manager-name" placeholder="담당자 이름">
+          <input type="text" formControlName="manager-contact" placeholder="담당자 연락처">
           <span class="blank"></span>
         </li>
         <li>
           <h2>전화</h2>
-          <input type="text" formControlName="R-HP" placeholder="전화번호">
+          <input type="text" formControlName="hp" placeholder="전화번호">
           <span class="blank"></span>
         </li>
         <li>
           <h2>핸드폰</h2>
-          <input type="text" formControlName="R-CP" placeholder="핸드폰 번호">
+          <input type="text" formControlName="cp" placeholder="핸드폰 번호">
           <span class="blank"></span>
         </li>
         <li class="submitBar">
@@ -559,76 +559,76 @@
       <form [formGroup]="employeeForm" id="employee" *ngSwitchCase="'구직'" (ngSubmit)="onSubmit()" novalidate>
         <li>
           <h2>성명</h2>
-          <input type="text" formControlName="E-name" placeholder="성명을 입력하세요" />
+          <input type="text" formControlName="name" placeholder="성명을 입력하세요" />
         </li>
         <li>
           <h2>성별</h2>
-          <textarea formControlName="E-sex" placeholder="성별을 입력하세요"></textarea>
+          <textarea formControlName="sex" placeholder="성별을 입력하세요"></textarea>
         </li>
         <li>
           <h2>나이</h2>
-          <input type="number" formControlName="E-age-start" placeholder="나이대 시작">
-          <input type="number" formControlName="E-age-end" placeholder="나이대 종료">
+          <input type="number" formControlName="age-start" placeholder="나이대 시작">
+          <input type="number" formControlName="age-end" placeholder="나이대 종료">
         </li>
         <li>
           <h2>사진</h2>
-          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-image']" (click)="imagePopup4.showPopup();">
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['master-image']" (click)="imagePopup4.showPopup();">
           <app-button (click)="imagePopup4.showPopup();">사진 등록</app-button>
           <span class="blank"></span>
         </li>
         <li>
           <h2>전화</h2>
-          <input type="text" formControlName="E-HP" placeholder="전화번호">
+          <input type="text" formControlName="hp" placeholder="전화번호">
         </li>
         <li>
           <h2>핸드폰</h2>
-          <input type="text" formControlName="E-CP" placeholder="핸드폰 번호">
+          <input type="text" formControlName="cp" placeholder="핸드폰 번호">
         </li>
         <li>
           <h2>이메일</h2>
-          <input type="text" formControlName="E-email" placeholder="이메일">
+          <input type="text" formControlName="email" placeholder="이메일">
         </li>
         <li>
           <h2>홈페이지</h2>
-          <input type="text" formControlName="E-homepage" placeholder="홈페이지">
+          <input type="text" formControlName="homepage" placeholder="홈페이지">
         </li>
         <li>
           <h2>주소</h2>
-          <input type="text" formControlName="E-address" placeholder="주소">
+          <input type="text" formControlName="address" placeholder="주소">
         </li>
         <li>
           <h2>희망업무</h2>
-          <input type="text" formControlName="E-part" placeholder="희망업무">
+          <input type="text" formControlName="part" placeholder="희망업무">
         </li>
         <li>
           <h2>희망지역</h2>
-          <input type="text" formControlName="E-location" placeholder="희망지역">
+          <input type="text" formControlName="location" placeholder="희망지역">
         </li>
         <li>
           <h2>경력</h2>
-          <input type="text" formControlName="E-career" placeholder="경력">
+          <input type="text" formControlName="career" placeholder="경력">
         </li>
         <li>
           <h2>자격사항</h2>
-          <input type="text" formControlName="E-achievement" placeholder="자격사항">
+          <input type="text" formControlName="achievement" placeholder="자격사항">
         </li>
         <li>
           <h2>인맥</h2>
-          <input type="text" formControlName="E-networking" placeholder="인맥">
+          <input type="text" formControlName="networking" placeholder="인맥">
         </li>
         <li>
           <h2>근무가능일</h2>
-          <input type="date" formControlName="E-available-start" placeholder="시작">
-          <input type="date" formControlName="E-available-end" placeholder="종료">
+          <input type="date" formControlName="available-start" placeholder="시작">
+          <input type="date" formControlName="available-end" placeholder="종료">
           <app-button>일정 등록</app-button>
         </li>
         <li>
           <h2>자기소개</h2>
-          <input type="text" formControlName="E-intro" placeholder="자기소개를 해주세요.">
+          <input type="text" formControlName="intro" placeholder="자기소개를 해주세요.">
         </li>
         <li>
           <h2>기타</h2>
-          <input type="text" formControlName="E-etc" placeholder="기타사항을 입력해주세요.">
+          <input type="text" formControlName="etc" placeholder="기타사항을 입력해주세요.">
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
@@ -637,11 +637,11 @@
       </form>
 
       <app-popup #imagePopup4>
-        <form [formGroup]="uploadForm5" id="upload5" action="/api/v1/upload" method="post">
+        <form [formGroup]="uploadForm5" id="upload5" action="/api/v2/upload" method="post">
           <li>
             <h2 class="subTitleBar">Master 사진</h2>
-            <input type="file" (change)="selectFile($event, '-image')" #I11>
-            <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['-image'] && uploadedFiles['-image']==='-done'}" (click)="upload(selectedData.type, '-image')">{{uploadedFiles['-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'master-image')" #I11>
+            <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['master-image'] && uploadedFiles['master-image']==='-done'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>

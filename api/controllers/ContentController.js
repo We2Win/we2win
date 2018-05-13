@@ -161,15 +161,15 @@ const getList = (name) =>
     res.setHeader('Content-Type', 'application/json');
 
     const symbol = contentsInfo[name].symbol;
-    const symbolId = symbol + '-id';
+    // const symbolId = symbol + '-id';
     const db = contentsInfo[name].db;
     const WHERE = {};
     if (req.params.id) {
-      WHERE[symbolId] = req.params.id;
+      WHERE['no'] = req.params.id;
     }
-    if (symbolId === 'S-id' && name !== 'site') {
-      WHERE['S-type'] = contentsInfo[name].type;
-    }
+    // if (symbolId === 'S-id' && name !== 'site') {
+    //   WHERE['S-type'] = contentsInfo[name].type;
+    // }
 
     if (req.params.id) {
       db.findOne({
@@ -177,7 +177,7 @@ const getList = (name) =>
         })
         .then((content) => {
           content.update({
-            'data-click': Sequelize.literal('`data-click` + 1')
+            'c-click': Sequelize.literal('`c-click` + 1')
           });
 
           return ReS(res, content);
@@ -192,6 +192,42 @@ const getList = (name) =>
     }
   };
 module.exports.getList = getList;
+// const getList = (name) =>
+//   async function (req, res) {
+//     res.setHeader('Content-Type', 'application/json');
+
+//     const symbol = contentsInfo[name].symbol;
+//     const symbolId = symbol + '-id';
+//     const db = contentsInfo[name].db;
+//     const WHERE = {};
+//     if (req.params.id) {
+//       WHERE[symbolId] = req.params.id;
+//     }
+//     if (symbolId === 'S-id' && name !== 'site') {
+//       WHERE['S-type'] = contentsInfo[name].type;
+//     }
+
+//     if (req.params.id) {
+//       db.findOne({
+//           where: WHERE
+//         })
+//         .then((content) => {
+//           content.update({
+//             'data-click': Sequelize.literal('`data-click` + 1')
+//           });
+
+//           return ReS(res, content);
+//         });
+//     } else {
+//       db.findAll({
+//           where: WHERE
+//         })
+//         .then((contentList) => {
+//           return ReS(res, contentList);
+//         });
+//     }
+//   };
+// module.exports.getList = getList;
 
 const getRankingList = (name) =>
   async function (req, res) {
@@ -331,6 +367,144 @@ const getRankingList = (name) =>
     }
   };
 module.exports.getRankingList = getRankingList;
+// const getRankingList = (name) =>
+//   async function (req, res) {
+//     res.setHeader('Content-Type', 'application/json');
+
+//     const id = (req.params.id - 1) || 0;
+//     let contentList = [];
+
+//     console.log(id);
+//     switch (name) {
+//       case 'info/newly':
+//         Report.findAll({
+//             offset: id,
+//             limit: 8,
+//             order: [
+//               ['createdAt', 'DESC']
+//             ]
+//           })
+//           .then((content) => {
+//             contentList.push(content);
+//             News.findAll({
+//                 offset: id,
+//                 limit: 8,
+//                 order: [
+//                   ['createdAt', 'DESC']
+//                 ]
+//               })
+//               .then((content) => {
+//                 contentList.push(content);
+//                 Law.findAll({
+//                     offset: id,
+//                     limit: 8,
+//                     order: [
+//                       ['createdAt', 'DESC']
+//                     ]
+//                   })
+//                   .then((content) => {
+//                     contentList.push(content);
+//                     return ReS(res, contentList);
+//                   });
+//               });
+//           });
+//         break;
+//       case 'info/weekly':
+//         Report.findAll({
+//             offset: id,
+//             limit: 1,
+//             order: [
+//               ['data-click', 'DESC']
+//             ]
+//           })
+//           .then((content) => {
+//             contentList.push(content);
+//             News.findAll({
+//                 offset: id,
+//                 limit: 1,
+//                 order: [
+//                   ['data-click', 'DESC']
+//                 ]
+//               })
+//               .then((content) => {
+//                 contentList.push(content);
+//                 Law.findAll({
+//                     offset: id,
+//                     limit: 1,
+//                     order: [
+//                       ['data-click', 'DESC']
+//                     ]
+//                   })
+//                   .then((content) => {
+//                     contentList.push(content);
+//                     return ReS(res, contentList);
+//                   });
+//               });
+//           });
+//         break;
+//       case 'info/report':
+//         Report.findAll({
+//             offset: id,
+//             limit: 8,
+//             order: [
+//               ['data-click', 'DESC']
+//             ]
+//           })
+//           .then((content) => {
+//             return ReS(res, content);
+//           });
+//         break;
+//       case 'info/news':
+//         News.findAll({
+//             offset: id,
+//             limit: 8,
+//             order: [
+//               ['data-click', 'DESC']
+//             ]
+//           })
+//           .then((content) => {
+//             return ReS(res, content);
+//           });
+//         break;
+//       case 'info/law':
+//         Law.findAll({
+//             offset: id,
+//             limit: 8,
+//             order: [
+//               ['data-click', 'DESC']
+//             ]
+//           })
+//           .then((content) => {
+//             return ReS(res, content);
+//           });
+//         break;
+//       case 'site/newly':
+//         Site.findAll({
+//             offset: id,
+//             limit: 8,
+//             order: [
+//               ['createdAt', 'DESC']
+//             ]
+//           })
+//           .then((content) => {
+//             return ReS(res, content);
+//           });
+//         break;
+//       case 'site/weekly':
+//         Site.findAll({
+//             offset: id,
+//             limit: 8,
+//             order: [
+//               ['data-click', 'DESC']
+//             ]
+//           })
+//           .then((content) => {
+//             return ReS(res, content);
+//           });
+//         break;
+//     }
+//   };
+// module.exports.getRankingList = getRankingList;
 
 const updateList = (name) =>
   async function (req, res) {

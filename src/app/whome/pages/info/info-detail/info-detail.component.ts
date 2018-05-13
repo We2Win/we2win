@@ -86,26 +86,26 @@ export class InfoDetailComponent implements OnInit {
         if (data) {
           this.Data = data;
           // console.log(this.Data);
-          if (this.Data['I-current-duration1'] || this.Data['I-around-duration1']) {
+          if (this.Data['current-duration1'] || this.Data['around-duration1']) {
             this.showCharts = true;
             this.addChart();
           } else {
             this.showCharts = false;
           }
 
-          this.imgUrl = environment.bucket.downloadUrl + this.Data['I-image'];
-          this.subImgUrl[1] = environment.bucket.downloadUrl + this.Data['I-subImage1'];
-          this.subImgUrl[2] = environment.bucket.downloadUrl + this.Data['I-subImage2'];
-          this.subImgUrl[3] = environment.bucket.downloadUrl + this.Data['I-subImage3'];
-          this.subImgUrl[4] = environment.bucket.downloadUrl + this.Data['I-subImage4'];
-          this.subImgUrl[5] = environment.bucket.downloadUrl + this.Data['I-subImage5'];
-          this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['I-subImage1'];
+          this.imgUrl = environment.bucket.downloadUrl + this.Data['image'];
+          this.subImgUrl[1] = environment.bucket.downloadUrl + this.Data['subImage1'];
+          this.subImgUrl[2] = environment.bucket.downloadUrl + this.Data['subImage2'];
+          this.subImgUrl[3] = environment.bucket.downloadUrl + this.Data['subImage3'];
+          this.subImgUrl[4] = environment.bucket.downloadUrl + this.Data['subImage4'];
+          this.subImgUrl[5] = environment.bucket.downloadUrl + this.Data['subImage5'];
+          this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['subImage1'];
 
           console.log('data: ', this.Data);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
-          this.meta.addTag({ name: 'og:title', content: this.Data['I-title'] });
-          this.meta.addTag({ name: 'og:description', content: this.Data['I-summary'] });
+          this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
+          this.meta.addTag({ name: 'og:description', content: this.Data['summary'] });
           this.meta.addTag({ name: 'og:image', content: this.imgUrl });
 
           this.getComments();
@@ -128,19 +128,19 @@ export class InfoDetailComponent implements OnInit {
       type: 'infoDetail',
       num: '0',
       labels: [
-        this.Data['I-current-duration1'],
-        this.Data['I-current-duration2'],
-        this.Data['I-current-duration3'],
-        this.Data['I-current-duration4'],
-        this.Data['I-current-duration5'],
+        this.Data['current-duration1'],
+        this.Data['current-duration2'],
+        this.Data['current-duration3'],
+        this.Data['current-duration4'],
+        this.Data['current-duration5'],
       ],
       datasets: [{
         data: [
-          parseInt(this.Data['I-current-amount1'], 10),
-          parseInt(this.Data['I-current-amount2'], 10),
-          parseInt(this.Data['I-current-amount3'], 10),
-          parseInt(this.Data['I-current-amount4'], 10),
-          parseInt(this.Data['I-current-amount5'], 10),
+          parseInt(this.Data['current-amount1'], 10),
+          parseInt(this.Data['current-amount2'], 10),
+          parseInt(this.Data['current-amount3'], 10),
+          parseInt(this.Data['current-amount4'], 10),
+          parseInt(this.Data['current-amount5'], 10),
         ]
       }]
     };
@@ -148,19 +148,19 @@ export class InfoDetailComponent implements OnInit {
       type: 'infoDetail',
       num: '1',
       labels: [
-        this.Data['I-around-duration1'],
-        this.Data['I-around-duration2'],
-        this.Data['I-around-duration3'],
-        this.Data['I-around-duration4'],
-        this.Data['I-around-duration5'],
+        this.Data['around-duration1'],
+        this.Data['around-duration2'],
+        this.Data['around-duration3'],
+        this.Data['around-duration4'],
+        this.Data['around-duration5'],
       ],
       datasets: [{
         data: [
-          parseInt(this.Data['I-around-amount1'], 10),
-          parseInt(this.Data['I-around-amount2'], 10),
-          parseInt(this.Data['I-around-amount3'], 10),
-          parseInt(this.Data['I-around-amount4'], 10),
-          parseInt(this.Data['I-around-amount5'], 10),
+          parseInt(this.Data['around-amount1'], 10),
+          parseInt(this.Data['around-amount2'], 10),
+          parseInt(this.Data['around-amount3'], 10),
+          parseInt(this.Data['around-amount4'], 10),
+          parseInt(this.Data['around-amount5'], 10),
         ]
       }]
     };
