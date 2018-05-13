@@ -75,9 +75,9 @@ const create = async function (req, res) {
 
   if (err) return ReE(res, err, 422);
 
-  console.log('content.json: ', content);
+  // console.log('content.json: ', content);
   content = JSON.stringify(content);
-  console.log('content.string: ', content);
+  // console.log('content.string: ', content);
   return ReS(res, {
     message: 'Successfully created new content data.',
     body: content,

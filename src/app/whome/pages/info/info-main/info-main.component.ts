@@ -107,7 +107,7 @@ export class InfoMainComponent implements OnInit {
     // tslint:disable-next-line:forin
     for (const record in records) {
       // console.log('record: ', records[record]);
-      if (records[record]['I-id']) {
+      if (records[record]['c-id']) {
         this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
           new PostItem(InfoCardComponent, records[record]));
       } else if (records[record]['N-id']) {

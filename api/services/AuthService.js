@@ -1,5 +1,5 @@
 const User = require('./../models').user;
-// const Content = require('./../models').Content;
+const Content = require('./../models')['contents-index'];
 const Report = require('./../models').report;
 const News = require('./../models').news;
 const Law = require('./../models').law;
@@ -31,46 +31,59 @@ const createInfo = async function (data) {
 module.exports.createInfo = createInfo;
 
 const createContent = async function (data) {
-    console.log('createContent1()');
+    // console.log('createContent1()');
     let unique_key, auth_info, err, content;
 
-    console.log('data.type: ', data.type);
-    console.log('data.body: ', JSON.stringify(data.body));
+    // console.log('data.type: ', data.type);
+    // console.log('data.body: ', JSON.stringify(data.body));
+
+    let cType;
     switch(data.type) {
         case '리포트':
             [err, content] = await to (Report.create(data.body));
+            cType = 'I';
         break;
         case '부동산 뉴스':
             [err, content] = await to(News.create(data.body));
+            cType = 'N';
         break;
         case '법률 및 정책':
             [err, content] = await to(Law.create(data.body));
+            cType = 'L';
         break;
         case '아파트':
-            [err, content] = await to(Site.create(data.body));
-        break;
         case '오피스텔':
-            [err, content] = await to(Site.create(data.body));
-        break;
         case '상가/호텔':
-            [err, content] = await to(Site.create(data.body));
-        break;
         case '토지':
             [err, content] = await to(Site.create(data.body));
+            cType = 'S';
         break;
         case '오프라인 모임':
             [err, content] = await to(Meeting.create(data.body));
+            cType = 'M';
         break;
         case '구인':
             [err, content] = await to(Employer.create(data.body));
+            cType = 'R';
         break;
         case '구직':
             [err, content] = await to(Employee.create(data.body));
+            cType = 'E';
         break;
     }
+
+    const indexData = {
+        'c-id': data.body['c-id'],
+        'c-type': cType,
+        'title': data.body['title'],
+        's-type': data.body['s-type']
+    }
+    [err, indexContent] = await to(Content.create(indexData));
     if (err) TE('생성 중 오류가 발생했습니다.');
 
-    console.log('createcontent()');
+    console.log('indexContent: ', indexContent);
+
+    // console.log('createcontent()');
     return content;
 }
 module.exports.createContent = createContent;
