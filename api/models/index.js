@@ -32,9 +32,12 @@ fs
     // var name = tablename[model.name];
     var name = model.name;
     db[name] = model;
-    console.log('name: ', model.name, model);
+    console.log('name: ', model.name);
     console.log('db: ', JSON.stringify(db));
   });
+
+console.log('db: ', JSON.stringify(db));
+
 
 // Object.keys(db).forEach(modelName => {
 //   if (db[modelName].associate) {
