@@ -1,14 +1,14 @@
-const User = require('./../models').User;
-const Content = require('./../models').Content;
-const Info = require('./../models').Info;
-const News = require('./../models').News;
-const Law = require('./../models').Law;
-const Site = require('./../models').Site;
-const Meeting = require('./../models').Meeting;
-const Employer = require('./../models').Employer;
-const Employee = require('./../models').Employee;
-const Comment = require('./../models').Comment;
-const Reply = require('./../models').Reply;
+const User = require('./../models').user;
+// const Content = require('./../models').Content;
+const Report = require('./../models').report;
+const News = require('./../models').news;
+const Law = require('./../models').law;
+const Site = require('./../models').site;
+const Meeting = require('./../models').meeting;
+const Employer = require('./../models').employer;
+const Employee = require('./../models').employee;
+const Comment = require('./../models').comment;
+const Reply = require('./../models').reply;
 const validator = require('validator');
 
 const getUniqueKeyFromBody = function (body) {
@@ -22,7 +22,7 @@ const createInfo = async function (data) {
     console.log('createInfo() Starting');
     
     console.log(JSON.stringify(data));
-    // [err, info] = await to (Info.create(data));
+    // [err, info] = await to (Report.create(data));
     if(err) TE('생성 중 오류가 발생했습니다.');
 
     console.log('createInfo() Terminated');
@@ -38,7 +38,7 @@ const createContent = async function (data) {
     console.log('data.body: ', JSON.stringify(data.body));
     switch(data.type) {
         case '리포트':
-            [err, content] = await to (Info.create(data.body));
+            [err, content] = await to (Report.create(data.body));
         break;
         case '부동산 뉴스':
             [err, content] = await to(News.create(data.body));
