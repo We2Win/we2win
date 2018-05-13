@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
         'u-id': {
             type: DataTypes.STRING(15),
             allowNull: false,
-            references: {
-                model: sequelize.model.user,
-                key: 'u-id'
-            }
+            // references: {
+            //     model: sequelize.model.user,
+            //     key: 'u-id'
+            // }
         },
         'c-id': {
             type: DataTypes.UUID,
