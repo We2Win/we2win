@@ -32,6 +32,8 @@ app.set('view engine', 'jade');
 //     next();
 // });
 
+console.log('a1');
+
 const models = require('./models');
 models.sequelize.authenticate().then(() => {
     console.log('Connected to SQL database..');
@@ -46,8 +48,11 @@ if(CONFIG.app === 'We2Win') {
     // models.sequelize.sync({ force: true });
 }
 
+console.log('a2');
+
 app.use(cors());
 
+console.log('a3');
 
 // // CORS
 // app.use(function (req, res, next) {
@@ -70,11 +75,14 @@ app.use(cors());
 // app.use('/api/v1/', v1);
 app.use('/api/v2/', v2);
 
+console.log('a4');
+
 app.use('/api/', function (req, res) {
     res.statusCode = 200;//send the appropriate status code
     res.json({ status: "success", message: "Parcel Pending API", data: {} })
 });
 
+console.log('a5');
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -82,6 +90,7 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
+console.log('a6');
 
 // error handler
 app.use(function (err, req, res, next) {
@@ -93,6 +102,7 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.send('error');
 });
+console.log('a7');
 
 // module.exports = app;
 app.listen(3000, () => console.log('App listening on port 3000!'));
