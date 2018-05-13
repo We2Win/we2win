@@ -32,7 +32,7 @@ module.exports.createInfo = createInfo;
 
 const createContent = async function (data) {
     // console.log('createContent1()');
-    let unique_key, auth_info, err, content;
+    let unique_key, auth_info, err, content, indexContent;
 
     // console.log('data.type: ', data.type);
     // console.log('data.body: ', JSON.stringify(data.body));
