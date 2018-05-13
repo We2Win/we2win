@@ -17,6 +17,7 @@ import { User } from '../models/user';
 import { Token } from '../models/token';
 
 import { environment } from '../../../environments/environment';
+import { AlertService } from './alert.service';
 
 
 @Injectable()
@@ -27,6 +28,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelper,
+    private alertService: AlertService
   ) {
 
   }
@@ -50,7 +52,9 @@ export class AuthService {
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
     return this.http.post(environment.apiUrl + '/login', bodyString, headers)
-      .do((res: any) => this.setToken(res.token))
+      .do((res: any) => this.setToken(res.token),
+      (err) => { this.alertService.error(err); }
+    )
       .shareReplay();
   }
 

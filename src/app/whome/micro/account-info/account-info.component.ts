@@ -45,6 +45,7 @@ export class AccountInfoComponent implements OnInit {
       this.user.name = userInfo.user_name;
       this.user.start = userInfo.user_start;
       this.user.end = userInfo.user_end;
+      console.log(this.user);
     }
   }
 
