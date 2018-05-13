@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  var model = sequelize.define('Comment', {
+  var Model = sequelize.define('Comment', {
     'co-id': {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(15),
       allowNull: false,
       references: {
-        model: models.User,
+        model: sequelize.model.User,
         key: 'u-id'
       }
     },
@@ -32,5 +32,5 @@ module.exports = (sequelize, DataTypes) => {
     collate: 'utf8_unicode_ci',
   });
 
-  return model;
+  return Model;
 };
