@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(15),
             allowNull: false,
             // references: {
-            //     model: sequelize.model.user,
+            //     model: 'user',
             //     key: 'u-id'
             // }
         },
@@ -34,6 +34,6 @@ module.exports = (sequelize, DataTypes) => {
 
     Model.associate = function (models) {
     };
-    
+
     return Model;
 };
