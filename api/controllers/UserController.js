@@ -11,14 +11,14 @@ const create = async function (req, res) {
   // } else if (!body.password) {
   //     return ReE(res, 'Please enter a password to register.');
   console.log('body: ', JSON.stringify(body));
-  if (!body.ID) {
+  if (!body['u-id']) {
     return ReE(res, '아이디를 입력해주세요.');
-  } else if (!body.Password) {
+  } else if (!body['password']) {
     return ReE(res, '비밀번호를 입력해주세요.');
   } else {
     let err, user;
 
-    body.Password = bcrypt.hashSync(body.Password, 8);
+    body['password'] = bcrypt.hashSync(body['password'[, 8);
 
     // console.log('hi');
     [err, user] = await to(authService.createUser(body));
@@ -26,7 +26,7 @@ const create = async function (req, res) {
 
     if (err) return ReE(res, err, 422);
     return ReS(res, {
-      message: 'Successfully created new user.',
+      message: '회원 가입을 축하합니다.',
       user: JSON.stringify(user),
       // user: user.toWeb(),
       // token: User.getJWT()

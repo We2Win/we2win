@@ -12,7 +12,7 @@ const Reply = require('./../models').reply;
 const validator = require('validator');
 
 const getUniqueKeyFromBody = function (body) {
-    const unique_key = body.ID;
+    const unique_key = body['u-id'];
 
     return unique_key;
 }
@@ -87,7 +87,7 @@ const createComment = async function (body) {
 module.exports.createComment = createComment;
 
 const createUser = async function (userInfo) {
-    console.log('createUser1()');
+    // console.log('createUser1()');
     let unique_key, auth_info, err;
 
     auth_info = {}
@@ -139,7 +139,7 @@ const authUser = async function (userInfo) {//returns token
 module.exports.authUser = authUser;
 
 const hasUser = async function (userInfo) {
-    [err, user] = await to(User.findOne({ where: { 'u-id': userInfo.ID } }));
+    [err, user] = await to(User.findOne({ where: { 'u-id': userInfo['u-id'] } }));
     
     if (user) return true;
     else return false;

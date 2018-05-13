@@ -44,7 +44,7 @@ section {
   box-sizing: border-box;
 }
 
-input {
+input, select {
   width: 220px;
   /* height: 42px; */
   font-size: 0.8em;
@@ -52,7 +52,7 @@ input {
   margin: 0.25em;
   background: white;
   border: 1px solid #d8d8d8;
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 h1,

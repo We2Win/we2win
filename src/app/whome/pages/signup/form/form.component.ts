@@ -21,21 +21,21 @@ export class FormComponent implements OnInit, AfterViewInit {
   jibunAddress = '지번주소';
 
   loginType = '';
-  ULevel;
-  ULevelName = ['GUEST', 'STANDARD', 'PREMIUM', 'PLATINUM'];
-  ULevelPrice = [0, 0, 5000, 10000];
+  level;
+  levelName = ['GUEST', 'STANDARD', 'PREMIUM', 'PLATINUM'];
+  levelPrice = [0, 0, 5000, 10000];
 
   checkId: boolean;
 
-  @ViewChild('ID') ID;
-  @ViewChild('Password') Password;
-  @ViewChild('PasswordV') PasswordV;
-  @ViewChild('Name') Name;
-  @ViewChild('Email') Email;
-  @ViewChild('AAmount') AAmount;
-  @ViewChild('Location1') Location1;
-  @ViewChild('Location2') Location2;
-  @ViewChild('Amount') Amount;
+  @ViewChild('uId') uId;
+  @ViewChild('password') password;
+  @ViewChild('passwordV') passwordV;
+  @ViewChild('name') name;
+  @ViewChild('email') email;
+  @ViewChild('asset') asset;
+  @ViewChild('location1') location1;
+  @ViewChild('location2') location2;
+  @ViewChild('amount') amount;
 
   phone;
 
@@ -78,30 +78,30 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      ID: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
+      'u-id': new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]),
       // PW: new FormGroup({
-      Password: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      PasswordV: new FormControl(),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      passwordV: new FormControl(),
       // confirmPassword: new FormControl(),
       // }),
-      Name: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      CP: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
-      ULevel: new FormControl(),
+      name: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      cp: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]),
+      level: new FormControl(),
       // UPoint: new FormControl(),
-      Email: new FormControl('', [Validators.required, Validators.email]),
-      Hope: new FormControl(),
-      Site: new FormControl(),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      hope: new FormControl(),
+      site: new FormControl(),
       // Location1: new FormControl(),
       // Location2: new FormControl(),
       // Amount: new FormControl(),
-      HA: new FormControl(),
-      HP: new FormControl(),
-      OA: new FormControl(),
-      OP: new FormControl(),
-      InfoA: new FormControl(),
+      ha: new FormControl(),
+      hp: new FormControl(),
+      oa: new FormControl(),
+      op: new FormControl(),
+      'info-a': new FormControl(),
       // AAmount: new FormControl(),
-      ASns: new FormControl(),
-      UWord: new FormControl(),
+      sns: new FormControl(),
+      keyword: new FormControl(),
     });
 
     // const Naver = new naver.LoginWithNaverId(
@@ -135,50 +135,51 @@ export class FormComponent implements OnInit, AfterViewInit {
   onSubmit() {
     // check id validation
     if (this.checkId === undefined) {
-      this.info('아이디 확인을 해주세요.');
+      this.error('아이디 확인을 해주세요.');
       return false;
     } else if (this.checkId === false) {
-      this.info('중복된 아이디가 존재하거나 아이디 확인을 하지 않으셨습니다.');
+      this.error('중복된 아이디가 존재하거나 아이디 확인을 하지 않으셨습니다.');
       return false;
     }
 
     // check password validation
-    if (this.signupForm.controls['Password'].value !== this.signupForm.controls['PasswordV'].value) {
-      this.info('비밀번호를 확인해주세요.');
+    if (this.signupForm.controls['password'].value !== this.signupForm.controls['passwordV'].value) {
+      this.error('비밀번호를 확인해주세요.');
       scroll(0, 200);
       return false;
     }
     if (!this.signupForm.valid) {
-      this.info('기본 정보는 필수사항입니다.');
+      this.error('기본 정보는 필수사항입니다.');
       scroll(0, 200);
       return false;
     }
 
     // this.setSelectValue();
     // this.user = this.signupForm.value;
+    console.log('testing');
     this.user = {
-      'ID': this.signupForm.controls['ID'].value,
-      'Password': this.signupForm.controls['Password'].value,
-      'Name': this.signupForm.controls['Name'].value,
-      'CP': this.signupForm.controls['CP'].value,
-      'U-level': this.ULevel,
-      'Email': this.signupForm.controls['Email'].value,
-      'Hope': this.signupForm.controls['Hope'].value,
-      'Site': this.signupForm.controls['Site'].value,
-      'Location1': this.Location1.selected,
-      'Location2': this.Location2.selected,
-      'Amount': this.Amount.selected,
-      'HA': this.signupForm.controls['HA'].value,
-      'HP': this.signupForm.controls['HP'].value,
-      'OA': this.signupForm.controls['OA'].value,
-      'OP': this.signupForm.controls['OP'].value,
-      'Info-a': this.signupForm.controls['InfoA'].value,
+      'u-id': this.signupForm.controls['u-id'].value,
+      'password': this.signupForm.controls['password'].value,
+      'name': this.signupForm.controls['name'].value,
+      'cp': this.signupForm.controls['cp'].value,
+      'level': this.level,
+      'email': this.signupForm.controls['email'].value,
+      'hope': this.signupForm.controls['hope'].value,
+      'site': this.signupForm.controls['site'].value,
+      'location1': this.location1.selected,
+      'location2': this.location2.selected,
+      'amount': this.amount.selected,
+      'ha': this.signupForm.controls['ha'].value,
+      'hp': this.signupForm.controls['hp'].value,
+      'oa': this.signupForm.controls['oa'].value,
+      'op': this.signupForm.controls['op'].value,
+      'info-a': this.signupForm.controls['info-a'].value,
       // tslint:disable-next-line:radix
-      'A-amount': parseInt(this.AAmount.selected),
+      'asset': parseInt(this.asset.selected),
     };
     console.log(this.user);
 
-    if (this.user['U-level'] === 1) {
+    if (this.user['level'] === 1) {
       this.createUser(this.user);
     } else {
       this.payFee(this.user);
@@ -190,10 +191,14 @@ export class FormComponent implements OnInit, AfterViewInit {
       .subscribe(
       data => {
         console.log('data: ', data);
-        this.router.navigate(['signup', 'done']);
+        if (data.success) {
+          this.router.navigate(['signup', 'done']);
+        } else {
+          this.error(data.error);
+        }
       },
       error => {
-        this.info('회원 가입중 문제가 발생했습니다.');
+        this.error('회원 가입중 문제가 발생했습니다.');
         console.log('error: ', error);
       }
       );
@@ -205,12 +210,12 @@ export class FormComponent implements OnInit, AfterViewInit {
       pg: 'kcp',
       pay_method: 'card',
       merchant_uid: 'WE' + new Date(),
-      name: '회원등급' + this.ULevelName[userInfo['U-level']],
-      amount: this.ULevelPrice[userInfo['U-level']],
-      buyer_email: userInfo['Email'],
-      buyer_name: userInfo['Name'],
-      buyer_tel: userInfo['CP'],
-      buyer_addr: userInfo['Address'],
+      name: '회원등급' + this.levelName[userInfo['level']],
+      amount: this.levelPrice[userInfo['level']],
+      buyer_email: userInfo['email'],
+      buyer_name: userInfo['name'],
+      buyer_tel: userInfo['cp'],
+      buyer_addr: userInfo['address'],
       // buyer_postcode: userInfo.
     }, (rsp) => { // callback
       if (rsp.success) {
@@ -222,8 +227,8 @@ export class FormComponent implements OnInit, AfterViewInit {
         } else {
           current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
         }
-        userInfo['U-level-start'] = now;
-        userInfo['U-level-end'] = current;
+        userInfo['level-start'] = now;
+        userInfo['level-end'] = current;
       } else {
         this.info('failed...');
         console.log(rsp);
@@ -232,25 +237,26 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   setSelectValue() {
-    this.signupForm.addControl('AAmount', new FormControl(this.AAmount.selected));
-    this.signupForm.addControl('Amount', new FormControl(this.Amount.selected));
-    this.signupForm.addControl('Location1', new FormControl(this.Location1.selected));
-    this.signupForm.addControl('Location2', new FormControl(this.Location2.selected));
+    this.signupForm.addControl('asset', new FormControl(this.asset.selected));
+    this.signupForm.addControl('amount', new FormControl(this.amount.selected));
+    this.signupForm.addControl('location1', new FormControl(this.location1.selected));
+    this.signupForm.addControl('location2', new FormControl(this.location2.selected));
   }
 
   hasId(e) {
     e.stopPropagation();
 
-    const checkValue = this.signupForm.controls['ID'].hasError('minlength')
-      || this.signupForm.controls['ID'].hasError('maxlength')
-      || this.signupForm.controls['ID'].hasError('required');
+    const checkValue = this.signupForm.controls['u-id'].hasError('minlength')
+      || this.signupForm.controls['u-id'].hasError('maxlength')
+      || this.signupForm.controls['u-id'].hasError('required');
+
     if (checkValue) {
       this.info('4글자 ~ 15글자 이내로 아이디를 적어주세요.');
       return false;
     }
 
     const userInfo = {
-      ID: this.signupForm.controls['ID'].value
+      'u-id': this.signupForm.controls['u-id'].value
     };
     // this.userService.hasId(userInfo);
     this.userService.hasId(userInfo)
@@ -283,42 +289,42 @@ export class FormComponent implements OnInit, AfterViewInit {
       // sample code
       if (type === 'naver') {
 
-        this.ID.nativeElement.classList.add('disable');
-        this.Password.nativeElement.classList.add('disable');
-        this.PasswordV.nativeElement.classList.add('disable');
-        this.Name.nativeElement.classList.add('disable');
-        this.Email.nativeElement.classList.add('disable');
+        this.uId.nativeElement.classList.add('disable');
+        this.password.nativeElement.classList.add('disable');
+        this.passwordV.nativeElement.classList.add('disable');
+        this.name.nativeElement.classList.add('disable');
+        this.email.nativeElement.classList.add('disable');
       } else if (type === 'naverSample') {
         this.info('네이버 아이디로 로그인 팝업');
 
-        this.ID.nativeElement.classList.add('disable');
-        this.Password.nativeElement.classList.add('disable');
-        this.PasswordV.nativeElement.classList.add('disable');
-        this.Name.nativeElement.classList.add('disable');
-        this.Email.nativeElement.classList.add('disable');
+        this.uId.nativeElement.classList.add('disable');
+        this.password.nativeElement.classList.add('disable');
+        this.passwordV.nativeElement.classList.add('disable');
+        this.name.nativeElement.classList.add('disable');
+        this.email.nativeElement.classList.add('disable');
       } else if (type === 'kakao') {
         this.info('카카오 아이디로 로그인 팝업');
 
         this.loginWithKakao();
-        // this.signupForm.controls['ID'].setValue('KAKAO_ID');
-        // this.signupForm.controls['Password'].setValue('KAKAO_Password');
-        // this.signupForm.controls['PasswordV'].setValue('KAKAO_Password');
-        // this.signupForm.controls['Name'].setValue('KAKAO_Name');
-        // this.signupForm.controls['Email'].setValue('KAKAO_Email');
+        // this.signupForm.controls['uId'].setValue('KAKAO_ID');
+        // this.signupForm.controls['password'].setValue('KAKAO_Password');
+        // this.signupForm.controls['passwordV'].setValue('KAKAO_Password');
+        // this.signupForm.controls['name'].setValue('KAKAO_Name');
+        // this.signupForm.controls['email'].setValue('KAKAO_Email');
 
-        this.ID.nativeElement.classList.add('disable');
-        this.PasswordV.nativeElement.classList.add('disable');
-        this.Password.nativeElement.classList.add('disable');
-        this.Name.nativeElement.classList.add('disable');
-        this.Email.nativeElement.classList.add('disable');
+        this.uId.nativeElement.classList.add('disable');
+        this.passwordV.nativeElement.classList.add('disable');
+        this.password.nativeElement.classList.add('disable');
+        this.name.nativeElement.classList.add('disable');
+        this.email.nativeElement.classList.add('disable');
       } else {
         this.signupForm.reset();
 
-        this.ID.nativeElement.classList.remove('disable');
-        this.Password.nativeElement.classList.remove('disable');
-        this.PasswordV.nativeElement.classList.remove('disable');
-        this.Name.nativeElement.classList.remove('disable');
-        this.Email.nativeElement.classList.remove('disable');
+        this.uId.nativeElement.classList.remove('disable');
+        this.password.nativeElement.classList.remove('disable');
+        this.passwordV.nativeElement.classList.remove('disable');
+        this.name.nativeElement.classList.remove('disable');
+        this.email.nativeElement.classList.remove('disable');
       }
     }
   }
@@ -334,12 +340,10 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.error(JSON.stringify(err));
       }
     });
-    // {"access_token": "26LrlhtcPVvXUkCAKy-3UFFs-S39IH_rxJcCigopdeIAAAFjWLHPDg", "token_type": "bearer", "refresh_token": "SupGv933E4SZSYuIHbDhbEVjfzO8BoJ5ZMnfZwopdeIAAAFjWLHPDA", "expires_in": 7199, "scope": "account_email profile", "refresh_token_expires_in": 2591999 }
-
   }
 
   setLevel(level) {
-    this.ULevel = level;
+    this.level = level;
   }
 
   setLevelOnKeyDown(level, event) {
@@ -350,15 +354,15 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   setHyphen(input) {
-    if (input === 'CP') {
-      let str = this.signupForm.controls['CP'].value.replace(/\-/g, '');
+    if (input === 'cp') {
+      let str = this.signupForm.controls['cp'].value.replace(/\-/g, '');
       console.log(str);
       if (str.length === 11) {
         str = str.substring(0, 3) + '-' + str.substring(3, 7) + '-' + str.substring(7, str.length);
       } else if (str.length === 10) {
         str = str.substring(0, 3) + '-' + str.substring(3, 6) + '-' + str.substring(6, str.length);
       }
-      this.signupForm.controls['CP'].setValue(str);
+      this.signupForm.controls['cp'].setValue(str);
     }
   }
 
@@ -395,7 +399,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.zonecode = data.zonecode; // 5자리 새우편번호 사용
         this.fullRoadAddr = data.roadAddress;
         this.jibunAddress = data.jibunAddress;
-        this.signupForm.controls['HA'].setValue(this.fullRoadAddr);
+        this.signupForm.controls['ha'].setValue(this.fullRoadAddr);
 
         console.log(this.zonecode, this.fullRoadAddr, this.jibunAddress);
 

@@ -23,38 +23,39 @@
             <label>아이디
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="text" formControlName="ID" #ID placeholder="최소 4글자 최대 15글자" (change)="checkId=false" (keyup)="$event.keyCode == 13 && hasId($event)"/>
+            <input class="form-control" type="text" formControlName="u-id" #uId placeholder="최소 4글자 최대 15글자" (change)="checkId=false" (keyup)="$event.keyCode == 13 && hasId($event)"/>
             <app-button (click)="hasId($event)" (ngSubmit)="$event.stopPropagation()" [type]="'none'" *ngIf="loginType==='google'">아이디 확인</app-button>
             <div class="blank" *ngIf="loginType!=='google'"></div>
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('ID').hasError('required') && signupForm.get('ID').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('ID').hasError('minlength') && signupForm.get('ID').touched">4 ~ 15글자로 넣어주세요.</div>
+            <div *ngIf="signupForm.get('u-id').hasError('required') && signupForm.get('u-id').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('u-id').hasError('minlength') && signupForm.get('u-id').touched">4 ~ 15글자로 넣어주세요.</div>
           </div>
           <div class="form-group row">
             <label>패스워드
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="password" formControlName="Password" #Password placeholder="비밀번호를 입력해 주세요." />
-            <div class="blank">특수문자 포함 8 - 12자리</div>
+            <input class="form-control" type="password" formControlName="password" #password placeholder="비밀번호를 입력해 주세요." pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"/>
+            <div class="blank">특수문자, 숫자 포함 8 - 12자리</div>
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('Password').hasError('required') && signupForm.get('Password').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('Password').hasError('minlength') && signupForm.get('Password').touched">8 ~ 12 글자로 넣어주세요.</div>
+            <div *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('password').hasError('minlength') && signupForm.get('password').touched">8 ~ 12 글자로 넣어주세요.</div>
+            <div *ngIf="signupForm.get('password').hasError('pattern') && !signupForm.get('password').hasError('minlength')">특수문자, 숫자 포함 8 ~ 12 글자로 넣어주세요.</div>
           </div>
           <div class="form-group row">
             <label>패스워드 확인
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="password" formControlName="PasswordV" #PasswordV placeholder="비밀번호를 다시한번 입력해 주세요." />
+            <input class="form-control" type="password" formControlName="passwordV" #passwordV placeholder="비밀번호를 다시한번 입력해 주세요." />
             <div class="blank"></div>
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('PasswordV').hasError('required') && signupForm.get('PasswordV').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('PasswordV').hasError('minlength') && signupForm.get('PasswordV').touched">8 ~ 12 글자로 넣어주세요.</div>
+            <div *ngIf="signupForm.get('passwordV').hasError('required') && signupForm.get('passwordV').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('passwordV').hasError('minlength') && signupForm.get('passwordV').touched">8 ~ 12 글자로 넣어주세요.</div>
           </div>
           <!-- <div class="form-group row">
             <label>패스워드 확인<b class="red">*</b></label>
@@ -65,43 +66,43 @@
             <label>성명
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="text" formControlName="Name" #Name placeholder="예) 홍길동">
+            <input class="form-control" type="text" formControlName="name" #name placeholder="예) 홍길동">
             <div class="blank"></div>
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('Name').hasError('required') && signupForm.get('Name').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('name').hasError('required') && signupForm.get('name').touched">필수 입력사항입니다.</div>
           </div>
           <div class="form-group row">
             <label>핸드폰
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="text" formControlName="CP" (change)="setHyphen('CP')" placeholder="예) 010-000-0000">
+            <input class="form-control" type="text" formControlName="cp" (change)="setHyphen('cp')" placeholder="예) 010-000-0000">
             <div class="blank"></div>
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('CP').hasError('required') && signupForm.get('CP').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('CP').hasError('minlength') && signupForm.get('CP').touched">올바른 번호를 입력해주세요.</div>
-            <div *ngIf="signupForm.get('CP').hasError('maxlength') && signupForm.get('CP').touched">올바른 번호를 입력해주세요.</div>
+            <div *ngIf="signupForm.get('cp').hasError('required') && signupForm.get('cp').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('cp').hasError('minlength') && signupForm.get('cp').hasError('required') && signupForm.get('cp').touched">올바른 번호를 입력해주세요.</div>
+            <div *ngIf="signupForm.get('cp').hasError('maxlength') && signupForm.get('cp').hasError('required') && signupForm.get('cp').touched">올바른 번호를 입력해주세요.</div>
           </div>
           <div class="form-group row">
             <label>E-Mail
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="text" formControlName="Email" #Email placeholder="예) youremail@we2win.com">
+            <input class="form-control" type="text" formControlName="email" #email placeholder="예) youremail@we2win.com">
             <div class="blank"></div>
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('Email').hasError('required') && signupForm.get('Email').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('Email').hasError('email') && signupForm.get('Email').touched">이메일 형식에 맞게 입력해주세요.</div>
+            <div *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched">이메일 형식에 맞게 입력해주세요.</div>
           </div>
           <div id="levelBox" class="form-group row">
             <label>신청 등급
               <b class="red">*</b>
             </label>
-            <div class="card standard" [ngClass]="{'checked': ULevel === 1, 'notSelected': ULevel !== undefined}" (click)="setLevel(1)"
+            <div class="card standard" [ngClass]="{'checked': level === 1, 'notSelected': level !== undefined}" (click)="setLevel(1)"
               (keydown)="setLevelOnKeyDown(1, $event)" tabindex="0">
               <div id="level">STANDARD</div>
               <p>부동산 및 분양 정보를 수집할 수 있다.
@@ -110,7 +111,7 @@
               </p>
               <p id="price">무료</p>
             </div>
-            <div class="card premium" [ngClass]="{'checked': ULevel === 2, 'notSelected': ULevel !== undefined}" (click)="setLevel(2)"
+            <div class="card premium" [ngClass]="{'checked': level === 2, 'notSelected': level !== undefined}" (click)="setLevel(2)"
               (keydown)="setLevelOnKeyDown(2, $event)" tabindex="0">
               <div id="level">PREMIUM</div>
               <p>부동산 및 분양 정보를 보다 빠르게 확인하고 수집 할 수 있다.
@@ -118,7 +119,7 @@
               </p>
               <p id="price">5,000원/월</p>
             </div>
-            <div class="card platinum" [ngClass]="{'checked': ULevel === 3, 'notSelected': ULevel !== undefined}" (click)="setLevel(3)"
+            <div class="card platinum" [ngClass]="{'checked': level === 3, 'notSelected': level !== undefined}" (click)="setLevel(3)"
               (keydown)="setLevelOnKeyDown(3, $event)" tabindex="0">
               <div id="level">PLATINUM</div>
               <p>오프라인 모임과 함께 다양한 형태로 정보를 수집하고 분석 할 수 있다.
@@ -129,17 +130,17 @@
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('ULevel').hasError('required') && signupForm.get('ULevel').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('level').hasError('required') && signupForm.get('level').touched">필수 입력사항입니다.</div>
           </div>
           <!-- <div class="form-group row" [hidden]="'true'">
             <label></label>
             <div class="checkboxGroup">
               <label class="sublabel">STANDARD
-              <input class="form-control" formControlName="ULevel" value="01" type="radio"></label>
+              <input class="form-control" formControlName="level" value="01" type="radio"></label>
               <label class="sublabel">PREMIUM
-              <input class="form-control" formControlName="ULevel" value="02" type="radio"></label>
+              <input class="form-control" formControlName="level" value="02" type="radio"></label>
               <label class="sublabel">PLATINUM
-              <input class="form-control" formControlName="ULevel" value="03" type="radio"></label>
+              <input class="form-control" formControlName="level" value="03" type="radio"></label>
             </div>
           </div> -->
           <div class="form-group row">
@@ -148,16 +149,16 @@
             </label>
             <div class="checkboxGroup">
               <label class="sublabel" for="11">투자</label>
-              <input class="form-control" formControlName="Hope" name="Hope" value="1" id="11" type="radio">
+              <input class="form-control" formControlName="hope" name="hope" value="1" id="11" type="radio">
               <label class="sublabel" for="12">살거주</label>
-              <input class="form-control" formControlName="Hope" name="Hope" value="2" id="12" type="radio">
+              <input class="form-control" formControlName="hope" name="hope" value="2" id="12" type="radio">
               <label class="sublabel" for="13">모두 해당</label>
-              <input class="form-control" formControlName="Hope" name="Hope" value="3" id="13" type="radio">
+              <input class="form-control" formControlName="hope" name="hope" value="3" id="13" type="radio">
             </div>
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('Hope').hasError('required') && signupForm.get('Hope').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('hope').hasError('required') && signupForm.get('hope').touched">필수 입력사항입니다.</div>
           </div>
           <div class="form-group row">
             <label>관심 분야
@@ -165,28 +166,28 @@
             </label>
             <div class="checkboxGroup">
               <label class="sublabel" for="21">아파트</label>
-              <input class="form-control" formControlName="Site" name="Site" value="1" id="21" type="radio">
+              <input class="form-control" formControlName="site" name="site" value="1" id="21" type="radio">
               <label class="sublabel" for="22">오피스텔</label>
-              <input class="form-control" formControlName="Site" name="Site" value="2" id="22" type="radio">
+              <input class="form-control" formControlName="site" name="site" value="2" id="22" type="radio">
               <label class="sublabel" for="23">상가/호텔</label>
-              <input class="form-control" formControlName="Site" name="Site" value="3" id="23" type="radio">
+              <input class="form-control" formControlName="site" name="site" value="3" id="23" type="radio">
               <label class="sublabel" for="24">토지</label>
-              <input class="form-control" formControlName="Site" name="Site" value="4" id="24" type="radio">
+              <input class="form-control" formControlName="site" name="site" value="4" id="24" type="radio">
               <label class="sublabel" for="25">모두 해당</label>
-              <input class="form-control" formControlName="Site" name="Site" value="5" id="25" type="radio">
+              <input class="form-control" formControlName="site" name="site" value="5" id="25" type="radio">
             </div>
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('Site').hasError('required') && signupForm.get('Site').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('site').hasError('required') && signupForm.get('site').touched">필수 입력사항입니다.</div>
           </div>
           <div class="form-group row">
             <label>관심 지역
               <b class="red">*</b>
             </label>
-            <app-select #Location1 [type]="'관심지역'"></app-select>
-            <app-select #Location2 [type]="'관심지역'"></app-select>
-            <!-- <app-select [type]="'관심지역'" class="form-control" formControlName="Location"></app-select> -->
+            <app-select #location1 [type]="'관심지역'"></app-select>
+            <app-select #location2 [type]="'관심지역'"></app-select>
+            <!-- <app-select [type]="'관심지역'" class="form-control" formControlName="location"></app-select> -->
             <div class="blank"></div>
           </div>
           <div class="row alert">
@@ -198,13 +199,13 @@
             <label>관심 매물
               <b class="red">*</b>
             </label>
-            <app-select #Amount [type]="'관심금액'"></app-select>
-            <!-- <app-select [type]="'관심금액'" class="form-control" formControlName="Amount"></app-select> -->
+            <app-select #amount [type]="'관심금액'"></app-select>
+            <!-- <app-select [type]="'관심금액'" class="form-control" formControlName="amount"></app-select> -->
             <div class="blank"></div>
           </div>
           <div class="row alert">
             <label></label>
-            <!-- <div *ngIf="signupForm.get('Amount').hasError('required') && signupForm.get('Amount').touched">필수 입력사항입니다.</div> -->
+            <!-- <div *ngIf="signupForm.get('amount').hasError('required') && signupForm.get('u-amount').touched">필수 입력사항입니다.</div> -->
           </div>
         </article>
       </div>
@@ -219,7 +220,7 @@
           </div>
           <div class="form-group row">
             <label></label>
-            <input class="form-control" type="text" formControlName="HA" [placeholder]="fullRoadAddr">
+            <input class="form-control" type="text" formControlName="ha" [placeholder]="fullRoadAddr">
             <input class="form-control" type="text" [placeholder]="jibunAddress">
           </div>
           <div class="form-group row">
@@ -227,36 +228,43 @@
           </div>
           <div class="form-group row">
             <label>집전화번호</label>
-            <input class="form-control" formControlName="HP" type="text" placeholder="연락처를 입력하세요.">
+            <input class="form-control" formControlName="hp" type="text" placeholder="연락처를 입력하세요.">
             <div class="blank"></div>
           </div>
           <div class="form-group row">
             <label>사무실 주소</label>
-            <input class="form-control" formControlName="OA" type="text" placeholder="주소를 입력해주세요.">
+            <input class="form-control" formControlName="oa" type="text" placeholder="주소를 입력해주세요.">
             <div class="blank"></div>
             <!-- <app-button>주소 검색</app-button> -->
           </div>
           <div class="form-group row">
             <label>사무실 전화번호</label>
-            <input class="form-control" formControlName="OP" type="text" placeholder="연락처를 입력하세요.">
+            <input class="form-control" formControlName="op" type="text" placeholder="연락처를 입력하세요.">
             <div class="blank"></div>
           </div>
           <div class="form-group row">
             <label>정보 수신</label>
             <div class="checkboxGroup">
               <label class="sublabel" for="31">메일</label>
-              <input class="form-control" name="InfoA" id="31" type="radio">
+              <input class="form-control" name="info-a" id="31" type="radio">
               <label class="sublabel" for="32">문자</label>
-              <input class="form-control" name="InfoA" id="32" type="radio">
+              <input class="form-control" name="info-a" id="32" type="radio">
               <label class="sublabel" for="33">미수신</label>
-              <input class="form-control" name="InfoA" id="33" type="radio">
+              <input class="form-control" name="info-a" id="33" type="radio">
               <label class="sublabel" for="33">모두 해당</label>
-              <input class="form-control" name="InfoA" id="34" type="radio">
+              <input class="form-control" name="info-a" id="34" type="radio">
             </div>
           </div>
           <div class="form-group row">
             <label>가용 자산</label>
-            <app-select class="form-control" #AAmount [type]="'가용자산'"></app-select>
+            <app-select #asset [type]="'가용자산'"></app-select>
+            <!-- <select class="form-control" name="AAmount">
+              <option>2000만원</option>
+              <option>5000만원</option>
+              <option>1억</option>
+              <option>3억</option>
+              <option>5억 이상</option>
+            </select> -->
             <div class="blank"></div>
           </div>
         </article>

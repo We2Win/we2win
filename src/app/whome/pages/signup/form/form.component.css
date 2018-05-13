@@ -1,16 +1,3 @@
-.naver {
-  background: #169E09;
-}
-
-.kakao {
-  background: #F8E71C;
-  color: #333;
-}
-
-.facebook {
-  background: #30559E;
-}
-
 #levelBox {
   padding: 1em 0;
   cursor: default;
@@ -127,6 +114,18 @@ input + input,
 app-select + app-select {
   margin-left: 0.5em;
 }
+
+article .row {
+  justify-content: space-between;
+}
+
+:host /deep/ app-social-button {
+  width: 222px;
+  flex: none !important;
+}
+/* app-social-button /deep/ button {
+  width: 222px;
+} */
 
 app-social-button + app-social-button {
   margin-left: 0.5em;
