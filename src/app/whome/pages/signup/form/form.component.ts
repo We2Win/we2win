@@ -332,6 +332,8 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.error(JSON.stringify(err));
       }
     });
+    // {"access_token": "26LrlhtcPVvXUkCAKy-3UFFs-S39IH_rxJcCigopdeIAAAFjWLHPDg", "token_type": "bearer", "refresh_token": "SupGv933E4SZSYuIHbDhbEVjfzO8BoJ5ZMnfZwopdeIAAAFjWLHPDA", "expires_in": 7199, "scope": "account_email profile", "refresh_token_expires_in": 2591999 }
+
   }
 
   setLevel(level) {

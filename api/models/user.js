@@ -5,20 +5,20 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('User', {
-    'ID': {
+    'u-id': {
       type: DataTypes.STRING(15),
       allowNull: false,
       primaryKey: true
     },
-    'Password': {
+    'password': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'Name': {
+    'name': {
       type: DataTypes.STRING(15),
       allowNull: false,
     },
-    'CP': {
+    'cp': {
       type: DataTypes.STRING(20),
       allowNull: true,
       // unique: true,
@@ -29,21 +29,21 @@ module.exports = (sequelize, DataTypes) => {
         },
       }
     },
-    'U-level': {
+    'level': {
       type: DataTypes.TINYINT(1),
       defaultValue: 0
     },
-    'U-level-start': {
+    'level-start': {
       type: DataTypes.DATE,
     },
-    'U-level-end': {
+    'level-end': {
       type: DataTypes.DATE
     },
-    'U-point': {
+    'point': {
       type: DataTypes.DECIMAL(7),
       defaultValue: 0
     },
-    'Email': {
+    'email': {
       type: DataTypes.STRING(50),
       // allowNull: false,
       // unique: true,
@@ -53,45 +53,48 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    'Hope': {
+    'hope': {
       type: DataTypes.TINYINT(1),
       // allowNull: false
     },
-    'Site': {
+    'site': {
       type: DataTypes.TINYINT(1),
       // allowNull: false
     },
-    'Location1': {
+    'location1': {
       type: DataTypes.STRING(20),
       // allowNull: false
     },
-    'Location2': {
+    'location2': {
       type: DataTypes.STRING(20),
       // allowNull: false
     },
-    'Amount': {
+    'amount': {
       type: DataTypes.STRING(15),
       // allowNull: false
     },
-    'HA': DataTypes.STRING(100),
-    'HP': DataTypes.STRING(20),
-    'OA': DataTypes.STRING(100),
-    'OP': DataTypes.STRING(20),
-    'Info-a': DataTypes.TINYINT(1),
-    'A-amount': DataTypes.STRING(15),
-    'A-sns': DataTypes.TINYINT(1),
-    'U-word': DataTypes.STRING(40),
+    'ha': DataTypes.STRING(100),
+    'hp': DataTypes.STRING(20),
+    'oa': DataTypes.STRING(100),
+    'op': DataTypes.STRING(20),
+    'info-a': DataTypes.TINYINT(1),
+    'asset': DataTypes.STRING(15),
+    'sns': DataTypes.TINYINT(1),
+    'keyword': DataTypes.STRING(40),
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   });
 
-  // Model.associate = function (models) {
-    // Model.hasMany(models.Uclick);
-    // Model.hasMany(models.Ureply);
-    // Model.hasMany(models.Uscrap);
-    // Model.hasMany(models.Usns);
-  // };
+  Model.associate = function (models) {
+    Model.hasMany(models.Message);
+    Model.hasMany(models.Notification);
+    Model.hasMany(models['Info-scrap']);
+    Model.hasMany(models['Site-scrap']);
+    Model.hasMany(models.Schedule);
+    Model.hasMany(models.Comment);
+  };
+
   // Model.associate = function (models) {
   //   // this.Companies = this.belongsToMany(models.Company, {
   //   //   through: 'UserCompany'

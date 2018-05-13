@@ -4,190 +4,153 @@ const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
-  var Records = sequelize.define('Site', {
-    'post-id': {
+  var Model = sequelize.define('Site', {
+    'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false
-    },
-    'S-type': {
-      type: DataTypes.STRING(10),
-      allowNull: false
-    },
-    'S-id': {
-      type: DataTypes.INTEGER,
       primaryKey: true,
+    },
+    'no': {
+      type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    'S-level': {
+    'level': {
       type: DataTypes.STRING(10),
       defaultValue: 'STANDARD'
     },
-    'S-notification': {
+    'notification': {
       type: DataTypes.TINYINT(1),
       defaultValue: false
     },
-    'S-title': {
+    'title': {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    'S-summary': {
+    'summary': {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    'S-open-start': {
+    's-type': {
+      type: DataTypes.STRING(10),
+      allowNull: false
+    },
+    'open-start': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'S-open-end': {
+    'open-end': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'S-ammount': {
+    'ammount': {
       type: DataTypes.INTEGER(15),
       allowNull: false
     },
-    'S-manager-name': {
+    'manager-name': {
       type: DataTypes.STRING(30),
       allowNull: false
     },
-    'S-manager-contact': {
+    'manager-contact': {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    'S-current-duration1': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-duration2': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-duration3': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-duration4': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-duration5': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-amount1': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-amount2': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-amount3': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-amount4': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-current-amount5': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-duration1': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-duration2': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-duration3': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-duration4': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-duration5': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-amount1': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-amount2': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-amount3': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-amount4': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-around-amount5': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'S-report': {
+    'report': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'S-image': {
+    'master-image': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'S-subImage1': {
+    'slave-image1': {
       type: DataTypes.STRING,
     },
-    'S-subImage2': {
+    'slave-image2': {
       type: DataTypes.STRING,
     },
-    'S-subImage3': {
+    'slave-image3': {
       type: DataTypes.STRING,
     },
-    'S-subImage4': {
+    'slave-image4': {
       type: DataTypes.STRING,
     },
-    'S-subImage5': {
+    'slave-image5': {
       type: DataTypes.STRING,
     },
-    'data-click': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
+    'current-duration1': {
+      type: DataTypes.STRING(15),
     },
-    'data-reply': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
+    'current-duration2': {
+      type: DataTypes.STRING(15),
     },
-    'data-sns': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
+    'current-duration3': {
+      type: DataTypes.STRING(15),
     },
-    'data-scrap': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    }
+    'current-duration4': {
+      type: DataTypes.STRING(15),
+    },
+    'current-duration5': {
+      type: DataTypes.STRING(15),
+    },
+    'current-amount1': {
+      type: DataTypes.STRING(15),
+    },
+    'current-amount2': {
+      type: DataTypes.STRING(15),
+    },
+    'current-amount3': {
+      type: DataTypes.STRING(15),
+    },
+    'current-amount4': {
+      type: DataTypes.STRING(15),
+    },
+    'current-amount5': {
+      type: DataTypes.STRING(15),
+    },
+    'around-duration1': {
+      type: DataTypes.STRING(15),
+    },
+    'around-duration2': {
+      type: DataTypes.STRING(15),
+    },
+    'around-duration3': {
+      type: DataTypes.STRING(15),
+    },
+    'around-duration4': {
+      type: DataTypes.STRING(15),
+    },
+    'around-duration5': {
+      type: DataTypes.STRING(15),
+    },
+    'around-amount1': {
+      type: DataTypes.STRING(15),
+    },
+    'around-amount2': {
+      type: DataTypes.STRING(15),
+    },
+    'around-amount3': {
+      type: DataTypes.STRING(15),
+    },
+    'around-amount4': {
+      type: DataTypes.STRING(15),
+    },
+    'around-amount5': {
+      type: DataTypes.STRING(15),
+    },
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   });
 
-  // Records.associate = function (models) {
-  //   Records.hasMany(models.Comments);
+  // Model.associate = function (models) {
+  //   Model.hasMany(models.Comments);
   // };
 
-  Records.prototype.toWeb = function () {
+  Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
     return JSON;
   };
 
-  return Records;
+  return Model;
 };

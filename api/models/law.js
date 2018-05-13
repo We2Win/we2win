@@ -4,67 +4,50 @@ const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
-  var Records = sequelize.define('Law', {
-    'post-id': {
+  var Law = sequelize.define('Law', {
+    'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false
-    },
-    'L-id': {
-      type: DataTypes.INTEGER,
       primaryKey: true,
+    },
+    'no': {
+      type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    'L-level': {
+    'level': {
       type: DataTypes.STRING(10),
       defaultValue: 'STANDARD'
     },
-    'L-notification': {
+    'notification': {
       type: DataTypes.TINYINT(1),
       defaultValue: false
     },
-    'L-title': {
+    'title': {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    'L-summary': {
+    'summary': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'L-file': {
+    'file': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'data-click': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    'data-reply': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    'data-sns': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    'data-scrap': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    }
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   });
 
-  // Records.associate = function (models) {
-  //   Records.hasMany(models.Comments);
+  // Law.associate = function (models) {
+  //   Law.hasMany(models.Comments);
   // };
 
-  Records.prototype.toWeb = function () {
+  Law.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
     return JSON;
   };
 
-  return Records;
+  return Law;
 };

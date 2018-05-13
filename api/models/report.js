@@ -4,186 +4,169 @@ const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
-  var Records = sequelize.define('Info', {
-    'post-id': {
+  var Model = sequelize.define('Info', {
+    'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false
-    },
-    'I-id': {
-      type: DataTypes.INTEGER,
       primaryKey: true,
+    },
+    'no': {
+      type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    'I-level': {
+    'level': {
       type: DataTypes.STRING(10),
       defaultValue: 'STANDARD'
     },
-    'I-notification': {
+    'notification': {
       type: DataTypes.TINYINT(1),
       defaultValue: false
     },
-    'I-title': {
+    'title': {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    'I-summary': {
+    'summary': {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    'I-open-start': {
+    'open-start': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'I-open-end': {
+    'open-end': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'I-ammount': {
+    'ammount': {
       type: DataTypes.INTEGER(15),
       allowNull: false
     },
-    'I-manager-name': {
+    'manager-name': {
       type: DataTypes.STRING(30),
       allowNull: false
     },
-    'I-manager-contact': {
+    'manager-contact': {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    'I-current-duration1': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-duration2': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-duration3': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-duration4': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-duration5': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-amount1': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-amount2': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-amount3': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-amount4': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-current-amount5': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-duration1': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-duration2': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-duration3': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-duration4': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-duration5': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-amount1': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-amount2': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-amount3': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-amount4': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-around-amount5': {
-      type: DataTypes.STRING(15),
-      allowNull: false
-    },
-    'I-report': {
+    'report': {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    'I-image': {
+    'master-image': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'I-subImage1': {
+    'slave-image1': {
       type: DataTypes.STRING,
     },
-    'I-subImage2': {
+    'slave-image2': {
       type: DataTypes.STRING,
     },
-    'I-subImage3': {
+    'slave-image3': {
       type: DataTypes.STRING,
     },
-    'I-subImage4': {
+    'slave-image4': {
       type: DataTypes.STRING,
     },
-    'I-subImage5': {
+    'slave-image5': {
       type: DataTypes.STRING,
     },
-    'data-click': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
+    'current-duration1': {
+      type: DataTypes.STRING(15),
+      allowNull: false
     },
-    'data-reply': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
+    'current-duration2': {
+      type: DataTypes.STRING(15),
+      allowNull: false
     },
-    'data-sns': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
+    'current-duration3': {
+      type: DataTypes.STRING(15),
+      allowNull: false
     },
-    'data-scrap': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    }
+    'current-duration4': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'current-duration5': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'current-amount1': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'current-amount2': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'current-amount3': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'current-amount4': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'current-amount5': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-duration1': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-duration2': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-duration3': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-duration4': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-duration5': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-amount1': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-amount2': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-amount3': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-amount4': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
+    'around-amount5': {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    },
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   });
 
-  // Records.associate = function (models) {
-  //   Records.hasMany(models.Comments);
+  // Model.associate = function (models) {
+  //   Model.hasMany(models.Comments);
   // };
 
-  Records.prototype.toWeb = function () {
+  Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
     return JSON;
   };
 
-  return Records;
+  return Model;
 };

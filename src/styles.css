@@ -46,7 +46,7 @@ section {
 
 input {
   width: 220px;
-  height: 42px;
+  /* height: 42px; */
   font-size: 0.8em;
   padding: 0.2em 1em;
   margin: 0.25em;

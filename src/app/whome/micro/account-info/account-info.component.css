@@ -9,7 +9,6 @@
 
 #iconSet {
   flex: auto;
-  padding-bottom: .25em;
   margin-right: 0.5em;
 }
 
@@ -18,7 +17,7 @@
   height: 1.2em;
   border: none;
   opacity: 0.6;
-  margin: 0 0.5em;
+  margin: 0.5em 0.5em;
   transition: opacity 0.5s;
   outline: none;
   cursor: pointer;
@@ -51,8 +50,8 @@
 
 .signed,
 .unsigned {
-  padding: 0.3em 0em;
-  font-size: 13px;
+  padding: 0;
+  font-size: 12px;
   flex: auto;
   box-sizing: border-box;
   display: inline-flex;
@@ -70,14 +69,14 @@
 }
 
 .signed img {
-  width: 0.9em;
-  height: 0.9em;
-  margin: 0 0.5em;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0.5em;
   flex: none;
 }
 
 .signed div, .unsigned div {
-  margin: 0 0.5em;
+  margin: 0.5em;
 }
 
 #user {
@@ -113,7 +112,7 @@
   margin-top: 0em;
   margin-left: -4em;
   width: 256px;
-  height: 167px;
+  height: 154px;
   box-sizing: border-box;
   box-shadow: 0 0 10px #000;
   background: white;

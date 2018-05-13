@@ -33,11 +33,11 @@ fs
     db[name] = model;
   });
 
-// Object.keys(db).forEach(modelName => {
-//   if (db[modelName].associate) {
-//     db[modelName].associate(db);
-//   }
-// });
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
 // db['Comments'].belongsTo(db['Info']);
 // db['Comments'].belongsTo(db['Law']);
 // db['Comments'].belongsTo(db['Meeting']);

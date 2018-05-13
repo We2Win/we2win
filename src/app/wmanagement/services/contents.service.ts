@@ -30,7 +30,7 @@ export class ContentsService {
   }
 
   getWeeklyList() {
-    return this.http.get(environment.apiUrl + '/')
+    return this.http.get(environment.apiUrl + '/');
   }
 
   create(_data: any) {

@@ -1,79 +1,66 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  var Records = sequelize.define('News', {
-    'post-id': {
+  var Model = sequelize.define('News', {
+    'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false
-    },
-    'N-id': {
-      type: DataTypes.INTEGER,
       primaryKey: true,
+    },
+    'no': {
+      type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    'N-level': {
+    'level': {
       type: DataTypes.STRING(10),
       defaultValue: 'STANDARD'
     },
-    'N-notification': {
+    'notification': {
       type: DataTypes.TINYINT(1),
       defaultValue: false
     },
-    'N-title': {
+    'title': {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    'N-sub-title': {
+    'main-title': {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    'N-sub-description': {
+    'main-description': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'N-image': {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    'N-analysis-title': {
+    'analysis-title': {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    'N-analysis-description': {
+    'analysis-description': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'data-click': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
+    'master-image': {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    'data-reply': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
+    'slave-image': {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    'data-sns': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    'data-scrap': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    }
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   });
   
-  // Records.associate = function (models) {
-  //   Records.hasMany(models.Comments);
+  // Model.associate = function (models) {
+  //   Model.hasMany(models.Comments);
   // };
 
-  Records.prototype.toWeb = function () {
+  Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
     return JSON;
   };
 
-  return Records;
+  return Model;
 };

@@ -4,107 +4,82 @@ const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
-  var Records = sequelize.define('Meeting', {
-    'post-id': {
+  var Model = sequelize.define('Meeting', {
+    'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false
-    },
-    'M-id': {
-      type: DataTypes.INTEGER,
       primaryKey: true,
+    },
+    'no': {
+      type: DataTypes.INTEGER,
       autoIncrement: true,
     },
-    'M-level': {
+    'level': {
       type: DataTypes.STRING(10),
       defaultValue: 'STANDARD'
     },
-    'M-notification': {
+    'notification': {
       type: DataTypes.TINYINT(1),
       defaultValue: false
     },
-    'M-title': {
+    'title': {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    'M-summary': {
+    'summary': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'M-image': {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    'M-host': {
-      type: DataTypes.STRING(30),
-      allowNull: false
-    },
-    'M-apply-start': {
+    'apply-start': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'M-apply-end': {
+    'apply-end': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'M-duration-start': {
+    'duration-start': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'M-duration-end': {
+    'duration-end': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'M-location': {
+    'location': {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    'M-personnel': {
+    'personnel': {
       type: DataTypes.INTEGER(5),
       allowNull: false
     },
-    'M-cost': {
+    'cost': {
       type: DataTypes.INTEGER(15),
       allowNull: false
     },
-    'M-detail': {
+    'detail': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'M-material': {
+    'material': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'data-click': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    'data-reply': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    'data-sns': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    'data-scrap': {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    }
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   });
 
-  // Records.associate = function (models) {
-  //   Records.hasMany(models.Comments);
+  // Model.associate = function (models) {
+  //   Model.hasMany(models.Comments);
   // };
 
-  Records.prototype.toWeb = function () {
+  Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
     return JSON;
   };
 
-  return Records;
+  return Model;
 };

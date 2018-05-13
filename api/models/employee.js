@@ -4,38 +4,42 @@ const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
-  var Records = sequelize.define('Employee', {
-    'post-id': {
+  var Model = sequelize.define('Employee', {
+    'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false
+      primaryKey: true,
     },
-    'E-id': {
+    'no': {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+    },
+    'id': {
       type: DataTypes.INTEGER(10),
       primaryKey: true,
       autoIncrement: true,
     },
-    'E-name': {
+    'name': {
       type: DataTypes.STRING(30),
       allowNull: false,
     },
-    'E-sex': {
+    'sex': {
       type: DataTypes.TINYINT(1),
       allowNull: false
     },
-    'E-age': {
+    'age': {
       type: DataTypes.TINYINT(3),
       allowNull: false
     },
-    'E-CP': {
+    'CP': {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    'E-HP': {
+    'HP': {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    'E-email': {
+    'email': {
       type: DataTypes.STRING(50),
       allowNull: false,
       validate: {
@@ -44,47 +48,47 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    'E-homepage': {
+    'homepage': {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    'E-address': {
+    'address': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'E-part': {
+    'part': {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    'E-location': {
+    'location': {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    'E-career': {
+    'career': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'E-achivement': {
+    'achivement': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'E-networking': {
+    'networking': {
       type: DataTypes.INTEGER(5),
       allowNull: false
     },
-    'E-available-start': {
+    'available-start': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'E-available-end': {
+    'available-end': {
       type: DataTypes.DATE,
       allowNull: false
     },
-    'E-intro': {
+    'intro': {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'E-etc': {
+    'etc': {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -93,11 +97,11 @@ module.exports = (sequelize, DataTypes) => {
     collate: 'utf8_unicode_ci',
   });
 
-  Records.prototype.toWeb = function () {
+  Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
     return JSON;
   };
 
-  return Records;
+  return Model;
 };

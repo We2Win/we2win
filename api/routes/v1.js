@@ -84,6 +84,8 @@ router.post('/hasid', UserController.hasId);
 router.get('/mng/users', UserController.get);
 router.delete('/mng/users/:id', UserController.remove); //delete
 
+router.get('/mng/dash', ContentController.getDashboardData);
+
 
 // router.get('/mng/dashboard', ContentController.getDashboard);
 router.get('/mng/contents/count', ContentController.getCount);
