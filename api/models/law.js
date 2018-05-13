@@ -4,7 +4,7 @@ const bcrypt_p = require('bcrypt-promise');
 const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
-  var Law = sequelize.define('law', {
+  var Model = sequelize.define('law', {
     'c-id': {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -42,11 +42,11 @@ module.exports = (sequelize, DataTypes) => {
   Model.associate = function (models) {
   };
 
-  Law.prototype.toWeb = function () {
+  Model.prototype.toWeb = function () {
     let JSON = this.toJSON();
     console.log('this: ', JSON);
     return JSON;
   };
 
-  return Law;
+  return Model;
 };
