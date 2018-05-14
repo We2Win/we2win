@@ -30,16 +30,24 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.contentsService.getDashboardContents().subscribe(
-      data => {
-        console.log('contents: ', data);
-      }
-    );
     this.contentsService.getDashboardUsers().subscribe(
       data => {
         console.log('users: ', data);
+      },
+      error => {
+        console.error(error);
       }
     );
+
+    this.contentsService.getDashboardContents().subscribe(
+      data => {
+        console.log('contents: ', data);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+
 
     setTimeout(() => {
       this.addData(this.infoPie);
