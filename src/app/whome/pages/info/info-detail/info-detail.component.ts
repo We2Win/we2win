@@ -86,12 +86,12 @@ export class InfoDetailComponent implements OnInit {
         if (data) {
           this.Data = data;
           // console.log(this.Data);
-          if (this.Data['current-duration1'] || this.Data['around-duration1']) {
-            this.showCharts = true;
-            this.addChart();
-          } else {
+          // if (this.Data['current-duration1'] || this.Data['around-duration1']) {
+          //   this.showCharts = true;
+          //   this.addChart();
+          // } else {
             this.showCharts = false;
-          }
+          // }
 
           this.imgUrl = environment.bucket.downloadUrl + this.Data['master-image'];
           this.subImgUrl[1] = environment.bucket.downloadUrl + this.Data['slave-image1'];
@@ -101,7 +101,6 @@ export class InfoDetailComponent implements OnInit {
           this.subImgUrl[5] = environment.bucket.downloadUrl + this.Data['slave-image5'];
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['slave-image1'];
 
-          console.log('data: ', this.Data);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
           this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
@@ -124,6 +123,7 @@ export class InfoDetailComponent implements OnInit {
   }
 
   addChart() {
+    console.log('data: ', this.Data);
     const current = {
       type: 'infoDetail',
       num: '0',
@@ -164,7 +164,7 @@ export class InfoDetailComponent implements OnInit {
         ]
       }]
     };
-    console.log(this.mypostDirective);
+    // console.log(this.mypostDirective);
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
       new PostItem(ChartComponent, current));
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,

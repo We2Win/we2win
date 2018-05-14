@@ -48,7 +48,7 @@ header .cell {
   color: red;
 }
 
-.h1:before {
+/* .h1:before {
   display: block;
   content: '';
   position: relative;
@@ -60,4 +60,4 @@ header .cell {
   background: #243;
   border-radius: 50%;
   color: white;
-}
+} */

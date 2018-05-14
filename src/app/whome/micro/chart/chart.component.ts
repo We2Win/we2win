@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewContainerRef } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -53,7 +53,7 @@ export class ChartComponent implements OnInit {
         ticks: {
           suggestedMin: 5,
           suggestedMax: 15,
-          callback: function(value, index, values) {
+          callback: function (value, index, values) {
             return value + '억원';
           }
         },
@@ -98,10 +98,14 @@ export class ChartComponent implements OnInit {
     ]
   };
 
-  constructor(private _elementRef: ElementRef) {
+  constructor(private _elementRef: ElementRef,
+    private viewContainerRef: ViewContainerRef,
+  ) {
   }
 
   ngOnInit() {
+    console.log('record:', this.record);
+
     const canvas: any = this._elementRef.nativeElement.querySelector('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -123,7 +127,7 @@ export class ChartComponent implements OnInit {
     const data = this.chartData[this.record.type][this.record.num];
     data.data.labels = this.record.labels;
     data.data.datasets = this.record.datasets;
-    data.data.datasets[0]['backgroundColor'] = 
+    data.data.datasets[0]['backgroundColor'] =
       [fillStandard, fillStandard, fillStandard, fillPremium, fillPlatinum];
     console.log('data at chart:', data);
     try {
