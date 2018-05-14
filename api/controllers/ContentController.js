@@ -64,7 +64,7 @@ const contentsInfo = {
   }
 };
 
-const create = async function (req, res) {
+const createContents = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
 

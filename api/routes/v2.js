@@ -29,7 +29,7 @@ router.post('/testing', (req, res) => {
 });
 
 
-router.post('/contents', ContentController.create);
+router.post('/contents', ContentController.createContents);
 // router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
