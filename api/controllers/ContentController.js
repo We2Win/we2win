@@ -83,7 +83,7 @@ const createContents = async function (req, res) {
     body: content,
   }, 201);
 }
-module.exports.create = create;
+module.exports.createContents = createContents;
 
 const createComments = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
