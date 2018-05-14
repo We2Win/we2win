@@ -139,7 +139,7 @@ const getCount = async function (req, res) {
 }
 module.exports.getCount = getCount;
 
-const getDashBoardData = function (req, res) {
+const getDashBoardData = async function (req, res) {
   let ret = {};
 
   res.setHeader('Content-Type', 'application/json');
