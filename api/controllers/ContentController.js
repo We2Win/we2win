@@ -153,7 +153,6 @@ const getDashBoardData = async function (req, res) {
   [err, content] = await to(Meeting.count());
   [err, content] = await to(Employee.count());
   [err, content] = await to(Employer.count());
-  [err, content] = await to(User.count());
 
   if (err) return ReE(res, 'error occured trying to delete content');
 
