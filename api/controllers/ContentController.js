@@ -154,19 +154,34 @@ const getDashBoardData = async function (req, res) {
   [err, cE] = await to(Employee.count());
   [err, cR] = await to(Employer.count());
 
-  if (err) return ReE(res, 'error occured trying to delete content');
+  let cClick, cSns, cScrap, cComment, cSchedule;
+  [err, cClick] = await to(Content.sum('c-click'));
+  [err, cSns] = await to(Content.sum('c-sns'));
+  [err, cScrap] = await to(Content.sum('c-scrap'));
+  [err, cComment] = await to(Content.sum('c-comment'));
+  [err, cSchedule] = await to(Content.sum('c-schedule'));
+
+  if (err) return ReE(res, 'error occured trying to get data');
 
   ret = {
-    'total': cC,
-    'info': cI + cN + cL,
-    'site': cS,
-    'recruit': cE + cR,
-    'meeting': cM
+    'contents': {
+      'total': cC,
+      'info': cI + cN + cL,
+      'site': cS,
+      'recruit': cE + cR,
+      'meeting': cM,
+    },
+    'logs': {
+      'click': cClick,
+      'sns': cSns,
+      'scrap': cScrap,
+      'comment': cComment,
+      'schedult': cSchedule
+    }
   }
 
-  return ReS(res, {
-    content: ret
-  });
+  // for returning to UserController
+  return ret;
 }
 module.exports.getDashBoardData = getDashBoardData;
 

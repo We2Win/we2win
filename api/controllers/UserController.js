@@ -54,6 +54,37 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
+const getDashBoardData = ret => {
+  let uSt, uPr, uPl;
+  [err, uSt] = await to(User.count({
+    where: {
+      'level': 'STANDARD'
+    }
+  }));
+  [err, uPr] = await to(User.count({
+    where: {
+      'level': 'PREMIUM'
+    }
+  }));
+  [err, uPl] = await to(User.count({
+    where: {
+      'level': 'PLATINUM'
+    }
+  }));
+
+  ret['users'] = {
+    'standard': uSt,
+    'premium': uPr,
+    'platinum': uPl
+  }
+
+  if (err) return ReE(res, 'error occured trying to get data');
+
+  return ReS(res, ret)
+
+}
+module.exports.getDashBoardData = getDashBoardData;
+
 const update = async function (req, res) {
   let err, user, data
   user = req.user;
