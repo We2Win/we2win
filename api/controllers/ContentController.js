@@ -144,7 +144,7 @@ const getDashBoardData = async function (req, res) {
 
   res.setHeader('Content-Type', 'application/json');
 
-  let cC, cR, cN, cL, cS, cE, cR, cM;
+  let cC, cI, cN, cL, cS, cE, cR, cM;
   [err, content] = await to(Content.count());
   [err, content] = await to(Report.count());
   [err, content] = await to(News.count());
@@ -159,7 +159,7 @@ const getDashBoardData = async function (req, res) {
 
   ret = {
     'total': cC,
-    'info': cR + cN + cL,
+    'info': cI + cN + cL,
     'site': cS,
     'recruit': cE + cR,
     'meeting': cM
