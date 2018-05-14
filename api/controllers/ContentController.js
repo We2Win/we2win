@@ -247,7 +247,7 @@ const getRankingList = (name) =>
     console.log(id);
     switch (name) {
       case 'info/newly':
-        Conete.findAll({
+        Report.findAll({
             offset: id,
             limit: 8,
             order: [
