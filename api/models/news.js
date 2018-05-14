@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    'slave-image': {
+    'slave-image1': {
       type: DataTypes.STRING,
       allowNull: false
     },
