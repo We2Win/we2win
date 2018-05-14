@@ -54,7 +54,7 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
-const getDashBoardData = async function (ret) {
+const getDashBoardData = async function (req, res) {
   console.log('ret: ', ret);
   
   let uSt, uPr, uPl;

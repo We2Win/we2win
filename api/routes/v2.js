@@ -87,7 +87,8 @@ router.delete('/mng/users/:id', UserController.remove); //delete
 // router.get('/mng/dash', ContentController.getDashboardData);
 
 
-router.get('/mng/dashboard', UserController.getDashBoardData(ContentController.getDashBoardData()));
+router.get('/mng/dashboard/users', UserController.getDashBoardData);
+router.get('/mng/dashboard/contents', ContentController.getDashBoardData);
 router.get('/mng/contents/count', ContentController.getCount);
 
 module.exports = router;

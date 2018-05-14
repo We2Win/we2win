@@ -181,7 +181,7 @@ const getDashBoardData = async function (req, res) {
   }
 
   // for returning to UserController
-  return ret;
+  return ReS(res, ret);
 }
 module.exports.getDashBoardData = getDashBoardData;
 

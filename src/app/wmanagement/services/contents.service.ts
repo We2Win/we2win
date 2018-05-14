@@ -25,8 +25,12 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
-  getDashboardData() {
-    return this.http.get(environment.apiUrl + '/mng/dashbard');
+  getDashboardContents() {
+    return this.http.get(environment.apiUrl + '/mng/dashboard/contents');
+  }
+
+  getDashboardUsers() {
+    return this.http.get(environment.apiUrl + '/mng/dashboard/users');
   }
 
   getWeeklyList() {
