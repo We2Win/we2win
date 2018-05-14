@@ -30,15 +30,19 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             defaultValue: 0
         },
-        'c-reply': {
-            type: DataTypes.INTEGER,
-            defaultValue: 0,
-        },
         'c-sns': {
             type: DataTypes.INTEGER,
             defaultValue: 0,
         },
         'c-scrap': {
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
+        },
+        'c-comments': {
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
+        },
+        'c-schedule': {
             type: DataTypes.INTEGER,
             defaultValue: 0,
         }
