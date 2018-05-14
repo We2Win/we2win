@@ -54,9 +54,9 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
-const getDashBoardData = ret => async function (req, res) {
+const getDashBoardData = ret => {
   console.log('ret: ', ret);
-  
+
   let uSt, uPr, uPl;
   [err, uSt] = await to(User.count({
     where: {
