@@ -54,7 +54,7 @@ const get = async function (req, res) {
 }
 module.exports.get = get;
 
-const getDashBoardData = ret => {
+const getDashBoardData = ret => async function (req, res) {
   let uSt, uPr, uPl;
   [err, uSt] = await to(User.count({
     where: {
@@ -80,7 +80,7 @@ const getDashBoardData = ret => {
 
   if (err) return ReE(res, 'error occured trying to get data');
 
-  return ReS(res, ret)
+  return ReS(res, ret);
 
 }
 module.exports.getDashBoardData = getDashBoardData;
