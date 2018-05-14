@@ -1,4 +1,4 @@
-<div id="iconSet">
+<div id="iconSet" *ngIf="!isLogin">
   <button id="mail" (click)="showMail = true"></button>
   <button id="dashboard" (click)="checkAdmin()"></button>
   <button id="notification" (click)="showNotification = true"></button>
