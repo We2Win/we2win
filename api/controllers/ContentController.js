@@ -111,7 +111,7 @@ const getComments = async function (req, res) {
 
   Comment.findAll({
     where: {
-      'post-id': req.params.postId
+      'c-id': req.params.postId
     }
   }).then((content) => {
     return ReS(res, {
@@ -144,8 +144,32 @@ const getDashBoardData = async function (req, res) {
 
   res.setHeader('Content-Type', 'application/json');
 
-  Content.findAll
+  let cC, cR, cN, cL, cS, cE, cR, cM;
+  [err, content] = await to(Content.count());
+  [err, content] = await to(Report.count());
+  [err, content] = await to(News.count());
+  [err, content] = await to(Law.count());
+  [err, content] = await to(Site.count());
+  [err, content] = await to(Meeting.count());
+  [err, content] = await to(Employee.count());
+  [err, content] = await to(Employer.count());
+  [err, content] = await to(User.count());
+
+  if (err) return ReE(res, 'error occured trying to delete content');
+
+  ret = {
+    'total': cC,
+    'info': cR + cN + cL,
+    'site': cS,
+    'recruit': cE + cR,
+    'meeting': cM
+  }
+
+  return ReS(res, {
+    content: ret
+  });
 }
+module.exports.getDashBoardData = getDashBoardData;
 
 // const getDashboard = async function (req, res) {
 //   res.setHeader('Content-Type', 'application/json');
@@ -284,7 +308,7 @@ const getRankingList = (name) =>
             offset: id,
             limit: 1,
             order: [
-              ['data-click', 'DESC']
+              ['c-click', 'DESC']
             ]
           })
           .then((content) => {
@@ -293,7 +317,7 @@ const getRankingList = (name) =>
                 offset: id,
                 limit: 1,
                 order: [
-                  ['data-click', 'DESC']
+                  ['c-click', 'DESC']
                 ]
               })
               .then((content) => {
@@ -302,7 +326,7 @@ const getRankingList = (name) =>
                     offset: id,
                     limit: 1,
                     order: [
-                      ['data-click', 'DESC']
+                      ['c-click', 'DESC']
                     ]
                   })
                   .then((content) => {
@@ -317,7 +341,7 @@ const getRankingList = (name) =>
             offset: id,
             limit: 8,
             order: [
-              ['data-click', 'DESC']
+              ['c-click', 'DESC']
             ]
           })
           .then((content) => {
@@ -329,7 +353,7 @@ const getRankingList = (name) =>
             offset: id,
             limit: 8,
             order: [
-              ['data-click', 'DESC']
+              ['c-click', 'DESC']
             ]
           })
           .then((content) => {
@@ -341,7 +365,7 @@ const getRankingList = (name) =>
             offset: id,
             limit: 8,
             order: [
-              ['data-click', 'DESC']
+              ['c-click', 'DESC']
             ]
           })
           .then((content) => {
@@ -365,7 +389,7 @@ const getRankingList = (name) =>
             offset: id,
             limit: 8,
             order: [
-              ['data-click', 'DESC']
+              ['c-click', 'DESC']
             ]
           })
           .then((content) => {
@@ -526,8 +550,8 @@ const updateList = (name) =>
 
     const WHERE = {};
     WHERE[symbolId] = req.body.body[symbolId];
-    if (symbolId === 'S-id') {
-      WHERE['S-type'] = req.body.body['S-type'];
+    if (symbolId === 'no') {
+      WHERE['s-type'] = req.body.body['s-type'];
     }
 
     console.log('where to update: ', symbolId, req.body.body);
@@ -573,4 +597,3 @@ const remove = async function (req, res) {
   }, 204);
 }
 module.exports.remove = remove;
-

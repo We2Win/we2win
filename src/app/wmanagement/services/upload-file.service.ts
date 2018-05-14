@@ -30,9 +30,11 @@ export class UploadFileService {
   constructor() { }
 
   uploadFile(file, columnName) {
+    let date = new Date().toISOString();
+    date = date.substr(2, 8) + '/' + date.substr(11, 17);
     const params = {
       Bucket: 'we2winimage',
-      Key: this.FOLDER + file.name,
+      Key: this.FOLDER + date + file.name,
       Body: file
     };
 

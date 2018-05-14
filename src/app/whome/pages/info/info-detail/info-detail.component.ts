@@ -173,8 +173,8 @@ export class InfoDetailComponent implements OnInit {
 
   addComment() {
     const body = {
-      'post-id': this.Data['post-id'],
-      'commenter-id': this.userInfo['user_id'],
+      'c-id': this.Data['c-id'],
+      'u-id': this.userInfo['u-id'],
       'contents': this.NewComment.nativeElement.value
     };
     console.log(body);
@@ -192,7 +192,7 @@ export class InfoDetailComponent implements OnInit {
   }
 
   getComments() {
-    this.contentsService.getComments(this.Data['post-id']).subscribe(
+    this.contentsService.getComments(this.Data['u-id']).subscribe(
       data => {
         if (data.content[0]) {
           this.comments = data.content;

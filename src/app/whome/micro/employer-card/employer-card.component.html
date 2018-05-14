@@ -1,21 +1,21 @@
 <div class="namecard p" (click)="viewPopup();">
-  <h3>{{ record['R-part-name'] }}</h3>
+  <h3>{{ record['part-name'] }}</h3>
   <div>
-    <h1>{{ record['R-location-name'] }}</h1>
-    <!-- <h1>{{ record['R-manager-name'].split(' ')[0] }}</h1> -->
-    <!-- <h2>{{ record['R-manager-name'].split(' ')[1] }}</h2> -->
+    <h1>{{ record['location-name'] }}</h1>
+    <!-- <h1>{{ record['manager-name'].split(' ')[0] }}</h1> -->
+    <!-- <h2>{{ record['manager-name'].split(' ')[1] }}</h2> -->
   </div>
   <div class="flex">
     <h4>성&nbsp;&nbsp;&nbsp;&nbsp;명</h4>
-    <p>{{ record['R-manager-name'] }}</p>
+    <p>{{ record['manager-name'] }}</p>
   </div>
   <div class="flex">
     <h4>소재지</h4>
-    <p>{{ record['R-location-address'] }}</p>
+    <p>{{ record['location-address'] }}</p>
   </div>
   <div class="flex">
     <h4>연락처</h4>
-    <p class="hp">{{ record['R-HP'] }}</p>
+    <p class="hp">{{ record['hp'] }}</p>
   </div>
 </div>
 
@@ -23,16 +23,16 @@
   <h1>구인 상세보기</h1>
   <div>
     <li>
-      <h2>{{ record['R-part-name'] }}</h2>
-      <h3>{{ record['R-manager-name'] }}</h3>
+      <h2>{{ record['part-name'] }}</h2>
+      <h3>{{ record['manager-name'] }}</h3>
     </li>
     <li>
       <h2>현장명</h2>
-      <h3>{{ record['R-location-name'] }}</h3>
+      <h3>{{ record['location-name'] }}</h3>
     </li>
     <li>
       <h2>소재지</h2>
-      <h3>{{ record['R-location-address'] }}</h3>
+      <h3>{{ record['location-address'] }}</h3>
     </li>
   </div>
 
@@ -40,35 +40,35 @@
   <div>
     <li>
       <h5>업무</h5>
-      <p>{{ record['R-part-name'] }}</p>
+      <p>{{ record['part-name'] }}</p>
     </li>
     <li>
       <h5>업무 내용</h5>
-      <p [innerHtml]="record['R-part-description']"></p>
+      <p [innerHtml]="record['part-description']"></p>
     </li>
     <li>
       <h5>나이</h5>
-      <p>{{ record['R-age-start'] + '-' + record['R-age-end'] }}</p>
+      <p>{{ record['age-start'] + '-' + record['age-end'] }}</p>
     </li>
     <li>
       <h5>응시 요건</h5>
-      <p>{{ record['R-requirement'] }}</p>
+      <p>{{ record['requirement'] }}</p>
     </li>
     <li>
       <h5>모집인원</h5>
-      <p>{{ record['R-personnel'] }}명</p>
+      <p>{{ record['personnel'] }}명</p>
     </li>
     <li>
       <h5>채용 방법</h5>
-      <p>{{ record['R-method'] }}</p>
+      <p>{{ record['method'] }}</p>
     </li>
     <li>
       <h5>모집 기간</h5>
-      <p>{{ record['R-apply-start'].slice(0, 10) + '~' + record['R-apply-end'].slice(0, 10) }}</p>
+      <p>{{ record['apply-start'].slice(0, 10) + '~' + record['apply-end'].slice(0, 10) }}</p>
     </li>
     <li>
       <h5>상세요건</h5>
-      <p [innerHtml]="record['R-detail']"></p>
+      <p [innerHtml]="record['detail']"></p>
     </li>
   </div>
 
@@ -76,23 +76,23 @@
   <div>
     <li>
       <h5>현장명</h5>
-      <p>{{ record['R-location-name'] }}</p>
+      <p>{{ record['location-name'] }}</p>
     </li>
     <li>
       <h5>소재지</h5>
-      <p>{{ record['R-location-address'] }}</p>
+      <p>{{ record['location-address'] }}</p>
     </li>
     <li>
       <h5>담당자 정보</h5>
-      <p>{{ record['R-manager-name'] }}</p>
+      <p>{{ record['manager-name'] }}</p>
     </li>
     <li>
       <h5>전화</h5>
-      <p>{{ record['R-HP'] }}</p>
+      <p>{{ record['hp'] }}</p>
     </li>
     <li>
       <h5>핸드폰</h5>
-      <p>{{ record['R-CP'] }}</p>
+      <p>{{ record['cp'] }}</p>
     </li>
   </div>
 </app-popup>

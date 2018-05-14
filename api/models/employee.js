@@ -26,11 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TINYINT(3),
       allowNull: false
     },
-    'CP': {
+    'cp': {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    'HP': {
+    'hp': {
       type: DataTypes.STRING(20),
       allowNull: false
     },

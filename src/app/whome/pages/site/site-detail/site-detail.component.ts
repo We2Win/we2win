@@ -93,13 +93,13 @@ export class SiteDetailComponent implements OnInit {
             this.showCharts = false;
           }
 
-          this.imgUrl = environment.bucket.downloadUrl + this.Data['image'];
-          this.subImgUrl[1] = environment.bucket.downloadUrl + this.Data['subImage1'];
-          this.subImgUrl[2] = environment.bucket.downloadUrl + this.Data['subImage2'];
-          this.subImgUrl[3] = environment.bucket.downloadUrl + this.Data['subImage3'];
-          this.subImgUrl[4] = environment.bucket.downloadUrl + this.Data['subImage4'];
-          this.subImgUrl[5] = environment.bucket.downloadUrl + this.Data['subImage5'];
-          this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['subImage1'];
+          this.imgUrl = environment.bucket.downloadUrl + this.Data['master-image'];
+          this.subImgUrl[1] = environment.bucket.downloadUrl + this.Data['slave-image1'];
+          this.subImgUrl[2] = environment.bucket.downloadUrl + this.Data['slave-image2'];
+          this.subImgUrl[3] = environment.bucket.downloadUrl + this.Data['slave-image3'];
+          this.subImgUrl[4] = environment.bucket.downloadUrl + this.Data['slave-image4'];
+          this.subImgUrl[5] = environment.bucket.downloadUrl + this.Data['slave-image5'];
+          this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['slave-image1'];
 
           console.log('data: ', this.Data);
 

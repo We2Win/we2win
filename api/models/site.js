@@ -58,6 +58,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    'map': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     'master-image': {
       type: DataTypes.STRING,
       allowNull: false

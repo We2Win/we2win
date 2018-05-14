@@ -437,7 +437,7 @@ export class ContentsModificationComponent implements OnInit {
           console.log('name: ', name);
           console.log(this.forms[type], columnName);
           this.forms[type].controls[columnName].setValue(name);
-          this.inputs[columnName] = name.split('/')[1];
+          this.inputs[columnName] = name;
           console.log(this.inputs);
           this.uploadedFiles[columnName] = '-done';
           // alert('업로드 되었습니다.');
@@ -446,6 +446,10 @@ export class ContentsModificationComponent implements OnInit {
     } else {
       alert('선택한 파일이 없습니다.');
     }
+  }
+
+  uploadFile(type, columnName) {
+    
   }
 
   onSubmit() {

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         'c-type': {
-            type: DataTypes.STRING(2),
+            type: DataTypes.STRING,
             allowNull: false
         },
         'title': {
@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         's-type': {
             type: DataTypes.STRING(10),
             defaultValue: false
+        },
+        'master-image': {
+            type: DataTypes.STRING,
         },
         'c-click': {
             type: DataTypes.INTEGER,

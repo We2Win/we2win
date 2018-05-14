@@ -37,45 +37,38 @@ const createContent = async function (data) {
     // console.log('data.type: ', data.type);
     // console.log('data.body: ', JSON.stringify(data.body));
 
-    let cType;
     switch(data.type) {
         case '리포트':
             [err, content] = await to (Report.create(data.body));
-            cType = 'I';
         break;
         case '부동산 뉴스':
             [err, content] = await to(News.create(data.body));
-            cType = 'N';
         break;
         case '법률 및 정책':
             [err, content] = await to(Law.create(data.body));
-            cType = 'L';
         break;
         case '아파트':
         case '오피스텔':
         case '상가/호텔':
         case '토지':
             [err, content] = await to(Site.create(data.body));
-            cType = 'S';
         break;
         case '오프라인 모임':
             [err, content] = await to(Meeting.create(data.body));
-            cType = 'M';
         break;
         case '구인':
             [err, content] = await to(Employer.create(data.body));
-            cType = 'R';
         break;
         case '구직':
             [err, content] = await to(Employee.create(data.body));
-            cType = 'E';
         break;
     }
 
     const indexData = {
         'c-id': content['c-id'],
-        'c-type': cType,
+        'c-type': data.type,
         'title': data.body['title'],
+        'master-image': data.body['master-image'],
         's-type': data.body['s-type']
     }
     console.log('indexData: ', indexData);
