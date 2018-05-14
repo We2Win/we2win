@@ -145,14 +145,14 @@ const getDashBoardData = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   let cC, cI, cN, cL, cS, cE, cR, cM;
-  [err, content] = await to(Content.count());
-  [err, content] = await to(Report.count());
-  [err, content] = await to(News.count());
-  [err, content] = await to(Law.count());
-  [err, content] = await to(Site.count());
-  [err, content] = await to(Meeting.count());
-  [err, content] = await to(Employee.count());
-  [err, content] = await to(Employer.count());
+  [err, cC] = await to(Content.count());
+  [err, cI] = await to(Report.count());
+  [err, cN] = await to(News.count());
+  [err, cL] = await to(Law.count());
+  [err, cS] = await to(Site.count());
+  [err, cM] = await to(Meeting.count());
+  [err, cE] = await to(Employee.count());
+  [err, cR] = await to(Employer.count());
 
   if (err) return ReE(res, 'error occured trying to delete content');
 
