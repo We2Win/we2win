@@ -107,13 +107,13 @@ export class InfoMainComponent implements OnInit {
     // tslint:disable-next-line:forin
     for (const record in records) {
       // console.log('record: ', records[record]);
-      if (records[record]['c-id']) {
+      if (records[record]['report']) {
         this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
           new PostItem(InfoCardComponent, records[record]));
-      } else if (records[record]['N-id']) {
+      } else if (records[record]['main-title']) {
         this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
           new PostItem(NewsCardComponent, records[record]));
-      } else if (records[record]['L-id']) {
+      } else if (records[record]['file']) {
         this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
           new PostItem(LawCardComponent, records[record]));
       }
@@ -127,13 +127,13 @@ export class InfoMainComponent implements OnInit {
       if (records[num]) {
         records[num]['rank'] = count[num];
         // console.log('record: ', records[record]);
-        if (records[num]['I-id']) {
+        if (records[num]['report']) {
           this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
             new PostItem(InfoCardComponent, records[num]));
-        } else if (records[num]['N-id']) {
+        } else if (records[num]['main-title']) {
           this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
             new PostItem(NewsCardComponent, records[num]));
-        } else if (records[num]['L-id']) {
+        } else if (records[num]['file']) {
           this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
             new PostItem(LawCardComponent, records[num]));
         }

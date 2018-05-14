@@ -392,7 +392,7 @@
         </li>
         <li>
           <h2>첨부파일</h2>
-          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-file']" (click)="filePopup.showPopup();">
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['file']" (click)="filePopup.showPopup();">
           <app-button (click)="filePopup.showPopup();">파일 등록</app-button>
           <span class="blank"></span>
         </li>
@@ -406,8 +406,8 @@
         <form [formGroup]="uploadForm3" id="upload3" action="/api/v2/upload" method="post">
           <li>
             <h2 class="subTitleBar">파일 등록</h2>
-            <input type="file" (change)="selectFile($event, '-file')" #I9>
-            <app-button [ngClass]="{disabled: inputs['-file']!=='파일 없음'}" (click)="upload(selectedData.type, '-file')">{{uploadedFiles['-file']==='-done'?'등록 완료':'파일 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'file')" #I9>
+            <app-button [ngClass]="{disabled: inputs['file']!=='파일 없음'}" (click)="upload(selectedData.type, 'file')">{{uploadedFiles['file']==='-done'?'등록 완료':'파일 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
@@ -481,7 +481,8 @@
           <li>
             <h2 class="subTitleBar">Master 사진</h2>
             <input type="file" (change)="selectFile($event, 'master-image')" #I10>
-            <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['master-image'] && uploadedFiles['master-image']==='-done'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['master-image'] && uploadedFiles['master-image']==='-done'}"
+              (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
@@ -641,7 +642,8 @@
           <li>
             <h2 class="subTitleBar">Master 사진</h2>
             <input type="file" (change)="selectFile($event, 'master-image')" #I11>
-            <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['master-image'] && uploadedFiles['master-image']==='-done'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['master-image'] && uploadedFiles['master-image']==='-done'}"
+              (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>

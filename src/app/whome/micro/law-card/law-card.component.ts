@@ -28,15 +28,15 @@ export class LawCardComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.record);
-    switch (this.record['L-file'].split('.')[1]) {
+    switch (this.record['file'].split('.')[1]) {
       case 'jpg':
       case 'png':
       case 'jpeg':
       case 'gif':
-        this.imageUrl = environment.bucket.downloadUrl + this.record['L-file'];
+        this.imageUrl = environment.bucket.downloadUrl + this.record['file'];
       break;
     }
-    this._elementRef.nativeElement.classList.add(this.record['L-level'].toLowerCase());
+    this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
   }
 
   bookmark() {
@@ -52,12 +52,12 @@ export class LawCardComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/info/report' + this.record['L-id']);
+    this.fbShareService.share(environment.homeUrl + '/info/report' + this.record['id']);
   }
 
   download() {
     if (this.auth.isAuthenticated()) {
-      window.location.assign(environment.bucket.downloadUrl + this.record['L-file']);
+      window.location.assign(environment.bucket.downloadUrl + this.record['file']);
     } else {
       this.router.navigate(['login']);
     }

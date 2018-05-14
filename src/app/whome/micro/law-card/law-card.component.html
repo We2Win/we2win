@@ -1,5 +1,5 @@
 <div class="card" [ngClass]="record['rank']" (click)="download()">
-  <div id="levelBar">{{ record['L-level'] }}</div>
+  <div id="levelBar">{{ record['level'] }}</div>
   <div id="imgFrame">
     <img [src]="imageUrl" alt="부동산 사진">
   </div>
@@ -8,5 +8,5 @@
     <img src="/assets/img/icon_share.png" />
   </div>
   <h3>법률 및 정책</h3>
-  <h2>{{ record['L-title'] }}</h2>
+  <h2>{{ record['title'] }}</h2>
 </div>

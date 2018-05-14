@@ -216,7 +216,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'slave-image5': new FormControl(''),
     });
     this.siteForm = new FormGroup({
-      'type': new FormControl('', [Validators.required]),
+      's-type': new FormControl('', [Validators.required]),
       // 'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
@@ -261,7 +261,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'main-title': new FormControl('', [Validators.required]),
       'main-description': new FormControl('', [Validators.required]),
       'master-image': new FormControl('', [Validators.required]),
-      'slave-image': new FormControl('', [Validators.required]),
+      'slave-image1': new FormControl('', [Validators.required]),
       'analysis-title': new FormControl('', [Validators.required]),
       'analysis-description': new FormControl('', [Validators.required]),
     });

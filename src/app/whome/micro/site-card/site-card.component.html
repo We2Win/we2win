@@ -1,5 +1,5 @@
-<div class="card" [ngClass]="record['rank']" [routerLink]="'/site/site-detail/'+record['S-id']">
-  <div id="levelBar">{{ record['S-level'] }}</div>
+<div class="card" [ngClass]="record['rank']" [routerLink]="'/site/site-detail/'+record['no']">
+  <div id="levelBar">{{ record['level'] }}</div>
   <div id="imgFrame">
     <img [src]="imageUrl" alt="부동산 사진">
   </div>
@@ -7,8 +7,8 @@
     <img id="bookmark" (click)="bookmark(); $event.stopPropagation();" src="/assets/img/icon_bookmark.png" />
     <img src="/assets/img/icon_share.png" />
   </div>
-  <h3>{{ record['S-type'] }}</h3>
-  <h2>{{ record['S-title'] }}</h2>
-  <h4>모집일 {{ formatDate(record['S-open-start']) }} ~ {{ formatDate(record['S-open-end']) }}</h4>
-  <h5><b>{{ record['S-ammount'].toLocaleString() }}</b>백만원</h5>
+  <h3>{{ record['type'] }}</h3>
+  <h2>{{ record['title'] }}</h2>
+  <h4>모집일 {{ formatDate(record['open-start']) }} ~ {{ formatDate(record['open-end']) }}</h4>
+  <h5><b>{{ record['ammount'].toLocaleString() }}</b>백만원</h5>
 </div>
