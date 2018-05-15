@@ -26,10 +26,13 @@ export class ApartmentComponent implements OnInit {
     this.contentsService.getContentsList('apartment').subscribe(
       data => {
         if (data) {
-          // console.log(data);
-          this.Data = data;
-          this.addRecord(this.Data);
+          console.log(data);
+          // this.Data = data;
+          // this.addRecord(this.Data);
         }
+      },
+      err => {
+        console.error(err);
       }
     );
   }
