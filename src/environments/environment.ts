@@ -21,6 +21,9 @@ export const environment = {
   facebook: {
     appId: '129076064471163'
   },
+  google: {
+    apiKey: 'AIzaSyCr5TwZvjA3cgimw3yOJad_FbX5UZd-CEw'
+  },
   bucket: {
     accessKeyId: 'AKIAJLDOFMO2PAHE675Q',
     secretAccessKey: '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',

@@ -224,6 +224,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'open-start': new FormControl('', [Validators.required]),
       'open-end': new FormControl('', [Validators.required]),
       'ammount': new FormControl('', [Validators.required]),
+      'map': new FormControl(''),
       'manager-name': new FormControl('', [Validators.required]),
       'manager-contact': new FormControl('', [Validators.required]),
       'current-duration1': new FormControl(''),

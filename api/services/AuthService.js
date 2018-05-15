@@ -39,7 +39,7 @@ const createContent = async function (data) {
 
     switch(data.type) {
         case '리포트':
-            [err, content] = await to (Report.create(data.body));
+            [err, content] = await to(Report.create(data.body));
         break;
         case '부동산 뉴스':
             [err, content] = await to(News.create(data.body));

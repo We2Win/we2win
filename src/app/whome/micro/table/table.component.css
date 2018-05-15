@@ -29,6 +29,10 @@ header .cell {
   display: table-row;
 }
 
+.row:before {
+  display: none;
+}
+
 .cell {
   display: table-cell;
   padding: 2em 0.3em;

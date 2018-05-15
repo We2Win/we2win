@@ -176,7 +176,7 @@
 
       <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()"
         enctype="multipart/form-data" novalidate>
-        <input class="form-control" formControlName="type" type="hidden" placeholder="제목을 입력하세요" />
+        <input class="form-control" formControlName="s-type" type="hidden" placeholder="제목을 입력하세요" />
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
           <app-select #SLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('site')"></app-select>
@@ -203,6 +203,11 @@
           <h2>분양가</h2>
           <input type="number" lang='en-150' formControlName="ammount" step="10000" placeholder="금액">
           <h3>백만원</h3>
+          <span class="blank"></span>
+        </li>
+        <li>
+          <h2>지역명</h2>
+          <input type="text" formControlName="map" placeholder="지도용 지역명">
           <span class="blank"></span>
         </li>
         <li>
