@@ -309,7 +309,9 @@ const getRankingList = (name) =>
               ['createdAt', 'DESC']
             ],
             where: {
-              'c-type': '리포트'
+              'c-type': {
+                [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']
+              }
             }
           })
           .then((content) => {
