@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-vertical-list',
@@ -11,6 +11,7 @@ export class VerticalListComponent implements OnInit, OnChanges {
 
   @Input() toptitle = '무제';
   @Input() maxCount;
+  @ViewChild('contents') contents;
 
   @Output()
   change: EventEmitter<number> = new EventEmitter<number>();
@@ -31,6 +32,8 @@ export class VerticalListComponent implements OnInit, OnChanges {
   increment() {
     this.count = (this.count + 1) % this.maxCount;
     this.change.emit(this.count);
+    // console.log(this.contents.nativeElement.innerHTML);
+    // this.contents.nativeElement.innerHTML = '';
   }
 
   decrement() {
