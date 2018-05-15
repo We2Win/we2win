@@ -388,7 +388,9 @@ const getRankingList = (name) =>
               ['c-click', 'DESC']
             ],
             where: {
-              'c-type': '법률 및 정책'
+              's-type': {
+                [Sequelize.Op.or]: ['아파트', '오피스텔', '상가/호텔', '토지']
+              }
             }
           })
           .then((content) => {

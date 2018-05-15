@@ -81,8 +81,7 @@ export class WeeklyComponent implements OnInit {
     const count = ['first', 'second', 'third'];
     for (const num in count) {
       if (records[num]) {
-        records[num]['rank'] = count[num];
-        // console.log('record: ', records[record]);
+        records[num]['rank'] = count[num]; // console.log('record: ', records[record]);
         this.postingService.loadComponent(this.rankingpost3Directive.viewContainerRef,
           new PostItem(LawCardComponent, records[num]));
       }

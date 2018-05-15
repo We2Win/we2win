@@ -37,20 +37,20 @@ export class SiteMainComponent implements OnInit {
           console.log('Newly List: ', data);
           this.NewlyList = data;
           this.addNewlyRecord(this.NewlyList);
-          this.addSampleRecord(this.NewlyList);
+          // this.addSampleRecord(this.NewlyList);
         }
       }
     );
 
-    this.contentsService.getContentsList('site/weekly', 1).subscribe(
-      data => {
-        if (data) {
-          console.log('Weekly List: ', data);
-          this.WeeklyList = data;
-          this.addWeeklyRecord(this.WeeklyList);
-        }
-      }
-    );
+    // this.contentsService.getContentsList('site/weekly', 1).subscribe(
+    //   data => {
+    //     if (data) {
+    //       console.log('Weekly List: ', data);
+    //       this.WeeklyList = data;
+    //       this.addWeeklyRecord(this.WeeklyList);
+    //     }
+    //   }
+    // );
   }
 
   addNewlyRecord(records) {
