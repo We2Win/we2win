@@ -403,7 +403,7 @@ const getRankingList = (name) =>
               ['c-click', 'DESC']
             ],
             where: {
-              'c-type': {
+              's-type': {
                 [Sequelize.Op.or]: ['아파트', '오피스텔', '상가/호텔', '토지']
               }
             }
