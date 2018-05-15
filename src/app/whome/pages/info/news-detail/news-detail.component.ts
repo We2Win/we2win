@@ -59,14 +59,14 @@ export class NewsDetailComponent implements OnInit {
         if (data) {
           this.Data = data;
           // this.top.nativeElement.style.background = 'red';
-          this.background.nativeElement.src = environment.bucket.downloadUrl + this.Data['N-image'];
+          this.background.nativeElement.src = environment.bucket.downloadUrl + this.Data['slave-image1'];
           // this.top.nativeElement.style.backgroundSize = 'cover';
           // this.top.nativeElement.style.backgroundPosition = 'center';
           console.log('data: ', this.Data);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
-          this.meta.addTag({ name: 'og:title', content: this.Data['N-title'] });
-          this.meta.addTag({ name: 'og:description', content: this.Data['N-summary'] });
+          this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
+          this.meta.addTag({ name: 'og:description', content: this.Data['summary'] });
         }
       }
     );

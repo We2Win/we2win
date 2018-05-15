@@ -1,10 +1,10 @@
 <section>
   <img id="background" #background>
   <div id="top" #top>
-    <div id="levelBar" [ngClass]="Data['N-level']">
-      {{Data['N-level']}}
+    <div id="levelBar" [ngClass]="Data['level']">
+      {{Data['level']}}
     </div>
-    <h1>{{Data['N-title']}}</h1>
+    <h1>{{Data['title']}}</h1>
     <div id="optionBar">
       <img src="/assets/img/icon_bookmark.png" />
       <img src="/assets/img/icon_facebook.png" />
@@ -13,14 +13,14 @@
   <app-group>
     <article>
       <div class="row">
-        <label>{{Data['N-sub-title']}}</label>
-        <p [innerHtml]="Data['N-sub-description']"></p>
+        <label>{{Data['main-title']}}</label>
+        <p [innerHtml]="Data['main-description']"></p>
       </div>
     </article>
     <article>
       <div class="row">
-        <label>{{Data['N-analysis-title']}}</label>
-        <p [innerHtml]="Data['N-analysis-description']"></p>
+        <label>{{Data['analysis-title']}}</label>
+        <p [innerHtml]="Data['analysis-description']"></p>
       </div>
     </article>
     <article>

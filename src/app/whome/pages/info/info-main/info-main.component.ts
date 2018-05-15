@@ -34,7 +34,7 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getContentsListNewly(1);
+    this.getContentsListNewly(1);
     this.getContentsListWeekly();
   }
 

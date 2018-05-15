@@ -12,7 +12,7 @@
   margin-top: 13px;
 }
 :host {
-  margin-left: 17px;
+  margin-left: 20px;
 }
 :host:nth-child(4n-3) {
   margin-left: 0;
