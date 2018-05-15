@@ -302,7 +302,7 @@ const getRankingList = (name) =>
     console.log(id);
     switch (name) {
       case 'info/newly':
-        Report.findAll({
+        Content.findAll({
             offset: id,
             limit: 8,
             order: [
@@ -310,61 +310,19 @@ const getRankingList = (name) =>
             ]
           })
           .then((content) => {
-            contentList.push(content);
-            News.findAll({
-                offset: id,
-                limit: 8,
-                order: [
-                  ['createdAt', 'DESC']
-                ]
-              })
-              .then((content) => {
-                contentList.push(content);
-                Law.findAll({
-                    offset: id,
-                    limit: 8,
-                    order: [
-                      ['createdAt', 'DESC']
-                    ]
-                  })
-                  .then((content) => {
-                    contentList.push(content);
-                    return ReS(res, contentList);
-                  });
-              });
+            return ReS(res, content);
           });
         break;
       case 'info/weekly':
-        Report.findAll({
+        Content.findAll({
             offset: id,
-            limit: 1,
+            limit: 3,
             order: [
               ['c-click', 'DESC']
             ]
           })
           .then((content) => {
-            contentList.push(content);
-            News.findAll({
-                offset: id,
-                limit: 1,
-                order: [
-                  ['c-click', 'DESC']
-                ]
-              })
-              .then((content) => {
-                contentList.push(content);
-                Law.findAll({
-                    offset: id,
-                    limit: 1,
-                    order: [
-                      ['c-click', 'DESC']
-                    ]
-                  })
-                  .then((content) => {
-                    contentList.push(content);
-                    return ReS(res, contentList);
-                  });
-              });
+            return ReS(res, content);
           });
         break;
       case 'info/report':

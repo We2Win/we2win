@@ -26,19 +26,25 @@
 
 #top li {
   font-size: 14px;
-  margin: 15px 0;
+  margin: 5px 0;
   display: flex;
+}
+
+#top li.buttonBar {
+  margin: 10px 0;
 }
 
 #top li h2 {
   width: 90px;
   font-size: 0.9em;
+  margin: 0;
   line-height: 200%;
 }
 
 #top li h3 {
   flex: 1;
   font-size: 0.9em;
+  margin: 0;
   line-height: 100%;
 }
 
