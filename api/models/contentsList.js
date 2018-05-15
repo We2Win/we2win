@@ -25,8 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         'no': {
             type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
+            allowNull: false
         },
         's-type': {
             type: DataTypes.STRING(10),
