@@ -157,7 +157,7 @@ section>div {
 }
 
 .contentBox2 div.show {
-  display: flex;
+  display: flex !important;
 }
 
 .contentBox2 div li {

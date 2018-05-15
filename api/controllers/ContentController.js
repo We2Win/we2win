@@ -327,7 +327,7 @@ const getRankingList = (name) =>
             ],
             where: {
               'c-type': {
-                [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']                
+                [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']
               }
             }
           })
@@ -336,60 +336,77 @@ const getRankingList = (name) =>
           });
         break;
       case 'info/report':
-        Report.findAll({
+        Content.findAll({
             offset: id,
             limit: 8,
             order: [
               ['c-click', 'DESC']
-            ]
+            ],
+            where: {
+              'c-type': '리포트'
+            }
           })
           .then((content) => {
             return ReS(res, content);
           });
         break;
       case 'info/news':
-        News.findAll({
+        Content.findAll({
             offset: id,
             limit: 8,
             order: [
               ['c-click', 'DESC']
-            ]
+            ],
+            where: {
+              'c-type': '부동산 뉴스'
+            }
           })
           .then((content) => {
             return ReS(res, content);
           });
         break;
       case 'info/law':
-        Law.findAll({
+        Content.findAll({
             offset: id,
             limit: 8,
             order: [
               ['c-click', 'DESC']
-            ]
+            ],
+            where: {
+              'c-type': '법률 및 정책'
+            }
           })
           .then((content) => {
             return ReS(res, content);
           });
         break;
       case 'site/newly':
-        Site.findAll({
+        Content.findAll({
             offset: id,
             limit: 8,
             order: [
-              ['createdAt', 'DESC']
-            ]
+              ['c-click', 'DESC']
+            ],
+            where: {
+              'c-type': '법률 및 정책'
+            }
           })
           .then((content) => {
             return ReS(res, content);
           });
         break;
       case 'site/weekly':
-        Site.findAll({
+        Content.findAll({
             offset: id,
             limit: 8,
             order: [
               ['c-click', 'DESC']
-            ]
+            ],
+            where: {
+              'c-type': {
+                [Sequelize.Op.or]: ['아파트', '오피스텔', '상가/호텔', '토지']
+              }
+            }
           })
           .then((content) => {
             return ReS(res, content);
