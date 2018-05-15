@@ -22,8 +22,8 @@ export class NewsCardComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.record);
-    this.imageUrl = environment.bucket.downloadUrl + this.record['N-image'];
-    this._elementRef.nativeElement.classList.add(this.record['N-level'].toLowerCase());
+    this.imageUrl = environment.bucket.downloadUrl + this.record['master-image'];
+    this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
   }
 
   bookmark() {
@@ -39,6 +39,6 @@ export class NewsCardComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/info/news' + this.record['N-id']);
+    this.fbShareService.share(environment.homeUrl + '/info/news' + this.record['no']);
   }
 }

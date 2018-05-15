@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="record['rank']" [routerLink]="'/info/news/'+record['N-id']">
+<div class="card" [ngClass]="record['rank']" [routerLink]="'/info/news/'+record['no']">
   <div id="levelBar">{{ record['N-level'] }}</div>
   <div id="imgFrame">
     <img [src]="imageUrl" alt="부동산 사진">
@@ -8,6 +8,6 @@
     <img (click)="fbShare(); $event.stopPropagation();" src="/assets/img/icon_share.png" />
   </div>
   <h3>부동산 뉴스</h3>
-  <h2>{{ record['N-title'] }}</h2>
-  <!-- <h3>{{ record['N-analysis-description'] }}</h3> -->
+  <h2>{{ record['title'] }}</h2>
+  <!-- <h3>{{ record['analysis-description'] }}</h3> -->
 </div>

@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         's-type': {
             type: DataTypes.STRING(10),
-            defaultValue: false
+            defaultValue: ''
         },
         'master-image': {
             type: DataTypes.STRING,

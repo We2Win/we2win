@@ -48,8 +48,14 @@ const createContent = async function (data) {
             [err, content] = await to(Law.create(data.body));
         break;
         case '아파트':
+            [err, content] = await to(Site.create(data.body));
+        break;
         case '오피스텔':
+            [err, content] = await to(Site.create(data.body));
+        break;
         case '상가/호텔':
+            [err, content] = await to(Site.create(data.body));
+        break;
         case '토지':
             [err, content] = await to(Site.create(data.body));
         break;
@@ -73,7 +79,7 @@ const createContent = async function (data) {
     }
     console.log('indexData: ', indexData);
     [err, indexContent] = await to(Content.create(indexData));
-    if (err) TE('생성 중 오류가 발생했습니다.');
+    if (err) TE('인덱스 생성 중 오류가 발생했습니다.');
 
     console.log('indexContent: ', indexContent);
 
