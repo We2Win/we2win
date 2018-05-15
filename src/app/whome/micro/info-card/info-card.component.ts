@@ -26,7 +26,7 @@ export class InfoCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.record);
+    console.log('record: ', this.record);
     this.imageUrl = environment.bucket.downloadUrl + this.record['master-image'];
     this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
   }

@@ -34,7 +34,7 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getContentsListNewly(1);
+    // this.getContentsListNewly(1);
     this.getContentsListWeekly();
   }
 
@@ -103,7 +103,7 @@ export class InfoMainComponent implements OnInit {
   addNewlyRecord(records) {
     // tslint:disable-next-line:forin
     for (const record in records) {
-      console.log('record: ', records[record]);
+      // console.log('record: ', records[record]);
       if (records[record]['c-type'] === '리포트') {
         this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
           new PostItem(InfoCardComponent, records[record]));
@@ -121,15 +121,15 @@ export class InfoMainComponent implements OnInit {
     const count = ['first', 'second', 'third'];
     for (const num in count) {
       if (records[num]) {
+        console.log('records[num]: ', records[num]);
         records[num]['rank'] = count[num];
-        // console.log('record: ', records[record]);
-        if (records[num]['report']) {
+        if (records[num]['c-type'] === '리포트') {
           this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
             new PostItem(InfoCardComponent, records[num]));
-        } else if (records[num]['main-title']) {
+        } else if (records[num]['c-type'] === '부동산 뉴스') {
           this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
             new PostItem(NewsCardComponent, records[num]));
-        } else if (records[num]['file']) {
+        } else if (records[num]['c-type'] === '법률 및 정책') {
           this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
             new PostItem(LawCardComponent, records[num]));
         }

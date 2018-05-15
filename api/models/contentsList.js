@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(50),
             allowNull: false
         },
+        'level': {
+            type: DataTypes.STRING(10),
+            defaultValue: 'STANDARD'
+        },
         's-type': {
             type: DataTypes.STRING(10),
             defaultValue: ''
