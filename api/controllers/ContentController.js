@@ -307,7 +307,12 @@ const getRankingList = (name) =>
             limit: 8,
             order: [
               ['createdAt', 'DESC']
-            ]
+            ],
+            where: {
+              'c-type': {
+                [Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']
+              }
+            }
           })
           .then((content) => {
             return ReS(res, content);

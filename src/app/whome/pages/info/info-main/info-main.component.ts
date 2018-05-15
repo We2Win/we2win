@@ -42,32 +42,31 @@ export class InfoMainComponent implements OnInit {
     this.contentsService.getContentsList('info/newly', page).subscribe(
       data => {
         if (data) {
+          console.log('data: ', data);
           const list = [];
-          data.forEach(arrayList => {
-            arrayList.forEach(content => {
-              list.push(content);
-            });
+          data.forEach(content => {
+            list.push(content);
           });
           list.forEach(content => {
             content['createdAt'] = new Date(content['createdAt']);
             content['updatedAt'] = new Date(content['createdAt']);
           });
 
-          const compare = (a, b) => {
-            if (a.updatedAt < b.updatedAt) {
-              return -1;
-            }
-            if (a.updatedAt > b.updatedAt) {
-              return 1;
-            }
-            return 0;
-          };
+          // const compare = (a, b) => {
+          //   if (a.updatedAt < b.updatedAt) {
+          //     return -1;
+          //   }
+          //   if (a.updatedAt > b.updatedAt) {
+          //     return 1;
+          //   }
+          //   return 0;
+          // };
 
-          list.sort(compare);
+          // list.sort(compare);
           console.log('Newly List: ', list);
           this.NewlyList = list;
           this.newlyPageNum = parseInt((this.NewlyList.length - 1) / 8 + 1 + '', 10);
-          this.addNewlyRecord(this.NewlyList.slice(0, 8));
+          this.addNewlyRecord(this.NewlyList);
         }
       }
     );
@@ -78,10 +77,8 @@ export class InfoMainComponent implements OnInit {
       data => {
         if (data) {
           const list = [];
-          data.forEach(arrayList => {
-            arrayList.forEach(content => {
+          data.forEach(content => {
               list.push(content);
-            });
           });
           list.forEach(content => {
             content['createdAt'] = new Date(content['createdAt']);
@@ -106,18 +103,17 @@ export class InfoMainComponent implements OnInit {
   addNewlyRecord(records) {
     // tslint:disable-next-line:forin
     for (const record in records) {
-      // console.log('record: ', records[record]);
-      if (records[record]['report']) {
+      console.log('record: ', records[record]);
+      if (records[record]['c-type'] === '리포트') {
         this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
           new PostItem(InfoCardComponent, records[record]));
-      } else if (records[record]['main-title']) {
+      } else if (records[record]['c-type'] === '부동산 뉴스') {
         this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
           new PostItem(NewsCardComponent, records[record]));
-      } else if (records[record]['file']) {
+      } else if (records[record]['c-type'] === '법률 및 정책') {
         this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
           new PostItem(LawCardComponent, records[record]));
       }
-
     }
   }
 
