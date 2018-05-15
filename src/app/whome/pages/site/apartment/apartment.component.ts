@@ -27,8 +27,8 @@ export class ApartmentComponent implements OnInit {
       data => {
         if (data) {
           console.log(data);
-          // this.Data = data;
-          // this.addRecord(this.Data);
+          this.Data = data;
+          this.addRecord(this.Data);
         }
       },
       err => {

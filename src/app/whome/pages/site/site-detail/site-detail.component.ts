@@ -88,7 +88,7 @@ export class SiteDetailComponent implements OnInit {
           console.log(this.Data);
           if (this.Data['current-duration1'] || this.Data['around-duration1']) {
             this.showCharts = true;
-            this.addChart();
+            // this.addChart();
           } else {
             this.showCharts = false;
           }

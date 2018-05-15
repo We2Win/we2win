@@ -206,13 +206,30 @@ const getList = (name) =>
   async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    const symbol = contentsInfo[name].symbol;
+    // const symbol = contentsInfo[name].symbol;
     // const symbolId = symbol + '-id';
-    const db = contentsInfo[name].db;
+
+    let db = contentsInfo[name].db;
     const WHERE = {};
     if (req.params.id) {
       WHERE['no'] = req.params.id;
     }
+
+    switch (name) {
+      case 'apartment':
+        WHERE['s-type'] = '아파트';
+        break;
+      case 'officetel':
+        WHERE['s-type'] = '오피스텔';
+        break;
+      case 'commercial':
+        WHERE['s-type'] = '상가/호텔';
+        break;
+      case 'ground':
+        WHERE['s-type'] = '토지';
+        break;
+    }
+
     // if (symbolId === 'S-id' && name !== 'site') {
     //   WHERE['S-type'] = contentsInfo[name].type;
     // }
