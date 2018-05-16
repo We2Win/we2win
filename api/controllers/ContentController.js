@@ -311,6 +311,7 @@ const getContentsDetail = async function(req, res) {
     return ReS(res, content);
   });
 }
+module.exports.getContentsDetail = getContentsDetail;
 
 const getContentsList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');

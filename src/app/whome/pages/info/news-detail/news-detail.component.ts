@@ -43,18 +43,18 @@ export class NewsDetailComponent implements OnInit {
       this.updateDetail();
     });
 
-    this.contentsService.getContentsList('news').subscribe(
-      data => {
-        if (data) {
-          this.RankingList = data;
-          this.addRankingRecord(this.RankingList);
-        }
-      }
-    );
+    // this.contentsService.getContentsDetail('news').subscribe(
+    //   data => {
+    //     if (data) {
+    //       this.RankingList = data;
+    //       this.addRankingRecord(this.RankingList);
+    //     }
+    //   }
+    // );
   }
 
   updateDetail() {
-    this.contentsService.getContentsList('news', this.id).subscribe(
+    this.contentsService.getContentsDetail('news', this.id).subscribe(
       data => {
         if (data) {
           this.Data = data;
