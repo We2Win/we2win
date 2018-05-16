@@ -68,7 +68,7 @@ export class SiteDetailComponent implements OnInit {
       this.updateDetail();
     });
     // To get ranking report list.
-    this.contentsService.getContentsList('site').subscribe(
+    this.contentsService.getWeeklyList('site').subscribe(
       data => {
         if (data) {
           this.RankingList = data;
@@ -81,7 +81,7 @@ export class SiteDetailComponent implements OnInit {
   }
 
   updateDetail() {
-    this.contentsService.getContentsList('site', this.id).subscribe(
+    this.contentsService.getContentsDetail('site', this.id).subscribe(
       data => {
         if (data) {
           this.Data = data;

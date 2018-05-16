@@ -27,7 +27,7 @@ export class WeeklyComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('info/report', 1).subscribe(
+    this.contentsService.getWeeklyList('report').subscribe(
       data => {
         if (data) {
           // console.log('report: ', data);
@@ -35,7 +35,7 @@ export class WeeklyComponent implements OnInit {
         }
       }
     );
-    this.contentsService.getContentsList('info/news', 1).subscribe(
+    this.contentsService.getWeeklyList('news').subscribe(
       data => {
         if (data) {
           // console.log('news: ', data);
@@ -43,7 +43,7 @@ export class WeeklyComponent implements OnInit {
         }
       }
     );
-    this.contentsService.getContentsList('info/law', 1).subscribe(
+    this.contentsService.getWeeklyList('law').subscribe(
       data => {
         if (data) {
           console.log('law: ', data);

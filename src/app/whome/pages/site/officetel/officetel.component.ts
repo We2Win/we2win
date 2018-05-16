@@ -13,6 +13,7 @@ import { SiteCardComponent } from '../../../micro/site-card/site-card.component'
 })
 export class OfficetelComponent implements OnInit {
   Data: Array<object>;
+  currentPage = 1;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -23,7 +24,7 @@ export class OfficetelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('officetel').subscribe(
+    this.contentsService.getContentsList('officetel', 'newly', 'date', this.currentPage).subscribe(
       data => {
         if (data) {
           // console.log(data);

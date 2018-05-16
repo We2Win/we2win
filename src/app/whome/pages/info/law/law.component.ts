@@ -13,6 +13,7 @@ import { LawCardComponent } from '../../../micro/law-card/law-card.component';
 })
 export class LawComponent implements OnInit {
   Data: Array<object>;
+  currentPage = 1;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -25,7 +26,7 @@ export class LawComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('law').subscribe(
+    this.contentsService.getContentsList('law', 'newly', 'date', this.currentPage).subscribe(
       data => {
         if (data) {
           // console.log(data);

@@ -19,7 +19,7 @@ export class ContentsService {
   }
 
   getContentsDetail(page, id) {
-    return this.http.get(environment.apiUrl + '/contents/' + page + '/' + id)
+    return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id)
       .map((res: any) => res);
   }
 

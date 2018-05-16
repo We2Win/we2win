@@ -13,6 +13,7 @@ import { NewsCardComponent } from '../../../micro/news-card/news-card.component'
 })
 export class NewsComponent implements OnInit {
   Data: Array<object>;
+  currentPage = 1;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -23,7 +24,7 @@ export class NewsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('news').subscribe(
+    this.contentsService.getContentsList('news', 'newly', 'date', this.currentPage).subscribe(
       data => {
         if (data) {
           // console.log(data);

@@ -13,6 +13,7 @@ import { SiteCardComponent } from '../../../micro/site-card/site-card.component'
 })
 export class ApartmentComponent implements OnInit {
   Data: Array<object>;
+  currentPage = 1;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -23,7 +24,7 @@ export class ApartmentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('apartment').subscribe(
+    this.contentsService.getContentsList('apartment', 'newly', 'date', this.currentPage).subscribe(
       data => {
         if (data) {
           console.log(data);
