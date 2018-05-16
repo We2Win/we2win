@@ -107,7 +107,9 @@ export class InfoDetailComponent implements OnInit {
           this.meta.addTag({ name: 'og:description', content: this.Data['summary'] });
           this.meta.addTag({ name: 'og:image', content: this.imgUrl });
 
+          console.log('aaa');
           this.getComments();
+          console.log('aaa');
         }
       }
     );
