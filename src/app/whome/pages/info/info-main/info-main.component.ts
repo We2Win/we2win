@@ -32,12 +32,12 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getContentsListNewly(1);
-    this.getContentsListWeekly();
+    this.getContentsListNewly('date', 1);
+    // this.getContentsListWeekly();
   }
 
-  getContentsListNewly(page) {
-    this.contentsService.getContentsList('info/newly', page).subscribe(
+  getContentsListNewly(sort, page) {
+    this.contentsService.getContentsList('info/newly', sort, page).subscribe(
       data => {
         if (data) {
           console.log('data: ', data);
@@ -82,6 +82,12 @@ export class InfoMainComponent implements OnInit {
     container.clear();
     // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
     this.getContentsListNewly(count);
+  }
+
+  sort(type) {
+    switch (type) {
+
+    }
   }
 
   addNewlyRecord(records) {

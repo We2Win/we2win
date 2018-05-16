@@ -296,6 +296,7 @@ const getRankingList = (name) =>
   async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
+    console.log('req.params: ', req.params);
     const route = name.split('/');
     const id = (req.params.id - 1) * 8 || 0;
 

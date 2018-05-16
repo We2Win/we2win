@@ -8,8 +8,9 @@ export class ContentsService {
     private http: HttpClient
   ) { }
 
-  getContentsList(name, page?: any) {
-    return this.http.get(environment.apiUrl + '/contents/' + name + '/' + (page || ''))
+  getContentsList(name, sort, page?: any) {
+    console.log('contentsList Service: ', environment.apiUrl + '/contents/' + name + '/' + sort + '/' + (page || ''));
+    return this.http.get(environment.apiUrl + '/contents/' + name + '/' + sort + '/' + (page || ''))
       .map((res: any) => res);
   }
 
