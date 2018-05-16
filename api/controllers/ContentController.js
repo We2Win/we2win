@@ -341,10 +341,11 @@ const getContentsList = async function (req, res) {
   }
 
   const whereArr = pageTypes[req.params.page];
+  let orderArr;
   if (req.params.sort) {
-    const orderArr = [sortTypes[req.params.sort]];
+    orderArr = [sortTypes[req.params.sort]];
   } else {
-    const orderArr = [];
+    orderArr = [];
   }
 
   switch (req.params.list) {
