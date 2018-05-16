@@ -50,7 +50,7 @@ const createContent = async function (data) {
             'amount': data.body['ammount'] || '',
             'master-image': data.body['master-image']
         }
-        // console.log('indexData: ', indexData);
+        console.log('indexData: ', indexData);
         [err, indexContent] = await to(Content.create(indexData));
         if (err) TE('인덱스 생성 중 오류가 발생했습니다.');
 
