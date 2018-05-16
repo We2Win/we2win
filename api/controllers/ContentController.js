@@ -293,100 +293,101 @@ module.exports.getList = getList;
 // module.exports.getList = getList;
 
 const getContentsList = async function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-Type', 'application/json');
 
-    console.log('req.params: ', req.params);
-    const id = (req.params.id - 1) * 8 || 0;
+  console.log('req.params: ', req.params);
+  const id = (req.params.id - 1) * 8 || 0;
 
-    const pageTypes = {
-      'info': {
-        'c-type': {
-          [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']
-        }
-      },
-      'site': {
-        's-type': {
-          [Sequelize.Op.or]: ['아파트', '오피스텔', '상가/호텔', '토지']
-        }
-      },
-      'report': {
-        'c-type': '리포트'
-      },
-      'news': {
-        'c-type': '부동산 뉴스'
-      },
-      'law': {
-        'c-type': '법률 및 정책'
-      },
-      'apartment': {
-        's-type': '아파트'
-      },
-      'officetel': {
-        's-type': '오피스텔'
-      },
-      'commercial': {
-        's-type': '상가/호텔'
-      },
-      'ground': {
-        's-type': '토지'
+  const pageTypes = {
+    'info': {
+      'c-type': {
+        [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']
       }
+    },
+    'site': {
+      's-type': {
+        [Sequelize.Op.or]: ['아파트', '오피스텔', '상가/호텔', '토지']
+      }
+    },
+    'report': {
+      'c-type': '리포트'
+    },
+    'news': {
+      'c-type': '부동산 뉴스'
+    },
+    'law': {
+      'c-type': '법률 및 정책'
+    },
+    'apartment': {
+      's-type': '아파트'
+    },
+    'officetel': {
+      's-type': '오피스텔'
+    },
+    'commercial': {
+      's-type': '상가/호텔'
+    },
+    'ground': {
+      's-type': '토지'
     }
+  }
 
-    const sortTypes = {
-      'date': ['createdAt', 'DESC'],
-      'click': ['c-click', 'DESC'],
-      'reply': ['c-comments', 'DESC'],
-      'sns': ['c-sns', 'DESC'],
-      'scrap': ['c-scrap', 'DESC']
-    }
+  const sortTypes = {
+    'date': ['createdAt', 'DESC'],
+    'click': ['c-click', 'DESC'],
+    'reply': ['c-comments', 'DESC'],
+    'sns': ['c-sns', 'DESC'],
+    'scrap': ['c-scrap', 'DESC']
+  }
 
-    const whereArr = pageTypes[req.params.page];
-    if(req.params.sort) {
-      const orderArr = [sortTypes[req.params.sort]];
-    } else {
-      const orderArr = [];
-    }
+  const whereArr = pageTypes[req.params.page];
+  if (req.params.sort) {
+    const orderArr = [sortTypes[req.params.sort]];
+  } else {
+    const orderArr = [];
+  }
 
-    switch (req.params.list) {
-      case 'newly':
-        Content.findAll({
-          offset: id,
-          limit: 8,
-          order: orderArr,
-          where: whereArr
-        }).then(content => {
-          return ReS(res, content);
-        });
-        break;
-      case 'weekly':
-        let contentList = [];
+  switch (req.params.list) {
+    case 'newly':
+      Content.findAll({
+        offset: id,
+        limit: 8,
+        order: orderArr,
+        where: whereArr
+      }).then(content => {
+        return ReS(res, content);
+      });
+      break;
+    case 'weekly':
+      let contentList = [];
+      Content.findOne({
+        order: [
+          ['c-click', 'DESC']
+        ],
+        where: whereArr
+      }).then(content1 => {
+        contentList.push(content1);
         Content.findOne({
           order: [
-            ['c-click', 'DESC']
+            ['c-comments', 'DESC']
           ],
           where: whereArr
-        }).then(content1 => {
-          contentList.push(content1);
+        }).then(content2 => {
+          contentList.push(content2);
           Content.findOne({
             order: [
-              ['c-comments', 'DESC']
+              ['c-sns', 'DESC']
             ],
             where: whereArr
-          }).then(content2 => {
-            contentList.push(content2);
-            Content.findOne({
-              order: [
-                ['c-sns', 'DESC']
-              ]
-            }).then(content3 => {
-              contentList.push(content3);
-              return ReS(res, contentList);
-            })
+          }).then(content3 => {
+            contentList.push(content3);
+            return ReS(res, contentList);
           })
-        });
-        break;
-    }
-  };
+        })
+      });
+      break;
+  }
+};
 module.exports.getContentsList = getContentsList;
 // const getRankingList = (name) =>
 //   async function (req, res) {
