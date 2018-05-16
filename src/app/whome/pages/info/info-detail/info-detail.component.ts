@@ -123,7 +123,7 @@ export class InfoDetailComponent implements OnInit {
   }
 
   addChart() {
-    console.log('data: ', this.Data);
+    // console.log('data: ', this.Data);
     const current = {
       type: 'infoDetail',
       num: '0',
@@ -164,7 +164,7 @@ export class InfoDetailComponent implements OnInit {
         ]
       }]
     };
-    console.log(this.mypostDirective);
+    // console.log(this.mypostDirective);
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
       new PostItem(ChartComponent, current));
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
@@ -174,17 +174,23 @@ export class InfoDetailComponent implements OnInit {
   addComment() {
     const body = {
       'c-id': this.Data['c-id'],
-      'u-id': this.userInfo['u-id'],
+      'u-id': this.userInfo['user_id'],
+      'date': new Date().toISOString(),
       'contents': this.NewComment.nativeElement.value
     };
-    console.log(body);
+    console.log('comment body: ', body);
     if (!body.contents) {
       alert('댓글 내용이 없습니다.');
     } else {
       this.contentsService.addComments(body);
 
       // refresh current page
-      const currentUrl = this.router.url + '#commentBox';
+      let currentUrl;
+      if (!this.router.url.split('#')[1]) {
+        currentUrl = this.router.url + '#commentBox';
+      } else {
+        currentUrl = this.router.url;
+      }
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
         this.router.navigateByUrl(currentUrl));
     }
@@ -194,7 +200,7 @@ export class InfoDetailComponent implements OnInit {
   getComments() {
     this.contentsService.getComments(this.Data['c-id']).subscribe(
       data => {
-        console.log('data: ', data);
+        // console.log('data: ', data);
         if (data.content[0]) {
           this.comments = data.content;
           console.log('this.comments: ', this.comments);

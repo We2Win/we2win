@@ -109,6 +109,8 @@ module.exports.createComments = createComments;
 const getComments = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
+  console.log('req.params at getComments(): ', req.params);
+
   Comment.findAll({
     order: [
       ['createdAt', 'DESC']
@@ -258,42 +260,6 @@ const getList = (name) =>
     }
   };
 module.exports.getList = getList;
-// const getList = (name) =>
-//   async function (req, res) {
-//     res.setHeader('Content-Type', 'application/json');
-
-//     const symbol = contentsInfo[name].symbol;
-//     const symbolId = symbol + '-id';
-//     const db = contentsInfo[name].db;
-//     const WHERE = {};
-//     if (req.params.id) {
-//       WHERE[symbolId] = req.params.id;
-//     }
-//     if (symbolId === 'S-id' && name !== 'site') {
-//       WHERE['S-type'] = contentsInfo[name].type;
-//     }
-
-//     if (req.params.id) {
-//       db.findOne({
-//           where: WHERE
-//         })
-//         .then((content) => {
-//           content.update({
-//             'data-click': Sequelize.literal('`data-click` + 1')
-//           });
-
-//           return ReS(res, content);
-//         });
-//     } else {
-//       db.findAll({
-//           where: WHERE
-//         })
-//         .then((contentList) => {
-//           return ReS(res, contentList);
-//         });
-//     }
-//   };
-// module.exports.getList = getList;
 
 const getContentsDetail = async function(req, res) {
   res.setHeader('Content-Type', 'application/json');
