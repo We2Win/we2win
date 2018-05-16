@@ -292,12 +292,10 @@ module.exports.getList = getList;
 //   };
 // module.exports.getList = getList;
 
-const getRankingList = (name) =>
-  async function (req, res) {
+const getRankingList = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     console.log('req.params: ', req.params);
-    const route = name.split('/');
     const id = (req.params.id - 1) * 8 || 0;
 
     console.log('id: ', id);
@@ -337,18 +335,18 @@ const getRankingList = (name) =>
     }
 
     const sortTypes = {
-      '/date': ['createdAt', 'DESC'],
-      '/click': ['c-click', 'DESC'],
-      '/reply': ['c-reply', 'DESC'],
-      '/sns': ['c-sns', 'DESC'],
-      '/scrap': ['c-scrap', 'DESC']
+      'date': ['createdAt', 'DESC'],
+      'click': ['c-click', 'DESC'],
+      'reply': ['c-reply', 'DESC'],
+      'sns': ['c-sns', 'DESC'],
+      'scrap': ['c-scrap', 'DESC']
     }
 
-    const whereArr = pageTypes[route[0]];
-    const orderArr = [sortTypes[route[2]]];
+    const whereArr = pageTypes[req.params.page];
+    const orderArr = [sortTypes[req.params.sort]];
 
-    switch (route[1]) {
-      case 'newly': 
+    switch (req.params.list) {
+      case 'newly':
         Content.findAll({
           offset: id,
           limit: 8,
@@ -357,7 +355,7 @@ const getRankingList = (name) =>
         }).then(content => {
           return ReS(res, content);
         });
-      break;
+        break;
       case 'weekly':
         let contentList = [];
         Content.findOne({
@@ -384,7 +382,7 @@ const getRankingList = (name) =>
             })
           })
         });
-      break;
+        break;
     }
   };
 module.exports.getRankingList = getRankingList;

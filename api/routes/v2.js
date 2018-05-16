@@ -79,16 +79,18 @@ const sortArr = [
   '/scrap'
 ];
 
-for (const contents in rankingList) {
-  let selected = rankingList[contents];
-  router.get('/contents' + selected, ContentController.getRankingList(selected));
-  // router.get('/contents' + selected + '/:id', ContentController.getRankingList(selected));
+router.get('/contents/:page/:list/:sort/:id', ContentController.getRankingList());
 
-  for (const sortType in sortArr) {
-    let type = sortArr[sortType];
-    router.get('/contents' + selected + type + '/:id', ContentController.getRankingList(selected));
-  }
-}
+// for (const contents in rankingList) {
+//   let selected = rankingList[contents];
+//   router.get('/contents' + selected, ContentController.getRankingList(selected));
+//   // router.get('/contents' + selected + '/:id', ContentController.getRankingList(selected));
+
+//   for (const sortType in sortArr) {
+//     let type = sortArr[sortType];
+//     router.get('/contents' + selected + type + '/:id', ContentController.getRankingList(selected));
+//   }
+// }
 // router.get('/contents/info/weekly/:id', ContentController.getRankingList('infoWeekly'));
 // router.get('/contents/info/newly/:id', ContentController.getRankingList('infoNewly'));
 // router.get('/contents/info/report/:id', ContentController.getRankingList('report'));
