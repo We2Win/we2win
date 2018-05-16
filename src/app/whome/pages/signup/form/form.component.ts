@@ -343,7 +343,8 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   setLevel(level) {
-    this.level = level;
+    const levelName = ['STANDARD', 'PREMIUM', 'PLATINUM'];
+    this.level = levelName[level - 1];
   }
 
   setLevelOnKeyDown(level, event) {

@@ -102,7 +102,7 @@
             <label>신청 등급
               <b class="red">*</b>
             </label>
-            <div class="card standard" [ngClass]="{'checked': level === 1, 'notSelected': level !== undefined}" (click)="setLevel(1)"
+            <div class="card standard" [ngClass]="{'checked': level === 'STANDARD', 'notSelected': level !== undefined}" (click)="setLevel(1)"
               (keydown)="setLevelOnKeyDown(1, $event)" tabindex="0">
               <div id="level">STANDARD</div>
               <p>부동산 및 분양 정보를 수집할 수 있다.
@@ -111,7 +111,7 @@
               </p>
               <p id="price">무료</p>
             </div>
-            <div class="card premium" [ngClass]="{'checked': level === 2, 'notSelected': level !== undefined}" (click)="setLevel(2)"
+            <div class="card premium" [ngClass]="{'checked': level === 'PREMIUM', 'notSelected': level !== undefined}" (click)="setLevel(2)"
               (keydown)="setLevelOnKeyDown(2, $event)" tabindex="0">
               <div id="level">PREMIUM</div>
               <p>부동산 및 분양 정보를 보다 빠르게 확인하고 수집 할 수 있다.
@@ -119,7 +119,7 @@
               </p>
               <p id="price">5,000원/월</p>
             </div>
-            <div class="card platinum" [ngClass]="{'checked': level === 3, 'notSelected': level !== undefined}" (click)="setLevel(3)"
+            <div class="card platinum" [ngClass]="{'checked': level === 'PLATINUM', 'notSelected': level !== undefined}" (click)="setLevel(3)"
               (keydown)="setLevelOnKeyDown(3, $event)" tabindex="0">
               <div id="level">PLATINUM</div>
               <p>오프라인 모임과 함께 다양한 형태로 정보를 수집하고 분석 할 수 있다.

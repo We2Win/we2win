@@ -29,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     'level': {
-      type: DataTypes.TINYINT(1),
-      defaultValue: 0
+      type: DataTypes.STRING(10),
+      defaultValue: 'STANDARD'
     },
     'level-start': {
       type: DataTypes.DATE,
