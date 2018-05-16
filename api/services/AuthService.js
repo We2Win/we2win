@@ -41,14 +41,14 @@ const createContent = async function (data) {
         const indexData = {
             'c-id': content['c-id'],
             'c-type': data.type,
-            'title': data.body['title'],
-            'level': data.body['level'],
-            'no': data.body['no'],
-            's-type': data.body['s-type'] || '',
-            'open-start': data.body['open-start'] || '',
-            'open-end': data.body['open-end'] || '',
-            'amount': data.body['ammount'] || '',
-            'master-image': data.body['master-image']
+            'title': content['title'],
+            'level': content['level'],
+            'no': content['no'],
+            's-type': content['s-type'] || '',
+            'open-start': content['open-start'] || '',
+            'open-end': content['open-end'] || '',
+            'amount': content['ammount'] || '',
+            'master-image': content['master-image']
         }
         console.log('indexData: ', indexData);
         [err, indexContent] = await to(Content.create(indexData));
