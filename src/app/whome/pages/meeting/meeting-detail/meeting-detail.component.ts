@@ -67,7 +67,7 @@ export class MeetingDetailComponent implements OnInit {
       this.updateDetail();
     });
     // To get ranking report list.
-    this.contentsService.getContentsList('meeting').subscribe(
+    this.contentsService.getRelatedList('meeting').subscribe(
       data => {
         if (data) {
           this.RankingList = data;
@@ -80,7 +80,7 @@ export class MeetingDetailComponent implements OnInit {
   }
 
   updateDetail() {
-    this.contentsService.getContentsList('meeting', this.id).subscribe(
+    this.contentsService.getSimplesDetail('meeting', this.id).subscribe(
       data => {
         if (data) {
           this.Data = data;

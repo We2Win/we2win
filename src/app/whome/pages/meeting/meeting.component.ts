@@ -24,7 +24,7 @@ export class MeetingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('meeting').subscribe(
+    this.contentsService.getSimplesList('meeting', 'date', 1).subscribe(
       data => {
         if (data) {
           // console.log(data);

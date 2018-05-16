@@ -31,7 +31,7 @@ export class SiteMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('site/newly', 1).subscribe(
+    this.contentsService.getContentsList('site', 'newly', 'date', 1).subscribe(
       data => {
         if (data) {
           console.log('Newly List: ', data);

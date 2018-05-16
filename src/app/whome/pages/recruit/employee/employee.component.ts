@@ -25,7 +25,7 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('employee').subscribe(
+    this.contentsService.getSimplesList('employee', 'date', 1).subscribe(
       data => {
         if (data) {
           // console.log(data);

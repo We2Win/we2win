@@ -32,12 +32,25 @@ export class ContentsService {
     );
   }
 
-
   getComments(cid) {
     return this.http.get(environment.apiUrl + '/contents/comments/' + cid)
       .map((res: any) => res);
   }
 
+  getSimplesList(page, sort, id?: any) {
+    return this.http.get(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'))
+      .map((res: any) => res);
+  }
+
+  getRelatedList(page) {
+    return this.http.get(environment.apiUrl + '/simples/' + page + '/weekly')
+      .map((res: any) => res);
+  }
+
+  getSimplesDetail(page, id) {
+    return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id)
+      .map((res: any) => res);
+  }
   // getRecentReportList() {
   //   return this.http.get(environment.apiUrl + '/contents/recentReport')
   //     .map((res: any) => res);
@@ -139,7 +152,7 @@ export class ContentsService {
 
   getEmployerList() {
     return this.http.get(environment.apiUrl + '/contents/employer')
-      .map((res: any) => {console.log(JSON.parse(res.list)); return res; });
+      .map((res: any) => { console.log(JSON.parse(res.list)); return res; });
   }
 
   getEmployeeList() {
