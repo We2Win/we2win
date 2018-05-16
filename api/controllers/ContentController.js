@@ -71,8 +71,7 @@ const createContents = async function (req, res) {
   let err, content;
 
   console.log('body: ', JSON.stringify(body));
-  [err, content] = await to(authService.
-    (body));
+  [err, content] = await to(authService.createContent(body));
 
   if (err) return ReE(res, err, 422);
 
