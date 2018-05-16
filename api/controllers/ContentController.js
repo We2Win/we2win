@@ -71,7 +71,8 @@ const createContents = async function (req, res) {
   let err, content;
 
   console.log('body: ', JSON.stringify(body));
-  [err, content] = await to(authService.createContent(body));
+  [err, content] = await to(authService.
+    (body));
 
   if (err) return ReE(res, err, 422);
 
@@ -269,7 +270,10 @@ const getContentsDetail = async function (req, res) {
     'report': Report,
     'news': News,
     'law': Law,
-    'site': Site
+    'site': Site,
+    'employee': Employee,
+    'employer': Employer,
+    'meeting': Meeting
   }
 
   pageTypes[req.params.page].findOne({
@@ -388,29 +392,6 @@ const getContentsList = async function (req, res) {
 };
 module.exports.getContentsList = getContentsList;
 
-const getSimplesDetail = async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  console.log('req.params: ', req.params);
-
-  const pageTypes = {
-    'employer': Employer,
-    'employee': Employee,
-    'meeting': Meeting
-  }
-
-  pageTypes[req.params.page].findOne({
-    where: {
-      'no': req.params.id
-    }
-  }).then(content => {
-    content.update({
-      'c-click': Sequelize.literal('`c-click` + 1')
-    });
-    return ReS(res, content);
-  });
-}
-module.exports.getSimplesDetail = getSimplesDetail;
-
 const getSimplesList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
@@ -431,14 +412,35 @@ const getSimplesList = async function (req, res) {
     orderArr = [];
   }
 
-  Employer.findAll({
-    offset: id,
-    limit: 8,
-    order: orderArr,
-  }).then(content => {
-    return ReS(res, content);
-  });
-
+  switch (req.params.page) {
+    case 'meeting':
+      Employer.findAll({
+        offset: id,
+        limit: 8,
+        order: orderArr,
+      }).then(content => {
+        return ReS(res, content);
+      });
+      break;
+    case 'employee':
+      break;
+      Employer.findAll({
+        offset: id,
+        limit: 8,
+        order: orderArr,
+      }).then(content => {
+        return ReS(res, content);
+      });
+    case 'employer':
+      Employer.findAll({
+        offset: id,
+        limit: 8,
+        order: orderArr,
+      }).then(content => {
+        return ReS(res, content);
+      });
+      break;
+  }
 }
 module.exports.getSimplesList = getSimplesList;
 

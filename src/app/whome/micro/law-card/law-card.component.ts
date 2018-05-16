@@ -27,14 +27,17 @@ export class LawCardComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.record);
-    switch (this.record['file'].split('.')[1]) {
-      case 'jpg':
-      case 'png':
-      case 'jpeg':
-      case 'gif':
-        this.imageUrl = environment.bucket.downloadUrl + this.record['file'];
-      break;
+    if (this.record['file']) {
+      switch (this.record['file'].split('.')[1]) {
+        case 'jpg':
+        case 'png':
+        case 'jpeg':
+        case 'gif':
+          this.imageUrl = environment.bucket.downloadUrl + this.record['file'];
+          break;
+      }
     }
+
     this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
   }
 

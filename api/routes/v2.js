@@ -83,10 +83,12 @@ router.get('/contents/comments/:cid', ContentController.getComments);
 // For Infos and Sites
 router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);
 router.get('/contents/:page/:list', ContentController.getContentsList);
-router.get('/detail/:page/:id', ContentController.getContentsDetail);
 
 // For Employee/Employer and Meeting
 router.get('/simples/:page/:sort/:id', ContentController.getSimplesList)
+
+// Detailed View
+router.get('/detail/:page/:id', ContentController.getContentsDetail);
 
 
 // for (const contents in rankingList) {

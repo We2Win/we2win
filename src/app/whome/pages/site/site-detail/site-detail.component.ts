@@ -88,7 +88,7 @@ export class SiteDetailComponent implements OnInit {
           console.log(this.Data);
           if (this.Data['current-duration1'] || this.Data['around-duration1']) {
             this.showCharts = true;
-            // this.addChart();
+            this.addChart();
           } else {
             this.showCharts = false;
           }
@@ -164,7 +164,7 @@ export class SiteDetailComponent implements OnInit {
         ]
       }]
     };
-    console.log(this.mypostDirective);
+    // console.log(this.mypostDirective);
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
       new PostItem(ChartComponent, current));
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,

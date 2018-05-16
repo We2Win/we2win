@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'report': {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     'map': {
