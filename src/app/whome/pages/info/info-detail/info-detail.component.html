@@ -65,12 +65,12 @@
       </label>
       <article class="comments">
         <div class="row" *ngIf="comments.length > 0">
-          <label>{{comments[0]['commenter-id']}}</label>
+          <label>{{comments[0]['u-id']}}</label>
           <p>{{comments[0]['contents']}}</p>
           <span>{{comments[0]['createdAt'].slice(0,10)}}</span>
         </div>
         <div class="row" *ngIf="comments.length > 1">
-          <label>{{comments[1]['commenter-id']}}</label>
+          <label>{{comments[1]['u-id']}}</label>
           <p>{{comments[1]['contents']}}</p>
           <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
         </div>
@@ -91,7 +91,7 @@
         <span>{{comment['createdAt'].slice(0,10)}}</span>
       </div>
     </app-popup>
-    
+
     <article>
       <div class="row">
         <label>관련 분양 리포트</label>

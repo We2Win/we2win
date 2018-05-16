@@ -113,7 +113,7 @@ const getComments = async function (req, res) {
 
   Comment.findAll({
     order: [
-      ['createdAt', 'DESC']
+      ['createdAt', 'ASC']
     ],
     where: {
       'c-id': req.params.cid 
