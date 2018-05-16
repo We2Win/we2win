@@ -82,7 +82,7 @@ export class InfoMainComponent implements OnInit {
     const container = this.rankingpost1Directive.viewContainerRef;
     container.clear();
     // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
-    this.getContentsListNewly(page);
+    this.getContentsListNewly(this.sortType, page);
   }
 
   sort(type) {

@@ -292,9 +292,28 @@ module.exports.getList = getList;
 //   };
 // module.exports.getList = getList;
 
+const getContentsDetail = async function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  console.log('req.params: ', req.params);
+
+  const pageTypes = {
+    'report': Report,
+    'news': News,
+    'Law': Law,
+    'site': Site
+  }
+
+  pageTypes[req.params.page].findOne({
+    where: {
+      'no': req.params.id
+    }
+  }).then(content => {
+    return ReS(res, content);
+  });
+}
+
 const getContentsList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-
   console.log('req.params: ', req.params);
   const id = (req.params.id - 1) * 8 || 0;
 

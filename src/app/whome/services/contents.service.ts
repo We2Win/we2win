@@ -9,12 +9,17 @@ export class ContentsService {
   ) { }
 
   getContentsList(page, list, sort, id?: any) {
-    return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (page || '1'))
+    return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'))
       .map((res: any) => res);
   }
 
   getWeeklyList(page) {
     return this.http.get(environment.apiUrl + '/contents/' + page + '/weekly')
+      .map((res: any) => res);
+  }
+
+  getContentsDetail(page, id) {
+    return this.http.get(environment.apiUrl + '/contents/' + page + id)
       .map((res: any) => res);
   }
 

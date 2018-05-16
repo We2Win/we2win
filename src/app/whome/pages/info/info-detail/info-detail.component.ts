@@ -68,20 +68,20 @@ export class InfoDetailComponent implements OnInit {
       this.updateDetail();
     });
     // To get ranking report list.
-    this.contentsService.getContentsList('report').subscribe(
-      data => {
-        if (data) {
-          this.RankingList = data;
-          this.addRankingRecord(this.RankingList);
-        }
-      }
-    );
+    // this.contentsService.getContentsDetail('report').subscribe(
+    //   data => {
+    //     if (data) {
+    //       this.RankingList = data;
+    //       this.addRankingRecord(this.RankingList);
+    //     }
+    //   }
+    // );
 
     this.userInfo = this.auth.getUserInfo();
   }
 
   updateDetail() {
-    this.contentsService.getContentsList('report', this.id).subscribe(
+    this.contentsService.getContentsDetail('report', this.id).subscribe(
       data => {
         if (data) {
           this.Data = data;
