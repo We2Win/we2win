@@ -61,8 +61,10 @@ export class LawCardComponent implements OnInit {
 
   download() {
     if (this.auth.isAuthenticated()) {
-      this.contentsService.getFilePath(this.record['c-id']);
-      window.location.assign(environment.bucket.downloadUrl + this.record['file']);
+      this.contentsService.getFilePath(this.record['c-id']).subscribe(
+        data => {
+          window.location.assign(environment.bucket.downloadUrl + data);
+        });
     } else {
       this.router.navigate(['login']);
     }
