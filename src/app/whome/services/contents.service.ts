@@ -8,8 +8,13 @@ export class ContentsService {
     private http: HttpClient
   ) { }
 
-  getContentsList(page, list, sort, id?:any) {
+  getContentsList(page, list, sort, id?: any) {
     return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (page || '1'))
+      .map((res: any) => res);
+  }
+
+  getWeeklyList(page) {
+    return this.http.get(environment.apiUrl + '/contents/' + page + '/weekly')
       .map((res: any) => res);
   }
 
@@ -22,20 +27,18 @@ export class ContentsService {
     );
   }
 
+
   getComments(postId) {
     return this.http.get(environment.apiUrl + '/contents/comments/' + postId)
       .map((res: any) => res);
   }
 
-  getRecentReportList() {
-    return this.http.get(environment.apiUrl + '/contents/recentReport')
-      .map((res: any) => res);
-  }
+  // getRecentReportList() {
+  //   return this.http.get(environment.apiUrl + '/contents/recentReport')
+  //     .map((res: any) => res);
+  // }
 
-  getWeeklyList() {
-    return this.http.get(environment.apiUrl + '/contents/weekly')
-      .map((res: any) => res);
-  }
+
 
   getReportList(id?: any) {
     if (id) {

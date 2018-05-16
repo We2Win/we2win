@@ -80,6 +80,7 @@ const sortArr = [
 ];
 
 router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);
+router.get('/contents/:page/:list', ContentController.getContentsList);
 
 // for (const contents in rankingList) {
 //   let selected = rankingList[contents];

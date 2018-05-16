@@ -17,6 +17,7 @@ import { LawCardComponent } from '../../../micro/law-card/law-card.component';
 
 export class InfoMainComponent implements OnInit {
   WeeklyList: Array<object>;
+  sortType = 'date';
 
   @ViewChild('newlyContainer') newlyContainer;
 
@@ -32,12 +33,12 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getContentsListNewly('info', 'newly', 'date', 1);
-    // this.getContentsListWeekly();
+    this.getContentsListNewly(this.sortType, 1);
+    this.getContentsListWeekly();
   }
 
-  getContentsListNewly(page, list, sort, id) {
-    this.contentsService.getContentsList(page, list, sort, id).subscribe(
+  getContentsListNewly(sort, id?: any) {
+    this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
       data => {
         if (data) {
           console.log('data: ', data);
@@ -57,12 +58,12 @@ export class InfoMainComponent implements OnInit {
   }
 
   getContentsListWeekly() {
-    this.contentsService.getContentsList('info/weekly', 1).subscribe(
+    this.contentsService.getWeeklyList('info').subscribe(
       data => {
         if (data) {
           const list = [];
           data.forEach(content => {
-              list.push(content);
+            list.push(content);
           });
           list.forEach(content => {
             content['createdAt'] = new Date(content['createdAt']);
@@ -76,18 +77,25 @@ export class InfoMainComponent implements OnInit {
     );
   }
 
-  paging(count) {
-    console.log('page: ', count);
+  paging(page) {
+    console.log('page: ', page);
     const container = this.rankingpost1Directive.viewContainerRef;
     container.clear();
     // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
-    this.getContentsListNewly(count);
+    this.getContentsListNewly(page);
   }
 
   sort(type) {
-    switch (type) {
+    const sortName = {
+      '최근순': 'date',
+      '클릭수': 'click',
+      '댓글수': 'reply',
+      '공유횟수': 'sns',
+      '스크랩': 'scrap'
+    };
 
-    }
+    this.sortType = sortName[type];
+    this.getContentsListNewly(this.sortType, 1);
   }
 
   addNewlyRecord(records) {

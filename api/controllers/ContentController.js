@@ -298,8 +298,6 @@ const getContentsList = async function (req, res) {
     console.log('req.params: ', req.params);
     const id = (req.params.id - 1) * 8 || 0;
 
-    console.log('id: ', id);
-
     const pageTypes = {
       'info': {
         'c-type': {
@@ -343,7 +341,9 @@ const getContentsList = async function (req, res) {
     }
 
     const whereArr = pageTypes[req.params.page];
-    const orderArr = [sortTypes[req.params.sort]];
+    if(req.params.sort) {
+      const orderArr = [sortTypes[req.params.sort]];
+    }
 
     switch (req.params.list) {
       case 'newly':
