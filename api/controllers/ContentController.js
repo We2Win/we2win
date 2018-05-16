@@ -335,7 +335,7 @@ const getContentsList = async function (req, res) {
     const sortTypes = {
       'date': ['createdAt', 'DESC'],
       'click': ['c-click', 'DESC'],
-      'reply': ['c-reply', 'DESC'],
+      'reply': ['c-comments', 'DESC'],
       'sns': ['c-sns', 'DESC'],
       'scrap': ['c-scrap', 'DESC']
     }
@@ -367,7 +367,7 @@ const getContentsList = async function (req, res) {
           contentList.push(content1);
           Content.findOne({
             order: [
-              ['c-reply', 'DESC']
+              ['c-comments', 'DESC']
             ],
             where: whereArr
           }).then(content2 => {
