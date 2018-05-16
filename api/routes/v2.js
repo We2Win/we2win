@@ -80,10 +80,13 @@ router.delete('/contents', ContentController.remove);
 router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:cid', ContentController.getComments);
 
+// For Infos and Sites
 router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);
 router.get('/contents/:page/:list', ContentController.getContentsList);
 router.get('/detail/:page/:id', ContentController.getContentsDetail);
 
+// For Employee/Employer and Meeting
+router.ger('/simples/:page/:sort/:id', ContentController.getSimplesList)
 // for (const contents in rankingList) {
 //   let selected = rankingList[contents];
 //   router.get('/contents' + selected, ContentController.getRankingList(selected));

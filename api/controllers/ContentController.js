@@ -116,7 +116,7 @@ const getComments = async function (req, res) {
       ['createdAt', 'ASC']
     ],
     where: {
-      'c-id': req.params.cid 
+      'c-id': req.params.cid
     }
   }).then((content) => {
     return ReS(res, {
@@ -261,7 +261,7 @@ module.exports.getDashBoardData = getDashBoardData;
 //   };
 // module.exports.getList = getList;
 
-const getContentsDetail = async function(req, res) {
+const getContentsDetail = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
 
@@ -277,8 +277,13 @@ const getContentsDetail = async function(req, res) {
       'no': req.params.id
     }
   }).then(content => {
-    content.update({
+    console.log(content['c-id']);
+    Content.update({
       'c-click': Sequelize.literal('`c-click` + 1')
+    }, {
+      where: {
+        'c-id': content['c-id'],
+      }
     });
     return ReS(res, content);
   });
@@ -382,6 +387,72 @@ const getContentsList = async function (req, res) {
   }
 };
 module.exports.getContentsList = getContentsList;
+
+const getSimplesDetail = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  console.log('req.params: ', req.params);
+
+  const pageTypes = {
+    'employer': Employer,
+    'employee': Employee,
+    'meeting': Meeting
+  }
+
+  pageTypes[req.params.page].findOne({
+    where: {
+      'no': req.params.id
+    }
+  }).then(content => {
+    content.update({
+      'c-click': Sequelize.literal('`c-click` + 1')
+    });
+    return ReS(res, content);
+  });
+}
+module.exports.getSimplesDetail = getSimplesDetail;
+
+const getSimplesList = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  console.log('req.params: ', req.params);
+  const id = (req.params.id - 1) * 8 || 0;
+
+  const sortTypes = {
+    'date': ['createdAt', 'DESC'],
+    'click': ['c-click', 'DESC'],
+    'reply': ['c-comments', 'DESC'],
+    'sns': ['c-sns', 'DESC'],
+    'scrap': ['c-scrap', 'DESC']
+  }
+
+  let orderArr;
+  if (req.params.sort) {
+    orderArr = [sortTypes[req.params.sort]];
+  } else {
+    orderArr = [];
+  }
+
+  Employer.findAll({
+    offset: id,
+    limit: 8,
+    order: orderArr,
+  }).then(content => {
+    return ReS(res, content);
+  });
+  break;
+
+  switch (page) {
+    case 'employer':
+      {
+        Employer.findAll({
+          offset: id,
+
+        })
+      }
+  }
+
+}
+module.exports.getSimplesList = getSimplesList;
+
 // const getRankingList = (name) =>
 //   async function (req, res) {
 //     res.setHeader('Content-Type', 'application/json');

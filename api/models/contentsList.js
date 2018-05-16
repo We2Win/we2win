@@ -31,6 +31,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(10),
             defaultValue: ''
         },
+        'open-start': {
+            type: DataTypes.DATE,
+        },
+        'open-end': {
+            type: DataTypes.DATE,
+        },
+        'ammount': {
+            type: DataTypes.INTEGER(15),
+        },
         'master-image': {
             type: DataTypes.STRING,
         },
