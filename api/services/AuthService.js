@@ -37,7 +37,7 @@ const createContent = async function (data) {
     // console.log('data.type: ', data.type);
     // console.log('data.body: ', JSON.stringify(data.body));
 
-    const toIndexData = (data) => {
+    const toIndexData = async (data) => {
         const indexData = {
             'c-id': content['c-id'],
             'c-type': data.type,
