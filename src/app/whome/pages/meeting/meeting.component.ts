@@ -27,7 +27,7 @@ export class MeetingComponent implements OnInit {
   ngOnInit() {
     this.getSimplesListNewly(this.sortType, 1);
   }
-  
+
   getSimplesListNewly(sort, id?: any) {
     this.contentsService.getSimplesList('meeting', 'date', 1).subscribe(
       data => {

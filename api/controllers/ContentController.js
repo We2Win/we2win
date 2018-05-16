@@ -423,7 +423,7 @@ const getSimplesList = async function (req, res) {
 
   switch (req.params.page) {
     case 'meeting':
-      Employer.findAll({
+      Meeting.findAll({
         offset: id,
         limit: 8,
         order: orderArr,
@@ -433,7 +433,7 @@ const getSimplesList = async function (req, res) {
       break;
     case 'employee':
       break;
-      Employer.findAll({
+      Employee.findAll({
         offset: id,
         limit: 8,
         order: orderArr,
