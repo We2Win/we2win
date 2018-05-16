@@ -387,6 +387,16 @@ const getContentsList = async function (req, res) {
         })
       });
       break;
+    case 'reporter':
+      Content.findAll({
+        offset: id,
+        limit: 4,
+        order: orderArr,
+        where: whereArr
+      }).then(content => {
+        return ReS(res, content);
+      });
+      break;
   }
 };
 module.exports.getContentsList = getContentsList;

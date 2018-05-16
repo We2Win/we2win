@@ -3,6 +3,7 @@ import { ContentsService } from '../../../services/contents.service';
 import { PostingService } from '../../../services/posting.service';
 import { PostItem } from '../../../models/post-item';
 import { SiteCardComponent } from '../../../micro/site-card/site-card.component';
+import { InfoCardComponent } from '../../../micro/info-card/info-card.component';
 import { Rankingpost1Directive, Rankingpost2Directive, Rankingpost3Directive } from '../../../directives/rankingpost.directive';
 
 @Component({
@@ -13,8 +14,8 @@ import { Rankingpost1Directive, Rankingpost2Directive, Rankingpost3Directive } f
 })
 export class SiteMainComponent implements OnInit {
   NewlyList: Array<object>;
+  ReportList: Array<object>;
   WeeklyList: Array<object>;
-  List: Array<object>;
 
   @ViewChild(Rankingpost1Directive)
   private rankingpost1Directive: Rankingpost1Directive;
@@ -37,20 +38,29 @@ export class SiteMainComponent implements OnInit {
           console.log('Newly List: ', data);
           this.NewlyList = data;
           this.addNewlyRecord(this.NewlyList);
-          // this.addSampleRecord(this.NewlyList);
         }
       }
     );
 
-    // this.contentsService.getContentsList('site/weekly', 1).subscribe(
-    //   data => {
-    //     if (data) {
-    //       console.log('Weekly List: ', data);
-    //       this.WeeklyList = data;
-    //       this.addWeeklyRecord(this.WeeklyList);
-    //     }
-    //   }
-    // );
+    this.contentsService.getContentsList('report', 'reporter', 'date', 1).subscribe(
+      data => {
+        if (data) {
+          console.log('Report List: ', data);
+          this.ReportList = data;
+          this.addReporterRecord(this.ReportList);
+        }
+      }
+    );
+
+    this.contentsService.getContentsList('site', 'weekly', 'date', 1).subscribe(
+      data => {
+        if (data) {
+          console.log('Weekly List: ', data);
+          this.WeeklyList = data;
+          this.addWeeklyRecord(this.WeeklyList);
+        }
+      }
+    );
   }
 
   addNewlyRecord(records) {
@@ -62,15 +72,15 @@ export class SiteMainComponent implements OnInit {
     }
   }
 
-  addSampleRecord(records) {
+  addReporterRecord(records) {
     this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-      new PostItem(SiteCardComponent, records[0]));
+      new PostItem(InfoCardComponent, records[0]));
     this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-      new PostItem(SiteCardComponent, records[1]));
+      new PostItem(InfoCardComponent, records[1]));
     this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-      new PostItem(SiteCardComponent, records[2]));
+      new PostItem(InfoCardComponent, records[2]));
     this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-      new PostItem(SiteCardComponent, records[3]));
+      new PostItem(InfoCardComponent, records[3]));
   }
 
   addWeeklyRecord(records) {
