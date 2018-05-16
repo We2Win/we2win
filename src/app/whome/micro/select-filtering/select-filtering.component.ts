@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
@@ -7,10 +7,13 @@ import { ElementRef, Renderer2 } from '@angular/core';
   styleUrls: ['./select-filtering.component.css']
 })
 export class SelectFilteringComponent implements OnInit {
-  type: Array<String> = ['클릭수', '댓글수', '공유횟수', '스크랩'];
-  selected: String = this.type[0];
+  type: Array<string> = ['최근순', '클릭수', '댓글수', '공유횟수', '스크랩'];
+  selected: string = this.type[0];
   divHover: Boolean = false;
   ulHover: Boolean = false;
+
+  @Output()
+  sorter: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private _elementRef: ElementRef) { }
 
@@ -33,6 +36,7 @@ export class SelectFilteringComponent implements OnInit {
   selectValue(ev) {
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
+      this.sorter.emit(this.selected);
     }
     this.hideUl(false);
   }

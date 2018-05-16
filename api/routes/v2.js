@@ -58,18 +58,36 @@ router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:postId', ContentController.getComments);
 
 const rankingList = [
-  'info/weekly',
-  'info/newly',
-  'info/report',
-  'info/news',
-  'info/law',
-  'site/weekly',
-  'site/newly'
+  '/info/weekly',
+  '/info/newly',
+  '/report/newly',
+  '/news/newly',
+  '/law/newly',
+  '/site/weekly',
+  '/site/newly',
+  '/apartment/newly',
+  '/officetel/newly',
+  '/commercial/newly',
+  '/ground/newly',
 ];
+
+const sortArr = [
+  '/date',
+  '/click',
+  '/reply',
+  '/sns',
+  '/scrap'
+];
+
 for (const contents in rankingList) {
   let selected = rankingList[contents];
-  router.get('/contents/' + selected, ContentController.getRankingList(selected));
-  router.get('/contents/' + selected + '/:id', ContentController.getRankingList(selected));
+  router.get('/contents' + selected, ContentController.getRankingList(selected));
+  // router.get('/contents' + selected + '/:id', ContentController.getRankingList(selected));
+
+  for (const sortType in sortArr) {
+    let type = sortArr[sortType];
+    router.get('/contents' + selected + type + '/:id', ContentController.getRankingList(selected));
+  }
 }
 // router.get('/contents/info/weekly/:id', ContentController.getRankingList('infoWeekly'));
 // router.get('/contents/info/newly/:id', ContentController.getRankingList('infoNewly'));

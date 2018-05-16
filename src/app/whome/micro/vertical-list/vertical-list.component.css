@@ -32,6 +32,7 @@ app-select-filtering {
 
 .contents {
   width: 940px;
+  height: 583px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;

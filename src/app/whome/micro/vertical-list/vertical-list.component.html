@@ -1,6 +1,6 @@
 <section [ngClass]="{'bunyang': isBunyang}">
   <div>
-    <app-select-filtering></app-select-filtering>
+    <app-select-filtering (sorter)="sort($event)"></app-select-filtering>
     <h1>{{ toptitle }}</h1>
   </div>
   <div class="contentsBox">

@@ -296,124 +296,94 @@ const getRankingList = (name) =>
   async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
+    const route = name.split('/');
     const id = (req.params.id - 1) * 8 || 0;
-    let contentList = [];
 
     console.log('id: ', id);
-    switch (name) {
-      case 'info/newly':
+
+    const pageTypes = {
+      'info': {
+        'c-type': {
+          [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']
+        }
+      },
+      'site': {
+        's-type': {
+          [Sequelize.Op.or]: ['아파트', '오피스텔', '상가/호텔', '토지']
+        }
+      },
+      'report': {
+        'c-type': '리포트'
+      },
+      'news': {
+        'c-type': '부동산 뉴스'
+      },
+      'law': {
+        'c-type': '법률 및 정책'
+      },
+      'apartment': {
+        's-type': '아파트'
+      },
+      'officetel': {
+        's-type': '오피스텔'
+      },
+      'commercial': {
+        's-type': '상가/호텔'
+      },
+      'ground': {
+        's-type': '토지'
+      }
+    }
+
+    const sortTypes = {
+      '/date': ['createdAt', 'DESC'],
+      '/click': ['c-click', 'DESC'],
+      '/reply': ['c-reply', 'DESC'],
+      '/sns': ['c-sns', 'DESC'],
+      '/scrap': ['c-scrap', 'DESC']
+    }
+
+    const whereArr = pageTypes[route[0]];
+    const orderArr = [sortTypes[route[2]]];
+
+    switch (route[1]) {
+      case 'newly': 
         Content.findAll({
-            offset: id,
-            limit: 8,
+          offset: id,
+          limit: 8,
+          order: orderArr,
+          where: whereArr
+        }).then(content => {
+          return ReS(res, content);
+        });
+      break;
+      case 'weekly':
+        let contentList = [];
+        Content.findOne({
+          order: [
+            ['c-click', 'DESC']
+          ],
+          where: whereArr
+        }).then(content1 => {
+          contentList.push(content1);
+          Content.findOne({
             order: [
-              ['createdAt', 'DESC']
+              ['c-reply', 'DESC']
             ],
-            where: {
-              'c-type': {
-                [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']
-              }
-            }
+            where: whereArr
+          }).then(content2 => {
+            contentList.push(content2);
+            Content.findOne({
+              order: [
+                ['c-sns', 'DESC']
+              ]
+            }).then(content3 => {
+              contentList.push(content3);
+              return ReS(res, contentList);
+            })
           })
-          .then((content) => {
-            return ReS(res, content);
-          });
-        break;
-      case 'info/weekly':
-        Content.findAll({
-            offset: id,
-            limit: 3,
-            order: [
-              ['c-click', 'DESC']
-            ],
-            where: {
-              'c-type': {
-                [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']
-              }
-            }
-          })
-          .then((content) => {
-            return ReS(res, content);
-          });
-        break;
-      case 'info/report':
-        Content.findAll({
-            offset: id,
-            limit: 8,
-            order: [
-              ['c-click', 'DESC']
-            ],
-            where: {
-              'c-type': '리포트'
-            }
-          })
-          .then((content) => {
-            return ReS(res, content);
-          });
-        break;
-      case 'info/news':
-        Content.findAll({
-            offset: id,
-            limit: 8,
-            order: [
-              ['c-click', 'DESC']
-            ],
-            where: {
-              'c-type': '부동산 뉴스'
-            }
-          })
-          .then((content) => {
-            return ReS(res, content);
-          });
-        break;
-      case 'info/law':
-        Content.findAll({
-            offset: id,
-            limit: 8,
-            order: [
-              ['c-click', 'DESC']
-            ],
-            where: {
-              'c-type': '법률 및 정책'
-            }
-          })
-          .then((content) => {
-            return ReS(res, content);
-          });
-        break;
-      case 'site/newly':
-        Content.findAll({
-            offset: id,
-            limit: 8,
-            order: [
-              ['c-click', 'DESC']
-            ],
-            where: {
-              's-type': {
-                [Sequelize.Op.or]: ['아파트', '오피스텔', '상가/호텔', '토지']
-              }
-            }
-          })
-          .then((content) => {
-            return ReS(res, content);
-          });
-        break;
-      case 'site/weekly':
-        Content.findAll({
-            offset: id,
-            limit: 8,
-            order: [
-              ['c-click', 'DESC']
-            ],
-            where: {
-              's-type': {
-                [Sequelize.Op.or]: ['아파트', '오피스텔', '상가/호텔', '토지']
-              }
-            }
-          })
-          .then((content) => {
-            return ReS(res, content);
-          });
-        break;
+        });
+      break;
     }
   };
 module.exports.getRankingList = getRankingList;

@@ -10,13 +10,15 @@ export class VerticalListComponent implements OnInit, OnChanges {
   isBunyang = false;
 
   @Input() toptitle = '무제';
-  @Input() maxCount;
   @ViewChild('contents') contents;
 
   @Output()
   change: EventEmitter<number> = new EventEmitter<number>();
 
-  count = 0;
+  @Output()
+  sorter: EventEmitter<string> = new EventEmitter<string>();
+
+  count = 1;
 
   constructor(
   ) {
@@ -30,15 +32,20 @@ export class VerticalListComponent implements OnInit, OnChanges {
   }
 
   increment() {
-    this.count = (this.count + 1) % this.maxCount;
+    console.log('count in vertical-list: ', this.count);
+    this.count = (this.count + 1);
     this.change.emit(this.count);
     // console.log(this.contents.nativeElement.innerHTML);
     // this.contents.nativeElement.innerHTML = '';
   }
 
   decrement() {
-    this.count = (this.count + this.maxCount - 1) % this.maxCount;
+    this.count = (this.count - 1);
     this.change.emit(this.count);
+  }
+
+  sort(event) {
+    this.sorter.emit(event);
   }
 
   ngOnChanges() {

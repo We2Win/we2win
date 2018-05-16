@@ -16,10 +16,8 @@ import { LawCardComponent } from '../../../micro/law-card/law-card.component';
 })
 
 export class InfoMainComponent implements OnInit {
-  NewlyList: Array<object>;
   WeeklyList: Array<object>;
 
-  newlyPageNum;
   @ViewChild('newlyContainer') newlyContainer;
 
   @ViewChild(Rankingpost1Directive)
@@ -52,21 +50,7 @@ export class InfoMainComponent implements OnInit {
             content['updatedAt'] = new Date(content['createdAt']);
           });
 
-          // const compare = (a, b) => {
-          //   if (a.updatedAt < b.updatedAt) {
-          //     return -1;
-          //   }
-          //   if (a.updatedAt > b.updatedAt) {
-          //     return 1;
-          //   }
-          //   return 0;
-          // };
-
-          // list.sort(compare);
-          console.log('Newly List: ', list);
-          this.NewlyList = list;
-          this.newlyPageNum = parseInt((this.NewlyList.length - 1) / 8 + 1 + '', 10);
-          this.addNewlyRecord(this.NewlyList);
+          this.addNewlyRecord(list);
         }
       }
     );
@@ -93,7 +77,7 @@ export class InfoMainComponent implements OnInit {
   }
 
   paging(count) {
-    // console.log(count);
+    console.log('page: ', count);
     const container = this.rankingpost1Directive.viewContainerRef;
     container.clear();
     // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
