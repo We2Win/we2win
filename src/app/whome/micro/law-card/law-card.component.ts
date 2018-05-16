@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
-import { Info } from '../../models/info';
 import { Card } from '../../models/card';
 import { FbShareService } from '../../services/fb-share.service';
 import { environment } from '../../../../environments/environment';
@@ -52,7 +51,7 @@ export class LawCardComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/info/report' + this.record['id']);
+    this.fbShareService.share(environment.homeUrl + '//report' + this.record['id']);
   }
 
   download() {

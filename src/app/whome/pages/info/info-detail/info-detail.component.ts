@@ -6,7 +6,7 @@ import { PostingService } from '../../../services/posting.service';
 import { RankingpostDirective } from '../../../directives/rankingpost.directive';
 import { MypostDirective } from '../../../directives/mypost.directive';
 import { PostItem } from '../../../models/post-item';
-import { Info } from '../../../models/info';
+import { Report } from '../../../models/report';
 import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
@@ -20,7 +20,7 @@ import { InfoCardComponent } from '../../../micro/info-card/info-card.component'
   providers: [ContentsService, PostingService, AuthService]
 })
 export class InfoDetailComponent implements OnInit {
-  Data = new Info();
+  Data = new Report();
   id: number;
   imgUrl;
   subImgUrl = ['', '', '', '', ''];
@@ -85,13 +85,13 @@ export class InfoDetailComponent implements OnInit {
       data => {
         if (data) {
           this.Data = data;
-          // console.log(this.Data);
-          // if (this.Data['current-duration1'] || this.Data['around-duration1']) {
-          //   this.showCharts = true;
-          //   this.addChart();
-          // } else {
+          console.log('this.Data: ', this.Data);
+          if (this.Data['current-duration1'] || this.Data['around-duration1']) {
+            this.showCharts = true;
+            this.addChart();
+          } else {
             this.showCharts = false;
-          // }
+          }
 
           this.imgUrl = environment.bucket.downloadUrl + this.Data['master-image'];
           this.subImgUrl[1] = environment.bucket.downloadUrl + this.Data['slave-image1'];
@@ -164,7 +164,7 @@ export class InfoDetailComponent implements OnInit {
         ]
       }]
     };
-    // console.log(this.mypostDirective);
+    console.log(this.mypostDirective);
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
       new PostItem(ChartComponent, current));
     this.postingService.loadComponent(this.mypostDirective.viewContainerRef,

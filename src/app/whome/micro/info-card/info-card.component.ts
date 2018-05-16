@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
-import { Info } from '../../models/info';
 import { Card } from '../../models/card';
 import { environment } from '../../../../environments/environment';
 import { FbShareService } from '../../services/fb-share.service';

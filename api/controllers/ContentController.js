@@ -296,10 +296,10 @@ const getRankingList = (name) =>
   async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    const id = (req.params.id - 1) || 0;
+    const id = (req.params.id - 1) * 8 || 0;
     let contentList = [];
 
-    console.log(id);
+    console.log('id: ', id);
     switch (name) {
       case 'info/newly':
         Content.findAll({

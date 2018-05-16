@@ -75,6 +75,7 @@ const createContent = async function (data) {
         'c-type': data.type,
         'title': data.body['title'],
         'master-image': data.body['master-image'],
+        
         's-type': data.body['s-type']
     }
     console.log('indexData: ', indexData);

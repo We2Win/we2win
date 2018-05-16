@@ -1,6 +1,5 @@
 import { Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Info } from '../models/info';
 import { Headers, RequestOptions, Response } from '@angular/http';
 // yimport { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
