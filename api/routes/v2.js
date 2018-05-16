@@ -76,12 +76,13 @@ router.delete('/contents', ContentController.remove);
 //   '/scrap'
 // ];
 
-router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);
-router.get('/contents/:page/:list', ContentController.getContentsList);
-router.get('/detail/:page/:id', ContentController.getContentsDetail);
 
 router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:cid', ContentController.getComments);
+
+router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);
+router.get('/contents/:page/:list', ContentController.getContentsList);
+router.get('/detail/:page/:id', ContentController.getContentsDetail);
 
 // for (const contents in rankingList) {
 //   let selected = rankingList[contents];
