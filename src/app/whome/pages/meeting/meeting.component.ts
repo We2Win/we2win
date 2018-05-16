@@ -27,7 +27,7 @@ export class MeetingComponent implements OnInit {
     this.contentsService.getSimplesList('meeting', 'date', 1).subscribe(
       data => {
         if (data) {
-          // console.log(data);
+          console.log(data);
           this.Data = data;
           this.addRecord(this.Data);
         }

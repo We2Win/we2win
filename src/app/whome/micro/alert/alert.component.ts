@@ -15,9 +15,9 @@ export class AlertComponent implements OnInit {
   constructor(private alertService: AlertService) { }
 
   ngOnInit() {
-    console.log('alert component started.');
+    // console.log('alert component started.');
     this.alertService.getAlert().subscribe((alert: Alert) => {
-      console.log('alerts: ', alert);
+      // console.log('alerts: ', alert);
 
       if (!alert) {
         // clear alerts when an empty alert is received
