@@ -79,7 +79,7 @@ const sortArr = [
   '/scrap'
 ];
 
-router.get('/contents/:page/:list/:sort/:id', ContentController.getRankingList);
+router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);
 
 // for (const contents in rankingList) {
 //   let selected = rankingList[contents];

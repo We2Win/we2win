@@ -32,12 +32,12 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getContentsListNewly('date', 1);
+    this.getContentsListNewly('info', 'newly', 'date', 1);
     // this.getContentsListWeekly();
   }
 
-  getContentsListNewly(sort, page) {
-    this.contentsService.getContentsList('info/newly', sort, page).subscribe(
+  getContentsListNewly(page, list, sort, id) {
+    this.contentsService.getContentsList(page, list, sort, id).subscribe(
       data => {
         if (data) {
           console.log('data: ', data);

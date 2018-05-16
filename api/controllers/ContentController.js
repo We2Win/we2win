@@ -292,7 +292,7 @@ module.exports.getList = getList;
 //   };
 // module.exports.getList = getList;
 
-const getRankingList = async function (req, res) {
+const getContentsList = async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     console.log('req.params: ', req.params);
@@ -385,7 +385,7 @@ const getRankingList = async function (req, res) {
         break;
     }
   };
-module.exports.getRankingList = getRankingList;
+module.exports.getContentsList = getContentsList;
 // const getRankingList = (name) =>
 //   async function (req, res) {
 //     res.setHeader('Content-Type', 'application/json');
