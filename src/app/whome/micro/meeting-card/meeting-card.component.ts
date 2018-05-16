@@ -18,7 +18,7 @@ export class MeetingCardComponent implements OnInit {
 
   ngOnInit() {
     this._elementRef.nativeElement.classList.add('platinum');
-
+ 
   }
 
   bookmark() {

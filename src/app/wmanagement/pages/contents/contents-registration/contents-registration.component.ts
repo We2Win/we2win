@@ -277,7 +277,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
       'summary': new FormControl('', [Validators.required]),
-      // 'image': new FormControl('', [Validators.required]),
+      'master-image': new FormControl('', [Validators.required]),
       'host': new FormControl('', [Validators.required]),
       'apply-start': new FormControl('', [Validators.required]),
       'apply-end': new FormControl('', [Validators.required]),

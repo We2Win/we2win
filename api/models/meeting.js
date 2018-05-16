@@ -30,6 +30,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    'master-image': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    'host': {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     'apply-start': {
       type: DataTypes.DATE,
       allowNull: false

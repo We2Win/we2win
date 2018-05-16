@@ -23,11 +23,11 @@ export class EmployerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('employer', 'newly', 'date', 1).subscribe(
+    this.contentsService.getSimplesList('employer', 'date', 1).subscribe(
       data => {
         if (data) {
-          // console.log(data);
-          this.Data = data;
+          console.log('data: ', data);
+           this.Data = data;
           this.addRecord(this.Data);
         }
       }
