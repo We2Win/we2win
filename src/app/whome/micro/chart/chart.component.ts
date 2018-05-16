@@ -67,9 +67,31 @@ export class ChartComponent implements OnInit {
         type: 'bar',
         data: {
           datasets: [{
+            data: [0, 0, 0, 0, 0],
+          }],
+          labels: ['', '', '', '', ''],
+        },
+        options: this.optionB,
+      },
+      {
+        type: 'bar',
+        data: {
+          datasets: [{
             data: [9, 9.4, 10, 11, 11.4],
           }],
           labels: ['40평형', '45평형', '50평형', '60평형', '70평형'],
+        },
+        options: this.optionB,
+      }
+    ],
+    siteDetail: [
+      {
+        type: 'bar',
+        data: {
+          datasets: [{
+            data: [0, 0, 0, 0, 0],
+          }],
+          labels: ['', '', '', '', ''],
         },
         options: this.optionB,
       },

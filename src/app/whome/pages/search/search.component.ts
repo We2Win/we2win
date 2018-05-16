@@ -25,15 +25,15 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getNewsList().subscribe(
-      data => {
-        if (data.list) {
-          // console.log(data);
-          this.List = JSON.parse(data.list);
-          this.addRecord(this.List);
-        }
-      }
-    );
+    // this.contentsService.getNewsList().subscribe(
+    //   data => {
+    //     if (data.list) {
+    //       // console.log(data);
+    //       this.List = JSON.parse(data.list);
+    //       this.addRecord(this.List);
+    //     }
+    //   }
+    // );
   }
 
   addRecord(records) {

@@ -68,7 +68,7 @@ export class InfoDetailComponent implements OnInit {
       this.updateDetail();
     });
     // To get ranking report list.
-    this.contentsService.getWeeklyList('report').subscribe(
+    this.contentsService.getWeeklyList('info').subscribe(
       data => {
         if (data) {
           this.RankingList = data;
@@ -107,9 +107,7 @@ export class InfoDetailComponent implements OnInit {
           this.meta.addTag({ name: 'og:description', content: this.Data['summary'] });
           this.meta.addTag({ name: 'og:image', content: this.imgUrl });
 
-          console.log('aaa');
           this.getComments();
-          console.log('aaa');
         }
       }
     );
@@ -166,10 +164,11 @@ export class InfoDetailComponent implements OnInit {
         ]
       }]
     };
-    // console.log(this.mypostDirective);
-    this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+    const container = this.mypostDirective.viewContainerRef;
+    container.clear();
+    this.postingService.loadComponent(container,
       new PostItem(ChartComponent, current));
-    this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+    this.postingService.loadComponent(container,
       new PostItem(ChartComponent, around));
   }
 

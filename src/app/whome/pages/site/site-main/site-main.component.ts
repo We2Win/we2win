@@ -17,6 +17,9 @@ export class SiteMainComponent implements OnInit {
   ReportList: Array<object>;
   WeeklyList: Array<object>;
 
+  sortType1 = 'date';
+  sortType2 = 'date';
+
   @ViewChild(Rankingpost1Directive)
   private rankingpost1Directive: Rankingpost1Directive;
 
@@ -32,7 +35,12 @@ export class SiteMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('site', 'newly', 'date', 1).subscribe(
+    this.getContentsListNewly(this.sortType1, 1);
+    this.getContentsListReporter(this.sortType2, 1);
+    this.getContentsListWeekly();
+  }
+  getContentsListNewly(sort, id?: any) {
+    this.contentsService.getContentsList('site', 'newly', sort, id).subscribe(
       data => {
         if (data) {
           console.log('Newly List: ', data);
@@ -41,8 +49,9 @@ export class SiteMainComponent implements OnInit {
         }
       }
     );
-
-    this.contentsService.getContentsList('report', 'reporter', 'date', 1).subscribe(
+  }
+  getContentsListReporter(sort, id?: any) {
+    this.contentsService.getContentsList('report', 'reporter', sort, id).subscribe(
       data => {
         if (data) {
           console.log('Report List: ', data);
@@ -51,8 +60,9 @@ export class SiteMainComponent implements OnInit {
         }
       }
     );
-
-    this.contentsService.getContentsList('site', 'weekly', 'date', 1).subscribe(
+  }
+  getContentsListWeekly() {
+    this.contentsService.getWeeklyList('site').subscribe(
       data => {
         if (data) {
           console.log('Weekly List: ', data);
@@ -61,6 +71,52 @@ export class SiteMainComponent implements OnInit {
         }
       }
     );
+  }
+
+  paging1(page) {
+    console.log('page: ', page);
+    const container = this.rankingpost1Directive.viewContainerRef;
+    container.clear();
+    // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
+    this.getContentsListNewly(this.sortType1, page);
+  }
+  paging2(page) {
+    console.log('page: ', page);
+    const container = this.rankingpost1Directive.viewContainerRef;
+    container.clear();
+    // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
+    this.getContentsListReporter(this.sortType2, page);
+  }
+
+  sort1(type) {
+    const sortName = {
+      '최근순': 'date',
+      '클릭수': 'click',
+      '댓글수': 'reply',
+      '공유횟수': 'sns',
+      '스크랩': 'scrap'
+    };
+
+    this.sortType1 = sortName[type];
+
+    const container = this.rankingpost1Directive.viewContainerRef;
+    container.clear();
+    this.getContentsListNewly(this.sortType1, 1);
+  }
+  sort2(type) {
+    const sortName = {
+      '최근순': 'date',
+      '클릭수': 'click',
+      '댓글수': 'reply',
+      '공유횟수': 'sns',
+      '스크랩': 'scrap'
+    };
+
+    this.sortType2 = sortName[type];
+
+    const container = this.rankingpost1Directive.viewContainerRef;
+    container.clear();
+    this.getContentsListReporter(this.sortType2, 1);
   }
 
   addNewlyRecord(records) {

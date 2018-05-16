@@ -14,6 +14,7 @@ import { MypostDirective } from '../../directives/mypost.directive';
 
 export class MeetingComponent implements OnInit {
   Data: Array<object>;
+  sortType = 'date';
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -24,6 +25,10 @@ export class MeetingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getSimplesListNewly(this.sortType, 1);
+  }
+  
+  getSimplesListNewly(sort, id?: any) {
     this.contentsService.getSimplesList('meeting', 'date', 1).subscribe(
       data => {
         if (data) {

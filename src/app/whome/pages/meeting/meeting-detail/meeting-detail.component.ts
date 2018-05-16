@@ -11,7 +11,7 @@ import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../models/user';
-import { SiteCardComponent } from '../../../micro/site-card/site-card.component';
+import { MeetingCardComponent } from '../../../micro/meeting-card/meeting-card.component';
 
 @Component({
   selector: 'app-meeting-detail',
@@ -86,13 +86,13 @@ export class MeetingDetailComponent implements OnInit {
           this.Data = data;
           console.log(this.Data);
 
-          this.imgUrl = environment.bucket.downloadUrl + this.Data['M-image'];
+          this.imgUrl = environment.bucket.downloadUrl + this.Data['master-image'];
 
           console.log('data: ', this.Data);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
-          this.meta.addTag({ name: 'og:title', content: this.Data['M-title'] });
-          this.meta.addTag({ name: 'og:description', content: this.Data['M-summary'] });
+          this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
+          this.meta.addTag({ name: 'og:description', content: this.Data['summary'] });
           this.meta.addTag({ name: 'og:image', content: this.imgUrl });
 
           this.getComments();
@@ -148,7 +148,7 @@ export class MeetingDetailComponent implements OnInit {
         records[num]['rank'] = count[num];
         // console.log('record: ', records[record]);
         this.postingService.loadComponent(this.rankingpostDirective.viewContainerRef,
-          new PostItem(SiteCardComponent, records[num]));
+          new PostItem(MeetingCardComponent, records[num]));
       }
     }
   }

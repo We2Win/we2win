@@ -164,27 +164,34 @@ export class SiteDetailComponent implements OnInit {
         ]
       }]
     };
-    // console.log(this.mypostDirective);
-    this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+    const container = this.mypostDirective.viewContainerRef;
+    container.clear();
+    this.postingService.loadComponent(container,
       new PostItem(ChartComponent, current));
-    this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+    this.postingService.loadComponent(container,
       new PostItem(ChartComponent, around));
   }
 
   addComment() {
     const body = {
-      'post-id': this.Data['post-id'],
-      'commenter-id': this.userInfo['user_id'],
+      'c-id': this.Data['c-id'],
+      'u-id': this.userInfo['user_id'],
+      'date': new Date().toISOString(),
       'contents': this.NewComment.nativeElement.value
     };
-    console.log(body);
+    console.log('comment body: ', body);
     if (!body.contents) {
       alert('댓글 내용이 없습니다.');
     } else {
       this.contentsService.addComments(body);
 
       // refresh current page
-      const currentUrl = this.router.url + '#commentBox';
+      let currentUrl;
+      if (!this.router.url.split('#')[1]) {
+        currentUrl = this.router.url + '#commentBox';
+      } else {
+        currentUrl = this.router.url;
+      }
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
         this.router.navigateByUrl(currentUrl));
     }
@@ -192,11 +199,12 @@ export class SiteDetailComponent implements OnInit {
   }
 
   getComments() {
-    this.contentsService.getComments(this.Data['post-id']).subscribe(
+    this.contentsService.getComments(this.Data['c-id']).subscribe(
       data => {
+        // console.log('data: ', data);
         if (data.content[0]) {
           this.comments = data.content;
-          // console.log(this.comments);
+          console.log('this.comments: ', this.comments);
         }
       }
     );

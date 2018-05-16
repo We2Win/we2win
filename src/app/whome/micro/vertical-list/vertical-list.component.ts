@@ -32,7 +32,7 @@ export class VerticalListComponent implements OnInit, OnChanges {
   }
 
   increment() {
-    console.log('count in vertical-list: ', this.count);
+    // console.log('count in vertical-list: ', this.count);
     this.count = (this.count + 1);
     this.change.emit(this.count);
     // console.log(this.contents.nativeElement.innerHTML);

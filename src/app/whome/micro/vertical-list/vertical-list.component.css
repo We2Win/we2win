@@ -16,6 +16,7 @@ section {
 
 section>.contentsBox {
   display: flex;
+  overflow: hidden;
 }
 
 h1 {
@@ -32,7 +33,7 @@ app-select-filtering {
 
 .contents {
   width: 940px;
-  height: 583px;
+  min-height: 583px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -49,7 +50,7 @@ app-card {
   border: none;
   margin: 0;
   padding: 0;
-  margin-top: 250px;
+  margin-top: 270px;
   opacity: 0.2;
   transition: opacity 0.5s;
   outline: none;
@@ -77,4 +78,8 @@ app-card {
 
 .bunyang .btnNav {
   margin-top: 120px;
+}
+
+.bunyang .contents {
+  min-height: 285px;  
 }

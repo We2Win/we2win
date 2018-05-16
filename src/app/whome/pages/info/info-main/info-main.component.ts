@@ -95,6 +95,9 @@ export class InfoMainComponent implements OnInit {
     };
 
     this.sortType = sortName[type];
+
+    const container = this.rankingpost1Directive.viewContainerRef;
+    container.clear();
     this.getContentsListNewly(this.sortType, 1);
   }
 

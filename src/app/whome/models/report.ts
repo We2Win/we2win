@@ -1,5 +1,5 @@
 export class Report {
-    'id' = '';
+    'c-id' = '';
     'level' = '';
     'notification' = '';
     'title' = '';
