@@ -438,17 +438,6 @@ const getSimplesList = async function (req, res) {
   }).then(content => {
     return ReS(res, content);
   });
-  break;
-
-  switch (page) {
-    case 'employer':
-      {
-        Employer.findAll({
-          offset: id,
-
-        })
-      }
-  }
 
 }
 module.exports.getSimplesList = getSimplesList;
