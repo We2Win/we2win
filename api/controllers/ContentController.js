@@ -299,7 +299,7 @@ const getContentsDetail = async function(req, res) {
   const pageTypes = {
     'report': Report,
     'news': News,
-    'Law': Law,
+    'law': Law,
     'site': Site
   }
 
