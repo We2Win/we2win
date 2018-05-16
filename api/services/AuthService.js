@@ -37,7 +37,7 @@ const createContent = async function (data) {
     // console.log('data.type: ', data.type);
     // console.log('data.body: ', JSON.stringify(data.body));
 
-    function toIndexData(data) {
+    const toIndexData = (data) => {
         const indexData = {
             'c-id': content['c-id'],
             'c-type': data.type,
@@ -50,9 +50,11 @@ const createContent = async function (data) {
             'amount': data.body['ammount'] || '',
             'master-image': data.body['master-image']
         }
-        console.log('indexData: ', indexData);
+        // console.log('indexData: ', indexData);
         [err, indexContent] = await to(Content.create(indexData));
         if (err) TE('인덱스 생성 중 오류가 발생했습니다.');
+
+        console.log('indexContent: ', indexContent);        
     }
 
     switch(data.type) {
@@ -104,8 +106,6 @@ const createContent = async function (data) {
             if (err) TE('데이터 생성 중 오류가 발생했습니다.');
         break;
     }
-
-    console.log('indexContent: ', indexContent);
 
     // console.log('createcontent()');
     return content;
