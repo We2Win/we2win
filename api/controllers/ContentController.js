@@ -207,59 +207,59 @@ module.exports.getDashBoardData = getDashBoardData;
 // }
 // module.exports.getDashboard = getDashboard;
 
-const getList = (name) =>
-  async function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
+// const getList = (name) =>
+//   async function (req, res) {
+//     res.setHeader('Content-Type', 'application/json');
 
-    // const symbol = contentsInfo[name].symbol;
-    // const symbolId = symbol + '-id';
+//     // const symbol = contentsInfo[name].symbol;
+//     // const symbolId = symbol + '-id';
 
-    let db = contentsInfo[name].db;
-    const WHERE = {};
-    if (req.params.id) {
-      WHERE['no'] = req.params.id;
-    }
+//     let db = contentsInfo[name].db;
+//     const WHERE = {};
+//     if (req.params.id) {
+//       WHERE['no'] = req.params.id;
+//     }
 
-    switch (name) {
-      case 'apartment':
-        WHERE['s-type'] = '아파트';
-        break;
-      case 'officetel':
-        WHERE['s-type'] = '오피스텔';
-        break;
-      case 'commercial':
-        WHERE['s-type'] = '상가/호텔';
-        break;
-      case 'ground':
-        WHERE['s-type'] = '토지';
-        break;
-    }
+//     switch (name) {
+//       case 'apartment':
+//         WHERE['s-type'] = '아파트';
+//         break;
+//       case 'officetel':
+//         WHERE['s-type'] = '오피스텔';
+//         break;
+//       case 'commercial':
+//         WHERE['s-type'] = '상가/호텔';
+//         break;
+//       case 'ground':
+//         WHERE['s-type'] = '토지';
+//         break;
+//     }
 
-    // if (symbolId === 'S-id' && name !== 'site') {
-    //   WHERE['S-type'] = contentsInfo[name].type;
-    // }
+//     // if (symbolId === 'S-id' && name !== 'site') {
+//     //   WHERE['S-type'] = contentsInfo[name].type;
+//     // }
 
-    if (req.params.id) {
-      db.findOne({
-          where: WHERE
-        })
-        .then((content) => {
-          content.update({
-            'c-click': Sequelize.literal('`c-click` + 1')
-          });
+//     if (req.params.id) {
+//       db.findOne({
+//           where: WHERE
+//         })
+//         .then((content) => {
+//           content.update({
+//             'c-click': Sequelize.literal('`c-click` + 1')
+//           });
 
-          return ReS(res, content);
-        });
-    } else {
-      db.findAll({
-          where: WHERE
-        })
-        .then((contentList) => {
-          return ReS(res, contentList);
-        });
-    }
-  };
-module.exports.getList = getList;
+//           return ReS(res, content);
+//         });
+//     } else {
+//       db.findAll({
+//           where: WHERE
+//         })
+//         .then((contentList) => {
+//           return ReS(res, contentList);
+//         });
+//     }
+//   };
+// module.exports.getList = getList;
 
 const getContentsDetail = async function(req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -277,6 +277,9 @@ const getContentsDetail = async function(req, res) {
       'no': req.params.id
     }
   }).then(content => {
+    content.update({
+      'c-click': Sequelize.literal('`c-click` + 1')
+    });
     return ReS(res, content);
   });
 }
