@@ -55,8 +55,6 @@ const get = async function (req, res) {
 module.exports.get = get;
 
 const getDashBoardData = async function (req, res) {
-  console.log('ret: ', ret);
-  
   let ret = {};
   let uSt, uPr, uPl;
   [err, uSt] = await to(User.count({
