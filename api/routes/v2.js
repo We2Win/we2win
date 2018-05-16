@@ -86,7 +86,8 @@ router.get('/contents/:page/:list', ContentController.getContentsList);
 router.get('/detail/:page/:id', ContentController.getContentsDetail);
 
 // For Employee/Employer and Meeting
-router.ger('/simples/:page/:sort/:id', ContentController.getSimplesList)
+router.get('/simples/:page/:sort/:id', ContentController.getSimplesList)
+router.get('/simples/:page/:sort', ContentController.getSimplesList)
 // for (const contents in rankingList) {
 //   let selected = rankingList[contents];
 //   router.get('/contents' + selected, ContentController.getRankingList(selected));
