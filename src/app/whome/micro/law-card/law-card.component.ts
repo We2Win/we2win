@@ -4,6 +4,7 @@ import { FbShareService } from '../../services/fb-share.service';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ContentsService } from '../../services/contents.service';
 
 @Component({
   selector: 'app-law-card',
@@ -21,6 +22,7 @@ export class LawCardComponent implements OnInit {
     public viewContainerRef: ViewContainerRef,
     private fbShareService: FbShareService,
     private auth: AuthService,
+    private contentsService: ContentsService,
     private router: Router
   ) {
   }
@@ -59,6 +61,7 @@ export class LawCardComponent implements OnInit {
 
   download() {
     if (this.auth.isAuthenticated()) {
+      this.contentsService.getFilePath(this.record['c-id']);
       window.location.assign(environment.bucket.downloadUrl + this.record['file']);
     } else {
       this.router.navigate(['login']);

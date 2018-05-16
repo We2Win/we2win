@@ -21,6 +21,12 @@ export class DashboardComponent implements OnInit {
   @ViewChild('infoPie') infoPie;
   @ViewChild('infoBar') infoBar;
 
+  data = {
+    'users': {},
+    'contents': {},
+    'logs': {},
+  };
+
   constructor(
     private viewContainerRef: ViewContainerRef,
     private contentsService: ContentsService,
@@ -33,6 +39,7 @@ export class DashboardComponent implements OnInit {
     this.contentsService.getDashboardUsers().subscribe(
       data => {
         console.log('users: ', data);
+        this.data['users'] = data['users'];
       },
       error => {
         console.error(error);
@@ -42,6 +49,8 @@ export class DashboardComponent implements OnInit {
     this.contentsService.getDashboardContents().subscribe(
       data => {
         console.log('contents: ', data);
+        this.data['contents'] = data['contents'];
+        this.data['logs'] = data['logs'];
       },
       error => {
         console.error(error);

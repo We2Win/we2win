@@ -51,6 +51,11 @@ export class ContentsService {
     return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id)
       .map((res: any) => res);
   }
+
+  getFilePath(cid) {
+    return this.http.get(environment.apiUrl + '/file/' + cid)
+      .map((res: any) => res);
+  }
   // getRecentReportList() {
   //   return this.http.get(environment.apiUrl + '/contents/recentReport')
   //     .map((res: any) => res);
@@ -58,105 +63,105 @@ export class ContentsService {
 
 
 
-  getReportList(id?: any) {
-    if (id) {
-      // console.log('with id');
-      return this.http.get(environment.apiUrl + '/contents/report/' + id)
-        .map((res: any) => res);
-    } else {
-      // console.log('without id');
-      return this.http.get(environment.apiUrl + '/contents/report')
-        .map((res: any) => res);
-    }
-  }
+  // getReportList(id?: any) {
+  //   if (id) {
+  //     // console.log('with id');
+  //     return this.http.get(environment.apiUrl + '/contents/report/' + id)
+  //       .map((res: any) => res);
+  //   } else {
+  //     // console.log('without id');
+  //     return this.http.get(environment.apiUrl + '/contents/report')
+  //       .map((res: any) => res);
+  //   }
+  // }
 
-  getNewsList(id?: any) {
-    if (id) {
-      // console.log('with id');
-      return this.http.get(environment.apiUrl + '/contents/news/' + id)
-        .map((res: any) => res);
-    } else {
-      // console.log('without id');
-      return this.http.get(environment.apiUrl + '/contents/news')
-        .map((res: any) => res);
-    }
-  }
+  // getNewsList(id?: any) {
+  //   if (id) {
+  //     // console.log('with id');
+  //     return this.http.get(environment.apiUrl + '/contents/news/' + id)
+  //       .map((res: any) => res);
+  //   } else {
+  //     // console.log('without id');
+  //     return this.http.get(environment.apiUrl + '/contents/news')
+  //       .map((res: any) => res);
+  //   }
+  // }
 
-  getLawList() {
-    return this.http.get(environment.apiUrl + '/contents/law')
-      .map((res: any) => res);
-  }
+  // getLawList() {
+  //   return this.http.get(environment.apiUrl + '/contents/law')
+  //     .map((res: any) => res);
+  // }
 
-  getSiteList(id?: any) {
-    if (id) {
-      // console.log('with id');
-      return this.http.get(environment.apiUrl + '/contents/hotel/' + id)
-        .map((res: any) => res);
-    } else {
-      // console.log('without id');
-      return this.http.get(environment.apiUrl + '/contents/hotel')
-        .map((res: any) => res);
-    }
-  }
+  // getSiteList(id?: any) {
+  //   if (id) {
+  //     // console.log('with id');
+  //     return this.http.get(environment.apiUrl + '/contents/hotel/' + id)
+  //       .map((res: any) => res);
+  //   } else {
+  //     // console.log('without id');
+  //     return this.http.get(environment.apiUrl + '/contents/hotel')
+  //       .map((res: any) => res);
+  //   }
+  // }
 
-  getApartmentList(id?: any) {
-    if (id) {
-      // console.log('with id');
-      return this.http.get(environment.apiUrl + '/contents/apartment/' + id)
-        .map((res: any) => res);
-    } else {
-      // console.log('without id');
-      return this.http.get(environment.apiUrl + '/contents/apartment')
-        .map((res: any) => res);
-    }
-  }
+  // getApartmentList(id?: any) {
+  //   if (id) {
+  //     // console.log('with id');
+  //     return this.http.get(environment.apiUrl + '/contents/apartment/' + id)
+  //       .map((res: any) => res);
+  //   } else {
+  //     // console.log('without id');
+  //     return this.http.get(environment.apiUrl + '/contents/apartment')
+  //       .map((res: any) => res);
+  //   }
+  // }
 
-  getOfficetelList(id?: any) {
-    if (id) {
-      // console.log('with id');
-      return this.http.get(environment.apiUrl + '/contents/officetel/' + id)
-        .map((res: any) => res);
-    } else {
-      // console.log('without id');
-      return this.http.get(environment.apiUrl + '/contents/officetel')
-        .map((res: any) => res);
-    }
-  }
-  getCommercialList(id?: any) {
-    if (id) {
-      // console.log('with id');
-      return this.http.get(environment.apiUrl + '/contents/commercial/' + id)
-        .map((res: any) => res);
-    } else {
-      // console.log('without id');
-      return this.http.get(environment.apiUrl + '/contents/commercial')
-        .map((res: any) => res);
-    }
-  }
-  getGroundList(id?: any) {
-    if (id) {
-      // console.log('with id');
-      return this.http.get(environment.apiUrl + '/contents/ground/' + id)
-        .map((res: any) => res);
-    } else {
-      // console.log('without id');
-      return this.http.get(environment.apiUrl + '/contents/ground')
-        .map((res: any) => res);
-    }
-  }
+  // getOfficetelList(id?: any) {
+  //   if (id) {
+  //     // console.log('with id');
+  //     return this.http.get(environment.apiUrl + '/contents/officetel/' + id)
+  //       .map((res: any) => res);
+  //   } else {
+  //     // console.log('without id');
+  //     return this.http.get(environment.apiUrl + '/contents/officetel')
+  //       .map((res: any) => res);
+  //   }
+  // }
+  // getCommercialList(id?: any) {
+  //   if (id) {
+  //     // console.log('with id');
+  //     return this.http.get(environment.apiUrl + '/contents/commercial/' + id)
+  //       .map((res: any) => res);
+  //   } else {
+  //     // console.log('without id');
+  //     return this.http.get(environment.apiUrl + '/contents/commercial')
+  //       .map((res: any) => res);
+  //   }
+  // }
+  // getGroundList(id?: any) {
+  //   if (id) {
+  //     // console.log('with id');
+  //     return this.http.get(environment.apiUrl + '/contents/ground/' + id)
+  //       .map((res: any) => res);
+  //   } else {
+  //     // console.log('without id');
+  //     return this.http.get(environment.apiUrl + '/contents/ground')
+  //       .map((res: any) => res);
+  //   }
+  // }
 
-  getMeetingList() {
-    return this.http.get(environment.apiUrl + '/contents/meeting')
-      .map((res: any) => res);
-  }
+  // getMeetingList() {
+  //   return this.http.get(environment.apiUrl + '/contents/meeting')
+  //     .map((res: any) => res);
+  // }
 
-  getEmployerList() {
-    return this.http.get(environment.apiUrl + '/contents/employer')
-      .map((res: any) => { console.log(JSON.parse(res.list)); return res; });
-  }
+  // getEmployerList() {
+  //   return this.http.get(environment.apiUrl + '/contents/employer')
+  //     .map((res: any) => { console.log(JSON.parse(res.list)); return res; });
+  // }
 
-  getEmployeeList() {
-    return this.http.get(environment.apiUrl + '/contents/employee')
-      .map((res: any) => res);
-  }
+  // getEmployeeList() {
+  //   return this.http.get(environment.apiUrl + '/contents/employee')
+  //     .map((res: any) => res);
+  // }
 }

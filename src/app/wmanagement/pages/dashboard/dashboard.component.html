@@ -22,29 +22,29 @@
       <div id="composition">
         <li>
           <span id="title">전체 컨텐츠 개수</span>
-          <span>0개</span>
+          <span>{{ data['contents']['total'] + '개' }}</span>
         </li>
-        <progress [value]="0" max="100"></progress>
+        <progress [value]="data['contents']['total']" max="100"></progress>
         <li>
           <span id="title">부동산 정보</span>
-          <span>0개</span>
+          <span>{{ data['contents']['info'] + '개' }}</span>
         </li>
-        <progress [value]="0" max="100"></progress>
+        <progress [value]="data['contents']['info']" max="100"></progress>
         <li>
           <span id="title">분양 현황</span>
-          <span>0개</span>
+          <span>{{ data['contents']['site'] + '개' }}</span>
         </li>
-        <progress [value]="0" max="100"></progress>
+        <progress [value]="data['contents']['site']" max="100"></progress>
         <li>
           <span id="title">구인 구직</span>
-          <span>0개</span>
+          <span>{{ data['contents']['recruit'] + '개' }}</span>
         </li>
-        <progress [value]="0" max="100"></progress>
+        <progress [value]="data['contents']['recruit']" max="100"></progress>
         <li>
           <span id="title">오프라인 모임</span>
-          <span>0개</span>
+          <span>{{ data['contents']['meeting'] + '개' }}</span>
         </li>
-        <progress [value]="0" max="100"></progress>
+        <progress [value]="data['contents']['meeting']" max="100"></progress>
       </div>
     </article>
   </div>

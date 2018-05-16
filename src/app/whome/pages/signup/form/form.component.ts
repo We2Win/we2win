@@ -179,7 +179,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     };
     console.log(this.user);
 
-    if (this.user['level'] === 1) {
+    if (this.user['level'] === 'STANDARD') {
       this.createUser(this.user);
     } else {
       this.payFee(this.user);

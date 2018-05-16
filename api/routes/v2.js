@@ -33,49 +33,6 @@ router.post('/contents', ContentController.createContents);
 // router.get('/contents', ContentController.get);
 router.delete('/contents', ContentController.remove);
 
-// const contentsList = [
-//   'report',
-//   'news',
-//   'law',
-//   'site',
-//   'apartment',
-//   'officetel',
-//   'commercial',
-//   'ground',
-//   'employee',
-//   'employee',
-//   'employer',
-//   'meeting'
-// ];
-// for (const contents in contentsList) {
-//   let selected = contentsList[contents];
-//   router.get('/contents/' + selected, ContentController.getList(selected));
-//   router.get('/contents/' + selected + '/:id', ContentController.getList(selected));
-//   router.put('/contents/' + selected, ContentController.updateList(selected));
-// }
-
-// const rankingList = [
-//   '/info/weekly',
-//   '/info/newly',
-//   '/report/newly',
-//   '/news/newly',
-//   '/law/newly',
-//   '/site/weekly',
-//   '/site/newly',
-//   '/apartment/newly',
-//   '/officetel/newly',
-//   '/commercial/newly',
-//   '/ground/newly',
-// ];
-
-// const sortArr = [
-//   '/date',
-//   '/click',
-//   '/reply',
-//   '/sns',
-//   '/scrap'
-// ];
-
 
 router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:cid', ContentController.getComments);
@@ -91,23 +48,8 @@ router.get('/simples/:page/:sort/:id', ContentController.getSimplesList)
 router.get('/detail/:page/:id', ContentController.getContentsDetail);
 
 
-// for (const contents in rankingList) {
-//   let selected = rankingList[contents];
-//   router.get('/contents' + selected, ContentController.getRankingList(selected));
-//   // router.get('/contents' + selected + '/:id', ContentController.getRankingList(selected));
+router.get('/file/:cid', ContentController.getFilePath);
 
-//   for (const sortType in sortArr) {
-//     let type = sortArr[sortType];
-//     router.get('/contents' + selected + type + '/:id', ContentController.getRankingList(selected));
-//   }
-// }
-// router.get('/contents/info/weekly/:id', ContentController.getRankingList('infoWeekly'));
-// router.get('/contents/info/newly/:id', ContentController.getRankingList('infoNewly'));
-// router.get('/contents/info/report/:id', ContentController.getRankingList('report'));
-// router.get('/contents/info/news/:id', ContentController.getRankingList('news'));
-// router.get('/contents/info/law/:id', ContentController.getRankingList('law'));
-// router.get('/contents/site/weekly/:id', ContentController.getRankingList('siteWeekly'));
-// router.get('/contents/site/newly/:id', ContentController.getRankingList('siteNewly'));
 
 router.post('/login', UserController.login); //login   
 router.post('/hasid', UserController.hasId);

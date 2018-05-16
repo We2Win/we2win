@@ -443,6 +443,23 @@ const getSimplesList = async function (req, res) {
 }
 module.exports.getSimplesList = getSimplesList;
 
+const getFilePath = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  console.log('req.params at getFilePath(): ', req.params);
+
+  Law.findOne({
+    where: {
+      'c-id': req.params.cid
+    }
+  }).then((content) => {
+    return ReS(res, {
+      content: content
+    })
+  });
+}
+module.exports.getFilePath = getFilePath;
+
 // const getRankingList = (name) =>
 //   async function (req, res) {
 //     res.setHeader('Content-Type', 'application/json');
