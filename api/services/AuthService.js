@@ -47,7 +47,7 @@ const createContent = async function (data) {
             's-type': content['s-type'] || '',
             'open-start': content['open-start'] || '',
             'open-end': content['open-end'] || '',
-            'amount': content['ammount'] || '',
+            'ammount': content['ammount'] || '',
             'master-image': content['master-image']
         }
         console.log('indexData: ', indexData);
