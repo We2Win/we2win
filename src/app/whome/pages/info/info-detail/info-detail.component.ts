@@ -192,11 +192,12 @@ export class InfoDetailComponent implements OnInit {
   }
 
   getComments() {
-    this.contentsService.getComments(this.Data['u-id']).subscribe(
+    this.contentsService.getComments(this.Data['c-id']).subscribe(
       data => {
+        console.log('data: ', data);
         if (data.content[0]) {
           this.comments = data.content;
-          // console.log(this.comments);
+          console.log('this.comments: ', this.comments);
         }
       }
     );

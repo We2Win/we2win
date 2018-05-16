@@ -110,8 +110,11 @@ const getComments = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   Comment.findAll({
+    order: [
+      ['createdAt', 'DESC']
+    ],
     where: {
-      'c-id': req.params.postId
+      'c-id': req.params.cid
     }
   }).then((content) => {
     return ReS(res, {

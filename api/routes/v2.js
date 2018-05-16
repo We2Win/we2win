@@ -81,7 +81,7 @@ router.get('/contents/:page/:list', ContentController.getContentsList);
 router.get('/detail/:page/:id', ContentController.getContentsDetail);
 
 router.post('/contents/comments', ContentController.createComments);
-router.get('/contents/comments/:postId', ContentController.getComments);
+router.get('/contents/comments/:cid', ContentController.getComments);
 
 // for (const contents in rankingList) {
 //   let selected = rankingList[contents];

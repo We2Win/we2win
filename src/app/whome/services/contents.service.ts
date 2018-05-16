@@ -33,8 +33,8 @@ export class ContentsService {
   }
 
 
-  getComments(postId) {
-    return this.http.get(environment.apiUrl + '/contents/comments/' + postId)
+  getComments(cid) {
+    return this.http.get(environment.apiUrl + '/contents/comments/' + cid)
       .map((res: any) => res);
   }
 
