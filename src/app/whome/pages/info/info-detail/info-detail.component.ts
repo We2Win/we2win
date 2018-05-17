@@ -68,7 +68,7 @@ export class InfoDetailComponent implements OnInit {
       this.updateDetail();
     });
     // To get ranking report list.
-    this.contentsService.getWeeklyList('info').subscribe(
+    this.contentsService.getWeeklyList('report').subscribe(
       data => {
         if (data) {
           this.RankingList = data;

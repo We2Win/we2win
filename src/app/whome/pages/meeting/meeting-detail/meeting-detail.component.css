@@ -11,6 +11,11 @@
   margin-right: 2em;
 }
 
+#top #imgNav img {
+  width: 358px;
+  height: 507px;
+}
+
 #top h1 {
   font-size: 28px;
   line-height: 100%;
@@ -78,7 +83,6 @@
 #optionBar img+img {
   border-left: 1px solid #ccc;
 }
-
 
 .editorContainer span {
   font-size: 14px;

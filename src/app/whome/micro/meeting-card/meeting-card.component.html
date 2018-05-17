@@ -1,12 +1,12 @@
-<div class="card" routerLink="/meeting/detail/1">
-  <div id="levelBar">PLATINUM</div>
+<div class="card" [routerLink]="'/meeting/detail/'+record['no']">
+  <div id="levelBar">{{ record['level'] }}</div>
   <div id="imgFrame">
-    <img src="/assets/img/meeting_sample.png" alt="부동산 사진">
+    <img [src]="imageUrl" alt="미팅 사진">
   </div>
   <div id="buttonBar">
     <img id="bookmark" (click)="bookmark(); $event.stopPropagation();" src="/assets/img/icon_bookmark.png" />
     <img src="/assets/img/icon_share.png" />
   </div>
-  <h2>SOUNDS OF KOREA INSIDE SOUL</h2>
-  <h4>모집일 2017.12.09 ~ 2018.12.12</h4>
+  <h2>{{ record['title'] }}</h2>
+  <h4>모집일 {{ formatDate(record['apply-start']) }} ~ {{ formatDate(record['apply-end']) }}</h4>
 </div>

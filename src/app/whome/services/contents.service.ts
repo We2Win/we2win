@@ -38,6 +38,7 @@ export class ContentsService {
   }
 
   getSimplesList(page, sort, id?: any) {
+    console.log(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'));
     return this.http.get(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'))
       .map((res: any) => res);
   }

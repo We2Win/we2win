@@ -1,6 +1,8 @@
-import { Component, OnInit, ElementRef, ViewContainerRef } from '@angular/core';
-import { FbShareService } from '../../services/fb-share.service';
+import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
+import { Card } from '../../models/card';
 import { environment } from '../../../../environments/environment';
+import { FbShareService } from '../../services/fb-share.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-meeting-card',
@@ -9,16 +11,26 @@ import { environment } from '../../../../environments/environment';
   providers: [FbShareService]
 })
 export class MeetingCardComponent implements OnInit {
+  @Input('record') record;
+  @Input() level = 'standard';
+
+  imageUrl;
 
   constructor(
     private _elementRef: ElementRef,
     public viewContainerRef: ViewContainerRef,
-    private fbShareService: FbShareService
-  ) { }
+    private fbShareService: FbShareService,
+    private alertService: AlertService
+  ) {
+  }
 
   ngOnInit() {
-    this._elementRef.nativeElement.classList.add('platinum');
- 
+    this.imageUrl = environment.bucket.downloadUrl + this.record['master-image'];
+    this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
+  }
+
+  formatDate(dateStr) {
+    return dateStr.slice(0, 10).replace(/\-/gi, '.');
   }
 
   bookmark() {

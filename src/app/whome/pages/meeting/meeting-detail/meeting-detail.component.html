@@ -1,36 +1,34 @@
 <section>
   <div id="top">
     <div id="imgNav">
-      <img src="/assets/img/meeting_sample.png" />
+      <img [src]="imgUrl" />
     </div>
     <div>
-      <h1>SOUNDS OF KOREA
-        <br> INSIDE SOUL</h1>
-      <p>해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가
-        승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.</p>
+      <h1>{{ Data['title'] }}</h1>
+      <p [innerHtml]="Data['summary']"></p>
       <li>
         <h2>주최측</h2>
-        <h3>KOCCA</h3>
+        <h3>{{ Data['host'] }}</h3>
       </li>
       <li>
         <h2>신청기간</h2>
-        <h3>2017. 12. 09. ~ 207. 12. 31.</h3>
+        <h3>{{ formatDate(Data['apply-start']) + ' ~ ' + formatDate(Data['apply-end']) }}</h3>
       </li>
       <li>
         <h2>주최날짜</h2>
-        <h3>2017. 12. 31.</h3>
+        <h3>{{ formatDate(Data['duration-start']) + ' ~ ' + formatDate(Data['duration-end']) }}</h3>
       </li>
       <li>
         <h2>장소</h2>
-        <h3>콘텐츠시연장 오후 2:00 / 5:00</h3>
+        <h3>{{ Data['location'] }}</h3>
       </li>
       <li>
         <h2>모집정원</h2>
-        <h3>타임별 100명 ( 현재 35% 신청완료 )</h3>
+        <h3>{{ Data['personnel'] + '명' }}</h3>
       </li>
       <li>
         <h2>참가비</h2>
-        <h3 class="price">19,000원</h3>
+        <h3 class="price">{{ Data['cost'] + '원' }}</h3>
       </li>
       <li class="buttonBar">
         <h2></h2>
@@ -55,10 +53,7 @@
     <article>
       <div class="row">
         <label>준비물</label>
-        <p class="row">
-          해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.
-          이번 12월에야 인허가 승인이 완료되었습니다.
-        </p>
+        <p class="row">{{ Data['material'] }}</p>
       </div>
     </article>
     <div class="subGroup">
@@ -89,9 +84,7 @@
       <div class="row">
         <label>관련 오프라인 모임</label>
         <div class="row flex">
-          <app-meeting-card></app-meeting-card>
-          <app-meeting-card></app-meeting-card>
-          <app-meeting-card></app-meeting-card>
+          <ng-container appRankingpost></ng-container>
         </div>
       </div>
     </article>

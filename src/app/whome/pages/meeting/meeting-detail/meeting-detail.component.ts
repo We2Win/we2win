@@ -6,7 +6,7 @@ import { PostingService } from '../../../services/posting.service';
 import { RankingpostDirective } from '../../../directives/rankingpost.directive';
 import { MypostDirective } from '../../../directives/mypost.directive';
 import { PostItem } from '../../../models/post-item';
-import { Site } from '../../../models/site';
+import { Meeting } from '../../../models/meeting';
 import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
@@ -20,7 +20,7 @@ import { MeetingCardComponent } from '../../../micro/meeting-card/meeting-card.c
   providers: [ContentsService, PostingService]
 })
 export class MeetingDetailComponent implements OnInit {
-  Data;
+  Data = new Meeting();
   id: number;
   imgUrl;
   subImgUrl = ['', '', '', '', ''];
@@ -67,7 +67,7 @@ export class MeetingDetailComponent implements OnInit {
       this.updateDetail();
     });
     // To get ranking report list.
-    this.contentsService.getRelatedList('meeting').subscribe(
+    this.contentsService.getSimplesList('meeting', 'date').subscribe(
       data => {
         if (data) {
           this.RankingList = data;
@@ -139,6 +139,10 @@ export class MeetingDetailComponent implements OnInit {
         }
       }
     );
+  }
+
+  formatDate(dateStr) {
+    return new Date(dateStr).toISOString().slice(0, 10).replace(/\-/gi, '.');
   }
 
   addRankingRecord(records) {
