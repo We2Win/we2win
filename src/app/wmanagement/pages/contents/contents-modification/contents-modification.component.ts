@@ -51,6 +51,8 @@ export class ContentsModificationComponent implements OnInit {
 
   filesToUpload: Array<File>;
 
+  contentNoArr = [];
+
   selectedData = {
     type: '리포트',
     body: {},
@@ -170,19 +172,21 @@ export class ContentsModificationComponent implements OnInit {
     this.contentsService.getContentsList(this.engType[selected], 'newly', 'date').subscribe(
       data => {
         const titles = [];
+
         this.loadedData = data;
         // tslint:disable-next-line:forin
         for (const record in this.loadedData) {
-          titles.push(this.loadedData[record]['title']);
+          titles.push( this.loadedData[record]['title'] );
+          this.contentNoArr.push(this.loadedData[record]['no']);
         }
-        if (titles[0]) {
+        if (Object.keys(titles).length !== 0) {
           this.contents.categories['컨텐츠 제목'] = titles;
           this.contents.selected = '컨텐츠 제목';
         } else {
           this.contents.categories['컨텐츠 제목'] = [];
           this.contents.selected = '컨텐츠가 없습니다.';
         }
-        console.log('updated: ', this.loadedData);
+        console.log('updated: ', titles);
       },
       error => {
         console.log('error loading contents');
@@ -191,7 +195,17 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   onContentsChange(num) {
-    // console.log('apply: ', this.loadedData[num]);
+    console.log('onContentsChange(): ', num, this.contentNoArr[num]);
+    this.contentsService.getContentsDetail(this.selectedData.type, this.contentNoArr[num]).subscribe(
+      data => {
+        this.loadedData = data;
+        console.log('changedData: ', data);
+      },
+      error => {
+        console.log('error loading contents');
+      }
+    );
+
     const form = this.forms[this.selectedData.type];
     // const symbol = form.controls;
     // console.log(symbol);

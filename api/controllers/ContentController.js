@@ -390,7 +390,8 @@ const getContentsList = async function (req, res) {
     case 'titles':
       Content.findAll({
         order: orderArr,
-        where: whereArr
+        where: whereArr,
+        attributes: ['title', 'no']
       }).then(content => {
         return ReS(res, content);
       })
