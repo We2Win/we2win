@@ -40,7 +40,7 @@ router.get('/contents/comments/:cid', ContentController.getComments);
 // For Infos and Sites
 router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);
 router.get('/contents/:page/:list', ContentController.getContentsList);
-router.put('/contents/:page/', ContentController.updateContent);
+router.put('/contents/:page', ContentController.updateContent);
 
 // For Employee/Employer and Meeting
 router.get('/simples/:page/:sort/:id', ContentController.getSimplesList)
