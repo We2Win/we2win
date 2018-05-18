@@ -464,7 +464,7 @@ export class ContentsModificationComponent implements OnInit {
 
   putData(selectedData) {
     console.log('selectedData: ', selectedData);
-    this.contentsService.update(selectedData, this.engType[this.selectedData.type])
+    this.contentsService.update(this.engType[this.selectedData.type], selectedData)
       .subscribe(
       data => {
         alert((data) ? '컨텐츠가 수정되었습니다.' : '오류가 발생했습니다.');

@@ -18,6 +18,12 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  updateContent(page, data) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.put(environment.apiUrl + '/contents/' + page, data);
+  }
   getWeeklyList(page) {
     return this.http.get(environment.apiUrl + '/contents/' + page + '/weekly')
       .map((res: any) => res);
