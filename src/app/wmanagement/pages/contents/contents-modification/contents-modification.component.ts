@@ -36,25 +36,6 @@ export class ContentsModificationComponent implements OnInit {
   uploadForm5: FormGroup;
 
   private forms: object;
-  private symbols = {
-    '리포트': 'I',
-    '부동산 뉴스': 'N',
-    '법률 및 정책': 'L',
-    '아파트': 'S',
-    '오피스텔': 'S',
-    '상가/호텔': 'S',
-    '토지': 'S',
-    '오프라인 모임': 'M',
-    '구인': 'R',
-    '구직': 'E',
-    'info': 'I',
-    'news': 'N',
-    'law': 'L',
-    'site': 'S',
-    'meeting': 'M',
-    'employer': 'R',
-    'employee': 'E'
-  };
   private engType = {
     '리포트': 'report',
     '부동산 뉴스': 'news',
@@ -185,7 +166,8 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   updateContents(selected) {
-    this.contentsService.getContentsList(this.engType[selected]).subscribe(
+    console.log('updateContents(): ', this.engType[selected], selected);
+    this.contentsService.getContentsList(this.engType[selected], 'newly', 'date').subscribe(
       data => {
         const titles = [];
         this.loadedData = data;
@@ -449,7 +431,7 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   uploadFile(type, columnName) {
-    
+
   }
 
   onSubmit() {

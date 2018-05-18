@@ -13,15 +13,18 @@ import { environment } from '../../../environments/environment';
 export class ContentsService {
   constructor(private http: HttpClient) { }
 
-  getAll() {
-    return this.http.get<Info[]>('/api/v1/infos');
-  }
-  getById(id: string) {
-    return this.http.get('/api');
+  getContentsList(page, list, sort, id?: any) {
+    return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'))
+      .map((res: any) => res);
   }
 
-  getContentsList(type) {
-    return this.http.get(environment.apiUrl + '/contents/' + type)
+  getWeeklyList(page) {
+    return this.http.get(environment.apiUrl + '/contents/' + page + '/weekly')
+      .map((res: any) => res);
+  }
+
+  getContentsDetail(page, id) {
+    return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id)
       .map((res: any) => res);
   }
 
@@ -31,10 +34,6 @@ export class ContentsService {
 
   getDashboardUsers() {
     return this.http.get(environment.apiUrl + '/mng/dashboard/users');
-  }
-
-  getWeeklyList() {
-    return this.http.get(environment.apiUrl + '/');
   }
 
   create(_data: any) {

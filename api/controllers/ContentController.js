@@ -387,6 +387,14 @@ const getContentsList = async function (req, res) {
         })
       });
       break;
+    case 'titles':
+      Content.findAll({
+        order: orderArr,
+        where: whereArr
+      }).then(content => {
+        return ReS(res, content);
+      })
+      break;
     case 'reporter':
       Content.findAll({
         offset: id,
