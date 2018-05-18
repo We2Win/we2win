@@ -158,7 +158,7 @@ const updateContent = async function (data) {
         case '상가/호텔':
         case '토지':
             console.log('Apart1');
-            [err, content] = await to(Site.update(data.body), {
+            [err, content] = await to(Site.update(data.body.body), {
                 where: {'c-id': content['c-id']}
             });
             if (err) TE('데이터 생성 중 오류가 발생했습니다.');
