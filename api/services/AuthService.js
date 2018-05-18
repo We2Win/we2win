@@ -162,7 +162,7 @@ const updateContent = async function (data) {
       console.log('Apart1', data.body);
       [err, content] = await to(Site.update(data.body, {
         where: {
-          'c-id': content['c-id']
+          'c-id': data.body['c-id']
         }
       }.then(
         ()=>{console.log('Apart2');}
