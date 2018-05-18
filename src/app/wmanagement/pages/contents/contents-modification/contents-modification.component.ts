@@ -168,10 +168,11 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   updateContents(selected) {
-    // console.log('updateContents(): ', this.engType[selected], selected);
+    console.log('updateContents(): ', this.engType[selected], selected);
     this.contentsService.getContentsList(this.engType[selected], 'newly', 'date').subscribe(
       data => {
         const titles = [];
+        this.contentNoArr = [];
 
         this.loadedData = data;
         // tslint:disable-next-line:forin

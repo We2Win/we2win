@@ -283,15 +283,6 @@ const getContentsDetail = async function (req, res) {
     'no': req.params.id
   };
 
-  // switch(req.params.page) {
-  //   case 'apartment':
-  //   case 'officetal':
-  //   case 'commercial':
-  //   case 'ground':
-  //     whereArr['s-type'] = req.params.page;
-  //   break;
-  // }
-
   pageTypes[req.params.page].findOne({
     where: whereArr
   }).then(content => {
