@@ -15,6 +15,7 @@ import { MypostDirective } from '../../directives/mypost.directive';
 export class MeetingComponent implements OnInit {
   Data: Array<object>;
   sortType = 'date';
+  hasMoreContents = true;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -29,15 +30,40 @@ export class MeetingComponent implements OnInit {
   }
 
   getSimplesListNewly(sort, id?: any) {
-    this.contentsService.getSimplesList('meeting', 'date', 1).subscribe(
+    this.contentsService.getSimplesList('meeting', sort, id).subscribe(
       data => {
         if (data) {
           console.log(data);
           this.Data = data;
           this.addRecord(this.Data);
+          if (data.length !== 8) {
+            this.hasMoreContents = false;
+          }
         }
       }
     );
+  }
+
+  paging(page) {
+    console.log('page: ', page);
+    const container = this.mypostDirective.viewContainerRef;
+    this.getSimplesListNewly(this.sortType, page);
+  }
+
+  sort(type) {
+    const sortName = {
+      '최근순': 'date',
+      '클릭수': 'click',
+      '댓글수': 'reply',
+      '공유횟수': 'sns',
+      '스크랩': 'scrap'
+    };
+
+    this.sortType = sortName[type];
+
+    const container = this.mypostDirective.viewContainerRef;
+    container.clear();
+    this.getSimplesListNewly(this.sortType, 1);
   }
 
   addRecord(records) {

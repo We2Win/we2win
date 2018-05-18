@@ -19,8 +19,6 @@ export class InfoMainComponent implements OnInit {
   WeeklyList: Array<object>;
   sortType = 'date';
 
-  @ViewChild('newlyContainer') newlyContainer;
-
   @ViewChild(Rankingpost1Directive)
   private rankingpost1Directive: Rankingpost1Directive;
 
@@ -78,7 +76,7 @@ export class InfoMainComponent implements OnInit {
   }
 
   paging(page) {
-    console.log('page: ', page);
+    // console.log('page: ', page);
     const container = this.rankingpost1Directive.viewContainerRef;
     container.clear();
     // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));

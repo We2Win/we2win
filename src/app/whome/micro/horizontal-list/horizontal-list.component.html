@@ -1,8 +1,9 @@
 <section>
-  <app-select-filtering></app-select-filtering>
+  <app-select-filtering (sorter)="sort($event)"></app-select-filtering>
   <h1></h1>
   <div class="contents">
     <ng-content></ng-content>
   </div>
-  <app-button *ngIf="hiddenNum" (click)="showMore()">더보기</app-button>
+  <app-button *ngIf="hasMoreContents" (click)="showMore()">더보기</app-button>
 </section>
+

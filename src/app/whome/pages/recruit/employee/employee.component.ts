@@ -13,11 +13,11 @@ import { EmployeeCardComponent } from '../../../micro/employee-card/employee-car
 })
 export class EmployeeComponent implements OnInit {
   Data: Array<object>;
+  sortType = 'date';
+  hasMoreContents = true;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
-
-  postItems: PostItem[];
 
   constructor(
     private contentsService: ContentsService,
@@ -25,15 +25,44 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getSimplesList('employee', 'date', 1).subscribe(
+    this.getSimplesListNewly(this.sortType, 1);
+  }
+
+  getSimplesListNewly(sort, id?: any) {
+    this.contentsService.getSimplesList('employee', sort, id).subscribe(
       data => {
         if (data) {
-          // console.log(data);
+          console.log(data);
           this.Data = data;
           this.addRecord(this.Data);
+          if (data.length !== 8) {
+            this.hasMoreContents = false;
+          }
         }
       }
     );
+  }
+
+  paging(page) {
+    console.log('page: ', page);
+    const container = this.mypostDirective.viewContainerRef;
+    this.getSimplesListNewly(this.sortType, page);
+  }
+
+  sort(type) {
+    const sortName = {
+      '최근순': 'date',
+      '클릭수': 'click',
+      '댓글수': 'reply',
+      '공유횟수': 'sns',
+      '스크랩': 'scrap'
+    };
+
+    this.sortType = sortName[type];
+
+    const container = this.mypostDirective.viewContainerRef;
+    container.clear();
+    this.getSimplesListNewly(this.sortType, 1);
   }
 
   addRecord(records) {
@@ -44,5 +73,4 @@ export class EmployeeComponent implements OnInit {
         new PostItem(EmployeeCardComponent, records[record]));
     }
   }
-
 }

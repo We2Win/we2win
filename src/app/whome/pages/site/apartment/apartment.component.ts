@@ -13,7 +13,8 @@ import { SiteCardComponent } from '../../../micro/site-card/site-card.component'
 })
 export class ApartmentComponent implements OnInit {
   Data: Array<object>;
-  currentPage = 1;
+  sortType = 'date';
+  hasMoreContents = true;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -24,18 +25,44 @@ export class ApartmentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('apartment', 'newly', 'date', this.currentPage).subscribe(
+    this.getContentsList(this.sortType, 1);
+  }
+
+  getContentsList(sort, id?: any) {
+    this.contentsService.getContentsList('apartment', 'newly', sort, id).subscribe(
       data => {
         if (data) {
-          console.log(data);
+          console.log('data: ', data);
           this.Data = data;
           this.addRecord(this.Data);
+          if (data.length !== 8) {
+            this.hasMoreContents = false;
+          }
         }
-      },
-      err => {
-        console.error(err);
       }
     );
+  }
+
+  paging(page) {
+    console.log('page: ', page);
+    const container = this.mypostDirective.viewContainerRef;
+    this.getContentsList(this.sortType, page);
+  }
+
+  sort(type) {
+    const sortName = {
+      '최근순': 'date',
+      '클릭수': 'click',
+      '댓글수': 'reply',
+      '공유횟수': 'sns',
+      '스크랩': 'scrap'
+    };
+
+    this.sortType = sortName[type];
+
+    const container = this.mypostDirective.viewContainerRef;
+    container.clear();
+    this.getContentsList(this.sortType, 1);
   }
 
   addRecord(records) {
@@ -46,5 +73,4 @@ export class ApartmentComponent implements OnInit {
         new PostItem(SiteCardComponent, records[record]));
     }
   }
-
 }

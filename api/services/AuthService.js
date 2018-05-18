@@ -235,6 +235,28 @@ const createComment = async function (body) {
 }
 module.exports.createComment = createComment;
 
+const createEmployer = async function (body) {
+  let unique_key, auth_info, err, content;
+
+  console.log('createEmployer(): body: ', JSON.stringify(body));
+
+  [err, content] = await to(Employer.create(body));
+  if (err) TE('생성 중 오류가 발생했습니다.');
+  return content;
+}
+module.exports.createEmployer = createEmployer;
+
+const createEmployee = async function (body) {
+  let unique_key, auth_info, err, content;
+
+  console.log('createEmployee(): body: ', JSON.stringify(body));
+
+  [err, content] = await to(Employer.create(body));
+  if (err) TE('생성 중 오류가 발생했습니다.');
+  return content;
+}
+module.exports.createEmployee = createEmployee;
+
 const createUser = async function (userInfo) {
   // console.log('createUser1()');
   let unique_key, auth_info, err;

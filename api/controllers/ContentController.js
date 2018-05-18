@@ -85,7 +85,7 @@ const createContents = async function (req, res) {
 }
 module.exports.createContents = createContents;
 
-const updateContent2 = async function (req, res) {
+const updateContent = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
 
@@ -103,52 +103,6 @@ const updateContent2 = async function (req, res) {
     message: 'Successfully created new content data.',
     body: content,
   }, 201);
-}
-module.exports.updateContent2 = updateContent2;
-
-const updateContent = (name) => async function (req, res) {
-  let err, data
-  data = req.body;
-
-  console.log('updateContent', data);
-  // // const symbolId = contentsInfo[name].symbol + '-id';
-  // const db = contentsInfo[name].db;
-
-  // // console.log('req.body in updateList(): ', JSON.stringify(req.body));
-
-  // // const WHERE = {};
-  // // WHERE[symbolId] = req.body.body[symbolId];
-  // // if (symbolId === 'no') {
-  //   // WHERE['s-type'] = req.body.body['s-type'];
-  // // }
-
-  // console.log('where to update: ', name, req.body.body);
-
-  // db.update(req.body.body, {
-  //     // where: 
-  //   })
-  //   .then(result => {
-  //     res.json(result);
-  //   })
-  //   .catch(err => {
-  //     console.error(err);
-  //   });
-  // // res.setHeader('Content-Type', 'application/json');
-  // // let data = req.body;
-
-  // // let err, content;
-
-  // // console.log('body: ', JSON.stringify(body));
-  // // [err, content] = await to(authService.updateContent(body));
-
-  // // if (err) return ReE(res, err, 422);
-
-  // // content = JSON.stringify(content);
-
-  // // return ReS(res, {
-  // //   message: 'Successfully created new content data.',
-  // //   body: content,
-  // // }, 201);
 }
 module.exports.updateContent = updateContent;
 
@@ -192,6 +146,48 @@ const getComments = async function (req, res) {
   })
 }
 module.exports.getComments = getComments;
+
+const createEmployer = async function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  const body = req.body;
+
+  let err, comment;
+
+  console.log('body: ', JSON.stringify(body));
+  [err, comment] = await to(authService.createEmployer(body));
+
+  if (err) return ReE(res, err, 422);
+
+  console.log('comment.json: ', comment);
+  comment = JSON.stringify(comment);
+  console.log('comment.string: ', comment);
+  return ReS(res, {
+    message: 'Successfully created new comment data.',
+    body: comment,
+  }, 201);
+}
+module.exports.createEmployer = createEmployer;
+
+const createEmployee = async function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  const body = req.body;
+
+  let err, comment;
+
+  console.log('body: ', JSON.stringify(body));
+  [err, comment] = await to(authService.createEmployee(body));
+
+  if (err) return ReE(res, err, 422);
+
+  console.log('comment.json: ', comment);
+  comment = JSON.stringify(comment);
+  console.log('comment.string: ', comment);
+  return ReS(res, {
+    message: 'Successfully created new comment data.',
+    body: comment,
+  }, 201);
+}
+module.exports.createEmployee = createEmployee;
 
 const getCount = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');

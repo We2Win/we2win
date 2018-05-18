@@ -138,13 +138,16 @@ export class InfoDetailComponent implements OnInit {
       ],
       datasets: [{
         data: [
-          parseInt(this.Data['current-amount1'], 10),
-          parseInt(this.Data['current-amount2'], 10),
-          parseInt(this.Data['current-amount3'], 10),
-          parseInt(this.Data['current-amount4'], 10),
-          parseInt(this.Data['current-amount5'], 10),
+          parseInt(this.Data['current-amount1'], 10) * 1000000,
+          parseInt(this.Data['current-amount2'], 10) * 1000000,
+          parseInt(this.Data['current-amount3'], 10) * 1000000,
+          parseInt(this.Data['current-amount4'], 10) * 1000000,
+          parseInt(this.Data['current-amount5'], 10) * 1000000,
         ]
-      }]
+      }],
+      options: {
+
+      }
     };
     const around = {
       type: 'infoDetail',
@@ -158,11 +161,11 @@ export class InfoDetailComponent implements OnInit {
       ],
       datasets: [{
         data: [
-          parseInt(this.Data['around-amount1'], 10),
-          parseInt(this.Data['around-amount2'], 10),
-          parseInt(this.Data['around-amount3'], 10),
-          parseInt(this.Data['around-amount4'], 10),
-          parseInt(this.Data['around-amount5'], 10),
+          parseInt(this.Data['around-amount1'], 10) * 1000000,
+          parseInt(this.Data['around-amount2'], 10) * 1000000,
+          parseInt(this.Data['around-amount3'], 10) * 1000000,
+          parseInt(this.Data['around-amount4'], 10) * 1000000,
+          parseInt(this.Data['around-amount5'], 10) * 1000000,
         ]
       }]
     };

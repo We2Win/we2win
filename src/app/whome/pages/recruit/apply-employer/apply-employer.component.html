@@ -1,107 +1,109 @@
 <section>
-  <app-group>
-    <h1>구인 등록 하기</h1>
-    <div class="subGroup">
-      <label>구인 요건
-        <br>
-        <b>필수사항</b>
-      </label>
-      <article>
-        <div class="row">
-          <label>업무</label>
-          <input formControlName="part-name" type="text" placeholder="업무명을 입력하세요." />          
-          <!-- <app-select></app-select> -->
-        </div>
-        <div class="row">
-          <label>업무 내용</label>
-          <input formControlName="part-description" type="text" placeholder="업무내용을 입력하세요." />
-        </div>
-        <div class="row">
-          <label>나이</label>
-          <input formControlName="age-start" type="text" placeholder="00"/>
-          <span> ~ </span>
-          <input formControlName="age-end" type="text" placeholder="00"/>
-          <span>세</span>
-          <div class="blank"></div>
-        </div>
-        <div class="row">
-          <label>응시요건</label>
-          <input formControlName="requirement" type="text" placeholder="예) 분양경력 1년 이상" />
-        </div>
-        <div class="row">
-          <label>모집인원</label>
-          <input formControlName="personnel" type="text" placeholder="숫자"/>
-          <span>명</span>
-          <div class="blank"></div>
-        </div>
-        <div class="row">
-          <label>채용방법</label>
-          <input formControlName="method" type="text" placeholder="예) 전화 또는 서류접수" />
-        </div>
-        <div class="row">
-          <label>모집기간</label>
-          <input formControlName="apply-start" type="date" />
-          <span> ~ </span>
-          <input formControlName="apply-end" type="date" />
-          <div class="blank"></div>
-        </div>
-        <div class="row">
-          <label>상세요건</label>
-          <textarea formControlName="detail" placeholder="상세 요건을 적어주세요."></textarea>
-        </div>
-      </article>
-    </div>
-    <div class="subGroup">
-      <label>
-        현장 정보
-        <br>
-        <b>필수 사항 *</b>
-      </label>
-      <article>
-        <div class="row">
-          <label formControlName="location-name" >현장명</label>
-          <input type="text" placeholder="현장명을 입력해 주세요" />
-        </div>
-        <div class="row">
-          <label>소재지</label>
-          <input type="text" placeholder="소재지를 입력해 주세요" />
-        </div>
-        <div class="row">
-          <label>담당자 정보</label>
-          <input type="text" placeholder="이름을 입력하세요" />
-        </div>
-        <div class="row">
-          <label>전화</label>
-          <input type="text" placeholder="연락처를 입력하세요" />
-        </div>
-        <div class="row">
-          <label>핸드폰</label>
-          <input type="text" placeholder="연락처를 입력하세요" />
-        </div>
-        <div class="row">
-          <label></label>
-        </div>
-      </article>
-    </div>
-    <article>
-      <div class="row">
-        <label>개인정보 수집 및
-          <br>이용 동의</label>
-        <textarea readonly="readonly">
-          1. 개인 정보 수집, 이용 목적 해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.
-          이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 1. 개인 정보 수집, 이용 목적 해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여
-          재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.
-        </textarea>
+  <form [formGroup]="applyForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <app-group>
+      <h1>구인 등록 하기</h1>
+      <div class="subGroup">
+        <label>구인 요건
+          <br>
+          <b>필수사항</b>
+        </label>
+        <article>
+          <div class="row">
+            <label>업무</label>
+            <input formControlName="part-name" type="text" placeholder="업무명을 입력하세요." />
+            <!-- <app-select></app-select> -->
+          </div>
+          <div class="row">
+            <label>업무 내용</label>
+            <input formControlName="part-description" type="text" placeholder="업무내용을 입력하세요." />
+          </div>
+          <div class="row">
+            <label>나이</label>
+            <input formControlName="age-start" type="text" placeholder="00" />
+            <span> ~ </span>
+            <input formControlName="age-end" type="text" placeholder="00" />
+            <span>세</span>
+            <div class="blank"></div>
+          </div>
+          <div class="row">
+            <label>응시요건</label>
+            <input formControlName="requirement" type="text" placeholder="예) 분양경력 1년 이상" />
+          </div>
+          <div class="row">
+            <label>모집인원</label>
+            <input formControlName="personnel" type="text" placeholder="숫자" />
+            <span>명</span>
+            <div class="blank"></div>
+          </div>
+          <div class="row">
+            <label>채용방법</label>
+            <input formControlName="method" type="text" placeholder="예) 전화 또는 서류접수" />
+          </div>
+          <div class="row">
+            <label>모집기간</label>
+            <input formControlName="apply-start" type="date" />
+            <span> ~ </span>
+            <input formControlName="apply-end" type="date" />
+            <div class="blank"></div>
+          </div>
+          <div class="row">
+            <label>상세요건</label>
+            <textarea formControlName="detail" placeholder="상세 요건을 적어주세요."></textarea>
+          </div>
+        </article>
       </div>
-    </article>
-    <div class="row">
-      <label></label>
-      <input id="agree2" type="checkbox" [checked]="agree2" (change)="agree2 = !agree2">
-      <label class="sublabel left" for="agree2">개인정보 수집 및 이용 동의에 관한 사항을 읽었으며, 이에 동의 합니다.</label>
-    </div>
+      <div class="subGroup">
+        <label>
+          현장 정보
+          <br>
+          <b>필수 사항 *</b>
+        </label>
+        <article>
+          <div class="row">
+            <label>현장명</label>
+            <input formControlName="location-name" type="text" placeholder="현장명을 입력해 주세요" />
+          </div>
+          <div class="row">
+            <label>소재지</label>
+            <input formControlName="location-address" type="text" placeholder="소재지를 입력해 주세요" />
+          </div>
+          <div class="row">
+            <label>담당자 정보</label>
+            <input formControlName="manager-name" type="text" placeholder="이름을 입력하세요" />
+          </div>
+          <div class="row">
+            <label>전화</label>
+            <input formControlName="manager-contact" type="text" placeholder="연락처를 입력하세요" />
+          </div>
+          <div class="row">
+            <label>핸드폰</label>
+            <input formControlName="hp" type="text" placeholder="연락처를 입력하세요" />
+          </div>
+          <div class="row">
+            <label></label>
+          </div>
+        </article>
+      </div>
+      <article>
+        <div class="row">
+          <label>개인정보 수집 및
+            <br>이용 동의</label>
+          <textarea readonly="readonly">
+            1. 개인 정보 수집, 이용 목적 해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여 재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다.
+            이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 1. 개인 정보 수집, 이용 목적 해당 상품은 지난 6월 대출 직후 건축 인허가 관련 변경 사유가 발생하여
+            재신청을 진행하였습니다만, 포천시 조례 변경 등의 사유와 맞물려 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다. 이번 12월에야 인허가 승인이 완료되었습니다.
+          </textarea>
+        </div>
+      </article>
+      <div class="row">
+        <label></label>
+        <input id="agree2" type="checkbox" [checked]="agree2" (change)="agree2 = !agree2">
+        <label class="sublabel left" for="agree2">개인정보 수집 및 이용 동의에 관한 사항을 읽었으며, 이에 동의 합니다.</label>
+      </div>
 
-    <p>입력하신 내용을 다시한번 확인 하시고, 등록하기를 눌러주세요.
-      <br>접수된 내용은 담당자의 확인 후 정식 등록됩니다.</p>
-    <app-button>구인 등록하기</app-button>
-  </app-group>
+      <p>입력하신 내용을 다시한번 확인 하시고, 등록하기를 눌러주세요.
+        <br>접수된 내용은 담당자의 확인 후 정식 등록됩니다.</p>
+      <app-button>구인 등록하기</app-button>
+    </app-group>
+  </form>
 </section>

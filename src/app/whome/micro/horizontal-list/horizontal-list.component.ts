@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {  } from 'events';
 
 @Component({
   selector: 'app-horizontal-list',
@@ -7,21 +8,33 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
 })
 export class HorizontalListComponent implements OnInit {
   _toptitle: String;
-  hiddenNum;
+  @Input('hasMoreContents') hasMoreContents = true;
 
-  @Input() toptitle = 'hi';
+  // @Input() toptitle = 'hi';
+
+  @Output()
+  change: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  sorter: EventEmitter<string> = new EventEmitter<string>();
+
+  count = 1;
 
   constructor(
-    private _elementRef: ElementRef
   ) {
-    this._toptitle = this.toptitle;
+    // this._toptitle = this.toptitle;
   }
 
   ngOnInit() {
   }
 
   showMore() {
-    this._elementRef.nativeElement.querySelector('.c2').classList.add('show');
+    this.count = this.count  + 1;
+    this.change.emit(this.count);
+  }
+
+  sort(event) {
+    this.sorter.emit(event);
   }
 
 }

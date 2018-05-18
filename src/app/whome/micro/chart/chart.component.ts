@@ -59,6 +59,18 @@ export class ChartComponent implements OnInit {
         },
       }],
     },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          var value = data.datasets[0].data[tooltipItem.index];
+          if (parseInt(value) >= 1000) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+          } else {
+            return value + '원';
+          }
+        }
+      }
+    }
   };
 
   chartData: object = {
