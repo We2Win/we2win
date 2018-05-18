@@ -179,7 +179,7 @@
 
       <form [formGroup]="siteForm" id="site" *ngIf="top.selected === '분양 현장' && sub.selected !== '하위 카테고리'" (ngSubmit)="onSubmit()"
         enctype="multipart/form-data" novalidate>
-        <input class="form-control" formControlName="type" type="hidden" placeholder="제목을 입력하세요" />
+        <input class="form-control" formControlName="s-type" type="hidden" placeholder="제목을 입력하세요" />
         <li class="form-group">
           <h2>컨텐츠 등급</h2>
           <app-select #SLevel [type]="'컨텐츠 등급'" (change)="onLevelChange('site')"></app-select>

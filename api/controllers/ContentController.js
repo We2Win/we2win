@@ -270,15 +270,30 @@ const getContentsDetail = async function (req, res) {
     'news': News,
     'law': Law,
     'site': Site,
+    'apartment': Site,
+    'officetel': Site,
+    'commercial': Site,
+    'ground': Site,
     'employee': Employee,
     'employer': Employer,
     'meeting': Meeting
   }
 
+  let whereArr = {
+    'no': req.params.id
+  };
+
+  switch(req.params.page) {
+    case 'apartment':
+    case 'officetal':
+    case 'commercial':
+    case 'ground':
+      whereArr['s-type'] = req.params.page;
+    break;
+  }
+
   pageTypes[req.params.page].findOne({
-    where: {
-      'no': req.params.id
-    }
+    where: whereArr
   }).then(content => {
     console.log(content['c-id']);
     Content.update({

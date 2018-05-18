@@ -168,7 +168,7 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   updateContents(selected) {
-    console.log('updateContents(): ', this.engType[selected], selected);
+    // console.log('updateContents(): ', this.engType[selected], selected);
     this.contentsService.getContentsList(this.engType[selected], 'newly', 'date').subscribe(
       data => {
         const titles = [];
@@ -186,7 +186,7 @@ export class ContentsModificationComponent implements OnInit {
           this.contents.categories['컨텐츠 제목'] = [];
           this.contents.selected = '컨텐츠가 없습니다.';
         }
-        console.log('updated: ', titles);
+        // console.log('updated: ', titles);
       },
       error => {
         console.log('error loading contents');
@@ -196,34 +196,34 @@ export class ContentsModificationComponent implements OnInit {
 
   onContentsChange(num) {
     console.log('onContentsChange(): ', num, this.contentNoArr[num]);
-    this.contentsService.getContentsDetail(this.selectedData.type, this.contentNoArr[num]).subscribe(
+    this.contentsService.getContentsDetail(this.engType[this.selectedData.type], this.contentNoArr[num]).subscribe(
       data => {
         this.loadedData = data;
         console.log('changedData: ', data);
+
+        const form = this.forms[this.selectedData.type];
+        // const symbol = form.controls;
+        // console.log(symbol);
+        // tslint:disable-next-line:forin
+        for (const control in form.controls) {
+          let lastname: any = control.split('-');
+          lastname = lastname[lastname.length - 1];
+          if (lastname === 'start' || lastname === 'end') {
+            form.controls[control].setValue(this.loadedData[control].slice(0, 10));
+          } else if (lastname === 'level') {
+            console.log(lastname, this.levels[control].selected);
+            this.levels[control].selected = this.selectBoxData[control];
+          } else {
+            console.log(this.loadedData[control]);
+            form.controls[control].setValue(this.loadedData[control]);
+            this.inputs[control.slice(1)] = this.loadedData[control];
+          }
+        }
       },
       error => {
         console.log('error loading contents');
       }
     );
-
-    const form = this.forms[this.selectedData.type];
-    // const symbol = form.controls;
-    // console.log(symbol);
-    // tslint:disable-next-line:forin
-    for (const control in form.controls) {
-      let lastname: any = control.split('-');
-      lastname = lastname[lastname.length - 1];
-      if (lastname === 'start' || lastname === 'end') {
-        form.controls[control].setValue(this.loadedData[num][control].slice(0, 10));
-      } else if (lastname === 'level') {
-        console.log(lastname, this.levels[control].selected);
-        this.levels[control].selected = this.selectBoxData[control];
-      } else {
-        console.log(this.loadedData[num][control]);
-        form.controls[control].setValue(this.loadedData[num][control]);
-        this.inputs[control.slice(1)] = this.loadedData[num][control];
-      }
-    }
   }
 
   onLevelChange(_type) {
@@ -271,7 +271,7 @@ export class ContentsModificationComponent implements OnInit {
       'slave-image5': new FormControl(''),
     });
     this.siteForm = new FormGroup({
-      'type': new FormControl('', [Validators.required]),
+      's-type': new FormControl('', [Validators.required]),
       // 'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
@@ -302,6 +302,7 @@ export class ContentsModificationComponent implements OnInit {
       'around-amount4': new FormControl(''),
       'around-amount5': new FormControl(''),
       'report': new FormControl('', [Validators.required]),
+      'map': new FormControl('', [Validators.required]),
       'master-image': new FormControl('', [Validators.required]),
       'slave-image1': new FormControl(''),
       'slave-image2': new FormControl(''),
