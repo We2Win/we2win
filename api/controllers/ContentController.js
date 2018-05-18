@@ -85,11 +85,24 @@ const createContents = async function (req, res) {
 }
 module.exports.createContents = createContents;
 
-const updateContent2 = (name) => async function (req, res) {
-  let err, data
-  data = req.body;
+const updateContent2 = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  const body = req.body;
 
-  console.log('updateContent', data);
+  let err, content;
+
+  console.log('body: ', JSON.stringify(body));
+  [err, content] = await to(authService.updateContent(body));
+
+  if (err) return ReE(res, err, 422);
+
+  // console.log('content.json: ', content);
+  content = JSON.stringify(content);
+  // console.log('content.string: ', content);
+  return ReS(res, {
+    message: 'Successfully created new content data.',
+    body: content,
+  }, 201);
 }
 module.exports.updateContent2 = updateContent2;
 

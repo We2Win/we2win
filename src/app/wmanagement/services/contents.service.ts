@@ -23,7 +23,7 @@ export class ContentsService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.put(environment.apiUrl + '/contents/' + page, data)
+    return this.http.put(environment.apiUrl + '/contents/test/page', data)
       .map((res: any) => res);
   }
   getWeeklyList(page) {
