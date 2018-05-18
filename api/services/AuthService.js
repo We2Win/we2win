@@ -129,7 +129,9 @@ const updateContent = async function (data) {
             'master-image': content['master-image']
         }
         console.log('indexData: ', indexData);
-        [err, indexContent] = await to(Content.update(indexData));
+        [err, indexContent] = await to(Content.update(indexData,{
+            where: {'c-id': content['c-id']}
+        }));
         if (err) TE('인덱스 생성 중 오류가 발생했습니다.');
 
         console.log('indexContent: ', indexContent);
@@ -152,24 +154,17 @@ const updateContent = async function (data) {
             toIndexData(data)
             break;
         case '아파트':
-            [err, content] = await to(Site.update(data.body));
-            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
-            toIndexData(data)
-            break;
         case '오피스텔':
-            [err, content] = await to(Site.update(data.body));
-            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
-            toIndexData(data)
-            break;
         case '상가/호텔':
-            [err, content] = await to(Site.update(data.body));
-            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
-            toIndexData(data)
-            break;
         case '토지':
-            [err, content] = await to(Site.update(data.body));
+            console.log('Apart1');
+            [err, content] = await to(Site.update(data.body), {
+                where: {'c-id': content['c-id']}
+            });
             if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            console.log('Apart2');
             toIndexData(data)
+            console.log('Apart3');
             break;
         case '오프라인 모임':
             [err, content] = await to(Meeting.update(data.body));
