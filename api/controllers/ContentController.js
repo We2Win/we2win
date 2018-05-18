@@ -85,6 +85,14 @@ const createContents = async function (req, res) {
 }
 module.exports.createContents = createContents;
 
+const updateContent2 = (name) => async function (req, res) {
+  let err, data
+  data = req.body;
+
+  console.log('updateContent', data);
+}
+module.exports.updateContent = updateContent;
+
 const updateContent = (name) => async function (req, res) {
   let err, data
   data = req.body;
