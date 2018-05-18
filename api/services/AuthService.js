@@ -157,7 +157,7 @@ const updateContent = async function (data) {
         case '오피스텔':
         case '상가/호텔':
         case '토지':
-            console.log('Apart1', data.body.body, content);
+            console.log('Apart1', data.body, content);
             [err, content] = await to(Site.update(data.body.body), {
                 where: {'c-id': content['c-id']}
             });
