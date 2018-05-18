@@ -90,44 +90,44 @@ const updateContent = (name) => async function (req, res) {
   data = req.body;
 
   console.log('updateContent', data);
-  // const symbolId = contentsInfo[name].symbol + '-id';
-  const db = contentsInfo[name].db;
+  // // const symbolId = contentsInfo[name].symbol + '-id';
+  // const db = contentsInfo[name].db;
 
-  // console.log('req.body in updateList(): ', JSON.stringify(req.body));
+  // // console.log('req.body in updateList(): ', JSON.stringify(req.body));
 
-  // const WHERE = {};
-  // WHERE[symbolId] = req.body.body[symbolId];
-  // if (symbolId === 'no') {
-    // WHERE['s-type'] = req.body.body['s-type'];
-  // }
+  // // const WHERE = {};
+  // // WHERE[symbolId] = req.body.body[symbolId];
+  // // if (symbolId === 'no') {
+  //   // WHERE['s-type'] = req.body.body['s-type'];
+  // // }
 
-  console.log('where to update: ', name, req.body.body);
+  // console.log('where to update: ', name, req.body.body);
 
-  db.update(req.body.body, {
-      // where: 
-    })
-    .then(result => {
-      res.json(result);
-    })
-    .catch(err => {
-      console.error(err);
-    });
-  // res.setHeader('Content-Type', 'application/json');
-  // let data = req.body;
+  // db.update(req.body.body, {
+  //     // where: 
+  //   })
+  //   .then(result => {
+  //     res.json(result);
+  //   })
+  //   .catch(err => {
+  //     console.error(err);
+  //   });
+  // // res.setHeader('Content-Type', 'application/json');
+  // // let data = req.body;
 
-  // let err, content;
+  // // let err, content;
 
-  // console.log('body: ', JSON.stringify(body));
-  // [err, content] = await to(authService.updateContent(body));
+  // // console.log('body: ', JSON.stringify(body));
+  // // [err, content] = await to(authService.updateContent(body));
 
-  // if (err) return ReE(res, err, 422);
+  // // if (err) return ReE(res, err, 422);
 
-  // content = JSON.stringify(content);
+  // // content = JSON.stringify(content);
 
-  // return ReS(res, {
-  //   message: 'Successfully created new content data.',
-  //   body: content,
-  // }, 201);
+  // // return ReS(res, {
+  // //   message: 'Successfully created new content data.',
+  // //   body: content,
+  // // }, 201);
 }
 module.exports.updateContent = updateContent;
 
