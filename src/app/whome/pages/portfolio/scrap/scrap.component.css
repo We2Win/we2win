@@ -44,11 +44,13 @@ section>div {
 
 #memberTitle p {
   flex: 1;
+  margin: 0.5em 0;
 }
 
 #memberTitle span {
   float: right;
   width: auto;
+  margin: 0.5em 0;
 }
 
 #memberInfo {

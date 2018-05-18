@@ -3,25 +3,25 @@
 </span>
 
 <span class="cell">
-  <div>{{ record.ID }}</div>
+  <div>{{ record['u-id'] }}</div>
   <div>
     <span class="edit">EDIT</span>
     <span class="delete" (click)="deleteUser()">DELETE</span>
   </div>
 </span>
-<span class="cell">{{ record.Name }}</span>
-<span class="cell">{{ record.Email }}</span>
+<span class="cell">{{ record['name'] }}</span>
+<span class="cell">{{ record['email'] }}</span>
 <span class="cell">
-      <li *ngIf="record['U-level']===0" class="standard">STANDARD</li>
-      <li *ngIf="record['U-level']===1" class="standard">STANDARD</li>
-      <li *ngIf="record['U-level']===2" class="premium">PREMIUM</li>
-      <li *ngIf="record['U-level']===3" class="platinum">PLATINUM</li>
-      <li *ngIf="record['U-level']===4" class="manager">MANAGER</li>
-      <li *ngIf="record['U-level']===5" class="admin">ADMIN</li>
+      <li *ngIf="record['level']==0" class="standard">STANDARD</li>
+      <li *ngIf="record['level']==='STANDARD'" class="standard">STANDARD</li>
+      <li *ngIf="record['level']==='PREMIUM'" class="premium">PREMIUM</li>
+      <li *ngIf="record['level']==='PLATINUM'" class="platinum">PLATINUM</li>
+      <li *ngIf="record['level']===4" class="manager">MANAGER</li>
+      <li *ngIf="record['level']===5" class="admin">ADMIN</li>
 </span>
-<span class="cell">{{ record['U-point'] }}</span>
-<span class="cell" *ngIf="record['U-level-start']">{{ record['U-level-start'] + ' ~ ' + record['U-level-end'] }}</span>
-<span class="cell" *ngIf="!record['U-level-start']">무제한</span>
+<span class="cell">{{ record['point'] }}</span>
+<span class="cell" *ngIf="record['level-start']">{{ record['level-start'] + ' ~ ' + record['level-end'] }}</span>
+<span class="cell" *ngIf="!record['level-start']">무제한</span>
 
 <!-- <span class="cell" *ngFor="let record of recordData" [ngSwitch]="record.type">
   <ng-container *ngSwitchCase="'id'">

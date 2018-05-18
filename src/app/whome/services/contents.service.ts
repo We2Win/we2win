@@ -26,7 +26,8 @@ export class ContentsService {
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
     return this.http.post(environment.apiUrl + '/contents/comments/', bodyString, headers).subscribe(
-      res => { console.log(res); }
+      res => { console.log(res); },
+      error => { console.log(error); }
     );
   }
 

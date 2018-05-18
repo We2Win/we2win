@@ -12,6 +12,7 @@ import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../models/user';
 import { InfoCardComponent } from '../../../micro/info-card/info-card.component';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-info-detail',
@@ -52,6 +53,7 @@ export class InfoDetailComponent implements OnInit {
     private contentsService: ContentsService,
     private postingService: PostingService,
     private auth: AuthService,
+    private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router,
     private meta: Meta
@@ -181,7 +183,7 @@ export class InfoDetailComponent implements OnInit {
     };
     console.log('comment body: ', body);
     if (!body.contents) {
-      alert('댓글 내용이 없습니다.');
+      this.alertService.error('댓글 내용이 없습니다.');
     } else {
       this.contentsService.addComments(body);
 

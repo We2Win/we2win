@@ -146,7 +146,9 @@ const createUser = async function (userInfo) {
 module.exports.createUser = createUser;
 
 const getUserList = async function (userInfo) {
-    [err, users] = await to(User.findAll( {attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end']} ));
+    [err, users] = await to(User.findAll( {
+        attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end']
+    } ));
     if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
 
     return users;

@@ -12,6 +12,7 @@ import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../models/user';
 import { MeetingCardComponent } from '../../../micro/meeting-card/meeting-card.component';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-meeting-detail',
@@ -51,6 +52,7 @@ export class MeetingDetailComponent implements OnInit {
     private contentsService: ContentsService,
     private postingService: PostingService,
     private auth: AuthService,
+    private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router,
     private meta: Meta
@@ -112,18 +114,24 @@ export class MeetingDetailComponent implements OnInit {
 
   addComment() {
     const body = {
-      'post-id': this.Data['post-id'],
-      'commenter-id': this.userInfo['user_id'],
+      'c-id': this.Data['c-id'],
+      'u-id': this.userInfo['user_id'],
+      'date': new Date().toISOString(),
       'contents': this.NewComment.nativeElement.value
-    };
-    console.log(body);
+  };
+    console.log('comment body: ', body);
     if (!body.contents) {
-      alert('댓글 내용이 없습니다.');
+      this.alertService.error('댓글 내용이 없습니다.');
     } else {
       this.contentsService.addComments(body);
 
       // refresh current page
-      const currentUrl = this.router.url + '#commentBox';
+      let currentUrl;
+      if (!this.router.url.split('#')[1]) {
+        currentUrl = this.router.url + '#commentBox';
+      } else {
+        currentUrl = this.router.url;
+      }
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
         this.router.navigateByUrl(currentUrl));
     }
@@ -131,7 +139,7 @@ export class MeetingDetailComponent implements OnInit {
   }
 
   getComments() {
-    this.contentsService.getComments(this.Data['post-id']).subscribe(
+    this.contentsService.getComments(this.Data['c-id']).subscribe(
       data => {
         if (data.content[0]) {
           this.comments = data.content;

@@ -13,6 +13,7 @@ import { EmployerCardComponent } from '../../../micro/employer-card/employer-car
 })
 export class EmployerComponent implements OnInit {
   Data: Array<object>;
+  currentPage = 1;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -23,7 +24,7 @@ export class EmployerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getSimplesList('employer', 'date', 1).subscribe(
+    this.contentsService.getSimplesList('employer', 'date').subscribe(
       data => {
         if (data) {
           console.log('data: ', data);
