@@ -91,7 +91,7 @@ const updateContent2 = (name) => async function (req, res) {
 
   console.log('updateContent', data);
 }
-module.exports.updateContent = updateContent;
+module.exports.updateContent2 = updateContent2;
 
 const updateContent = (name) => async function (req, res) {
   let err, data
