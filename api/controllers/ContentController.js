@@ -89,6 +89,7 @@ const updateContent = (name) => async function (req, res) {
   let err, data
   data = req.body;
 
+  console.log('updateContent', data);
   // const symbolId = contentsInfo[name].symbol + '-id';
   const db = contentsInfo[name].db;
 
@@ -103,7 +104,7 @@ const updateContent = (name) => async function (req, res) {
   console.log('where to update: ', name, req.body.body);
 
   db.update(req.body.body, {
-      // where: WHERE
+      // where: 
     })
     .then(result => {
       res.json(result);
