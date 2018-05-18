@@ -4,9 +4,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ContentsService {
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
   getContentsList(page, list, sort, id?: any) {
     return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'))

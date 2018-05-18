@@ -65,18 +65,18 @@
       </label>
       <article class="comments">
         <div class="row" *ngIf="comments.length > 0">
-          <label>{{comments[0]['commenter-id']}}</label>
+          <label>{{comments[0]['u-id']}}</label>
           <p>{{comments[0]['contents']}}</p>
           <span>{{comments[0]['createdAt'].slice(0,10)}}</span>
         </div>
         <div class="row" *ngIf="comments.length > 1">
-          <label>{{comments[1]['commenter-id']}}</label>
+          <label>{{comments[1]['u-id']}}</label>
           <p>{{comments[1]['contents']}}</p>
           <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
         </div>
         <div name="commentBox" class="row">
           <form class="commentForm" (submit)="addComment()">
-            <label>{{userInfo['user_id']}}</label>
+            <label>{{userInfo['u-id']}}</label>
             <textarea type="text" class="commentInput" #NewComment></textarea>
             <app-button (click)="addComment()">댓글 입력</app-button>
           </form>
@@ -86,7 +86,7 @@
     <app-popup #commentDetail>
       <h1>현장 댓글</h1>
       <div class="row" *ngFor="let comment of comments">
-        <label>{{comment['commenter-id']}}</label>
+        <label>{{comment['u-id']}}</label>
         <p>{{comment['contents']}}</p>
         <span>{{comment['createdAt'].slice(0,10)}}</span>
       </div>

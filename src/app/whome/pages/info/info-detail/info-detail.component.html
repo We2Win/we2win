@@ -86,7 +86,7 @@
     <app-popup id="commentPopup" #commentDetail>
       <h1>현장 댓글</h1>
       <div class="row" *ngFor="let comment of comments">
-        <label>{{comment['commenter-id']}}</label>
+        <label>{{comment['u-id']}}</label>
         <p>{{comment['contents']}}</p>
         <span>{{comment['createdAt'].slice(0,10)}}</span>
       </div>

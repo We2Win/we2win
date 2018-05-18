@@ -14,10 +14,10 @@
   display: inline-block;  
   width: 144px;
   height: 25px;
-  margin: 11px 0 11px -224px;
+  margin: 0 0 0 -224px;
   float: right;
   text-align: left;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 #container {
