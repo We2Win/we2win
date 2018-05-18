@@ -159,15 +159,14 @@ const updateContent = async function (data) {
     case '오피스텔':
     case '상가/호텔':
     case '토지':
-      console.log('Apart1', data.body, content);
+      console.log('Apart1', data.body);
       [err, content] = await to(Site.update(data.body, {
         where: {
           'c-id': content['c-id']
         }
       }.then(
-
+        ()=>{console.log('Apart2');}
       ).catch(next)));
-      console.log('Apart2');
       if (err) TE('데이터 생성 중 오류가 발생했습니다.');
       console.log('Apart2');
       toIndexData(data)
