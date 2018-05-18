@@ -168,7 +168,7 @@ const updateContent = async function (data) {
         }
       }.then(
         ()=>{console.log('Apart2');}
-      ).catch(next)));
+      )));
       if (err) TE('데이터 생성 중 오류가 발생했습니다.');
       console.log('Apart2');
     //   toIndexData(data)
