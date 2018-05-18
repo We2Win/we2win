@@ -141,19 +141,37 @@ const updateContent = async function (data) {
 
   switch (data.type) {
     case '리포트':
-      [err, content] = await to(Report.update(data.body));
-      if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+      console.log(data.body);
+      Report.update(data.body, {
+        where: {
+          'c-id': data.body['c-id']
+        }
+      });
       toIndexData(data)
+
+      console.log('done updating.');
       break;
     case '부동산 뉴스':
-      [err, content] = await to(News.update(data.body));
-      if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+      console.log(data.body);
+      News.update(data.body, {
+        where: {
+          'c-id': data.body['c-id']
+        }
+      });
       toIndexData(data)
+
+      console.log('done updating.');
       break;
     case '법률 및 정책':
-      [err, content] = await to(Law.update(data.body));
-      if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+      console.log(data.body);
+      Law.update(data.body, {
+        where: {
+          'c-id': data.body['c-id']
+        }
+      });
       toIndexData(data)
+
+      console.log('done updating.');
       break;
     case '아파트':
     case '오피스텔':
@@ -168,34 +186,37 @@ const updateContent = async function (data) {
       toIndexData(data)
 
       console.log('done updating.');
-
-      //   console.log('Apart1', data.body);
-      //   [err, content] = await to(Site.update({
-      //       'title': data.body['title']
-      //   }, {
-      //     where: {
-      //       'c-id': data.body['c-id']
-      //     }
-      //   }.then(
-      //     ()=>{console.log('Apart2');}
-      //   )));
-      //   if (err) TE('데이터 생성 중 오류가 발생했습니다.');
-      //   console.log('Apart2');
-      // //   toIndexData(data)
-      //   console.log('Apart3');
       break;
     case '오프라인 모임':
-      [err, content] = await to(Meeting.update(data.body));
-      if (err) TE('데이터 생성 중 오류가 발생했습니다.');
-      break;
+      console.log(data.body);
+      Meeting.update(data.body, {
+        where: {
+          'c-id': data.body['c-id']
+        }
+      });
+      toIndexData(data)
+
+      console.log('done updating.');
     case '구인':
-      [err, content] = await to(Employer.update(data.body));
-      if (err) TE('데이터 생성 중 오류가 발생했습니다.');
-      break;
+      console.log(data.body);
+      Employer.update(data.body, {
+        where: {
+          'c-id': data.body['c-id']
+        }
+      });
+      toIndexData(data)
+
+      console.log('done updating.');
     case '구직':
-      [err, content] = await to(Employee.update(data.body));
-      if (err) TE('데이터 생성 중 오류가 발생했습니다.');
-      break;
+      console.log(data.body);
+      Employee.update(data.body, {
+        where: {
+          'c-id': data.body['c-id']
+        }
+      });
+      toIndexData(data)
+
+      console.log('done updating.');
   }
 
   // console.log('createcontent()');
