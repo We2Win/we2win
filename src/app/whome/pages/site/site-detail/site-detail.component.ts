@@ -201,7 +201,7 @@ export class SiteDetailComponent implements OnInit {
   getComments() {
     this.contentsService.getComments(this.Data['c-id']).subscribe(
       data => {
-        // console.log('data: ', data);
+        console.log('comments: ', data);
         if (data.content[0]) {
           this.comments = data.content;
           console.log('this.comments: ', this.comments);
