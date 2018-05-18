@@ -19,6 +19,7 @@ export class ContentsService {
   }
 
   updateContent(page, data) {
+    console.log('hi updateCOntent()');
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 

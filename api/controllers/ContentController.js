@@ -103,7 +103,7 @@ const updateContent = (name) => async function (req, res) {
   console.log('where to update: ', name, req.body.body);
 
   db.update(req.body.body, {
-      where: WHERE
+      // where: WHERE
     })
     .then(result => {
       res.json(result);
