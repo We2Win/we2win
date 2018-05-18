@@ -234,6 +234,7 @@ export class ContentsModificationComponent implements OnInit {
 
   ngOnInit() {
     this.infoForm = new FormGroup({
+      'c-id': new FormControl(''),
       // 'I-level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
@@ -272,6 +273,7 @@ export class ContentsModificationComponent implements OnInit {
       'slave-image5': new FormControl(''),
     });
     this.siteForm = new FormGroup({
+      'c-id': new FormControl('', [Validators.required]),
       's-type': new FormControl('', [Validators.required]),
       // 'level': new FormControl(''),
       'notification': new FormControl(''),
