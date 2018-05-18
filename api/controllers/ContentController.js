@@ -91,7 +91,7 @@ const updateContent2 = async function (req, res) {
 
   let err, content;
 
-  console.log('body: ', JSON.stringify(body));
+  // console.log('body: ', JSON.stringify(body));
   [err, content] = await to(authService.updateContent(body));
 
   if (err) return ReE(res, err, 422);

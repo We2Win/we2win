@@ -160,7 +160,9 @@ const updateContent = async function (data) {
     case '상가/호텔':
     case '토지':
       console.log('Apart1', data.body);
-      [err, content] = await to(Site.update(data.body, {
+      [err, content] = await to(Site.update({
+          'title': data.body['title']
+      }, {
         where: {
           'c-id': data.body['c-id']
         }
@@ -169,7 +171,7 @@ const updateContent = async function (data) {
       ).catch(next)));
       if (err) TE('데이터 생성 중 오류가 발생했습니다.');
       console.log('Apart2');
-      toIndexData(data)
+    //   toIndexData(data)
       console.log('Apart3');
       break;
     case '오프라인 모임':
