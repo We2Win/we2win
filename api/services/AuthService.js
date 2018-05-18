@@ -161,7 +161,7 @@ const updateContent = async function (data) {
     case '토지':
         console.log(data.body);
         Site.update(data.body, {
-            where: {no: '7'}
+            where: {'c-id': data.body['c-id']}
         });
         console.log('done updating.');
 
