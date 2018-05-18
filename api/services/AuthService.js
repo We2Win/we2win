@@ -188,6 +188,7 @@ const updateContent = async function (data) {
     // console.log('createcontent()');
     return content;
 }
+module.exports.updateContent = updateContent;
 
 const createComment = async function (body) {
     let unique_key, auth_info, err, content;
