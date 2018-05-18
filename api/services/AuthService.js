@@ -112,6 +112,83 @@ const createContent = async function (data) {
 }
 module.exports.createContent = createContent;
 
+const updateContent = async function (data) {
+    let unique_key, auth_info, err, content, indexContent;
+    
+    const toIndexData = async (data) => {
+        const indexData = {
+            'c-id': content['c-id'],
+            'c-type': data.type,
+            'title': content['title'],
+            'level': content['level'],
+            'no': content['no'],
+            's-type': content['s-type'] || '',
+            'open-start': content['open-start'] || '',
+            'open-end': content['open-end'] || '',
+            'ammount': content['ammount'] || '',
+            'master-image': content['master-image']
+        }
+        console.log('indexData: ', indexData);
+        [err, indexContent] = await to(Content.update(indexData));
+        if (err) TE('인덱스 생성 중 오류가 발생했습니다.');
+
+        console.log('indexContent: ', indexContent);
+    }
+
+    switch (data.type) {
+        case '리포트':
+            [err, content] = await to(Report.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            toIndexData(data)
+            break;
+        case '부동산 뉴스':
+            [err, content] = await to(News.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            toIndexData(data)
+            break;
+        case '법률 및 정책':
+            [err, content] = await to(Law.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            toIndexData(data)
+            break;
+        case '아파트':
+            [err, content] = await to(Site.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            toIndexData(data)
+            break;
+        case '오피스텔':
+            [err, content] = await to(Site.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            toIndexData(data)
+            break;
+        case '상가/호텔':
+            [err, content] = await to(Site.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            toIndexData(data)
+            break;
+        case '토지':
+            [err, content] = await to(Site.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            toIndexData(data)
+            break;
+        case '오프라인 모임':
+            [err, content] = await to(Meeting.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            break;
+        case '구인':
+            [err, content] = await to(Employer.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            break;
+        case '구직':
+            [err, content] = await to(Employee.update(data.body));
+            if (err) TE('데이터 생성 중 오류가 발생했습니다.');
+            break;
+    }
+
+    // console.log('createcontent()');
+    return content;
+}
+
 const createComment = async function (body) {
     let unique_key, auth_info, err, content;
 

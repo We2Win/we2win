@@ -9,45 +9,45 @@
       <article>
         <div class="row">
           <label>업무</label>
-          <input type="text" placeholder="업무명을 입력하세요." />          
+          <input formControlName="part-name" type="text" placeholder="업무명을 입력하세요." />          
           <!-- <app-select></app-select> -->
         </div>
         <div class="row">
           <label>업무 내용</label>
-          <input type="text" placeholder="업무내용을 입력하세요." />
+          <input formControlName="part-description" type="text" placeholder="업무내용을 입력하세요." />
         </div>
         <div class="row">
           <label>나이</label>
-          <input type="text" placeholder="00"/>
+          <input formControlName="age-start" type="text" placeholder="00"/>
           <span> ~ </span>
-          <input type="text" placeholder="00"/>
+          <input formControlName="age-end" type="text" placeholder="00"/>
           <span>세</span>
           <div class="blank"></div>
         </div>
         <div class="row">
           <label>응시요건</label>
-          <input type="text" placeholder="예) 분양경력 1년 이상" />
+          <input formControlName="requirement" type="text" placeholder="예) 분양경력 1년 이상" />
         </div>
         <div class="row">
           <label>모집인원</label>
-          <input type="text" placeholder="숫자"/>
+          <input formControlName="personnel" type="text" placeholder="숫자"/>
           <span>명</span>
           <div class="blank"></div>
         </div>
         <div class="row">
           <label>채용방법</label>
-          <input type="text" placeholder="예) 전화 또는 서류접수" />
+          <input formControlName="method" type="text" placeholder="예) 전화 또는 서류접수" />
         </div>
         <div class="row">
           <label>모집기간</label>
-          <input type="date" />
+          <input formControlName="apply-start" type="date" />
           <span> ~ </span>
-          <input type="date" />
+          <input formControlName="apply-end" type="date" />
           <div class="blank"></div>
         </div>
         <div class="row">
           <label>상세요건</label>
-          <textarea placeholder="상세 요건을 적어주세요."></textarea>
+          <textarea formControlName="detail" placeholder="상세 요건을 적어주세요."></textarea>
         </div>
       </article>
     </div>
@@ -59,7 +59,7 @@
       </label>
       <article>
         <div class="row">
-          <label>현장명</label>
+          <label formControlName="location-name" >현장명</label>
           <input type="text" placeholder="현장명을 입력해 주세요" />
         </div>
         <div class="row">

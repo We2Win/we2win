@@ -85,6 +85,26 @@ const createContents = async function (req, res) {
 }
 module.exports.createContents = createContents;
 
+const updateContent = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  let data = req.body;
+
+  let err, content;
+  
+  console.log('body: ', JSON.stringify(body));
+  [err, content] = await to(authService.updateContent(body));
+
+  if (err) return ReE(res, err, 422);
+  
+  content = JSON.stringify(content);
+  
+  return ReS(res, {
+    message: 'Successfully created new content data.',
+    body: content,
+  }, 201);
+}
+module.exports.updateContent = updateContent;
+
 const createComments = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
