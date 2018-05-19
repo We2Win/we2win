@@ -227,8 +227,4 @@ export class SiteDetailComponent implements OnInit {
   showMore(child) {
     child._elementRef.nativeElement.classList.add('show');
   }
-
-  showFullComments() {
-    alert('준비중입니다.');
-  }
 }

@@ -4,10 +4,10 @@
     <h1>{{ toptitle }}</h1>
   </div>
   <div class="contentsBox">
-    <button id="btnLeft" class="btnNav" (click)="decrement()"></button>
+    <button id="btnLeft" class="btnNav" [ngClass]="{'nope': this.count === 1}" (click)="decrement()"></button>
     <div class="contents" #contents>
       <ng-content></ng-content>
     </div>
-    <button id="btnRight" class="btnNav" (click)="increment()"></button>
+    <button id="btnRight" class="btnNav" [ngClass]="{'nope': !hasMoreContents}" (click)="increment()"></button>
   </div>
 </section>

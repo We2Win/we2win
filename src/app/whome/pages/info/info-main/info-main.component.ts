@@ -18,6 +18,7 @@ import { LawCardComponent } from '../../../micro/law-card/law-card.component';
 export class InfoMainComponent implements OnInit {
   WeeklyList: Array<object>;
   sortType = 'date';
+  hasMoreContents = true;
 
   @ViewChild(Rankingpost1Directive)
   private rankingpost1Directive: Rankingpost1Directive;
@@ -35,8 +36,7 @@ export class InfoMainComponent implements OnInit {
     this.getContentsListWeekly();
   }
 
-  getContentsListNewly(sort, id?: any) {
-    this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
+  getContentsListNewly(sort, id?: any) { this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
       data => {
         if (data) {
           console.log('data: ', data);
@@ -48,8 +48,12 @@ export class InfoMainComponent implements OnInit {
             content['createdAt'] = new Date(content['createdAt']);
             content['updatedAt'] = new Date(content['createdAt']);
           });
-
           this.addNewlyRecord(list);
+          if (data.length !== 8) {
+            this.hasMoreContents = false;
+          } else {
+            this.hasMoreContents = true;
+          }
         }
       }
     );

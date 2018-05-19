@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-policy',
@@ -10,16 +11,19 @@ export class PolicyComponent implements OnInit {
   agree1: boolean;
   agree2: boolean;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private alertService: AlertService
+  ) { }
 
-  ngOnInit() {
+  ngOnInit( ) {
   }
 
   checkAgreement() {
     if (this.agree1 && this.agree2) {
       this.router.navigate(['/signup', 'form']);
     } else {
-      alert('약관에 모두 동의하셔야 가입 가능합니다.');
+      this.alertService.warn('약관에 모두 동의하셔야 가입 가능합니다.');
     }
   }
 }

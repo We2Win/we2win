@@ -7,3 +7,7 @@ p {
 span {
   line-height: 42px;
 }
+
+textarea {
+  resize: horizontal;
+}

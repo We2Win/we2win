@@ -1,7 +1,7 @@
-<app-vertical-list [toptitle]="'신규 분양 현장'" (sorter)="sort1($event)" (change)="paging1($event)">
+<app-vertical-list [toptitle]="'신규 분양 현장'" [hasMoreContents]="hasMoreContents1" (sorter)="sort1($event)" (change)="paging1($event)">
   <ng-container appRankingpost1></ng-container>
 </app-vertical-list>
-<app-vertical-list [toptitle]="'분양 리포트'" (sorter2)="sort2($event)" (change2)="paging2($event)">
+<app-vertical-list [toptitle]="'분양 리포트'" [hasMoreContents]="hasMoreContents2" (sorter2)="sort2($event)" (change2)="paging2($event)">
   <ng-container appRankingpost2></ng-container>
 </app-vertical-list>
 <app-ranking-list [toptitle]="'주간 분양 현장 이슈'">

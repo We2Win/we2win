@@ -19,6 +19,8 @@ export class SiteMainComponent implements OnInit {
 
   sortType1 = 'date';
   sortType2 = 'date';
+  hasMoreContents1 = true;
+  hasMoreContents2 = true;
 
   @ViewChild(Rankingpost1Directive)
   private rankingpost1Directive: Rankingpost1Directive;
@@ -46,6 +48,11 @@ export class SiteMainComponent implements OnInit {
           console.log('Newly List: ', data);
           this.NewlyList = data;
           this.addNewlyRecord(this.NewlyList);
+          if (data.length !== 8) {
+            this.hasMoreContents1 = false;
+          } else {
+            this.hasMoreContents1 = true;
+          }
         }
       }
     );
@@ -57,6 +64,11 @@ export class SiteMainComponent implements OnInit {
           console.log('Report List: ', data);
           this.ReportList = data;
           this.addReporterRecord(this.ReportList);
+          if (data.length !== 8) {
+            this.hasMoreContents2 = false;
+          } else {
+            this.hasMoreContents2 = true;
+          }
         }
       }
     );

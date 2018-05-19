@@ -11,22 +11,29 @@ import { Alert, AlertType } from '../../models/alert';
 })
 export class AlertComponent implements OnInit {
   alerts: Alert[] = [];
+  black = false;
 
   constructor(private alertService: AlertService) { }
 
   ngOnInit() {
     // console.log('alert component started.');
     this.alertService.getAlert().subscribe((alert: Alert) => {
-      // console.log('alerts: ', alert);
-
       if (!alert) {
         // clear alerts when an empty alert is received
         this.alerts = [];
+        this.black = false;
         return;
       }
 
+      this.black = true;
+      setTimeout(() => {
+        this.black = false;
+      }, 3000);
+
       // add alert to array
       this.alerts.push(alert);
+      console.log('alerts: ', alert, this.alerts);
+
     }, err => { console.log(err); } );
   }
 

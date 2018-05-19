@@ -28,6 +28,20 @@ h1 {
   justify-content: flex-start;
 }
 
+@keyframes intro {
+  to {
+    opacity: 1;
+  }
+}
+
+.contents /deep/ .card {
+  opacity: 0;
+  animation: intro 0.5s;
+  animation-fill-mode: forwards;
+  transition: opacity 1s;
+}
+
+
 :host /deep/ .c2 {
   display: none !important;
 }

@@ -1,4 +1,4 @@
-<app-vertical-list [toptitle]="'최신 정보'" (sorter)="sort($event)" (change)="paging($event)">
+<app-vertical-list [toptitle]="'최신 정보'" [hasMoreContents]="hasMoreContents" (sorter)="sort($event)" (change)="paging($event)">
   <ng-container>
     <ng-container appRankingpost1></ng-container>
   </ng-container>

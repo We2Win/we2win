@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AlertService } from '../../../services/alert.service';
+import { ContentsService } from '../../../services/contents.service';
 
 @Component({
   selector: 'app-apply-employer',
   templateUrl: './apply-employer.component.html',
-  styleUrls: ['./apply-employer.component.css']
+  styleUrls: ['./apply-employer.component.css'],
+  providers: [ContentsService]
 })
 export class ApplyEmployerComponent implements OnInit {
   applyForm: FormGroup;
   agree2 = false;
 
   constructor(
-    private alertService: AlertService
+    private alertService: AlertService,
+    private contentService: ContentsService
   ) { }
 
   ngOnInit() {
@@ -41,5 +44,6 @@ export class ApplyEmployerComponent implements OnInit {
       return;
     }
     console.log(this.applyForm.value);
+    this.contentService.addEmployerContent(this.applyForm.value);
   }
 }

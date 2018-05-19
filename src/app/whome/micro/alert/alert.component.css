@@ -6,6 +6,19 @@
     transform: scale(1);
   }
 }
+
+@keyframes darkening {
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 div {
   position: fixed;
   top: 110px;
@@ -14,9 +27,30 @@ div {
   border-radius: 0;
   z-index: 100;
   text-align: center;
-  transform: scale(0);
+  /* transform: scale(1);
   animation: intro 0.5s;
-  animation-fill-mode: forwards;
+  animation-fill-mode: both;
   animation-delay: 0.5s;
-  transition: transform 1s;
+  transition: transform 1s; */
+  z-index: 100;
+}
+
+.bg {
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  transform: opacity(0);
+  top: 0px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.black {
+  transform: opacity(0);
+  animation: darkening 3s;
+  animation-fill-mode: forwards;
+  transition: opacity 1s;
 }

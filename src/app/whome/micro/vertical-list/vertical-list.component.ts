@@ -10,6 +10,7 @@ export class VerticalListComponent implements OnInit, OnChanges {
   isBunyang = false;
 
   @Input() toptitle = '무제';
+  @Input('hasMoreContents') hasMoreContents = true;
   @ViewChild('contents') contents;
 
   @Output()
