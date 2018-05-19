@@ -37,6 +37,7 @@ import { JwtHelper } from 'angular2-jwt';
 import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
 import { UseComponent } from './pages/policy/use/use.component';
 import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,15 @@ const routes: Routes = [
         path: '',
         redirectTo: 'info',
         pathMatch: 'full'
+      },
+      {
+        path: 'search',
+        children: [
+          {
+            path: '',
+            component: SearchComponent
+          }
+        ]
       },
       {
         path: 'info',

@@ -144,6 +144,7 @@
   min-height: 60px;
   height: 60px;
   padding: 10px;
+  font-size: 14px;
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -152,8 +153,8 @@
 
 .comments app-button /deep/ button {
   height: 60px;
-  line-height: 300%;
-  font-size: 10px;
+  line-height: 100%;
+  font-size: 14px;
 }
 
 .flex {

@@ -47,6 +47,6 @@ export class ApplyEmployerComponent implements OnInit {
       return;
     }
     console.log(this.applyForm.value);
-    this.contentService.addEmployerContent(this.applyForm.value);
+    this.contentService.addRecruitContent('employer', this.applyForm.value);
   }
 }

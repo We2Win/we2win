@@ -45,6 +45,8 @@
 p {
   padding: 1em;
   font-size: 0.8em;
+  flex: none;
+  height: 7em;
 }
 
 .platinum #level {
@@ -85,7 +87,7 @@ p {
   font-size: 1em;
   color: red;
   flex: none;
-  flex-basis: 1em;
+  height: 3em;
 }
 #lastWarning {
   padding: 3em 0 1em 0;

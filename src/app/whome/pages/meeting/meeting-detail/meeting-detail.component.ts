@@ -123,6 +123,7 @@ export class MeetingDetailComponent implements OnInit {
     if (!body.contents) {
       this.alertService.error('댓글 내용이 없습니다.');
     } else {
+      console.log(body);
       this.contentsService.addComments(body);
 
       // refresh current page

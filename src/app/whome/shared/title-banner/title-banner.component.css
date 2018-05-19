@@ -37,6 +37,10 @@
   background-position-x: 50%;
   color: white;
 }
+:host(.search) {
+  color: black;
+  text-shadow: none;
+}
 
 section {
   padding-top: 120px;

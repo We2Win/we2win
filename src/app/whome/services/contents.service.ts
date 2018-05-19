@@ -61,11 +61,11 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
-  addEmployerContent(body) {
+  addRecruitContent(page, body) {
     const bodyString = JSON.stringify(body);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
-    return this.http.put(environment.apiUrl + '/contents/employer', bodyString, headers).subscribe(
+    return this.http.put(environment.apiUrl + '/contents/' + page, bodyString, headers).subscribe(
       res => {
         console.log(res);
         this.alertService.success('등록 완료했습니다.');

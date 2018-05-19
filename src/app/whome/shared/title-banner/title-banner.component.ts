@@ -34,7 +34,7 @@ export class TitleBannerComponent implements OnInit {
 
   constructor(
     private pageInfoService: PageInfoService,
-    router: Router,
+    private router: Router,
     location: Location,
     private _elementRef: ElementRef
   ) {
@@ -56,6 +56,13 @@ export class TitleBannerComponent implements OnInit {
   updateData(routePath) {
     this.dataset['title'] = this.pageInfoService.getCurrentData(routePath, 'title') || '';
     this.dataset['description'] = this.pageInfoService.getCurrentData(routePath, 'description') || '';
+  }
+
+  search(event) {
+    if (this.router.url !== '/search') {
+      this.router.navigate(['search']);
+    }
+    console.log(event, this.router.url);
   }
 
 }

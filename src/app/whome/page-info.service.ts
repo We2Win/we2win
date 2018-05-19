@@ -50,6 +50,9 @@ export class PageInfoService {
       'title': '오프라인 모임',
       'description': '오프라인 모임을 한눈에 보세요!',
     },
+    'search': {
+      'title': '검색 결과'
+    }
   };
 
   constructor() {
