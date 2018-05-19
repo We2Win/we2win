@@ -6,7 +6,7 @@
   margin: 0;
   text-align: left;
   font-size: 0.8em;
-  user-select: none;
+  /* user-select: none; */
   line-height: 300%;
 }
 
@@ -46,17 +46,19 @@ ul {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s, visibility 0s;
-  z-index: 5;
+  z-index: 0;
 }
 
 ul.semiShow {
   opacity: 1;
   visibility: visible;
+  z-index: 5;
 }
 
 ul.show {
   opacity: 1;
   visibility: visible;
+  z-index: 5;
 }
 
 li {

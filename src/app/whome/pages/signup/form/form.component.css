@@ -132,3 +132,8 @@ article .row {
 app-social-button + app-social-button {
   margin-left: 0.5em;
 }
+
+.form-control {
+  color: red;
+  z-index: 1;
+}
