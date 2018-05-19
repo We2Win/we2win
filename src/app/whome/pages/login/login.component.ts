@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/']);
     }
 
-    this.info('로그인을 해주세요');
+    // this.info('로그인을 해주세요');
     this.loginForm = new FormGroup({
       'u-id': new FormControl('', [Validators.required]),
       'password': new FormControl('', [Validators.required]),

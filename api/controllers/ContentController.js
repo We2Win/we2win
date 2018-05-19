@@ -158,11 +158,9 @@ const createEmployer = async function(req, res) {
 
   if (err) return ReE(res, err, 422);
 
-  console.log('comment.json: ', comment);
   comment = JSON.stringify(comment);
-  console.log('comment.string: ', comment);
   return ReS(res, {
-    message: 'Successfully created new comment data.',
+    message: 'Successfully created new employer data.',
     body: comment,
   }, 201);
 }
