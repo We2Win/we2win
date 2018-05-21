@@ -110,7 +110,7 @@ export class AuthService {
   getUserInfoDetail(info) {
     const headers = { headers: { 'Content-Type': 'application/json' } };
     console.log('executing getUserInfoDetail(): ', environment.apiUrl + '/userInfo');
-    return this.http.post(environment.apiUrl + '/userInfo', info, headers)
+    return this.http.post(environment.apiUrl + '/userInfo', JSON.stringify(info), headers)
       .do((res: any) => console.log('res: ', res),
       (err) => { this.alertService.error(err); }
       )
