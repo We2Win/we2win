@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-scrap',
@@ -6,12 +7,15 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   styleUrls: ['./scrap.component.css']
 })
 export class ScrapComponent implements OnInit {
+  userInfo;
 
   constructor(
-    private _elementRef: ElementRef
+    private _elementRef: ElementRef,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.userInfo = this.authService.getUserInfo();
   }
 
   showInfo() {

@@ -39,6 +39,14 @@ export class InfoMainComponent implements OnInit {
   getContentsListNewly(sort, id?: any) { this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
       data => {
         if (data) {
+          if (data.length === 0) {
+            this.hasMoreContents = false;
+            return;
+          } if (data.length !== 8) {
+            this.hasMoreContents = false;
+          } else {
+            this.hasMoreContents = true;
+          }
           console.log('data: ', data);
           const list = [];
           data.forEach(content => {
@@ -49,11 +57,6 @@ export class InfoMainComponent implements OnInit {
             content['updatedAt'] = new Date(content['createdAt']);
           });
           this.addNewlyRecord(list);
-          if (data.length !== 8) {
-            this.hasMoreContents = false;
-          } else {
-            this.hasMoreContents = true;
-          }
         }
       }
     );

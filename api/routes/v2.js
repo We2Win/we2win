@@ -56,6 +56,7 @@ router.get('/file/:cid', ContentController.getFilePath);
 
 router.post('/login', UserController.login); //login   
 router.post('/hasid', UserController.hasId);
+router.get('/userInfo', UserController.getInfo);
 router.get('/mng/users', UserController.get);
 router.delete('/mng/users/:id', UserController.remove); //delete
 

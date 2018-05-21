@@ -134,6 +134,5 @@ app-social-button + app-social-button {
 }
 
 .form-control {
-  color: red;
   z-index: 1;
 }

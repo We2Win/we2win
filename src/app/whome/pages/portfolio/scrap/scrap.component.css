@@ -72,6 +72,24 @@ section>div {
   margin: 0.5em auto;
 }
 
+.standard {
+  display: inline-block;
+  background: var(--level-standard-gradient);
+  /* background: linear-gradient(-25deg, rgba(213, 177, 94, 0.4), rgba(213, 177, 94, 1)); */
+  color: white;
+  font-size: 0.8em;
+  padding: 0.25em 0.4em;
+  margin: 0.25em;
+}
+.premium {
+  display: inline-block;
+  background: var(--level-premium-gradient);
+  /* background: linear-gradient(-25deg, rgba(213, 177, 94, 0.4), rgba(213, 177, 94, 1)); */
+  color: white;
+  font-size: 0.8em;
+  padding: 0.25em 0.4em;
+  margin: 0.25em;
+}
 .platinum {
   display: inline-block;
   background: linear-gradient(-25deg, rgba(213, 177, 94, 0.4), rgba(213, 177, 94, 1));
@@ -85,7 +103,7 @@ section>div {
   display: inline-block;
   font-size: 1.6em;
   line-height: 150%;
-  margin-top: 1em;
+  margin-top: 11px;
 }
 
 #memberInfo h1:after {
@@ -184,4 +202,8 @@ section>div {
   /* border-spacing set instead of margin */
   /* border-spacing: 10px; */
   /* border-collapse: separat e; */
+}
+
+app-button {
+  width: calc(100% - 0.5em);
 }

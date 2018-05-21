@@ -138,7 +138,9 @@ module.exports = (sequelize, DataTypes) => {
         user_name: this['name'],
         user_level: this['level'],
         user_start: this['level-start'],
-        user_end: this['level-end']
+        user_end: this['level-end'],
+        user_location: '#'+this['location1']+' #'+this['location2'],
+        user_keyword: '#'+this['keyword']
       },
       CONFIG.jwt_encryption, {
         expiresIn: expiration_time

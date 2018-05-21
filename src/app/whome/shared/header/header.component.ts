@@ -81,7 +81,7 @@ export class HeaderComponent implements OnInit {
     },
     {
       'path': 'portfolio',
-      'name': '포트폴리오',
+      'name': '회원 정보',
       'main': 'portfolio'
     }
   ];

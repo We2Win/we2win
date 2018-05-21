@@ -109,7 +109,8 @@
   font-weight: 400;
   text-align: left;
   line-height: 1.5em;
-  min-height: 4.5em;
+  height: 4.5em;
+  overflow-y: hidden;
 }
 
 .card>h3 {
@@ -119,4 +120,3 @@
   text-align: left;
   color: rgb(112, 36, 199);
 }
-

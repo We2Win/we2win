@@ -45,14 +45,17 @@ export class SiteMainComponent implements OnInit {
     this.contentsService.getContentsList('site', 'newly', sort, id).subscribe(
       data => {
         if (data) {
-          console.log('Newly List: ', data);
-          this.NewlyList = data;
-          this.addNewlyRecord(this.NewlyList);
-          if (data.length !== 8) {
+          if (data.length === 0) {
+            this.hasMoreContents1 = false;
+            return;
+          } else if (data.length !== 8) {
             this.hasMoreContents1 = false;
           } else {
             this.hasMoreContents1 = true;
           }
+          console.log('Newly List: ', data);
+          this.NewlyList = data;
+          this.addNewlyRecord(this.NewlyList);
         }
       }
     );
@@ -61,14 +64,17 @@ export class SiteMainComponent implements OnInit {
     this.contentsService.getContentsList('report', 'reporter', sort, id).subscribe(
       data => {
         if (data) {
-          console.log('Report List: ', data);
-          this.ReportList = data;
-          this.addReporterRecord(this.ReportList);
-          if (data.length !== 8) {
+          if (data.length === 0) {
+            this.hasMoreContents2 = false;
+            return;
+          } else if (data.length !== 8) {
             this.hasMoreContents2 = false;
           } else {
             this.hasMoreContents2 = true;
           }
+          console.log('Report List: ', data);
+          this.ReportList = data;
+          this.addReporterRecord(this.ReportList);
         }
       }
     );
@@ -86,17 +92,9 @@ export class SiteMainComponent implements OnInit {
   }
 
   paging1(page) {
-    console.log('page: ', page);
-    const container = this.rankingpost1Directive.viewContainerRef;
-    container.clear();
-    // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
     this.getContentsListNewly(this.sortType1, page);
   }
   paging2(page) {
-    console.log('page: ', page);
-    const container = this.rankingpost1Directive.viewContainerRef;
-    container.clear();
-    // this.addNewlyRecord(this.NewlyList.slice(start, start + 8));
     this.getContentsListReporter(this.sortType2, page);
   }
 
@@ -111,8 +109,6 @@ export class SiteMainComponent implements OnInit {
 
     this.sortType1 = sortName[type];
 
-    const container = this.rankingpost1Directive.viewContainerRef;
-    container.clear();
     this.getContentsListNewly(this.sortType1, 1);
   }
   sort2(type) {
@@ -126,21 +122,24 @@ export class SiteMainComponent implements OnInit {
 
     this.sortType2 = sortName[type];
 
-    const container = this.rankingpost1Directive.viewContainerRef;
-    container.clear();
     this.getContentsListReporter(this.sortType2, 1);
   }
 
   addNewlyRecord(records) {
+    const container = this.rankingpost1Directive.viewContainerRef;
+    container.clear();
+
     // tslint:disable-next-line:forin
     for (const record in records) {
-      // console.log('record: ', records[record]);
-      this.postingService.loadComponent(this.rankingpost1Directive.viewContainerRef,
+      this.postingService.loadComponent(container,
         new PostItem(SiteCardComponent, records[record]));
     }
   }
 
   addReporterRecord(records) {
+    const container = this.rankingpost2Directive.viewContainerRef;
+    container.clear();
+
     this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
       new PostItem(InfoCardComponent, records[0]));
     this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,

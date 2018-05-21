@@ -152,6 +152,17 @@ const login = async function (req, res) {
 }
 module.exports.login = login;
 
+const getInfo = async function (req, res) {
+  const body = req.body;
+  let err, user;
+
+  console.log(req);
+
+  return ReS(res, {
+    'test': 'completed'
+  });
+}
+
 const hasId = async function (req, res) {
   const body = req.body;
   let err, user;

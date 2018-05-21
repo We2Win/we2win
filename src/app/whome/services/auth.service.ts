@@ -98,6 +98,16 @@ export class AuthService {
     return this.jwtHelper.decodeToken(this.getToken());
   }
 
+  getUserInfoDetail() {
+    const headers = { headers: { 'Content-Type': 'application/json' } };
+
+    return this.http.get(environment.apiUrl + '/userInfo', headers)
+      .do((res: any) => console.log('res: ', res),
+      (err) => { this.alertService.error(err); }
+      )
+      .shareReplay();
+  }
+
   setToken(token: string): void {
     localStorage.setItem(this.TOKEN_NAME, token);
   }

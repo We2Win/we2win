@@ -8,24 +8,28 @@
       <div id="memberInfo">
         <div class="left">
           <img src="/assets/img/icon_person.png" />
-          <div class="platinum">PLATINUM</div>
+          <div [class]="userInfo['user_level'].toLowerCase()">{{ userInfo['user_level'] }}</div>
         </div>
         <div>
-          <h1 id="name">김철수</h1>
-          <h2 id="point">3,700K</h2>
-          <h3 id="date">2018. 12. 31. ~ 2019. 12. 08.</h3>
+          <h1 id="name">{{ userInfo['user_name'] }}</h1>
+          <h2 id="point">{{ userInfo['user_point'] }}</h2>
+          <h3 id="date">{{ (userInfo['user_start'] && userInfo['user_end']) ? userInfo['user_start'] + '~' + userInfo['user_end'] : '무제한'
+            }}</h3>
         </div>
+      </div>
+      <div>
+        <app-button>결제하기</app-button>
       </div>
       <div id="memberLocation">
         <h1>관심 지역</h1>
         <p id="tags">
-          #서울 #청담 #판교
+          {{ userInfo['user_location'] ? userInfo['user_location'] : '&nbsp;'}}
         </p>
       </div>
       <div id="memberKeyword">
         <h1>관심 키워드</h1>
         <p id="keywords">
-          #역세권 #오피스텔
+          {{ userInfo['user_keyword'] ? userInfo['user_keyword'] : '&nbsp;'}}
         </p>
       </div>
     </div>
@@ -40,9 +44,9 @@
         <span id="date">2017.12.12.</span>
       </div>
       <div class="site">
-          <span id="categories">분양</span>
-          <span id="title">[제83호] 경주 라마다 호텔 분양대금 ABL 8차</span>
-          <span id="date">2017.12.12.</span>
+        <span id="categories">분양</span>
+        <span id="title">[제83호] 경주 라마다 호텔 분양대금 ABL 8차</span>
+        <span id="date">2017.12.12.</span>
       </div>
     </div>
   </div>

@@ -110,6 +110,7 @@
   font-weight: 400;
   text-align: left;
   height: 54px;
+  overflow-y: hidden;
   line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;

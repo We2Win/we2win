@@ -3,17 +3,19 @@
     <div class="contentBox1">
       <div id="memberTitle">
         <p>회원정보</p>
-        <span>더보기 ></span>
+        <span routerLink="/portfolio/personal">더보기 ></span>
       </div>
       <div id="memberInfo">
         <div class="left">
           <img src="/assets/img/icon_person.png" />
-          <div class="platinum">PLATINUM</div>
+          <div [class]="userInfo['user_level'].toLowerCase()">{{ userInfo['user_level'] }}</div>
         </div>
         <div>
-          <h1 id="name">김철수</h1>
-          <h2 id="point">3,700K</h2>
-          <h3 id="date">2018. 12. 31. ~ 2019. 12. 08.</h3>
+          <h1 id="name">{{ userInfo['user_name'] }}</h1>
+          <h2 id="point">{{ userInfo['user_point'] }}</h2>
+          <h3 id="date">{{ (userInfo['user_start'] && userInfo['user_end']) ? userInfo['user_start'] + '~' + userInfo['user_end'] : '무제한'
+            }}
+          </h3>
         </div>
       </div>
       <div>
@@ -22,17 +24,14 @@
       <div id="memberLocation">
         <h1>관심 지역</h1>
         <p id="tags">
-          #서울 #청담 #판교
+          {{ userInfo['user_location'] ? userInfo['user_location'] : '&nbsp;'}}
         </p>
       </div>
       <div id="memberKeyword">
         <h1>관심 키워드</h1>
         <p id="keywords">
-          #역세권 #오피스텔
+          {{ userInfo['user_keyword'] ? userInfo['user_keyword'] : '&nbsp;'}}
         </p>
-      </div>
-      <div>
-        <h1>관심 금액</h1>
       </div>
     </div>
     <div class="contentBox2">
@@ -44,19 +43,19 @@
           <article>
             <div class="row">
               <label>아이디</label>
-              <p>ㅅㄷㄴㅅ</p>
+              <p>{{ userInfo['id'] }}</p>
             </div>
             <div class="row">
               <label>패스워드</label>
-              <p>asds</p>
+              <p>********</p>
             </div>
             <div class="row">
               <label>핸드폰</label>
-              <p>sadasd</p>
+              <p>{{ userInfo['hp'] }}</p>
             </div>
             <div class="row">
               <label>E-mail</label>
-              <p>asd</p>
+              <p>{{ userInfo[''] }}</p>
             </div>
             <div class="row">
               <label>가입목적</label>
