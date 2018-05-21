@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   // we want to actually subscribe to the boolean of the observable
   loginForm: FormGroup;
   post: any;
-  private user = new UserInfo();
+  // private user = new UserInfo();
+  private user;
 
   TOKEN_NAME = 'jwt_token';
 

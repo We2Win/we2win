@@ -29,7 +29,8 @@ export class MeetingDetailComponent implements OnInit {
   selectedNum = 1;
   showMoreReport = false;
 
-  userInfo = new UserInfo;
+  // userInfo = new UserInfo;
+  userInfo;
   comments = [];
 
   @ViewChild('NewComment') NewComment;

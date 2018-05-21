@@ -30,7 +30,8 @@ export class SiteDetailComponent implements OnInit {
   showCharts = true;
   showMoreReport = false;
 
-  userInfo = new UserInfo();
+  // userInfo = new UserInfo();
+  userInfo;
   comments = [];
 
   @ViewChild('NewComment') NewComment;

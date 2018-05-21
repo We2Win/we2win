@@ -30,7 +30,8 @@ export class InfoDetailComponent implements OnInit {
   showCharts = true;
   showMoreReport = false;
 
-  userInfo = new UserInfo;
+  userInfo;
+  // userInfo = new UserInfo;
   comments = [];
 
   @ViewChild('NewComment') NewComment;
