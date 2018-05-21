@@ -43,7 +43,7 @@
           <article>
             <div class="row">
               <label>아이디</label>
-              <p>{{ userInfo['id'] }}</p>
+              <p>{{ detailedInfo['u-id'] }}</p>
             </div>
             <div class="row">
               <label>패스워드</label>
@@ -51,39 +51,39 @@
             </div>
             <div class="row">
               <label>핸드폰</label>
-              <p>{{ userInfo['hp'] }}</p>
+              <p>{{ detailedInfo['hp'] }}</p>
             </div>
             <div class="row">
               <label>E-mail</label>
-              <p>{{ userInfo[''] }}</p>
+              <p>{{ detailedInfo['email'] }}</p>
             </div>
             <div class="row">
               <label>가입목적</label>
-              <p></p>
+              <p>{{ hopeList[detailedInfo['hope']] }}</p>
             </div>
             <div class="row">
               <label>집 주소</label>
-              <p></p>
+              <p>{{ detailedInfo['ha'] }}</p>
             </div>
             <div class="row">
               <label>집 전화번호</label>
-              <p></p>
+              <p>{{ detailedInfo['hp'] }}</p>
             </div>
             <div class="row">
               <label>사무실 주소</label>
-              <p></p>
+              <p>{{ detailedInfo['oa'] }}</p>
             </div>
             <div class="row">
               <label>사무실 전화번호</label>
-              <p></p>
+              <p>{{ detailedInfo['op'] }}</p>
             </div>
             <div class="row">
               <label>정보 수신</label>
-              <p></p>
+              <p>{{ detailedInfo['info-a'] }}</p>
             </div>
             <div class="row">
               <label>SNS 계정연동</label>
-              <p></p>
+              <p>{{ detailedInfo['sns'] }}</p>
             </div>
           </article>
         </app-group>

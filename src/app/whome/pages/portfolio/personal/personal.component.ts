@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { UserInfo } from '../../../../wmanagement/models/userInfo';
 import { AlertService } from '../../../services/alert.service';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-personal',
@@ -10,8 +9,10 @@ import { userInfo } from 'os';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-  userInfo;
+  userInfo: UserInfo = new UserInfo();
   detailedInfo;
+
+  hopeList = ['투자', '실거주', '모두 해당'];
 
   constructor(
     private authService: AuthService,
@@ -19,7 +20,8 @@ export class PersonalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userInfo = this.authService.getUserInfo();
+    console.log(this.authService.getUserInfo());
+    this.userInfo = JSON.parse(this.authService.getUserInfo());
     console.log('userInfo: ', this.userInfo);
     this.authService.getUserInfoDetail(this.userInfo).subscribe(
       (res: any) => { this.detailedInfo = res; },

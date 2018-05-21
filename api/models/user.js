@@ -133,14 +133,14 @@ module.exports = (sequelize, DataTypes) => {
   Model.prototype.getJWT = function () {
     let expiration_time = parseInt(CONFIG.jwt_expiration);
     return "Bearer " + jwt.sign({
-        user_id: this['u-id'],
-        user_point: this['point'],
-        user_name: this['name'],
-        user_level: this['level'],
-        user_start: this['level-start'],
-        user_end: this['level-end'],
-        user_location: '#'+this['location1']+' #'+this['location2'],
-        user_keyword: '#'+this['keyword']
+        user_id: this['u-id'] || '',
+        user_point: this['point'] || '',
+        user_name: this['name'] || '',
+        user_level: this['level'] || '',
+        user_start: this['level-start'] || '',
+        user_end: this['level-end'] || '',
+        user_location: '#'+(this['location1'] || '')+' #'+(this['location2'] || ''),
+        user_keyword: '#'+(this['keyword'] || '')
       },
       CONFIG.jwt_encryption, {
         expiresIn: expiration_time
