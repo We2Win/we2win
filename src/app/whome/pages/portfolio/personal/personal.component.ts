@@ -21,7 +21,7 @@ export class PersonalComponent implements OnInit {
   ngOnInit() {
     this.userInfo = this.authService.getUserInfo();
     console.log('userInfo: ', this.userInfo);
-    this.authService.getUserInfoDetail(userInfo).subscribe(
+    this.authService.getUserInfoDetail(this.userInfo).subscribe(
       (res: any) => { this.detailedInfo = res; },
       (err) => { this.alertService.error(err); }
     );

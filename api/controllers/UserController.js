@@ -159,7 +159,7 @@ const detailedInfo = async function (req, res) {
   console.log('detailedInfo: ', req.body);
   console.log('detailedInfo: ', req.headers);
 
-  [err, user] = await to(authService.authUser(req.body));
+  [err, user] = await to(authService.getUserInfo(req.body));
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
