@@ -9,7 +9,7 @@ import { AlertService } from '../../../services/alert.service';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-  userInfo: UserInfo = new UserInfo();
+  userInfo = new UserInfo();
   detailedInfo;
 
   hopeList = ['투자', '실거주', '모두 해당'];
@@ -20,9 +20,9 @@ export class PersonalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.authService.getUserInfo());
-    this.userInfo = JSON.parse(this.authService.getUserInfo());
-    console.log('userInfo: ', this.userInfo);
+    // console.log(this.authService.getUserInfo());
+    // this.userInfo.authService.getUserInfo();
+    // console.log('userInfo: ', this.userInfo);
     this.authService.getUserInfoDetail(this.userInfo).subscribe(
       (res: any) => { this.detailedInfo = res; },
       (err) => { this.alertService.error(err); }

@@ -81,6 +81,24 @@ export class LoginComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     this.naverLogin.init();
 
+    this.naverLogin.getLoginStatus(function (status) {
+      if (status) {
+        /* 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+        const email = this.naverLogin.user.getEmail();
+        console.log('email: ', email);
+        if (email == undefined || email == null) {
+          alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
+          /* 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+          this.naverLogin.reprompt();
+          return;
+        }
+
+        window.location.replace('처리후 되돌아갈 곳');
+      } else {
+        console.log('callback 처리에 실패하였습니다.');
+      }
+    });
+
     if (!window['Kakao'].Auth) {
       window['Kakao'].init('b560ff0ff0ea7935612a6555fb53c516');
     }
@@ -154,11 +172,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
     //   }
     // });
 
-    var naver_id_login = new window["naver_id_login"]("Wubf2TBn_Q6UWKJRyT1Y", "http://localhost:4200/callback");
-    var state = naver_id_login.getUniqState();
-    naver_id_login.setDomain("http://localhost:4200/callback");
+    const naver_id_login = new window['naver_id_login']('Wubf2TBn_Q6UWKJRyT1Y', 'http://localhost:4200/callback');
+    const state = naver_id_login.getUniqState();
+    naver_id_login.setDomain(environment.homeUrl);
+    // naver_id_login.setDomain('http://localhost:4200/callback');
     naver_id_login.setState(state);
-    naver_id_login.setButton("white", 2, 40);
+    naver_id_login.setButton('white', 2, 40);
     naver_id_login.init_naver_id_login();
 
   }

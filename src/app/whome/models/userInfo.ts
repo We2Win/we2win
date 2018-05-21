@@ -9,4 +9,11 @@ export class UserInfo {
     user_end = '';
     user_location = '';
     user_keyword = '';
+
+    setInfo(dataObj) {
+        // tslint:disable-next-line:forin
+        for (const val in dataObj) {
+            this[val] = dataObj.val + '';
+        }
+    }
 }
