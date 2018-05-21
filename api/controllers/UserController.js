@@ -163,7 +163,7 @@ const detailedInfo = async function (req, res) {
     user: user.toWeb()
   });
 }
-module.exports.getInfo = getInfo;
+module.exports.detailedInfo = detailedInfo;
 
 const hasId = async function (req, res) {
   const body = req.body;
