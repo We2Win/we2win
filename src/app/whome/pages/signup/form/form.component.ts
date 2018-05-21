@@ -142,15 +142,16 @@ export class FormComponent implements OnInit, AfterViewInit {
     // /* 설정정보를 초기화하고 연동을 준비 */
     // // naver_id_login.init();
 
-    window.addEventListener('load', function() {
-      Naver.getLoginStatus(function (status) {
+    window.addEventListener('load', () => {
+      Naver.getLoginStatus((status) => {
         if (status) {
+          this.loginType = 'naver';
           /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
           const email = Naver.user.getEmail();
-          this.signupForm.controls['u-id'].value = Naver.user.getEmail();
-          this.signupForm.controls['email'].value = Naver.user.getEmail();
-          this.signupForm.controls['name'].value = Naver.user.getNickName();
-          this.signupForm.controls['password'].value = 'naver0123!';
+          this.signupForm.controls['u-id'].setValue(Naver.user.getEmail());
+          this.signupForm.controls['email'].setValue(Naver.user.getEmail());
+          this.signupForm.controls['name'].setValue(Naver.user.getNickName());
+          this.signupForm.controls['password'].setValue('naver0123!');
           // console.log('email: ', email);
           if (email == undefined || email == null) {
             alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
