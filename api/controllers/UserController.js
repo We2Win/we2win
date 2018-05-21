@@ -152,14 +152,15 @@ const login = async function (req, res) {
 }
 module.exports.login = login;
 
-const getInfo = async function (req, res) {
+const detailedInfo = async function (req, res) {
   const body = req.body;
   let err, user;
 
-  console.log('req: ', req.headers);
+  [err, user] = await to(authService.authUser(req.body));
+  if (err) return ReE(res, err, 422);
 
   return ReS(res, {
-    'test': 'completed'
+    user: user.toWeb()
   });
 }
 module.exports.getInfo = getInfo;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminGuard } from './whome/guards/admin.guard';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'wadmin',
+    canActivate: [AdminGuard],
     loadChildren: 'app/wadmin/wadmin.module#WadminModule'
   },
 ];
@@ -22,6 +24,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule],
-  providers: []
+  providers: [AdminGuard]
 })
 export class AppRoutingModule {}

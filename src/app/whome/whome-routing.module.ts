@@ -38,6 +38,7 @@ import { SiteDetailComponent } from './pages/site/site-detail/site-detail.compon
 import { UseComponent } from './pages/policy/use/use.component';
 import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
 import { SearchComponent } from './pages/search/search.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -241,6 +242,7 @@ const routes: Routes = [
   // temporary state
   {
     path: 'mng',
+    canActivate: [AuthGuard, AdminGuard],
     loadChildren: 'app/wmanagement/wmanagement.module#WmanagementModule'
   },
   {
@@ -261,6 +263,7 @@ const routes: Routes = [
   providers: [
     PageInfoService,
     AuthGuard,
+    AdminGuard,
     JwtHelper,
   ]
 })

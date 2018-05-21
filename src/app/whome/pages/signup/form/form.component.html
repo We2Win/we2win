@@ -36,7 +36,7 @@
             <label>패스워드
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="password" formControlName="password" #password placeholder="비밀번호를 입력해 주세요." pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"/>
+            <input class="form-control" type="password" formControlName="password" #password placeholder="비밀번호를 입력해 주세요." pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&$+$-])[A-Za-z\d$@$!%*#?&$+$-]{8,12}$"/>
             <div class="blank">특수문자, 숫자 포함 8 - 12자리</div>
           </div>
           <div class="row alert">
@@ -209,12 +209,12 @@
         <article>
           <div class="form-group row">
             <label>집주소</label>
-            <input type="text" [placeholder]="zonecode" (click)="execDaumPostcode()">
-            <app-button type="button" (click)="execDaumPostcode()">우편번호 찾기</app-button>
+            <input readonly class="form-control" type="text" formControlName="ha" [placeholder]="fullRoadAddr">
+            <app-button type="button" (click)="execDaumPostcode('ha')">주소 찾기</app-button>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" *ngIf="">
             <label></label>
-            <input class="form-control" type="text" formControlName="ha" [placeholder]="fullRoadAddr">
+            <input type="text" [placeholder]="zonecode" (click)="execDaumPostcode()">
             <input class="form-control" type="text" [placeholder]="jibunAddress">
           </div>
           <div class="form-group row">
@@ -227,8 +227,10 @@
           </div>
           <div class="form-group row">
             <label>사무실 주소</label>
-            <input class="form-control" formControlName="oa" type="text" placeholder="주소를 입력해주세요.">
-            <div class="blank"></div>
+            <input readonly class="form-control" type="text" formControlName="oa" [placeholder]="fullRoadAddr">
+            <app-button type="button" (click)="execDaumPostcode('oa')">주소 찾기</app-button>
+            <!-- <input class="form-control" formControlName="oa" type="text" placeholder="주소를 입력해주세요."> -->
+            <!-- <div class="blank"></div> -->
             <!-- <app-button>주소 검색</app-button> -->
           </div>
           <div class="form-group row">

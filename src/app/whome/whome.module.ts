@@ -66,13 +66,19 @@ import { FbShareService } from './services/fb-share.service';
 import { SiteDetailComponent } from './pages/site/site-detail/site-detail.component';
 import {
   RankingpostDirective, Rankingpost1Directive,
-  Rankingpost2Directive, Rankingpost3Directive } from './directives/rankingpost.directive';
+  Rankingpost2Directive, Rankingpost3Directive
+} from './directives/rankingpost.directive';
 import { SearchComponent } from './pages/search/search.component';
 import { UseComponent } from './pages/policy/use/use.component';
 import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
 import { AlertComponent } from './micro/alert/alert.component';
 import { AlertService } from './services/alert.service';
+import { HttpClientModule } from '@angular/common/http';
 
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   imports: [

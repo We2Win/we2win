@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { UserInfo } from '../../../../wmanagement/models/userInfo';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-personal',
@@ -12,12 +13,16 @@ export class PersonalComponent implements OnInit {
   detailedInfo;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.userInfo = this.authService.getUserInfo();
-    this.detailedInfo = this.authService.getUserInfoDetail();
+    this.authService.getUserInfoDetail().subscribe(
+      (res: any) => { this.detailedInfo = res; },
+      (err) => { this.alertService.error(err); }
+    );
     // this.userInfo = JSON.parse(this.authService.getUserInfo());
   }
 

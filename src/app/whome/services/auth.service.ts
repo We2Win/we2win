@@ -88,6 +88,16 @@ export class AuthService {
     return token ? !this.isTokenExpired(token) : false;
   }
 
+  isAdministrator(): boolean {
+    const info = this.jwtHelper.decodeToken(this.getToken());
+
+    if (info['user_level'] === 'ADMIN') {
+      return true;
+    }
+
+    return false;
+  }
+
   getToken(): string {
     return localStorage.getItem(this.TOKEN_NAME);
   }
@@ -99,6 +109,7 @@ export class AuthService {
 
   getUserInfoDetail() {
     // const headers = { headers: { 'Content-Type': 'application/json' } };
+    console.log('executing getUserInfoDetail(): ', environment.apiUrl + '/userInfo');
     return this.http.get(environment.apiUrl + '/userInfo')
       .do((res: any) => console.log('res: ', res),
       (err) => { this.alertService.error(err); }

@@ -4,6 +4,7 @@ import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { AlertService } from '../../../services/alert.service';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-form',
@@ -22,7 +23,12 @@ export class FormComponent implements OnInit, AfterViewInit {
   loginType = '';
   level;
   levelName = ['GUEST', 'STANDARD', 'PREMIUM', 'PLATINUM'];
-  levelPrice = [0, 0, 5000, 10000];
+  levelPrice = {
+    'GUEST': 0,
+    'STANDARD': 0,
+    'PREMIUM': 5000,
+    'PLATINUM': 10000
+  };
 
   checkId: boolean;
 
@@ -205,16 +211,17 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   payFee(userInfo) {
     // IMP.request_pay(param, callback) 호출
+    console.log(userInfo);
     window['IMP'].request_pay({ // param
       pg: 'kcp',
       pay_method: 'card',
       merchant_uid: 'WE' + new Date(),
-      name: '회원등급' + this.levelName[userInfo['level']],
+      name: '회원등급' + userInfo['level'],
       amount: this.levelPrice[userInfo['level']],
       buyer_email: userInfo['email'],
       buyer_name: userInfo['name'],
       buyer_tel: userInfo['cp'],
-      buyer_addr: userInfo['address'],
+      buyer_addr: userInfo['ha'],
       // buyer_postcode: userInfo.
     }, (rsp) => { // callback
       if (rsp.success) {
@@ -250,7 +257,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       || this.signupForm.controls['u-id'].hasError('required');
 
     if (checkValue) {
-      this.info('4글자 ~ 15글자 이내로 아이디를 적어주세요.');
+      this.info('4글자 ~ 15글자 이내로 적어주세요.');
       return false;
     }
 
@@ -367,7 +374,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   // 본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-  execDaumPostcode() {
+  execDaumPostcode(type) {
     const Daum = new window['daum'].Postcode({
       oncomplete: (data) => {
         // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -399,7 +406,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.zonecode = data.zonecode; // 5자리 새우편번호 사용
         this.fullRoadAddr = data.roadAddress;
         this.jibunAddress = data.jibunAddress;
-        this.signupForm.controls['ha'].setValue(this.fullRoadAddr);
+        this.signupForm.controls[type].setValue(this.fullRoadAddr);
 
         console.log(this.zonecode, this.fullRoadAddr, this.jibunAddress);
 
