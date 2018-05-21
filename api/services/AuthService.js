@@ -315,6 +315,17 @@ const authUser = async function (userInfo) { //returns token
 }
 module.exports.authUser = authUser;
 
+const getUserInfo = async function (userInfo) {
+  [err, user] = await to(User.findOne({
+    where: {
+      'u-id': userInfo['user_id']
+    }
+  }));
+
+  return user;
+}
+module.exports.getUserInfo = getUserInfo;
+
 const hasUser = async function (userInfo) {
   [err, user] = await to(User.findOne({
     where: {

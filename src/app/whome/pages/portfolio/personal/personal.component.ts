@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { UserInfo } from '../../../../wmanagement/models/userInfo';
 import { AlertService } from '../../../services/alert.service';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-personal',
@@ -19,7 +20,7 @@ export class PersonalComponent implements OnInit {
 
   ngOnInit() {
     this.userInfo = this.authService.getUserInfo();
-    this.authService.getUserInfoDetail().subscribe(
+    this.authService.getUserInfoDetail(userInfo).subscribe(
       (res: any) => { this.detailedInfo = res; },
       (err) => { this.alertService.error(err); }
     );

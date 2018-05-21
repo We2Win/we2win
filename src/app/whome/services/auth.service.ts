@@ -107,10 +107,10 @@ export class AuthService {
     return this.jwtHelper.decodeToken(this.getToken());
   }
 
-  getUserInfoDetail() {
-    // const headers = { headers: { 'Content-Type': 'application/json' } };
+  getUserInfoDetail(info) {
+    const headers = { headers: { 'Content-Type': 'application/json' } };
     console.log('executing getUserInfoDetail(): ', environment.apiUrl + '/userInfo');
-    return this.http.get(environment.apiUrl + '/userInfo')
+    return this.http.post(environment.apiUrl + '/userInfo', info, headers)
       .do((res: any) => console.log('res: ', res),
       (err) => { this.alertService.error(err); }
       )

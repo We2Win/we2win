@@ -403,12 +403,12 @@ export class FormComponent implements OnInit, AfterViewInit {
         }
 
         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-        this.zonecode = data.zonecode; // 5자리 새우편번호 사용
-        this.fullRoadAddr = data.roadAddress;
-        this.jibunAddress = data.jibunAddress;
-        this.signupForm.controls[type].setValue(this.fullRoadAddr);
+        // this.zonecode = data.zonecode; // 5자리 새우편번호 사용
+        // this.fullRoadAddr = data.roadAddress;
+        // this.jibunAddress = data.jibunAddress;
+        this.signupForm.controls[type].setValue(data.roadAddress + ' (' + data.zonecode + ')');
 
-        console.log(this.zonecode, this.fullRoadAddr, this.jibunAddress);
+        // console.log(this.zonecode, this.fullRoadAddr, this.jibunAddress);
 
         return;
         // // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
