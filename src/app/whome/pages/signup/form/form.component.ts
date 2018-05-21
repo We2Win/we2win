@@ -374,8 +374,8 @@ export class FormComponent implements OnInit, AfterViewInit {
     window['Kakao'].Auth.login({
       success: (authObj) => {
         this.info(JSON.stringify(authObj));
-        this.signupForm.controls['u-id'].setValue('K' + new Date().toISOString().replace(/-/g, '').slice(2, 17));
-        this.signupForm.controls['password'].setValue('kakao1234!');
+        // this.signupForm.controls['u-id'].setValue('K' + new Date().toISOString().replace(/-/g, '').slice(2, 17));
+        // this.signupForm.controls['password'].setValue('kakao1234!');
       },
       fail: (err) => {
         this.error(JSON.stringify(err));
