@@ -109,17 +109,6 @@ export class FormComponent implements OnInit, AfterViewInit {
       keyword: new FormControl(),
     });
 
-    // const Naver = new naver.LoginWithNaverId(
-    //   {
-    //     clientId: environment.naver.clientId,
-    //     callbackUrl: environment.naver.callbackUrl,
-    //     isPopup: true, /* 팝업을 통한 연동처리 여부 */
-    //     loginButton: { color: 'green', type: 3, height: 54.59 } /* 로그인 버튼의 타입을 지정 */
-    //   }
-    // );
-
-    /* 설정정보를 초기화하고 연동을 준비 */
-    // Naver.init();
     if (!window['Kakao']) {
       window['Kakao'].init(environment.kakao.clientId);
     }
@@ -127,15 +116,53 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const naver_id_login = new window['naver_id_login'](environment.naver.clientId, environment.naver.callbackUrl);
+    const Naver = new naver.LoginWithNaverId(
+      {
+        clientId: environment.naver.clientId,
+        callbackUrl: environment.naver.callbackUrl,
+        isPopup: true, /* 팝업을 통한 연동처리 여부 */
+        callbackHandle: false,
+        loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
+      }
+    );
 
-    const state = naver_id_login.getUniqState();
-    naver_id_login.setButton('green', 3, 48);
-    naver_id_login.setDomain(environment.naver.reqUrl);
-    naver_id_login.setState(state);
-    naver_id_login.setPopup();
-    naver_id_login.init_naver_id_login();
+    /* 설정정보를 초기화하고 연동을 준비 */
+    Naver.init();
+
+    // const naver_id_login = new window['naver_id_login'](environment.naver.clientId, environment.naver.registerUrl);
+
+    // const state = naver_id_login.getUniqState();
+    // console.log('naver state: ', state);
+    // naver_id_login.setButton('green', 3, 48);
+    // naver_id_login.setDomain(environment.naver.reqUrl);
+    // naver_id_login.setState(state);
+    // naver_id_login.setPopup();
+    // naver_id_login.init_naver_id_login();
+
+    // /* 설정정보를 초기화하고 연동을 준비 */
+    // // naver_id_login.init();
+
+    window.addEventListener('load', function() {
+      Naver.getLoginStatus(function (status) {
+        if (status) {
+          /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+          const email = Naver.user.getEmail();
+          console.log('email: ', email);
+          if (email == undefined || email == null) {
+            alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
+            /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+            Naver.reprompt();
+            return;
+          }
+
+          // window.location.replace();
+        } else {
+          console.log('callback 처리에 실패하였습니다.');
+        }
+      });
+    });
   }
+
 
   onSubmit() {
     // check id validation
