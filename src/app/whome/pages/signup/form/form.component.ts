@@ -147,7 +147,9 @@ export class FormComponent implements OnInit, AfterViewInit {
         if (status) {
           this.loginType = 'naver';
           /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+          const uId = Naver.user.getEmail();
           const email = Naver.user.getEmail();
+          const name = Naver.user.getNickName();
           this.signupForm.controls['u-id'].setValue(Naver.user.getEmail());
           this.signupForm.controls['email'].setValue(Naver.user.getEmail());
           this.signupForm.controls['name'].setValue(Naver.user.getNickName());
