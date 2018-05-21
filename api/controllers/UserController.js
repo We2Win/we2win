@@ -156,7 +156,7 @@ const getInfo = async function (req, res) {
   const body = req.body;
   let err, user;
 
-  console.log('req: ', req.header);
+  console.log('req: ', req.headers);
 
   return ReS(res, {
     'test': 'completed'
