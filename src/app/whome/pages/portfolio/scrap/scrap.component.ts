@@ -16,7 +16,7 @@ export class ScrapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userInfo = JSON.parse(this.authService.getUserInfo());
+    JSON.parse(this.authService.getUserInfoDetail());
   }
 
   showInfo() {
