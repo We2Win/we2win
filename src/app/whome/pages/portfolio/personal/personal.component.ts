@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { UserInfo } from '../../../../wmanagement/models/userInfo';
 
 @Component({
   selector: 'app-personal',
@@ -7,14 +8,14 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-  userInfo;
+  userInfo = new UserInfo();
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.userInfo = this.authService.getUserInfoDetail();
+    this.userInfo = JSON.parse(this.authService.getUserInfo());
   }
 
 }

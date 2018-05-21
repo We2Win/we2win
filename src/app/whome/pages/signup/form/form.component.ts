@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, Renderer, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';

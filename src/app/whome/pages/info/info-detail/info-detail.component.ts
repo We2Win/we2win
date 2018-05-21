@@ -10,9 +10,9 @@ import { Report } from '../../../models/report';
 import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
-import { User } from '../../../models/user';
 import { InfoCardComponent } from '../../../micro/info-card/info-card.component';
 import { AlertService } from '../../../services/alert.service';
+import { UserInfo } from '../../../models/userInfo';
 
 @Component({
   selector: 'app-info-detail',
@@ -30,7 +30,7 @@ export class InfoDetailComponent implements OnInit {
   showCharts = true;
   showMoreReport = false;
 
-  userInfo;
+  userInfo = new UserInfo;
   comments = [];
 
   @ViewChild('NewComment') NewComment;
@@ -79,7 +79,7 @@ export class InfoDetailComponent implements OnInit {
       }
     );
 
-    this.userInfo = this.auth.getUserInfo();
+    this.userInfo = JSON.parse(this.auth.getUserInfo());
   }
 
   updateDetail() {

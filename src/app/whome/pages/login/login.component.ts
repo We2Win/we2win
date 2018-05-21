@@ -9,12 +9,12 @@ import { JwtHelper } from 'angular2-jwt';
 // import 'rxjs/add/operator/do';
 // import 'rxjs/add/operator/shareReplay';
 
-import { User } from '../../models/user';
 import { Token } from '../../models/token';
 import { fadeInAnimation } from '../../../animations/animation';
 import { AlertService } from '../../services/alert.service';
 import { environment } from '../../../../environments/environment';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { UserInfo } from '../../models/userInfo';
 // yimport { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   // we want to actually subscribe to the boolean of the observable
   loginForm: FormGroup;
   post: any;
-  private user: User;
+  private user = new UserInfo();
 
   TOKEN_NAME = 'jwt_token';
 

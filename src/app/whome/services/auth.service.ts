@@ -13,11 +13,10 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
 
-import { User } from '../models/user';
 import { Token } from '../models/token';
-
 import { environment } from '../../../environments/environment';
 import { AlertService } from './alert.service';
+import { UserInfo } from '../models/userInfo';
 
 
 @Injectable()
@@ -47,7 +46,7 @@ export class AuthService {
       });
   }
 
-  login(user: User) {
+  login(user: UserInfo) {
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
@@ -69,7 +68,7 @@ export class AuthService {
   }
 
   // signin(credential: User) {
-  signin(credential: User): Observable<Token> {
+  signin(credential: UserInfo): Observable<Token> {
     return this.http.post<Token>(`${this.appUrl}/auth/signin`, credential)
       .do(res => this.setToken(res.token))
       .shareReplay();

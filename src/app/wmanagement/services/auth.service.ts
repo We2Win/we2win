@@ -4,7 +4,6 @@ import { Headers, RequestOptions, Response } from '@angular/http';
 
 import { JwtHelper } from 'angular2-jwt';
 
-import { User } from '../models/user';
 import { environment } from '../../../environments/environment';
 
 @Injectable()

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { User } from '../models/user';
 import { Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
@@ -9,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { environment } from '../../../environments/environment.prod';
 import { JwtHelper } from 'angular2-jwt';
+import { UserInfo } from '../models/userInfo';
 
 @Injectable()
 export class UserService {
@@ -26,16 +26,16 @@ export class UserService {
      string) {
     return this.http.get('/api/v1/infos');
   }
-  create(user: User) {
+  create(user: UserInfo) {
     console.log('user form create(): ', user);
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
     return this.http.post(environment.apiUrl + '/users', bodyString, headers)
-      .map((res: User) => res )
+      .map((res: UserInfo) => res )
       .catch((error: any) => this.handleError(error.message));
   }
-  update(user: User) {
+  update(user: UserInfo) {
     return this.http.put('/api/v1/infos', user);
   }
 

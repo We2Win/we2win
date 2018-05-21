@@ -10,9 +10,9 @@ import { Meeting } from '../../../models/meeting';
 import { environment } from '../../../../../environments/environment';
 import { ChartComponent } from '../../../micro/chart/chart.component';
 import { AuthService } from '../../../services/auth.service';
-import { User } from '../../../models/user';
 import { MeetingCardComponent } from '../../../micro/meeting-card/meeting-card.component';
 import { AlertService } from '../../../services/alert.service';
+import { UserInfo } from '../../../models/userInfo';
 
 @Component({
   selector: 'app-meeting-detail',
@@ -29,7 +29,7 @@ export class MeetingDetailComponent implements OnInit {
   selectedNum = 1;
   showMoreReport = false;
 
-  userInfo;
+  userInfo = new UserInfo;
   comments = [];
 
   @ViewChild('NewComment') NewComment;
@@ -78,7 +78,7 @@ export class MeetingDetailComponent implements OnInit {
       }
     );
 
-    this.userInfo = this.auth.getUserInfo();
+    this.userInfo = JSON.parse(this.auth.getUserInfo());
   }
 
   updateDetail() {

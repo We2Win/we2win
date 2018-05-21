@@ -4,9 +4,9 @@ import { Headers, RequestOptions, Response } from '@angular/http';
 
 import { JwtHelper } from 'angular2-jwt';
 
-import { User } from '../models/user';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Observable';
+import { UserInfo } from '../models/userInfo';
 
 @Injectable()
 export class UserService {
@@ -22,13 +22,13 @@ export class UserService {
       .map((res: any) => res);
   }
 
-  deleteUser(user: User): Observable<User> {
-    const url = environment.apiUrl + '/mng/users/' + user.ID;
+  deleteUser(user: UserInfo): Observable<UserInfo> {
+    const url = environment.apiUrl + '/mng/users/' + user['user_id'];
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
-  return this.http.delete<User>(url, headers)
-    .map((res: User) => res);
+  return this.http.delete<UserInfo>(url, headers)
+    .map((res: UserInfo) => res);
       // .catch((error: any) => { console.log(error.message); });
   }
 }
