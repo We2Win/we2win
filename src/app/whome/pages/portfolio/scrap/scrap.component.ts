@@ -8,7 +8,7 @@ import { UserInfo } from '../../../models/userInfo';
   styleUrls: ['./scrap.component.css']
 })
 export class ScrapComponent implements OnInit {
-  userInfo = new UserInfo();
+  userInfo;
 
   constructor(
     private _elementRef: ElementRef,
@@ -16,7 +16,13 @@ export class ScrapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    JSON.parse(this.authService.getUserInfoDetail());
+    // console.log(typeof(this.authService.getUserInfo()));
+    // this.userInfo = JSON.parse(this.authService.getUserInfo())
+    // .forEach(element => {
+    //   console.log(element);
+    // });
+
+    this.userInfo = this.authService.getUserInfo();
   }
 
   showInfo() {

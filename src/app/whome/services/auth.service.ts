@@ -98,9 +98,8 @@ export class AuthService {
   }
 
   getUserInfoDetail() {
-    const headers = { headers: { 'Content-Type': 'application/json' } };
-
-    return this.http.get(environment.apiUrl + '/userInfo', headers)
+    // const headers = { headers: { 'Content-Type': 'application/json' } };
+    return this.http.get(environment.apiUrl + '/userInfo')
       .do((res: any) => console.log('res: ', res),
       (err) => { this.alertService.error(err); }
       )

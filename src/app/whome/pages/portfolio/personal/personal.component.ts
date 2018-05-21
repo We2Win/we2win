@@ -8,14 +8,17 @@ import { UserInfo } from '../../../../wmanagement/models/userInfo';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-  userInfo = new UserInfo();
+  userInfo;
+  detailedInfo;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.userInfo = JSON.parse(this.authService.getUserInfo());
+    this.userInfo = this.authService.getUserInfo();
+    this.detailedInfo = this.authService.getUserInfoDetail();
+    // this.userInfo = JSON.parse(this.authService.getUserInfo());
   }
 
 }
