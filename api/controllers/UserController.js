@@ -162,6 +162,7 @@ const getInfo = async function (req, res) {
     'test': 'completed'
   });
 }
+module.exports.getInfo = getInfo;
 
 const hasId = async function (req, res) {
   const body = req.body;
