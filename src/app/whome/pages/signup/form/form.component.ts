@@ -328,7 +328,6 @@ export class FormComponent implements OnInit, AfterViewInit {
       this.loginType = type;
       // sample code
       if (type === 'naver') {
-
         this.uId.nativeElement.classList.add('disable');
         this.password.nativeElement.classList.add('disable');
         this.passwordV.nativeElement.classList.add('disable');
@@ -343,7 +342,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.name.nativeElement.classList.add('disable');
         this.email.nativeElement.classList.add('disable');
       } else if (type === 'kakao') {
-        this.info('카카오 아이디로 로그인 팝업');
+        // this.info('카카오 아이디로 로그인 팝업');
 
         this.loginWithKakao();
         // this.signupForm.controls['uId'].setValue('KAKAO_ID');
@@ -355,8 +354,8 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.uId.nativeElement.classList.add('disable');
         this.passwordV.nativeElement.classList.add('disable');
         this.password.nativeElement.classList.add('disable');
-        this.name.nativeElement.classList.add('disable');
-        this.email.nativeElement.classList.add('disable');
+        // this.name.nativeElement.classList.add('disable');
+        // this.email.nativeElement.classList.add('disable');
       } else {
         this.signupForm.reset();
 
@@ -375,6 +374,8 @@ export class FormComponent implements OnInit, AfterViewInit {
     window['Kakao'].Auth.login({
       success: (authObj) => {
         this.info(JSON.stringify(authObj));
+        this.signupForm.controls['u-id'].setValue('K' + new Date().toISOString().replace(/-/g, '').slice(2, 17));
+        this.signupForm.controls['password'].setValue('kakao1234!');
       },
       fail: (err) => {
         this.error(JSON.stringify(err));
