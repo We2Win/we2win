@@ -156,7 +156,7 @@ const bookmark = async function (req, res) {
   const id = req.params.id;
   const page = req.params.page;
 
-  console.log('bookmark(): ', id, page, req.headers.get('Authorization'));
+  console.log('bookmark(): ', id, page, req.headers);
 
   return ReS(res, {
     message: 'Done Bookmarking'
