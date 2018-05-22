@@ -109,9 +109,6 @@ export class FormComponent implements OnInit, AfterViewInit {
       keyword: new FormControl(),
     });
 
-    if (!window['Kakao']) {
-      window['Kakao'].init(environment.kakao.clientId);
-    }
     window['IMP'].init('imp78270348');
   }
 
@@ -129,6 +126,9 @@ export class FormComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     Naver.init();
 
+    if (!window['Kakao']) {
+      window['Kakao'].init(environment.kakao.clientId);
+    }
     // const naver_id_login = new window['naver_id_login'](environment.naver.clientId, environment.naver.registerUrl);
 
     // const state = naver_id_login.getUniqState();

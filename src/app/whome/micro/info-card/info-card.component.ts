@@ -30,35 +30,17 @@ export class InfoCardComponent implements OnInit {
     this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
   }
 
-  success(message: string) {
-    this.alertService.success(message);
-  }
-
-  error(message: string) {
-    this.alertService.error(message);
-  }
-
-  info(message: string) {
-    this.alertService.info(message);
-  }
-
-  warn(message: string) {
-    this.alertService.warn(message);
-  }
-
-  clear() {
-    this.alertService.clear();
-  }
-
   bookmark() {
     const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
 
     if (bookmark.classList.contains('selected')) {
       bookmark.src = '/assets/img/icon_bookmark.png';
       bookmark.classList.remove('selected');
+      this.alertService.warn('북마크가 해제되었습니다.');
     } else {
       bookmark.src = '/assets/img/icon_bookmark_selected.png';
       bookmark.classList.add('selected');
+      this.alertService.success('북마크가 설정되었습니다.');
     }
   }
 

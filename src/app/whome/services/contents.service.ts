@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AlertService } from './alert.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class ContentsService {
   constructor(
     private http: HttpClient,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private authService: AuthService
   ) { }
 
   getContentsList(page, list, sort, id?: any) {
@@ -38,6 +40,18 @@ export class ContentsService {
   getComments(cid) {
     return this.http.get(environment.apiUrl + '/contents/comments/' + cid)
       .map((res: any) => res);
+  }
+
+  addBookmark(page, id) {
+    const headers = { headers: {
+      'Content-Type': 'application/json',
+      'Authorization': this.authService.getToken()
+    }};
+
+    return this.http.post(environment.apiUrl + '/bookmark/' + page + '/' + id, headers).subscribe(
+      res => { console.log(res); },
+      error => { console.log(error); }
+    );
   }
 
   getSimplesList(page, sort, id?: any) {

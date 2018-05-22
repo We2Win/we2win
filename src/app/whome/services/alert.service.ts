@@ -49,6 +49,11 @@ export class AlertService {
     this.keepAfterRouteChange = keepAfterRouteChange;
     // console.log('servicing..');
     this.subject.next(<Alert>{ type: type, message: message });
+
+    // remove popup after 3 seconds
+    setTimeout(() => {
+      this.clear();
+    }, 3000);
   }
 
   clear() {

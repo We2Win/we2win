@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, Input, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -57,7 +57,8 @@ export class InfoDetailComponent implements OnInit {
     private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router,
-    private meta: Meta
+    private meta: Meta,
+    private _elementRef: ElementRef
   ) {
     this.id = this.route.params['value'].id;
   }
@@ -230,6 +231,20 @@ export class InfoDetailComponent implements OnInit {
 
   showMore(child) {
     child._elementRef.nativeElement.classList.add('show');
+  }
+
+  bookmark() {
+    const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
+
+    if (bookmark.classList.contains('selected')) {
+      bookmark.src = '/assets/img/icon_bookmark_black.png';
+      bookmark.classList.remove('selected');
+      this.alertService.warn('북마크가 해제되었습니다.');
+    } else {
+      bookmark.src = '/assets/img/icon_bookmark_black_selected.png';
+      bookmark.classList.add('selected');
+      this.alertService.success('북마크가 설정되었습니다.');
+    }
   }
 }
 

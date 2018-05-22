@@ -60,6 +60,8 @@ router.post('/userInfo', UserController.detailedInfo);
 router.get('/mng/users', UserController.get);
 router.delete('/mng/users/:id', UserController.remove); //delete
 
+router.post('/bookmark/:page/:id', UserController.bookmark);
+
 // router.get('/mng/dash', ContentController.getDashboardData);
 
 

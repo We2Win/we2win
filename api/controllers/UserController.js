@@ -152,6 +152,18 @@ const login = async function (req, res) {
 }
 module.exports.login = login;
 
+const bookmark = async function (req, res) {
+  const id = req.params.id;
+  const page = req.params.page;
+
+  console.log('bookmark(): ', id, page, headers);
+
+  return ReS(res, {
+    message: 'Done Bookmarking'
+  });
+}
+module.exports.bookmark = bookmark;
+
 const detailedInfo = async function (req, res) {
   const body = req.body;
   let err, user;
