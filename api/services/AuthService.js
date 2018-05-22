@@ -235,6 +235,21 @@ const createComment = async function (body) {
 }
 module.exports.createComment = createComment;
 
+const addBookmark = async function (body) {
+  let unique_key, auth_info, err, content;
+
+  const info = {
+    'u-id': body[],
+    'c-id': body['c-id'],
+    'no': body['no'],
+    'title': body['title'],
+    'c-type': body['c-type'],
+    's-type': body['s-type'],
+    'date': body['createdAt']
+  }
+}
+module.exports.addBookmark = addBookmark;
+
 const createEmployer = async function (body) {
   let unique_key, auth_info, err, content;
 

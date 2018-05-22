@@ -71,7 +71,6 @@ export class UserService {
       })
     };
 
-
     return this.http.post(environment.apiUrl + '/bookmark/', body, httpOptions).subscribe(
       res => { console.log(res); },
       error => { console.log(error); }

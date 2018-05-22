@@ -23,9 +23,16 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        'contents': {
+        'title': {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        'c-type': {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        's-type': {
+            type: DataTypes.STRING,
         }
     }, {
             charset: 'utf8',

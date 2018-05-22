@@ -153,8 +153,11 @@ const login = async function (req, res) {
 module.exports.login = login;
 
 const bookmark = async function (req, res) {
+  console.log('bookmark(): ', req.headers.Authorization);
+  User.getUser(req.headers.Authorization);
 
-  console.log('bookmark(): ', req.body, req.headers);
+  [err, user] = await to (authService.addBookmark(req.body));
+  if (err) return ReE(res, err, 422);  
 
   return ReS(res, {
     message: 'Done Bookmarking'
