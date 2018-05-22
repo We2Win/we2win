@@ -62,7 +62,7 @@ export class UserService {
   }
 
 
-  addBookmark(type, id) {
+  addBookmark(type, body) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -71,9 +71,8 @@ export class UserService {
       })
     };
 
-    console.log('httpOptions: ', httpOptions.headers, this.authService.getToken());
 
-    return this.http.post(environment.apiUrl + '/bookmark/' + type + '/' + id, httpOptions).subscribe(
+    return this.http.post(environment.apiUrl + '/bookmark/', body, httpOptions).subscribe(
       res => { console.log(res); },
       error => { console.log(error); }
     );
