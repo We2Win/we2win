@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const User = require('../models').user;
 const authService = require('./../services/AuthService');
+const jwt = require('jsonwebtoken');
 
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -154,7 +155,8 @@ module.exports.login = login;
 
 const bookmark = async function (req, res) {
   console.log('bookmark(): ', req.headers, req.headers['Authorization']);
-  User.getUser(req.headers.Authorization);
+  
+  console.log(jwt.verify(req.headers['Authorization']));
 
   [err, user] = await to (authService.addBookmark(req.body));
   if (err) return ReE(res, err, 422);  
