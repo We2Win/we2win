@@ -66,12 +66,14 @@ export class UserService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.authService.getToken(),
-        'test': 'hi'
+        'Authorization': this.authService.getToken()
+        // 'test': 'hi'
       })
     };
 
-    return this.http.post(environment.apiUrl + '/bookmark/' + type + '/' + id, options).subscribe(
+    console.log('httpOptions: ', httpOptions.headers, this.authService.getToken());
+
+    return this.http.post(environment.apiUrl + '/bookmark/' + type + '/' + id, httpOptions).subscribe(
       res => { console.log(res); },
       error => { console.log(error); }
     );

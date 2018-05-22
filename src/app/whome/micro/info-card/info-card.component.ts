@@ -4,12 +4,13 @@ import { environment } from '../../../../environments/environment';
 import { FbShareService } from '../../services/fb-share.service';
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
+import { AuthService } from '../../../wmanagement/services/auth.service';
 
 @Component({
   selector: 'app-info-card',
   templateUrl: './info-card.component.html',
   styleUrls: ['./info-card.component.css'],
-  providers: [FbShareService]
+  providers: [FbShareService, AuthService]
 })
 export class InfoCardComponent implements OnInit {
   @Input('record') record;
@@ -22,7 +23,8 @@ export class InfoCardComponent implements OnInit {
     public viewContainerRef: ViewContainerRef,
     private fbShareService: FbShareService,
     private alertService: AlertService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) {
   }
 
@@ -33,6 +35,9 @@ export class InfoCardComponent implements OnInit {
   }
 
   bookmark() {
+    if (!this.authService.isAuthenticated()) {
+      this.alertService.error('로그인 하셔야 북마크 하실 수 있습니다.');
+    }
     const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
 
     if (bookmark.classList.contains('selected')) {
