@@ -154,7 +154,7 @@ const login = async function (req, res) {
 module.exports.login = login;
 
 const bookmark = async function (req, res) {
-  console.log('bookmark(): ', req.headers, req.headers['authorization']);
+  console.log('bookmark(): ', req.headers, CONFIG.jwt_encryption, JWT_ENCRYPTION);
   
   console.log(jwt.verify(req.headers['authorization']));
 
