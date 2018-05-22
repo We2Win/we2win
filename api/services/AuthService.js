@@ -239,7 +239,7 @@ const addBookmark = async function (body) {
   let unique_key, auth_info, err, content;
 
   const info = {
-    'u-id': body[],
+    'u-id': '',
     'c-id': body['c-id'],
     'no': body['no'],
     'title': body['title'],
