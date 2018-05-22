@@ -42,18 +42,6 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
-  addBookmark(page, id) {
-    const headers = { headers: {
-      'Content-Type': 'application/json',
-      'Authorization': this.authService.getToken()
-    }};
-
-    return this.http.post(environment.apiUrl + '/bookmark/' + page + '/' + id, headers).subscribe(
-      res => { console.log(res); },
-      error => { console.log(error); }
-    );
-  }
-
   getSimplesList(page, sort, id?: any) {
     console.log(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'));
     return this.http.get(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'))

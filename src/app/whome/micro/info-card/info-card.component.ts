@@ -3,6 +3,7 @@ import { Card } from '../../models/card';
 import { environment } from '../../../../environments/environment';
 import { FbShareService } from '../../services/fb-share.service';
 import { AlertService } from '../../services/alert.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-info-card',
@@ -20,7 +21,8 @@ export class InfoCardComponent implements OnInit {
     private _elementRef: ElementRef,
     public viewContainerRef: ViewContainerRef,
     private fbShareService: FbShareService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private userService: UserService
   ) {
   }
 
@@ -37,6 +39,7 @@ export class InfoCardComponent implements OnInit {
       bookmark.src = '/assets/img/icon_bookmark.png';
       bookmark.classList.remove('selected');
       this.alertService.warn('북마크가 해제되었습니다.');
+      this.userService.addBookmark('info', this.record['no']);
     } else {
       bookmark.src = '/assets/img/icon_bookmark_selected.png';
       bookmark.classList.add('selected');

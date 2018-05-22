@@ -9,47 +9,49 @@ import 'rxjs/add/operator/catch';
 import { environment } from '../../../environments/environment.prod';
 import { JwtHelper } from 'angular2-jwt';
 import { UserInfo } from '../models/userInfo';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class UserService {
   constructor(
     private http: HttpClient,
-    private jwtHelper: JwtHelper
+    private jwtHelper: JwtHelper,
+    private authService: AuthService
   ) { }
 
-  getAll () {
-    // return this.http.get<User[]>('/api');
-    return this.http.get('/api/v1/infos')
-      .map(data => { console.log('map: ', data); });
-  }
-  getById(id:
-     string) {
-    return this.http.get('/api/v1/infos');
-  }
+  // getAll () {
+  //   // return this.http.get<User[]>('/api');
+  //   return this.http.get('/api/v1/infos')
+  //     .map(data => { console.log('map: ', data); });
+  // }
+  // getById(id:
+  //    string) {
+  //   return this.http.get('/api/v1/infos');
+  // }
   create(user: UserInfo) {
     console.log('user form create(): ', user);
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
     return this.http.post(environment.apiUrl + '/users', bodyString, headers)
-      .map((res: UserInfo) => res )
+      .map((res: UserInfo) => res)
       .catch((error: any) => this.handleError(error.message));
   }
-  update(user: UserInfo) {
-    return this.http.put('/api/v1/infos', user);
-  }
+  // update(user: UserInfo) {
+  //   return this.http.put('/api/v1/infos', user);
+  // }
 
-  delete(id: string) {
-    return this.http.delete('/api/v1/infos');
-  }
+  // delete(id: string) {
+  //   return this.http.delete('/api/v1/infos');
+  // }
 
   hasId(user) {
     console.log('user from hasId(): ', user);
     const bodyString = JSON.stringify(user);
-    const headers = { headers: { 'Content-Type': 'application/json' }};
+    const headers = { headers: { 'Content-Type': 'application/json' } };
 
     return this.http.post(environment.apiUrl + '/hasid', bodyString, headers)
-      .map((data: any) => data.available )
+      .map((data: any) => data.available)
       .catch((error: any) => Observable.throw(error.message));
   }
 
@@ -57,6 +59,19 @@ export class UserService {
     console.log('testing...');
     return this.http.get(environment.apiUrl + '/testing')
       .map(data => { console.log('testing(): ', data); });
+  }
+
+
+  addBookmark(type, id) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': this.authService.getToken()
+    };
+
+    return this.http.post(environment.apiUrl + '/bookmark/' + type + '/' + id, headers).subscribe(
+      res => { console.log(res); },
+      error => { console.log(error); }
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
