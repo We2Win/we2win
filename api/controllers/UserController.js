@@ -165,7 +165,7 @@ const addBookmark = async function (req, res) {
     message: 'Done Bookmarking'
   });
 }
-module.exports.bookmark = bookmark;
+module.exports.addBookmark = addBookmark;
 
 const detailedInfo = async function (req, res) {
   const body = req.body;
