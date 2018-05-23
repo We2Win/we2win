@@ -360,7 +360,6 @@ export class FormComponent implements OnInit, AfterViewInit {
 
             this.signupForm.controls['u-id'].setValue('_k' + authInfo.id);
             this.signupForm.controls['password'].setValue('KAKAO1234!');
-            this.signupForm.controls['passwordV'].setValue('KAKAO1234!');
             this.signupForm.controls['name'].setValue(authInfo.nickname);
             this.signupForm.controls['email'].setValue(authInfo.kaccount_email);
 
