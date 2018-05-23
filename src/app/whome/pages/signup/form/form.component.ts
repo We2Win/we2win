@@ -145,6 +145,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     window.addEventListener('load', () => {
       Naver.getLoginStatus((status) => {
+        console.log('naver status: ', status);
         if (status) {
           this.loginType = 'naver';
           /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
@@ -356,6 +357,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         window['Kakao'].API.request({
           url: '/v1/user/me',
           success: authInfo => {
+            console.log('authInfo: ', authInfo);
             this.loginType = 'kakao';
 
             this.signupForm.controls['u-id'].setValue('_k' + authInfo.id);
