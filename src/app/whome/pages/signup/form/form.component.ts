@@ -130,11 +130,6 @@ export class FormComponent implements OnInit, AfterViewInit {
       }
     );
 
-    /* 설정정보를 초기화하고 연동을 준비 */
-    // Naver.init();
-
-    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
-
     window.addEventListener('load', function () {
       Naver.getLoginStatus(function (status) {
         console.log('status of Naver: ', status);
@@ -169,6 +164,11 @@ export class FormComponent implements OnInit, AfterViewInit {
         }
       });
     });
+
+    /* 설정정보를 초기화하고 연동을 준비 */
+    Naver.init();
+
+    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
 
     // setInterval(() => {
     //   console.log('naver: ', Naver.getLoginStatus(
