@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { UserInfo } from '../../../models/userInfo';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-scrap',
@@ -9,20 +10,17 @@ import { UserInfo } from '../../../models/userInfo';
 })
 export class ScrapComponent implements OnInit {
   userInfo;
+  contents;
 
   constructor(
     private _elementRef: ElementRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
-    // console.log(typeof(this.authService.getUserInfo()));
-    // this.userInfo = JSON.parse(this.authService.getUserInfo())
-    // .forEach(element => {
-    //   console.log(element);
-    // });
-
     this.userInfo = this.authService.getUserInfo();
+    this.contents = this.userService.getBookmark('report');
   }
 
   showInfo() {

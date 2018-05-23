@@ -61,6 +61,19 @@ export class UserService {
       .map(data => { console.log('testing(): ', data); });
   }
 
+  getBookmark(type) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
+
+    return this.http.get(environment.apiUrl + '/bookmark/' + type, httpOptions).subscribe(
+      res => { console.log(res); },
+      error => { console.log(error); }
+    );
+  }
 
   addBookmark(body) {
     const httpOptions = {
@@ -70,7 +83,7 @@ export class UserService {
       })
     };
 
-    return this.http.post(environment.apiUrl + '/bookmark/add', body, httpOptions).subscribe(
+    return this.http.put(environment.apiUrl + '/bookmark/add', body, httpOptions).subscribe(
       res => { console.log(res); },
       error => { console.log(error); }
     );

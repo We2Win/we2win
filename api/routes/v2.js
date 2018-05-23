@@ -60,9 +60,9 @@ router.post('/userInfo', UserController.detailedInfo);
 router.get('/mng/users', UserController.get);
 router.delete('/mng/users/:id', UserController.remove); //delete
 
-router.post('/bookmark/add', UserController.addBookmark);
+router.put('/bookmark/add', UserController.addBookmark);
 router.post('/bookmark/remove', UserController.removeBookmark);
-
+router.get('/bookmark/:id', UserController.getBookmark);
 // router.get('/mng/dash', ContentController.getDashboardData);
 
 

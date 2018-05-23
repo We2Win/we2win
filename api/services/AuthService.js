@@ -238,6 +238,32 @@ const createComment = async function (body) {
 }
 module.exports.createComment = createComment;
 
+const getBookmark = async function (id, uId) {
+  let unique_key, auth_info, err, content;
+
+  switch (id) {
+    case 'info':
+      [err, content] = await to (InfoScrap.findAll({where: {
+        'u-id': uId
+      }}));
+      if (err) TE('생성 중 오류가 발생했습니다.');
+    break;
+    case 'site': 
+      [err, content] = await to (SiteScrap.findAll({where: {
+        'u-id': uId
+      }}));
+    break;
+    case 'meeting':
+      [err, content] = await to (Schedule.findAll({where: {
+        'u-id': uId
+      }}))
+    break;
+  }
+
+  return content;
+}
+module.exports.getBookmark = getBookmark;
+
 const addBookmark = async function (uId, body) {
   let unique_key, auth_info, err, content;
 
@@ -272,6 +298,8 @@ const addBookmark = async function (uId, body) {
       if (err) TE('생성 중 오류가 발생했습니다.');    
     break;      
   }
+
+  return content;
 }
 module.exports.addBookmark = addBookmark;
 
@@ -316,6 +344,8 @@ const removeBookmark = async function (uId, body) {
       if (err) TE('생성 중 오류가 발생했습니다.');    
     break;      
   }
+
+  return content;
 }
 module.exports.removeBookmark = removeBookmark;
 
