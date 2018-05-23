@@ -69,10 +69,7 @@ export class UserService {
       })
     };
 
-    return this.http.get(environment.apiUrl + '/bookmark/' + type, httpOptions).subscribe(
-      res => { console.log(res); },
-      error => { console.log(error); }
-    );
+    return this.http.get(environment.apiUrl + '/bookmark/' + type, httpOptions);
   }
 
   addBookmark(body) {

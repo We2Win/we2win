@@ -156,14 +156,14 @@ module.exports.login = login;
 const getBookmark = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
-  [err, user] = await to(authService.getBookmark(req.params.id, userInfo['user_id']));
+  [err, contents] = await to(authService.getBookmark(req.params.id, userInfo['user_id']));
   if (err) return ReE(res, err, 422);
   
   console.log('user: ', user);
 
   return ReS(res, {
     message: 'Done Bookmarking',
-    user: user
+    contents: contents
   });
 }
 module.exports.getBookmark = getBookmark;

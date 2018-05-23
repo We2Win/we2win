@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { UserInfo } from '../../../models/userInfo';
 import { UserService } from '../../../services/user.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-scrap',
@@ -10,17 +11,21 @@ import { UserService } from '../../../services/user.service';
 })
 export class ScrapComponent implements OnInit {
   userInfo;
-  contents;
+  records;
 
   constructor(
     private _elementRef: ElementRef,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.userInfo = this.authService.getUserInfo();
-    this.contents = this.userService.getBookmark('report');
+    this.records = this.userService.getBookmark('info').subscribe(
+      res => this.records = res['users'],
+      err => this.alertService.error('에러가 발생했습니다.')
+    );
   }
 
   showInfo() {
