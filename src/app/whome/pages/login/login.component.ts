@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     });
 
     if (!window['Kakao'].Auth) {
-      window['Kakao'].init('b560ff0ff0ea7935612a6555fb53c516');
+      window['Kakao'].init(environment.kakao.clientId);
     }
       // 카카오 로그인 버튼을 생성합니다.
       window['Kakao'].Auth.createLoginButton({
