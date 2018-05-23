@@ -156,7 +156,7 @@ module.exports.login = login;
 const bookmark = async function (req, res) {
   console.log('bookmark(): ', req.headers, req.headers['authorization']);
   
-  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption));
+  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
   [err, user] = await to (authService.addBookmark(userInfo['user_id'], req.body));
   if (err) return ReE(res, err, 422);  
