@@ -62,7 +62,7 @@ export class UserService {
   }
 
 
-  addBookmark(type, body) {
+  addBookmark(body) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export class UserService {
     );
   }
 
-  removeBookmark(type, body) {
+  removeBookmark(body) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

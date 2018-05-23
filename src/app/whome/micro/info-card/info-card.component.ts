@@ -44,7 +44,7 @@ export class InfoCardComponent implements OnInit {
       bookmark.src = '/assets/img/icon_bookmark.png';
       bookmark.classList.remove('selected');
       this.alertService.warn('북마크가 해제되었습니다.');
-      this.userService.removeBookmark(this.record)
+      this.userService.removeBookmark(this.record);
     } else {
       bookmark.src = '/assets/img/icon_bookmark_selected.png';
       bookmark.classList.add('selected');
