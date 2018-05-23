@@ -120,7 +120,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const Naver = new naver.LoginWithNaverId(
+    const Naver = new window['naver'].LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
         isPopup: true, /* 팝업을 통한 연동처리 여부 */
