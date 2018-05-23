@@ -9,6 +9,7 @@ import { Alert, AlertType } from '../models/alert';
 export class AlertService {
   public subject = new Subject<Alert>();
   private keepAfterRouteChange = false;
+  public timeout;
 
   constructor(private router: Router) {
     // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
@@ -51,7 +52,8 @@ export class AlertService {
     this.subject.next(<Alert>{ type: type, message: message });
 
     // remove popup after 3 seconds
-    setTimeout(() => {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
       this.clear();
     }, 3000);
   }

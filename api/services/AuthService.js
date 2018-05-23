@@ -279,7 +279,7 @@ const addBookmark = async function (uId, body) {
 
   switch (body['c-type']) {
     case '리포트':
-    case '부동산 정보':
+    case '부동산 뉴스':
     case '법률 및 정책':
       info['c-type'] = body['c-type'],
       [err, content] = await to (InfoScrap.create(info));

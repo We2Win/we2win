@@ -173,11 +173,7 @@ section>div {
 }
 
 .contentBox2 div {
-  display: none;
-}
-
-.contentBox2 div.show {
-  display: flex !important;
+  display: flex;
 }
 
 .contentBox2 div li {
@@ -191,6 +187,16 @@ section>div {
   line-height: 400%;
   border-bottom: 1px solid #d8d8d8;
   text-align: center;
+}
+
+.contentBox2 div #categories {
+  flex: none;
+  width: 7em;
+}
+
+.contentBox2 div #date {
+  flex: none;
+  width: 12em;
 }
 
 .lTable {
