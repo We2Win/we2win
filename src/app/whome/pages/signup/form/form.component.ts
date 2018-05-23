@@ -4,6 +4,7 @@ import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { AlertService } from '../../../services/alert.service';
+import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-form',
@@ -120,9 +121,9 @@ export class FormComponent implements OnInit, AfterViewInit {
     const Naver = new naver.LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
-        callbackUrl: environment.naver.registerUrl,
+        // callbackUrl: environment.naver.registerUrl,
         isPopup: true, /* 팝업을 통한 연동처리 여부 */
-        callbackHandle: false,
+        callbackHandle: true,
         loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
       }
     );
@@ -130,51 +131,11 @@ export class FormComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     Naver.init();
 
-    // const naver_id_login = new window['naver_id_login'](environment.naver.clientId, environment.naver.registerUrl);
-
-    // const state = naver_id_login.getUniqState();
-    // console.log('naver state: ', state);
-    // naver_id_login.setButton('green', 3, 48);
-    // naver_id_login.setDomain(environment.naver.reqUrl);
-    // naver_id_login.setState(state);
-    // naver_id_login.setPopup();
-    // naver_id_login.init_naver_id_login();
-
-    // /* 설정정보를 초기화하고 연동을 준비 */
-    // // naver_id_login.init();
-
-    window.addEventListener('load', () => {
-      Naver.getLoginStatus((status) => {
-        console.log('naver status: ', status);
-        if (status) {
-          this.loginType = 'naver';
-          /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-          const uId = Naver.user.getEmail();
-          const email = Naver.user.getEmail();
-          const name = Naver.user.getNickName();
-          this.signupForm.controls['u-id'].setValue(Naver.user.getEmail());
-          this.signupForm.controls['email'].setValue(Naver.user.getEmail());
-          this.signupForm.controls['name'].setValue(Naver.user.getNickName());
-          this.signupForm.controls['password'].setValue('naver0123!');
-          // console.log('email: ', email);
-          if (email == undefined || email == null) {
-            alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
-            /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-            Naver.reprompt();
-            return;
-          }
-
-          // window.location.replace();
-        } else {
-          console.log('callback 처리에 실패하였습니다.');
-        }
-      });
-    });
-
-    setTimeout(() => {
-      Naver.getLoginStatus(status => {
-        console.log('naver status:', status, Naver.user.getEmail());
-      });
+    setInterval(() => {
+      console.log('naver: ', Naver.getLoginStatus(
+      status => {
+        console.log('status: ', status);
+      }));
     }, 2000);
   }
 
@@ -355,6 +316,36 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
   }
 
+  loginWithNaver() {
+    window.addEventListener('load', () => {
+      window['naver'].getLoginStatus((status) => {
+        console.log('naver status: ', status);
+        if (status) {
+          this.loginType = 'naver';
+          /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+          const uId = window['naver'].user.getEmail();
+          const email = window['naver'].user.getEmail();
+          const name = window['naver'].user.getNickName();
+          this.signupForm.controls['u-id'].setValue(window['naver'].user.getEmail());
+          this.signupForm.controls['email'].setValue(window['naver'].user.getEmail());
+          this.signupForm.controls['name'].setValue(window['naver'].user.getNickName());
+          this.signupForm.controls['password'].setValue('naver0123!');
+          // console.log('email: ', email);
+          if (email == undefined || email == null) {
+            alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
+            /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+            window['naver'].reprompt();
+            return;
+          }
+
+          // window.location.replace();
+        } else {
+          console.log('callback 처리에 실패하였습니다.');
+        }
+      });
+    });
+  }
+
   loginWithKakao() {
     console.log('initiated');
     // 로그인 창을 띄웁니다.
@@ -367,7 +358,7 @@ export class FormComponent implements OnInit, AfterViewInit {
             this.loginType = 'kakao';
             this.checkId = true;
 
-            this.signupForm.controls['u-id'].setValue('_k' + authInfo.id);
+            this.signupForm.controls['u-id'].setValue('k_' + authInfo.id);
             this.signupForm.controls['password'].setValue('KAKAO1234!');
             this.signupForm.controls['passwordV'].setValue('KAKAO1234!');
             this.signupForm.controls['name'].setValue(authInfo.properties.nickname);
