@@ -67,11 +67,10 @@ export class UserService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': this.authService.getToken()
-        // 'test': 'hi'
       })
     };
 
-    return this.http.post(environment.apiUrl + '/bookmark/', body, httpOptions).subscribe(
+    return this.http.post(environment.apiUrl + '/bookmark/add', body, httpOptions).subscribe(
       res => { console.log(res); },
       error => { console.log(error); }
     );

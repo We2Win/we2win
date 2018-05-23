@@ -51,7 +51,7 @@
             </div>
             <div class="row">
               <label>핸드폰</label>
-              <p>{{ detailedInfo['hp'] }}</p>
+              <p>{{ detailedInfo['cp'] }}</p>
             </div>
             <div class="row">
               <label>E-mail</label>
@@ -63,27 +63,27 @@
             </div>
             <div class="row">
               <label>집 주소</label>
-              <p>{{ detailedInfo['ha'] }}</p>
+              <p>{{ detailedInfo['ha'] || '-' }}</p>
             </div>
             <div class="row">
               <label>집 전화번호</label>
-              <p>{{ detailedInfo['hp'] }}</p>
+              <p>{{ detailedInfo['hp'] || '-' }}</p>
             </div>
             <div class="row">
               <label>사무실 주소</label>
-              <p>{{ detailedInfo['oa'] }}</p>
+              <p>{{ detailedInfo['oa'] || '-' }}</p>
             </div>
             <div class="row">
               <label>사무실 전화번호</label>
-              <p>{{ detailedInfo['op'] }}</p>
+              <p>{{ detailedInfo['op'] || '-' }}</p>
             </div>
             <div class="row">
               <label>정보 수신</label>
-              <p>{{ detailedInfo['info-a'] }}</p>
+              <p>{{ detailedInfo['info-a'] || '-' }}</p>
             </div>
             <div class="row">
               <label>SNS 계정연동</label>
-              <p>{{ detailedInfo['sns'] }}</p>
+              <p>{{ detailedInfo['sns'] || '-' }}</p>
             </div>
           </article>
         </app-group>

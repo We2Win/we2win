@@ -102,7 +102,7 @@ export class AuthService {
     return localStorage.getItem(this.TOKEN_NAME);
   }
 
-  getUserInfo(): string {
+  getUserInfo(): UserInfo {
     // console.log(this.getToken());
     return this.jwtHelper.decodeToken(this.getToken());
   }
@@ -110,7 +110,7 @@ export class AuthService {
   getUserInfoDetail(info) {
     const headers = { headers: { 'Content-Type': 'application/json' } };
     console.log('executing getUserInfoDetail(): ', info);
-    return this.http.post(environment.apiUrl + '/userInfo', JSON.stringify(info), headers)
+    return this.http.post(environment.apiUrl + '/userInfo', info, headers)
       .do((res: any) => console.log('res: ', res),
       (err) => { this.alertService.error(err); }
       )

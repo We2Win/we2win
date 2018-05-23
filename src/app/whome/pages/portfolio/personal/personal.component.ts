@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { UserInfo } from '../../../../wmanagement/models/userInfo';
 import { AlertService } from '../../../services/alert.service';
+import { UserInfo, DetailedInfo } from '../../../models/userInfo';
 
 @Component({
   selector: 'app-personal',
@@ -10,7 +10,7 @@ import { AlertService } from '../../../services/alert.service';
 })
 export class PersonalComponent implements OnInit {
   userInfo = new UserInfo();
-  detailedInfo;
+  detailedInfo = new DetailedInfo();
 
   hopeList = ['투자', '실거주', '모두 해당'];
 
@@ -20,14 +20,14 @@ export class PersonalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.authService.getUserInfo());
-    // this.userInfo.authService.getUserInfo();
-    // console.log('userInfo: ', this.userInfo);
+    this.userInfo = this.authService.getUserInfo();
     this.authService.getUserInfoDetail(this.userInfo).subscribe(
-      (res: any) => { this.detailedInfo = res; },
+      (res: any) => {
+        this.detailedInfo = res.user;
+        console.log(this.detailedInfo);
+      },
       (err) => { this.alertService.error(err); }
     );
-    // this.userInfo = JSON.parse(this.authService.getUserInfo());
   }
 
 }
