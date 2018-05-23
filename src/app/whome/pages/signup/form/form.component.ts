@@ -329,21 +329,21 @@ export class FormComponent implements OnInit, AfterViewInit {
       // this.loginType = type;
       // sample code
       if (type === 'naver') {
-        this.uId.nativeElement.classList.add('disable');
-        this.password.nativeElement.classList.add('disable');
-        this.passwordV.nativeElement.classList.add('disable');
-        this.name.nativeElement.classList.add('disable');
-        this.email.nativeElement.classList.add('disable');
+        this.uId.nativeElement.setAttribute('readonly', true);
+        this.password.nativeElement.setAttribute('readonly', true);
+        this.passwordV.nativeElement.setAttribute('readonly', true);
+        this.name.nativeElement.setAttribute('readonly', true);
+        this.email.nativeElement.setAttribute('readonly', true);
       } else if (type === 'kakao') {
         this.loginWithKakao();
       } else {
         this.signupForm.reset();
 
-        this.uId.nativeElement.classList.remove('disable');
-        this.password.nativeElement.classList.remove('disable');
-        this.passwordV.nativeElement.classList.remove('disable');
-        this.name.nativeElement.classList.remove('disable');
-        this.email.nativeElement.classList.remove('disable');
+        this.uId.nativeElement.setAttribute('readonly', false);
+        this.password.nativeElement.setAttribute('readonly', false);
+        this.passwordV.nativeElement.setAttribute('readonly', false);
+        this.name.nativeElement.setAttribute('readonly', false);
+        this.email.nativeElement.setAttribute('readonly', false);
       }
     }
   }
@@ -352,14 +352,15 @@ export class FormComponent implements OnInit, AfterViewInit {
     console.log('initiated');
     // 로그인 창을 띄웁니다.
     window['Kakao'].Auth.login({
-      success: (authObj) => {
+      success: authObj => {
         window['Kakao'].API.request({
           url: '/v1/user/me',
-          success: function (authInfo) {
+          success: authInfo => {
             this.loginType = 'kakao';
 
             this.signupForm.controls['u-id'].setValue('_k' + authInfo.id);
             this.signupForm.controls['password'].setValue('KAKAO1234!');
+            this.signupForm.controls['passwordV'].setValue('KAKAO1234!');
             this.signupForm.controls['name'].setValue(authInfo.nickname);
             this.signupForm.controls['email'].setValue(authInfo.kaccount_email);
 
