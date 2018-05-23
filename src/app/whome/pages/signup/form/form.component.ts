@@ -137,6 +137,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     window.addEventListener('load', function () {
       Naver.getLoginStatus(function (status) {
+        console.log('status of Naver: ', status);
         if (status) {
           /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
           const email = Naver.user.getEmail();
@@ -147,12 +148,11 @@ export class FormComponent implements OnInit, AfterViewInit {
             return;
           }
 
-          console.log('status of Naver: ', status);
 
           this.loginType = 'kakao';
           this.checkId = true;
 
-          this.signupForm.controls['u-id'].setValue('k_' + Naver.user.getId());
+          this.signupForm.controls['u-id'].setValue('n_' + Naver.user.getId());
           this.signupForm.controls['password'].setValue('KAKAO1234!');
           this.signupForm.controls['passwordV'].setValue('KAKAO1234!');
           this.signupForm.controls['name'].setValue(Naver.user.getNickName());
