@@ -196,7 +196,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       return false;
     }
     if (!this.signupForm.valid) {
-      this.alertService.error('기본 정보는 필수사항입니다.');
+      this.alertService.error('필수항목(기본정보)를 모두 입력해주세요.');
       scroll(0, 200);
       return false;
     }
@@ -370,7 +370,7 @@ export class FormComponent implements OnInit, AfterViewInit {
             this.signupForm.controls['u-id'].setValue('_k' + authInfo.id);
             this.signupForm.controls['password'].setValue('KAKAO1234!');
             this.signupForm.controls['passwordV'].setValue('KAKAO1234!');
-            this.signupForm.controls['name'].setValue(authInfo.nickname);
+            this.signupForm.controls['name'].setValue(authInfo.properties.nickname);
             this.signupForm.controls['email'].setValue(authInfo.kaccount_email);
 
             this.uId.nativeElement.setAttribute('readonly', true);
