@@ -9,6 +9,9 @@ const Employer = require('./../models').employer;
 const Employee = require('./../models').employee;
 const Comment = require('./../models').comment;
 const Reply = require('./../models').reply;
+const InfoScrap = require('./../models').infoScrap;
+const SiteScrap = require('./../models').siteScrap;
+const Schedule = require('./../models').schedule;
 const validator = require('validator');
 
 const getUniqueKeyFromBody = function (body) {
@@ -235,17 +238,37 @@ const createComment = async function (body) {
 }
 module.exports.createComment = createComment;
 
-const addBookmark = async function (body) {
+const addBookmark = async function (uId, body) {
   let unique_key, auth_info, err, content;
 
   const info = {
-    'u-id': '',
+    'u-id': uId,
     'c-id': body['c-id'],
     'no': body['no'],
     'title': body['title'],
     'c-type': body['c-type'],
     's-type': body['s-type'],
     'date': body['createdAt']
+  }
+
+  switch (body['c-type']) {
+    case '리포트':
+    case '부동산 정보':
+    case '법률 및 정책':
+      [err, content] = await to (InfoScrap.create(info));
+      if (err) TE('생성 중 오류가 발생했습니다.');
+    break;
+    case '아파트':
+    case '오피스텔':
+    case '상가/호텔':
+    case '토지':
+      [err, content] = await to(InfoScrap.create(info));
+      if (err) TE('생성 중 오류가 발생했습니다.');
+    break;
+    case '오프라인 모임':
+      [err, content] = await to(InfoScrap.create(info));
+      if (err) TE('생성 중 오류가 발생했습니다.');    
+    break;      
   }
 }
 module.exports.addBookmark = addBookmark;
@@ -331,6 +354,7 @@ const authUser = async function (userInfo) { //returns token
 module.exports.authUser = authUser;
 
 const getUserInfo = async function (userInfo) {
+  console.log('userInfo in getUserInfo(): ', userInfo);
   [err, user] = await to(User.findOne({
     where: {
       'u-id': userInfo['user_id']
