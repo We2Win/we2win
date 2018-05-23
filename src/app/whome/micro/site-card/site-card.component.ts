@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, ElementRef, ViewContainerRef } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { FbShareService } from '../../services/fb-share.service';
+import { AlertService } from '../../services/alert.service';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-site-card',
@@ -14,7 +18,11 @@ export class SiteCardComponent implements OnInit {
 
   constructor(
     private _elementRef: ElementRef,
-    public viewContainerRef: ViewContainerRef
+    public viewContainerRef: ViewContainerRef,
+    private fbShareService: FbShareService,
+    private alertService: AlertService,
+    private userService: UserService,
+    private authService: AuthService
   ) {
   }
 
@@ -29,14 +37,21 @@ export class SiteCardComponent implements OnInit {
   }
 
   bookmark() {
+    if (!this.authService.isAuthenticated()) {
+      this.alertService.error('로그인 하셔야 북마크 하실 수 있습니다.');
+    }
     const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
 
     if (bookmark.classList.contains('selected')) {
       bookmark.src = '/assets/img/icon_bookmark.png';
       bookmark.classList.remove('selected');
+      this.alertService.warn('북마크가 해제되었습니다.');
+      this.userService.removeBookmark(this.record);
     } else {
       bookmark.src = '/assets/img/icon_bookmark_selected.png';
       bookmark.classList.add('selected');
+      this.alertService.success('북마크가 설정되었습니다.');
+      this.userService.addBookmark(this.record);
     }
   }
 }

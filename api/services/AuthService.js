@@ -246,15 +246,16 @@ const addBookmark = async function (uId, body) {
     'c-id': body['c-id'],
     'no': body['no'],
     'title': body['title'],
-    'c-type': body['c-type'],
-    's-type': body['s-type'],
     'date': body['createdAt']
   }
+ 
+  console.log('info on addBoookmark(): ', info);
 
   switch (body['c-type']) {
     case '리포트':
     case '부동산 정보':
     case '법률 및 정책':
+      info['c-type'] = body['c-type'],
       [err, content] = await to (InfoScrap.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
     break;
@@ -262,11 +263,12 @@ const addBookmark = async function (uId, body) {
     case '오피스텔':
     case '상가/호텔':
     case '토지':
-      [err, content] = await to(InfoScrap.create(info));
+      info['s-type'] = body['s-type'],
+      [err, content] = await to(SiteScrap.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
     break;
     case '오프라인 모임':
-      [err, content] = await to(InfoScrap.create(info));
+      [err, content] = await to(Schedule.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');    
     break;      
   }
