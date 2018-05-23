@@ -23,7 +23,8 @@
             <label>아이디
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="text" formControlName="u-id" #uId placeholder="최소 4글자 최대 15글자" (change)="checkId=false" (keyup)="$event.keyCode == 13 && hasId($event)"/>
+            <input class="form-control" type="text" formControlName="u-id" #uId placeholder="최소 4글자 최대 15글자" (change)="checkId=false"
+              (keyup)="$event.keyCode == 13 && hasId($event)" />
             <app-button (click)="hasId($event)" (ngSubmit)="$event.stopPropagation()" [type]="'none'" *ngIf="loginType==='google'">아이디 확인</app-button>
             <div class="blank" *ngIf="loginType!=='google'"></div>
           </div>
@@ -36,7 +37,8 @@
             <label>패스워드
               <b class="red">*</b>
             </label>
-            <input class="form-control" type="password" formControlName="password" #password placeholder="비밀번호를 입력해 주세요." pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&$+$-])[A-Za-z\d$@$!%*#?&$+$-]{8,12}$"/>
+            <input class="form-control" type="password" formControlName="password" #password placeholder="비밀번호를 입력해 주세요." pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&$+$-])[A-Za-z\d$@$!%*#?&$+$-]{8,12}$"
+            />
             <div class="blank">특수문자, 숫자 포함 8 - 12자리</div>
           </div>
           <div class="row alert">
@@ -117,7 +119,8 @@
             <div class="card platinum" [ngClass]="{'checked': level === 'PLATINUM', 'notSelected': level !== undefined}" (click)="setLevel(3)"
               (keydown)="setLevelOnKeyDown(3, $event)" tabindex="0">
               <div id="level">PLATINUM</div>
-              <p>오프라인 모임과 함께 다양한 형태로 정보를 수집하고 분석 할 수 있다. <br>
+              <p>오프라인 모임과 함께 다양한 형태로 정보를 수집하고 분석 할 수 있다.
+                <br>
               </p>
               <p id="price">10,000원/월</p>
             </div>
