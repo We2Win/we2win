@@ -160,7 +160,7 @@ const getBookmark = async function (req, res) {
   if (err) return ReE(res, err, 422);
   
   return ReS(res, {
-    message: 'Done Bookmarking',
+    message: 'Bookmark Lists.',
     contents: contents
   });
 }

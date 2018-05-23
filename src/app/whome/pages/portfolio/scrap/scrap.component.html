@@ -38,6 +38,11 @@
         <li class="info show" (click)="showInfo()">부동산 정보 스크랩</li>
         <li class="site" (click)="showSite()">분양 현황 스크랩</li>
       </nav>
+      <div class="info show" *ngFor="let record of records">
+        <span id="categories">{{ record['c-type'] }}</span>
+        <span id="title">[제83호] 경주 라마다 호텔 분양대금 ABL 8차</span>
+        <span id="date">2017.12.12.</span>
+      </div>
       <div class="info show">
         <span id="categories">리포트</span>
         <span id="title">[제83호] 경주 라마다 호텔 분양대금 ABL 8차</span>

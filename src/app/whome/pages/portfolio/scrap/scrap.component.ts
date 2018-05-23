@@ -23,7 +23,10 @@ export class ScrapComponent implements OnInit {
   ngOnInit() {
     this.userInfo = this.authService.getUserInfo();
     this.records = this.userService.getBookmark('info').subscribe(
-      res => this.records = res['users'],
+      res => {
+        this.records = res['contents'];
+        console.log(res);
+      },
       err => this.alertService.error('에러가 발생했습니다.')
     );
   }
