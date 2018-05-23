@@ -76,6 +76,20 @@ export class UserService {
     );
   }
 
+  removeBookmark(type, body) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
+
+    return this.http.post(environment.apiUrl + '/bookmark/remove', body, httpOptions).subscribe(
+      res => { console.log(res); },
+      error => { console.log(error); }
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
