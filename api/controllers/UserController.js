@@ -159,7 +159,7 @@ const addBookmark = async function (req, res) {
   console.log(userInfo);
 
   [err, user] = await to (authService.addBookmark(userInfo['user_id'], req.body));
-  if (err) return ReE(res, err, 422);  
+  if (err) return ReE(res, err, 422);
 
   return ReS(res, {
     message: 'Done Bookmarking'
@@ -168,7 +168,14 @@ const addBookmark = async function (req, res) {
 module.exports.addBookmark = addBookmark;
 
 const removeBookmark = async function (req, res) {
+  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
+  [err, user] = await to(authService.removeBookmark(userInfo['user_id'], req.body));
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Done removing Bookmark'
+  });
 }
 module.exports.removeBookmark = removeBookmark;
 

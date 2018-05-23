@@ -273,6 +273,50 @@ const addBookmark = async function (uId, body) {
 }
 module.exports.addBookmark = addBookmark;
 
+const removeBookmark = async function (uId, body) {
+  let unique_key, auth_info, err, content;
+
+  const info = {
+    'u-id': uId,
+    'c-id': body['c-id'],
+    'no': body['no'],
+    'title': body['title'],
+    'c-type': body['c-type'],
+    's-type': body['s-type'],
+    'date': body['createdAt']
+  }
+
+  switch (body['c-type']) {
+    case '리포트':
+    case '부동산 정보':
+    case '법률 및 정책':
+      [err, content] = await to (InfoScrap.destroy({where: {
+        'u-id': info['u-id'],
+        'c-id': info['c-id']
+      }}));
+      if (err) TE('생성 중 오류가 발생했습니다.');
+    break;
+    case '아파트':
+    case '오피스텔':
+    case '상가/호텔':
+    case '토지':
+      [err, content] = await to(InfoScrap.destroy({where: {
+        'u-id': info['u-id'],
+        'c-id': info['c-id']
+      }}));
+      if (err) TE('생성 중 오류가 발생했습니다.');
+    break;
+    case '오프라인 모임':
+      [err, content] = await to(InfoScrap.destroy({where: {
+        'u-id': info['u-id'],
+        'c-id': info['c-id']
+      }}));
+      if (err) TE('생성 중 오류가 발생했습니다.');    
+    break;      
+  }
+}
+module.exports.removeBookmark = removeBookmark;
+
 const createEmployer = async function (body) {
   let unique_key, auth_info, err, content;
 
