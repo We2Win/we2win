@@ -175,21 +175,21 @@ export class FormComponent implements OnInit, AfterViewInit {
   onSubmit() {
     // check id validation
     if (this.checkId === undefined) {
-      this.error('아이디 확인을 해주세요.');
+      this.alertService.error('아이디 확인을 해주세요.');
       return false;
     } else if (this.checkId === false) {
-      this.error('중복된 아이디가 존재하거나 아이디 확인을 하지 않으셨습니다.');
+      this.alertService.error('중복된 아이디가 존재하거나 아이디 확인을 하지 않으셨습니다.');
       return false;
     }
 
     // check password validation
     if (this.signupForm.controls['password'].value !== this.signupForm.controls['passwordV'].value) {
-      this.error('비밀번호를 확인해주세요.');
+      this.alertService.error('비밀번호를 확인해주세요.');
       scroll(0, 200);
       return false;
     }
     if (!this.signupForm.valid) {
-      this.error('기본 정보는 필수사항입니다.');
+      this.alertService.error('기본 정보는 필수사항입니다.');
       scroll(0, 200);
       return false;
     }
@@ -234,11 +234,11 @@ export class FormComponent implements OnInit, AfterViewInit {
         if (data.success) {
           this.router.navigate(['signup', 'done']);
         } else {
-          this.error(data.error);
+          this.alertService.error(data.error);
         }
       },
       error => {
-        this.error('회원 가입중 문제가 발생했습니다.');
+        this.alertService.error('회원 가입중 문제가 발생했습니다.');
         console.log('error: ', error);
       }
       );
@@ -271,7 +271,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         userInfo['level-start'] = now;
         userInfo['level-end'] = current;
       } else {
-        this.info('failed...');
+        this.alertService.info('failed...');
         console.log(rsp);
       }
     });
@@ -292,7 +292,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       || this.signupForm.controls['u-id'].hasError('required');
 
     if (checkValue) {
-      this.info('4글자 ~ 15글자 이내로 적어주세요.');
+      this.alertService.info('4글자 ~ 15글자 이내로 적어주세요.');
       return false;
     }
 
@@ -305,15 +305,15 @@ export class FormComponent implements OnInit, AfterViewInit {
       data => {
         if (data) {
           this.checkId = true;
-          this.info('사용가능한 ID입니다.');
+          this.alertService.info('사용가능한 ID입니다.');
         } else {
           this.checkId = false;
-          this.warn('이미 존재하는 ID입니다.');
+          this.alertService.warn('이미 존재하는 ID입니다.');
         }
       },
       error => {
         // console.log('error: ', error);
-        this.error('오류가 발생했습니다.');
+        this.alertService.error('오류가 발생했습니다.');
       }
       );
   }
@@ -326,7 +326,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     if (type) {
-      this.loginType = type;
+      // this.loginType = type;
       // sample code
       if (type === 'naver') {
         this.uId.nativeElement.classList.add('disable');
@@ -334,24 +334,8 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.passwordV.nativeElement.classList.add('disable');
         this.name.nativeElement.classList.add('disable');
         this.email.nativeElement.classList.add('disable');
-      } else if (type === 'naverSample') {
-        this.info('네이버 아이디로 로그인 팝업');
-
-        this.uId.nativeElement.classList.add('disable');
-        this.password.nativeElement.classList.add('disable');
-        this.passwordV.nativeElement.classList.add('disable');
-        this.name.nativeElement.classList.add('disable');
-        this.email.nativeElement.classList.add('disable');
       } else if (type === 'kakao') {
-        // this.info('카카오 아이디로 로그인 팝업');
-
         this.loginWithKakao();
-
-        this.uId.nativeElement.classList.add('disable');
-        this.passwordV.nativeElement.classList.add('disable');
-        this.password.nativeElement.classList.add('disable');
-        // this.name.nativeElement.classList.add('disable');
-        // this.email.nativeElement.classList.add('disable');
       } else {
         this.signupForm.reset();
 
@@ -369,30 +353,35 @@ export class FormComponent implements OnInit, AfterViewInit {
     // 로그인 창을 띄웁니다.
     window['Kakao'].Auth.login({
       success: (authObj) => {
-        this.info(JSON.stringify(authObj));
-        console.log(JSON.stringify(authObj));
-
         window['Kakao'].API.request({
           url: '/v1/user/me',
-          success: function (res) {
-            console.log('userInfo in Kakao: ', JSON.stringify(res));
+          success: function (authInfo) {
+            this.loginType = 'kakao';
+
+            this.signupForm.controls['u-id'].setValue('_k' + authInfo.id);
+            this.signupForm.controls['password'].setValue('KAKAO1234!');
+            this.signupForm.controls['passwordV'].setValue('KAKAO1234!');
+            this.signupForm.controls['name'].setValue(authInfo.nickname);
+            this.signupForm.controls['email'].setValue(authInfo.kaccount_email);
+
+            this.uId.nativeElement.setAttribute('readonly', true);
+            this.password.nativeElement.setAttribute('readonly', true);
+            this.passwordV.nativeElement.setAttribute('readonly', true);
+            this.name.nativeElement.setAttribute('readonly', true);
+            this.email.nativeElement.setAttribute('readonly', true);
           },
           fail: function (error) {
-            this.error(JSON.stringify(error));
+            this.alertService.error('카카오 계정 정보 불러오기에 실패하였습니다.');
           }
         });
-        // this.signupForm.controls['u-id'].setValue('KAKAO_ID');
-        // this.signupForm.controls['password'].setValue('KAKAO_Password');
-        // this.signupForm.controls['passwordV'].setValue('KAKAO_Password');
-        // this.signupForm.controls['name'].setValue('KAKAO_Name');
-        // this.signupForm.controls['email'].setValue('KAKAO_Email');
+
 
 
         // this.signupForm.controls['u-id'].setValue('K' + new Date().toISOString().replace(/-/g, '').slice(2, 17));
         // this.signupForm.controls['password'].setValue('kakao1234!');
       },
       fail: (err) => {
-        this.error(JSON.stringify(err));
+        this.alertService.error('카카오 계정 인증에 실패하였습니다.');
       }
     });
   }
@@ -479,26 +468,5 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   selectLoginType($event) {
     console.log($event);
-  }
-
-
-  success(message: string) {
-    this.alertService.success(message);
-  }
-
-  error(message: string) {
-    this.alertService.error(message);
-  }
-
-  info(message: string) {
-    this.alertService.info(message);
-  }
-
-  warn(message: string) {
-    this.alertService.warn(message);
-  }
-
-  clear() {
-    this.alertService.clear();
   }
 }
