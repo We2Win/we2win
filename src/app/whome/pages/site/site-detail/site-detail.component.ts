@@ -80,7 +80,7 @@ export class SiteDetailComponent implements OnInit {
       }
     );
 
-    this.userInfo = JSON.parse(this.auth.getUserInfo());
+    this.userInfo = this.auth.getUserInfo();
   }
 
   updateDetail() {

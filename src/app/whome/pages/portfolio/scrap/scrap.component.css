@@ -184,19 +184,38 @@ section>div {
 .contentBox2 div span {
   flex: 1 1 auto;
   font-size: 0.8em;
+  height: 45px;
   line-height: 400%;
   border-bottom: 1px solid #d8d8d8;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .contentBox2 div #categories {
   flex: none;
-  width: 7em;
+  width: 9em;
 }
+
+.contentBox2 div #categories.리포트 {
+  color: rgb(199, 36, 36);
+
+}
+.contentBox2 div #categories.부동산 {
+  color: rgb(112, 36, 199);
+
+}
+.contentBox2 div #categories.법률 {
+  color: rgb(153, 119, 27);
+}
+.contentBox2 div #categories.분양 {
+  color: rgb(27, 153, 126);
+}
+
 
 .contentBox2 div #date {
   flex: none;
-  width: 12em;
+  width: 10em;
 }
 
 .lTable {
