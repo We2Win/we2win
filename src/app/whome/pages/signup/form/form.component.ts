@@ -121,9 +121,9 @@ export class FormComponent implements OnInit, AfterViewInit {
     const Naver = new naver.LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
-        // callbackUrl: environment.naver.registerUrl,
-        isPopup: true, /* 팝업을 통한 연동처리 여부 */
+        isPopup: false, /* 팝업을 통한 연동처리 여부 */
         callbackHandle: true,
+        callbackUrl: environment.naver.registerUrl,
         loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
       }
     );
@@ -131,12 +131,35 @@ export class FormComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     Naver.init();
 
-    setInterval(() => {
-      console.log('naver: ', Naver.getLoginStatus(
-      status => {
-        console.log('status: ', status);
-      }));
-    }, 2000);
+    window.addEventListener('load', function () {
+      Naver.getLoginStatus(function (status) {
+        if (status) {
+          /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+          var email = Naver.user.getEmail();
+          if (email == undefined || email == null) {
+            alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+            /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+            Naver.reprompt();
+            return;
+          }
+
+          console.log('status of Naver: ', status);
+
+          alert('done');
+
+          window.location.replace("http://" + window.location.hostname + ((location.port == "" || location.port == undefined) ? "" : ":" + location.port) + "/sample/main.html");
+        } else {
+          console.log("callback 처리에 실패하였습니다.");
+        }
+      });
+    });
+
+    // setInterval(() => {
+    //   console.log('naver: ', Naver.getLoginStatus(
+    //   status => {
+    //     console.log('status: ', status);
+    //   }));
+    // }, 2000);
   }
 
 
