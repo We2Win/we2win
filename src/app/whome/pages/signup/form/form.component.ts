@@ -4,7 +4,6 @@ import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { AlertService } from '../../../services/alert.service';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-form',
@@ -345,11 +344,6 @@ export class FormComponent implements OnInit, AfterViewInit {
         // this.info('카카오 아이디로 로그인 팝업');
 
         this.loginWithKakao();
-        // this.signupForm.controls['uId'].setValue('KAKAO_ID');
-        // this.signupForm.controls['password'].setValue('KAKAO_Password');
-        // this.signupForm.controls['passwordV'].setValue('KAKAO_Password');
-        // this.signupForm.controls['name'].setValue('KAKAO_Name');
-        // this.signupForm.controls['email'].setValue('KAKAO_Email');
 
         this.uId.nativeElement.classList.add('disable');
         this.passwordV.nativeElement.classList.add('disable');
@@ -374,6 +368,24 @@ export class FormComponent implements OnInit, AfterViewInit {
     window['Kakao'].Auth.login({
       success: (authObj) => {
         this.info(JSON.stringify(authObj));
+        console.log(JSON.stringify(authObj));
+
+        window['Kakao'].API.request({
+          url: '/v1/user/me',
+          success: function (res) {
+            console.log('userInfo in Kakao: ', JSON.stringify(res));
+          },
+          fail: function (error) {
+            this.error(JSON.stringify(error));
+          }
+        });
+        // this.signupForm.controls['u-id'].setValue('KAKAO_ID');
+        // this.signupForm.controls['password'].setValue('KAKAO_Password');
+        // this.signupForm.controls['passwordV'].setValue('KAKAO_Password');
+        // this.signupForm.controls['name'].setValue('KAKAO_Name');
+        // this.signupForm.controls['email'].setValue('KAKAO_Email');
+
+
         // this.signupForm.controls['u-id'].setValue('K' + new Date().toISOString().replace(/-/g, '').slice(2, 17));
         // this.signupForm.controls['password'].setValue('kakao1234!');
       },
