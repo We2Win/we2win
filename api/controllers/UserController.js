@@ -158,6 +158,8 @@ const getBookmark = async function (req, res) {
 
   [err, user] = await to(authService.getBookmark(req.params.id, userInfo['user_id']));
   if (err) return ReE(res, err, 422);
+  
+  console.log('user: ', user);
 
   return ReS(res, {
     message: 'Done Bookmarking',
