@@ -167,6 +167,11 @@ const addBookmark = async function (req, res) {
 }
 module.exports.addBookmark = addBookmark;
 
+const removeBookmark = async function (req, res) {
+
+}
+module.exports.removeBookmark = removeBookmark;
+
 const detailedInfo = async function (req, res) {
   const body = req.body;
   let err, user;
