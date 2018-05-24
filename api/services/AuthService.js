@@ -124,7 +124,7 @@ const updateContent = async function (data) {
       'c-type': data.type,
       'title': data.body['title'],
       'level': data.body['level'],
-      'no': data.body['no'],
+      // 'no': data.body['no'],
       's-type': data.body['s-type'] || '',
       'open-start': data.body['open-start'] || '',
       'open-end': data.body['open-end'] || '',
