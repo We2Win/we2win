@@ -119,23 +119,22 @@ const updateContent = async function (data) {
   let unique_key, auth_info, err, content, indexContent;
 
   const toIndexData = async (data) => {
-    console.log('data: ', data);
     const indexData = {
-      'c-id': data['c-id'],
-      'c-type': data.type,
-      'title': data['title'],
-      'level': data['level'],
-      'no': data['no'],
-      's-type': data['s-type'] || '',
-      'open-start': data['open-start'] || '',
-      'open-end': data['open-end'] || '',
-      'ammount': data['ammount'] || '',
-      'master-image': data['master-image']
+      'c-id': data.body['c-id'],
+      'c-type': data.body.type,
+      'title': data.body['title'],
+      'level': data.body['level'],
+      'no': data.body['no'],
+      's-type': data.body['s-type'] || '',
+      'open-start': data.body['open-start'] || '',
+      'open-end': data.body['open-end'] || '',
+      'ammount': data.body['ammount'] || '',
+      'master-image': data.body['master-image']
     }
     console.log('indexData: ', indexData);
     [err, indexContent] = await to(Content.update(indexData, {
       where: {
-        'c-id': content['c-id']
+        'c-id': data.body['c-id']
       }
     }));
     if (err) TE('인덱스 생성 중 오류가 발생했습니다.');
