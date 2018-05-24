@@ -121,7 +121,7 @@ const updateContent = async function (data) {
   const toIndexData = async (data) => {
     const indexData = {
       // 'c-id': data.body['c-id'],
-      'c-type': data.body.type,
+      'c-type': data.type,
       'title': data.body['title'],
       'level': data.body['level'],
       'no': data.body['no'],
