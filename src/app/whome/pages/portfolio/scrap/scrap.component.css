@@ -197,18 +197,18 @@ section>div {
   width: 9em;
 }
 
-.contentBox2 div #categories.리포트 {
+.contentBox2 div #categories.report {
   color: rgb(199, 36, 36);
 
 }
-.contentBox2 div #categories.부동산 {
+.contentBox2 div #categories.news {
   color: rgb(112, 36, 199);
 
 }
-.contentBox2 div #categories.법률 {
+.contentBox2 div #categories.law {
   color: rgb(153, 119, 27);
 }
-.contentBox2 div #categories.분양 {
+.contentBox2 div #categories.site {
   color: rgb(27, 153, 126);
 }
 

@@ -17,7 +17,7 @@
       </div>
       <app-button>담당자 | {{Data['manager-name']}} | {{Data['manager-contact']}}</app-button>
       <div id="optionBar">
-        <img id="bookmark" (click)="bookmark()" src="/assets/img/icon_bookmark_black.png">
+        <img id="bookmark" src="/assets/img/icon_bookmark_black.png">
         <img src="/assets/img/icon_facebook_black.png">
       </div>
     </div>
@@ -32,7 +32,7 @@
     <article>
       <div class="row">
         <label>현장 리포트
-          <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
+          <p class="more">더보기 ></p>
         </label>
         <div class="editorContainer">
           <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['report']"></p>
@@ -61,36 +61,18 @@
     </div>
     <div class="subGroup">
       <label>현장 댓글
-        <p class="more" (click)="showMore(commentDetail)">더보기 ></p>
+        <p class="more">더보기 ></p>
       </label>
       <article class="comments">
-        <div class="row" *ngIf="comments.length > 0">
-          <label>{{comments[0]['u-id']}}</label>
-          <p>{{comments[0]['contents']}}</p>
-          <span>{{comments[0]['createdAt'].slice(0,10)}}</span>
-        </div>
-        <div class="row" *ngIf="comments.length > 1">
-          <label>{{comments[1]['u-id']}}</label>
-          <p>{{comments[1]['contents']}}</p>
-          <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
-        </div>
         <div name="commentBox" class="row">
-          <form class="commentForm" (submit)="addComment()">
-            <label>{{userInfo['user_id']}}</label>
+          <form class="commentForm">
+            <label>Bob</label>
             <textarea type="text" class="commentInput" #NewComment></textarea>
-            <app-button (click)="addComment()">댓글 입력</app-button>
+            <app-button>댓글 입력</app-button>
           </form>
         </div>
       </article>
     </div>
-    <app-popup id="commentPopup" #commentDetail>
-      <h1>현장 댓글</h1>
-      <div class="row" *ngFor="let comment of comments">
-        <label>{{comment['u-id']}}</label>
-        <p>{{comment['contents']}}</p>
-        <span>{{comment['createdAt'].slice(0,10)}}</span>
-      </div>
-    </app-popup>
 
     <article>
       <div class="row">

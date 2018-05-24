@@ -1,0 +1,258 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+}
+
+:host /deep/ * {
+  flex: 1;
+}
+
+:host /deep/ h1 {
+  font-size: 1.6em;
+  font-weight: 300%;
+  margin: 0 0 3em 0;
+  padding: 0;
+  text-align: center;
+  flex: 1;
+}
+
+:host /deep/ article * {
+  flex: 1;
+}
+
+:host /deep/ .subGroup {
+  display: flex;
+  /* align-items: baseline; */
+  flex: 1;
+  flex-direction: row;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid #ccc;
+}
+
+:host /deep/ article {
+  /* display: flex; */
+  flex-direction: column;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid #ccc;
+}
+
+:host /deep/ .subGroup article {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+:host /deep/ label {
+  display: inline-block;
+  width: 200px;
+  line-height: 200%;
+  font-size: 1em;
+  margin: 0;
+  padding: 0 0.5em;
+  font-weight: 500;
+  flex: none;
+  box-sizing: border-box;
+}
+
+:host /deep/ .row {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin-top: 2em;
+}
+
+:host /deep/ article .row {
+  margin: 0;
+}
+
+:host /deep/ article .row+.row {
+  margin-top: 0.5em;
+}
+
+:host /deep/ .sublabel {
+  width: auto;
+  flex: 1;
+  font-size: 0.9em;
+  line-height: 100%;
+  text-align: center;
+}
+
+:host /deep/ .left {
+  text-align: left;
+}
+
+/* 
+:host /deep/ h2 {
+  display: inline-block;
+  width: 200px;
+  line-height: 200%;
+  font-size: 1em;
+  margin: 0;
+  flex: none;
+} */
+
+:host /deep/ label>b {
+  font-weight: normal;
+  font-size: 11px;
+}
+
+:host /deep/ p {
+  flex: 1;
+  font-size: 14px;
+}
+
+:host /deep/ span {
+  flex: none;
+  display: inline-block;
+  padding: 0 1em;
+  font-size: 12px;
+}
+
+:host /deep/ .blank {
+  color: #999;
+  font-size: 11px;
+  margin-left: 1em;
+  line-height: 4.1em;
+}
+
+:host /deep/ .card {
+  min-height: 160px;
+}
+
+:host /deep/ .checkboxGroup {
+  padding: 1em 0;
+  flex: 1;
+}
+
+:host /deep/ app-button {
+  display: block;
+  margin: 3em auto 0 auto;
+}
+
+:host /deep/ article app-button {
+  width: auto;
+  margin: 0;
+  /* margin: 0 0 0 1em; */
+  font-size: 0.9em;
+}
+
+/* 
+:host /deep/ li label {
+  flex: none;
+  flex-basis: 6em;
+  font-size: 12px;
+  text-align: center;
+} */
+
+:host /deep/ input[type="checkbox"],
+:host /deep/ input[type="radio"] {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin: 0 1em;
+  border: 1px solid #333;
+  flex: none;
+}
+
+:host /deep/ input,
+:host /deep/ textarea,
+:host /deep/ pre {
+  height: 42px;
+  flex: 1;
+  font-size: 12px;
+  border: 1px solid #d8d8d8;
+  border-radius: 0;
+  line-height: 150%;
+  margin: 0;
+  padding: 1em;
+}
+
+:host /deep/ textarea {
+  box-sizing: border-box;
+  font-size: 12px;
+  min-height: 15em;
+  height: auto;
+  white-space: normal;
+}
+
+:host /deep/ textarea:read-only {
+  outline: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  resize: none;
+}
+
+:host /deep/ pre {
+  height: 15em;
+  outline: none;
+  white-space: pre-wrap;
+  overflow-y: scroll;
+  resize: none;
+}
+
+:host /deep/ .navigator {
+  flex: none !important;
+}
+
+:host /deep/ .navigator img {
+  flex: 1;
+  width: 100px;
+  height: 120px;
+  margin: 0.2em;
+}
+
+:host /deep/ .shower img {
+  flex: 1;
+  margin: 0.2em;
+  height: auto;
+}
+
+:host /deep/ .shower label {
+  padding-top: 1em;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+:host /deep/ .disable {
+  pointer-events: none;
+  background: #ccc;
+  opacity: 0.3;
+}
+
+:host /deep/ .right {
+  text-align: right;
+}
+
+:host /deep/ .more {
+  color: gray;
+  cursor: pointer;
+}
+
+:host /deep/ .editorContainer span {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+:host /deep/ .shortener {
+  min-height: 8em;
+  max-height: 15em;
+  overflow-y: hidden;
+}
+
+:host /deep/ .shortener+app-button:before {
+  display: block;
+  position: relative;
+  content: '';
+  width: 100%;
+  height: 3em;
+  margin-top: -3em;
+  background: linear-gradient(transparent, white);
+}
+

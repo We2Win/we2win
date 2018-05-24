@@ -37,6 +37,11 @@ import { QuillEditorModule } from 'ngx-quill-editor';
 import { AuthService } from './services/auth.service';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { EmployerComponent } from './pages/employer/employer.component';
+import { InfoDetailComponent } from './templates/info-detail/info-detail.component';
+import { NewsDetailComponent } from './templates/news-detail/news-detail.component';
+import { LawDetailComponent } from './templates/law-detail/law-detail.component';
+import { SiteDetailComponent } from './templates/site-detail/site-detail.component';
+import { GroupComponent } from './templates/group/group.component';
 
 @NgModule({
   imports: [
@@ -76,6 +81,11 @@ import { EmployerComponent } from './pages/employer/employer.component';
     MypostDirective,
     EmployeeComponent,
     EmployerComponent,
+    InfoDetailComponent,
+    NewsDetailComponent,
+    LawDetailComponent,
+    SiteDetailComponent,
+    GroupComponent,
   ],
   entryComponents: [
     AccountRecordComponent,

@@ -170,7 +170,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     // });
 
     setInterval(() => {
-      console.log(Naver.accessToken());
       Naver.getLoginStatus(
         status => {
           console.log('status: ', status);

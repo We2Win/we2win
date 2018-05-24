@@ -44,7 +44,7 @@
         <li>
           <h2>분양가</h2>
           <input type="number" lang='en-150' formControlName="ammount" step="10000" placeholder="금액">
-          <h3>백만원</h3>
+          <h3>천만원</h3>
           <span class="blank"></span>
         </li>
         <li>
@@ -59,7 +59,7 @@
             <div class="wrapper">
               <h4>현재 시세
                 <br>
-                <b>(백만원)</b>
+                <b>(천만원)</b>
               </h4>
               <span class="listContainer">
                 <li>
@@ -149,7 +149,7 @@
 
         <li class="submitBar">
           <button [type]="'submit'">수정하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="infoDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -158,21 +158,21 @@
           <li>
             <h2 class="subTitleBar">Master 사진</h2>
             <input type="file" (change)="selectFile($event, 'master-image')" #I1>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['master-image']!=='파일 없음'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['master-image']!=='기존 파일'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <!-- <input type="file" name="cin" id="cin" (change)="fileChangeEvent($event)" placeholder="업로드 해주세요." multiple accept="image/*" -->
           </li>
           <li>
             <h2 class="subTitleBar">Slave 사진</h2>
             <input type="file" (change)="selectFile($event, 'slave-image1')" #I2>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image1']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image1')">{{uploadedFiles['slave-image1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image1']!=='기존 파일'}" (click)="upload(selectedData.type, 'slave-image1')">{{uploadedFiles['slave-image1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <input type="file" (change)="selectFile($event, 'slave-image2')" #I3>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image2']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image2')">{{uploadedFiles['slave-image2']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image2']!=='기존 파일'}" (click)="upload(selectedData.type, 'slave-image2')">{{uploadedFiles['slave-image2']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <input type="file" (change)="selectFile($event, 'slave-image3')" #I4>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image3']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image3')">{{uploadedFiles['slave-image3']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image3']!=='기존 파일'}" (click)="upload(selectedData.type, 'slave-image3')">{{uploadedFiles['slave-image3']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <input type="file" (change)="selectFile($event, 'slave-image4')" #I5>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image4']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image4')">{{uploadedFiles['slave-image4']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image4']!=='기존 파일'}" (click)="upload(selectedData.type, 'slave-image4')">{{uploadedFiles['slave-image4']==='-done'?'등록 완료':'사진 등록'}}</app-button>
             <input type="file" (change)="selectFile($event, 'slave-image5')" #I6>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image5']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image5')">{{uploadedFiles['slave-image5']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image5']!=='기존 파일'}" (click)="upload(selectedData.type, 'slave-image5')">{{uploadedFiles['slave-image5']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
@@ -205,7 +205,7 @@
         <li>
           <h2>분양가</h2>
           <input type="number" lang='en-150' formControlName="ammount" step="10000" placeholder="금액">
-          <h3>백만원</h3>
+          <h3>천만원</h3>
           <span class="blank"></span>
         </li>
         <li>
@@ -371,12 +371,12 @@
           <li>
             <h2 class="subTitleBar">Master 사진</h2>
             <input type="file" (change)="selectFile($event, 'master-image')" #I7>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['master-image']!=='파일 없음'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['master-image']!=='기존 파일'}" (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
           <li>
             <h2 class="subTitleBar">Slave 사진</h2>
             <input type="file" (change)="selectFile($event, 'slave-image1')" #I8>
-            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image1']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image1')">{{uploadedFiles['slave-image1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+            <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image1']!=='기존 파일'}" (click)="upload(selectedData.type, 'slave-image1')">{{uploadedFiles['slave-image1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
@@ -415,7 +415,7 @@
           <li>
             <h2 class="subTitleBar">파일 등록</h2>
             <input type="file" (change)="selectFile($event, '-file')" #I9>
-            <app-button [ngClass]="{disabled: inputs['-file']!=='파일 없음'}" (click)="upload(selectedData.type, '-file')">{{uploadedFiles['-file']==='-done'?'등록 완료':'파일 등록'}}</app-button>
+            <app-button [ngClass]="{disabled: inputs['-file']!=='기존 파일'}" (click)="upload(selectedData.type, '-file')">{{uploadedFiles['-file']==='-done'?'등록 완료':'파일 등록'}}</app-button>
           </li>
         </form>
       </app-popup>
@@ -663,3 +663,7 @@
     </ng-container>
   </article>
 </section>
+
+<app-popup #infoDetail>
+  <app-info-detail [Data]="templateData"></app-info-detail>
+</app-popup>
