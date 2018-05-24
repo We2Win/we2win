@@ -53,7 +53,7 @@ export class SiteDetailComponent implements OnInit {
 
   ngOnInit() {
     // When routed to another site contents:
-    this.putDataService.dataEvent.subscribe(
+    this.putDataService.dataSite.subscribe(
       data => {
         this.Data = data;
         this.updateDetail();

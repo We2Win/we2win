@@ -1,12 +1,13 @@
 export class News {
     'id' = '';
-    'image' = '';
+    'master-image' = '';
+    'slave-image1' = '';
     'level' = '';
     'notification': 0;
     'analysis-title': '';
     'analysis-description' = '';
-    'sub-title' = '';
-    'sub-description' = '';
+    'main-title' = '';
+    'main-description' = '';
     'title' = '';
     'createdAt' = '';
     'updatedAt' = '';

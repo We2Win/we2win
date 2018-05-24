@@ -105,12 +105,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
       // 카카오 로그인 버튼을 생성합니다.
       window['Kakao'].Auth.createLoginButton({
         container: '#kakaoIdLogin',
-        success: function (authObj) {
+        success: (authObj) => {
           const user = {
-            'u-id': authObj.id,
+            'user_id': authObj.id,
           };
 
-          this.authService.login().subscribe(
+          this.authService.loginWithKakao(user).subscribe(
             auth => {
               // console.log(auth);
               if (auth) {
@@ -128,7 +128,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             }
           );
         },
-        fail: function (err) {
+        fail: (err) => {
           this.info(JSON.stringify(err));
         }
       });

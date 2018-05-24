@@ -103,10 +103,7 @@ export class ContentsModificationComponent implements OnInit {
     'slave-image5': '',
     'file': '',
   };
-
   subscription: Subscription;
-
-  templateData = new Report();
   isDataChanged = false;
 
   // _editor;
@@ -506,10 +503,8 @@ export class ContentsModificationComponent implements OnInit {
     this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
     console.log(this.selectedData, this.selectBoxData);
 
-    this.putDataService.updateData(this.selectedData.body);
-    // this.templateData = <Report>this.selectedData.body;
+    this.putDataService.updateData(this.selectedData.body, this.selectedData.type);
     this.isDataChanged = true;
-    console.log('this.templateData: ', this.templateData);
   }
 
   putData(selectedData) {

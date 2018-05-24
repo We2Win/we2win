@@ -33,7 +33,7 @@ export class NewsDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.putDataService.dataEvent.subscribe(
+    this.putDataService.dataNews.subscribe(
       data => {
         this.Data = data;
         this.updateDetail();

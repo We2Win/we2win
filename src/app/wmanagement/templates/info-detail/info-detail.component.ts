@@ -52,8 +52,9 @@ export class InfoDetailComponent implements OnInit {
 
   ngOnInit() {
     // When routed to another info contents:
-    this.putDataService.dataEvent.subscribe(
+    this.putDataService.dataReport.subscribe(
       data => {
+        console.log('data on info-detail: ', this.Data, data);
         this.Data = data;
         this.updateDetail();
       }

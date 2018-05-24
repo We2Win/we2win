@@ -6,6 +6,7 @@ import { ContentsService } from '../../../services/contents.service';
 import { UploadFileService } from '../../../services/upload-file.service';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { PutDataService } from '../../../templates/put-data.service';
 
 @Component({
   selector: 'app-contents-registration',
@@ -14,6 +15,11 @@ import { Subscription } from 'rxjs/Subscription';
     './contents-registration.component.css',
     '../../pages.css'
   ],
+  providers: [
+    ContentsService,
+    UploadFileService,
+    PutDataService
+  ]
 })
 export class ContentsRegistrationComponent implements OnInit {
   infoForm: FormGroup;
@@ -61,6 +67,13 @@ export class ContentsRegistrationComponent implements OnInit {
   @ViewChild('I11') I11;
   @ViewChild('I12') I12;
 
+  @ViewChild('infoDetail') infoDetail;
+  @ViewChild('newsDetail') newsDetail;
+  @ViewChild('siteDetail') siteDetail;
+  @ViewChild('meetingDetail') meetingDetail;
+  @ViewChild('employerDetail') employerDetail;
+  @ViewChild('employeeDetail') employeeDetail;
+
   inputs: object;
 
   uploadedFiles = {
@@ -72,8 +85,8 @@ export class ContentsRegistrationComponent implements OnInit {
     'slave-image5': '',
     'file': '',
   };
-
   subscription: Subscription;
+  isDataChanged = false;
 
   // _editor;
   public editor;
@@ -97,6 +110,7 @@ export class ContentsRegistrationComponent implements OnInit {
     private fb: FormBuilder,
     private contentsService: ContentsService,
     private uploadService: UploadFileService,
+    private putDataService: PutDataService,
     private router: Router,
     private http: HttpClient,
     private elementRef: ElementRef
@@ -159,7 +173,7 @@ export class ContentsRegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.infoForm = new FormGroup({
-      // 'I-level': new FormControl(''),
+      'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
       'summary': new FormControl('', [Validators.required]),
@@ -198,7 +212,7 @@ export class ContentsRegistrationComponent implements OnInit {
     });
     this.siteForm = new FormGroup({
       's-type': new FormControl('', [Validators.required]),
-      // 'level': new FormControl(''),
+      'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
       'summary': new FormControl('', [Validators.required]),
@@ -237,7 +251,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'slave-image5': new FormControl(''),
     });
     this.newsForm = new FormGroup({
-      // 'N-level': new FormControl('', [Validators.required]),
+      'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
       'main-title': new FormControl('', [Validators.required]),
@@ -248,6 +262,7 @@ export class ContentsRegistrationComponent implements OnInit {
       'analysis-description': new FormControl('', [Validators.required]),
     });
     this.lawForm = new FormGroup({
+      'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
       'summary': new FormControl('', [Validators.required]),
@@ -255,6 +270,7 @@ export class ContentsRegistrationComponent implements OnInit {
       // 'file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
+      'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
       'summary': new FormControl('', [Validators.required]),

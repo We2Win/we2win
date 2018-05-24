@@ -159,7 +159,7 @@ const loginWithKakao = async function (req, res) {
 
   console.log(req.body);
 
-  [err, user] = await to(authService.authUser(req.body));
+  [err, user] = await to(authService.authUserWithKakao(req.body));
   if (err) return ReE(res, err, 422);
 
   console.log('loginWithKakao successful: ', user);

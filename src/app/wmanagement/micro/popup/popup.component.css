@@ -10,12 +10,12 @@
   position: fixed;
   margin: auto;
   padding: 2em;
-  width: 50vw;
+  width: 1100px;
   min-width: 600px;
   max-height: 80vh;
   top: 10vh;
-  left: 50vw;
-  transform: translate(-50%, 0);
+  left: calc(50vw - 550px);
+  /* transform: translate(-50%, 0); */
   background: #fff;
   z-index: 11;
   text-align: left;

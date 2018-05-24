@@ -55,7 +55,7 @@ export class MeetingDetailComponent implements OnInit {
 
   ngOnInit() {
     // When routed to another site contents:
-    this.putDataService.dataEvent.subscribe(
+    this.putDataService.dataMeeting.subscribe(
       data => {
         this.Data = data;
         this.updateDetail();
@@ -103,7 +103,7 @@ export class MeetingDetailComponent implements OnInit {
   // addRankingRecord(records) {
   //   const count = ['first', 'second', 'third'];
   //   for (const num in count) {
-//     if (records[num]) {
+  //     if (records[num]) {
   //       records[num]['rank'] = count[num];
   //       // console.log('record: ', records[record]);
   //       this.postingService.loadComponent(this.rankingpostDirective.viewContainerRef,
