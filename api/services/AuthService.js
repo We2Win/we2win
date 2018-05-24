@@ -134,7 +134,7 @@ const updateContent = async function (data) {
     console.log('indexData: ', indexData);
     [err, indexContent] = await to(Content.update(indexData, {
       where: {
-        'c-id': indexData['c-id']
+        'c-id': data.body['c-id']
       }
     }));
     if (err) TE('인덱스 생성 중 오류가 발생했습니다.');
