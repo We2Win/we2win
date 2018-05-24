@@ -171,6 +171,45 @@ const loginWithKakao = async function (req, res) {
 }
 module.exports.loginWithKakao = loginWithKakao;
 
+const getSchedule = async function (req, res) {
+  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+
+  [err, contents] = await to(authService.getSchedule(req.params.id, userInfo['user_id']));
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Schedule Lists.',
+    contents: contents
+  });
+}
+module.exports.getSchedule = getSchedule;
+
+const addSchedule = async function (req, res) {
+  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+
+  console.log(userInfo);
+
+  [err, user] = await to(authService.addSchedule(userInfo['user_id'], req.body));
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Done Scheduleing'
+  });
+}
+module.exports.addSchedule = addSchedule;
+
+const removeSchedule = async function (req, res) {
+  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+
+  [err, user] = await to(authService.removeSchedule(userInfo['user_id'], req.body));
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Done removing Schedule'
+  });
+}
+module.exports.removeSchedule = removeSchedule;
+
 const getBookmark = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 

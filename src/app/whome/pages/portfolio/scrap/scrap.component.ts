@@ -13,6 +13,7 @@ export class ScrapComponent implements OnInit {
   userInfo;
   infos = [];
   sites = [];
+  schedules = [];
   engType = {
     '리포트': 'report',
     '부동산 뉴스': 'news',
@@ -60,6 +61,17 @@ export class ScrapComponent implements OnInit {
       res => {
         this.sites = res['contents'];
         console.log('sites: ', this.sites);
+        this.infos = [];
+      },
+      err => this.alertService.error('에러가 발생했습니다.')
+    );
+  }
+
+  showSchedule() {
+    this.userService.getSchedule().subscribe(
+      res => {
+        this.schedules = res['contents'];
+        console.log('schedules: ', this.schedules);
         this.infos = [];
       },
       err => this.alertService.error('에러가 발생했습니다.')

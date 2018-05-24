@@ -61,6 +61,17 @@ export class UserService {
       .map(data => { console.log('testing(): ', data); });
   }
 
+  getSchedule() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
+
+    return this.http.get(environment.apiUrl + '/schedule', httpOptions);
+  }
+
   getBookmark(type) {
     const httpOptions = {
       headers: new HttpHeaders({

@@ -243,21 +243,27 @@ const getBookmark = async function (id, uId) {
 
   switch (id) {
     case 'info':
-      [err, content] = await to (InfoScrap.findAll({where: {
-        'u-id': uId
-      }}));
+      [err, content] = await to(InfoScrap.findAll({
+        where: {
+          'u-id': uId
+        }
+      }));
       if (err) TE('생성 중 오류가 발생했습니다.');
-    break;
-    case 'site': 
-      [err, content] = await to (SiteScrap.findAll({where: {
-        'u-id': uId
-      }}));
-    break;
+      break;
+    case 'site':
+      [err, content] = await to(SiteScrap.findAll({
+        where: {
+          'u-id': uId
+        }
+      }));
+      break;
     case 'meeting':
-      [err, content] = await to (Schedule.findAll({where: {
-        'u-id': uId
-      }}))
-    break;
+      [err, content] = await to(Schedule.findAll({
+        where: {
+          'u-id': uId
+        }
+      }))
+      break;
   }
 
   return content;
@@ -274,29 +280,27 @@ const addBookmark = async function (uId, body) {
     'title': body['title'],
     'date': body['createdAt']
   }
- 
+
   console.log('info on addBoookmark(): ', info);
 
   switch (body['c-type']) {
     case '리포트':
     case '부동산 뉴스':
     case '법률 및 정책':
-      info['c-type'] = body['c-type'],
-      [err, content] = await to (InfoScrap.create(info));
+      info['c-type'] = body['c-type'], [err, content] = await to(InfoScrap.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
-    break;
+      break;
     case '아파트':
     case '오피스텔':
     case '상가/호텔':
     case '토지':
-      info['s-type'] = body['s-type'],
-      [err, content] = await to(SiteScrap.create(info));
+      info['s-type'] = body['s-type'], [err, content] = await to(SiteScrap.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
-    break;
+      break;
     case '오프라인 모임':
       [err, content] = await to(Schedule.create(info));
-      if (err) TE('생성 중 오류가 발생했습니다.');    
-    break;      
+      if (err) TE('생성 중 오류가 발생했습니다.');
+      break;
   }
 
   return content;
@@ -320,34 +324,110 @@ const removeBookmark = async function (uId, body) {
     case '리포트':
     case '부동산 정보':
     case '법률 및 정책':
-      [err, content] = await to (InfoScrap.destroy({where: {
-        'u-id': uId,
-        'c-id': info['c-id']
-      }}));
+      [err, content] = await to(InfoScrap.destroy({
+        where: {
+          'u-id': uId,
+          'c-id': info['c-id']
+        }
+      }));
       if (err) TE('생성 중 오류가 발생했습니다.');
-    break;
+      break;
     case '아파트':
     case '오피스텔':
     case '상가/호텔':
     case '토지':
-      [err, content] = await to(InfoScrap.destroy({where: {
-        'u-id': uId,
-        'c-id': info['c-id']
-      }}));
+      [err, content] = await to(InfoScrap.destroy({
+        where: {
+          'u-id': uId,
+          'c-id': info['c-id']
+        }
+      }));
       if (err) TE('생성 중 오류가 발생했습니다.');
-    break;
+      break;
     case '오프라인 모임':
-      [err, content] = await to(InfoScrap.destroy({where: {
-        'u-id': uId,
-        'c-id': info['c-id']
-      }}));
-      if (err) TE('생성 중 오류가 발생했습니다.');    
-    break;      
+      [err, content] = await to(InfoScrap.destroy({
+        where: {
+          'u-id': uId,
+          'c-id': info['c-id']
+        }
+      }));
+      if (err) TE('생성 중 오류가 발생했습니다.');
+      break;
   }
 
   return content;
 }
 module.exports.removeBookmark = removeBookmark;
+
+
+const getSchedule = async function (id, uId) {
+  let unique_key, auth_info, err, content;
+
+  [err, content] = await to(Schedule.findAll({
+    where: {
+      'u-id': uId
+    }
+  }));
+  if (err) TE('생성 중 오류가 발생했습니다.');
+
+
+  return content;
+}
+module.exports.getSchedule = getSchedule;
+
+const addSchedule = async function (uId, body) {
+  let unique_key, auth_info, err, content;
+
+  const info = {
+    'u-id': uId,
+    'c-id': body['c-id'],
+    'no': body['no'],
+    'title': body['title'],
+    'date': body['createdAt']
+  }
+
+  console.log('info on addSchedule(): ', info);
+
+  info['c-type'] = body['c-type'];
+  [err, content] = await to(Schedule.create(info));
+  if (err) TE('생성 중 오류가 발생했습니다.');
+  break;
+
+  return content;
+}
+module.exports.addSchedule = addSchedule;
+
+const removeSchedule = async function (uId, body) {
+  let unique_key, auth_info, err, content;
+
+  const info = {
+    'u-id': uId,
+    'c-id': body['c-id'],
+    'no': body['no'],
+    'title': body['title'],
+    'c-type': body['c-type'],
+    's-type': body['s-type'],
+    'date': body['createdAt']
+  }
+
+  [err, content] = await to(Schedule.destroy({
+    where: {
+      'u-id': uId,
+      'c-id': info['c-id']
+    }
+  }));
+  if (err) TE('생성 중 오류가 발생했습니다.');
+  [err, content] = await to(Schedule.destroy({
+    where: {
+      'u-id': uId,
+      'c-id': info['c-id']
+    }
+  }));
+  if (err) TE('생성 중 오류가 발생했습니다.');
+
+  return content;
+}
+module.exports.removeSchedule = removeSchedule;
 
 const createEmployer = async function (body) {
   let unique_key, auth_info, err, content;
