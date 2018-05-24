@@ -391,7 +391,6 @@ const addSchedule = async function (uId, body) {
   info['c-type'] = body['c-type'];
   [err, content] = await to(Schedule.create(info));
   if (err) TE('생성 중 오류가 발생했습니다.');
-  break;
 
   return content;
 }
@@ -410,13 +409,6 @@ const removeSchedule = async function (uId, body) {
     'date': body['createdAt']
   }
 
-  [err, content] = await to(Schedule.destroy({
-    where: {
-      'u-id': uId,
-      'c-id': info['c-id']
-    }
-  }));
-  if (err) TE('생성 중 오류가 발생했습니다.');
   [err, content] = await to(Schedule.destroy({
     where: {
       'u-id': uId,
