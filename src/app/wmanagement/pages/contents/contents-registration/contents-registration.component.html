@@ -54,7 +54,7 @@
           <h2>현장 시세</h2>
           <div class="container">
             <div class="wrapper">
-              <h4>현재 시세
+              <h4>현장 시세
                 <br>
                 <b>(천만원)</b>
               </h4>
@@ -146,7 +146,7 @@
 
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="infoDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -220,7 +220,7 @@
           <h2>현장 시세</h2>
           <div class="container">
             <div class="wrapper">
-              <h4>현재 시세
+              <h4>현장 시세
                 <br>
                 <b>(천만원)</b>
               </h4>
@@ -312,7 +312,7 @@
 
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="siteDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -359,7 +359,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="newsDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -403,7 +403,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="lawDetail.showPopup(); preview();">미리보기</button>          
         </li>
       </form>
 
@@ -482,7 +482,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="meetingDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -563,7 +563,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
+          <!-- <button onclick="event.preventDefault()" (click)="meetingDetail.showPopup(); preview();">미리보기</button> -->
         </li>
       </form>
 
@@ -643,7 +643,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
-          <button>미리보기</button>
+          <!-- <button>미리보기</button> -->
         </li>
       </form>
 

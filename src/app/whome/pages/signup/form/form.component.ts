@@ -503,7 +503,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         // this.zonecode = data.zonecode; // 5자리 새우편번호 사용
         // this.fullRoadAddr = data.roadAddress;
         // this.jibunAddress = data.jibunAddress;
-        this.signupForm.controls[type].setValue(data.roadAddress + ' (' + data.zonecode + ')');
+        this.signupForm.controls[type].setValue('(' + data.zonecode + ') ' + data.roadAddress);
 
         // console.log(this.zonecode, this.fullRoadAddr, this.jibunAddress);
 
