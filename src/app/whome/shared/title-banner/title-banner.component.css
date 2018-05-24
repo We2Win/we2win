@@ -12,30 +12,35 @@
   background: url('/assets/img/key_info.jpg');
   background-position-x: 50%;
   color: white;
+  text-shadow: 0 0 0.5em #000;
 }
 
 :host(.site) {
   background: url('/assets/img/key_site.jpg');
   background-position-x: 50%;
   color: white;
+  text-shadow: 0 0 0.5em #000;
 }
 
 :host(.employee) {
   background: url('/assets/img/key_employee.jpg');
   background-position-x: 50%;
   color: white;
+  text-shadow: 0 0 0.5em #000;
 }
 
 :host(.employer) {
   background: url('/assets/img/key_employer.jpg');
   background-position-x: 50%;
   color: white;
+  text-shadow: 0 0 0.5em #000;
 }
 
 :host(.meeting) {
   background: url('/assets/img/key_meeting.jpg');
   background-position-x: 50%;
   color: white;
+  text-shadow: 0 0 0.5em #000;
 }
 :host(.search) {
   color: black;
@@ -52,7 +57,6 @@ h1 {
   font-weight: normal;
   margin: 0;
   padding: 0 0 10px 0;
-  text-shadow: 0 0 0.5em #000;
 }
 
 h2 {
