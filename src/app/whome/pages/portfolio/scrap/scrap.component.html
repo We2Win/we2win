@@ -55,12 +55,12 @@
     <div class="contentBox2">
       <app-table [type]="'calendar'"></app-table>
     </div>
-    <div class="contentBox1">
+    <div class="contentBox1 scheduleBox">
       <nav id="menuSechedule" class="tabGroup">
         <li id="schedule" class="show">일정 관리</li>
       </nav>
       <div *ngFor="let record of schedules" [routerLink]="'/meeting/detail/'+record['no']">
-        <span id="categories">{{ record['no'] }}</span>
+        <!-- <span id="categories">{{ record['no'] }}</span> -->
         <span id="title">{{ record['title'] }}</span>
         <span id="date">{{ record['date'].slice(0, 10) }}</span>
       </div>

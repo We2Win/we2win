@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
           this.authService.loginWithKakao(user).subscribe(
             auth => {
-              console.log(auth);
+              console.log('auth: ', auth);
               if (auth) {
                 this.router.navigate(['/']);
               } else {

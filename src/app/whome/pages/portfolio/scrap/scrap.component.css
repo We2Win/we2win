@@ -172,15 +172,18 @@ section>div {
   border-bottom: 2px solid var(--main-bg-color);
 }
 
+.scheduleBox div,
 .contentBox2 div {
   display: flex;
 }
 
+.scheduleBox div li,
 .contentBox2 div li {
   flex: 1;
   display: flex;
 }
 
+.scheduleBox div span,
 .contentBox2 div span {
   flex: 1 1 auto;
   font-size: 0.8em;
@@ -190,6 +193,16 @@ section>div {
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.scheduleBox div #title:before{
+  display: inline-block;
+  content: '';
+  width: 0.5em;
+  height: 0.5em;
+  background: rgb(70, 109, 24);
+  border-radius: 50%;
+  margin-right: 1em;
 }
 
 .contentBox2 div #categories {
@@ -212,6 +225,10 @@ section>div {
   color: rgb(27, 153, 126);
 }
 
+.contentBox1 div #date {
+  flex: none;
+  width: 8em;
+}
 
 .contentBox2 div #date {
   flex: none;
