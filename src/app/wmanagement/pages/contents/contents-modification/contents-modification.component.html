@@ -12,7 +12,7 @@
       <app-select [type]="'하위 카테고리'" #sub [isSub]="true" [topCategory]="top.selected" (change)="onSubChange($event)"></app-select>
     </header>
     <div class="contentsBar">
-      <app-select [type]="'컨텐츠 제목'" #contents (contentsChange)="onContentsChange($event)"></app-select>
+      <app-select [type]="'컨텐츠 제목'" #contents [contentNoArr]="contentNoArr" (contentsChange)="onContentsChange($event)"></app-select>
     </div>
 
     <ng-container [ngSwitch]="sub.selected">

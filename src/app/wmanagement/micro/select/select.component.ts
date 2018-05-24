@@ -10,6 +10,7 @@ export class SelectComponent implements OnInit, OnChanges {
   @Input() type: string;
   @Input() isSub: boolean;
   @Input() topCategory: string;
+  @Input() contentNoArr;
   @Output() change = new EventEmitter();
   @Output() contentsChange = new EventEmitter();
 
@@ -69,6 +70,7 @@ export class SelectComponent implements OnInit, OnChanges {
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
       this.change.emit(this.selected);
+      console.log(this.categories['컨텐츠 제목'].indexOf(this.selected), this.selected, this.contentNoArr);
       this.contentsChange.emit(this.categories['컨텐츠 제목'].indexOf(this.selected));
 
       // console.log(this.selected);

@@ -120,16 +120,16 @@ const updateContent = async function (data) {
 
   const toIndexData = async (data) => {
     const indexData = {
-      'c-id': content['c-id'],
+      'c-id': data['c-id'],
       'c-type': data.type,
-      'title': content['title'],
-      'level': content['level'],
-      'no': content['no'],
-      's-type': content['s-type'] || '',
-      'open-start': content['open-start'] || '',
-      'open-end': content['open-end'] || '',
-      'ammount': content['ammount'] || '',
-      'master-image': content['master-image']
+      'title': data['title'],
+      'level': data['level'],
+      'no': data['no'],
+      's-type': data['s-type'] || '',
+      'open-start': data['open-start'] || '',
+      'open-end': data['open-end'] || '',
+      'ammount': data['ammount'] || '',
+      'master-image': data['master-image']
     }
     console.log('indexData: ', indexData);
     [err, indexContent] = await to(Content.update(indexData, {
