@@ -40,6 +40,11 @@ export class ScrapComponent implements OnInit {
       },
       err => this.alertService.error('에러가 발생했습니다.')
     );
+    this.userService.getSchedule().subscribe(
+      res => {
+        console.log('schedule', res);
+      }
+    );
   }
 
   showInfo() {
