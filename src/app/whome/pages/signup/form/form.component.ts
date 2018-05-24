@@ -344,6 +344,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.loginWithKakao();
       } else {
         this.signupForm.reset();
+        this.loginType = 'google';
 
         this.uId.nativeElement.setAttribute('readonly', false);
         this.password.nativeElement.setAttribute('readonly', false);

@@ -71,6 +71,8 @@ export class AuthService {
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
+    console.log(bodyString);
+
     return this.http.post(environment.apiUrl + '/login/kakao', bodyString, headers)
       .do((res: any) => this.setToken(res.token),
       (err) => { this.alertService.error(err); }
