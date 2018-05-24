@@ -119,6 +119,7 @@ const updateContent = async function (data) {
   let unique_key, auth_info, err, content, indexContent;
 
   const toIndexData = async (data) => {
+    console.log('data: ', data);
     const indexData = {
       'c-id': data['c-id'],
       'c-type': data.type,
