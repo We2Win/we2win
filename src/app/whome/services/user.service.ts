@@ -61,17 +61,6 @@ export class UserService {
       .map(data => { console.log('testing(): ', data); });
   }
 
-  getSchedule() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': this.authService.getToken()
-      })
-    };
-
-    return this.http.get(environment.apiUrl + '/schedule', httpOptions);
-  }
-
   getBookmark(type) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -106,6 +95,45 @@ export class UserService {
     };
 
     return this.http.post(environment.apiUrl + '/bookmark/remove', body, httpOptions).subscribe(
+      res => { console.log(res); },
+      error => { console.log(error); }
+    );
+  }
+
+  getSchedule() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
+
+    return this.http.get(environment.apiUrl + '/schedule', httpOptions);
+  }
+
+  addSchedule(body) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
+
+    return this.http.put(environment.apiUrl + '/schedule/add', body, httpOptions).subscribe(
+      res => { console.log(res); },
+      error => { console.log(error); }
+    );
+  }
+
+  removeSchedule(body) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
+
+    return this.http.post(environment.apiUrl + '/schedule/remove', body, httpOptions).subscribe(
       res => { console.log(res); },
       error => { console.log(error); }
     );

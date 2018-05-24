@@ -42,7 +42,8 @@ export class ScrapComponent implements OnInit {
     );
     this.userService.getSchedule().subscribe(
       res => {
-        console.log('schedule', res);
+        this.schedules = res['contents'];
+        console.log('schedule', this.schedules);
       }
     );
   }
@@ -77,7 +78,6 @@ export class ScrapComponent implements OnInit {
       res => {
         this.schedules = res['contents'];
         console.log('schedules: ', this.schedules);
-        this.infos = [];
       },
       err => this.alertService.error('에러가 발생했습니다.')
     );

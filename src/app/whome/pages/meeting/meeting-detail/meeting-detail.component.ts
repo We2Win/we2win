@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, Input, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { AuthService } from '../../../services/auth.service';
 import { MeetingCardComponent } from '../../../micro/meeting-card/meeting-card.component';
 import { AlertService } from '../../../services/alert.service';
 import { UserInfo } from '../../../models/userInfo';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-meeting-detail',
@@ -54,9 +55,12 @@ export class MeetingDetailComponent implements OnInit {
     private postingService: PostingService,
     private auth: AuthService,
     private alertService: AlertService,
+    private userService: UserService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private meta: Meta
+    private meta: Meta,
+    private _elementRef: ElementRef
   ) {
     this.id = this.route.params['value'].id;
   }
@@ -169,5 +173,24 @@ export class MeetingDetailComponent implements OnInit {
 
   showMore(child) {
     child._elementRef.nativeElement.classList.add('show');
+  }
+
+  schedule() {
+    if (!this.authService.isAuthenticated()) {
+      this.alertService.error('로그인 하셔야 북마크 하실 수 있습니다.');
+    }
+    const schedule = this._elementRef.nativeElement.querySelector('#schedule');
+
+    if (schedule.classList.contains('selected')) {
+      schedule.src = '/assets/img/icon_schedule_black.png';
+      schedule.classList.remove('selected');
+      this.alertService.warn('북마크가 해제되었습니다.');
+      this.userService.removeSchedule(this.Data);
+    } else {
+      schedule.src = '/assets/img/icon_schedule_black_selected.png';
+      schedule.classList.add('selected');
+      this.alertService.success('북마크가 설정되었습니다.');
+      this.userService.addSchedule(this.Data);
+    }
   }
 }

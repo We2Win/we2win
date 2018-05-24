@@ -32,10 +32,10 @@
       </li>
       <li class="buttonBar">
         <h2></h2>
-        <app-button>모임 참가하기</app-button>
+        <app-button (click)="schedule()">모임 참가하기</app-button>
       </li>
       <div id="optionBar">
-        <img src="/assets/img/icon_schedule_black.png">
+        <img id="schedule" (click)="schedule()" src="/assets/img/icon_schedule_black.png">
         <img src="/assets/img/icon_facebook_black.png">
       </div>
     </div>
