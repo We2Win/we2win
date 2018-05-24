@@ -64,6 +64,35 @@ const contentsInfo = {
   }
 };
 
+const searchContents = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  const body = req.body.id;
+  let resultArr;
+
+  let err, content;
+
+  console.log('body: ', JSON.stringify(body));
+
+  resultArr = Content.findAll({
+    where: {
+      $or: [
+        { 'title': { like: '%' + body + '%'} },
+        { 'level': { like: '%' + body + '%'} },
+        { 'c-type': { like: '%' + body + '%'} },
+      ]
+    }
+  });
+
+  if (err) return ReE(res, err, 422);
+  
+  content = JSON.stringify(content);
+  return ReS(res, {
+    message: 'Successfully created new content data.',
+    body: resultArr,
+  }, 201);
+};
+module.exports.searchContents = searchContents;
+
 const createContents = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;

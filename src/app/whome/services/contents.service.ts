@@ -63,6 +63,11 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  search(query) {
+    return this.http.get(environment.apiUrl + '/search/' + query)
+      .map((res: any) => res);
+  }
+
   addRecruitContent(page, body) {
     const bodyString = JSON.stringify(body);
     const headers = { headers: { 'Content-Type': 'application/json' } };

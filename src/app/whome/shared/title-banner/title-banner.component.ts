@@ -2,12 +2,13 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { PageInfoService } from '../../page-info.service';
 import { Location } from '@angular/common';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-title-banner',
   templateUrl: './title-banner.component.html',
   styleUrls: ['./title-banner.component.css'],
-  providers: [PageInfoService]
+  providers: [PageInfoService, SearchService]
 })
 export class TitleBannerComponent implements OnInit {
   @Input() type;
@@ -36,7 +37,8 @@ export class TitleBannerComponent implements OnInit {
     private pageInfoService: PageInfoService,
     private router: Router,
     location: Location,
-    private _elementRef: ElementRef
+    private _elementRef: ElementRef,
+    private searchService: SearchService
   ) {
     router.events.subscribe(event => {
       // console.log(event);
@@ -59,10 +61,11 @@ export class TitleBannerComponent implements OnInit {
   }
 
   search(event) {
+    this.searchService.updateData(event.path[0].value);
     if (this.router.url !== '/search') {
       this.router.navigate(['search']);
     }
-    console.log(event, this.router.url);
+    // console.log(event, this.router.url);
   }
 
 }

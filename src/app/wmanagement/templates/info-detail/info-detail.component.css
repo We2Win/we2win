@@ -209,7 +209,9 @@
 }
 
 app-popup /deep/ #popupBox {
-  left: 26vw;
+  left: 30vw;
+  width: 673px;
+  padding: 30px;
 }
 
 app-popup /deep/ h1 {
