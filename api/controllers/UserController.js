@@ -153,6 +153,24 @@ const login = async function (req, res) {
 }
 module.exports.login = login;
 
+const loginWithKakao = async function (req, res) {
+  const body = req.body;
+  let err, user;
+
+  console.log(req.body);
+
+  [err, user] = await to(authService.authUser(req.body));
+  if (err) return ReE(res, err, 422);
+
+  console.log('loginWithKakao successful: ', user);
+
+  return ReS(res, {
+    token: user.getJWT(),
+    user: user.toWeb()
+  });
+}
+module.exports.loginWithKakao = loginWithKakao;
+
 const getBookmark = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 

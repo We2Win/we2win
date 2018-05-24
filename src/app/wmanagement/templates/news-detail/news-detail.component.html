@@ -1,3 +1,35 @@
-<p>
-  news-detail works!
-</p>
+<section>
+  <img id="background" #background>
+  <div id="top" #top>
+    <div id="levelBar" [ngClass]="Data['level']">
+      {{Data['level']}}
+    </div>
+    <h1>{{Data['title']}}</h1>
+    <div id="optionBar">
+      <img src="/assets/img/icon_bookmark.png" />
+      <img src="/assets/img/icon_facebook.png" />
+    </div>
+  </div>
+  <app-group>
+    <article>
+      <div class="row">
+        <label>{{Data['main-title']}}</label>
+        <p [innerHtml]="Data['main-description']"></p>
+      </div>
+    </article>
+    <article>
+      <div class="row">
+        <label>{{Data['analysis-title']}}</label>
+        <p [innerHtml]="Data['analysis-description']"></p>
+      </div>
+    </article>
+    <article class="lastArticle">
+      <div class="row">
+        <label>관련 부동산 뉴스</label>
+        <div class="row flex">
+          <!-- <ng-container appRankingpost></ng-container> -->
+        </div>
+      </div>
+    </article>
+  </app-group>
+</section>

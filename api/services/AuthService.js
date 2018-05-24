@@ -411,7 +411,7 @@ const authUser = async function (userInfo) { //returns token
   unique_key = getUniqueKeyFromBody(userInfo);
 
   if (!userInfo['u-id']) TE('ID를 올바르게 입력해주세요.');
-  if (!userInfo['password']) TE('비밀번호를 올바르게 입력해주세요.');
+  // if (!userInfo['password']) TE('비밀번호를 올바르게 입력해주세요.');
 
   [err, user] = await to(User.findOne({
     where: {
@@ -420,8 +420,8 @@ const authUser = async function (userInfo) { //returns token
   }));
   if (!user) TE('등록되지 않았습니다.');
 
-  [err, user] = await to(user.comparePassword(userInfo['password']));
-  if (!user) TE('패스워드가 맞지 않습니다.');
+  // [err, user] = await to(user.comparePassword(userInfo['password']));
+  // if (!user) TE('패스워드가 맞지 않습니다.');
 
   if (err) TE(err.message);
 

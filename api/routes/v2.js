@@ -55,6 +55,7 @@ router.get('/file/:cid', ContentController.getFilePath);
 
 
 router.post('/login', UserController.login); //login   
+router.post('/login/kakao', UserController.loginWithKakao); //login   
 router.post('/hasid', UserController.hasId);
 router.post('/userInfo', UserController.detailedInfo);
 router.get('/mng/users', UserController.get);

@@ -315,7 +315,7 @@
 
         <li class="submitBar">
           <button [type]="'submit'">수정하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="siteDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -362,7 +362,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">수정하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="newsDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -400,13 +400,13 @@
         </li>
         <li>
           <h2>첨부파일</h2>
-          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['-file']" (click)="filePopup.showPopup();">
+          <input class="fileName1" type="text" readonly="readonly" [placeholder]="inputs['file']" (click)="filePopup.showPopup();">
           <app-button (click)="filePopup.showPopup();">파일 등록</app-button>
           <span class="blank"></span>
         </li>
         <li class="submitBar">
           <button [type]="'submit'">수정하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="lawDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -485,7 +485,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">수정하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="meetingDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -566,7 +566,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">수정하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="employer.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -646,7 +646,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">수정하기</button>
-          <button>미리보기</button>
+          <button onclick="event.preventDefault()" (click)="employee.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -665,5 +665,23 @@
 </section>
 
 <app-popup #infoDetail>
-  <app-info-detail [Data]="templateData"></app-info-detail>
+  <app-info-detail></app-info-detail>
+</app-popup>
+<app-popup #newsDetail>
+  <app-news-detail></app-news-detail>
+</app-popup>
+<app-popup #lawDetail>
+  <app-law-detail></app-law-detail>
+</app-popup>
+<app-popup #siteDetail>
+  <app-site-detail></app-site-detail>
+</app-popup>
+<app-popup #meetingDetail>
+  <app-meeting-detail></app-meeting-detail>
+</app-popup>
+<app-popup #employeeDetail>
+  <app-employee-detail></app-employee-detail>
+</app-popup>
+<app-popup #employerDetail>
+  <app-employer-detail></app-employer-detail>
 </app-popup>

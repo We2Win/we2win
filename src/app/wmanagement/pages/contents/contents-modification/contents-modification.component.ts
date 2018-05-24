@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { setInterval } from 'timers';
 import { Report } from '../../../models/report';
+import { PutDataService } from '../../../templates/put-data.service';
 
 @Component({
   selector: 'app-contents-modification',
@@ -19,7 +20,8 @@ import { Report } from '../../../models/report';
   ],
   providers: [
     ContentsService,
-    UploadFileService
+    UploadFileService,
+    PutDataService
   ]
 })
 export class ContentsModificationComponent implements OnInit {
@@ -69,13 +71,6 @@ export class ContentsModificationComponent implements OnInit {
   @ViewChild('NLevel') NLevel: { selected };
   @ViewChild('LLevel') LLevel: { selected };
   @ViewChild('MLevel') MLevel: { selected };
-  levels = {
-    'report': this.ILevel,
-    'site': this.SLevel,
-    'news': this.NLevel,
-    'law': this.LLevel,
-    'meeting': this.MLevel,
-  };
 
   @ViewChild('I1') I1;
   @ViewChild('I2') I2;
@@ -91,6 +86,11 @@ export class ContentsModificationComponent implements OnInit {
   @ViewChild('I12') I12;
 
   @ViewChild('infoDetail') infoDetail;
+  @ViewChild('newsDetail') newsDetail;
+  @ViewChild('siteDetail') siteDetail;
+  @ViewChild('meetingDetail') meetingDetail;
+  @ViewChild('employerDetail') employerDetail;
+  @ViewChild('employeeDetail') employeeDetail;
 
   inputs: object;
 
@@ -107,6 +107,7 @@ export class ContentsModificationComponent implements OnInit {
   subscription: Subscription;
 
   templateData = new Report();
+  isDataChanged = false;
 
   // _editor;
   public editor;
@@ -132,6 +133,7 @@ export class ContentsModificationComponent implements OnInit {
     private fb: FormBuilder,
     private contentsService: ContentsService,
     private uploadService: UploadFileService,
+    private putDataService: PutDataService,
     private router: Router,
     private http: HttpClient,
     private elementRef: ElementRef
@@ -212,11 +214,31 @@ export class ContentsModificationComponent implements OnInit {
         // console.log(symbol);
         // tslint:disable-next-line:forin
         for (const field in form.controls) {
-          if (field === 'start' || field === 'end') {
+          if (field === 'open-start' || field === 'open-end') {
             form.controls[field].setValue(this.loadedData[field].slice(0, 10));
+          } else if (field === 'level') {
+            form.controls[field].setValue(this.loadedData[field]);
+            console.log('type: ', this.selectedData.type);
+            switch (this.selectedData.type) {
+              case '리포트':
+                this.ILevel.selected = this.loadedData[field];
+              break;
+              case '부동산 뉴스':
+                this.NLevel.selected = this.loadedData[field];
+              break;
+              case '법률 및 정책':
+                this.LLevel.selected = this.loadedData[field];
+              break;
+              case '아파트':
+              case '오피스텔':
+              case '상가/호텔':
+              case '토지':
+                this.SLevel.selected = this.loadedData[field];
+              break;
+            }
           } else {
             // console.log(this.loadedData[field]);
-            form.fields[field].setValue(this.loadedData[field]);
+            form.controls[field].setValue(this.loadedData[field]);
             this.inputs[field.slice(1)] = this.loadedData[field];
           }
         }
@@ -228,9 +250,21 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   onLevelChange(_type) {
-    const type = 'level';
-    this.selectBoxData[type] = this.levels[_type].selected;
-    console.log(this.selectBoxData);
+    // console.log('_type: ', _type);
+    switch (_type) {
+      case 'report':
+        this.selectBoxData['level'] = this.ILevel.selected;
+        break;
+      case 'news':
+        this.selectBoxData['level'] = this.NLevel.selected;
+        break;
+      case 'law':
+        this.selectBoxData['level'] = this.LLevel.selected;
+        break;
+      case 'site':
+        this.selectBoxData['level'] = this.SLevel.selected;
+        break;
+    }
   }
 
   ngOnInit() {
@@ -472,7 +506,9 @@ export class ContentsModificationComponent implements OnInit {
     this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
     console.log(this.selectedData, this.selectBoxData);
 
-    this.templateData = <Report>this.selectedData.body;
+    this.putDataService.updateData(this.selectedData.body);
+    // this.templateData = <Report>this.selectedData.body;
+    this.isDataChanged = true;
     console.log('this.templateData: ', this.templateData);
   }
 

@@ -39,9 +39,13 @@ import { EmployeeComponent } from './pages/employee/employee.component';
 import { EmployerComponent } from './pages/employer/employer.component';
 import { InfoDetailComponent } from './templates/info-detail/info-detail.component';
 import { NewsDetailComponent } from './templates/news-detail/news-detail.component';
-import { LawDetailComponent } from './templates/law-detail/law-detail.component';
 import { SiteDetailComponent } from './templates/site-detail/site-detail.component';
 import { GroupComponent } from './templates/group/group.component';
+import { TemplateChartComponent } from './templates/template-chart/template-chart.component';
+import { EmployeeDetailComponent } from './templates/employee-detail/employee-detail.component';
+import { EmployerDetailComponent } from './templates/employer-detail/employer-detail.component';
+import { LawDetailComponent } from './templates/law-detail/law-detail.component';
+import { MeetingDetailComponent } from './templates/meeting-detail/meeting-detail.component';
 
 @NgModule({
   imports: [
@@ -83,13 +87,18 @@ import { GroupComponent } from './templates/group/group.component';
     EmployerComponent,
     InfoDetailComponent,
     NewsDetailComponent,
-    LawDetailComponent,
     SiteDetailComponent,
     GroupComponent,
+    TemplateChartComponent,
+    EmployeeDetailComponent,
+    EmployerDetailComponent,
+    LawDetailComponent,
+    MeetingDetailComponent,
   ],
   entryComponents: [
     AccountRecordComponent,
-    AnalysisUserRecordComponent
+    AnalysisUserRecordComponent,
+    TemplateChartComponent
   ],
   providers: [
     InfoService,

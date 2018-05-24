@@ -106,7 +106,27 @@ export class LoginComponent implements OnInit, AfterViewInit {
       window['Kakao'].Auth.createLoginButton({
         container: '#kakaoIdLogin',
         success: function (authObj) {
-          this.info(JSON.stringify(authObj));
+          const user = {
+            'u-id': authObj.id,
+          };
+
+          this.authService.login().subscribe(
+            auth => {
+              // console.log(auth);
+              if (auth) {
+                this.router.navigate(['/']);
+              } else {
+                this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+              }
+            },
+            err => {
+              if (err.status === 422) {
+                this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+              } else {
+                this.error('로그인 중 오류가\n발생했습니다.');
+              }
+            }
+          );
         },
         fail: function (err) {
           this.info(JSON.stringify(err));
@@ -122,8 +142,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
       // this.router.navigate(['/']);
       this.loginWithNaver();
     } else if (this.loginType === 'kakao') {
-      this.info('카카오 로그인 팝업');
-      this.router.navigate(['/']);
+      // this.info('카카오 로그인 팝업');
+      // this.router.navigate(['/']);
     }
   }
 

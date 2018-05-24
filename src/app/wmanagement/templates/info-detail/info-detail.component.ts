@@ -1,15 +1,23 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, Input, ElementRef, EventEmitter } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router  } from '@angular/router';
 import { environment } from '../../../../environments/environment';
+import { PutDataService } from '../put-data.service';
+import { Report } from '../../models/report';
+import { TemplateChartComponent } from '../template-chart/template-chart.component';
+import { PostingService } from '../../services/posting.service';
+import { MypostDirective } from '../../directives/mypost.directive';
+import { PostItem } from '../../models/post-item';
 
 @Component({
   selector: 'app-info-detail',
   templateUrl: './info-detail.component.html',
-  styleUrls: ['./info-detail.component.css']
+  styleUrls: ['./info-detail.component.css'],
+  providers: [PostingService]
 })
 export class InfoDetailComponent implements OnInit {
-  @Input('Data') Data;
+  Data = new Report();
+  // @Input('isDataChanged') isDataChanged;
   id: number;
   imgUrl;
   subImgUrl = ['', '', '', '', ''];
@@ -27,19 +35,29 @@ export class InfoDetailComponent implements OnInit {
   @Input() recentRecords;
   @Input() weeklyRecords;
 
+  @ViewChild(MypostDirective)
+  private mypostDirective: MypostDirective;
+
   constructor(
     private viewContainerRef: ViewContainerRef,
+    private postingService: PostingService,
     private route: ActivatedRoute,
     private router: Router,
     private meta: Meta,
-    private _elementRef: ElementRef
+    private _elementRef: ElementRef,
+    private putDataService: PutDataService
   ) {
     this.id = this.route.params['value'].id;
   }
 
   ngOnInit() {
     // When routed to another info contents:
-    this.updateDetail();
+    this.putDataService.dataEvent.subscribe(
+      data => {
+        this.Data = data;
+        this.updateDetail();
+      }
+    );
     // To get ranking report list.
     // this.contentsService.getWeeklyList('report').subscribe(
     //   data => {
@@ -130,12 +148,17 @@ export class InfoDetailComponent implements OnInit {
         ]
       }]
     };
-    // const container = this.mypostDirective.viewContainerRef;
-    // container.clear();
-    // this.postingService.loadComponent(container,
-    //   new PostItem(ChartComponent, current));
-    // this.postingService.loadComponent(container,
-    //   new PostItem(ChartComponent, around));
+    const container = this.mypostDirective.viewContainerRef;
+    container.clear();
+    console.log('templateChart: ', TemplateChartComponent);
+    this.postingService.loadComponent(container,
+      new PostItem(TemplateChartComponent, current));
+    this.postingService.loadComponent(container,
+      new PostItem(TemplateChartComponent, around));
+  }
+
+  showMore(child) {
+    child._elementRef.nativeElement.classList.add('show');
   }
 
 }

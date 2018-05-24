@@ -32,7 +32,7 @@
     <article>
       <div class="row">
         <label>현장 리포트
-          <p class="more">더보기 ></p>
+          <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
         </label>
         <div class="editorContainer">
           <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['report']"></p>

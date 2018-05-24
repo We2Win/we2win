@@ -115,7 +115,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     if (!window['Kakao'].Auth) {
       window['Kakao'].init(environment.kakao.clientId);
-      console.log('Kakao auth started');
+      // console.log('Kakao auth started');
     }
   }
 
@@ -385,8 +385,8 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   loginWithKakao() {
-    console.log('initiated');
-    // 로그인 창을 띄웁니다.
+
+      // 로그인 창을 띄웁니다.
     window['Kakao'].Auth.login({
       success: authObj => {
         window['Kakao'].API.request({
@@ -394,7 +394,27 @@ export class FormComponent implements OnInit, AfterViewInit {
           success: authInfo => {
             console.log('authInfo: ', authInfo);
             this.loginType = 'kakao';
-            this.checkId = true;
+
+            const userInfo = {
+              'u-id': 'k_' + authInfo.id
+            };
+            // this.userService.hasId(userInfo);
+            this.userService.hasId(userInfo)
+              .subscribe(
+              data => {
+                if (data) {
+                  this.checkId = true;
+                  this.alertService.info('사용가능한 ID입니다.');
+                } else {
+                  this.checkId = false;
+                  this.alertService.warn('이미 존재하는 ID입니다.');
+                }
+              },
+              error => {
+                // console.log('error: ', error);
+                this.alertService.error('오류가 발생했습니다.');
+              }
+              );
 
             this.signupForm.controls['u-id'].setValue('k_' + authInfo.id);
             this.signupForm.controls['password'].setValue('KAKAO1234!');
