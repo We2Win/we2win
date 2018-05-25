@@ -84,7 +84,7 @@ const searchContents = async function (req, res) {
     // }
   }));
 
-  if (err) return ReE(res, err, 422);
+  // if (err) return ReE(res, err, 422);
   
   // content = JSON.stringify(content);
   return ReS(res, {
