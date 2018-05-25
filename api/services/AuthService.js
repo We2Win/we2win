@@ -506,14 +506,14 @@ const authUserWithKakao = async function (userInfo) { //returns token
   const auth_info = {};
   auth_info.status = 'login';
 
-  unique_key = getUniqueKeyFromBody(userInfo);
+  // unique_key = getUniqueKeyFromBody(userInfo);
 
-  if (!userInfo['u-id']) TE('ID를 올바르게 입력해주세요.');
+  if (!userInfo['user_id']) TE('ID를 올바르게 입력해주세요.');
   // if (!userInfo['password']) TE('비밀번호를 올바르게 입력해주세요.');
 
   [err, user] = await to(User.findOne({
     where: {
-      'u-id': unique_key
+      'u-id': userInfo['user_id']
     }
   }));
   if (!user) TE('등록되지 않았습니다.');
