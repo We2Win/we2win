@@ -235,6 +235,8 @@ const searchContent = async function (body, page) {
 
   [err, content] = await to(Content.findAll({
     where: {
+      offset: page,
+      limit: 8,
       [Sequelize.Op.or]: {
         title: {
           [Sequelize.Op.like]: '%' + body + '%'

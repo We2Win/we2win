@@ -17,7 +17,7 @@ export class SearchService {
     clearTimeout(window['setCount']);
     window['setCount'] = setTimeout(() => {
       console.log(data);
-      this.search(data);
+      this.search(data, 1);
     }, 1000);
   }
 
@@ -25,9 +25,9 @@ export class SearchService {
     return this.dataString;
   }
 
-  search(string) {
+  search(string, page) {
     const headers = { headers: { 'Content-Type': 'application/json' } };
-    return this.http.get(environment.apiUrl + '/search/' + string, headers).subscribe(
+    return this.http.get(environment.apiUrl + '/search/' + string + '/' + page, headers).subscribe(
       res => {
         this.dataString.next(res['body']);
       },
