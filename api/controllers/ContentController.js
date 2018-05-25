@@ -76,11 +76,13 @@ const searchContents = async function (req, res) {
   [err, content] = await to(authService.searchContent(body));
 
   if (err) return ReE(res, err, 422);
+
+  console.log('content: ', content);
   
   content = JSON.stringify(content);
-  
+
   return ReS(res, {
-    message: 'Search Results.',
+    message: 'Search Results12.',
     body: content,
   }, 201);
 };

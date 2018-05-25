@@ -241,6 +241,8 @@ const searchContent = async function (body) {
     }
   }));
 
+  console.log('err: ', err, 'content: ', content);
+
   return content;
 }
 module.exports.searchContent = searchContent;
