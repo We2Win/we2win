@@ -107,7 +107,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         container: '#kakaoIdLogin',
         success: (authObj) => {
           const user = {
-            'user_id': 'k_' + authObj.id,
+            'user_id': authObj,
           };
 
           console.log('userInfo: ', user);
