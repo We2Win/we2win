@@ -235,7 +235,7 @@ const searchContent = async function (body) {
 
   [err, content] = await to (Content.findAll({
     where: {
-      title: { [Sequelize.Op.like]: '%오피%' }
+      title: { [Sequelize.Op.like]: '%'+body+'%' }
       // $or: [
       //   { 'title': { like: '%' + body + '%'} },
       //   { 'level': { like: '%' + body + '%'} },
