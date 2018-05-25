@@ -73,7 +73,7 @@ const searchContents = async function (req, res) {
 
   console.log('body: ', JSON.stringify(body));
 
-  resultArr = Content.findAll({
+  Content.findAll({
     where: {
       $or: [
         { 'title': { like: '%' + body + '%'} },
@@ -81,13 +81,16 @@ const searchContents = async function (req, res) {
         { 'c-type': { like: '%' + body + '%'} },
       ]
     }
-  });
+  }).then(
+    res => { resultArr = res },
+    err => { return ReE(res, err, 422); }
+  );
 
-  if (err) return ReE(res, err, 422);
+  // if (err) return ReE(res, err, 422);
   
-  content = JSON.stringify(content);
+  // content = JSON.stringify(content);
   return ReS(res, {
-    message: 'Successfully created new content data.',
+    message: 'Search Results.',
     body: resultArr,
   }, 201);
 };

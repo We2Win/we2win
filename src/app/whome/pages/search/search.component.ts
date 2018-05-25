@@ -10,7 +10,7 @@ import { SearchService } from '../../services/search.service';
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers: [ContentsService, PostingService]
+  providers: [ContentsService, PostingService, SearchService]
 })
 export class SearchComponent implements OnInit {
   List: Array<object>;
@@ -27,10 +27,14 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.searchService.dataString.subscribe(
+    console.log('hello', this.searchService.getDataString());
+    this.searchService.getDataString().subscribe(
       data => {
-        console.log(data);
+        console.log('data success on search component: ', data);
         // this.contentsService.
+      },
+      err => {
+        console.log('err: ', err);
       }
     );
   }

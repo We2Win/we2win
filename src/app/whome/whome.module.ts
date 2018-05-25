@@ -74,6 +74,7 @@ import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
 import { AlertComponent } from './micro/alert/alert.component';
 import { AlertService } from './services/alert.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchService } from './services/search.service';
 
 
 export function tokenGetter() {
@@ -169,7 +170,7 @@ export function tokenGetter() {
     UserService,
     InfoService,
     FbShareService,
-    AlertService
+    AlertService,
   ]
 })
 export class WhomeModule {

@@ -46,6 +46,12 @@ export class AccountInfoComponent implements OnInit {
       this.user.end = userInfo.user_end;
       console.log(this.user);
     }
+
+    setTimeout(() => {
+      if (!this.authService.isAuthenticated()) {
+        this.logout();
+      }
+    }, 900000);
   }
 
   checkAdmin() {
