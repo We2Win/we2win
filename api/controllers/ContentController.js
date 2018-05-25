@@ -73,7 +73,7 @@ const searchContents = async function (req, res) {
 
   console.log('body: ', JSON.stringify(body));
 
-  Content.findAll({
+  [err, content] = await to(Content.findAll({
     where: {
       $or: [
         { 'title': { like: '%' + body + '%'} },
@@ -81,17 +81,14 @@ const searchContents = async function (req, res) {
         { 'c-type': { like: '%' + body + '%'} },
       ]
     }
-  }).then(
-    res => { resultArr = res },
-    err => { return ReE(res, err, 422); }
-  );
+  }));
 
-  // if (err) return ReE(res, err, 422);
+  if (err) return ReE(res, err, 422);
   
-  // content = JSON.stringify(content);
+  content = JSON.stringify(content);
   return ReS(res, {
     message: 'Search Results.',
-    body: resultArr,
+    body: content,
   }, 201);
 };
 module.exports.searchContents = searchContents;
