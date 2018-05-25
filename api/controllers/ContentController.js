@@ -75,11 +75,12 @@ const searchContents = async function (req, res) {
 
   [err, content] = await to(Content.findAll({
     where: {
-      $or: [
-        { 'title': { like: '%' + body + '%'} },
-        { 'level': { like: '%' + body + '%'} },
-        { 'c-type': { like: '%' + body + '%'} },
-      ]
+      'title': { like: '%오피스텔%' }
+      // $or: [
+      //   { 'title': { like: '%' + body + '%'} },
+      //   { 'level': { like: '%' + body + '%'} },
+      //   { 'c-type': { like: '%' + body + '%'} },
+      // ]
     }
   }));
 
