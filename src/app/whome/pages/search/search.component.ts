@@ -4,6 +4,7 @@ import { PostingService } from '../../services/posting.service';
 import { MypostDirective } from '../../directives/mypost.directive';
 import { PostItem } from '../../models/post-item';
 import { NewsCardComponent } from '../../micro/news-card/news-card.component';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -21,19 +22,17 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private contentsService: ContentsService,
-    private postingService: PostingService
+    private postingService: PostingService,
+    private searchService: SearchService
   ) { }
 
   ngOnInit() {
-    // this.contentsService.getNewsList().subscribe(
-    //   data => {
-    //     if (data.list) {
-    //       // console.log(data);
-    //       this.List = JSON.parse(data.list);
-    //       this.addRecord(this.List);
-    //     }
-    //   }
-    // );
+    this.searchService.dataString.subscribe(
+      data => {
+        console.log(data);
+        // this.contentsService.
+      }
+    );
   }
 
   addRecord(records) {

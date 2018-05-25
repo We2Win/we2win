@@ -116,7 +116,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
               if (auth) {
                 this.router.navigate(['/']);
               } else {
-                this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+                this.error('회원 정보를 불러오지 못했습니다.');
+                // this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
               }
             },
             err => {
