@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   List: Array<object>;
   sortType = 'date';
   hasMoreContents = true;
-
+  Data;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -39,8 +39,9 @@ export class SearchComponent implements OnInit {
         if (data) {
           const container = this.mypostDirective.viewContainerRef;
           container.clear();
-          this.addRecord(data);
-          if (data.length !== 8) {
+          this.Data = data;
+          this.addRecord(this.Data);
+          if (this.Data.length !== 8) {
             this.hasMoreContents = false;
           }
         }
@@ -52,9 +53,9 @@ export class SearchComponent implements OnInit {
   }
 
   paging(page) {
-    console.log('page: ', page);
-    const container = this.mypostDirective.viewContainerRef;
-    // this.searchService.searchBySort(this.sortType, page);
+    // console.log('page: ', page);
+    this.searchService.search(this.Data, page);
+    
   }
 
   sort(type) {
@@ -68,8 +69,6 @@ export class SearchComponent implements OnInit {
 
     this.sortType = sortName[type];
 
-    const container = this.mypostDirective.viewContainerRef;
-    container.clear();
     // this.searchService.searchBySort(this.sortType, 1);
   }
 
