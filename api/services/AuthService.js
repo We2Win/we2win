@@ -14,6 +14,9 @@ const SiteScrap = require('./../models').siteScrap;
 const Schedule = require('./../models').schedule;
 const validator = require('validator');
 
+const Sequelize = require('sequelize');
+
+
 const getUniqueKeyFromBody = function (body) {
   const unique_key = body['u-id'];
 
