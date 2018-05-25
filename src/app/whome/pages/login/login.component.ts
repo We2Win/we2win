@@ -102,39 +102,47 @@ export class LoginComponent implements OnInit, AfterViewInit {
     if (!window['Kakao'].Auth) {
       window['Kakao'].init(environment.kakao.clientId);
     }
-      // 카카오 로그인 버튼을 생성합니다.
-      window['Kakao'].Auth.createLoginButton({
-        container: '#kakaoIdLogin',
-        success: (authObj) => {
-          const user = {
-            'user_id': authObj,
-          };
+    // 카카오 로그인 버튼을 생성합니다.
+    window['Kakao'].Auth.createLoginButton({
+      container: '#kakaoIdLogin',
+      success: authObj => {
+        window['Kakao'].API.request({
+          url: '/v1/user/me',
+          success: authInfo => {
+            const user = {
+              'user_id': 'k_' + authInfo.id,
+            };
 
-          console.log('userInfo: ', user);
+            console.log('authInfo: ', authInfo);
 
-          this.authService.loginWithKakao(user).subscribe(
-            auth => {
-              console.log('auth: ', auth);
-              if (auth) {
-                this.router.navigate(['/']);
-              } else {
-                this.error('회원 정보를 불러오지 못했습니다.');
-                // this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+            this.authService.loginWithKakao(user).subscribe(
+              auth => {
+                console.log('auth: ', auth);
+                if (auth) {
+                  this.router.navigate(['/']);
+                } else {
+                  this.error('회원 정보를 불러오지 못했습니다.');
+                  // this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+                }
+              },
+              err => {
+                if (err.status === 422) {
+                  this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+                } else {
+                  this.error('로그인 중 오류가\n발생했습니다.');
+                }
               }
-            },
-            err => {
-              if (err.status === 422) {
-                this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
-              } else {
-                this.error('로그인 중 오류가\n발생했습니다.');
-              }
-            }
-          );
-        },
-        fail: (err) => {
-          this.info(JSON.stringify(err));
-        }
-      });
+            );
+          },
+          fail: err => {
+            this.error(JSON.stringify(err));
+          }
+        });
+      },
+      fail: (err) => {
+        this.error(JSON.stringify(err));
+      }
+    });
 
   }
 
