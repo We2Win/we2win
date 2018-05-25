@@ -171,6 +171,7 @@ export function tokenGetter() {
     InfoService,
     FbShareService,
     AlertService,
+    SearchService
   ]
 })
 export class WhomeModule {

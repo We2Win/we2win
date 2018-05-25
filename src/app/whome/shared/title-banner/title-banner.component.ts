@@ -8,7 +8,7 @@ import { SearchService } from '../../services/search.service';
   selector: 'app-title-banner',
   templateUrl: './title-banner.component.html',
   styleUrls: ['./title-banner.component.css'],
-  providers: [PageInfoService, SearchService]
+  providers: [PageInfoService]
 })
 export class TitleBannerComponent implements OnInit {
   @Input() type;

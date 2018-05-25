@@ -67,13 +67,14 @@ const contentsInfo = {
 const searchContents = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.params.id;
+  const page = req.params.page || 1;
   let resultArr;
 
   let err, content;
 
   // console.log('body: ', JSON.stringify(body));
 
-  [err, content] = await to(authService.searchContent(body));
+  [err, content] = await to(authService.searchContent(body, page));
 
   if (err) return ReE(res, err, 422);
 
@@ -82,7 +83,7 @@ const searchContents = async function (req, res) {
   // content = JSON.stringify(content);
 
   return ReS(res, {
-    message: 'Search Results12.',
+    message: 'Search Results.',
     body: content,
   }, 201);
 };

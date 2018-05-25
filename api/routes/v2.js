@@ -34,7 +34,7 @@ router.post('/contents', ContentController.createContents);
 router.delete('/contents', ContentController.remove);
 
 
-router.get('/search/:id', ContentController.searchContents);
+router.get('/search/:id/:pages', ContentController.searchContents);
 
 router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:cid', ContentController.getComments);

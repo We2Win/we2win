@@ -230,12 +230,22 @@ const updateContent = async function (data) {
 }
 module.exports.updateContent = updateContent;
 
-const searchContent = async function (body) {
+const searchContent = async function (body, page) {
   let err, content;
 
-  [err, content] = await to (Content.findAll({
+  [err, content] = await to(Content.findAll({
     where: {
-      title: { [Sequelize.Op.like]: '%'+body+'%' }
+      [Sequelize.Op.or]: {
+        title: {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+        level: {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+        'c-type': {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+      }
       // $or: [
       //   { 'title': { like: '%' + body + '%'} },
       //   { 'level': { like: '%' + body + '%'} },
