@@ -232,7 +232,7 @@ const searchContent = async function (body) {
 
   [err, content] = await to (Content.findAll({
     where: {
-      title: { $like: '%0%' }
+      title: { $like: '%리포트%' }
       // $or: [
       //   { 'title': { like: '%' + body + '%'} },
       //   { 'level': { like: '%' + body + '%'} },
