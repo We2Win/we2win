@@ -71,7 +71,7 @@ const searchContents = async function (req, res) {
 
   let err, content;
 
-  console.log('body: ', JSON.stringify(body));
+  // console.log('body: ', JSON.stringify(body));
 
   [err, content] = await to(authService.searchContent(body));
 
@@ -79,7 +79,7 @@ const searchContents = async function (req, res) {
 
   console.log('content: ', content);
   
-  content = JSON.stringify(content);
+  // content = JSON.stringify(content);
 
   return ReS(res, {
     message: 'Search Results12.',
