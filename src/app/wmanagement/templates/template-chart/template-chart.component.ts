@@ -31,6 +31,10 @@ export class TemplateChartComponent implements OnInit {
   };
 
   optionB: object = {
+    title: {
+      display: true,
+      text: ''
+    },
     legend: {
       display: false,
     },
@@ -159,6 +163,11 @@ export class TemplateChartComponent implements OnInit {
       [fillStandard, fillStandard, fillStandard, fillPremium, fillPlatinum];
 
     const data = this.chartData[this.record.type][this.record.num];
+    if (this.record.num === '0') {
+      data.options.title.text = '현장 시세';
+    } else if (this.record.num === '1') {
+      data.options.title.text = '주위 시세';
+    }
     data.data.labels = this.record.labels;
     data.data.datasets = this.record.datasets;
     data.data.datasets[0]['backgroundColor'] =

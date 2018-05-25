@@ -9,7 +9,7 @@ import {  } from 'events';
 export class HorizontalListComponent implements OnInit {
   _toptitle: String;
   @Input('hasMoreContents') hasMoreContents = true;
-
+  @Input('isNoNeed') isNoNeed = false;
   // @Input() toptitle = 'hi';
 
   @Output()
@@ -35,6 +35,10 @@ export class HorizontalListComponent implements OnInit {
 
   sort(event) {
     this.sorter.emit(event);
+  }
+
+  resetPage() {
+    this.count = 1;
   }
 
 }

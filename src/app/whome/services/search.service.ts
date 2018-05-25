@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class SearchService {
   public dataString = new Subject<any>();
+  query;
 
   constructor(
     private http: HttpClient,
@@ -14,10 +15,11 @@ export class SearchService {
   }
 
   updateData(data) {
+    this.query = data;
     clearTimeout(window['setCount']);
     window['setCount'] = setTimeout(() => {
-      console.log(data);
-      this.search(data, 1);
+      console.log(this.query);
+      this.search(this.query, 1);
     }, 1000);
   }
 
@@ -29,11 +31,18 @@ export class SearchService {
     const headers = { headers: { 'Content-Type': 'application/json' } };
     return this.http.get(environment.apiUrl + '/search/' + string + '/' + page, headers).subscribe(
       res => {
-        this.dataString.next(res['body']);
+        this.dataString.next({
+          page: page,
+          body: res['body']
+        });
       },
       err => {
         console.log('search error: ', err);
       }
     );
+  }
+
+  searchByPage(page) {
+    this.search(this.query, page);
   }
 }

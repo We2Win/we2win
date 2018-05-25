@@ -17,12 +17,15 @@ import { InfoCardComponent } from '../../micro/info-card/info-card.component';
 })
 export class SearchComponent implements OnInit {
   List: Array<object>;
-  sortType = 'date';
   hasMoreContents = true;
   Data;
+  isEmpty = true;
+  reset = false;
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
+
+  @ViewChild('searchList') searchList;
 
   postItems: PostItem[];
 
@@ -35,15 +38,24 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.searchService.getDataString().subscribe(
       data => {
-        console.log('data success on search component: ', data);
-        if (data) {
-          const container = this.mypostDirective.viewContainerRef;
-          container.clear();
-          this.Data = data;
+        this.Data = data.body;
+
+        console.log('data: ', data);
+        if (this.Data) {
+          this.isEmpty = false;
+          if (data.page === 1) {
+            const container = this.mypostDirective.viewContainerRef;
+            container.clear();
+            this.resetPage();
+            this.hasMoreContents = true;
+          }
+
           this.addRecord(this.Data);
           if (this.Data.length !== 8) {
             this.hasMoreContents = false;
           }
+        } else {
+          this.isEmpty = true;
         }
       },
       err => {
@@ -53,23 +65,12 @@ export class SearchComponent implements OnInit {
   }
 
   paging(page) {
-    // console.log('page: ', page);
-    this.searchService.search(this.Data, page);
-    
+    console.log('page: ', page);
+    this.searchService.searchByPage(page);
   }
 
-  sort(type) {
-    const sortName = {
-      '최근순': 'date',
-      '클릭수': 'click',
-      '댓글수': 'reply',
-      '공유횟수': 'sns',
-      '스크랩': 'scrap'
-    };
-
-    this.sortType = sortName[type];
-
-    // this.searchService.searchBySort(this.sortType, 1);
+  resetPage() {
+    this.searchList.resetPage(1);
   }
 
   addRecord(records) {
@@ -84,7 +85,7 @@ export class SearchComponent implements OnInit {
     };
     // tslint:disable-next-line:forin
     for (const record in records) {
-      console.log('record: ', records[record]);
+      // console.log('record: ', records[record]);
       this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
         new PostItem(components[records[record]['c-type']], records[record]));
     }

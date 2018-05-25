@@ -1,4 +1,10 @@
-<!-- <app-horizontal-list [hasMoreContents]="hasMoreContents" (sorter)="sort($event)" (change)="paging($event)"> -->
-<app-horizontal-list [hasMoreContents]="hasMoreContents" (sorter)="sort($event)" (change)="paging($event)">
+<div *ngIf="isEmpty">
+  <section>
+    <h1>검색 결과가 없습니다.</h1>
+    <p>새로운 검색어를 입력해주세요.</p>
+  </section>
+</div>
+
+<app-horizontal-list [hasMoreContents]="hasMoreContents" (change)="paging($event)" #searchList>
   <ng-container appMypost></ng-container>
 </app-horizontal-list>
