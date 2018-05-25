@@ -73,18 +73,9 @@ const searchContents = async function (req, res) {
 
   console.log('body: ', JSON.stringify(body));
 
-  [content, err] = await to(Content.findAll({
-    // where: {
-    //   title: { like: '%hello%' }
-    //   // $or: [
-    //   //   { 'title': { like: '%' + body + '%'} },
-    //   //   { 'level': { like: '%' + body + '%'} },
-    //   //   { 'c-type': { like: '%' + body + '%'} },
-    //   // ]
-    // }
-  }));
+  [err, content] = await to(authService.searchContent(body));
 
-  // if (err) return ReE(res, err, 422);
+  if (err) return ReE(res, err, 422);
   
   // content = JSON.stringify(content);
   return ReS(res, {

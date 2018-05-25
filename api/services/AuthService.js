@@ -227,6 +227,24 @@ const updateContent = async function (data) {
 }
 module.exports.updateContent = updateContent;
 
+const searchContent = async function (body) {
+  let err, content;
+
+  [err, content] = await to (Content.findAll({
+    where: {
+      title: { like: '%0%' }
+      // $or: [
+      //   { 'title': { like: '%' + body + '%'} },
+      //   { 'level': { like: '%' + body + '%'} },
+      //   { 'c-type': { like: '%' + body + '%'} },
+      // ]
+    }
+  }));
+
+  return content;
+}
+module.exports.searchContent = searchContent;
+
 const createComment = async function (body) {
   let unique_key, auth_info, err, content;
 
