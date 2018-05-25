@@ -66,7 +66,7 @@ const contentsInfo = {
 
 const searchContents = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  const body = req.body.id;
+  const body = req.params.id;
   let resultArr;
 
   let err, content;
