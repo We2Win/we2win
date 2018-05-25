@@ -49,7 +49,7 @@ export class AccountInfoComponent implements OnInit {
 
     setTimeout(() => {
       if (!this.authService.isAuthenticated()) {
-        this.logout();
+        this.isLogin = false;
       }
     }, 900000);
   }
