@@ -231,14 +231,14 @@ const searchContent = async function (body) {
   let err, content;
 
   [err, content] = await to (Content.findAll({
-    where: {
-      title: { $like: '%리포트%' }
+    // where: {
+      // title: { $like: '%리포트%' }
       // $or: [
       //   { 'title': { like: '%' + body + '%'} },
       //   { 'level': { like: '%' + body + '%'} },
       //   { 'c-type': { like: '%' + body + '%'} },
       // ]
-    }
+    // }
   }));
 
   console.log('err: ', err, 'content: ', content);
