@@ -353,15 +353,15 @@ const getContentsDetail = async function (req, res) {
     });
 
     if (bookmarkTypes[req.params.page]) {
-      console.log('searching bookmark...');
+      // console.log('searching bookmark...');
       bookmarkTypes[req.params.page].findOne({
         where: {
           'c-id': content['c-id'],
           'u-id': userInfo['user_id']          
         }
       }).then(isBookmarked => {
-        content['isBookmarked'] = isBookmarked;
-        console.log('content: ', content);
+        content['isBookmarked'] = isBookmarked ? true : false;
+        // console.log('content: ', content);
         return ReS(res, content);
       })
     } else {
