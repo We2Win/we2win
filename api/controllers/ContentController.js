@@ -212,7 +212,7 @@ const createEmployee = async function(req, res) {
 }
 module.exports.createEmployee = createEmployee;
 
-const getEmployer = async function (req, res) {
+const getEmployers = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
 
@@ -221,9 +221,9 @@ const getEmployer = async function (req, res) {
     return ReS(res, content);
   });
 }
-module.exports.getEmployer = getEmployer;
+module.exports.getEmployers = getEmployers;
 
-const getEmployee = async function (req, res) {
+const getEmployees = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
 
@@ -232,7 +232,7 @@ const getEmployee = async function (req, res) {
     return ReS(res, content);
   });
 }
-module.exports.getEmployee = getEmployee;
+module.exports.getEmployees = getEmployees;
 
 const getCount = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
