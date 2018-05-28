@@ -121,6 +121,14 @@
   font-weight: 300;
 }
 
+.editorContainer {
+  overflow: hidden;
+}
+
+.editorContainer p {
+  min-height: 8em;
+}
+
 .editorContainer span {
   font-size: 14px;
   font-weight: 300;

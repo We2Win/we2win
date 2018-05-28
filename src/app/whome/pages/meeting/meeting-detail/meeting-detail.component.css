@@ -84,6 +84,14 @@
   border-left: 1px solid #ccc;
 }
 
+.editorContainer {
+  overflow: hidden;
+}
+
+.editorContainer p {
+  min-height: 8em;
+}
+
 .editorContainer span {
   font-size: 14px;
   font-weight: 300;

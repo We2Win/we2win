@@ -43,7 +43,9 @@
   <app-group>
     <article>
       <div class="row">
-        <label>세부 사항</label>
+        <label>세부 사항
+          <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
+        </label>
         <div class="editorContainer">
           <p class="shortener">{{ Data['detail'] }}</p>
         </div>
@@ -79,14 +81,6 @@
         </div>
       </article>
     </div>
-    <app-popup id="commentPopup" #commentDetail>
-      <h1>현장 댓글</h1>
-      <div class="row" *ngFor="let comment of comments">
-        <label>{{comment['u-id']}}</label>
-        <p>{{comment['contents']}}</p>
-        <span>{{comment['createdAt'].slice(0,10)}}</span>
-      </div>
-    </app-popup>
     <article>
       <div class="row">
         <label>관련 오프라인 모임</label>
@@ -97,4 +91,17 @@
     </article>
   </app-group>
 </section>
-`
+
+<app-popup #reportDetail>
+  <h1>세부 사항</h1>
+  <p [innerHtml]="Data['detail']"></p>
+</app-popup>
+
+<app-popup id="commentPopup" #commentDetail>
+  <h1>현장 댓글</h1>
+  <div class="row" *ngFor="let comment of comments">
+    <label>{{comment['u-id']}}</label>
+    <p>{{comment['contents']}}</p>
+    <span>{{comment['createdAt'].slice(0,10)}}</span>
+  </div>
+</app-popup>

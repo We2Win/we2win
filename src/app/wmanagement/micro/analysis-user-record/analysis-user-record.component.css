@@ -1,8 +1,7 @@
 :host {
   display: table-row;
-  line-height: 200%;
   font-size: 0.9em;
-  line-height: 300%;
+  line-height: 100%;
   text-align: center;
 }
 
@@ -12,13 +11,76 @@
 
 .cell {
   display: table-cell;
-  padding: 0em 0.3em;
+  padding: 0.5em 0.3em;
+  padding-top: 1em;
 }
 
 .cell img {
   width: auto;
   height: 1.8em;
   vertical-align: middle;
+}
+
+.edit,
+.delete {
+  display: inline-block;
+  line-height: 100%;
+  margin: 0.25em 0.5em;
+  padding: 0.25em;
+  width: 4em;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.edit {
+  color: #063590;
+  margin-left: 2em;
+}
+
+.edit:hover {
+  color: white;
+  background: #063590;
+}
+
+.delete {
+  color: #AE1212;
+  margin-right: 2em;
+}
+
+.delete:hover {
+  color: white;
+  background: #AE1212;
+}
+
+li {
+  display: inline-block;
+  line-height: 100%;
+  padding: 0.5em 1em;
+}
+
+.platinum {
+  background: var(--level-platinum-gradient);
+  color: white;
+}
+
+.premium {
+  background: var(--level-premium-gradient);
+  color: white;
+}
+
+.standard {
+  background: var(--level-standard-gradient);
+}
+
+.manager,
+.admin {
+  background: var(--level-manager-gradient);
+  color: white;
+}
+
+.point {
+  font-size: 0.8em;
+  color: #666;
 }
 
 input[type="checkbox"] {

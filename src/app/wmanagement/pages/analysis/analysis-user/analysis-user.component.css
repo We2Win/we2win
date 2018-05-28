@@ -1,27 +1,9 @@
-:host {
-  flex-direction: column;
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper article {
+  width: 420px;
   flex: 1;
-  background: #eee;
-  padding: 1em;
 }
-
-.platinum {
-  background: var(--level-platinum-gradient);
-  color: white;
-}
-
-.premium {
-  background: var(--level-premium-gradient);
-  color: white;
-}
-
-.standard {
-  background: var(--level-standard-gradient);
-}
-
-.manager,
-.admin {
-  background: var(--level-manager-gradient);
-  color: white;
-}
-

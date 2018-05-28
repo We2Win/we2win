@@ -1,16 +1,24 @@
-<span class="cell">{{ record.no }}</span>
-<span class="cell">{{ record['u-id'] }}</span>
+<span class="cell">
+    <input type="checkbox" />
+</span>
+
+<span class="cell">
+    <div>{{ record['u-id'] }}</div>
+    <div>
+        <span class="edit">EDIT</span>
+        <span class="delete" (click)="deleteUser()">DELETE</span>
+    </div>
+</span>
 <span class="cell">{{ record['name'] }}</span>
 <span class="cell">{{ record['email'] }}</span>
 <span class="cell">
-    <li [class]="record['level'].toLowerCase()">{{ record['level'] }}</li>
-    <!-- <li *ngIf="record['level']===" class="standard">STANDARD</li>
-    <li *ngIf="record['level']===1" class="premium">PREMIUM</li>
-    <li *ngIf="record['level']===2" class="platinum">PLATINUM</li>
-    <li *ngIf="record['level']===3" class="manager">MANAGER</li>
-    <li *ngIf="record['level']===4" class="admin">ADMIN</li> -->
+    <li *ngIf="record['level']==='STANDARD'" class="standard">STANDARD</li>
+    <li *ngIf="record['level']==='PREMIUM'" class="premium">PREMIUM</li>
+    <li *ngIf="record['level']==='PLATINUM'" class="platinum">PLATINUM</li>
+    <li *ngIf="record['level']==='MANAGER'" class="manager">MANAGER</li>
+    <li *ngIf="record['level']==='ADMIN'" class="admin">ADMIN</li>
 </span>
 <span class="cell">{{ record['point'] }}</span>
-<span class="cell">{{ record['point'] }}</span>
+<span class="cell">{{ record['amount'] }}</span>
 <span class="cell" *ngIf="record['level-start']">{{ record['level-start'] + ' ~ ' + record['level-end'] }}</span>
 <span class="cell" *ngIf="!record['level-start']">무제한</span>

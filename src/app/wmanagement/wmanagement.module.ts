@@ -48,6 +48,7 @@ import { LawDetailComponent } from './templates/law-detail/law-detail.component'
 import { MeetingDetailComponent } from './templates/meeting-detail/meeting-detail.component';
 import { EmployerRecordComponent } from './micro/employer-record/employer-record.component';
 import { EmployeeRecordComponent } from './micro/employee-record/employee-record.component';
+import { AnalysisContentRecordComponent } from './micro/analysis-content-record/analysis-content-record.component';
 
 @NgModule({
   imports: [
@@ -98,6 +99,7 @@ import { EmployeeRecordComponent } from './micro/employee-record/employee-record
     MeetingDetailComponent,
     EmployerRecordComponent,
     EmployeeRecordComponent,
+    AnalysisContentRecordComponent,
   ],
   entryComponents: [
     AccountRecordComponent,

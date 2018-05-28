@@ -216,6 +216,19 @@ const removeSchedule = async function (req, res) {
 }
 module.exports.removeSchedule = removeSchedule;
 
+const hasBookmark = async function (req, res) {
+  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+
+  [err, contents] = await to(authService.hasBookmark(req.params.id, userInfo['user_id']));
+  if (err) return ReE(res, err, 422);
+  
+  return ReS(res, {
+    message: 'Bookmark Lists.',
+    contents: contents
+  });
+}
+module.exports.hasBookmark = hasBookmark;
+
 const getBookmark = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 

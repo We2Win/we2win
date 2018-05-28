@@ -64,6 +64,7 @@ router.post('/userInfo', UserController.detailedInfo);
 router.put('/bookmark/add', UserController.addBookmark);
 router.post('/bookmark/remove', UserController.removeBookmark);
 router.get('/bookmark/:id', UserController.getBookmark);
+// router.get('/bookmark/:id', UserController.hasBookmark);
 // router.get('/mng/dash', ContentController.getDashboardData);
 
 router.put('/schedule/add', UserController.addSchedule);

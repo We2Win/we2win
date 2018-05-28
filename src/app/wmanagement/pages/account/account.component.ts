@@ -28,7 +28,6 @@ export class AccountComponent implements OnInit {
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
 
-  @ViewChild('sample') sample;
   @ViewChild('popupCsv') popupCsv;
 
   postItems: PostItem[];

@@ -8,6 +8,9 @@ const Employee = require('../models').employee;
 const Employer = require('../models').employer;
 const Comment = require('../models').comment;
 const authService = require('./../services/AuthService');
+const InfoScrap = require('../models').InfoScrap;
+const SiteScrap = require('../models').SiteScrap;
+const Schedule = require('../models').Schedule;
 
 // temporary
 const Sequelize = require('sequelize');
@@ -79,7 +82,7 @@ const searchContents = async function (req, res) {
   if (err) return ReE(res, err, 422);
 
   console.log('content: ', content);
-  
+
   // content = JSON.stringify(content);
 
   return ReS(res, {
@@ -172,7 +175,7 @@ const getComments = async function (req, res) {
 }
 module.exports.getComments = getComments;
 
-const createEmployer = async function(req, res) {
+const createEmployer = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
 
@@ -191,7 +194,7 @@ const createEmployer = async function(req, res) {
 }
 module.exports.createEmployer = createEmployer;
 
-const createEmployee = async function(req, res) {
+const createEmployee = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
 
@@ -299,6 +302,8 @@ const getDashBoardData = async function (req, res) {
 module.exports.getDashBoardData = getDashBoardData;
 
 const getContentsDetail = async function (req, res) {
+  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
 
@@ -316,6 +321,20 @@ const getContentsDetail = async function (req, res) {
     'meeting': Meeting
   }
 
+  const bookmarkTypes = {
+    'report': InfoScrap,
+    'news': InfoScrap,
+    'law': InfoScrap,
+    'site': SiteScrap,
+    'apartment': SiteScrap,
+    'officetel': SiteScrap,
+    'commercial': SiteScrap,
+    'ground': SiteScrap,
+    'meeting': Schedule,
+    'employee': undefined,
+    'employer': undefined,
+  }
+
   let whereArr = {
     'no': req.params.id
   };
@@ -328,10 +347,22 @@ const getContentsDetail = async function (req, res) {
       'c-click': Sequelize.literal('`c-click` + 1')
     }, {
       where: {
-        'c-id': content['c-id'],
+        'c-id': content['c-id']
       }
     });
-    return ReS(res, content);
+
+    if (bookmarkTypes[req.params.page]) {
+      bookmarkTypes[req.params.page].findOne({
+        where: {
+          'c-id': content['c-id'],
+          'u-id': userInfo['user_id']          
+        }
+      }).then(isBookmarked => {
+        content['isBookmarked'] = isBookmarked;
+      })
+    }
+    
+      return ReS(res, content);
   });
 }
 module.exports.getContentsDetail = getContentsDetail;

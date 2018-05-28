@@ -4,8 +4,8 @@ import { PostingService } from '../../services/posting.service';
 import { PostItem } from '../../models/post-item';
 import { TableComponent } from '../../micro/table/table.component';
 import { MypostDirective } from '../../directives/mypost.directive';
-import { EmployerRecordComponent } from '../../micro/employer-record/employer-record.component';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import { EmployeeRecordComponent } from '../../micro/employee-record/employee-record.component';
 
 @Component({
   selector: 'app-employee',
@@ -13,6 +13,9 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
   styleUrls: [
     './employee.component.css',
     '../pages.css'
+  ],
+  providers: [
+    PostingService
   ]
 })
 export class EmployeeComponent implements OnInit {
@@ -34,7 +37,7 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getEmployerList().subscribe(
+    this.contentsService.getEmployeeList().subscribe(
       data => {
         this.List = data;
         console.log('list: ', this.List);
@@ -49,7 +52,7 @@ export class EmployeeComponent implements OnInit {
     for (const record in records) {
       console.log('record: ', records[record]);
       this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
-        new PostItem(EmployerRecordComponent, records[record]));
+        new PostItem(EmployeeRecordComponent, records[record]));
     }
   }
 

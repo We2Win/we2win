@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
@@ -28,6 +28,7 @@ export class NewsDetailComponent implements OnInit {
   RankingList;
 
   constructor(
+    private viewContainerRef: ViewContainerRef,
     private contentsService: ContentsService,
     private route: ActivatedRoute,
     private postingService: PostingService,
@@ -70,6 +71,10 @@ export class NewsDetailComponent implements OnInit {
         }
       }
     );
+  }
+
+  showMore(child) {
+    child._elementRef.nativeElement.classList.add('show');
   }
 
   addRankingRecord(records) {

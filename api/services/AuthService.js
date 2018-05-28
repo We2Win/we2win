@@ -268,6 +268,38 @@ const createComment = async function (body) {
 }
 module.exports.createComment = createComment;
 
+const hasBookmark = async function (id, uId) {
+  let unique_key, auth_info, err, content;
+
+  switch (id) {
+    case 'info':
+      [err, content] = await to(InfoScrap.findAll({
+        where: {
+          'u-id': uId
+        }
+      }));
+      if (err) TE('생성 중 오류가 발생했습니다.');
+      break;
+    case 'site':
+      [err, content] = await to(SiteScrap.findAll({
+        where: {
+          'u-id': uId
+        }
+      }));
+      break;
+    case 'meeting':
+      [err, content] = await to(Schedule.findAll({
+        where: {
+          'u-id': uId
+        }
+      }))
+      break;
+  }
+
+  return content;
+}
+module.exports.hasBookmark = hasBookmark;
+
 const getBookmark = async function (id, uId) {
   let unique_key, auth_info, err, content;
 

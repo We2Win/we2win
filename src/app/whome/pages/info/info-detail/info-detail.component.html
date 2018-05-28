@@ -39,10 +39,6 @@
         </div>
       </div>
     </article>
-    <app-popup #reportDetail>
-      <h1>현장 리포트</h1>
-      <p [innerHtml]="Data['report']"></p>
-    </app-popup>
     <div class="subGroup">
       <label>현장 사진</label>
       <article id="album">
@@ -83,14 +79,7 @@
         </div>
       </article>
     </div>
-    <app-popup id="commentPopup" #commentDetail>
-      <h1>현장 댓글</h1>
-      <div class="row" *ngFor="let comment of comments">
-        <label>{{comment['u-id']}}</label>
-        <p>{{comment['contents']}}</p>
-        <span>{{comment['createdAt'].slice(0,10)}}</span>
-      </div>
-    </app-popup>
+
 
     <article>
       <div class="row">
@@ -102,3 +91,17 @@
     </article>
   </app-group>
 </section>
+
+<app-popup #reportDetail>
+  <h1>현장 리포트</h1>
+  <p [innerHtml]="Data['report']"></p>
+</app-popup>
+
+<app-popup id="commentPopup" #commentDetail>
+  <h1>현장 댓글</h1>
+  <div class="row" *ngFor="let comment of comments">
+    <label>{{comment['u-id']}}</label>
+    <p>{{comment['contents']}}</p>
+    <span>{{comment['createdAt'].slice(0,10)}}</span>
+  </div>
+</app-popup>
