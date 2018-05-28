@@ -134,6 +134,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
       naver.init();
       this.naverService.create(naver);
+      this.naverService.check();      
     } else {
       this.naverService.check();
     }
