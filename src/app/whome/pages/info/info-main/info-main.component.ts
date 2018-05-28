@@ -33,7 +33,7 @@ export class InfoMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const Naver = new window['naver'].LoginWithNaverId(
+    const Naver = new window['naver_1'].LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
         isPopup: false, /* 팝업을 통한 연동처리 여부 */
