@@ -349,6 +349,7 @@ const addBookmark = async function (uId, body) {
     case '리포트':
     case '부동산 뉴스':
     case '법률 및 정책':
+      console.log('hello');
       info['c-type'] = body['c-type'];
       [err, scraps] = await to(InfoScrap.findOne({
         where: {
