@@ -8,6 +8,7 @@ import { Rankingpost1Directive, Rankingpost2Directive } from '../../../directive
 import { NewsCardComponent } from '../../../micro/news-card/news-card.component';
 import { LawCardComponent } from '../../../micro/law-card/law-card.component';
 import { environment } from '../../../../../environments/environment';
+import { NaverService } from '../../../services/naver.service';
 
 @Component({
   selector: 'app-info-main',
@@ -29,12 +30,14 @@ export class InfoMainComponent implements OnInit {
 
   constructor(
     private contentsService: ContentsService,
-    private postingService: PostingService
+    private postingService: PostingService,
+    private naverService: NaverService
   ) { }
 
   ngOnInit() {
     this.getContentsListNewly(this.sortType, 1);
     this.getContentsListWeekly();
+    this.naverService.check();
   }
 
   getContentsListNewly(sort, id?: any) { this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
