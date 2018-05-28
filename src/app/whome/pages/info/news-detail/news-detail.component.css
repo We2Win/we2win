@@ -72,7 +72,7 @@ app-group /deep/ article {
 app-group /deep/ article label {
   width: 240px;
   font-size: 14px;
-  line-height: 300%;
+  line-height: 100%;
   font-weight: bold;
   flex: none;
 }
@@ -80,7 +80,7 @@ app-group /deep/ article label {
 app-group /deep/ article p,
 app-group /deep/ article span {
   font-size: 14px;
-  line-height: 300%;
+  line-height: 100%;
   padding: 0;
 }
 

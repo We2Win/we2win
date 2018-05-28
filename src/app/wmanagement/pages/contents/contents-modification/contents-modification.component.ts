@@ -219,19 +219,19 @@ export class ContentsModificationComponent implements OnInit {
             switch (this.selectedData.type) {
               case '리포트':
                 this.ILevel.selected = this.loadedData[field];
-              break;
+                break;
               case '부동산 뉴스':
                 this.NLevel.selected = this.loadedData[field];
-              break;
+                break;
               case '법률 및 정책':
                 this.LLevel.selected = this.loadedData[field];
-              break;
+                break;
               case '아파트':
               case '오피스텔':
               case '상가/호텔':
               case '토지':
                 this.SLevel.selected = this.loadedData[field];
-              break;
+                break;
             }
           } else {
             // console.log(this.loadedData[field]);
@@ -346,6 +346,7 @@ export class ContentsModificationComponent implements OnInit {
       'slave-image5': new FormControl(''),
     });
     this.newsForm = new FormGroup({
+      'c-id': new FormControl(''),
       'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
@@ -357,6 +358,7 @@ export class ContentsModificationComponent implements OnInit {
       'analysis-description': new FormControl('', [Validators.required]),
     });
     this.lawForm = new FormGroup({
+      'c-id': new FormControl(''),
       'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
@@ -365,6 +367,7 @@ export class ContentsModificationComponent implements OnInit {
       // 'file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
+      'c-id': new FormControl(''),    
       'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
@@ -382,6 +385,7 @@ export class ContentsModificationComponent implements OnInit {
       'material': new FormControl('', [Validators.required]),
     });
     this.employerForm = new FormGroup({
+      'c-id': new FormControl(''),      
       'part-name': new FormControl('', [Validators.required]),
       'part-description': new FormControl('', [Validators.required]),
       'age-start': new FormControl('', [Validators.required]),
@@ -400,6 +404,7 @@ export class ContentsModificationComponent implements OnInit {
       'cp': new FormControl('', [Validators.required]),
     });
     this.employeeForm = new FormGroup({
+      'c-id': new FormControl(''),
       'name': new FormControl('', [Validators.required]),
       'sex': new FormControl('', [Validators.required]),
       'age-start': new FormControl('', [Validators.required]),
