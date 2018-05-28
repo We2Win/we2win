@@ -119,6 +119,8 @@ export class FormComponent implements OnInit, AfterViewInit {
       window['Kakao'].init(environment.kakao.clientId);
       // console.log('Kakao auth started');
     }
+
+    this.naverService.check();
   }
 
   ngAfterViewInit() {
