@@ -500,7 +500,7 @@ const createUser = async function (userInfo) {
 }
 module.exports.createUser = createUser;
 
-const getUserList = async function (userInfo, params) {
+const getUserList = async function (params) {
   const whereArr = {
     offset: params.id,
     limit: 20,
@@ -513,8 +513,6 @@ const getUserList = async function (userInfo, params) {
   }
 
   [err, users] = await to(User.findAll({
-    offset: id,
-    limit: 50,
     attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
     where: whereArr,
   }));

@@ -38,12 +38,9 @@ module.exports.create = create;
 
 const getUsers = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  let body = req.body;
   let params = req.params;
 
-  console.log('body: ', JSON.stringify(body));
-
-  [err, users] = await to(authService.getUserList(body, params));
+  [err, users] = await to(authService.getUserList(params));
 
   if (err) return ReE(res, err, 422);
 
