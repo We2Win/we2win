@@ -75,6 +75,7 @@ import { AlertComponent } from './micro/alert/alert.component';
 import { AlertService } from './services/alert.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './services/search.service';
+import { NaverService } from './services/naver.service';
 
 
 export function tokenGetter() {
@@ -171,7 +172,8 @@ export function tokenGetter() {
     InfoService,
     FbShareService,
     AlertService,
-    SearchService
+    SearchService,
+    NaverService
   ]
 })
 export class WhomeModule {
