@@ -120,6 +120,9 @@ export class FormComponent implements OnInit, AfterViewInit {
       // console.log('Kakao auth started');
     }
 
+  }
+
+  ngAfterViewInit() {
     console.log('executing NaverService');
     const naver = new window['naver'].LoginWithNaverId(
       {
@@ -134,9 +137,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     naver.init();
     // this.naverService.create(naver);
     // this.naverService.check();
-  }
-
-  ngAfterViewInit() {
   }
 
 
