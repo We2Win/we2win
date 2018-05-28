@@ -5,3 +5,23 @@
   padding: 1em;
 }
 
+.platinum {
+  background: var(--level-platinum-gradient);
+  color: white;
+}
+
+.premium {
+  background: var(--level-premium-gradient);
+  color: white;
+}
+
+.standard {
+  background: var(--level-standard-gradient);
+}
+
+.manager,
+.admin {
+  background: var(--level-manager-gradient);
+  color: white;
+}
+

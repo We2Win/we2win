@@ -8,7 +8,9 @@ import { EmployerCardComponent } from '../../../micro/employer-card/employer-car
 @Component({
   selector: 'app-employer',
   templateUrl: './employer.component.html',
-  styleUrls: ['./employer.component.css'],
+  styleUrls: [
+    './employer.component.css',
+  ],
   providers: [ContentsService, PostingService]
 })
 export class EmployerComponent implements OnInit {

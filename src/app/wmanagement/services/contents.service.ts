@@ -44,6 +44,16 @@ export class ContentsService {
     return this.http.get(environment.apiUrl + '/mng/dashboard/users');
   }
 
+  getEmployerList() {
+    return this.http.get(environment.apiUrl + '/mng/employers')
+      .map((res: any) => res);
+  }
+
+  getEmployeeList() {
+    return this.http.get(environment.apiUrl + '/mng/employees')
+      .map((res: any) => res);
+  }
+  
   create(_data: any) {
     // const bodyString = JSON.stringify(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });

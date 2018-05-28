@@ -76,5 +76,7 @@ router.get('/schedule', UserController.getSchedule);
 router.get('/mng/dashboard/users', UserController.getDashBoardData);
 router.get('/mng/dashboard/contents', ContentController.getDashBoardData);
 router.get('/mng/contents/count', ContentController.getCount);
+router.get('/mng/employers', ContentController.getEmployers);
+router.get('/mng/employees', ContentController.getEmployees);
 
 module.exports = router;

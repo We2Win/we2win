@@ -1,3 +1,41 @@
-<p>
-  employer works!
-</p>
+<div id="header">
+  <section id="titleBar">
+    <h1>계정 관리</h1>
+    <h2 (click)="viewPopup();">엑셀 다운로드</h2>
+  </section>
+</div>
+
+<app-popup #popupCsv>
+  <h1>엑셀파일 다운로드</h1>
+  <li>
+    <h5>기간</h5>
+    <p></p>
+  </li>
+  <li>
+    <h5>파일</h5>
+    <p>
+      <li (click)="download('all')">전체파일 다운로드</li>
+      <li>회원정보 다운로드</li>
+      <li>컨텐츠 구성 다운로드</li>
+      <li>사용자 활동 다운로드</li>
+    </p>
+  </li>
+</app-popup>
+
+<section>
+  <article>
+    <header>
+      <h1>전체 {{total || '0'}}명</h1>
+      <app-select [type]="'회원 등급'"></app-select>
+      <app-select [type]="'금액'"></app-select>
+      <input class="search" type="text" placeholder="아이디 검색" />
+    </header>
+    <app-table [type]="'employer'">
+      <ng-container appMypost></ng-container>
+    </app-table>
+    <li class="submitBar">
+      <button>게시 승인</button>
+      <button>삭제</button>
+    </li>
+  </article>
+</section>

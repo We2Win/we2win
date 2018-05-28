@@ -14,6 +14,8 @@ import { NotificationComponent } from './pages/notification/notification.compone
 import { Error404Component } from './pages/error404/error404.component';
 import { AuthGuard } from './guards/auth.guard';
 import { JwtHelper } from 'angular2-jwt';
+import { EmployerComponent } from './pages/employer/employer.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,24 @@ const routes: Routes = [
           {
             path: 'modify',
             component: ContentsModificationComponent
+          }
+        ]
+      },
+      {
+        path: 'recruit',
+        children: [
+          {
+            path: '',
+            redirectTo: 'employer',
+            pathMatch: 'full'
+          },
+          {
+            path: 'employer',
+            component: EmployerComponent
+          },
+          {
+            path: 'employee',
+            component: EmployeeComponent
           }
         ]
       },

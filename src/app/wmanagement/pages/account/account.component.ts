@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewContainerRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AccountRecordComponent } from '../../micro/account-record/account-record.component';
 import { PostingService } from '../../services/posting.service';
@@ -16,7 +16,7 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
   ],
   providers: [UserService, PostingService]
 })
-export class AccountComponent implements OnInit, AfterViewInit {
+export class AccountComponent implements OnInit {
   List: Array<object>;
   total: number;
 
@@ -56,15 +56,11 @@ export class AccountComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
-  }
-
   viewPopup() {
     this.popupCsv.showPopup();
   }
 
   sendSMS() {
-
   }
 
   sendMail() {

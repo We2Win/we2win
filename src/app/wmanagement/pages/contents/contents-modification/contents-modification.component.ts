@@ -234,7 +234,7 @@ export class ContentsModificationComponent implements OnInit {
                 break;
             }
           } else {
-            // console.log(this.loadedData[field]);
+            console.log(field + ': ', this.loadedData[field]);
             form.controls[field].setValue(this.loadedData[field]);
             this.inputs[field.slice(1)] = this.loadedData[field];
           }
@@ -367,7 +367,7 @@ export class ContentsModificationComponent implements OnInit {
       // 'file': new FormControl('', [Validators.required]),
     });
     this.meetingForm = new FormGroup({
-      'c-id': new FormControl(''),    
+      'c-id': new FormControl(''),
       'level': new FormControl(''),
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
@@ -385,7 +385,7 @@ export class ContentsModificationComponent implements OnInit {
       'material': new FormControl('', [Validators.required]),
     });
     this.employerForm = new FormGroup({
-      'c-id': new FormControl(''),      
+      'c-id': new FormControl(''),
       'part-name': new FormControl('', [Validators.required]),
       'part-description': new FormControl('', [Validators.required]),
       'age-start': new FormControl('', [Validators.required]),

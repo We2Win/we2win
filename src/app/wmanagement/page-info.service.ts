@@ -27,7 +27,7 @@ export class PageInfoService {
       ]
     },
     {
-      'title': 'people',
+      'title': 'recruit',
       'description': '구인구직',
       'children': [
         {
