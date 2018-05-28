@@ -122,8 +122,6 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
-
     const Naver = new window['naver'].LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
@@ -134,6 +132,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     );
 
     Naver.init();
+    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');    
     this.naverService.create(Naver);
   }
 
