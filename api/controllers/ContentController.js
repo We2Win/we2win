@@ -360,7 +360,7 @@ const getContentsDetail = async function (req, res) {
           'u-id': userInfo['user_id']          
         }
       }).then(isBookmarked => {
-        content['isBookmarked'] = isBookmarked ? true : false;
+        content.dataValues['isBookmarked'] = isBookmarked ? true : false;
         console.log('content: ', content);
         return ReS(res, content);
       })
