@@ -133,6 +133,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     Naver.init();
 
+    this.loginWithNaver();
     this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
 
 
@@ -377,6 +378,7 @@ export class FormComponent implements OnInit, AfterViewInit {
             window['naver'].reprompt();
             return;
           }
+
 
           // window.location.replace();
         } else {
