@@ -248,11 +248,6 @@ const searchContent = async function (body, page) {
           [Sequelize.Op.like]: '%' + body + '%'
         },
       }
-      // $or: [
-      //   { 'title': { like: '%' + body + '%'} },
-      //   { 'level': { like: '%' + body + '%'} },
-      //   { 'c-type': { like: '%' + body + '%'} },
-      // ]
     }
   }));
 
@@ -522,6 +517,31 @@ const getUserList = async function (params) {
   return users;
 }
 module.exports.getUserList = getUserList;
+
+const searchUser = async function (body) {
+  [err, users] = await to(User.findAll({
+    offset: (parseInt(params.id) - 1) * 8 || 0,
+    limit: 20,
+    attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
+    where: {
+      [Sequelize.Op.or]: {
+        name: {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+        email: {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+        'u-id': {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+      }
+    }
+  }));
+  if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
+
+  return users;
+}
+module.exports.searchUser = searchUser;
 
 const authUser = async function (userInfo) { //returns token
   let unique_key, err, user;

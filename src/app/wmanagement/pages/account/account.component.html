@@ -28,7 +28,7 @@
       <h1>전체 {{total || '0'}}명</h1>
       <app-select [type]="'회원 등급'" (change)="changeLevel($event)"></app-select>
       <app-select [type]="'금액'" (change)="changeAmount($event)"></app-select>
-      <input class="search" type="text" placeholder="아이디 검색" />
+      <input class="search" type="text" placeholder="아이디 검색" (change)="changeQuery($event)" />
     </header>
     <app-table [type]="'account'">
       <ng-container appMypost></ng-container>

@@ -53,6 +53,23 @@ const getUsers = async function (req, res) {
 }
 module.exports.getUsers = getUsers;
 
+const getUsersByQuery = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  let params = req.params;
+
+  [err, users] = await to(authService.searchUser(query));
+
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Successfully loading user lists.',
+    list: JSON.stringify(users),
+    // user: user.toWeb(),
+    // token: User.getJWT()
+  }, 201);
+}
+module.exports.getUsersByQuery = getUsersByQuery;
+
 const getDashBoardData = async function (req, res) {
   let ret = {};
   let uSt, uPr, uPl;

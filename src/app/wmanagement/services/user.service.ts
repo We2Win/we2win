@@ -22,6 +22,11 @@ export class UserService {
       .map((res: any) => res);
   }
 
+  searchUser(query) {
+    return this.http.get(environment.apiUrl + '/mng/users/' + query)
+      .map((res: any) => res);
+  }
+
   deleteUser(user: UserInfo): Observable<UserInfo> {
     const url = environment.apiUrl + '/mng/users/' + user['user_id'];
     const bodyString = JSON.stringify(user);

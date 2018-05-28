@@ -53,6 +53,17 @@ export class AccountComponent implements OnInit {
     );
   }
 
+  searchData(query) {
+    this.userService.searchUser(query).subscribe(
+      data => {
+        this.List = JSON.parse(data.list);
+        console.log(this.List);
+        this.total = this.List.length;
+        this.addRecord(this.List);
+      }
+    );
+  }
+
   addRecord(records) {
     const ref = this.mypostDirective.viewContainerRef;
     ref.clear();
@@ -79,6 +90,11 @@ export class AccountComponent implements OnInit {
     console.log('changedAmount: ', event);
     this.orderByAmount = event;
     this.updateData(this.orderByLevel, this.orderByAmount, 1);
+  }
+
+  changeQuery(event) {
+    console.log('changedQuery: ', event.path[0].value);
+    this.searchData(event.path[0].value);
   }
 
   sendSMS() {
