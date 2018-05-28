@@ -361,7 +361,7 @@ const getContentsDetail = async function (req, res) {
         }
       }).then(isBookmarked => {
         content['isBookmarked'] = isBookmarked ? true : false;
-        // console.log('content: ', content);
+        console.log('content: ', content);
         return ReS(res, content);
       })
     } else {
