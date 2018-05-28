@@ -65,7 +65,13 @@ export class ContentsService {
   }
 
   getSimplesDetail(page, id) {
-    return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
+    return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id, httpOptions)
       .map((res: any) => res);
   }
 
