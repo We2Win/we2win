@@ -365,7 +365,7 @@ const getContentsDetail = async function (req, res) {
         return ReS(res, content);
       })
     } else {
-      console.log('skipped searching bookmark.');
+      console.log('skipped searching bookmark: ', bookmarkTypes[req.params.page]);
       return ReS(res, content);      
     }
   });
