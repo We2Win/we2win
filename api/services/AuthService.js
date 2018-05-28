@@ -533,10 +533,12 @@ const searchUser = async function (body) {
         },
         'u-id': {
           [Sequelize.Op.like]: '%' + body + '%'
-        },
+        }
       }
     }
   }));
+
+  console.log('body: ', body, users);
   if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
 
   return users;
