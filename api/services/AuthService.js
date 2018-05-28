@@ -520,7 +520,8 @@ module.exports.getUserList = getUserList;
 
 const searchUser = async function (body) {
   [err, users] = await to(User.findAll({
-    offset: (parseInt(params.id) - 1) * 8 || 0,
+    // IMPORTANT: has no params.id
+    // offset: (parseInt(params.id) - 1) * 8 || 0,
     limit: 20,
     attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
     where: {
