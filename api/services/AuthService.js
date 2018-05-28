@@ -502,7 +502,7 @@ module.exports.createUser = createUser;
 
 const getUserList = async function (params) {
   const whereArr = {
-    offset: params.id,
+    offset: parseInt(params.id),
     limit: 20,
   };
   if (params.level !== 'ALL') {
