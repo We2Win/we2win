@@ -358,11 +358,11 @@ const getContentsDetail = async function (req, res) {
           'u-id': userInfo['user_id']          
         }
       }).then(isBookmarked => {
+        console.log('')
         content['isBookmarked'] = isBookmarked;
+        return ReS(res, content);
       })
     }
-    
-      return ReS(res, content);
   });
 }
 module.exports.getContentsDetail = getContentsDetail;
