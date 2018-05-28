@@ -319,7 +319,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   loginWithNaver() {
-    window.location.replace(this.naverService.getUrl());
+    // window.location.replace(this.naverService.getUrl());
   }
 
   loginWithKakao() {
