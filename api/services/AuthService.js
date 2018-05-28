@@ -350,23 +350,16 @@ const addBookmark = async function (uId, body) {
     case '부동산 뉴스':
     case '법률 및 정책':
       info['c-type'] = body['c-type'];
-      InfoScrap.findOne({
+      [err, scraps] = await to(InfoScrap.findOne({
         where: {
           'u-id': uId,
           'c-id': info['c-id']
         }
-      }).then(
-        data => {
-          if (data) {
-            console.log(data);
-            return false;
-          } else {
-            [err, content] = await to(InfoScrap.create(info));
-            if (err) TE('생성 중 오류가 발생했습니다.');
-          }
+      }));
+      console.log('scraps: ', scraps);
 
-        }
-      )
+      [err, content] = await to(InfoScrap.create(info));
+      if (err) TE('생성 중 오류가 발생했습니다.');ß
 
       break;
     case '아파트':
