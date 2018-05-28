@@ -12,12 +12,11 @@
 <span class="cell">{{ record['name'] }}</span>
 <span class="cell">{{ record['email'] }}</span>
 <span class="cell">
-      <li *ngIf="record['level']==0" class="standard">STANDARD</li>
       <li *ngIf="record['level']==='STANDARD'" class="standard">STANDARD</li>
       <li *ngIf="record['level']==='PREMIUM'" class="premium">PREMIUM</li>
       <li *ngIf="record['level']==='PLATINUM'" class="platinum">PLATINUM</li>
-      <li *ngIf="record['level']===4" class="manager">MANAGER</li>
-      <li *ngIf="record['level']===5" class="admin">ADMIN</li>
+      <li *ngIf="record['level']==='MANAGER'" class="manager">MANAGER</li>
+      <li *ngIf="record['level']==='ADMIN'" class="admin">ADMIN</li>
 </span>
 <span class="cell">{{ record['point'] }}</span>
 <span class="cell" *ngIf="record['level-start']">{{ record['level-start'] + ' ~ ' + record['level-end'] }}</span>

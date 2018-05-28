@@ -36,13 +36,14 @@ const create = async function (req, res) {
 }
 module.exports.create = create;
 
-const get = async function (req, res) {
+const getUsers = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   let body = req.body;
+  let params = req.params;
 
   console.log('body: ', JSON.stringify(body));
 
-  [err, users] = await to(authService.getUserList(body));
+  [err, users] = await to(authService.getUserList(body, params));
 
   if (err) return ReE(res, err, 422);
 
@@ -53,7 +54,7 @@ const get = async function (req, res) {
     // token: User.getJWT()
   }, 201);
 }
-module.exports.get = get;
+module.exports.getUsers = getUsers;
 
 const getDashBoardData = async function (req, res) {
   let ret = {};
@@ -104,16 +105,7 @@ const update = async function (req, res) {
 }
 module.exports.update = update;
 
-const remove = async function (req, res) {
-  // let user, err;
-  // user = req.user;
-
-  // [err, user] = await to(user.destroy());
-  // if (err) return ReE(res, 'error occured trying to delete user');
-
-  // return ReS(res, {
-  //   message: 'Deleted User'
-  // }, 204);
+const removeUser = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   if (req.params.id) {
@@ -133,7 +125,7 @@ const remove = async function (req, res) {
       });
   }
 }
-module.exports.remove = remove;
+module.exports.removeUser = removeUser;
 
 const login = async function (req, res) {
   const body = req.body;

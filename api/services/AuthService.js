@@ -500,9 +500,23 @@ const createUser = async function (userInfo) {
 }
 module.exports.createUser = createUser;
 
-const getUserList = async function (userInfo) {
+const getUserList = async function (userInfo, params) {
+  const whereArr = {
+    offset: params.id,
+    limit: 20,
+  };
+  if (params.level !== 'ALL') {
+    whereArr['level'] = params.level;
+  }
+  if (params.amount !== 'ALL') {
+    whereArr['amount'] = params.amount;
+  }
+
   [err, users] = await to(User.findAll({
-    attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end']
+    offset: id,
+    limit: 50,
+    attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
+    where: whereArr,
   }));
   if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
 

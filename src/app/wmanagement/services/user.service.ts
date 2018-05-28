@@ -17,8 +17,8 @@ export class UserService {
     private jwtHelper: JwtHelper
   ) { }
 
-  getUserList() {
-    return this.http.get(environment.apiUrl + '/mng/users')
+  getUserList(level, amount, id?: any) {
+    return this.http.get(environment.apiUrl + '/mng/users/' + level + '/' + amount + '/' + (id || '1'))
       .map((res: any) => res);
   }
 

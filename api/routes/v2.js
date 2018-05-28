@@ -60,8 +60,6 @@ router.post('/login', UserController.login); //login
 router.post('/login/kakao', UserController.loginWithKakao); //login   
 router.post('/hasid', UserController.hasId);
 router.post('/userInfo', UserController.detailedInfo);
-router.get('/mng/users', UserController.get);
-router.delete('/mng/users/:id', UserController.remove); //delete
 
 router.put('/bookmark/add', UserController.addBookmark);
 router.post('/bookmark/remove', UserController.removeBookmark);
@@ -75,6 +73,8 @@ router.get('/schedule', UserController.getSchedule);
 
 router.get('/mng/dashboard/users', UserController.getDashBoardData);
 router.get('/mng/dashboard/contents', ContentController.getDashBoardData);
+router.get('/mng/users/:level/:amount/:id', UserController.getUsers);
+router.delete('/mng/users/:id', UserController.removeUser); //delete
 router.get('/mng/contents/count', ContentController.getCount);
 router.get('/mng/employers', ContentController.getEmployers);
 router.get('/mng/employees', ContentController.getEmployees);

@@ -19,6 +19,8 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 export class AccountComponent implements OnInit {
   List: Array<object>;
   total: number;
+  orderByLevel = 'ALL';
+  orderByAmount = 'ALL';
 
   @ViewChild(TableComponent)
   private tableComponent: TableComponent;
@@ -37,7 +39,11 @@ export class AccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUserList().subscribe(
+    this.updateData(this.orderByLevel, this.orderByAmount);
+  }
+
+  updateData(level, amount, id?: any) {
+    this.userService.getUserList(level, amount, id).subscribe(
       data => {
         this.List = JSON.parse(data.list);
         console.log(this.List);
@@ -48,16 +54,31 @@ export class AccountComponent implements OnInit {
   }
 
   addRecord(records) {
+    const ref = this.mypostDirective.viewContainerRef;
+    ref.clear();
     // tslint:disable-next-line:forin
     for (const record in records) {
       console.log('record: ', records[record]);
-      this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+
+      this.postingService.loadComponent(ref,
         new PostItem(AccountRecordComponent, records[record]));
     }
   }
 
   viewPopup() {
     this.popupCsv.showPopup();
+  }
+
+  changeLevel(event) {
+    console.log('changedLevel: ', event);
+    this.orderByLevel = event;
+    this.updateData(this.orderByLevel, this.orderByAmount, 1);
+  }
+
+  changeAmount(event) {
+    console.log('changedAmount: ', event);
+    this.orderByAmount = event;
+    this.updateData(this.orderByLevel, this.orderByAmount, 1);
   }
 
   sendSMS() {
@@ -96,7 +117,7 @@ export class AccountComponent implements OnInit {
 
         // tslint:disable-next-line:no-unused-expression
         new Angular2Csv(data, 'My Report');
-      break;
+        break;
     }
   }
 }
