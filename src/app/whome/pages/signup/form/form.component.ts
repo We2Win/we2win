@@ -4,7 +4,7 @@ import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { AlertService } from '../../../services/alert.service';
-import { NaverService } from '../../../services/naver.service';
+// import { NaverService } from '../../../services/naver.service';
 import { setInterval } from 'timers';
 
 @Component({
@@ -47,11 +47,13 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   phone;
 
+  Naver;
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private alertService: AlertService,
-    private naverService: NaverService,
+    // private naverService: NaverService,
     private router: Router,
     private renderer: Renderer,
     private elementRef: ElementRef
@@ -121,17 +123,17 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
 
     console.log('executing NaverService: ', environment.naver.callbackUrl);
-    const naver = new window['naver'].LoginWithNaverId(
+    this.Naver = new window['naver'].LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
         isPopup: false, /* 팝업을 통한 연동처리 여부 */
-        callbackHandle: true,
+        // callbackHandle: true,
         callbackUrl: environment.naver.callbackUrl,
         loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
       }
     );
 
-    naver.init();
+    this.Naver.init();
 
   }
 
