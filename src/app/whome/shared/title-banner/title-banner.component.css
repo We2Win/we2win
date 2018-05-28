@@ -42,6 +42,7 @@
   color: white;
   text-shadow: 0 0 0.5em #000;
 }
+
 :host(.search) {
   color: black;
   text-shadow: none;
@@ -80,17 +81,17 @@ input {
 }
 
 #searchBox:after {
-    display: inline-block;
-    content: '';
-    position: relative;
-    top: 7px;
-    margin: 0 20px 0 -50px;
-    width: 30px;
-    height: 30px;
-    background: url('/assets/img/search.png');
-    background-size: 30px;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: none;
-    outline: none;
+  display: inline-block;
+  content: '';
+  position: relative;
+  top: 7px;
+  margin: 0 20px 0 -50px;
+  width: 30px;
+  height: 30px;
+  background: url('/assets/img/search.png');
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
 }

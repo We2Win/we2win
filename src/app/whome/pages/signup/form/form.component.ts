@@ -158,11 +158,11 @@ export class FormComponent implements OnInit, AfterViewInit {
     //     this.signupForm.controls['name'].setValue(Naver.user.getNickName());
     //     this.signupForm.controls['email'].setValue(Naver.user.getEmail());
 
-    //     this.uId.nativeElement.setAttribute('readonly', true);
-    //     this.password.nativeElement.setAttribute('readonly', true);
-    //     this.passwordV.nativeElement.setAttribute('readonly', true);
-    //     this.name.nativeElement.setAttribute('readonly', true);
-    //     this.email.nativeElement.setAttribute('readonly', true);
+    //     this.uId.nativeElement.readOnly = true;
+    //     this.password.nativeElement.readOnly = true;
+    //     this.passwordV.nativeElement.readOnly = true;
+    //     this.name.nativeElement.readOnly = true;
+    //     this.email.nativeElement.readOnly = true;
     //     alert('done');
     //   } else {
     //     console.log('callback 처리에 실패하였습니다.');
@@ -335,22 +335,23 @@ export class FormComponent implements OnInit, AfterViewInit {
       // this.loginType = type;
       // sample code
       if (type === 'naver') {
-        this.uId.nativeElement.setAttribute('readonly', true);
-        this.password.nativeElement.setAttribute('readonly', true);
-        this.passwordV.nativeElement.setAttribute('readonly', true);
-        this.name.nativeElement.setAttribute('readonly', true);
-        this.email.nativeElement.setAttribute('readonly', true);
+        this.loginWithNaver();
+        this.uId.nativeElement.readOnly = true;
+        this.password.nativeElement.readOnly = true;
+        this.passwordV.nativeElement.readOnly = true;
+        this.name.nativeElement.readOnly = true;
+        this.email.nativeElement.readOnly = true;
       } else if (type === 'kakao') {
         this.loginWithKakao();
       } else {
         this.signupForm.reset();
         this.loginType = 'google';
 
-        this.uId.nativeElement.setAttribute('readonly', false);
-        this.password.nativeElement.setAttribute('readonly', false);
-        this.passwordV.nativeElement.setAttribute('readonly', false);
-        this.name.nativeElement.setAttribute('readonly', false);
-        this.email.nativeElement.setAttribute('readonly', false);
+        this.uId.nativeElement.readOnly = false;
+        this.password.nativeElement.readOnly = false;
+        this.passwordV.nativeElement.readOnly = false;
+        this.name.nativeElement.readOnly = false;
+        this.email.nativeElement.readOnly = false;
       }
     }
   }
@@ -423,11 +424,11 @@ export class FormComponent implements OnInit, AfterViewInit {
             this.signupForm.controls['name'].setValue(authInfo.properties.nickname);
             this.signupForm.controls['email'].setValue(authInfo.kaccount_email);
 
-            this.uId.nativeElement.setAttribute('readonly', true);
-            this.password.nativeElement.setAttribute('readonly', true);
-            this.passwordV.nativeElement.setAttribute('readonly', true);
-            this.name.nativeElement.setAttribute('readonly', true);
-            this.email.nativeElement.setAttribute('readonly', true);
+            this.uId.nativeElement.readOnly = true;
+            this.password.nativeElement.readOnly = true;
+            this.passwordV.nativeElement.readOnly = true;
+            this.name.nativeElement.readOnly = true;
+            this.email.nativeElement.readOnly = true;
           },
           fail: function (error) {
             this.alertService.error('카카오 계정 정보 불러오기에 실패하였습니다.');
