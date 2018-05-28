@@ -37,7 +37,7 @@ export class InfoMainComponent implements OnInit {
   ngOnInit() {
     this.getContentsListNewly(this.sortType, 1);
     this.getContentsListWeekly();
-    console.log('executing NaverService');
+    console.log('executing NaverService: ', environment.naver.callbackUrl);
     const naver = new window['naver'].LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
