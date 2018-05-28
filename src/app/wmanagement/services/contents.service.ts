@@ -8,10 +8,14 @@ import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { environment } from '../../../environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class ContentsService {
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) { }
 
   getContentsList(page, list, sort, id?: any) {
     return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'))
@@ -32,6 +36,12 @@ export class ContentsService {
   }
 
   getContentsDetail(page, id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
     return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id)
       .map((res: any) => res);
   }

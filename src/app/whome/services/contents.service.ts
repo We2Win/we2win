@@ -49,8 +49,13 @@ export class ContentsService {
   }
 
   getSimplesList(page, sort, id?: any) {
-    console.log(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'));
-    return this.http.get(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'))
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
+    return this.http.get(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'), httpOptions)
       .map((res: any) => res);
   }
 

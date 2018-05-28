@@ -30,6 +30,7 @@ export class InfoDetailComponent implements OnInit {
   selectedNum = 1;
   showCharts = true;
   showMoreReport = false;
+  isBookmarked = false;
 
   // userInfo;
   userInfo = new UserInfo();
@@ -242,12 +243,14 @@ export class InfoDetailComponent implements OnInit {
     }
     const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
 
-    if (bookmark.classList.contains('selected')) {
+    if (this.isBookmarked) {
+      this.isBookmarked = false;
       bookmark.src = '/assets/img/icon_bookmark_black.png';
       bookmark.classList.remove('selected');
       this.alertService.warn('북마크가 해제되었습니다.');
       this.userService.removeBookmark(this.Data);
     } else {
+      this.isBookmarked = true;
       bookmark.src = '/assets/img/icon_bookmark_black_selected.png';
       bookmark.classList.add('selected');
       this.alertService.success('북마크가 설정되었습니다.');
