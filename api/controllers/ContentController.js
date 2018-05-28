@@ -353,6 +353,7 @@ const getContentsDetail = async function (req, res) {
     });
 
     if (bookmarkTypes[req.params.page]) {
+      console.log('searching bookmark...');
       bookmarkTypes[req.params.page].findOne({
         where: {
           'c-id': content['c-id'],
@@ -364,6 +365,7 @@ const getContentsDetail = async function (req, res) {
         return ReS(res, content);
       })
     } else {
+      console.log('skipped searching bookmark.');
       return ReS(res, content);      
     }
   });
