@@ -50,7 +50,7 @@ export class InfoMainComponent implements OnInit {
 
     naver.init();
     this.naverService.create(naver);
-    this.naverService.check();
+    // this.naverService.check();
   }
 
   getContentsListNewly(sort, id?: any) { this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
