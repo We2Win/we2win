@@ -57,7 +57,7 @@ const getUsersByQuery = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   let params = req.params;
 
-  [err, users] = await to(authService.searchUser(query));
+  [err, users] = await to(authService.searchUser(params.query));
 
   if (err) return ReE(res, err, 422);
 
