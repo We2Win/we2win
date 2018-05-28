@@ -18,8 +18,8 @@ export class UserService {
   ) { }
 
   getUserList(level, amount, id?: any) {
-    return this.http.get(environment.apiUrl + '/mng/users/' + level + '/' + amount + '/' + (id || '1'))
-      .map((res: any) => JSON.parse(res));
+    return this.http.get(environment.apiUrl + '/mng/users/' + level + '/' + amount + '/' + (id || '2'))
+      .map((res: any) => res);
   }
 
   deleteUser(user: UserInfo): Observable<UserInfo> {
