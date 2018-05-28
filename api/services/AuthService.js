@@ -501,10 +501,7 @@ const createUser = async function (userInfo) {
 module.exports.createUser = createUser;
 
 const getUserList = async function (params) {
-  const whereArr = {
-    offset: parseInt(params.id),
-    limit: 20,
-  };
+  const whereArr = {};
   if (params.level !== 'ALL') {
     whereArr['level'] = params.level;
   }
@@ -515,6 +512,8 @@ const getUserList = async function (params) {
   console.log('getUserList: ', params, whereArr);
 
   [err, users] = await to(User.findAll({
+    offset: parseInt(params.id),
+    limit: 20,
     attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
     where: whereArr,
   }));
