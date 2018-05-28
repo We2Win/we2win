@@ -140,9 +140,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 
     /* (5) 현재 로그인 상태를 확인 */
-    window.addEventListener('load', function () {
+    window.addEventListener('load', () => {
       console.log('starting getLoginStatus()');
-      Naver.getLoginStatus(function (status) {
+      Naver.getLoginStatus(status => {
         if (status) {
           console.log('has status.');
           /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
