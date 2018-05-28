@@ -512,6 +512,8 @@ const getUserList = async function (params) {
     whereArr['amount'] = params.amount;
   }
 
+  console.log('getUserList: ', params, whereArr);
+
   [err, users] = await to(User.findAll({
     attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
     where: whereArr,
