@@ -133,7 +133,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     Naver.init();
 
-    console.log('login info: ', Naver.oaurhParams.access_token);
+    console.log('login info: ', Naver.accessToken());
 
     this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
 
