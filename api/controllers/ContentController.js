@@ -11,6 +11,7 @@ const authService = require('./../services/AuthService');
 const InfoScrap = require('../models').InfoScrap;
 const SiteScrap = require('../models').SiteScrap;
 const Schedule = require('../models').Schedule;
+const jwt = require('jsonwebtoken');
 
 // temporary
 const Sequelize = require('sequelize');
