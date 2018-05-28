@@ -49,7 +49,7 @@ export class SelectComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
     // console.log(changes);
   }
 
@@ -62,16 +62,17 @@ export class SelectComponent implements OnInit, OnChanges {
   }
 
   hideUl(isDiv) {
-      this._elementRef.nativeElement.querySelector('ul').classList.remove('show');
-      this._elementRef.nativeElement.querySelector('ul').classList.remove('semiShow');
+    this._elementRef.nativeElement.querySelector('ul').classList.remove('show');
+    this._elementRef.nativeElement.querySelector('ul').classList.remove('semiShow');
   }
 
   selectValue(ev) {
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
       this.change.emit(this.selected);
-      console.log(this.categories['컨텐츠 제목'].indexOf(this.selected), this.selected, this.contentNoArr);
-      this.contentsChange.emit(this.categories['컨텐츠 제목'].indexOf(this.selected));
+      console.log(this.getIndexInParent(ev.path[0]));
+      // console.log(this.categories['컨텐츠 제목'].indexOf(this.selected), this.selected, this.contentNoArr);
+      this.contentsChange.emit(this.getIndexInParent(ev.path[0]));
 
       // console.log(this.selected);
 
@@ -81,4 +82,13 @@ export class SelectComponent implements OnInit, OnChanges {
     }
     this.hideUl(false);
   }
+
+  getIndexInParent(node) {
+    const children = node.parentNode.children;    // Note: Not `childNodes`
+    for (let i = 0; i < children.length; i++) { // Note: 0 <= n < length
+      if (children[i] === node) { return i; }    // Note: No other criteria, and +1 on value
+    }
+    return -1;
+  }
+
 }
