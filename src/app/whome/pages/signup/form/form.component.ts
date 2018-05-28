@@ -132,6 +132,8 @@ export class FormComponent implements OnInit, AfterViewInit {
         loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
       }
     );
+
+    Naver.init();
     this.naverService.create(Naver);
   }
 
