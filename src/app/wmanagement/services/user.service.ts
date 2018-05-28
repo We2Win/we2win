@@ -18,7 +18,7 @@ export class UserService {
   ) { }
 
   getUserList(level, amount, id?: any) {
-    return this.http.get(environment.apiUrl + '/mng/users/' + level + '/' + amount + '/' + (id || '2'))
+    return this.http.get(environment.apiUrl + '/mng/users/' + level + '/' + amount + '/' + (id || '1'))
       .map((res: any) => res);
   }
 
