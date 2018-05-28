@@ -8,9 +8,9 @@ const Employee = require('../models').employee;
 const Employer = require('../models').employer;
 const Comment = require('../models').comment;
 const authService = require('./../services/AuthService');
-const InfoScrap = require('../models').InfoScrap;
-const SiteScrap = require('../models').SiteScrap;
-const Schedule = require('../models').Schedule;
+const InfoScrap = require('../models').infoScrap;
+const SiteScrap = require('../models').siteScrap;
+const Schedule = require('../models').schedule;
 const jwt = require('jsonwebtoken');
 
 // temporary
