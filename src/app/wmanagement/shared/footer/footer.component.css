@@ -1,11 +1,35 @@
 :host {
   display: block;
-  width: 100%;
+  min-width: var(--main-width);
   background: var(--footer-bg-color);
-  padding: 3em 0;
+  padding: 0;
   color: var(--footer-font-normal);
   cursor: default;
-  box-sizing: border-box;
+}
+
+section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+nav {
+  height: calc(30px + 1em);
+  display: flex;
+  text-align: center;
+  justify-content: flex-start;
+}
+
+nav li {
+  color: var(--footer-font-normal);
+  font-size: 1em;
+  margin-right: 3em;
+  list-style: none;
+  transition: color 0.5s;
+  cursor: pointer;
+}
+
+nav li:hover {
+  color: var(--footer-font-highlight);
 }
 
 p {

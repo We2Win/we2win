@@ -6,10 +6,20 @@ export class NaverService {
   public Naver;
 
   constructor() {
+    this.Naver = new window['naver'].LoginWithNaverId(
+      {
+        clientId: environment.naver.clientId,
+        isPopup: false, /* 팝업을 통한 연동처리 여부 */
+        callbackHandle: false,
+        callbackUrl: environment.naver.callbackUrl,
+        // loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
+      }
+    );
+
+    this.Naver.init();
   }
 
-  create(naver) {
-    this.Naver = naver;
+  check() {
     window.addEventListener('load', () => {
       console.log('starting..');
       this.Naver.getLoginStatus(status => {
@@ -33,8 +43,6 @@ export class NaverService {
     });
   }
 
-  check() {
-
-  }
+  
 
 }

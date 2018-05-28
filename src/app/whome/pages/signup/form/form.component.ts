@@ -122,18 +122,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const Naver = new window['naver'].LoginWithNaverId(
-      {
-        clientId: environment.naver.clientId,
-        isPopup: false, /* 팝업을 통한 연동처리 여부 */
-        callbackUrl: environment.naver.callbackUrl,
-        loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
-      }
-    );
-
-    Naver.init();
-    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');    
-    this.naverService.create(Naver);
+    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
   }
 
 
