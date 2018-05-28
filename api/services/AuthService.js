@@ -343,7 +343,7 @@ const addBookmark = async function (uId, body) {
     'date': body['createdAt']
   }
 
-  console.log('info on addBoookmark(): ', info);
+  console.log('info on addBoookmark(): ', info, body['c-type']);
 
   switch (body['c-type']) {
     case '리포트':
@@ -360,7 +360,7 @@ const addBookmark = async function (uId, body) {
       console.log('scraps: ', scraps);
 
       [err, content] = await to(InfoScrap.create(info));
-      if (err) TE('생성 중 오류가 발생했습니다.');ß
+      if (err) TE('생성 중 오류가 발생했습니다.');
 
       break;
     case '아파트':
