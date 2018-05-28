@@ -123,7 +123,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     const Naver = new window['naver'].LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
-        isPopup: true, /* 팝업을 통한 연동처리 여부 */
+        isPopup: false, /* 팝업을 통한 연동처리 여부 */
         callbackHandle: false,
         callbackUrl: environment.naver.registerUrl,
         loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
@@ -133,7 +133,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     Naver.init();
 
-    this.loginWithNaver();
     this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
 
 
