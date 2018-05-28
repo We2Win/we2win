@@ -10,9 +10,6 @@ export class NaverService {
 
   create(naver) {
     this.Naver = naver;
-  }
-
-  check() {
     window.addEventListener('load', () => {
       console.log('starting..');
       this.Naver.getLoginStatus(status => {
@@ -34,6 +31,10 @@ export class NaverService {
         }
       });
     });
+  }
+
+  check() {
+
   }
 
 }
