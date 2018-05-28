@@ -1,3 +1,12 @@
-<p>
-  employee-record works!
-</p>
+ 'employee': ['(check)', 'No.', '성명', '성별', '나이', '핸드폰', '이메일'],
+
+<span class="cell">
+  <input type="checkbox" />
+</span>
+<span class="cell"> {{ record['no'] }} </span>
+<span class="cell">{{ record['name'] }}</span>
+<span class="cell">{{ record['sex'] }}</span>
+<span class="cell" *ngIf="record['age-start']">{{ record['age-start'].slice(0, 10) + ' ~ ' + record['age-end'].slice(0, 10) }}</span>
+<span class="cell">{{ record['cp'] }}</span>
+<span class="cell">{{ record['email'] }}</span>
+<span class="cell">{{ (record['confirm'])? '승인' : '승인신청' }}</span>

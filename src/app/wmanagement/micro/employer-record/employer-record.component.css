@@ -1,0 +1,34 @@
+:host {
+  display: table-row;
+  font-size: 0.9em;
+  line-height: 100%;
+  text-align: center;
+}
+
+:host:hover {
+  background: #eee;
+}
+
+.cell {
+  display: table-cell;
+  padding: 0.5em 0.3em;
+  padding-top: 1em;
+}
+
+.cell img {
+  width: auto;
+  height: 1.8em;
+  vertical-align: middle;
+}
+
+li {
+  display: inline-block;
+  line-height: 100%;
+  padding: 0.5em 1em;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+}
+

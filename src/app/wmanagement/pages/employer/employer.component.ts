@@ -39,7 +39,7 @@ export class EmployerComponent implements OnInit {
   ngOnInit() {
     this.contentsService.getEmployerList().subscribe(
       data => {
-        this.List = JSON.parse(data.list);
+        this.List = data;
         console.log('list: ', this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
@@ -60,7 +60,7 @@ export class EmployerComponent implements OnInit {
     this.popupCsv.showPopup();
   }
 
-    download(type) {
+  download(type) {
     switch (type) {
       case 'all':
         const data = [
@@ -89,7 +89,7 @@ export class EmployerComponent implements OnInit {
 
         // tslint:disable-next-line:no-unused-expression
         new Angular2Csv(data, 'My Report');
-      break;
+        break;
     }
   }
 }

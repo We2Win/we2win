@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-employer-record',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employer-record.component.css']
 })
 export class EmployerRecordComponent implements OnInit {
+  @Input('record') record;
 
   constructor() { }
 

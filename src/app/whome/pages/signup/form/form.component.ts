@@ -122,7 +122,6 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
   }
 
 
@@ -305,35 +304,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   loginWithNaver() {
-    // window.addEventListener('load', () => {
-    //   console.log('starting loginWithNaver()');
-    //   window['naver'].getLoginStatus((status) => {
-    //     console.log('naver status: ', status);
-    //     if (status) {
-    //       this.loginType = 'naver';
-    //       /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-    //       const uId = window['naver'].user.getEmail();
-    //       const email = window['naver'].user.getEmail();
-    //       const name = window['naver'].user.getNickName();
-    //       this.signupForm.controls['u-id'].setValue(window['naver'].user.getEmail());
-    //       this.signupForm.controls['email'].setValue(window['naver'].user.getEmail());
-    //       this.signupForm.controls['name'].setValue(window['naver'].user.getNickName());
-    //       this.signupForm.controls['password'].setValue('naver0123!');
-    //       // console.log('email: ', email);
-    //       if (email == undefined || email == null) {
-    //         alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
-    //         /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-    //         window['naver'].reprompt();
-    //         return;
-    //       }
-
-
-    //       // window.location.replace();
-    //     } else {
-    //       console.log('callback 처리에 실패하였습니다.');
-    //     }
-    //   });
-    // });
+    window.location.replace(this.naverService.getUrl());
   }
 
   loginWithKakao() {

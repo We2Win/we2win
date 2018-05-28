@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   List: Array<object>;
   hasMoreContents = true;
   Data;
-  isEmpty = true;
+  isEmpty = false;
   reset = false;
 
   @ViewChild(MypostDirective)
@@ -39,22 +39,28 @@ export class SearchComponent implements OnInit {
     this.searchService.getDataString().subscribe(
       data => {
         this.Data = data.body;
+        const container = this.mypostDirective.viewContainerRef;
 
         console.log('data: ', data);
         if (this.Data) {
-          this.isEmpty = false;
-          if (data.page === 1) {
-            const container = this.mypostDirective.viewContainerRef;
-            container.clear();
-            this.resetPage();
-            this.hasMoreContents = true;
-          }
+          if (this.Data.length) {
+            this.isEmpty = false;
+            if (data.page === 1) {
+              container.clear();
+              this.resetPage();
+              this.hasMoreContents = true;
+            }
 
-          this.addRecord(this.Data);
-          if (this.Data.length !== 8) {
-            this.hasMoreContents = false;
+            this.addRecord(this.Data);
+            if (this.Data.length !== 8) {
+              this.hasMoreContents = false;
+            }
+          } else {
+            container.clear();
+            this.isEmpty = true;
           }
         } else {
+          container.clear();
           this.isEmpty = true;
         }
       },

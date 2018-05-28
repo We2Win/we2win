@@ -102,7 +102,10 @@ import { EmployeeRecordComponent } from './micro/employee-record/employee-record
   entryComponents: [
     AccountRecordComponent,
     AnalysisUserRecordComponent,
-    TemplateChartComponent
+    AnalysisContentsRecordComponent,
+    TemplateChartComponent,
+    EmployerRecordComponent,
+    EmployeeRecordComponent
   ],
   providers: [
     InfoService,

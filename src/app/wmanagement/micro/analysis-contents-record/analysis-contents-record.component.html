@@ -1,1 +1,13 @@
-<span class="cell" *ngFor="let sample of sampleData" [ngClass]="sample.data">{{ sample.value }}</span>
+<span class="cell">{{ record.no }}</span>
+<span class="cell">{{ record['c-type'] }}</span>
+<span class="cell">
+    <li [class]="record['level'].toLowerCase()">{{ record['level'] }}</li>
+    <!-- <li *ngIf="record['level']===" class="standard">STANDARD</li>
+    <li *ngIf="record['level']===1" class="premium">PREMIUM</li>
+    <li *ngIf="record['level']===2" class="platinum">PLATINUM</li>
+    <li *ngIf="record['level']===3" class="manager">MANAGER</li>
+    <li *ngIf="record['level']===4" class="admin">ADMIN</li> -->
+</span>
+<span class="cell">{{ record['title'] }}</span>
+<span class="cell">{{ record['c-comments'] }}</span>
+<span class="cell">{{ record['createdAt'].slice(0, 10) }}</span>

@@ -43,6 +43,8 @@ export class NaverService {
     });
   }
 
-  
+  getUrl() {
+    return this.Naver.generateAuthorizeUrl();
+  }
 
 }

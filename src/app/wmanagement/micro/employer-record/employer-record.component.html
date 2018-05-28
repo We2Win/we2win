@@ -1,16 +1,9 @@
-<!-- 'employer': ['No.', '업무', '모집인원', '채용방법', '모집기간', '승인여부'], -->
-
 <span class="cell">
   <input type="checkbox" />
 </span>
-
-<span class="cell">
-  <div>{{ record['no'] }}</div>
-</span>
+<span class="cell"> {{ record['no'] }} </span>
 <span class="cell">{{ record['part-name'] }}</span>
 <span class="cell">{{ record['personnel'] }}</span>
 <span class="cell">{{ record['method'] }}</span>
-<span class="cell">{{ record['personnel'] }}</span>
-<span class="cell">{{ record['point'] }}</span>
-<span class="cell" *ngIf="record['apply-start']">{{ record['apply-start'] + ' ~ ' + record['apply-end'] }}</span>
+<span class="cell" *ngIf="record['apply-start']">{{ record['apply-start'].slice(0, 10) + ' ~ ' + record['apply-end'].slice(0, 10) }}</span>
 <span class="cell">{{ (record['confirm'])? '승인' : '승인신청' }}</span>
