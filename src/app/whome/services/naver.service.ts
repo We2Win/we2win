@@ -6,6 +6,7 @@ export class NaverService {
   public Naver;
 
   constructor() {
+    console.log('executing NaverService');
     this.Naver = new window['naver'].LoginWithNaverId(
       {
         clientId: environment.naver.clientId,
