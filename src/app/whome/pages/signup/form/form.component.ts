@@ -138,10 +138,10 @@ export class FormComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     window.addEventListener('load', () => {
       console.log('starting..');
-      naver.getLoginStatus(status => {
+      window['naver'].getLoginStatus(status => {
         if (status) {
           /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-          const email = naver.user.getEmail();
+          const email = window['naver'].user.getEmail();
           console.log('email: ', email);
           // if (email == undefined || email == null) {
           //   alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
