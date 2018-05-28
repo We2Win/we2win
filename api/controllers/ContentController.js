@@ -343,7 +343,7 @@ const getContentsDetail = async function (req, res) {
   pageTypes[req.params.page].findOne({
     where: whereArr
   }).then(content => {
-    console.log(content['c-id']);
+    // console.log(content['c-id']);
     Content.update({
       'c-click': Sequelize.literal('`c-click` + 1')
     }, {
@@ -361,7 +361,7 @@ const getContentsDetail = async function (req, res) {
         }
       }).then(isBookmarked => {
         content.dataValues['isBookmarked'] = isBookmarked ? true : false;
-        console.log('content: ', content);
+        // console.log('content: ', content);
         return ReS(res, content);
       })
     } else {
