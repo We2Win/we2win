@@ -351,13 +351,14 @@ const addBookmark = async function (uId, body) {
     case '법률 및 정책':
       console.log('hello');
       info['c-type'] = body['c-type'];
-      [err, scraps] = await to(InfoScrap.findOne({
+      [err, scrap] = await to(InfoScrap.findOne({
         where: {
           'u-id': uId,
           'c-id': info['c-id']
         }
       }));
-      console.log('scraps: ', scraps);
+
+      if (scrap) { return false; }
 
       [err, content] = await to(InfoScrap.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
