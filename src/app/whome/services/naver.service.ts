@@ -12,6 +12,7 @@ export class NaverService {
   create(naver) {
     this.Naver = naver;
     this.started = true;
+    console.log('naverService successfully created.');
   }
 
   isStarted() {
