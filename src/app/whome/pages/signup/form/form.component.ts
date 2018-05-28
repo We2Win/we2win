@@ -358,7 +358,8 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   loginWithNaver() {
-    // window.addEventListener('load', () => {
+    window.addEventListener('load', () => {
+      console.log('starting loginWithNaver()');
       window['naver'].getLoginStatus((status) => {
         console.log('naver status: ', status);
         if (status) {
@@ -385,7 +386,7 @@ export class FormComponent implements OnInit, AfterViewInit {
           console.log('callback 처리에 실패하였습니다.');
         }
       });
-    // });
+    });
   }
 
   loginWithKakao() {
