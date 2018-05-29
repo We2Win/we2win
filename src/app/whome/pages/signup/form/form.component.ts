@@ -138,7 +138,8 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     this.Naver.init();
     this.naverService.create(this.Naver);
-    
+
+    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
     this.naverService.check();
   }
 

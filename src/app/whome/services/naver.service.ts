@@ -39,7 +39,11 @@ export class NaverService {
         } else {
           console.log('callback 처리에 실패하였습니다.');
         }
-      });
+      },
+      err => {
+        console.log('error: ', err);
+      }
+    );
     // });
   }
 
