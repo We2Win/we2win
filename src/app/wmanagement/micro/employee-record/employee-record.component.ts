@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router/';
+import { RecordService } from '../../services/record.service';
 
 @Component({
   selector: 'app-employee-record',
@@ -9,10 +10,19 @@ import { Router } from '@angular/router/';
 })
 export class EmployeeRecordComponent implements OnInit {
   @Input('record') record;
+  checked = false;
 
-  constructor() { }
+  constructor(
+    private recordService: RecordService
+  ) { }
 
   ngOnInit() {
+    console.log(this.record);
+  }
+
+  checkBox() {
+    this.checked = !this.checked;
+    this.recordService.emitChange(this.record['c-id'], this.checked);
   }
 
 }

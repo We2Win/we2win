@@ -22,6 +22,4 @@ export class EmployerRecordComponent implements OnInit {
     this.recordService.emitChange(this.record['c-id'], this.checked);
   }
 
-  
-
 }

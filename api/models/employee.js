@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
+    'confirm': {
+      type: DataTypes.TINYINT(1),
+      defaultValue: 0
+    },
     'name': {
       type: DataTypes.STRING(30),
       allowNull: false,

@@ -4,10 +4,10 @@ import { PostingService } from '../../services/posting.service';
 import { PostItem } from '../../models/post-item';
 import { TableComponent } from '../../micro/table/table.component';
 import { MypostDirective } from '../../directives/mypost.directive';
-import { EmployerRecordComponent } from '../../micro/employer-record/employer-record.component';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import { RecordService } from '../../services/record.service';
 import { AlertService } from '../../services/alert.service';
+import { EmployeeRecordComponent } from '../../micro/employee-record/employee-record.component';
 
 @Component({
   selector: 'app-employee',
@@ -17,7 +17,8 @@ import { AlertService } from '../../services/alert.service';
     '../pages.css'
   ],
   providers: [
-    PostingService
+    PostingService,
+    RecordService
   ]
 })
 export class EmployeeComponent implements OnInit {
@@ -75,7 +76,7 @@ export class EmployeeComponent implements OnInit {
     for (const record in records) {
       console.log('record: ', records[record]);
       this.postingService.loadComponent(ref,
-        new PostItem(EmployerRecordComponent, records[record]));
+        new PostItem(EmployeeRecordComponent, records[record]));
     }
   }
 

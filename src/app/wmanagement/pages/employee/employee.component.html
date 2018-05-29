@@ -15,8 +15,8 @@
       <ng-container appMypost></ng-container>
     </app-table>
     <li class="submitBar">
-      <button>게시 승인</button>
-      <button>삭제</button>
+      <button (click)="confirm()">게시 승인</button>
+      <button (click)="deny()">게시 거부</button>
     </li>
   </article>
 </section>
