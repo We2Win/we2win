@@ -176,45 +176,45 @@ const getComments = async function (req, res) {
 }
 module.exports.getComments = getComments;
 
-const createEmployer = async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  const body = req.body;
+// const createEmployer = async function (req, res) {
+//   res.setHeader('Content-Type', 'application/json');
+//   const body = req.body;
 
-  let err, comment;
+//   let err, comment;
 
-  console.log('body: ', JSON.stringify(body));
-  [err, comment] = await to(authService.createEmployer(body));
+//   console.log('body: ', JSON.stringify(body));
+//   [err, comment] = await to(authService.createEmployer(body));
 
-  if (err) return ReE(res, err, 422);
+//   if (err) return ReE(res, err, 422);
 
-  comment = JSON.stringify(comment);
-  return ReS(res, {
-    message: 'Successfully created new employer data.',
-    body: comment,
-  }, 201);
-}
-module.exports.createEmployer = createEmployer;
+//   comment = JSON.stringify(comment);
+//   return ReS(res, {
+//     message: 'Successfully created new employer data.',
+//     body: comment,
+//   }, 201);
+// }
+// module.exports.createEmployer = createEmployer;
 
-const createEmployee = async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  const body = req.body;
+// const createEmployee = async function (req, res) {
+//   res.setHeader('Content-Type', 'application/json');
+//   const body = req.body;
 
-  let err, comment;
+//   let err, comment;
 
-  console.log('body: ', JSON.stringify(body));
-  [err, comment] = await to(authService.createEmployee(body));
+//   console.log('body: ', JSON.stringify(body));
+//   [err, comment] = await to(authService.createEmployee(body));
 
-  if (err) return ReE(res, err, 422);
+//   if (err) return ReE(res, err, 422);
 
-  console.log('comment.json: ', comment);
-  comment = JSON.stringify(comment);
-  console.log('comment.string: ', comment);
-  return ReS(res, {
-    message: 'Successfully created new comment data.',
-    body: comment,
-  }, 201);
-}
-module.exports.createEmployee = createEmployee;
+//   console.log('comment.json: ', comment);
+//   comment = JSON.stringify(comment);
+//   console.log('comment.string: ', comment);
+//   return ReS(res, {
+//     message: 'Successfully created new comment data.',
+//     body: comment,
+//   }, 201);
+// }
+// module.exports.createEmployee = createEmployee;
 
 const getEmployees = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
