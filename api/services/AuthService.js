@@ -232,6 +232,7 @@ module.exports.updateContent = updateContent;
 
 const searchContent = async function (body, page) {
   let err, content;
+  const page = (req.params.page - 1) * 8 || 0;
 
   [err, content] = await to(Content.findAll({
     offset: page,
