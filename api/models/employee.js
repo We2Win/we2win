@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     'sex': {
-      type: DataTypes.TINYINT(1),
+      type: DataTypes.STRING(5),
       allowNull: false
     },
     'age': {
