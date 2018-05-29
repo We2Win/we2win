@@ -239,7 +239,9 @@ export class ContentsModificationComponent implements OnInit {
         // console.log(symbol);
         // tslint:disable-next-line:forin
         for (const field in form.controls) {
-          if (field === 'open-start' || field === 'open-end') {
+          if (field === 'open-start' || field === 'open-end' ||
+          field === 'apply-start' || field === 'apply-end' ||
+          field === 'duration-start' || field === 'duration-end') {
             form.controls[field].setValue(this.loadedData[field].slice(0, 10));
           } else if (field === 'level') {
             form.controls[field].setValue(this.loadedData[field]);
@@ -259,6 +261,9 @@ export class ContentsModificationComponent implements OnInit {
               case '상가/호텔':
               case '토지':
                 this.SLevel.selected = this.loadedData[field];
+                break;
+              case '오프라인 모임':
+                this.MLevel.selected = this.loadedData[field];
                 break;
             }
           } else {
