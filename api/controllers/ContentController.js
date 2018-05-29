@@ -216,6 +216,17 @@ const createEmployee = async function (req, res) {
 }
 module.exports.createEmployee = createEmployee;
 
+const getEmployees = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  console.log('req.params: ', req.params);
+
+  Employee.findAll().then(content => {
+    console.log(content['c-id']);
+    return ReS(res, content);
+  });
+}
+module.exports.getEmployees = getEmployees;
+
 const getEmployers = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
@@ -227,7 +238,7 @@ const getEmployers = async function (req, res) {
 }
 module.exports.getEmployers = getEmployers;
 
-const getEmployee = async function (req, res) {
+const confirmEmployee = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
 
@@ -242,7 +253,7 @@ const getEmployee = async function (req, res) {
       return ReS(res, content);
     });
 }
-module.exports.getEmployee = getEmployee;
+module.exports.confirmEmployee = confirmEmployee;
 
 const confirmEmployer = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
