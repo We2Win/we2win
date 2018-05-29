@@ -10,12 +10,14 @@
         <article>
           <div class="row">
             <label>성명</label>
-            <input formControlName="name" type="text" placeholder="업무명을 입력하세요." />
+            <input formControlName="name" type="text" placeholder="성명을 입력하세요." />
+            <div class="blank"></div>
             <!-- <app-select></app-select> -->
           </div>
           <div class="row">
             <label>성별</label>
-            <input formControlName="sex" type="text" placeholder="업무내용을 입력하세요." />
+            <input formControlName="sex" type="text" placeholder="남/여" />
+            <div class="blank"></div>
           </div>
           <div class="row">
             <label>나이</label>
@@ -25,23 +27,25 @@
           </div>
           <div class="row">
             <label>핸드폰</label>
-            <input formControlName="cp" type="text" placeholder="예) 분양경력 1년 이상" />
+            <input formControlName="cp" type="text" placeholder="010-000-0000" />
+            <div class="blank"></div>
           </div>
           <div class="row">
             <label>전화</label>
-            <input formControlName="hp" type="text" placeholder="예) 분양경력 1년 이상" />
+            <input formControlName="hp" type="text" placeholder="02-000-0000" />
+            <div class="blank"></div>
           </div>
           <div class="row">
             <label>E-Mail</label>
-            <input formControlName="email" type="text" placeholder="예) 분양경력 1년 이상" />
+            <input formControlName="email" type="text" placeholder="nickname@we2win.com" />
           </div>
           <div class="row">
             <label>홈페이지</label>
-            <input formControlName="homepage" type="text" placeholder="예) 분양경력 1년 이상" />
+            <input formControlName="homepage" type="text" placeholder="www.homepage.com" />
           </div>
           <div class="row">
             <label>주소</label>
-            <input formControlName="address" type="text" placeholder="예) 분양경력 1년 이상" />
+            <input formControlName="address" type="text" placeholder="서울시 ㅇㅇ구" />
           </div>
         </article>
       </div>
@@ -54,36 +58,38 @@
         <article>
           <div class="row">
             <label>희망업무</label>
-            <input formControlName="part" type="text" placeholder="현장명을 입력해 주세요" />
+            <input formControlName="part" type="text" placeholder="희망 업무를 입력해 주세요" />
           </div>
           <div class="row">
             <label>희망지역</label>
-            <input formControlName="location" type="text" placeholder="소재지를 입력해 주세요" />
+            <input formControlName="location" type="text" placeholder="희망 지역을 입력해 주세요" />
           </div>
           <div class="row">
             <label>경력</label>
-            <input formControlName="career" type="text" placeholder="이름을 입력하세요" />
+            <input formControlName="career" type="text" placeholder="경력을 입력해 주세요" />
           </div>
           <div class="row">
             <label>자격사항</label>
-            <input formControlName="achievement" type="text" placeholder="연락처를 입력하세요" />
+            <input formControlName="achievement" type="text" placeholder="자격 사항을 입력해 주세요" />
           </div>
           <div class="row">
             <label>인맥</label>
-            <input formControlName="networking" type="text" placeholder="연락처를 입력하세요" />
+            <input formControlName="networking" type="text" placeholder="인맥 관계를 입력해 주세요" />
           </div>
           <div class="row">
             <label>근무가능일</label>
-            <input formControlName="available-start" type="text" placeholder="연락처를 입력하세요" />
-            <input formControlName="available-end" type="text" placeholder="연락처를 입력하세요" />
+            <input formControlName="available-start" type="text" placeholder="근무 가능 시작일" />
+            <span> ~ </span>
+            <input formControlName="available-end" type="text" placeholder="근무 가능 종료일" />
+            <div class="blank"></div>
           </div>
           <div class="row">
             <label>자기소개</label>
-            <input formControlName="intro" type="text" placeholder="연락처를 입력하세요" />
+            <input formControlName="intro" type="text" placeholder="간단한 자기소개를 입력해 주세요" />
           </div>
           <div class="row">
             <label>기타</label>
-            <input formControlName="etc" type="text" placeholder="연락처를 입력하세요" />
+            <input formControlName="etc" type="text" placeholder="기타 참고사항을 입력해 주세요" />
           </div>
           <div class="row">
             <label></label>

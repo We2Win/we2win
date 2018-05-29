@@ -9,7 +9,6 @@ import { environment } from '../../../../environments/environment';
 })
 export class EmployeeCardComponent implements OnInit {
   @Input('record') record;
-  @Input() level = 'standard';
 
   imageUrl;
 

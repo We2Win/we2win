@@ -40,6 +40,7 @@ router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:cid', ContentController.getComments);
 
 router.put('/contents/employer', ContentController.createEmployer);
+router.put('/contents/employee', ContentController.createEmployee);
 
 // For Infos and Sites
 router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);

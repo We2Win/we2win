@@ -11,7 +11,7 @@ import { ContentsService } from '../../../services/contents.service';
 })
 export class ApplyEmployeeComponent implements OnInit {
   applyForm: FormGroup;
-  agree2: boolean;
+  agree2 = false;
 
   constructor(
     private alertService: AlertService,

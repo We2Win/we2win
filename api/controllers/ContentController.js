@@ -241,16 +241,20 @@ module.exports.getEmployers = getEmployers;
 const confirmEmployees = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Employee.update({
-    'confirm': 1
-  }, {
-      where: {
-        'c-id': req.body.id
-      }
-    }).then(content => {
-      console.log(content['c-id']);
-      return ReS(res, content);
-    });
+  if (req.body.array.length) {
+    Employee.update({
+      'confirm': req.body.confirm
+    }, {
+        where: {
+          'c-id': {
+            [Sequelize.Op.or]: req.body.array
+          }
+        }
+      }).then(content => {
+        console.log(content['c-id']);
+        return ReS(res, content);
+      });
+  }
 
   return false;
 }
