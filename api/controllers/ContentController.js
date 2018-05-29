@@ -530,6 +530,9 @@ const getSimplesList = async function (req, res) {
         offset: id,
         limit: 8,
         order: orderArr,
+        where: {
+          'confirm': 1
+        }
       }).then(content => {
         return ReS(res, content);
       });
@@ -538,6 +541,9 @@ const getSimplesList = async function (req, res) {
         offset: id,
         limit: 8,
         order: orderArr,
+        where: {
+          'confirm': 1
+        }
       }).then(content => {
         return ReS(res, content);
       });
