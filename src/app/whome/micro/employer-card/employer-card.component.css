@@ -1,6 +1,16 @@
 :host {
   display: block;
+  margin-left: 3px;
 }
+
+:host:nth-child(n+5) {
+  margin-top: 13px;
+}
+
+:host:nth-child(4n-3) {
+  margin-left: 0;
+}
+
 
 .namecard {
   border: 1px solid #ccc;
@@ -17,7 +27,7 @@
 
 .namecard:hover {
   /* background: linear-gradient(-45deg, #eee, #f3f3f3, #eee); */
-  box-shadow: 0 0 10px #ddd;
+  box-shadow: 0 0 10px #ccc;
 }
 
 .namecard.p:before {

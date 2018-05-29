@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ElementRef } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
@@ -10,6 +10,8 @@ import { AuthService } from '../../../services/auth.service';
 import { News } from '../../../models/news';
 import { Meta } from '@angular/platform-browser';
 import { FbShareService } from '../../../services/fb-share.service';
+import { AlertService } from '../../../services/alert.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-news-detail',
@@ -27,14 +29,18 @@ export class NewsDetailComponent implements OnInit {
   private rankingpostDirective: RankingpostDirective;
 
   RankingList;
+  isBookmarked;
 
   constructor(
     private viewContainerRef: ViewContainerRef,
+    private _elementRef: ElementRef,
+    private alertService: AlertService,
     private contentsService: ContentsService,
+    private userService: UserService,
     private fbShareService: FbShareService,
     private route: ActivatedRoute,
     private postingService: PostingService,
-    private auth: AuthService,
+    private authService: AuthService,
     private meta: Meta
   ) {
     this.id = this.route.params['value'].id;
@@ -88,6 +94,27 @@ export class NewsDetailComponent implements OnInit {
         this.postingService.loadComponent(this.rankingpostDirective.viewContainerRef,
           new PostItem(NewsCardComponent, records[num]));
       }
+    }
+  }
+
+  bookmark() {
+    if (!this.authService.isAuthenticated()) {
+      this.alertService.error('로그인 하셔야 북마크 하실 수 있습니다.');
+    }
+    const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
+
+    if (this.isBookmarked) {
+      this.isBookmarked = false;
+      bookmark.src = '/assets/img/icon_bookmark.png';
+      bookmark.classList.remove('selected');
+      this.alertService.warn('북마크가 해제되었습니다.');
+      this.userService.removeBookmark(this.Data);
+    } else {
+      this.isBookmarked = true;
+      bookmark.src = '/assets/img/icon_bookmark_selected.png';
+      bookmark.classList.add('selected');
+      this.alertService.success('북마크가 설정되었습니다.');
+      this.userService.addBookmark(this.Data);
     }
   }
 

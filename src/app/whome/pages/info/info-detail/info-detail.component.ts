@@ -261,7 +261,6 @@ export class InfoDetailComponent implements OnInit {
     }
   }
 
-
   fbShare() {
     this.fbShareService.share(environment.homeUrl + '/info/report/' + this.Data['no']);
   }

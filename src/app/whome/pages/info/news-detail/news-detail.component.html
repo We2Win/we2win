@@ -6,7 +6,7 @@
     </div>
     <h1>{{Data['title']}}</h1>
     <div id="optionBar">
-      <img src="/assets/img/icon_bookmark.png" />
+      <img id="bookmark" (click)="bookmark();" src="/assets/img/icon_bookmark.png" />
       <img (click)="fbShare();" src="/assets/img/icon_facebook.png" />
     </div>
   </div>
