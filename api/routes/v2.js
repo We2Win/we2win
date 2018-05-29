@@ -71,7 +71,6 @@ router.put('/schedule/add', UserController.addSchedule);
 router.post('/schedule/remove', UserController.removeSchedule);
 router.get('/schedule', UserController.getSchedule);
 
-
 router.get('/mng/dashboard/users', UserController.getDashBoardData);
 router.get('/mng/dashboard/contents', ContentController.getDashBoardData);
 router.get('/mng/users/:level/:amount/:id', UserController.getUsers);
@@ -80,5 +79,7 @@ router.delete('/mng/users/:id', UserController.removeUser); //delete
 router.get('/mng/contents/count', ContentController.getCount);
 router.get('/mng/employers', ContentController.getEmployers);
 router.get('/mng/employees', ContentController.getEmployees);
+router.post('/mng/employers', ContentController.confirmEmployer);
+router.post('/mng/employees', ContentController.confirmEmployee);
 
 module.exports = router;

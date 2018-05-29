@@ -227,16 +227,39 @@ const getEmployers = async function (req, res) {
 }
 module.exports.getEmployers = getEmployers;
 
-const getEmployees = async function (req, res) {
+const getEmployee = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
 
-  Employee.findAll().then(content => {
+  Employee.update({
+    'confirm': 1
+  }, {
+      where: {
+        'c-id': req.body.id
+      }
+    }).then(content => {
+      console.log(content['c-id']);
+      return ReS(res, content);
+    });
+}
+module.exports.getEmployee = getEmployee;
+
+const confirmEmployer = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  console.log('req.params: ', req.params);
+
+  Employer.update({
+    'confirm': 1
+  }, {
+    where: {
+      'c-id': req.body.id
+    }
+  }).then(content => {
     console.log(content['c-id']);
     return ReS(res, content);
   });
 }
-module.exports.getEmployees = getEmployees;
+module.exports.confirmEmployer = confirmEmployer;
 
 const getCount = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
