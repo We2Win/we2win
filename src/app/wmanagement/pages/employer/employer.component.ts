@@ -7,6 +7,7 @@ import { MypostDirective } from '../../directives/mypost.directive';
 import { EmployerRecordComponent } from '../../micro/employer-record/employer-record.component';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import { RecordService } from '../../services/record.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-employer',
@@ -37,7 +38,8 @@ export class EmployerComponent implements OnInit {
   constructor(
     private contentsService: ContentsService,
     private postingService: PostingService,
-    private recordService: RecordService
+    private recordService: RecordService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -80,7 +82,19 @@ export class EmployerComponent implements OnInit {
   }
 
   confirm() {
-    this.contentsService.confirmEmployers(this.selectedList);
+    this.contentsService.confirmEmployers(this.selectedList, true).subscribe(
+      data => {
+        this.alertService.success('승인되었습니다.');
+      }
+    );
+  }
+
+  deny() {
+    this.contentsService.confirmEmployers(this.selectedList, false).subscribe(
+      data => {
+        this.alertService.success('승인 해제되었습니다.');
+      }
+    );
   }
 
   viewPopup() {

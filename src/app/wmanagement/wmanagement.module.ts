@@ -49,6 +49,8 @@ import { MeetingDetailComponent } from './templates/meeting-detail/meeting-detai
 import { EmployerRecordComponent } from './micro/employer-record/employer-record.component';
 import { EmployeeRecordComponent } from './micro/employee-record/employee-record.component';
 import { AnalysisContentRecordComponent } from './micro/analysis-content-record/analysis-content-record.component';
+import { AlertComponent } from './micro/alert/alert.component';
+import { AlertService } from './services/alert.service';
 
 @NgModule({
   imports: [
@@ -100,6 +102,7 @@ import { AnalysisContentRecordComponent } from './micro/analysis-content-record/
     EmployerRecordComponent,
     EmployeeRecordComponent,
     AnalysisContentRecordComponent,
+    AlertComponent,
   ],
   entryComponents: [
     AccountRecordComponent,
@@ -114,6 +117,7 @@ import { AnalysisContentRecordComponent } from './micro/analysis-content-record/
     ContentsService,
     UploadFileService,
     AuthService,
+    AlertService
   ]
 })
 export class WmanagementModule { }

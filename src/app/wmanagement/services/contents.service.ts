@@ -92,7 +92,11 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
-  confirmEmployers(body) {
+  confirmEmployers(_body, confirm) {
+    const body = {
+      confirm: confirm,
+      array: _body
+    };
     return this.http.post(environment.apiUrl + '/mng/employers', body);
   }
 
