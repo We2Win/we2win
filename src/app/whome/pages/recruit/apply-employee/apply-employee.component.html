@@ -3,7 +3,7 @@
     <app-group>
       <h1>구직 등록 하기</h1>
       <div class="subGroup">
-        <label>구인 요건
+        <label>구직 요건
           <br>
           <b>필수사항</b>
         </label>
@@ -39,10 +39,10 @@
             <label>E-Mail</label>
             <input formControlName="email" type="text" placeholder="nickname@we2win.com" />
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <label>홈페이지</label>
             <input formControlName="homepage" type="text" placeholder="www.homepage.com" />
-          </div>
+          </div> -->
           <div class="row">
             <label>주소</label>
             <input formControlName="address" type="text" placeholder="서울시 ㅇㅇ구" />
@@ -66,16 +66,16 @@
           </div>
           <div class="row">
             <label>경력</label>
-            <input formControlName="career" type="text" placeholder="경력을 입력해 주세요" />
+            <textarea formControlName="career" type="text" placeholder="경력을 입력해 주세요"></textarea>
           </div>
           <div class="row">
             <label>자격사항</label>
             <input formControlName="achievement" type="text" placeholder="자격 사항을 입력해 주세요" />
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <label>인맥</label>
             <input formControlName="networking" type="number" placeholder="인맥 수를 숫자로 입력해 주세요." />
-          </div>
+          </div> -->
           <div class="row">
             <label>근무가능일</label>
             <input formControlName="available-start" type="date" placeholder="근무 가능 시작일" />
@@ -85,7 +85,7 @@
           </div>
           <div class="row">
             <label>자기소개</label>
-            <input formControlName="intro" type="text" placeholder="간단한 자기소개를 입력해 주세요" />
+            <textarea formControlName="intro" type="text" placeholder="간단한 자기소개를 입력해 주세요"></textarea>
           </div>
           <div class="row">
             <label>기타</label>

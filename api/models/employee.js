@@ -47,10 +47,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    'homepage': {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
     'address': {
       type: DataTypes.STRING,
       allowNull: false
@@ -69,10 +65,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     'achievement': {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    'networking': {
-      type: DataTypes.INTEGER(5),
       allowNull: false
     },
     'available-start': {
