@@ -14,6 +14,7 @@ import { MeetingCardComponent } from '../../../micro/meeting-card/meeting-card.c
 import { AlertService } from '../../../services/alert.service';
 import { UserInfo } from '../../../models/userInfo';
 import { UserService } from '../../../services/user.service';
+import { FbShareService } from '../../../services/fb-share.service';
 
 @Component({
   selector: 'app-meeting-detail',
@@ -31,7 +32,7 @@ export class MeetingDetailComponent implements OnInit {
   showMoreReport = false;
 
   // userInfo = new UserInfo;
-  userInfo;
+  userInfo = new UserInfo();
   comments = [];
 
   @ViewChild('NewComment') NewComment;
@@ -53,6 +54,7 @@ export class MeetingDetailComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private contentsService: ContentsService,
     private postingService: PostingService,
+    private fbShareService: FbShareService,
     private auth: AuthService,
     private alertService: AlertService,
     private userService: UserService,
@@ -83,7 +85,7 @@ export class MeetingDetailComponent implements OnInit {
       }
     );
 
-    this.userInfo = this.auth.getUserInfo();
+    this.userInfo = this.authService.getUserInfo();
   }
 
   updateDetail() {
@@ -118,12 +120,17 @@ export class MeetingDetailComponent implements OnInit {
   }
 
   addComment() {
+    if (!this.authService.isAuthenticated()) {
+      this.alertService.error('로그인 해주세요.');
+      return false;
+    }
+
     const body = {
       'c-id': this.Data['c-id'],
       'u-id': this.userInfo['user_id'],
       'date': new Date().toISOString(),
       'contents': this.NewComment.nativeElement.value
-  };
+    };
     console.log('comment body: ', body);
     if (!body.contents) {
       this.alertService.error('댓글 내용이 없습니다.');
@@ -192,5 +199,9 @@ export class MeetingDetailComponent implements OnInit {
       this.alertService.success('북마크가 설정되었습니다.');
       this.userService.addSchedule(this.Data);
     }
+  }
+
+  fbShare() {
+    this.fbShareService.share(environment.homeUrl + '/meetind/detail/' + this.Data['no']);
   }
 }

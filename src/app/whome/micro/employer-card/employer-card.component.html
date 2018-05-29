@@ -70,6 +70,10 @@
       <h5>상세요건</h5>
       <p [innerHtml]="record['detail']"></p>
     </li>
+    <li>
+      <h5>전화</h5>
+      <p>{{ record['hp'] }}</p>
+    </li>
   </div>
 
   <h4>현장 정보</h4>
@@ -87,12 +91,8 @@
       <p>{{ record['manager-name'] }}</p>
     </li>
     <li>
-      <h5>전화</h5>
-      <p>{{ record['hp'] }}</p>
-    </li>
-    <li>
-      <h5>핸드폰</h5>
-      <p>{{ record['cp'] }}</p>
+      <h5>담담자 전화</h5>
+      <p>{{ record['manager-contact'] }}</p>
     </li>
   </div>
 </app-popup>

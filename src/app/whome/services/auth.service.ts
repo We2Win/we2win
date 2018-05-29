@@ -103,11 +103,9 @@ export class AuthService {
 
   isAdministrator(): boolean {
     const info = this.jwtHelper.decodeToken(this.getToken());
-
     if (info['user_level'] === 'ADMIN') {
       return true;
     }
-
     return false;
   }
 
@@ -117,7 +115,11 @@ export class AuthService {
 
   getUserInfo(): UserInfo {
     // console.log(this.getToken());
-    return this.jwtHelper.decodeToken(this.getToken());
+    if (this.isAuthenticated()) {
+      return this.jwtHelper.decodeToken(this.getToken());
+    } else {
+      return new UserInfo();
+    }
   }
 
   getUserInfoDetail(info) {

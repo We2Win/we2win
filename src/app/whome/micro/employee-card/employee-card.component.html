@@ -55,10 +55,6 @@
       <p>{{ record['email'] }}</p>
     </li>
     <li>
-      <h5>홈페이지</h5>
-      <p>{{ record['homepage'] }}</p>
-    </li>
-    <li>
       <h5>집전화</h5>
       <p>{{ record['hp'] }}</p>
     </li>
@@ -68,7 +64,7 @@
     </li>
     <li>
       <h5>가능 기간</h5>
-      <p>{{ record['available-start'] + '-' + record['available-end'] }}</p>
+      <p>{{ record['available-start'].slice(0, 10) + '-' + record['available-end'].slice(0, 10) }}</p>
     </li>
     <li>
       <h5>경력</h5>
@@ -83,29 +79,13 @@
       <p>{{ record['address'] }}</p>
     </li>
     <li>
-      <h5>인맥</h5>
-      <p>{{ record['networking'] + '명' }}</p>
-    </li>
-    <li>
       <h5>자기소개</h5>
       <p [innerHtml]="record['intro']"></p>
     </li>
   </div>
 
-  <h4>현장 정보</h4>
+  <h4>연락처</h4>
   <div>
-    <li>
-      <h5>현장명</h5>
-      <p>{{ record['location-name'] }}</p>
-    </li>
-    <li>
-      <h5>소재지</h5>
-      <p>{{ record['location-address'] }}</p>
-    </li>
-    <li>
-      <h5>담당자 정보</h5>
-      <p>{{ record['manager-name'] }}</p>
-    </li>
     <li>
       <h5>전화</h5>
       <p>{{ record['hp'] }}</p>

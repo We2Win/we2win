@@ -187,6 +187,11 @@ export class InfoDetailComponent implements OnInit {
   }
 
   addComment() {
+    if (!this.authService.isAuthenticated()) {
+      this.alertService.error('로그인 해주세요.');
+      return false;
+    }
+
     const body = {
       'c-id': this.Data['c-id'],
       'u-id': this.userInfo['user_id'],
