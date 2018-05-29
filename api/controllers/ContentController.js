@@ -240,7 +240,6 @@ module.exports.getEmployers = getEmployers;
 
 const confirmEmployees = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  console.log('req.params: ', req.params);
 
   Employee.update({
     'confirm': 1
@@ -257,14 +256,13 @@ module.exports.confirmEmployees = confirmEmployees;
 
 const confirmEmployers = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  console.log('req.params: ', req.params);
 
   Employer.update({
     'confirm': 1
   }, {
     where: {
       'c-id': {
-        // [Sequelize.Op.or]: req.body
+        [Sequelize.Op.or]: req.body
       }
     }
   }).then(content => {
