@@ -20,7 +20,9 @@ export class EmployeeCardComponent implements OnInit {
 
   ngOnInit() {
     this.imageUrl = environment.bucket.downloadUrl + this.record['master-image'];
-    this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
   }
 
+  viewPopup() {
+    this._elementRef.nativeElement.querySelector('app-popup').classList.add('show');
+  }
 }
