@@ -264,7 +264,7 @@ const confirmEmployers = async function (req, res) {
   }, {
     where: {
       'c-id': {
-        [Sequelize.Op.or]: req.body
+        // [Sequelize.Op.or]: req.body
       }
     }
   }).then(content => {
