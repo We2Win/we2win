@@ -154,6 +154,7 @@ app-popup h5 {
   line-height: 200%;
   font-weight: 400;
   margin: 0;
+  flex: none;
 }
 
 app-popup p {

@@ -47,7 +47,7 @@
           <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
         </label>
         <div class="editorContainer">
-          <p class="shortener">{{ Data['detail'] }}</p>
+          <p class="shortener" [innerHtml]="Data['detail']"></p>
         </div>
       </div>
     </article>
