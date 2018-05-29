@@ -20,7 +20,7 @@ export class NaverService {
   }
 
   check() {
-    window.addEventListener('load', () => {
+    // window.addEventListener('load', () => {
       console.log('starting..');
       this.Naver.getLoginStatus(status => {
         if (status) {
@@ -40,7 +40,7 @@ export class NaverService {
           console.log('callback 처리에 실패하였습니다.');
         }
       });
-    });
+    // });
   }
 
   getUrl() {
