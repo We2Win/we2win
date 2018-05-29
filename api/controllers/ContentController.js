@@ -303,10 +303,11 @@ const getDashBoardData = async function (req, res) {
 module.exports.getDashBoardData = getDashBoardData;
 
 const getContentsDetail = async function (req, res) {
+  let userInfo;
   if(req.headers['authorization']) {
-    const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
   } else {
-    const userInfo = false;
+    userInfo = false;
   }
 
   res.setHeader('Content-Type', 'application/json');

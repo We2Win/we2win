@@ -53,7 +53,7 @@ export class SiteDetailComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private contentsService: ContentsService,
     private postingService: PostingService,
-    private auth: AuthService,
+    private authService: AuthService,
     private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router,
@@ -80,7 +80,9 @@ export class SiteDetailComponent implements OnInit {
       }
     );
 
-    this.userInfo = this.auth.getUserInfo();
+    if (this.authService.isAuthenticated()) {
+      this.userInfo = this.authService.getUserInfo();
+    }
   }
 
   updateDetail() {

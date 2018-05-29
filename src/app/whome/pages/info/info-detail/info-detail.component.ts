@@ -55,7 +55,6 @@ export class InfoDetailComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private contentsService: ContentsService,
     private postingService: PostingService,
-    private auth: AuthService,
     private alertService: AlertService,
     private userService: UserService,
     private authService: AuthService,
@@ -85,7 +84,9 @@ export class InfoDetailComponent implements OnInit {
       }
     );
 
-    this.userInfo = this.auth.getUserInfo();
+    if (this.authService.isAuthenticated()) {
+      this.userInfo = this.authService.getUserInfo();
+    }
   }
 
   updateDetail() {
