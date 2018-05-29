@@ -1,3 +1,5 @@
+@import "//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css";
+
 @keyframes intro {
   50% {
     transform: scale(1.3);

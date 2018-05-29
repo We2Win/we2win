@@ -259,18 +259,20 @@ module.exports.confirmEmployees = confirmEmployees;
 const confirmEmployers = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  Employer.update({
-    'confirm': req.body.confirm
-  }, {
-    where: {
-      'c-id': {
-        [Sequelize.Op.or]: req.body.array
-      }
-    }
-  }).then(content => {
-    console.log(content['c-id']);
-    return ReS(res, content);
-  });
+  if (req.body.array.length) {
+    Employer.update({
+      'confirm': req.body.confirm
+    }, {
+        where: {
+          'c-id': {
+            [Sequelize.Op.or]: req.body.array
+          }
+        }
+      }).then(content => {
+        console.log(content['c-id']);
+        return ReS(res, content);
+      });
+  }
 
   return false;
 }

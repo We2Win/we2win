@@ -85,6 +85,8 @@ export class EmployerComponent implements OnInit {
     this.contentsService.confirmEmployers(this.selectedList, true).subscribe(
       data => {
         this.alertService.success('승인되었습니다.');
+        this.selectedList = [];
+        this.getList();
       }
     );
   }
@@ -93,6 +95,8 @@ export class EmployerComponent implements OnInit {
     this.contentsService.confirmEmployers(this.selectedList, false).subscribe(
       data => {
         this.alertService.success('승인 해제되었습니다.');
+        this.selectedList = [];
+        this.getList();
       }
     );
   }
