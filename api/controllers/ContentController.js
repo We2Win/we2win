@@ -569,7 +569,6 @@ const getSimplesList = async function (req, res) {
       });
       break;
     case 'employee':
-      break;
       Employee.findAll({
         offset: id,
         limit: 8,
@@ -580,6 +579,7 @@ const getSimplesList = async function (req, res) {
       }).then(content => {
         return ReS(res, content);
       });
+      break;
     case 'employer':
       Employer.findAll({
         offset: id,
