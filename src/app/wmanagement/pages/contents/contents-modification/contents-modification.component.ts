@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { setInterval } from 'timers';
 import { Report } from '../../../models/report';
 import { PutDataService } from '../../../templates/put-data.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-contents-modification',
@@ -131,6 +132,7 @@ export class ContentsModificationComponent implements OnInit {
     private contentsService: ContentsService,
     private uploadService: UploadFileService,
     private putDataService: PutDataService,
+    private alertService: AlertService,
     private router: Router,
     private http: HttpClient,
     private elementRef: ElementRef
@@ -505,11 +507,11 @@ export class ContentsModificationComponent implements OnInit {
           this.inputs[columnName] = name;
           console.log(this.inputs);
           this.uploadedFiles[columnName] = '-done';
-          // alert('업로드 되었습니다.');
+          // this.alertService.info('업로드 되었습니다.');
         }
         );
     } else {
-      alert('선택한 파일이 없습니다.');
+      this.alertService.info('선택한 파일이 없습니다.');
     }
   }
 
@@ -525,7 +527,7 @@ export class ContentsModificationComponent implements OnInit {
     if (this.forms[this.selectedData.type].valid) {
       this.putData(this.selectedData);
     } else {
-      alert('양식이 모두 입력되지 않았습니다.');
+      this.alertService.info('양식이 모두 입력되지 않았습니다.');
     }
   }
 
@@ -543,12 +545,12 @@ export class ContentsModificationComponent implements OnInit {
     this.contentsService.updateContent(this.engType[this.selectedData.type], selectedData)
       .subscribe(
       data => {
-        alert((data) ? '컨텐츠가 수정되었습니다.' : '오류가 발생했습니다.');
+        this.alertService.info((data) ? '컨텐츠가 수정되었습니다.' : '오류가 발생했습니다.');
         this.updateContents(this.selectedData.type);
         console.log(data);
       },
       error => {
-        alert('불러오기에 실패하였습니다.');
+        this.alertService.info('불러오기에 실패하였습니다.');
         console.log('error: ', error);
       }
       );

@@ -7,6 +7,7 @@ import { UploadFileService } from '../../../services/upload-file.service';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { PutDataService } from '../../../templates/put-data.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-contents-registration',
@@ -111,6 +112,7 @@ export class ContentsRegistrationComponent implements OnInit {
     private contentsService: ContentsService,
     private uploadService: UploadFileService,
     private putDataService: PutDataService,
+    private alertService: AlertService,
     private router: Router,
     private http: HttpClient,
     private elementRef: ElementRef
@@ -379,11 +381,11 @@ export class ContentsRegistrationComponent implements OnInit {
           this.inputs[columnName] = name;
           console.log(this.inputs);
           this.uploadedFiles[columnName] = '-done';
-          // alert('업로드 되었습니다.');
+          // this.alertService.info('업로드 되었습니다.');
         }
         );
     } else {
-      alert('선택한 파일이 없습니다.');
+      this.alertService.info('선택한 파일이 없습니다.');
     }
   }
 
@@ -395,7 +397,7 @@ export class ContentsRegistrationComponent implements OnInit {
     if (this.forms[this.selectedData.type].valid) {
       this.postData(this.selectedData);
     } else {
-      alert('양식이 모두 입력되지 않았습니다.');
+      this.alertService.info('양식이 모두 입력되지 않았습니다.');
     }
   }
 
@@ -404,11 +406,11 @@ export class ContentsRegistrationComponent implements OnInit {
     this.contentsService.create(selectedData)
       .subscribe(
       data => {
-        alert((data) ? '컨텐츠가 등록되었습니다.' : '오류가 발생했습니다.');
+        this.alertService.info((data) ? '컨텐츠가 등록되었습니다.' : '오류가 발생했습니다.');
         console.log(data);
       },
       error => {
-        alert('컨텐츠 등록에 실패하였습니다.');
+        this.alertService.info('컨텐츠 등록에 실패하였습니다.');
         console.log('error: ', error);
       }
       );
