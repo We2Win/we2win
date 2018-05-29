@@ -513,6 +513,7 @@ const createEmployee = async function (body) {
   console.log('createEmployee(): body: ', JSON.stringify(body));
 
   [err, content] = await to(Employee.create(body));
+  console.log('err: ', err);
   if (err) TE('생성 중 오류가 발생했습니다.');
   return content;
 }
