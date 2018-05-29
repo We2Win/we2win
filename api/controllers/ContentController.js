@@ -303,7 +303,11 @@ const getDashBoardData = async function (req, res) {
 module.exports.getDashBoardData = getDashBoardData;
 
 const getContentsDetail = async function (req, res) {
-  const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  if(req.headers['authorization']) {
+    const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  } else {
+    const userInfo = false;
+  }
 
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
@@ -352,7 +356,7 @@ const getContentsDetail = async function (req, res) {
       }
     });
 
-    if (bookmarkTypes[req.params.page]) {
+    if (bookmarkTypes[req.params.page] && userInfo) {
       // console.log('searching bookmark...');
       bookmarkTypes[req.params.page].findOne({
         where: {
