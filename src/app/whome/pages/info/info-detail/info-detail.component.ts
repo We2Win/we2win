@@ -14,6 +14,7 @@ import { InfoCardComponent } from '../../../micro/info-card/info-card.component'
 import { AlertService } from '../../../services/alert.service';
 import { UserInfo } from '../../../models/userInfo';
 import { UserService } from '../../../services/user.service';
+import { FbShareService } from '../../../services/fb-share.service';
 
 @Component({
   selector: 'app-info-detail',
@@ -58,6 +59,7 @@ export class InfoDetailComponent implements OnInit {
     private alertService: AlertService,
     private userService: UserService,
     private authService: AuthService,
+    private fbShareService: FbShareService,
     private route: ActivatedRoute,
     private router: Router,
     private meta: Meta,
@@ -257,6 +259,11 @@ export class InfoDetailComponent implements OnInit {
       this.alertService.success('북마크가 설정되었습니다.');
       this.userService.addBookmark(this.Data);
     }
+  }
+
+
+  fbShare() {
+    this.fbShareService.share(environment.homeUrl + '/info/report/' + this.Data['no']);
   }
 }
 

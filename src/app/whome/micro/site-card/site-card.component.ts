@@ -54,4 +54,8 @@ export class SiteCardComponent implements OnInit {
       this.userService.addBookmark(this.record);
     }
   }
+
+  fbShare() {
+    this.fbShareService.share(environment.homeUrl + '/site/' + this.record['s-type'] + '/' + this.record['no']);
+  }
 }

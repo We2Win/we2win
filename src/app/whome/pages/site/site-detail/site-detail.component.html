@@ -17,8 +17,8 @@
       </div>
       <app-button>담당자 | {{Data['manager-name']}} | {{Data['manager-contact']}}</app-button>
       <div id="optionBar">
-        <img src="/assets/img/icon_bookmark_black.png">
-        <img src="/assets/img/icon_facebook_black.png">
+        <img id="bookmark" (click)="bookmark()" src="/assets/img/icon_bookmark_black.png">
+        <img (click)="fbShare()" src="/assets/img/icon_facebook_black.png">
       </div>
     </div>
   </div>

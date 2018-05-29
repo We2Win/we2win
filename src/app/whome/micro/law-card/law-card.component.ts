@@ -67,7 +67,7 @@ export class LawCardComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '//report' + this.record['id']);
+    this.alertService.warn('법률 및 정책 파일은 공유할 수 없습니다.');
   }
 
   download() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ElementRef, Input } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +13,8 @@ import { AuthService } from '../../../services/auth.service';
 import { SiteCardComponent } from '../../../micro/site-card/site-card.component';
 import { AlertService } from '../../../services/alert.service';
 import { UserInfo } from '../../../models/userInfo';
+import { FbShareService } from '../../../services/fb-share.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-site-detail',
@@ -29,6 +31,7 @@ export class SiteDetailComponent implements OnInit {
   selectedNum = 1;
   showCharts = true;
   showMoreReport = false;
+  isBookmarked = false;
 
   userInfo = new UserInfo();
   // userInfo;
@@ -51,9 +54,12 @@ export class SiteDetailComponent implements OnInit {
 
   constructor(
     private viewContainerRef: ViewContainerRef,
+    private _elementRef: ElementRef,
     private contentsService: ContentsService,
     private postingService: PostingService,
+    private userService: UserService,
     private authService: AuthService,
+    private fbShareService: FbShareService,
     private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router,
@@ -229,5 +235,30 @@ export class SiteDetailComponent implements OnInit {
 
   showMore(child) {
     child._elementRef.nativeElement.classList.add('show');
+  }
+
+  bookmark() {
+    if (!this.authService.isAuthenticated()) {
+      this.alertService.error('로그인 하셔야 북마크 하실 수 있습니다.');
+    }
+    const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
+
+    if (this.isBookmarked) {
+      this.isBookmarked = false;
+      bookmark.src = '/assets/img/icon_bookmark_black.png';
+      bookmark.classList.remove('selected');
+      this.alertService.warn('북마크가 해제되었습니다.');
+      this.userService.removeBookmark(this.Data);
+    } else {
+      this.isBookmarked = true;
+      bookmark.src = '/assets/img/icon_bookmark_black_selected.png';
+      bookmark.classList.add('selected');
+      this.alertService.success('북마크가 설정되었습니다.');
+      this.userService.addBookmark(this.Data);
+    }
+  }
+
+  fbShare() {
+    this.fbShareService.share(environment.homeUrl + '/site/' + this.Data['s-type'] + '/' + this.Data['no']);
   }
 }

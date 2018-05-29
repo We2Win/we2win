@@ -9,6 +9,7 @@ import { PostItem } from '../../../models/post-item';
 import { AuthService } from '../../../services/auth.service';
 import { News } from '../../../models/news';
 import { Meta } from '@angular/platform-browser';
+import { FbShareService } from '../../../services/fb-share.service';
 
 @Component({
   selector: 'app-news-detail',
@@ -30,6 +31,7 @@ export class NewsDetailComponent implements OnInit {
   constructor(
     private viewContainerRef: ViewContainerRef,
     private contentsService: ContentsService,
+    private fbShareService: FbShareService,
     private route: ActivatedRoute,
     private postingService: PostingService,
     private auth: AuthService,
@@ -87,6 +89,10 @@ export class NewsDetailComponent implements OnInit {
           new PostItem(NewsCardComponent, records[num]));
       }
     }
+  }
+
+  fbShare() {
+    this.fbShareService.share(environment.homeUrl + '/site/news/' + this.Data['no']);
   }
 
 }
