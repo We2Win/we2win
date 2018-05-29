@@ -100,7 +100,11 @@ export class ContentsService {
     return this.http.post(environment.apiUrl + '/mng/employers', body);
   }
 
-  confirmEmployees(body) {
+  confirmEmployees(_body, confirm) {
+    const body = {
+      confirm: confirm,
+      array: _body
+    };
     return this.http.post(environment.apiUrl + '/mng/employees', body);
   }
 
