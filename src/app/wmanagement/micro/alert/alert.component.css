@@ -1,4 +1,4 @@
-@import "//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css";
+/* @import '../../../../assets/css/bootstrap.css'; */
 
 @keyframes intro {
   50% {
@@ -29,6 +29,7 @@ div {
   border-radius: 0;
   z-index: 100;
   text-align: center;
+  background: rgb(230, 227, 192);
   /* transform: scale(1);
   animation: intro 0.5s;
   animation-fill-mode: both;
