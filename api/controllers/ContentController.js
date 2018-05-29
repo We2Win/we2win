@@ -238,7 +238,7 @@ const getEmployers = async function (req, res) {
 }
 module.exports.getEmployers = getEmployers;
 
-const confirmEmployee = async function (req, res) {
+const confirmEmployees = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
 
@@ -253,9 +253,9 @@ const confirmEmployee = async function (req, res) {
       return ReS(res, content);
     });
 }
-module.exports.confirmEmployee = confirmEmployee;
+module.exports.confirmEmployees = confirmEmployees;
 
-const confirmEmployer = async function (req, res) {
+const confirmEmployers = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
 
@@ -263,14 +263,16 @@ const confirmEmployer = async function (req, res) {
     'confirm': 1
   }, {
     where: {
-      'c-id': req.body.id
+      'c-id': {
+        [Sequelize.Op.or]: req.body
+      }
     }
   }).then(content => {
     console.log(content['c-id']);
     return ReS(res, content);
   });
 }
-module.exports.confirmEmployer = confirmEmployer;
+module.exports.confirmEmployers = confirmEmployers;
 
 const getCount = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');

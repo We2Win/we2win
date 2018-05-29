@@ -1,9 +1,9 @@
-<span class="cell">
-  <input type="checkbox" />
-</span>
-<span class="cell"> {{ record['no'] }} </span>
-<span class="cell">{{ record['part-name'] }}</span>
-<span class="cell">{{ record['personnel'] }}</span>
-<span class="cell">{{ record['method'] }}</span>
-<span class="cell" *ngIf="record['apply-start']">{{ record['apply-start'].slice(0, 10) + ' ~ ' + record['apply-end'].slice(0, 10) }}</span>
-<span class="cell">{{ (record['confirm'])? '승인' : '승인신청' }}</span>
+  <span class="cell" (click)="checkBox()">
+    <input type="checkbox" [checked]="checked" />
+  </span>
+  <span class="cell" (click)="checkBox()"> {{ record['no'] }} </span>
+  <span class="cell" (click)="checkBox()">{{ record['part-name'] }}</span>
+  <span class="cell" (click)="checkBox()">{{ record['personnel'] }}</span>
+  <span class="cell" (click)="checkBox()">{{ record['method'] }}</span>
+  <span class="cell" (click)="checkBox()" *ngIf="record['apply-start']">{{ record['apply-start'].slice(0, 10) + ' ~ ' + record['apply-end'].slice(0, 10) }}</span>
+  <span class="cell" (click)="checkBox()">{{ (record['confirm'])? '승인' : '미승인' }}</span>

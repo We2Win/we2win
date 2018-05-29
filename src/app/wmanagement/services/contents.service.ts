@@ -30,6 +30,7 @@ export class ContentsService {
     return this.http.put(environment.apiUrl + '/contents', data)
       .map((res: any) => res);
   }
+  
   getWeeklyList(page) {
     return this.http.get(environment.apiUrl + '/contents/' + page + '/weekly')
       .map((res: any) => res);
@@ -91,6 +92,14 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  confirmEmployers(body) {
+    return this.http.post(environment.apiUrl + '/mng/employers', body);
+  }
+
+  confirmEmployees(body) {
+    return this.http.post(environment.apiUrl + '/mng/employees', body);
+  }
+
   create(_data: any) {
     // const bodyString = JSON.stringify(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -100,6 +109,7 @@ export class ContentsService {
     // .map((res: User) => JSON.stringify(res))
     // .catch((error: any) => Observable.throw(error.message));
   }
+
   update(_data: any, type: string) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });

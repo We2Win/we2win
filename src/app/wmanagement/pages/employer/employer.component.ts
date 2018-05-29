@@ -6,6 +6,7 @@ import { TableComponent } from '../../micro/table/table.component';
 import { MypostDirective } from '../../directives/mypost.directive';
 import { EmployerRecordComponent } from '../../micro/employer-record/employer-record.component';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import { RecordService } from '../../services/record.service';
 
 @Component({
   selector: 'app-employer',
@@ -15,11 +16,13 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
     '../pages.css'
   ],
   providers: [
-    PostingService
+    PostingService,
+    RecordService
   ]
 })
 export class EmployerComponent implements OnInit {
   List: Array<object>;
+  selectedList: Array<string> = [];
   total: number;
 
   @ViewChild(TableComponent)
@@ -33,10 +36,28 @@ export class EmployerComponent implements OnInit {
 
   constructor(
     private contentsService: ContentsService,
-    private postingService: PostingService
+    private postingService: PostingService,
+    private recordService: RecordService
   ) { }
 
   ngOnInit() {
+    this.getList();
+    this.recordService.change.subscribe(
+      data => {
+        if (data.checked) {
+          this.selectedList.push(data['c-id']);
+        } else {
+          // remove c-id from selectedList
+          const index = this.selectedList.indexOf(data['c-id']);
+          if (index !== -1) {
+            this.selectedList.splice(index, 1);
+          }
+        }
+      }
+    );
+  }
+
+  getList() {
     this.contentsService.getEmployerList().subscribe(
       data => {
         this.List = data;
@@ -48,12 +69,18 @@ export class EmployerComponent implements OnInit {
   }
 
   addRecord(records) {
+    const ref = this.mypostDirective.viewContainerRef;
+    ref.clear();
     // tslint:disable-next-line:forin
     for (const record in records) {
       console.log('record: ', records[record]);
-      this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
+      this.postingService.loadComponent(ref,
         new PostItem(EmployerRecordComponent, records[record]));
     }
+  }
+
+  confirm() {
+    this.contentsService.confirmEmployers(this.selectedList);
   }
 
   viewPopup() {

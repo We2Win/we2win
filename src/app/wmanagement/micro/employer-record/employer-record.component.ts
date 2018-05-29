@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, ElementRef, EventEmitter } from '@angular/core';
+import { RecordService } from '../../services/record.service';
 
 @Component({
   selector: 'app-employer-record',
@@ -7,10 +8,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EmployerRecordComponent implements OnInit {
   @Input('record') record;
+  checked = false;
 
-  constructor() { }
+  constructor(
+    private recordService: RecordService
+  ) { }
 
   ngOnInit() {
   }
+
+  checkBox() {
+    this.checked = !this.checked;
+    this.recordService.emitChange(this.record['c-id'], this.checked);
+  }
+
+  
 
 }
