@@ -1,26 +1,9 @@
 <div id="header">
   <section id="titleBar">
     <h1>계정 관리</h1>
-    <h2 (click)="viewPopup();">엑셀 다운로드</h2>
+    <h2 (click)="download();">엑셀 다운로드</h2>
   </section>
 </div>
-
-<app-popup #popupCsv>
-  <h1>엑셀파일 다운로드</h1>
-  <li>
-    <h5>기간</h5>
-    <p></p>
-  </li>
-  <li>
-    <h5>파일</h5>
-    <p>
-      <li (click)="download('all')">전체파일 다운로드</li>
-      <li>회원정보 다운로드</li>
-      <li>컨텐츠 구성 다운로드</li>
-      <li>사용자 활동 다운로드</li>
-    </p>
-  </li>
-</app-popup>
 
 <section>
   <article>

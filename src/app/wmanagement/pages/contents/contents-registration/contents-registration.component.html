@@ -171,6 +171,15 @@
             <input type="file" (change)="selectFile($event, 'slave-image5')" #I6>
             <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image5']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image5')">{{uploadedFiles['slave-image5']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
+          <li>
+            <p>JPG, GIF, PNG 이미지 파일을 올릴 수 있습니다.</p>
+          </li>
+          <li>
+            <p><b>517px/310px</b>의 사이즈를 등록해 주십시오.</p>
+          </li>
+          <li>
+            <p>저작권자 등 원 권리자의 허락을 받지 않은 이미지의 수정 및 저작권 등 다른 사람의 권리 침해, 명예를 훼손하는 이미지는 이용약관 및 관련 법률에 의해 제재를 받으실 수 있습니다.</p>
+          </li>
         </form>
       </app-popup>
 
@@ -376,6 +385,16 @@
             <app-button accept="image/*" [ngClass]="{disabled: inputs['slave-image1']!=='파일 없음'}" (click)="upload(selectedData.type, 'slave-image1')">{{uploadedFiles['slave-image1']==='-done'?'등록 완료':'사진 등록'}}</app-button>
           </li>
         </form>
+          <li>
+            <p>JPG, GIF, PNG 이미지 파일을 올릴 수 있습니다.</p>
+          </li>
+          <li>
+            <p>
+              <b>517px/310px</b>의 사이즈를 등록해 주십시오.</p>
+          </li>
+          <li>
+            <p>저작권자 등 원 권리자의 허락을 받지 않은 이미지의 수정 및 저작권 등 다른 사람의 권리 침해, 명예를 훼손하는 이미지는 이용약관 및 관련 법률에 의해 제재를 받으실 수 있습니다.</p>
+          </li>
       </app-popup>
 
       <form [formGroup]="lawForm" id="law" *ngSwitchCase="'법률 및 정책'" (ngSubmit)="onSubmit()" novalidate>
@@ -403,7 +422,7 @@
         </li>
         <li class="submitBar">
           <button [type]="'submit'">등록하기</button>
-          <button onclick="event.preventDefault()" (click)="lawDetail.showPopup(); preview();">미리보기</button>          
+          <button onclick="event.preventDefault()" (click)="lawDetail.showPopup(); preview();">미리보기</button>
         </li>
       </form>
 
@@ -413,6 +432,11 @@
             <h2 class="subTitleBar">파일 등록</h2>
             <input type="file" (change)="selectFile($event, 'file')" #I9>
             <app-button [ngClass]="{disabled: inputs['file']!=='파일 없음'}" (click)="upload(selectedData.type, 'file')">{{uploadedFiles['file']==='-done'?'등록 완료':'파일 등록'}}</app-button>
+          </li>
+          <li>
+            <p>JPG, GIF, PNG 이미지 파일을 올릴 수 있습니다.</p>
+            <p>517px/310px의 사이즈를 등록해 주십시오.</p>
+            <p>저작권자 등 원 권리자의 허락을 받지 않은 이미지의 수정 및 저작권 등 다른 사람의 권리 침해, 명예를 훼손하는 이미지는 이용약관 및 관련 법률에 의해 제재를 받으실 수 있습니다.</p>
           </li>
         </form>
       </app-popup>
@@ -493,6 +517,16 @@
             <input type="file" (change)="selectFile($event, 'master-image')" #I10>
             <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['master-image'] && uploadedFiles['master-image']==='-done'}"
               (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+          </li>
+          <li>
+            <p>JPG, GIF, PNG 이미지 파일을 올릴 수 있습니다.</p>
+          </li>
+          <li>
+            <p>
+              <b>358px/507px</b>의 사이즈를 등록해 주십시오.</p>
+          </li>
+          <li>
+            <p>저작권자 등 원 권리자의 허락을 받지 않은 이미지의 수정 및 저작권 등 다른 사람의 권리 침해, 명예를 훼손하는 이미지는 이용약관 및 관련 법률에 의해 제재를 받으실 수 있습니다.</p>
           </li>
         </form>
       </app-popup>
@@ -654,6 +688,16 @@
             <input type="file" (change)="selectFile($event, 'master-image')" #I11>
             <app-button accept="image/*" [ngClass]="{disabled: !uploadedFiles['master-image'] && uploadedFiles['master-image']==='-done'}"
               (click)="upload(selectedData.type, 'master-image')">{{uploadedFiles['master-image']==='-done'?'등록 완료':'사진 등록'}}</app-button>
+          </li>
+          <li>
+            <p>JPG, GIF, PNG 이미지 파일을 올릴 수 있습니다.</p>
+          </li>
+          <li>
+            <p>
+              <b>70px/70px</b>의 사이즈를 등록해 주십시오.</p>
+          </li>
+          <li>
+            <p>저작권자 등 원 권리자의 허락을 받지 않은 이미지의 수정 및 저작권 등 다른 사람의 권리 침해, 명예를 훼손하는 이미지는 이용약관 및 관련 법률에 의해 제재를 받으실 수 있습니다.</p>
           </li>
         </form>
       </app-popup>

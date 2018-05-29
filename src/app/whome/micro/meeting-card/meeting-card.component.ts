@@ -37,6 +37,12 @@ export class MeetingCardComponent implements OnInit {
     return dateStr.slice(0, 10).replace(/\-/gi, '.');
   }
 
+  isSelf() {
+    if (window.location.pathname === '/meeting/detail/' + this.record['no']) {
+      this.alertService.info('현재 컨텐츠와 동일한 컨텐츠입니다.');
+    }
+  }
+
   bookmark() {
     if (!this.authService.isAuthenticated()) {
       this.alertService.error('로그인 하셔야 북마크 하실 수 있습니다.');

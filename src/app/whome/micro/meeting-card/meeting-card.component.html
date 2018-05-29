@@ -1,4 +1,4 @@
-<div class="card" [routerLink]="'/meeting/detail/'+record['no']">
+<div class="card" (click)="isSelf()" [routerLink]="'/meeting/detail/'+record['no']">
   <div id="levelBar">{{ record['level'] }}</div>
   <div id="imgFrame">
     <img [src]="imageUrl" alt="미팅 사진">

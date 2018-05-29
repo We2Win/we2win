@@ -8,6 +8,9 @@
 app-popup /deep/ section {
   padding: 0;
 }
+app-popup /deep/ p {
+  font-size: 11px;
+}
 
 .spanTitle {
   background: #ddd;

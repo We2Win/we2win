@@ -5,6 +5,10 @@
   padding: 1em;
 }
 
+app-popup /deep/ p {
+  font-size: 11px;
+}
+
 .spanTitle {
   background: #ddd;
   border: 1px solid #ccc;

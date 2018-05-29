@@ -22,6 +22,17 @@ export class AccountComponent implements OnInit {
   orderByLevel = 'ALL';
   orderByAmount = 'ALL';
 
+  categoryName = [{
+    'u-id': '아이디',
+    'name': '이름',
+    'email': '이메일',
+    'level': '등급',
+    'point': '포인트',
+    'level-start': '사용 시작일',
+    'level-end': '사용 종료일',
+    'amount': '가용 자산'
+  }];
+
   @ViewChild(TableComponent)
   private tableComponent: TableComponent;
 
@@ -103,36 +114,9 @@ export class AccountComponent implements OnInit {
 
   }
 
-  download(type) {
-    switch (type) {
-      case 'all':
-        const data = [
-          {
-            name: 'Test 1',
-            age: 13,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-          {
-            name: 'Test 2',
-            age: 11,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-          {
-            name: 'Test 4',
-            age: 10,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-        ];
-
-        // tslint:disable-next-line:no-unused-expression
-        new Angular2Csv(data, 'My Report');
-        break;
-    }
+  download() {
+    const name = 'We2Win_계정관리_' + (new Date().toISOString().slice(0, 10));
+    // tslint:disable-next-line:no-unused-expression
+    new Angular2Csv(Object.assign(this.categoryName, this.List), name);
   }
 }

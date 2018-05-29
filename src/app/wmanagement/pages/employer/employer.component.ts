@@ -21,10 +21,15 @@ import { AlertService } from '../../services/alert.service';
     RecordService
   ]
 })
+
 export class EmployerComponent implements OnInit {
   List: Array<object>;
   selectedList: Array<string> = [];
   total: number;
+
+  categoryName = [{
+    'no': 'no.',
+  }];
 
   @ViewChild(TableComponent)
   private tableComponent: TableComponent;
@@ -105,36 +110,9 @@ export class EmployerComponent implements OnInit {
     this.popupCsv.showPopup();
   }
 
-  download(type) {
-    switch (type) {
-      case 'all':
-        const data = [
-          {
-            name: 'Test 1',
-            age: 13,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-          {
-            name: 'Test 2',
-            age: 11,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-          {
-            name: 'Test 4',
-            age: 10,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-        ];
-
-        // tslint:disable-next-line:no-unused-expression
-        new Angular2Csv(data, 'My Report');
-        break;
-    }
+  download() {
+    const name = 'We2Win_구인_' + (new Date().toISOString().slice(0, 10));
+    // tslint:disable-next-line:no-unused-expression
+    new Angular2Csv(this.List, name);
   }
 }
