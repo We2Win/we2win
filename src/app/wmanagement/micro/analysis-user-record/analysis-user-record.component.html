@@ -1,14 +1,4 @@
-<span class="cell">
-    <input type="checkbox" />
-</span>
-
-<span class="cell">
-    <div>{{ record['u-id'] }}</div>
-    <div>
-        <span class="edit">EDIT</span>
-        <span class="delete" (click)="deleteUser()">DELETE</span>
-    </div>
-</span>
+<span class="cell">{{ record['u-id'] }}</span>
 <span class="cell">{{ record['name'] }}</span>
 <span class="cell">{{ record['email'] }}</span>
 <span class="cell">

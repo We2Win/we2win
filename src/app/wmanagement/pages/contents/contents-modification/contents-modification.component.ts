@@ -172,31 +172,57 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   updateContents(selected) {
-    // console.log('updateContents(): ', this.engType[selected], selected);
-    this.contentsService.getContentsList(this.engType[selected], 'newly', 'date').subscribe(
-      data => {
-        const titles = [];
-        this.contentNoArr = [];
+    console.log('updateContents(): ', this.engType[selected], selected);
 
-        this.loadedData = data;
-        // tslint:disable-next-line:forin
-        for (const record in this.loadedData) {
-          titles.push(this.loadedData[record]['title']);
-          this.contentNoArr.push(this.loadedData[record]['no']);
+    if (selected === '오프라인 모임') {
+      this.contentsService.getSimplesList(this.engType[selected], 'date').subscribe(
+        data => {
+          const titles = [];
+          this.contentNoArr = [];
+          this.loadedData = data;
+          // tslint:disable-next-line:forin
+          for (const record in this.loadedData) {
+            titles.push(this.loadedData[record]['title']);
+            this.contentNoArr.push(this.loadedData[record]['no']);
+          }
+          if (Object.keys(titles).length !== 0) {
+            this.contents.categories['컨텐츠 제목'] = titles;
+            this.contents.selected = '컨텐츠 제목';
+          } else {
+            this.contents.categories['컨텐츠 제목'] = [];
+            this.contents.selected = '컨텐츠가 없습니다.';
+          }
+          // console.log('updated: ', titles);
+        },
+        error => {
+          console.log('error loading contents');
+        });
+    } else {
+      this.contentsService.getContentsList(this.engType[selected], 'newly', 'date').subscribe(
+        data => {
+          const titles = [];
+          this.contentNoArr = [];
+
+          this.loadedData = data;
+          // tslint:disable-next-line:forin
+          for (const record in this.loadedData) {
+            titles.push(this.loadedData[record]['title']);
+            this.contentNoArr.push(this.loadedData[record]['no']);
+          }
+          if (Object.keys(titles).length !== 0) {
+            this.contents.categories['컨텐츠 제목'] = titles;
+            this.contents.selected = '컨텐츠 제목';
+          } else {
+            this.contents.categories['컨텐츠 제목'] = [];
+            this.contents.selected = '컨텐츠가 없습니다.';
+          }
+          // console.log('updated: ', titles);
+        },
+        error => {
+          console.log('error loading contents');
         }
-        if (Object.keys(titles).length !== 0) {
-          this.contents.categories['컨텐츠 제목'] = titles;
-          this.contents.selected = '컨텐츠 제목';
-        } else {
-          this.contents.categories['컨텐츠 제목'] = [];
-          this.contents.selected = '컨텐츠가 없습니다.';
-        }
-        // console.log('updated: ', titles);
-      },
-      error => {
-        console.log('error loading contents');
-      }
-    );
+      );
+    }
   }
 
   onContentsChange(num) {
