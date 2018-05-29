@@ -23,12 +23,17 @@ export class ContentsService {
   }
 
   getContentsDetail(page, id) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': this.authService.getToken()
-      })
-    };
+    if (this.authService.isAuthenticated()) {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': this.authService.getToken()
+        })
+      };
+    } else {
+      const httpOptions = {};
+    }
+
     return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id, httpOptions)
       .map((res: any) => res);
   }
@@ -49,12 +54,16 @@ export class ContentsService {
   }
 
   getSimplesList(page, sort, id?: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': this.authService.getToken()
-      })
-    };
+    if (this.authService.isAuthenticated()) {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': this.authService.getToken()
+        })
+      };
+    } else {
+      const httpOptions = {};
+    }
     return this.http.get(environment.apiUrl + '/simples/' + page + '/' + sort + '/' + (id || '1'), httpOptions)
       .map((res: any) => res);
   }
@@ -65,12 +74,16 @@ export class ContentsService {
   }
 
   getSimplesDetail(page, id) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': this.authService.getToken()
-      })
-    };
+    if (this.authService.isAuthenticated()) {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': this.authService.getToken()
+        })
+      };
+    } else {
+      const httpOptions = {};
+    }
     return this.http.get(environment.apiUrl + '/detail/' + page + '/' + id, httpOptions)
       .map((res: any) => res);
   }
