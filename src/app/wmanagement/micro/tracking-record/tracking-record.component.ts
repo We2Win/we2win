@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { environment } from '../../../../environments/environment';
+import { Router } from '@angular/router/';
 
 @Component({
   selector: 'app-tracking-record',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tracking-record.component.css']
 })
 export class TrackingRecordComponent implements OnInit {
+  @Input('record') record;
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    console.log('record in trackingRecordComponent: ', this.record);
   }
-
 }

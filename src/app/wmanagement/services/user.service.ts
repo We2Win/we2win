@@ -30,7 +30,7 @@ export class UserService {
   }
 
   deleteUser(user: UserInfo): Observable<UserInfo> {
-    const url = environment.apiUrl + '/mng/users/' + user['user_id'];
+    const url = environment.apiUrl + '/mng/users/' + user['u-id'];
     const bodyString = JSON.stringify(user);
     const httpOptions = {
       headers: new HttpHeaders({

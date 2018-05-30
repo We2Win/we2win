@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-// import { Chart } from 'chart.js';
+import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { PostingService } from '../../services/posting.service';
+import { PostItem } from '../../models/post-item';
+import { TableComponent } from '../../micro/table/table.component';
+import { MypostDirective } from '../../directives/mypost.directive';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import { ContentsService } from '../../services/contents.service';
+import { TrackingRecordComponent } from '../../micro/tracking-record/tracking-record.component';
 
 @Component({
   selector: 'app-tracking',
@@ -7,36 +14,57 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: [
     './tracking.component.css',
     '../pages.css'
-  ]
+  ],
+  providers: [UserService, PostingService]
 })
 export class TrackingComponent implements OnInit {
+  List: Array<object>;
+  total: number;
+  orderByLevel = 'ALL';
+  orderByAmount = 'ALL';
 
-  constructor() { }
+  date = new Date().getFullYear() + '. ' + new Date().getMonth();
+
+  @ViewChild(TableComponent)
+  private tableComponent: TableComponent;
+
+  @ViewChild(MypostDirective)
+  private mypostDirective: MypostDirective;
+
+  @ViewChild('popupCsv') popupCsv;
+
+  postItems: PostItem[];
+
+  constructor(
+    private userService: UserService,
+    private contentService: ContentsService,
+    private postingService: PostingService,
+  ) { }
 
   ngOnInit() {
-    // let canvas: any = document.getElementById('monthly');
-    // const ctx = canvas.getContext('2d');
+    this.updateData(this.orderByLevel, this.orderByAmount);
+  }
 
-    // const dataMonthlyInfo = {
-    //   datasets: [{
-    //     data: [100, 22, 22, 22]
-    //   }],
+  updateData(level, amount, id?: any) {
+    this.contentService.getEmployeeList().subscribe(
+      data => {
+        this.List = data;
+        console.log(this.List);
+        this.total = this.List.length;
+        this.addRecord(this.List);
+      }
+    );
+  }
 
-    //   labels: [
-    //     '전체 컨텐츠 개수',
-    //     '부동산 정보',
-    //     '분양 현황',
-    //     '구인 구직',
-    //     '오프라인 모임'
-    //   ]
-    // };
+  addRecord(records) {
+    const ref = this.mypostDirective.viewContainerRef;
+    ref.clear();
+    // tslint:disable-next-line:forin
+    for (const record in records) {
+      console.log('record: ', records[record]);
 
-    // canvas = document.getElementById('monthly');
-    // const userActivityChart = new Chart(canvas, {
-    //   type: 'bar',
-    //   data: dataMonthlyInfo,
-    //   // options: options
-    // });
-
+      this.postingService.loadComponent(ref,
+        new PostItem(TrackingRecordComponent, records[record]));
+    }
   }
 }

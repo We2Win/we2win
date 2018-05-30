@@ -112,7 +112,8 @@ import { TrackingRecordComponent } from './micro/tracking-record/tracking-record
     AnalysisContentsRecordComponent,
     TemplateChartComponent,
     EmployerRecordComponent,
-    EmployeeRecordComponent
+    EmployeeRecordComponent,
+    TrackingRecordComponent
   ],
   providers: [
     InfoService,

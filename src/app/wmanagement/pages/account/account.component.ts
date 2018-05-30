@@ -86,10 +86,6 @@ export class AccountComponent implements OnInit {
     }
   }
 
-  viewPopup() {
-    this.popupCsv.showPopup();
-  }
-
   changeLevel(event) {
     console.log('changedLevel: ', event);
     this.orderByLevel = event;

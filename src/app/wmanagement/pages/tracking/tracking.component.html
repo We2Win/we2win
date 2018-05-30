@@ -6,15 +6,17 @@
       <app-select [type]="'금액'"></app-select>
       <input class="search" type="text" placeholder="아이디 검색" />
     </header>
-    <app-table [type]="'tracking'"></app-table>
+    <app-table [type]="'tracking'">
+      <ng-container appMypost></ng-container>
+    </app-table>
   </article>
   <article>
     <header>
       <span id="title">월별 신청 그래프</span>
-      <span id="date">2017. 12</span>
+      <span id="date">{{date}}</span>
     </header>
     <div id="horizontalProfile">
-      <img src="/assets/img/icon_employee.png" />
+      <!-- <img src="/assets/img/icon_employee.png" />
       <li>
         <h2>20대 남성</h2>
         <span>김철수</span>
@@ -27,9 +29,12 @@
       <li>
         <h2>희망업무</h2>
         <span>오피스텔</span>
+      </li> -->
+      <li>
+        <h2>분석하기에 충분한 정보가 없습니다.</h2>
       </li>
     </div>
-    <app-chart id="monthly" [type]="'tracking'" [num]="'0'"></app-chart>
+    <!-- <app-chart id="monthly" [type]="'tracking'" [num]="'0'"></app-chart> -->
     <!-- <canvas id="monthly"></canvas> -->
   </article>
 </section>

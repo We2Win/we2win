@@ -13,7 +13,7 @@ export class TableComponent implements OnInit {
     'analysisContents': ['No.', '카테고리', '금액', '제목', '댓글수', '게시일'],
     'employer': ['(check)', 'No.', '업무', '모집인원', '채용방법', '모집기간', '승인여부'],
     'employee': ['(check)', 'No.', '성명', '성별', '나이', '핸드폰', '이메일', '승인여부'],
-    'tracking': ['No.', '아이디', '이름', '이메일', '직종', '금액', '희망 연봉']
+    'tracking': ['No.', '이름', '성별', '나이', '이메일', '직종', '연락처']
   };
 
   constructor(
