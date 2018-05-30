@@ -7,6 +7,7 @@ import { JwtHelper } from 'angular2-jwt';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { UserInfo } from '../models/userInfo';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class UserService {
@@ -14,7 +15,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private jwtHelper: JwtHelper
+    private jwtHelper: JwtHelper,
+    private authService: AuthService
   ) { }
 
   getUserList(level, amount, id?: any) {
@@ -30,9 +32,14 @@ export class UserService {
   deleteUser(user: UserInfo): Observable<UserInfo> {
     const url = environment.apiUrl + '/mng/users/' + user['user_id'];
     const bodyString = JSON.stringify(user);
-    const headers = { headers: { 'Content-Type': 'application/json' } };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
 
-  return this.http.delete<UserInfo>(url, headers)
+  return this.http.delete<UserInfo>(url, httpOptions)
     .map((res: UserInfo) => res);
       // .catch((error: any) => { console.log(error.message); });
   }

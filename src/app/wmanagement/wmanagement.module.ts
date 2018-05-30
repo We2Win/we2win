@@ -51,6 +51,7 @@ import { EmployeeRecordComponent } from './micro/employee-record/employee-record
 import { AnalysisContentRecordComponent } from './micro/analysis-content-record/analysis-content-record.component';
 import { AlertComponent } from './micro/alert/alert.component';
 import { AlertService } from './services/alert.service';
+import { TrackingRecordComponent } from './micro/tracking-record/tracking-record.component';
 
 @NgModule({
   imports: [
@@ -103,6 +104,7 @@ import { AlertService } from './services/alert.service';
     EmployeeRecordComponent,
     AnalysisContentRecordComponent,
     AlertComponent,
+    TrackingRecordComponent,
   ],
   entryComponents: [
     AccountRecordComponent,

@@ -120,15 +120,37 @@ const update = async function (req, res) {
 module.exports.update = update;
 
 const removeUser = async function (req, res) {
+  let userInfo;
+  if (req.headers['authorization']) {
+    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  } else {
+    userInfo = false;
+  }
+
+  User.findOne({
+    where: {
+      'u-id': userInfo['user_id']
+    },
+    attributes: ['level']
+  }).then(data => {
+    console.log('user Data on removeUser(): ', data);
+    if (data['level'] !== 'ADMIN') {
+      console.log('REQUEST FAILED: Not an administrator.');
+      return ReS(res, {
+        message: 'Not an administrator'
+      }, 422);
+    }
+  })
+
   res.setHeader('Content-Type', 'application/json');
 
   if (req.params.id) {
     User.findOne({
         where: {
-          'ID': req.params.id
+          'u-id': req.params.id
         }
       })
-      .then((data) => {
+      .then(data => {
         data.destroy();
         // [err, user] = await to(data.destroy());
         // if (err) return ReE(res, 'error occured trying to delete user');

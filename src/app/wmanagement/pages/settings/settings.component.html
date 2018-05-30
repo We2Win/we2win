@@ -1,8 +1,19 @@
 <section>
-  <article>
+  <!-- <article>
     <h1>나의 계정설정</h1>
-  </article>
+  </article> -->
   <article>
-    <h1>관리자 추가</h1>
+    <header>
+      <h1>관리자 추가</h1>
+      <app-select [type]="'회원 등급'" (change)="changeLevel($event)"></app-select>
+      <app-select [type]="'금액'" (change)="changeAmount($event)"></app-select>
+      <input class="search" type="text" placeholder="아이디 검색" (change)="changeQuery($event)" />
+    </header>
+    <app-table [type]="'account'">
+      <ng-container appMypost></ng-container>
+    </app-table>
+    <li class="submitBar">
+      <button (click)="setAsAdmin()">관리자로 지정</button>
+    </li>
   </article>
 </section>
