@@ -8046,7 +8046,7 @@ var FormComponent = /*@__PURE__*/ (function () {
         var _this = this;
         console.log('executing NaverService: ', __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].naver.callbackUrl);
         // if (!this.naverService.isStarted()) {
-        this.Naver = new window['naver'].LoginWithNaverId({
+        this.Naver = new naver.LoginWithNaverId({
             clientId: __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].naver.clientId,
             isPopup: false,
             // callbackHandle: true,

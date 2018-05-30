@@ -127,7 +127,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     console.log('executing NaverService: ', environment.naver.callbackUrl);
     // if (!this.naverService.isStarted()) {
-      this.Naver = new window['naver'].LoginWithNaverId(
+      this.Naver = new naver.LoginWithNaverId(
         {
           clientId: environment.naver.clientId,
           isPopup: false, /* 팝업을 통한 연동처리 여부 */
