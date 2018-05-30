@@ -21,7 +21,7 @@ export class NaverService {
 
   check() {
     // window.addEventListener('load', () => {
-      console.log('starting..');
+      console.log('starting..', this.Naver);
       this.Naver.getLoginStatus(status => {
         if (status) {
           /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
