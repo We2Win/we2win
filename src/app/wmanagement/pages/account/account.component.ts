@@ -107,7 +107,6 @@ export class AccountComponent implements OnInit {
   }
 
   sendMail() {
-
   }
 
   download() {
