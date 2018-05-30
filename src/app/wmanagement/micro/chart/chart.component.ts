@@ -10,6 +10,7 @@ export class ChartComponent implements OnInit {
   public chartObject;
   @Input() type: string;
   @Input() num: string;
+  @Input() data;
 
   optionA: object = {
     legend: {
@@ -42,9 +43,9 @@ export class ChartComponent implements OnInit {
 
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: [
-            'PLATINUM',
+            'STANDARD',
             'PREMIUM',
-            'STANDARD'
+            'PLATINUM',
           ]
         }
       },
@@ -68,7 +69,7 @@ export class ChartComponent implements OnInit {
         type: 'horizontalBar',
         data: {
           datasets: [{
-            data: ['3000', '1000', '500  ', '1200  ', '300  ']
+            // data: ['3000', '1000', '500  ', '1200  ', '300  ']
           }],
           labels: ['클릭  ', '댓글  ', 'SNS  ', '스크랩  ', '오프라인 모임신청  '],
         },
@@ -318,12 +319,21 @@ export class ChartComponent implements OnInit {
     fillStandard.addColorStop(1, 'rgba(170, 170, 170, 1)');
 
     this.chartData['dashboard'][0].data.datasets[0]['backgroundColor'] =
-      [fillPlatinum, fillPremium, fillStandard];
+      [fillStandard, fillPremium, fillPlatinum];
     this.chartData['analysisContents'][0].data.datasets[0]['backgroundColor'] =
       [fillPlatinum, fillPremium, fillStandard];
 
     try {
-      this.chartObject = new Chart(canvas, this.chartData[this.type][this.num]);
+      setTimeout(() => {
+        console.log('chart data: ', this.data, this.chartData[this.type][this.num]);
+        const dataArr = [];
+        // tslint:disable-next-line:forin
+        for (const i in this.data) {
+          dataArr.push(this.data[i]);
+        }
+        this.chartData[this.type][this.num].data.datasets[0].data = dataArr;
+        this.chartObject = new Chart(canvas, this.chartData[this.type][this.num]);
+      }, 3000);
     } catch (e) {
 
     }

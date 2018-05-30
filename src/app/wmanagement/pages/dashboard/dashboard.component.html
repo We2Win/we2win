@@ -12,7 +12,7 @@
         <span id="title">회원 정보</span>
         <span id="date">{{ date.getFullYear() + '. ' + (date.getMonth()+1) }}</span>
       </header>
-      <app-chart #infoPie id="infoPie" [type]="'dashboard'" [num]="'0'"></app-chart>
+      <app-chart #infoPie id="infoPie" [type]="'dashboard'" [num]="'0'" [data]="data.users"></app-chart>
     </article>
     <article>
       <header>
@@ -53,6 +53,6 @@
       <span id="title">사용자 활동</span>
       <span id="date">{{ date.getFullYear() + '. ' + (date.getMonth()+1) }}</span>
     </header>
-    <app-chart #infoBar id="infoBar" [type]="'dashboard'" [num]="'2'"></app-chart>
+    <app-chart #infoBar id="infoBar" [type]="'dashboard'" [num]="'2'" [data]="data.logs"></app-chart>
   </article>
 </section>
