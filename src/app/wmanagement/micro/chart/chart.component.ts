@@ -333,7 +333,7 @@ export class ChartComponent implements OnInit {
         }
         this.chartData[this.type][this.num].data.datasets[0].data = dataArr;
         this.chartObject = new Chart(canvas, this.chartData[this.type][this.num]);
-      }, 3000);
+      }, 1500);
     } catch (e) {
 
     }
