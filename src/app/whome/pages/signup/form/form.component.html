@@ -10,7 +10,7 @@
           <app-social-button [type]="'google'" (click)="setLoginType('google')">We2Win 로그인</app-social-button>
           <!-- <div id="naverIdLogin"></div> -->
           <!-- <app-social-button id="naverIdLogin" [type]="'naver'" (click)="setLoginType('naver')">네이버 로그인</app-social-button> -->
-          <app-social-button id="naverIdLogin" [type]="'naver'" (click)="setLoginType('naver')">네이버 로그인</app-social-button>
+          <a id="btnNaver"><app-social-button id="naverIdLogin" [type]="'naver'" (click)="setLoginType('naver')">네이버 로그인</app-social-button></a>
           <app-social-button [type]="'kakao'" (click)="setLoginType('kakao')">카카오 로그인</app-social-button>
         </div>
       </article>
