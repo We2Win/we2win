@@ -184,6 +184,8 @@ const deleteComment = async function (req, res) {
     userInfo = false;
   }
 
+  console.log(userInfo);
+
   if (userInfo['level'] !== 'ADMIN' || userInfo['level'] !== 'MANAGER') {
     return ReS(res, 'not authorized.', 422);
   }
