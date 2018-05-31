@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-naver-login',
@@ -8,7 +9,9 @@ import { environment } from '../../../../environments/environment';
 })
 export class NaverLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     const naverLogin = new window['naver'].LoginWithNaverId(
@@ -22,16 +25,21 @@ export class NaverLoginComponent implements OnInit {
 
     naverLogin.init();
 
-    window.addEventListener('load', () => {
-      naverLogin.getLoginStatus(status => {
-        if (status) {
-          const email = naverLogin.user.getEmail();
-          console.log(email);
-        } else {
-          console.log('callback 처리에 실패하였습니다.');
-        }
-      });
-    });
+    const token = window.location.pathname.split('#access_token=')[1].split('&')[0];
+    console.log(token);
+
+    this.authService.getNaverLoginStatus(token);
+
+    // window.addEventListener('load', () => {
+    //   naverLogin.getLoginStatus(status => {
+    //     if (status) {
+    //       const email = naverLogin.user.getEmail();
+    //       console.log(email);
+    //     } else {
+    //       console.log('callback 처리에 실패하였습니다.');
+    //     }
+    //   });
+    // });
   }
 
 }

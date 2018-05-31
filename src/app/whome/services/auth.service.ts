@@ -17,6 +17,7 @@ import { Token } from '../models/token';
 import { environment } from '../../../environments/environment';
 import { AlertService } from './alert.service';
 import { UserInfo } from '../models/userInfo';
+import { tokenKey } from '@angular/core/src/view/util';
 
 
 @Injectable()
@@ -53,7 +54,7 @@ export class AuthService {
     return this.http.post(environment.apiUrl + '/login', bodyString, headers)
       .do((res: any) => this.setToken(res.token),
       (err) => { this.alertService.error(err); }
-    )
+      )
       .shareReplay();
   }
 
@@ -123,6 +124,17 @@ export class AuthService {
     } else {
       return new UserInfo();
     }
+  }
+
+  getNaverLoginStatus(token) {
+    const httpOptions = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get('https://openapi.naver.com/v1/nid/me')
+      .map(res => {
+        console.log(res);
+      });
   }
 
   getUserInfoDetail(info) {
