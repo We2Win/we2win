@@ -22,7 +22,7 @@
 
 <body>
   <app-root></app-root>
-  <!-- <div id="naverIdLogin"></div> -->
+  <div id="naverIdLogin"></div>
   <script>
     window.fbAsyncInit = function () {
       FB.init({
@@ -51,12 +51,40 @@
           callbackUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/',
           isPopup: true, /* 팝업을 통한 연동처리 여부 */
           callbackHandle: true,
+          loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
         }
       );
 
       naverLogin.init();
       // naverService.create(naverLogin);
       // }
+
+      // elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
+      setInterval(() => {
+        naverLogin.getLoginStatus(status => {
+          console.log('status: ', status);
+          if (status) {
+            /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+            const email = naverLogin.user.getEmail();
+            console.log('email: ', email);
+            // if (email == undefined || email == null) {
+            //   alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
+            //   /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+            //   naverLogin.reprompt();
+            //   return;
+            // }
+
+            // router.navigate(['signup', 'form']);
+
+          } else {
+            console.log('callback 처리에 실패하였습니다.');
+          }
+        },
+          err => {
+            console.log('error: ', err);
+          }
+        );
+      }, 2000);
   </script>
 
 </body>

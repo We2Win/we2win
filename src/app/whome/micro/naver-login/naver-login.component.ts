@@ -25,23 +25,23 @@ export class NaverLoginComponent implements OnInit {
 
     naverLogin.init();
 
-    console.log(window.location.pathname, window.location.href);
+    // console.log(window.location.pathname, window.location.href);
 
-    const token = window.location.href.split('#access_token=')[1].split('&')[0];
-    console.log(token);
+    // const token = window.location.href.split('#access_token=')[1].split('&')[0];
+    // console.log(token);
 
-    this.authService.getNaverLoginStatus(token);
+    // this.authService.getNaverLoginStatus(token);
 
-    window.addEventListener('load', () => {
-      naverLogin.getLoginStatus(status => {
-        if (status) {
-          const email = naverLogin.user.getEmail();
-          console.log(email);
-        } else {
-          console.log('callback 처리에 실패하였습니다.');
-        }
-      });
-    });
+    // window.addEventListener('load', () => {
+    //   naverLogin.getLoginStatus(status => {
+    //     if (status) {
+    //       const email = naverLogin.user.getEmail();
+    //       console.log(email);
+    //     } else {
+    //       console.log('callback 처리에 실패하였습니다.');
+    //     }
+    //   });
+    // });
   }
 
 }
