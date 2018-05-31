@@ -6,7 +6,7 @@
     </div>
     <div id="description">
       <h1>{{Data['title']}}</h1>
-      <p [innerHtml]="Data['summary']"></p>
+      <p class="document" [innerHtml]="Data['summary']"></p>
       <div>
         <label>분양모집일</label>
         <p>{{Data['open-start'].slice(0,10)}} - {{Data['open-end'].slice(0,10)}}</p>
@@ -34,7 +34,7 @@
         <label>현장 리포트
           <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
         </label>
-        <div class="editorContainer">
+        <div class="editorContainer document">
           <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['report']"></p>
         </div>
       </div>
@@ -94,7 +94,7 @@
 
 <app-popup #reportDetail>
   <h1>현장 리포트</h1>
-  <p [innerHtml]="Data['report']"></p>
+  <p class="document" [innerHtml]="Data['report']"></p>
 </app-popup>
 
 <app-popup id="commentPopup" #commentDetail>
@@ -103,6 +103,6 @@
     <label>{{comment['u-id']}}</label>
     <p>{{comment['contents']}}</p>
     <span>{{comment['createdAt'].slice(0,10)}}</span>
-    <span class="delete" (click)="deleteComment(comment['u-id'], comment['c-id'])">삭제</span>
+    <span class="delete" *ngIf="isAdmin()" (click)="deleteComment(comment['u-id'], comment['c-id'])">삭제</span>
   </div>
 </app-popup>

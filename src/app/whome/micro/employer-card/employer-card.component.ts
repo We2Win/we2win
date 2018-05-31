@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-employer-card',
@@ -10,6 +11,7 @@ export class EmployerCardComponent implements OnInit {
 
   constructor(
     private _elementRef: ElementRef,
+    private alertService: AlertService
   ) {
   }
 
@@ -17,7 +19,14 @@ export class EmployerCardComponent implements OnInit {
   }
 
   viewPopup() {
+    const now = new Date();
+    const applyEndDate = new Date(this.record['apply-end']);
+
+    if (now > applyEndDate) {
+      this.alertService.warn('유효기간이 지난 항목입니다.');
+      return false;
+    }
+
     this._elementRef.nativeElement.querySelector('app-popup').classList.add('show');
   }
-
 }

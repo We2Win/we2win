@@ -203,18 +203,21 @@ export class InfoDetailComponent implements OnInit {
       this.alertService.error('댓글 내용이 없습니다.');
     } else {
       this.contentsService.addComments(body);
-
-      // refresh current page
-      let currentUrl;
-      if (!this.router.url.split('#')[1]) {
-        currentUrl = this.router.url + '#commentBox';
-      } else {
-        currentUrl = this.router.url;
-      }
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-        this.router.navigateByUrl(currentUrl));
+      this.refresh();
+      // this.alertService.success('댓글이 등록되었습니다.');
     }
+  }
 
+  refresh() {
+    // refresh current page
+    let currentUrl;
+    if (!this.router.url.split('#')[1]) {
+      currentUrl = this.router.url + '#commentBox';
+    } else {
+      currentUrl = this.router.url;
+    }
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigateByUrl(currentUrl));
   }
 
   getComments() {
@@ -270,12 +273,17 @@ export class InfoDetailComponent implements OnInit {
     this.fbShareService.share(environment.homeUrl + '/info/report/' + this.Data['no']);
   }
 
+  isAdmin() {
+    return this.authService.isAdministrator();
+  }
+
   deleteComment(uid, cid) {
     console.log(uid, cid);
     if (confirm('정말로 삭제하시겠습니까?')) {
       this.contentsService.deleteComments(uid, cid).subscribe(
         data => {
-          console.log(data);
+          this.refresh();
+          // this.alertService.success('댓글을 삭제했습니다.');
         }
       );
     }

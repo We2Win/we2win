@@ -83,4 +83,5 @@
 
 :host /deep/ .row > span.delete {
   flex-basis: 2em;
+  cursor: pointer;
 }

@@ -499,6 +499,8 @@ export class ContentsModificationComponent implements OnInit {
     console.log('type: ', type);
     const file = this.uploadedFiles[columnName];
 
+    console.log('inputs:', this.inputs['master-image']);
+
     if (file) {
       this.uploadService.uploadFile(file, columnName);
       this.subscription = this.uploadService.getFileName(columnName)

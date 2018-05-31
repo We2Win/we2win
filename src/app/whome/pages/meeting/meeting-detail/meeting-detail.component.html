@@ -46,7 +46,7 @@
         <label>세부 사항
           <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
         </label>
-        <div class="editorContainer">
+        <div class="editorContainer document">
           <p class="shortener" [innerHtml]="Data['detail']"></p>
         </div>
       </div>
@@ -94,7 +94,7 @@
 
 <app-popup #reportDetail>
   <h1>세부 사항</h1>
-  <p [innerHtml]="Data['detail']"></p>
+  <p class="document" [innerHtml]="Data['detail']"></p>
 </app-popup>
 
 <app-popup id="commentPopup" #commentDetail>

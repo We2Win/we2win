@@ -80,3 +80,52 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+
+.document h1{
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  line-height: 150%;
+}
+
+.document h2 {
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  line-height: 150%;
+}
+
+.document h3 {
+  font-size: 1.17em;
+  margin: 0;
+  padding: 0;
+  line-height: 150%;
+}
+
+.document h4 {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  line-height: 150%;
+}
+
+.document h5 {
+  font-size: 0.83em;
+  margin: 0;
+  padding: 0;
+  line-height: 150%;
+}
+
+.document h6 {
+  font-size: 0.67em;
+  margin: 0;
+  padding: 0;
+  line-height: 150%;
+}
+
+.document p {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  line-height: 150%;
+}

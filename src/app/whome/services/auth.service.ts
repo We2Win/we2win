@@ -102,6 +102,9 @@ export class AuthService {
   }
 
   isAdministrator(): boolean {
+    if (!this.getToken()) {
+      return false;
+    }
     const info = this.jwtHelper.decodeToken(this.getToken());
     if (info['user_level'] === 'ADMIN') {
       return true;
