@@ -77,6 +77,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './services/search.service';
 import { NaverService } from './services/naver.service';
 import { NaverLoginComponent } from './micro/naver-login/naver-login.component';
+import { NaverSignupComponent } from './micro/naver-signup/naver-signup.component';
 
 
 export function tokenGetter() {
@@ -156,6 +157,7 @@ export function tokenGetter() {
     PrivacyComponent,
     AlertComponent,
     NaverLoginComponent,
+    NaverSignupComponent,
   ],
   entryComponents: [
     InfoCardComponent,

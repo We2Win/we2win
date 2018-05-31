@@ -81,7 +81,31 @@ export class LoginComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     this.naverLogin.init();
 
-    this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
+    const naverAuth = JSON.parse(localStorage.getItem('naverAuth'));
+    console.log(naverAuth);
+    if (naverAuth) {
+      this.authService.loginWithKakao(naverAuth.id).subscribe(
+        auth => {
+          console.log('auth: ', auth);
+          if (auth) {
+            this.router.navigate(['/']);
+          } else {
+            this.error('회원 정보를 불러오지 못했습니다.');
+            // this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+          }
+        },
+        err => {
+          if (err.status === 422) {
+            this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+          } else {
+            this.error('로그인 중 오류가\n발생했습니다.');
+          }
+        }
+      );
+    }
+
+
+    // this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
 
     if (!window['Kakao'].Auth) {
       window['Kakao'].init(environment.kakao.clientId);
