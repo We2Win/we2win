@@ -140,7 +140,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     this.naverLogin.init();
 
     const naverAuth = localStorage.getItem('naverAuth');
-    console.log('on form: ', naverAuth);
     if (naverAuth) {
       this.loginWithNaver(naverAuth);
     }
@@ -320,9 +319,40 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
   }
 
+  loginWithNaver(authInfo) {
+    this.loginType = 'naver';
 
+    const userInfo = {
+      'u-id': 'n_' + authInfo.id
+    };
+    // this.userService.hasId(userInfo);
+    this.userService.hasId(userInfo)
+      .subscribe(
+      data => {
+        if (data) {
+          this.checkId = true;
+          this.alertService.info('사용가능한 ID입니다.');
+        } else {
+          this.checkId = false;
+          this.alertService.warn('이미 존재하는 ID입니다.');
+        }
+      },
+      error => {
+        this.alertService.error('오류가 발생했습니다.');
+      }
+      );
 
-  loginWithNaver(auth) {
+    this.signupForm.controls['u-id'].setValue('n_' + authInfo.id);
+    this.signupForm.controls['password'].setValue('NAVER1234!');
+    this.signupForm.controls['passwordV'].setValue('NAVER1234!');
+    this.signupForm.controls['name'].setValue(authInfo.nickname);
+    this.signupForm.controls['email'].setValue(authInfo.email);
+
+    this.uId.nativeElement.readOnly = true;
+    this.password.nativeElement.readOnly = true;
+    this.passwordV.nativeElement.readOnly = true;
+    this.name.nativeElement.readOnly = true;
+    this.email.nativeElement.readOnly = true;
   }
 
   loginWithKakao() {
