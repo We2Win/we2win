@@ -35,8 +35,11 @@ export class NaverLoginComponent implements OnInit {
 
     // this.authService.getNaverLoginStatus(token);
 
+    console.log('initiated.');
+
     window.addEventListener('load', () => {
       window['naverLogin'].getLoginStatus(status => {
+        console.log('status: ', status);
         if (status) {
           const userInfo = {
             email: window['naverLogin'].user.getEmail(),
