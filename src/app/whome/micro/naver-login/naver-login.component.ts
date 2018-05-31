@@ -32,16 +32,16 @@ export class NaverLoginComponent implements OnInit {
 
     // this.authService.getNaverLoginStatus(token);
 
-    // window.addEventListener('load', () => {
-    //   naverLogin.getLoginStatus(status => {
-    //     if (status) {
-    //       const email = naverLogin.user.getEmail();
-    //       console.log(email);
-    //     } else {
-    //       console.log('callback 처리에 실패하였습니다.');
-    //     }
-    //   });
-    // });
+    window.addEventListener('load', () => {
+      window['naverLogin'].getLoginStatus(status => {
+        if (status) {
+          const email = naverLogin.user.getEmail();
+          console.log(email);
+        } else {
+          console.log('callback 처리에 실패하였습니다.');
+        }
+      });
+    });
   }
 
 }
