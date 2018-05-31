@@ -143,6 +143,6 @@ article app-button {
   z-index: 1;
 }
 
-.naverIdLogin {
+#naverIdLogin {
   display: none;
 }
