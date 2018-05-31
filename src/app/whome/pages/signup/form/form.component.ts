@@ -131,8 +131,8 @@ export class FormComponent implements OnInit, AfterViewInit {
       {
         clientId: environment.naver.clientId,
         callbackUrl: environment.naver.callbackUrl,
-        isPopup: true, /* 팝업을 통한 연동처리 여부 */
-        loginButton: { color: 'green', type: 4, height: 50 } /* 로그인 버튼의 타입을 지정 */
+        isPopup: false, /* 팝업을 통한 연동처리 여부 */
+        // loginButton: { color: 'green', type: 4, height: 50 } /* 로그인 버튼의 타입을 지정 */
       }
     );
 
@@ -141,7 +141,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     const naverAuth = localStorage.getItem('naverAuth');
     if (naverAuth) {
-      this.loginWithNaver(naverAuth);
+      this.loginWithNaver(JSON.parse(naverAuth));
     }
   }
 
@@ -303,6 +303,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       // this.loginType = type;
       // sample code
       if (type === 'naver') {
+        window.location.replace(this.naverService.getUrl());
         // this.loginWithNaver();
       } else if (type === 'kakao') {
         this.loginWithKakao();
