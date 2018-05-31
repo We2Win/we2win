@@ -127,14 +127,21 @@ export class AuthService {
   }
 
   getNaverLoginStatus(token) {
-    const httpOptions = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
-    return this.http.get('https://openapi.naver.com/v1/nid/me')
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+
+    return this.http.get('https://openapi.naver.com/v1/nid/me', httpOptions)
       .map(res => {
         console.log(res);
-      });
+      },
+      err => {
+        console.log(err);
+      }
+      );
   }
 
   getUserInfoDetail(info) {
