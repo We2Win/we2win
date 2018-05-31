@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-naver-login',
@@ -8,22 +9,24 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./naver-login.component.css']
 })
 export class NaverLoginComponent implements OnInit {
+  userInfo: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    const naverLogin = new window['naver'].LoginWithNaverId(
-      {
-        clientId: environment.naver.clientId,
-        callbackUrl: environment.naver.callbackUrl,
-        isPopup: false,
-        callbackHandle: true
-      }
-    );
+    // const naverLogin = new window['naver'].LoginWithNaverId(
+    //   {
+    //     clientId: environment.naver.clientId,
+    //     callbackUrl: environment.naver.callbackUrl,
+    //     isPopup: false,
+    //     callbackHandle: true
+    //   }
+    // );
 
-    naverLogin.init();
+    // naverLogin.init();
 
     // console.log(window.location.pathname, window.location.href);
 
@@ -35,13 +38,21 @@ export class NaverLoginComponent implements OnInit {
     window.addEventListener('load', () => {
       window['naverLogin'].getLoginStatus(status => {
         if (status) {
-          const email = window['naverLogin'].user.getEmail();
-          console.log(email);
+          const userInfo = {
+            email: window['naverLogin'].user.getEmail(),
+            name: window['naverLogin'].user.getNickName()
+          };
+          this.userInfo.emit(userInfo);
+          this.router.navigate(['signup', 'form']);
         } else {
           console.log('callback 처리에 실패하였습니다.');
         }
       });
     });
+  }
+
+  getUrl() {
+    return window['naverLogin'].generateAuthorizeUrl();
   }
 
 }

@@ -126,48 +126,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     console.log('executing NaverService: ', environment.naver.callbackUrl);
-    // if (!this.naverService.isStarted()) {
-    this.naverLogin = new window['naver'].LoginWithNaverId(
-      {
-        clientId: environment.naver.clientId,
-        callbackUrl: environment.naver.callbackUrl,
-        isPopup: false, /* 팝업을 통한 연동처리 여부 */
-        callbackHandle: true,
-        // loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
-      }
-    );
 
-    this.naverLogin.init();
-    // this.naverService.create(this.naverLogin);
-    // }
 
     // this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
-    setInterval(() => {
-      this.naverLogin.getLoginStatus(status => {
-        console.log('status: ', status);
-        if (status) {
-          /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-          const email = this.naverLogin.user.getEmail();
-          console.log('email: ', email);
-          // if (email == undefined || email == null) {
-          //   alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
-          //   /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-          //   naverLogin.reprompt();
-          //   return;
-          // }
-
-          // this.router.navigate(['signup', 'form']);
-
-        } else {
-          console.log('callback 처리에 실패하였습니다.');
-        }
-      },
-        err => {
-          console.log('error: ', err);
-        }
-      );
-    }, 2000);
-    // this.naverService.check();
   }
 
 
@@ -329,11 +290,6 @@ export class FormComponent implements OnInit, AfterViewInit {
       // sample code
       if (type === 'naver') {
         this.loginWithNaver();
-        this.uId.nativeElement.readOnly = true;
-        this.password.nativeElement.readOnly = true;
-        this.passwordV.nativeElement.readOnly = true;
-        this.name.nativeElement.readOnly = true;
-        this.email.nativeElement.readOnly = true;
       } else if (type === 'kakao') {
         this.loginWithKakao();
       } else {
@@ -350,11 +306,18 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   loginWithNaver() {
-    // window.location.replace(this.naverService.getUrl());
+    this.loginType = 'naver';
+
+    window.location.replace(this.naverService.getUrl());
+    this.uId.nativeElement.readOnly = true;
+    this.password.nativeElement.readOnly = true;
+    this.passwordV.nativeElement.readOnly = true;
+    this.name.nativeElement.readOnly = true;
+    this.email.nativeElement.readOnly = true;
+
   }
 
   loginWithKakao() {
-
     // 로그인 창을 띄웁니다.
     window['Kakao'].Auth.login({
       success: authObj => {
