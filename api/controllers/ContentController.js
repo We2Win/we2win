@@ -199,6 +199,8 @@ const deleteComment = async function (req, res) {
     }
   }));
 
+  console.log(content);
+
   if (err) return ReE(res, err, 422);
   
   content.destroy();
