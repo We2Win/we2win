@@ -23,6 +23,7 @@
   color: white;
   text-shadow: 0 0 0.5em #000;
   animation: changeBg 1s;
+  animation-fill-mode: forwards;
 }
 
 :host(.site) {
@@ -31,6 +32,7 @@
   color: white;
   text-shadow: 0 0 0.5em #000;
   animation: changeBg 1s;
+  animation-fill-mode: forwards;
 }
 
 :host(.employee) {
@@ -39,6 +41,7 @@
   color: white;
   text-shadow: 0 0 0.5em #000;
   animation: changeBg 1s;
+  animation-fill-mode: forwards;
 }
 
 :host(.employer) {
@@ -47,6 +50,7 @@
   color: white;
   text-shadow: 0 0 0.5em #000;
   animation: changeBg 1s;
+  animation-fill-mode: forwards;
 }
 
 :host(.meeting) {
@@ -55,6 +59,7 @@
   color: white;
   text-shadow: 0 0 0.5em #000;
   animation: changeBg 1s;
+  animation-fill-mode: forwards;
 }
 
 :host(.search) {
