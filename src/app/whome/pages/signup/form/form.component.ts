@@ -322,6 +322,8 @@ export class FormComponent implements OnInit, AfterViewInit {
   loginWithNaver(authInfo) {
     this.loginType = 'naver';
 
+    console.log('authInfo: ', authInfo);
+
     const userInfo = {
       'u-id': 'n_' + authInfo.id
     };
