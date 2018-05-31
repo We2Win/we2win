@@ -140,7 +140,7 @@ module.exports = (sequelize, DataTypes) => {
         user_start: this['level-start'] || '',
         user_end: this['level-end'] || '',
         user_location: '#'+(this['location1'] || '')+' #'+(this['location2'] || ''),
-        user_keyword: '#'+(this['keyword'] || '')
+        user_keyword: '#'+(this['amount'] || '')
       },
       CONFIG.jwt_encryption, {
         expiresIn: expiration_time
