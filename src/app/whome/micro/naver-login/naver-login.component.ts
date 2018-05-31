@@ -57,7 +57,7 @@ export class NaverLoginComponent implements OnInit {
   }
 
   getUrl() {
-    return window['naverLogin'].generateAuthorizeUrl();
+    window.location.href = window['naverLogin'].generateAuthorizeUrl();
   }
 
 }
