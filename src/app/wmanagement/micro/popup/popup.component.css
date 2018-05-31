@@ -12,6 +12,7 @@
   padding: 2em;
   width: 1100px;
   min-width: 600px;
+  min-height: 30vh;
   max-height: 80vh;
   top: 10vh;
   left: calc(50vw - 550px);

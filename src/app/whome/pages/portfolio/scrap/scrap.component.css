@@ -11,6 +11,10 @@ section>div {
   padding: 1em 0;
 }
 
+.btnMore {
+  cursor: pointer;
+}
+
 .contentBox1,
 .contentBox2 {
   box-shadow: 0 0 10px #ddd;
@@ -162,6 +166,7 @@ section>div {
   padding: 1em 2em;
   color: #d8d8d8;
   border-bottom: 2px solid #d8d8d8;
+  transition: color 0.5s, border 0.5s;
 }
 
 .tabGroup li.show {
@@ -169,19 +174,30 @@ section>div {
   border-bottom: 2px solid var(--main-bg-color);
 }
 
+@keyframes introRecord {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .scheduleBox div,
-.contentBox2 div {
+.contentBox2 .record {
   display: flex;
+  animation: introRecord 0.5s;
+  animation-fill-mode: both;
 }
 
 .scheduleBox div li,
-.contentBox2 div li {
+.contentBox2 .record li {
   flex: 1;
   display: flex;
 }
 
 .scheduleBox div span,
-.contentBox2 div span {
+.contentBox2 .record span {
   flex: 1 1 auto;
   font-size: 0.8em;
   height: 45px;
@@ -202,23 +218,23 @@ section>div {
   margin-right: 1em;
 }
 
-.contentBox2 div #categories {
+.contentBox2 .record #categories {
   flex: none;
   width: 9em;
 }
 
-.contentBox2 div #categories.report {
+.contentBox2 .record #categories.report {
   color: rgb(199, 36, 36);
 
 }
-.contentBox2 div #categories.news {
+.contentBox2 .record #categories.news {
   color: rgb(112, 36, 199);
 
 }
-.contentBox2 div #categories.law {
+.contentBox2 .record #categories.law {
   color: rgb(153, 119, 27);
 }
-.contentBox2 div #categories.site {
+.contentBox2 .record #categories.site {
   color: rgb(27, 153, 126);
 }
 
@@ -227,9 +243,15 @@ section>div {
   width: 8em;
 }
 
-.contentBox2 div #date {
+.contentBox2 .record #date {
   flex: none;
   width: 10em;
+}
+
+.contentBox2 .scrapList {
+  display: block;
+  height: 460px;
+  overflow-y: scroll;
 }
 
 .lTable {

@@ -11,6 +11,10 @@ section>div {
   padding: 1em 0;
 }
 
+.btnMore {
+  cursor: pointer;
+}
+
 .contentBox1,
 .contentBox2 {
   box-shadow: 0 0 10px #ddd;
@@ -27,6 +31,7 @@ section>div {
 .contentBox1 {
   flex: 1;
   background: white;
+  cursor: default;
 }
 
 .contentBox2 {
