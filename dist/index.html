@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>We2win</title><base href="/"><meta id="Viewport" name="viewport"><link rel="icon" type="image/x-icon" href="favicon.ico"><!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" /> --><script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><!-- jQuery --><script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!-- iamport.payment.js --><script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script><script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script><!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script> --><script src="//developers.kakao.com/sdk/js/kakao.min.js"></script><link href="styles.aa93bcc748f55c30e98d.bundle.css" rel="stylesheet"/></head><body><script>window.fbAsyncInit = function () {
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>We2win</title><base href="/"><meta id="Viewport" name="viewport"><link rel="icon" type="image/x-icon" href="favicon.ico"><!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" /> --><script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><!-- jQuery --><script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!-- iamport.payment.js --><script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script><script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script><!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script> --><script src="//developers.kakao.com/sdk/js/kakao.min.js"></script><link href="styles.aa93bcc748f55c30e98d.bundle.css" rel="stylesheet"/></head><body><app-root></app-root><script>window.fbAsyncInit = function () {
       FB.init({
         appId: '129076064471163',
         autoLogAppEvents: true,
@@ -17,4 +17,45 @@
       js.id = id;
       js.src = "https://connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script><app-root></app-root><script type="text/javascript" src="inline.0d2d60c00fa05a67e31e.bundle.js"></script><script type="text/javascript" src="polyfills.dc45e6235e72aee546f5.bundle.js"></script><script type="text/javascript" src="scripts.a7f60a53cd42058fa637.bundle.js"></script><script type="text/javascript" src="main.9ac25ecef3358b556fc5.bundle.js"></script></body></html>
+    }(document, 'script', 'facebook-jssdk'));
+
+    naverLogin = new naver.LoginWithNaverId(
+        {
+          clientId: environment.naver.clientId,
+          callbackUrl: environment.naver.callbackUrl,
+          isPopup: false, /* 팝업을 통한 연동처리 여부 */
+          callbackHandle: true,
+          // loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
+        }
+      );
+
+      naverLogin.init();
+      // naverService.create(naverLogin);
+      // }
+
+      // elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
+      setInterval(() => {
+        naverLogin.getLoginStatus(status => {
+          console.log('status: ', status);
+          if (status) {
+            /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+            const email = naverLogin.user.getEmail();
+            console.log('email: ', email);
+            // if (email == undefined || email == null) {
+            //   alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
+            //   /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+            //   naverLogin.reprompt();
+            //   return;
+            // }
+
+            // router.navigate(['signup', 'form']);
+
+          } else {
+            console.log('callback 처리에 실패하였습니다.');
+          }
+        },
+          err => {
+            console.log('error: ', err);
+          }
+        );
+      }, 2000);</script><script type="text/javascript" src="inline.0d2d60c00fa05a67e31e.bundle.js"></script><script type="text/javascript" src="polyfills.dc45e6235e72aee546f5.bundle.js"></script><script type="text/javascript" src="scripts.a7f60a53cd42058fa637.bundle.js"></script><script type="text/javascript" src="main.9ac25ecef3358b556fc5.bundle.js"></script></body></html>

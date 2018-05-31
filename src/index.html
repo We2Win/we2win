@@ -21,6 +21,8 @@
 </head>
 
 <body>
+  <app-root></app-root>
+  
   <script>
     window.fbAsyncInit = function () {
       FB.init({
@@ -42,9 +44,49 @@
       js.src = "https://connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+    naverLogin = new naver.LoginWithNaverId(
+        {
+          clientId: environment.naver.clientId,
+          callbackUrl: environment.naver.callbackUrl,
+          isPopup: false, /* 팝업을 통한 연동처리 여부 */
+          callbackHandle: true,
+          // loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
+        }
+      );
+
+      naverLogin.init();
+      // naverService.create(naverLogin);
+      // }
+
+      // elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
+      setInterval(() => {
+        naverLogin.getLoginStatus(status => {
+          console.log('status: ', status);
+          if (status) {
+            /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+            const email = naverLogin.user.getEmail();
+            console.log('email: ', email);
+            // if (email == undefined || email == null) {
+            //   alert('이메일은 필수정보입니다. 정보제공을 동의해주세요.');
+            //   /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+            //   naverLogin.reprompt();
+            //   return;
+            // }
+
+            // router.navigate(['signup', 'form']);
+
+          } else {
+            console.log('callback 처리에 실패하였습니다.');
+          }
+        },
+          err => {
+            console.log('error: ', err);
+          }
+        );
+      }, 2000);
   </script>
 
-  <app-root></app-root>
 </body>
 
 </html>
