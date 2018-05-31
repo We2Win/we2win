@@ -62,6 +62,10 @@ export class NewsDetailComponent implements OnInit {
     this.meta.addTag({ name: 'og:description', content: this.Data['summary'] });
   }
 
+  showMore(child) {
+    child._elementRef.nativeElement.classList.add('show');
+  }
+
   // addRankingRecord(records) {
   //   const count = ['first', 'second', 'third'];
   //   for (const num in count) {

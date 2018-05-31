@@ -6,7 +6,7 @@
     </div>
     <div id="description">
       <h1>{{Data['title']}}</h1>
-      <p [innerHtml]="Data['summary']"></p>
+      <p class="document" [innerHtml]="Data['summary']"></p>
       <div>
         <label>분양모집일</label>
         <p>{{Data['open-start'].slice(0,10)}} - {{Data['open-end'].slice(0,10)}}</p>
@@ -34,7 +34,7 @@
         <label>현장 리포트
           <p class="more" (click)="showMore(reportDetail)">더보기 ></p>
         </label>
-        <div class="editorContainer">
+        <div class="editorContainer document">
           <p [ngClass]="{'shortener': !showMoreReport}" [innerHtml]="Data['report']"></p>
         </div>
       </div>

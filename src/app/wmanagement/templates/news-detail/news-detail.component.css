@@ -75,7 +75,7 @@ app-group /deep/ article {
 app-group /deep/ article label {
   width: 240px;
   font-size: 14px;
-  line-height: 300%;
+  line-height: 150%;
   font-weight: bold;
   flex: none;
 }
@@ -83,7 +83,7 @@ app-group /deep/ article label {
 app-group /deep/ article p,
 app-group /deep/ article span {
   font-size: 14px;
-  line-height: 300%;
+  line-height: 150%;
   padding: 0;
 }
 
@@ -137,3 +137,58 @@ app-group /deep/ article span {
 .lastArticle {
   padding-bottom: 0;
 }
+
+.editorContainer {
+  overflow: hidden;
+}
+
+.editorContainer p {
+  min-height: 8em;
+}
+
+.editorContainer span {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.editorContainer:after {
+  content: '';
+  display: block;
+  position: relative;
+  height: 50px;
+  margin-top: -50px;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  pointer-events: none;
+}
+
+.editorContainer.noHide:after {
+  background: none;
+}
+
+app-popup /deep/ #popupBox {
+  left: 30vw;
+  width: 673px;
+  padding: 30px;
+}
+
+app-popup /deep/ h1 {
+  padding: 0;
+  margin: 1em 0 2em 0;
+}
+
+app-popup /deep/ span,
+app-popup /deep/ p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+app-popup /deep/ .row+.row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+app-popup /deep/ label {
+  margin-left: 1em;
+}
+

@@ -3,7 +3,6 @@
   padding: 0;
 }
 
-
 #top #imgNav {
   margin-right: 2em;
 }
@@ -122,6 +121,14 @@
   font-weight: 300;
 }
 
+.editorContainer {
+  overflow: hidden;
+}
+
+.editorContainer p {
+  min-height: 8em;
+}
+
 .editorContainer span {
   font-size: 14px;
   font-weight: 300;
@@ -134,7 +141,6 @@
   height: 50px;
   margin-top: -50px;
   background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-  pointer-events: none;
 }
 
 .shower img {
@@ -208,12 +214,6 @@
 .flex /deep/ app-info-card {
   width: 227px;
   flex: none;
-}
-
-app-popup /deep/ #popupBox {
-  left: 30vw;
-  width: 673px;
-  padding: 30px;
 }
 
 app-popup /deep/ h1 {

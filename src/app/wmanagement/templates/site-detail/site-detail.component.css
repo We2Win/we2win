@@ -121,6 +121,14 @@
   font-weight: 300;
 }
 
+.editorContainer {
+  overflow: hidden;
+}
+
+.editorContainer p {
+  min-height: 8em;
+}
+
 .editorContainer span {
   font-size: 14px;
   font-weight: 300;
@@ -206,12 +214,6 @@
 .flex /deep/ app-info-card {
   width: 227px;
   flex: none;
-}
-
-app-popup /deep/ #popupBox {
-  left: 26vw;
-  width: 673px;
-  padding: 30px;
 }
 
 app-popup /deep/ h1 {

@@ -14,13 +14,19 @@
     <article>
       <div class="row">
         <label>{{Data['main-title']}}</label>
-        <p [innerHtml]="Data['main-description']"></p>
+        <div class="editorContainer noHide document">
+          <p class="shortener" [innerHtml]="Data['main-description']"></p>
+        </div>
       </div>
     </article>
     <article>
       <div class="row">
-        <label>{{Data['analysis-title']}}</label>
-        <p [innerHtml]="Data['analysis-description']"></p>
+        <label>{{Data['analysis-title']}}
+          <p class="more" (click)="showMore(analysisDetail)">더보기 ></p>
+        </label>
+        <div class="editorContainer document">
+          <p class="shortener" [innerHtml]="Data['analysis-description']"></p>
+        </div>
       </div>
     </article>
     <article class="lastArticle">
@@ -33,3 +39,13 @@
     </article>
   </app-group>
 </section>
+
+<app-popup #mainDetail>
+  <h1>{{Data['main-title']}}</h1>
+  <p class="document" [innerHtml]="Data['main-description']"></p>
+</app-popup>
+
+<app-popup #analysisDetail>
+  <h1>{{Data['analysis-title']}}</h1>
+  <p class="document" [innerHtml]="Data['analysis-description']"></p>
+</app-popup>
