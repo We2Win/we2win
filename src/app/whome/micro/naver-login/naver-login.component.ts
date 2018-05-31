@@ -35,7 +35,7 @@ export class NaverLoginComponent implements OnInit {
     window.addEventListener('load', () => {
       window['naverLogin'].getLoginStatus(status => {
         if (status) {
-          const email = naverLogin.user.getEmail();
+          const email = window['naverLogin'].user.getEmail();
           console.log(email);
         } else {
           console.log('callback 처리에 실패하였습니다.');
