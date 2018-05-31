@@ -48,7 +48,7 @@ export class NaverService {
   }
 
   getUrl() {
-    return this.Naver.generateAuthorizeUrl();
+    return window['naverLogin'].generateAuthorizeUrl();
   }
 
 }

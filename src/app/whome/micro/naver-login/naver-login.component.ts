@@ -43,6 +43,7 @@ export class NaverLoginComponent implements OnInit {
             name: window['naverLogin'].user.getNickName()
           };
           this.userInfo.emit(userInfo);
+          localStorage.setItem('naverAuth', JSON.stringify(userInfo));
           this.router.navigate(['signup', 'form']);
         } else {
           console.log('callback 처리에 실패하였습니다.');

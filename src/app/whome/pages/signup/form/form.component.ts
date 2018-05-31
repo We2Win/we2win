@@ -125,10 +125,10 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log('executing NaverService: ', environment.naver.callbackUrl);
-
-
-    // this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
+    console.log(localStorage.getItem('naverAuth'));
+    if (localStorage.getItem('naverAuth')) {
+      ;
+    }
   }
 
 
@@ -305,16 +305,10 @@ export class FormComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+
   loginWithNaver() {
-    this.loginType = 'naver';
-
     window.location.replace(this.naverService.getUrl());
-    this.uId.nativeElement.readOnly = true;
-    this.password.nativeElement.readOnly = true;
-    this.passwordV.nativeElement.readOnly = true;
-    this.name.nativeElement.readOnly = true;
-    this.email.nativeElement.readOnly = true;
-
   }
 
   loginWithKakao() {
