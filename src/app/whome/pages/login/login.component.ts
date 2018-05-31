@@ -84,7 +84,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const naverAuth = JSON.parse(localStorage.getItem('naverAuth'));
     console.log(naverAuth);
     if (naverAuth) {
-      this.authService.loginWithKakao(naverAuth.id).subscribe(
+      const user = {
+        'user_id': 'n_' + naverAuth.id,
+      };
+      this.authService.loginWithKakao(user).subscribe(
         auth => {
           console.log('auth: ', auth);
           if (auth) {
