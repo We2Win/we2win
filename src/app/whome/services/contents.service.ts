@@ -50,6 +50,18 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  deleteComments(uid, cid) {
+    const httpOptions = {};
+    if (this.authService.isAuthenticated()) {
+      httpOptions['headers'] = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      });
+    }
+
+    return this.http.delete(environment.apiUrl + '/contents/comments/' + cid + '/' + uid, httpOptions);
+  }
+
   getSimplesList(page, sort, id?: any) {
     const httpOptions = {};
     if (this.authService.isAuthenticated()) {

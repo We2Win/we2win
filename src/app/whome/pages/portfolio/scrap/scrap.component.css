@@ -72,31 +72,28 @@ section>div {
   margin: 0.5em auto;
 }
 
-.standard {
+.levelTag {
   display: inline-block;
+  color: white;
+  font-size: 0.9em;
+  padding: 0.5em 0.75em;
+  margin: 0.25em;
+}
+
+.STANDARD {
   background: var(--level-standard-gradient);
-  /* background: linear-gradient(-25deg, rgba(213, 177, 94, 0.4), rgba(213, 177, 94, 1)); */
-  color: white;
-  font-size: 0.8em;
-  padding: 0.25em 0.4em;
-  margin: 0.25em;
 }
-.premium {
-  display: inline-block;
+.PREMIUM {
   background: var(--level-premium-gradient);
-  /* background: linear-gradient(-25deg, rgba(213, 177, 94, 0.4), rgba(213, 177, 94, 1)); */
-  color: white;
-  font-size: 0.8em;
-  padding: 0.25em 0.4em;
-  margin: 0.25em;
 }
-.platinum {
-  display: inline-block;
-  background: linear-gradient(-25deg, rgba(213, 177, 94, 0.4), rgba(213, 177, 94, 1));
-  color: white;
-  font-size: 0.8em;
-  padding: 0.25em 0.4em;
-  margin: 0.25em;
+.PLATINUM {
+  background: var(--level-platinum-gradient);
+}
+.MANAGER {
+  background: var(--level-manager-gradient);
+}
+.ADMIN {
+  background: var(--level-admin-gradient);
 }
 
 #memberInfo h1 {

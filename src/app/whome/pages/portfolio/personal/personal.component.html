@@ -3,19 +3,18 @@
     <div class="contentBox1">
       <div id="memberTitle">
         <p>회원정보</p>
-        <span routerLink="/portfolio/personal">더보기 ></span>
+        <span routerLink="/portfolio">돌아가기 <</span>
       </div>
       <div id="memberInfo">
         <div class="left">
           <img src="/assets/img/icon_person.png" />
-          <div [class]="userInfo['user_level'].toLowerCase()">{{ userInfo['user_level'] }}</div>
+          <div [class]="'levelTag ' + userInfo['user_level']">{{ userInfo['user_level'] }}</div>
         </div>
         <div>
           <h1 id="name">{{ userInfo['user_name'] }}</h1>
           <h2 id="point">{{ userInfo['user_point'] }}</h2>
           <h3 id="date">{{ (userInfo['user_start'] && userInfo['user_end']) ? userInfo['user_start'] + '~' + userInfo['user_end'] : '무제한'
-            }}
-          </h3>
+            }} </h3>
         </div>
       </div>
       <div>

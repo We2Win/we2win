@@ -80,3 +80,7 @@
     flex-basis: 7em;
     text-align: right;
 }
+
+:host /deep/ .row > span.delete {
+  flex-basis: 2em;
+}

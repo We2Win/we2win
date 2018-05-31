@@ -38,6 +38,7 @@ router.get('/search/:id/:pages', ContentController.searchContents);
 
 router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:cid', ContentController.getComments);
+router.delete('/contents/comments/:cid/:uid', ContentController.deleteComment);
 
 router.put('/contents/employer', ContentController.createEmployer);
 router.put('/contents/employee', ContentController.createEmployee);

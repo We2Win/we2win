@@ -103,5 +103,6 @@
     <label>{{comment['u-id']}}</label>
     <p>{{comment['contents']}}</p>
     <span>{{comment['createdAt'].slice(0,10)}}</span>
+    <span class="delete" (click)="deleteComment(comment['u-id'], comment['c-id'])">삭제</span>
   </div>
 </app-popup>

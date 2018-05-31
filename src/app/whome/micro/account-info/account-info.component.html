@@ -48,7 +48,7 @@
     <div id="profile">
       <div class="left">
         <img src="/assets/img/icon_person.png">
-        <div class="platinum">PLATINUM</div>
+        <div [class]="'levelTag ' + user.level">{{user.level}}</div>
       </div>
       <div>
         <h1>{{user.name}}</h1>

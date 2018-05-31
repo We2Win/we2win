@@ -28,7 +28,7 @@ h1 {
   justify-content: flex-start;
 }
 
-@keyframes intro {
+@keyframes introCard {
   from {
     opacity: 0;
   }
@@ -39,8 +39,8 @@ h1 {
 
 .contents /deep/ .card {
   opacity: 1;
-  animation: intro 0.5s;
-  animation-fill-mode: forwards;
+  animation: introCard 0.5s;
+  animation-fill-mode: both;
   transition: opacity 1s;
 }
 

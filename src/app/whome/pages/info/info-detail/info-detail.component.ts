@@ -269,5 +269,16 @@ export class InfoDetailComponent implements OnInit {
   fbShare() {
     this.fbShareService.share(environment.homeUrl + '/info/report/' + this.Data['no']);
   }
+
+  deleteComment(uid, cid) {
+    console.log(uid, cid);
+    if (confirm('정말로 삭제하시겠습니까?')) {
+      this.contentsService.deleteComments(uid, cid).subscribe(
+        data => {
+          console.log(data);
+        }
+      );
+    }
+  }
 }
 

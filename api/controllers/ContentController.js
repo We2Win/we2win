@@ -176,6 +176,34 @@ const getComments = async function (req, res) {
 }
 module.exports.getComments = getComments;
 
+const deleteComment = async function (req, res) {
+  let userInfo;
+  if (req.headers['authorization']) {
+    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  } else {
+    userInfo = false;
+  }
+
+  if (userInfo['level'] !== 'ADMIN' || userInfo['level'] !== 'MANAGER') {
+    return ReS(res, err, 422);
+  }
+
+  res.setHeader('Content-Type', 'application/json');
+
+  Comment.findOne({
+    where: {
+      'c-id': req.params.cid,
+      'u-id': req.params.uid
+    }
+  }).then((content) => {
+    content.destroy();
+    return ReS(res, {
+      message: 'successfully deleted comment.'
+    });
+  });
+}
+module.exports.deleteComment = deleteComment;
+
 const createEmployer = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
