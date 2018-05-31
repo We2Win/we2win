@@ -13,8 +13,7 @@ export const environment = {
       '&state=' + 'we2win_state' +
       '&redirect_uri=' + 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/login',
     clientId: 's_brdfQHOF5ygOo6wszb',
-    registerUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/signup/form',
-    callbackUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/signup/form'
+    callbackUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/naver'
   },
   kakao: {
     clientId: 'b560ff0ff0ea7935612a6555fb53c516'

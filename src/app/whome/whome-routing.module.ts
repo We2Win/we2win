@@ -39,6 +39,7 @@ import { UseComponent } from './pages/policy/use/use.component';
 import { PrivacyComponent } from './pages/policy/privacy/privacy.component';
 import { SearchComponent } from './pages/search/search.component';
 import { AdminGuard } from './guards/admin.guard';
+import { NaverLoginComponent } from './micro/naver-login/naver-login.component';
 
 const routes: Routes = [
   {
@@ -238,6 +239,10 @@ const routes: Routes = [
         component: PrivacyComponent
       }
     ]
+  },
+  {
+    path: 'naver',
+    component: NaverLoginComponent
   },
   // temporary state
   {
