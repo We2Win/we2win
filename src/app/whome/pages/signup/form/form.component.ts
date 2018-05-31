@@ -139,9 +139,10 @@ export class FormComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     this.naverLogin.init();
 
-    console.log(localStorage.getItem('naverAuth'));
-    if (localStorage.getItem('naverAuth')) {
-      ;
+    const naverAuth = localStorage.getItem('naverAuth');
+    console.log('on form: ', naverAuth);
+    if (naverAuth) {
+      this.loginWithNaver(naverAuth);
     }
   }
 
@@ -303,7 +304,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       // this.loginType = type;
       // sample code
       if (type === 'naver') {
-        this.loginWithNaver();
+        // this.loginWithNaver();
       } else if (type === 'kakao') {
         this.loginWithKakao();
       } else {
@@ -321,8 +322,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 
 
-  loginWithNaver() {
-    // this.naverService.getUrl();
+  loginWithNaver(auth) {
   }
 
   loginWithKakao() {

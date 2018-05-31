@@ -43,7 +43,7 @@ export class NaverLoginComponent implements OnInit {
         if (status) {
           const userInfo = {
             email: window['naverLogin'].user.getEmail(),
-            name: window['naverLogin'].user.getNickName()
+            name: window['naverLogin'].user.getId()
           };
           console.log('userInfo: ', userInfo);
           this.userInfo.emit(userInfo);
