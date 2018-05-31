@@ -143,6 +143,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     this.elementRef.nativeElement.querySelector('#naverIdLogin a').href = this.naverLogin.generateAuthorizeUrl();
     setInterval(() => {
+      console.log(this.naverLogin.accessToken());
       this.naverLogin.getLoginStatus(status => {
         console.log('status: ', status);
         if (status) {
