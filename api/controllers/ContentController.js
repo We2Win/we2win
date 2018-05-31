@@ -190,16 +190,20 @@ const deleteComment = async function (req, res) {
 
   res.setHeader('Content-Type', 'application/json');
 
-  Comment.findOne({
+  let err, content;
+
+  [err, content] = await to(Comment.findOne({
     where: {
       'c-id': req.params.cid,
       'u-id': req.params.uid
     }
-  }).then((content) => {
-    content.destroy();
-    return ReS(res, {
-      message: 'successfully deleted comment.'
-    });
+  }));
+
+  if (err) return ReE(res, err, 422);
+  
+  content.destroy();
+  return ReS(res, {
+    message: 'successfully deleted comment.'
   });
 }
 module.exports.deleteComment = deleteComment;
@@ -273,15 +277,15 @@ const confirmEmployees = async function (req, res) {
     Employee.update({
       'confirm': req.body.confirm
     }, {
-        where: {
-          'c-id': {
-            [Sequelize.Op.or]: req.body.array
-          }
+      where: {
+        'c-id': {
+          [Sequelize.Op.or]: req.body.array
         }
-      }).then(content => {
-        console.log(content['c-id']);
-        return ReS(res, content);
-      });
+      }
+    }).then(content => {
+      console.log(content['c-id']);
+      return ReS(res, content);
+    });
   }
 
   return false;
@@ -295,15 +299,15 @@ const confirmEmployers = async function (req, res) {
     Employer.update({
       'confirm': req.body.confirm
     }, {
-        where: {
-          'c-id': {
-            [Sequelize.Op.or]: req.body.array
-          }
+      where: {
+        'c-id': {
+          [Sequelize.Op.or]: req.body.array
         }
-      }).then(content => {
-        console.log(content['c-id']);
-        return ReS(res, content);
-      });
+      }
+    }).then(content => {
+      console.log(content['c-id']);
+      return ReS(res, content);
+    });
   }
 
   return false;
@@ -376,7 +380,7 @@ module.exports.getDashBoardData = getDashBoardData;
 
 const getContentsDetail = async function (req, res) {
   let userInfo;
-  if(req.headers['authorization']) {
+  if (req.headers['authorization']) {
     userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
   } else {
     userInfo = false;
@@ -434,7 +438,7 @@ const getContentsDetail = async function (req, res) {
       bookmarkTypes[req.params.page].findOne({
         where: {
           'c-id': content['c-id'],
-          'u-id': userInfo['user_id']          
+          'u-id': userInfo['user_id']
         }
       }).then(isBookmarked => {
         content.dataValues['isBookmarked'] = isBookmarked ? true : false;
@@ -443,7 +447,7 @@ const getContentsDetail = async function (req, res) {
       })
     } else {
       console.log('skipped searching bookmark: ', req.params.page, bookmarkTypes);
-      return ReS(res, content);      
+      return ReS(res, content);
     }
   });
 }
