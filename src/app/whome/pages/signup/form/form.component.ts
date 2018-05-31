@@ -140,7 +140,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     this.naverLogin.init();
     // this.naverService.create(this.naverLogin);
     // }
-    console.log(window['naver'].accessToken());
 
     this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
     setInterval(() => {
