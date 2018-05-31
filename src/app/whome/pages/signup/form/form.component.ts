@@ -142,7 +142,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     // }
 
     this.elementRef.nativeElement.querySelector('#naverIdLogin a').href = this.naverLogin.generateAuthorizeUrl();
-    setTimeout(() => {
+    setInterval(() => {
       this.naverLogin.getLoginStatus(status => {
         console.log('status: ', status);
         if (status) {
@@ -166,7 +166,7 @@ export class FormComponent implements OnInit, AfterViewInit {
           console.log('error: ', err);
         }
       );
-    }, 5000);
+    }, 2000);
     // this.naverService.check();
   }
 
