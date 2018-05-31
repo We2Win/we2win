@@ -122,11 +122,23 @@ export class FormComponent implements OnInit, AfterViewInit {
       // console.log('Kakao auth started');
     }
 
-    this.elementRef.nativeElement.querySelector('#btnNaver').href = window['naverLogin'].getAuthorizeUrl();
+    // this.elementRef.nativeElement.querySelector('#btnNaver').href = window['naverLogin'].getAuthorizeUrl();
 
   }
 
   ngAfterViewInit() {
+    this.naverLogin = new window['naver'].LoginWithNaverId(
+      {
+        clientId: environment.naver.clientId,
+        callbackUrl: environment.naver.callbackUrl,
+        isPopup: true, /* 팝업을 통한 연동처리 여부 */
+        loginButton: { color: 'green', type: 4, height: 50 } /* 로그인 버튼의 타입을 지정 */
+      }
+    );
+
+    /* 설정정보를 초기화하고 연동을 준비 */
+    this.naverLogin.init();
+
     console.log(localStorage.getItem('naverAuth'));
     if (localStorage.getItem('naverAuth')) {
       ;
