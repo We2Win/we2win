@@ -81,33 +81,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     this.naverLogin.init();
 
-    const naverAuth = JSON.parse(localStorage.getItem('naverAuth'));
-    console.log(naverAuth);
-    if (naverAuth) {
-      const user = {
-        'user_id': 'n_' + naverAuth.id,
-      };
-      this.authService.loginWithKakao(user).subscribe(
-        auth => {
-          console.log('auth: ', auth);
-          if (auth) {
-            this.router.navigate(['/']);
-          } else {
-            this.error('회원 정보를 불러오지 못했습니다.');
-            // this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
-          }
-        },
-        err => {
-          if (err.status === 422) {
-            this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
-          } else {
-            this.error('로그인 중 오류가\n발생했습니다.');
-          }
-        }
-      );
-    }
-
-
     // this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
 
     if (!window['Kakao'].Auth) {
@@ -197,30 +170,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   loginWithNaver() {
-    // this.naverLogin.getLoginStatus(function (status) {
-    //   if (status) {
-    //     /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-    //     const email = this.naverLogin.user.getEmail();
-    //     if (email == undefined || email == null) {
-    //       alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-    //       /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-    //       this.naverLogin.reprompt();
-    //       return;
-    //     }
-
-    //     window.location.replace("http://" + window.location.hostname + ((location.port == "" || location.port == undefined) ? "" : ":" + location.port) + "/sample/main.html");
-    //   } else {
-    //     console.log("callback 처리에 실패하였습니다.");
-    //   }
-    // });
-
-    const naver_id_login = new window['naver_id_login']('Wubf2TBn_Q6UWKJRyT1Y', 'http://localhost:4200/callback');
-    const state = naver_id_login.getUniqState();
-    naver_id_login.setDomain(environment.homeUrl);
-    // naver_id_login.setDomain('http://localhost:4200/callback');
-    naver_id_login.setState(state);
-    naver_id_login.setButton('white', 2, 40);
-    naver_id_login.init_naver_id_login();
 
   }
 

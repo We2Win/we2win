@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-naver-login',
@@ -13,6 +14,7 @@ export class NaverLoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private alertService: AlertService,
     private router: Router
   ) { }
 
@@ -29,9 +31,33 @@ export class NaverLoginComponent implements OnInit {
             nickname: window['naverLogin'].user.getNickName()
           };
           console.log('userInfo: ', userInfo);
-          this.userInfo.emit(userInfo);
           localStorage.setItem('naverAuth', JSON.stringify(userInfo));
-          this.router.navigate(['signup', 'form']);
+          const naverAuth = JSON.parse(localStorage.getItem('naverAuth'));
+          console.log(naverAuth);
+          if (naverAuth) {
+            const user = {
+              'user_id': 'n_' + naverAuth.id,
+            };
+            this.authService.loginWithKakao(user).subscribe(
+              auth => {
+                console.log('auth: ', auth);
+                if (auth) {
+                  this.router.navigate(['/']);
+                } else {
+                  this.alertService.error('회원 정보를 불러오지 못했습니다.');
+                  // this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+                }
+              },
+              err => {
+                if (err.status === 422) {
+                  this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+                } else {
+                  this.alertService.error('로그인 중 오류가\n발생했습니다.');
+                }
+              }
+            );
+          }
+          // this.router.navigate(['/']);
         } else {
           console.log('callback 처리에 실패하였습니다.');
         }
