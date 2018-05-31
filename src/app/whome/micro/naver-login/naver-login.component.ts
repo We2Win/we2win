@@ -27,7 +27,7 @@ export class NaverLoginComponent implements OnInit {
 
     console.log(window.location.pathname, window.location.href);
 
-    const token = window.location.pathname.split('#access_token=')[1].split('&')[0];
+    const token = window.location.href.split('#access_token=')[1].split('&')[0];
     console.log(token);
 
     this.authService.getNaverLoginStatus(token);
