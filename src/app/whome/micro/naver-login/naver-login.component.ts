@@ -42,6 +42,7 @@ export class NaverLoginComponent implements OnInit {
             email: window['naverLogin'].user.getEmail(),
             name: window['naverLogin'].user.getNickName()
           };
+          console.log('userInfo: ', userInfo);
           this.userInfo.emit(userInfo);
           localStorage.setItem('naverAuth', JSON.stringify(userInfo));
           this.router.navigate(['signup', 'form']);
