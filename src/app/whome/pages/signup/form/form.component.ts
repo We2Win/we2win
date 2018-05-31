@@ -127,23 +127,24 @@ export class FormComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     console.log('executing NaverService: ', environment.naver.callbackUrl);
     // if (!this.naverService.isStarted()) {
-      this.naverLogin = new naver.LoginWithNaverId(
-        {
-          clientId: environment.naver.clientId,
-          isPopup: false, /* 팝업을 통한 연동처리 여부 */
-          // callbackHandle: true,
-          callbackUrl: environment.naver.callbackUrl,
-          loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
-        }
-      );
+    this.naverLogin = new naver.LoginWithNaverId(
+      {
+        clientId: environment.naver.clientId,
+        isPopup: false, /* 팝업을 통한 연동처리 여부 */
+        // callbackHandle: true,
+        callbackUrl: environment.naver.callbackUrl,
+        loginButton: { color: 'green', type: 3, height: 48 } /* 로그인 버튼의 타입을 지정 */
+      }
+    );
 
-      this.naverLogin.init();
-      this.naverService.create(this.naverLogin);
+    this.naverLogin.init();
+    // this.naverService.create(this.naverLogin);
     // }
 
     this.elementRef.nativeElement.querySelector('#naverIdLogin a').href = this.naverLogin.generateAuthorizeUrl();
     setTimeout(() => {
       this.naverLogin.getLoginStatus(status => {
+        console.log('status: ', status);
         if (status) {
           /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
           const email = this.naverLogin.user.getEmail();
