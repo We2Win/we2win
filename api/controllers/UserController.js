@@ -129,12 +129,15 @@ const editUser = async function (req, res) {
 
   res.setHeader('Content-Type', 'application/json');
 
+  console.log('userInfo: ', userInfo);
+
   User.findOne({
       where: {
         'u-id': userInfo['user_id']
       }
     })
     .then(user => {
+      console.log('user: ');
       user.update(req.body.data, {
         where: {
           'u-id': userInfo['user_id']
