@@ -185,6 +185,7 @@ const removeUser = async function (req, res) {
         }
       })
       .then(data => {
+        console.log('data');
         data.destroy();
         // [err, user] = await to(data.destroy());
         // if (err) return ReE(res, 'error occured trying to delete user');

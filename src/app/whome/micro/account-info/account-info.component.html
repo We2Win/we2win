@@ -34,7 +34,7 @@
 <div>
   <div class="signed" *ngIf="isLogin" (click)="showProfile = true">
     <img src="/assets/img/icon_profile.png" alt="">
-    <div id="user">{{user.id}} 님</div>
+    <div id="user">{{user.name}} 님</div>
     <div id="point">{{user.point?user.point:'0'}} P</div>
     <!-- <div id="logout" (click)="logout()">로그아웃</div> -->
   </div>
