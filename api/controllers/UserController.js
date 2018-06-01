@@ -355,3 +355,14 @@ const hasId = async function (req, res) {
   });
 }
 module.exports.hasId = hasId;
+
+const checkUser = async function(req, res) {
+  const body = req.body;
+
+  [err, hasUser] = await to(authService.hasUser(req.body));
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    'available': !hasUser
+  });
+}

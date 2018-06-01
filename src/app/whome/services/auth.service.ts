@@ -99,6 +99,14 @@ export class AuthService {
   // 토큰 유효성 검증
   isAuthenticated(): boolean {
     const token = this.getToken();
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      })
+    };
+
     return token ? !this.isTokenExpired(token) : false;
   }
 

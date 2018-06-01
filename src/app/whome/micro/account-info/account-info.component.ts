@@ -50,10 +50,16 @@ export class AccountInfoComponent implements OnInit {
     }
 
     setTimeout(() => {
-      if (!this.authService.isAuthenticated()) {
-        this.isLogin = false;
-      }
+      this.checkStatus();
     }, 900000);
+  }
+
+  checkStatus() {
+    if (!this.authService.isAuthenticated()) {
+      this.info('시간이 만료되어 자동 로그아웃 되었습니다.');
+      this.isLogin = false;
+      this.showProfile = false;
+    }
   }
 
   checkAdmin() {

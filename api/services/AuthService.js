@@ -630,7 +630,7 @@ const authUser = async function (userInfo) { //returns token
   [err, user] = await to(user.comparePassword(userInfo['password']));
   if (!user) TE('패스워드가 맞지 않습니다.');
 
-  if (err) TE(err.message);
+  if (err) TE(err.message.message);
 
   return user;
 }
@@ -653,7 +653,7 @@ const authUserWithKakao = async function (userInfo) { //returns token
   }));
   if (!user) TE('등록되지 않았습니다.');
 
-  if (err) TE(err.message);
+  if (err) TE(err.message.message);
 
   return user;
 }
