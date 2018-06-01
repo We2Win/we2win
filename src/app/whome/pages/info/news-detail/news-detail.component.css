@@ -162,11 +162,11 @@ app-group /deep/ article span {
   background: none;
 }
 
-app-popup /deep/ #popupBox {
+/* app-popup /deep/ #popupBox {
   left: 30vw;
   width: 673px;
   padding: 30px;
-}
+} */
 
 app-popup /deep/ h1 {
   padding: 0;
