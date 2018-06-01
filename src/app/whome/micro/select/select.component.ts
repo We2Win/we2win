@@ -24,7 +24,6 @@ export class SelectComponent implements OnInit {
     this.selected = this.type;
   }
 
-
   viewUl(isDiv) {
     this._elementRef.nativeElement.querySelector('ul').classList.add('show');
   }
