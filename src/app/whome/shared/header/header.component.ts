@@ -8,7 +8,7 @@ import { String } from 'aws-sdk/clients/ecs';
 })
 export class HeaderComponent implements OnInit {
   selectedName: String = '부동산 정보';
-  menuTree: Array<Object> = [
+  menuTree: any = [
     {
       'path': 'info',
       'name': '부동산 정보',

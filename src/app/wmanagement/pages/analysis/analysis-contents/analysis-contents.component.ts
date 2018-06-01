@@ -16,7 +16,7 @@ import { ContentsService } from '../../../services/contents.service';
   providers: [ContentsService, PostingService]
 })
 export class AnalysisContentsComponent implements OnInit {
-  List: Array<object>;
+  List: any;
   total: number;
   date = new Date();
 

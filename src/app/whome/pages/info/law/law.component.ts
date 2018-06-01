@@ -12,7 +12,7 @@ import { LawCardComponent } from '../../../micro/law-card/law-card.component';
   providers: [ContentsService, PostingService]
 })
 export class LawComponent implements OnInit {
-  Data: Array<object>;
+  Data: any;
   sortType = 'date';
   hasMoreContents = true;
 
@@ -35,7 +35,7 @@ export class LawComponent implements OnInit {
           console.log('data: ', data);
           this.Data = data;
           this.addRecord(this.Data);
-          if (data.length !== 8) {
+          if (data['length'] !== 8) {
             this.hasMoreContents = false;
           }
         }

@@ -17,7 +17,7 @@ import { Angular2Csv } from 'angular2-csv';
   providers: [UserService, PostingService]
 })
 export class AnalysisUserComponent implements OnInit {
-  List: Array<object>;
+  List: any;
   total: number;
   date = new Date();
   orderByLevel = 'ALL';

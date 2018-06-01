@@ -14,7 +14,7 @@ import { EmployerCardComponent } from '../../../micro/employer-card/employer-car
   providers: [ContentsService, PostingService]
 })
 export class EmployerComponent implements OnInit {
-  Data: Array<object>;
+  Data: any;
   sortType = 'date';
   hasMoreContents = true;
 
@@ -37,7 +37,7 @@ export class EmployerComponent implements OnInit {
           console.log(data);
           this.Data = data;
           this.addRecord(this.Data);
-          if (data.length !== 8) {
+          if (data['length'] !== 8) {
             this.hasMoreContents = false;
           }
         }

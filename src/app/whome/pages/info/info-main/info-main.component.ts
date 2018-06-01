@@ -18,7 +18,7 @@ import { NaverService } from '../../../services/naver.service';
 })
 
 export class InfoMainComponent implements OnInit {
-  WeeklyList: Array<object>;
+  WeeklyList: any;
   sortType = 'date';
   hasMoreContents = true;
 
@@ -39,22 +39,27 @@ export class InfoMainComponent implements OnInit {
     this.getContentsListWeekly();
   }
 
-  getContentsListNewly(sort, id?: any) { this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
+  getContentsListNewly(sort, id?: any) {
+    this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
       data => {
         if (data) {
-          if (data.length === 0) {
+          if (data['length'] === 0) {
             this.hasMoreContents = false;
             return;
-          } if (data.length !== 8) {
+          } if (data['length'] !== 8) {
             this.hasMoreContents = false;
           } else {
             this.hasMoreContents = true;
           }
           console.log('data: ', data);
           const list = [];
-          data.forEach(content => {
-            list.push(content);
-          });
+          // tslint:disable-next-line:forin
+          for (const i in data) {
+            list.push(data[i]);
+          }
+          // data.forEach(content => {
+          //   list.push(content);
+          // });
           list.forEach(content => {
             content['createdAt'] = new Date(content['createdAt']);
             content['updatedAt'] = new Date(content['createdAt']);

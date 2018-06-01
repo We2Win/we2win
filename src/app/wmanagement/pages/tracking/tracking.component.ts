@@ -18,7 +18,7 @@ import { TrackingRecordComponent } from '../../micro/tracking-record/tracking-re
   providers: [UserService, PostingService]
 })
 export class TrackingComponent implements OnInit {
-  List: Array<object>;
+  List: any;
   total: number;
   orderByLevel = 'ALL';
   orderByAmount = 'ALL';

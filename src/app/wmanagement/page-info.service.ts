@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class PageInfoService {
   route: string;
-  navTree: Array<Object> = [
+  navTree: any = [
     {
       'title': 'dashboard',
       'description': '대쉬보드'
@@ -65,7 +65,7 @@ export class PageInfoService {
 
   getCurrentData(routePath, data) {
     // console.log(routePath, data);
-    if (!routePath) return;
+    if (!routePath) { return; }
     const path = routePath.split('/');
     // console.log('executing...', path, path.length);
 

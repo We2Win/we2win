@@ -23,7 +23,7 @@ import { AlertService } from '../../services/alert.service';
 })
 
 export class EmployerComponent implements OnInit {
-  List: Array<object>;
+  List: any;
   selectedList: Array<string> = [];
   total: number;
 

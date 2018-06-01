@@ -17,7 +17,7 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
   providers: [UserService, PostingService]
 })
 export class SettingsComponent implements OnInit {
-  List: Array<object>;
+  List: any;
   total: number;
   orderByLevel = 'ALL';
   orderByAmount = 'ALL';

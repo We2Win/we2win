@@ -13,9 +13,9 @@ import { Rankingpost1Directive, Rankingpost2Directive, Rankingpost3Directive } f
   providers: [ContentsService, PostingService]
 })
 export class SiteMainComponent implements OnInit {
-  NewlyList: Array<object>;
-  ReportList: Array<object>;
-  WeeklyList: Array<object>;
+  NewlyList: any;
+  ReportList: any;
+  WeeklyList: any;
 
   sortType1 = 'date';
   sortType2 = 'date';
@@ -45,10 +45,10 @@ export class SiteMainComponent implements OnInit {
     this.contentsService.getContentsList('site', 'newly', sort, id).subscribe(
       data => {
         if (data) {
-          if (data.length === 0) {
+          if (data['length'] === 0) {
             this.hasMoreContents1 = false;
             return;
-          } else if (data.length !== 8) {
+          } else if (data['length'] !== 8) {
             this.hasMoreContents1 = false;
           } else {
             this.hasMoreContents1 = true;
@@ -64,10 +64,10 @@ export class SiteMainComponent implements OnInit {
     this.contentsService.getContentsList('report', 'reporter', sort, id).subscribe(
       data => {
         if (data) {
-          if (data.length === 0) {
+          if (data['length'] === 0) {
             this.hasMoreContents2 = false;
             return;
-          } else if (data.length !== 8) {
+          } else if (data['length'] !== 8) {
             this.hasMoreContents2 = false;
           } else {
             this.hasMoreContents2 = true;

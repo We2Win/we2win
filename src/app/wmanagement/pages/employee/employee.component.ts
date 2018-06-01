@@ -22,7 +22,7 @@ import { EmployeeRecordComponent } from '../../micro/employee-record/employee-re
   ]
 })
 export class EmployeeComponent implements OnInit {
-  List: Array<object>;
+  List: any;
   selectedList: Array<string> = [];
   total: number;
 

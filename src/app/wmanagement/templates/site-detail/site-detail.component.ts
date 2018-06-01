@@ -29,8 +29,8 @@ export class SiteDetailComponent implements OnInit {
   @ViewChild('reportDetail') reportDetail;
   @ViewChild('imgNavigator') imgNavigator;
 
-  WeeklyList: Array<object>;
-  RankingList: Array<object>;
+  WeeklyList: any;
+  RankingList: any;
   @Input() recentRecords;
   @Input() weeklyRecords;
 

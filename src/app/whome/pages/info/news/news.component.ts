@@ -12,7 +12,7 @@ import { NewsCardComponent } from '../../../micro/news-card/news-card.component'
   providers: [ContentsService, PostingService]
 })
 export class NewsComponent implements OnInit {
-  Data: Array<object>;
+  Data: any;
   sortType = 'date';
   hasMoreContents = true;
 
@@ -35,7 +35,7 @@ export class NewsComponent implements OnInit {
           console.log('data: ', data);
           this.Data = data;
           this.addRecord(this.Data);
-          if (data.length !== 8) {
+          if (data['length'] !== 8) {
             this.hasMoreContents = false;
           }
         }

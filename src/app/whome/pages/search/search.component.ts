@@ -16,7 +16,7 @@ import { InfoCardComponent } from '../../micro/info-card/info-card.component';
   providers: [ContentsService, PostingService]
 })
 export class SearchComponent implements OnInit {
-  List: Array<object>;
+  List: any;
   hasMoreContents = true;
   Data;
   isEmpty = false;
@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
 
         console.log('data: ', data);
         if (this.Data) {
-          if (this.Data.length) {
+          if (data['length']) {
             this.isEmpty = false;
             if (data.page === 1) {
               container.clear();
@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
             }
 
             this.addRecord(this.Data);
-            if (this.Data.length !== 8) {
+            if (data['length'] !== 8) {
               this.hasMoreContents = false;
             }
           } else {

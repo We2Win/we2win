@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   providers: [PageInfoService, AuthService],
 })
 export class SidebarComponent implements OnInit {
-  navTree: Array<Object> = this.pageInfoService.navTree;
+  navTree: any = this.pageInfoService.navTree;
   userId;
   constructor(
     private pageInfoService: PageInfoService,
