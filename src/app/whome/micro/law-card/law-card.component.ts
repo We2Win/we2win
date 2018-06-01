@@ -11,7 +11,8 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-law-card',
   templateUrl: './law-card.component.html',
-  styleUrls: ['./law-card.component.css']
+  styleUrls: ['./law-card.component.css'],
+  providers: [ ContentsService ]
 })
 export class LawCardComponent implements OnInit {
   @Input('record') record;

@@ -1,12 +1,12 @@
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
-import { ContentsService } from './contents.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class FbShareService implements OnInit {
 
   constructor(
-    private contentService: ContentsService
+    private http: HttpClient,
   ) { }
 
   ngOnInit() {
@@ -19,6 +19,7 @@ export class FbShareService implements OnInit {
         href: url
       }, function (response) { });
 
-    this.contentService.countFbShare(cId);
+    return this.http.get(environment.apiUrl + '/countShare/' + cId)
+      .map((res: any) => res);
   }
 }
