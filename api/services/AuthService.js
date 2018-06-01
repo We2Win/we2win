@@ -263,7 +263,7 @@ const createComment = async function (body) {
 
   console.log('createComment(): body: ', JSON.stringify(body));
 
-  [err, content] = await to(Comment.create(JSON.parse(body)));
+  [err, content] = await to(Comment.create(body));
   console.log(err);
   if (err) TE(err);
   return content;
