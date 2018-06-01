@@ -123,7 +123,6 @@ export class ContentsService {
   }
 
   countFbShare(cId) {
-    return this.http.get(environment.apiUrl + '/countShare/' + cId)
-      .map((res: any) => res);
+
   }
 }
