@@ -135,6 +135,24 @@ const updateContent = async function (req, res) {
 }
 module.exports.updateContent = updateContent;
 
+
+const countShare = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  Content.update({
+    'c-sns': Sequelize.literal('`c-sns` + 1')
+  }, {
+    where: {
+      'c-id': req.params.cid
+    }
+  });
+
+  return ReS(res, {
+    message: 'Successfully created new comment data.',
+  }, 201);
+}
+module.exports.countShare = countShare;
+
 const createComments = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
@@ -155,7 +173,6 @@ const createComments = async function (req, res) {
   }, 201);
 }
 module.exports.createComments = createComments;
-
 const getComments = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -204,7 +221,7 @@ const deleteComment = async function (req, res) {
   console.log(content);
 
   if (err) return ReE(res, err, 422);
-  
+
   content.destroy();
   return ReS(res, {
     message: 'successfully deleted comment.'
@@ -356,7 +373,7 @@ const getDashBoardData = async function (req, res) {
   [err, cSns] = await to(Content.sum('c-sns'));
   [err, cScrap] = await to(Content.sum('c-scrap'));
   [err, cComment] = await to(Content.sum('c-comment'));
-  [err, cSchedule] = await to(Content.sum('c-schedule'));
+  [err, cSchedule] = await to(Schedule.count());
 
   if (err) return ReE(res, 'error occured trying to get data');
 
@@ -373,7 +390,7 @@ const getDashBoardData = async function (req, res) {
       'sns': cSns,
       'scrap': cScrap,
       'comment': cComment,
-      'schedult': cSchedule
+      'schedule': cSchedule
     }
   }
 

@@ -74,6 +74,7 @@ router.put('/schedule/add', UserController.addSchedule);
 router.post('/schedule/remove', UserController.removeSchedule);
 router.get('/schedule', UserController.getSchedule);
 
+router.ger('/countShare/:cid', ContentController.countShare);
 // router.get('/check', UserController.checkStatus);
 
 router.get('/mng/dashboard/users', UserController.getDashBoardData);

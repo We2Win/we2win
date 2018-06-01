@@ -264,6 +264,6 @@ export class SiteDetailComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/site/' + this.Data['s-type'] + '/' + this.Data['no']);
+    this.fbShareService.share(environment.homeUrl + '/site/' + this.Data['s-type'] + '/' + this.Data['no'], this.Data['c-id']);
   }
 }

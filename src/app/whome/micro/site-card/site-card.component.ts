@@ -62,6 +62,6 @@ export class SiteCardComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/site/' + this.record['s-type'] + '/' + this.record['no']);
+    this.fbShareService.share(environment.homeUrl + '/site/' + this.record['s-type'] + '/' + this.record['no'], this.record['c-id']);
   }
 }

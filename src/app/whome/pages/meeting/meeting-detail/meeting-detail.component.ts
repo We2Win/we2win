@@ -202,6 +202,6 @@ export class MeetingDetailComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/meetind/detail/' + this.Data['no']);
+    this.fbShareService.share(environment.homeUrl + '/meetind/detail/' + this.Data['no'], this.Data['c-id']);
   }
 }

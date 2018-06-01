@@ -266,6 +266,14 @@ const createComment = async function (body) {
   [err, content] = await to(Comment.create(body));
   console.log(err);
   if (err) TE(err);
+
+  Content.update({
+    'c-comment': Sequelize.literal('`c-comment` + 1')
+  }, {
+    where: {
+      'c-id': body['c-id']
+    }
+  });
   return content;
 }
 module.exports.createComment = createComment;
@@ -359,7 +367,9 @@ const addBookmark = async function (uId, body) {
         }
       }));
 
-      if (scrap) { TE('북마크된 항목입니다.') }
+      if (scrap) {
+        TE('북마크된 항목입니다.')
+      }
 
       [err, content] = await to(InfoScrap.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
@@ -376,8 +386,10 @@ const addBookmark = async function (uId, body) {
         }
       }));
 
-      if (scrap) { TE('북마크된 항목입니다.') }
-    
+      if (scrap) {
+        TE('북마크된 항목입니다.')
+      }
+
       info['s-type'] = body['s-type'];
       [err, content] = await to(SiteScrap.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
@@ -390,11 +402,23 @@ const addBookmark = async function (uId, body) {
         }
       }));
 
-      if (scrap) { TE('북마크된 항목입니다.') }
-    
+      if (scrap) {
+        TE('북마크된 항목입니다.')
+      }
+
       [err, content] = await to(Schedule.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
       break;
+  }
+
+  if (content) {
+    Content.update({
+      'c-scrap': Sequelize.literal('`c-scrap` + 1')
+    }, {
+      where: {
+        'c-id': info['c-id']
+      }
+    });
   }
 
   return content;

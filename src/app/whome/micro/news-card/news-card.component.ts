@@ -58,6 +58,6 @@ export class NewsCardComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/info/news' + this.record['no']);
+    this.fbShareService.share(environment.homeUrl + '/info/news' + this.record['no'], this.record['c-id']);
   }
 }

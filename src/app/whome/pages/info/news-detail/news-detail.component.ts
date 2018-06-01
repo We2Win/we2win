@@ -119,7 +119,7 @@ export class NewsDetailComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/site/news/' + this.Data['no']);
+    this.fbShareService.share(environment.homeUrl + '/site/news/' + this.Data['no'], this.Data['c-id']);
   }
 
 }

@@ -56,7 +56,7 @@ export class PersonalComponent implements OnInit {
 
   onSubmit() {
     if (this.editForm.controls['passwordV'].value &&
-    this.editForm.controls['password'].value !== this.editForm.controls['passwordV'].value) {
+      this.editForm.controls['password'].value !== this.editForm.controls['passwordV'].value) {
       this.alertService.error('수정한 비밀번호가 일치하지 않습니다.');
       return false;
     } else {
@@ -76,6 +76,11 @@ export class PersonalComponent implements OnInit {
         this.alertService.success('수정 완료했습니다.');
         this.editMode = false;
         this.editForm.reset();
+
+        // tslint:disable-next-line:forin
+        for (const field in editedData) {
+          this.detailedInfo[field] = editedData[field];
+        }
       },
       error => {
         this.alertService.error('오류가 발생했습니다.');

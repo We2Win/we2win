@@ -60,7 +60,7 @@ export class InfoCardComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/info/report/' + this.record['no']);
+    this.fbShareService.share(environment.homeUrl + '/info/report/' + this.record['no'], this.record['c-id']);
   }
 
 }

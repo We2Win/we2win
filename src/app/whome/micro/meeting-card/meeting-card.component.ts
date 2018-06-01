@@ -63,7 +63,7 @@ export class MeetingCardComponent implements OnInit {
   }
 
   fbShare() {
-    this.fbShareService.share(environment.homeUrl + '/info/report');
+    this.fbShareService.share(environment.homeUrl + '/info/report', this.record['c-id']);
   }
 
 }
