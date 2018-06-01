@@ -352,11 +352,11 @@ export class FormComponent implements OnInit, AfterViewInit {
     // this.signupForm.controls['name'].setValue(authInfo.nickname);
     this.signupForm.controls['email'].setValue(authInfo.email);
 
-    this.uId.nativeElement.value = '네이버에서 설정됨';
-    this.password.nativeElement.value = '네이버에서 설정됨';
-    this.passwordV.nativeElement.value = '네이버에서 설정됨';
-    // this.name.nativeElement.value = '네이버에서 설정됨';
-    this.email.nativeElement.value = '네이버에서 설정됨';
+    this.uId.nativeElement.value = authInfo.email.split('@')[0];
+    // this.password.nativeElement.value = '네이버 회원정보로 설정되었습니다.';
+    // this.passwordV.nativeElement.value = '네이버 회원정보로 설정되었습니다.';
+    // this.name.nativeElement.value = '네이버 회원정보로 설정되었습니다.';
+    this.email.nativeElement.value = authInfo.email;
     // this.uId.nativeElement.readOnly = true;
     // this.password.nativeElement.readOnly = true;
     // this.passwordV.nativeElement.readOnly = true;
@@ -401,11 +401,11 @@ export class FormComponent implements OnInit, AfterViewInit {
             this.signupForm.controls['name'].setValue(authInfo.properties.nickname);
             this.signupForm.controls['email'].setValue(authInfo.kaccount_email);
 
-            this.uId.nativeElement.classList.add('hide');
-            this.password.nativeElement.classList.add('hide');
-            this.passwordV.nativeElement.classList.add('hide');
-            this.name.nativeElement.classList.add('hide');
-            this.email.nativeElement.classList.add('hide');
+            // this.uId.nativeElement.value = '카카오 로그인으로 설정됨';
+            // this.password.nativeElement.value = '카카오 로그인으로 설정됨';
+            // this.passwordV.nativeElement.value = '카카오 로그인으로 설정됨';
+            this.name.nativeElement.value = authInfo.properties.nickname;
+            this.email.nativeElement.value = authInfo.kaccount_email;
             // this.uId.nativeElement.readOnly = true;
             // this.password.nativeElement.readOnly = true;
             // this.passwordV.nativeElement.readOnly = true;
