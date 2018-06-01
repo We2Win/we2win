@@ -549,7 +549,14 @@ export class ContentsModificationComponent implements OnInit {
 
   delete() {
     if (confirm('삭제하시겠습니까?')) {
-      this.contentsService.delete(this.loadedData['c-id']);
+      this.contentsService.delete(this.loadedData['c-id']).subscribe(
+        data => {
+          this.alertService.info('삭제하였습니다');
+        },
+        err => {
+          this.alertService.error('삭제에 실패하였습니다.');
+        }
+      );
     }
   }
 
