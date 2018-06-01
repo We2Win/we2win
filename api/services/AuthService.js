@@ -230,12 +230,11 @@ const updateContent = async function (data) {
 }
 module.exports.updateContent = updateContent;
 
-const deleteContent = async function (cId) {
+const deleteContent = async function (cId, type) {
   let unique_key, auth_info, err, content, indexContent;
 
-  switch (data.type) {
+  switch (type) {
     case '리포트':
-      console.log(data.body);
       Report.destroy({
         where: {
           'c-id': cId
@@ -250,7 +249,6 @@ const deleteContent = async function (cId) {
       console.log('done updating.');
       break;
     case '부동산 뉴스':
-      console.log(data.body);
       News.destroy({
         where: {
           'c-id': cId
@@ -265,7 +263,6 @@ const deleteContent = async function (cId) {
       console.log('done updating.');
       break;
     case '법률 및 정책':
-      console.log(data.body);
       Law.destroy({
         where: {
           'c-id': cId
@@ -283,7 +280,6 @@ const deleteContent = async function (cId) {
     case '오피스텔':
     case '상가/호텔':
     case '토지':
-      console.log(data.body);
       Site.destroy({
         where: {
           'c-id': cId
@@ -298,7 +294,6 @@ const deleteContent = async function (cId) {
       console.log('done updating.');
       break;
     case '오프라인 모임':
-      console.log(data.body);
       Meeting.destroy({
         where: {
           'c-id': cId
@@ -307,7 +302,6 @@ const deleteContent = async function (cId) {
 
       console.log('done updating.');
     case '구인':
-      console.log(data.body);
       Employer.destroy({
         where: {
           'c-id': cId
@@ -316,7 +310,6 @@ const deleteContent = async function (cId) {
 
       console.log('done updating.');
     case '구직':
-      console.log(data.body);
       Employee.destroy({
         where: {
           'c-id': cId

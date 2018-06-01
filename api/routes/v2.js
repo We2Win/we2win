@@ -32,7 +32,7 @@ router.post('/testing', (req, res) => {
 
 router.post('/contents', ContentController.createContents);
 // router.get('/contents', ContentController.get);
-router.delete('/contents/:cid', ContentController.deleteContent);
+router.delete('/contents/:type/:cid', ContentController.deleteContent);
 
 
 router.get('/search/:id/:pages', ContentController.searchContents);

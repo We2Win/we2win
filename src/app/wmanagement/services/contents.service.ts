@@ -124,7 +124,7 @@ export class ContentsService {
 
     return this.http.put(environment.apiUrl + '/contents/' + type, _data);
   }
-  delete(cId) {
+  delete(type, cId) {
     const httpOptions = {};
     if (this.authService.isAuthenticated()) {
       httpOptions['headers'] = new HttpHeaders({
@@ -133,7 +133,7 @@ export class ContentsService {
       });
     }
 
-    return this.http.delete(environment.apiUrl + '/contents/' + cId, httpOptions)
+    return this.http.delete(environment.apiUrl + '/contents/' + type + '/' + cId, httpOptions)
       .map((res: any) => res);
   }
   try() {
