@@ -151,15 +151,7 @@ export class UserService {
       })
     };
 
-    return this.http.put(environment.apiUrl + '/users', body, httpOptions).subscribe(
-      res => {
-        console.log(res);
-        this.alertService.success('수정 완료했습니다.');
-      },
-      error => {
-        this.alertService.error('오류가 발생했습니다.');
-      }
-    );
+    return this.http.put(environment.apiUrl + '/users', body, httpOptions);
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -85,7 +85,7 @@
           <app-button class="btnForm" (click)="toEditMode();">수정하기</app-button>
         </app-group>
         <app-group *ngIf="editMode">
-          <form [formGroup]="editForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          <form [formGroup]="editForm" enctype="multipart/form-data">
             <article>
               <div class="row">
                 <label>아이디</label>
