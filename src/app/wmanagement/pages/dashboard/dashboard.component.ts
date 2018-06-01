@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
 
   addData(component) {
     console.log(component.chartObject);
-    component.chartObject.data.datasets[0].data = [0, 0, 5];
+    // component.chartObject.data.datasets[0].data = [0, 0, 5];
     // component.chartObject.data.labels = [
     //     'PLATINUM',
     //     'PREMIUM',
