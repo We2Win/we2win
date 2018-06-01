@@ -29,7 +29,7 @@ export class NaverSignupComponent implements OnInit {
           console.log('userInfo: ', userInfo);
           this.userInfo.emit(userInfo);
           localStorage.setItem('naverAuth', JSON.stringify(userInfo));
-          this.router.navigate(['login']);
+          this.router.navigate(['signup', 'form']);
         } else {
           console.log('callback 처리에 실패하였습니다.');
         }
