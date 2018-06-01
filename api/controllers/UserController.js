@@ -139,7 +139,7 @@ const editUser = async function (req, res) {
     })
     .then(user => {
       console.log('user: ', user, req.body);
-      user.update(req.body.data, {
+      user.update(req.body.dataValues, {
         where: {
           'u-id': userInfo['user_id']
         }
