@@ -10,12 +10,14 @@ import { environment } from '../../../environments/environment.prod';
 import { JwtHelper } from 'angular2-jwt';
 import { UserInfo } from '../models/userInfo';
 import { AuthService } from './auth.service';
+import { AlertService } from './alert.service';
 
 @Injectable()
 export class UserService {
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelper,
+    private alertService: AlertService,
     private authService: AuthService
   ) { }
 
@@ -136,6 +138,21 @@ export class UserService {
     return this.http.post(environment.apiUrl + '/schedule/remove', body, httpOptions).subscribe(
       res => { console.log(res); },
       error => { console.log(error); }
+    );
+  }
+
+  editUserInfo(body) {
+    const bodyString = JSON.stringify(body);
+    const headers = { headers: { 'Content-Type': 'application/json' } };
+
+    return this.http.put(environment.apiUrl + '/users', bodyString, headers).subscribe(
+      res => {
+        console.log(res);
+        this.alertService.success('등록 완료했습니다.');
+      },
+      error => {
+        this.alertService.error('오류가 발생했습니다.');
+      }
     );
   }
 

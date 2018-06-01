@@ -40,12 +40,18 @@
         <li class="site" (click)="showSite()">분양 현황 스크랩</li>
       </nav>
       <div class="scrapList">
-        <div class="record" *ngFor="let record of infos" [routerLink]="'/info/'+engType[record['c-type']]+'/'+record['no']">
+        <div class="info record hidden" *ngIf="infos.length == 0">
+          <span>스크랩한 항목이 없습니다.</span>
+        </div>
+        <div class="site record hidden" *ngIf="sites.length == 0">
+          <span>스크랩한 항목이 없습니다.</span>
+        </div>
+        <div class="info record" *ngFor="let record of infos" [routerLink]="'/info/'+engType[record['c-type']]+'/'+record['no']">
           <span id="categories" [ngClass]="[engType[record['c-type']]]">{{ record['c-type'] }}</span>
           <span id="title">{{ record['title'] }}</span>
           <span id="date">{{ record['date'].slice(0, 10) }}</span>
         </div>
-        <div class="record" *ngFor="let record of sites" [routerLink]="'/site/site-detail/'+record['no']">
+        <div class="site record" *ngFor="let record of sites" [routerLink]="'/site/site-detail/'+record['no']">
           <span id="categories" class="site">{{ record['s-type'] }}</span>
           <span id="title">{{ record['title'] }}</span>
           <span id="date">{{ record['date'].slice(0, 10) }}</span>
@@ -61,6 +67,9 @@
       <nav id="menuSechedule" class="tabGroup">
         <li id="schedule" class="show">일정 관리</li>
       </nav>
+      <div *ngIf="schedules.length == 0">
+        <span>스크랩한 항목이 없습니다.</span>
+      </div>
       <div *ngFor="let record of schedules" [routerLink]="'/meeting/detail/'+record['no']">
         <!-- <span id="categories">{{ record['no'] }}</span> -->
         <span id="title">{{ record['title'] }}</span>

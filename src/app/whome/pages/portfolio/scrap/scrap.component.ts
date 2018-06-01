@@ -51,6 +51,8 @@ export class ScrapComponent implements OnInit {
   showInfo() {
     this._elementRef.nativeElement.querySelector('li.info').classList.add('show');
     this._elementRef.nativeElement.querySelector('li.site').classList.remove('show');
+    this._elementRef.nativeElement.querySelector('div.info').classList.add('show');
+    this._elementRef.nativeElement.querySelector('div.site').classList.remove('show');
     this.userService.getBookmark('info').subscribe(
       res => {
         this.infos = res['contents'];
@@ -63,6 +65,8 @@ export class ScrapComponent implements OnInit {
   showSite() {
     this._elementRef.nativeElement.querySelector('li.info').classList.remove('show');
     this._elementRef.nativeElement.querySelector('li.site').classList.add('show');
+    this._elementRef.nativeElement.querySelector('div.info').classList.remove('show');
+    this._elementRef.nativeElement.querySelector('div.site').classList.add('show');
     this.userService.getBookmark('site').subscribe(
       res => {
         this.sites = res['contents'];

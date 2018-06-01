@@ -119,6 +119,36 @@ const update = async function (req, res) {
 }
 module.exports.update = update;
 
+const editUser = async function (req, res) {
+  let userInfo;
+  if (req.headers['authorization']) {
+    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  } else {
+    userInfo = false;
+  }
+
+  res.setHeader('Content-Type', 'application/json');
+
+  User.findOne({
+      where: {
+        'u-id': userInfo['user_id']
+      }
+    })
+    .then(user => {
+      user.update(req.body.data, {
+        where: {
+          'u-id': userInfo['user_id']
+        }
+      }).then(data => {
+        return ReS(res, {
+          message: 'Edited User',
+          data: data
+        }, 204);
+      });
+    });
+}
+module.exports.editUser = editUser;
+
 const removeUser = async function (req, res) {
   let userInfo;
   if (req.headers['authorization']) {
@@ -243,7 +273,7 @@ const hasBookmark = async function (req, res) {
 
   [err, contents] = await to(authService.hasBookmark(req.params.id, userInfo['user_id']));
   if (err) return ReE(res, err, 422);
-  
+
   return ReS(res, {
     message: 'Bookmark Lists.',
     contents: contents
@@ -256,7 +286,7 @@ const getBookmark = async function (req, res) {
 
   [err, contents] = await to(authService.getBookmark(req.params.id, userInfo['user_id']));
   if (err) return ReE(res, err, 422);
-  
+
   return ReS(res, {
     message: 'Bookmark Lists.',
     contents: contents

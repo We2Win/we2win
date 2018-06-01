@@ -200,11 +200,29 @@ section>div {
   font-size: 0.9em;
 }
 
+.btnForm {
+  margin-top: 1em; 
+}
+
 app-button {
   width: calc(100% - 0.5em);
 }
 
 app-group /deep/ article {
   margin-top: 0;
+  padding-top: 0.5em;
   border: none;
+}
+
+app-group /deep/ label {
+  line-height: 42px;
+  margin: 0;
+  font-size: 1em;
+}
+
+app-group /deep/ p {
+  line-height: 42px;
+  margin: 0;
+  font-size: 1em;
+  padding-left: 1em;
 }

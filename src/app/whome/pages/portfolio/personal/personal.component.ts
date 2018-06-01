@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { AlertService } from '../../../services/alert.service';
 import { UserInfo, DetailedInfo } from '../../../models/userInfo';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-personal',
@@ -13,9 +15,13 @@ export class PersonalComponent implements OnInit {
   detailedInfo = new DetailedInfo();
 
   hopeList = ['투자', '실거주', '모두 해당'];
+  editMode = false;
+
+  editForm: FormGroup;
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private alertService: AlertService
   ) { }
 
@@ -28,6 +34,44 @@ export class PersonalComponent implements OnInit {
       },
       (err) => { this.alertService.error(err); }
     );
+
+    this.editForm = new FormGroup({
+      'password': new FormControl(''),
+      'passwordV': new FormControl(''),
+      'cp': new FormControl(''),
+      'email': new FormControl(''),
+      'hope': new FormControl(''),
+      'ha': new FormControl(''),
+      'hp': new FormControl(''),
+      'oa': new FormControl(''),
+      'op': new FormControl(''),
+      'info-a': new FormControl(''),
+      'sns': new FormControl(''),
+    });
+  }
+
+  toEditMode() {
+    this.editMode = true;
+  }
+
+  onSubmit() {
+    if (this.editForm.controls['password'].value !== this.editForm.controls['passwordV'].value) {
+      this.alertService.error('수정한 비밀번호가 일치하지 않습니다.');
+      return false;
+    } else {
+      this.editForm.controls['passwordV'].reset();
+    }
+    const editedData = {};
+    // tslint:disable-next-line:forin
+    for (const field in this.editForm.controls) {
+      if (this.editForm.controls[field].value) {
+        editedData[field] = this.editForm.controls[field].value;
+      }
+    }
+    console.log(editedData);
+    this.userService.editUserInfo(editedData);
+    this.editMode = false;
+    this.editForm.reset();
   }
 
 }
