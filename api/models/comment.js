@@ -18,10 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     'c-id': {
       type: DataTypes.UUID,
       allowNull: false,
-      references: {
-        model: 'contentsLists',
-        key: 'c-id'
-      }
+      // references: {
+      //   model: 'contentsLists',
+      //   key: 'c-id'
+      // }
     },
     'date': {
       type: DataTypes.STRING,
