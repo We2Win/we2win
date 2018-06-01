@@ -358,7 +358,7 @@ const addBookmark = async function (uId, body) {
         }
       }));
 
-      if (scrap) { return false; }
+      if (scrap) { TE('북마크된 항목입니다.') }
 
       [err, content] = await to(InfoScrap.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
@@ -375,7 +375,7 @@ const addBookmark = async function (uId, body) {
         }
       }));
 
-      if (scrap) { return false; }
+      if (scrap) { TE('북마크된 항목입니다.') }
     
       info['s-type'] = body['s-type'];
       [err, content] = await to(SiteScrap.create(info));
@@ -389,7 +389,7 @@ const addBookmark = async function (uId, body) {
         }
       }));
 
-      if (scrap) { return false; }
+      if (scrap) { TE('북마크된 항목입니다.') }
     
       [err, content] = await to(Schedule.create(info));
       if (err) TE('생성 중 오류가 발생했습니다.');
