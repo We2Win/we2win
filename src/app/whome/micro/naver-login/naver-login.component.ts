@@ -44,14 +44,17 @@ export class NaverLoginComponent implements OnInit {
                 if (auth) {
                   this.router.navigate(['/']);
                 } else {
+                  this.router.navigate(['/']);
                   this.alertService.error('회원 정보를 불러오지 못했습니다.');
                   // this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
                 }
               },
               err => {
                 if (err.status === 422) {
+                  this.router.navigate(['/']);
                   this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
                 } else {
+                  this.router.navigate(['/']);
                   this.alertService.error('로그인 중 오류가\n발생했습니다.');
                 }
               }

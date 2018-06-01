@@ -183,6 +183,14 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'naver',
+        component: NaverLoginComponent
+      },
+      {
+        path: 'naverSign',
+        component: NaverSignupComponent
+      },
     ]
   },
   {
@@ -240,14 +248,6 @@ const routes: Routes = [
         component: PrivacyComponent
       }
     ]
-  },
-  {
-    path: 'naver',
-    component: NaverLoginComponent
-  },
-  {
-    path: 'naverSign',
-    component: NaverSignupComponent
   },
   // temporary state
   {
