@@ -237,7 +237,14 @@ module.exports.loginWithKakao = loginWithKakao;
 const getSchedule = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
-  [err, contents] = await to(authService.getSchedule(req.params.id, userInfo['user_id']));
+  let uId;
+  if (userInfo['user_id']) {
+    uId = userInfo['user_id'];
+  } else if (userInfo['u-id']) {
+    uId = userInfo['u-id'];
+  }
+
+  [err, contents] = await to(authService.getSchedule(req.params.id, uId));
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
@@ -250,9 +257,14 @@ module.exports.getSchedule = getSchedule;
 const addSchedule = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
-  console.log(userInfo);
+  let uId;
+  if (userInfo['user_id']) {
+    uId = userInfo['user_id'];
+  } else if (userInfo['u-id']) {
+    uId = userInfo['u-id'];
+  }
 
-  [err, user] = await to(authService.addSchedule(userInfo['user_id'], req.body));
+  [err, user] = await to(authService.addSchedule(uId, req.body));
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
@@ -264,7 +276,14 @@ module.exports.addSchedule = addSchedule;
 const removeSchedule = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
-  [err, user] = await to(authService.removeSchedule(userInfo['user_id'], req.body));
+  let uId;
+  if (userInfo['user_id']) {
+    uId = userInfo['user_id'];
+  } else if (userInfo['u-id']) {
+    uId = userInfo['u-id'];
+  }
+
+  [err, user] = await to(authService.removeSchedule(uId, req.body));
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
@@ -276,7 +295,14 @@ module.exports.removeSchedule = removeSchedule;
 const hasBookmark = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
-  [err, contents] = await to(authService.hasBookmark(req.params.id, userInfo['user_id']));
+  let uId;
+  if (userInfo['user_id']) {
+    uId = userInfo['user_id'];
+  } else if (userInfo['u-id']) {
+    uId = userInfo['u-id'];
+  }
+
+  [err, contents] = await to(authService.hasBookmark(req.params.id, uId));
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
@@ -289,7 +315,14 @@ module.exports.hasBookmark = hasBookmark;
 const getBookmark = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
-  [err, contents] = await to(authService.getBookmark(req.params.id, userInfo['user_id']));
+  let uId;
+  if (userInfo['user_id']) {
+    uId = userInfo['user_id'];
+  } else if (userInfo['u-id']) {
+    uId = userInfo['u-id'];
+  }
+
+  [err, contents] = await to(authService.getBookmark(req.params.id, uId));
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
@@ -302,9 +335,14 @@ module.exports.getBookmark = getBookmark;
 const addBookmark = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
-  console.log(userInfo);
+  let uId;
+  if (userInfo['user_id']) {
+    uId = userInfo['user_id'];
+  } else if (userInfo['u-id']) {
+    uId = userInfo['u-id'];
+  }
 
-  [err, user] = await to(authService.addBookmark(userInfo['user_id'], req.body));
+  [err, user] = await to(authService.addBookmark(uId, req.body));
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
@@ -316,7 +354,14 @@ module.exports.addBookmark = addBookmark;
 const removeBookmark = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
-  [err, user] = await to(authService.removeBookmark(userInfo['user_id'], req.body));
+  let uId;
+  if (userInfo['user_id']) {
+    uId = userInfo['user_id'];
+  } else if (userInfo['u-id']) {
+    uId = userInfo['u-id'];
+  }
+
+  [err, user] = await to(authService.removeBookmark(uId, req.body));
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
