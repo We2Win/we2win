@@ -120,6 +120,7 @@ const update = async function (req, res) {
 module.exports.update = update;
 
 const editUser = async function (req, res) {
+  console.log('edit started.');
   let userInfo;
   if (req.headers['authorization']) {
     userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
