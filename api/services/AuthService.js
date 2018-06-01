@@ -264,7 +264,7 @@ const createComment = async function (body) {
   console.log('createComment(): body: ', JSON.stringify(body));
 
   [err, content] = await to(Comment.create(JSON.parse(body)));
-  if (err) TE('생성 중 오류가 발생했습니다.');
+  if (err) TE(err);
   return content;
 }
 module.exports.createComment = createComment;
