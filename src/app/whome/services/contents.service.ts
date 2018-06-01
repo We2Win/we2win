@@ -43,7 +43,7 @@ export class ContentsService {
 
     console.log('comments: ', body);
 
-    return this.http.post(environment.apiUrl + '/contents/comments/', bodyString, headers).subscribe(
+    return this.http.post(environment.apiUrl + '/contents/comments', bodyString, headers).subscribe(
       res => { console.log(res); },
       error => { console.log(error); }
     );
