@@ -67,7 +67,7 @@ export class SelectComponent implements OnInit, OnChanges {
   }
 
   selectValue(ev) {
-    // if (ev.path[0].nodeName === 'LI') {
+    if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
       this.change.emit(this.selected);
       console.log(this.getIndexInParent(ev.path[0]));
@@ -76,12 +76,12 @@ export class SelectComponent implements OnInit, OnChanges {
       if (this.selected === '하위 카테고리') {
         // console.log(this.topCategory);
       }
-    // } else if (ev.path[1].nodeName === 'LI') {
-    //   this.selected = ev.path[1].innerText;
-    //   this.change.emit(this.selected);
-    // } else {
-    //   console.log('error: ');
-    // }
+    } else if (ev.path[1].nodeName === 'LI') {
+      this.selected = ev.path[1].innerText;
+      this.change.emit(this.selected);
+    } else {
+      console.log('error: ');
+    }
     this.hideUl(false);
   }
 
