@@ -138,7 +138,7 @@ const editUser = async function (req, res) {
       }
     })
     .then(user => {
-      console.log('user: ');
+      console.log('user: ', user, req.body);
       user.update(req.body.data, {
         where: {
           'u-id': userInfo['user_id']
