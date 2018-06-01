@@ -142,13 +142,19 @@ export class UserService {
   }
 
   editUserInfo(body) {
-    const bodyString = JSON.stringify(body);
+    // const bodyString = JSON.stringify(body);
     const headers = { headers: { 'Content-Type': 'application/json' } };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      })
+    };
 
-    return this.http.put(environment.apiUrl + '/users', bodyString, headers).subscribe(
+    return this.http.put(environment.apiUrl + '/users', body, httpOptions).subscribe(
       res => {
         console.log(res);
-        this.alertService.success('등록 완료했습니다.');
+        this.alertService.success('수정 완료했습니다.');
       },
       error => {
         this.alertService.error('오류가 발생했습니다.');
