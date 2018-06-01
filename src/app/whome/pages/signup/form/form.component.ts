@@ -122,7 +122,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       // console.log('Kakao auth started');
     }
 
-    this.elementRef.nativeElement.querySelector('#naverIdLogin').setArrtibute('onclick', 'return false;');
+    this.elementRef.nativeElement.querySelector('#naverIdLogin').setAttribute('onclick', 'return false;');
 
   }
 
