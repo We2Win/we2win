@@ -148,16 +148,18 @@ const deleteContent = async function (req, res) {
     return ReS(res, 'not authorized.', 422);
   }
 
-  console.log('hi');
-
   res.setHeader('Content-Type', 'application/json');
 
   [err, content] = await to(authService.deleteContent(req.params.cid));
 
-  console.log('done1');
   if (err) return ReE(res, err, 422);
 
-  content.destroy();
+  content.destroy({
+    where: {
+      'c-id': req.params.cid
+    }
+  });
+
   return ReS(res, {
     message: 'successfully deleted comment.'
   });

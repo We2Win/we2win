@@ -232,17 +232,16 @@ module.exports.updateContent = updateContent;
 
 const deleteContent = async function (cId) {
   let unique_key, auth_info, err, content, indexContent;
-  console.log('done2');
 
   switch (data.type) {
     case '리포트':
       console.log(data.body);
-      Report.delete({
+      Report.destroy({
         where: {
           'c-id': cId
         }
       });
-      Content.delete({
+      Content.destroy({
         where: {
           'c-id': cId
         }
@@ -252,12 +251,12 @@ const deleteContent = async function (cId) {
       break;
     case '부동산 뉴스':
       console.log(data.body);
-      News.delete({
+      News.destroy({
         where: {
           'c-id': cId
         }
       });
-      Content.delete({
+      Content.destroy({
         where: {
           'c-id': cId
         }
@@ -267,12 +266,12 @@ const deleteContent = async function (cId) {
       break;
     case '법률 및 정책':
       console.log(data.body);
-      Law.delete({
+      Law.destroy({
         where: {
           'c-id': cId
         }
       });
-      Content.delete({
+      Content.destroy({
         where: {
           'c-id': cId
         }
@@ -285,12 +284,12 @@ const deleteContent = async function (cId) {
     case '상가/호텔':
     case '토지':
       console.log(data.body);
-      Site.delete({
+      Site.destroy({
         where: {
           'c-id': cId
         }
       });
-      Content.delete({
+      Content.destroy({
         where: {
           'c-id': cId
         }
@@ -300,7 +299,7 @@ const deleteContent = async function (cId) {
       break;
     case '오프라인 모임':
       console.log(data.body);
-      Meeting.delete({
+      Meeting.destroy({
         where: {
           'c-id': cId
         }
@@ -309,7 +308,7 @@ const deleteContent = async function (cId) {
       console.log('done updating.');
     case '구인':
       console.log(data.body);
-      Employer.delete({
+      Employer.destroy({
         where: {
           'c-id': cId
         }
@@ -318,7 +317,7 @@ const deleteContent = async function (cId) {
       console.log('done updating.');
     case '구직':
       console.log(data.body);
-      Employee.delete({
+      Employee.destroy({
         where: {
           'c-id': cId
         }
