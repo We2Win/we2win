@@ -30,7 +30,9 @@ export class MeetingCardComponent implements OnInit {
 
   ngOnInit() {
     this.imageUrl = environment.bucket.downloadUrl + this.record['master-image'];
-    this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
+    if (this.record['level']) {
+      this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
+    }
   }
 
   formatDate(dateStr) {

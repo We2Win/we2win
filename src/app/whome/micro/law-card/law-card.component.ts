@@ -44,8 +44,9 @@ export class LawCardComponent implements OnInit {
           break;
       }
     }
-
-    this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
+    if (this.record['level']) {
+      this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
+    }
   }
 
   bookmark() {

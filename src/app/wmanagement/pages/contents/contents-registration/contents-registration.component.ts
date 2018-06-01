@@ -401,6 +401,15 @@ export class ContentsRegistrationComponent implements OnInit {
     }
   }
 
+  preview() {
+    this.selectedData.body = this.forms[this.selectedData.type].value;
+    this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
+    console.log(this.selectedData, this.selectBoxData);
+
+    this.putDataService.updateData(this.selectedData.body, this.selectedData.type);
+    this.isDataChanged = true;
+  }
+
   postData(selectedData) {
     console.log('selectedData: ', selectedData);
     this.contentsService.create(selectedData)

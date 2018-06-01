@@ -29,7 +29,9 @@ export class SiteCardComponent implements OnInit {
   ngOnInit() {
     // console.log(this.record);
     this.imageUrl = environment.bucket.downloadUrl + this.record['master-image'];
-    this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
+    if (this.record['level']) {
+      this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
+    }
   }
 
   formatDate(dateStr) {
