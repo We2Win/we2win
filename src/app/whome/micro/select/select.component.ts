@@ -39,6 +39,7 @@ export class SelectComponent implements OnInit {
   }
 
   selectValue(ev) {
+    console.log(ev);
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
       this.change.emit(this.selected);
