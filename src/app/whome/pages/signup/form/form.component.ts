@@ -352,11 +352,11 @@ export class FormComponent implements OnInit, AfterViewInit {
     // this.signupForm.controls['name'].setValue(authInfo.nickname);
     this.signupForm.controls['email'].setValue(authInfo.email);
 
-    this.uId.nativeElement.classList.add('hide');
-    this.password.nativeElement.classList.add('hide');
-    this.passwordV.nativeElement.classList.add('hide');
-    // this.name.nativeElement.classList.add('hide');
-    this.email.nativeElement.classList.add('hide');
+    this.uId.nativeElement.value = '네이버에서 설정됨';
+    this.password.nativeElement.value = '네이버에서 설정됨';
+    this.passwordV.nativeElement.value = '네이버에서 설정됨';
+    // this.name.nativeElement.value = '네이버에서 설정됨';
+    this.email.nativeElement.value = '네이버에서 설정됨';
     // this.uId.nativeElement.readOnly = true;
     // this.password.nativeElement.readOnly = true;
     // this.passwordV.nativeElement.readOnly = true;
