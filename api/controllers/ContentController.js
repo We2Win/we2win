@@ -530,6 +530,15 @@ const getContentsList = async function (req, res) {
   }
 
   switch (req.params.list) {
+    case 'All':
+      Content.findAll({
+        offset: id,
+        order: orderArr,
+        where: whereArr
+      }).then(content => {
+        return ReS(res, content);
+      });
+      break;
     case 'newly':
       Content.findAll({
         offset: id,
@@ -612,6 +621,36 @@ const getSimplesList = async function (req, res) {
   }
 
   switch (req.params.page) {
+    case 'meetingAll':
+      Meeting.findAll({
+        offset: id,
+        order: orderArr,
+      }).then(content => {
+        return ReS(res, content);
+      });
+      break;
+    case 'employeeAll':
+      Employee.findAll({
+        offset: id,
+        order: orderArr,
+        where: {
+          'confirm': 1
+        }
+      }).then(content => {
+        return ReS(res, content);
+      });
+      break;
+    case 'employerAll':
+      Employer.findAll({
+        offset: id,
+        order: orderArr,
+        where: {
+          'confirm': 1
+        }
+      }).then(content => {
+        return ReS(res, content);
+      });
+      break;
     case 'meeting':
       Meeting.findAll({
         offset: id,

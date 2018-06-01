@@ -177,7 +177,7 @@ export class ContentsModificationComponent implements OnInit {
     console.log('updateContents(): ', this.engType[selected], selected);
 
     if (selected === '오프라인 모임') {
-      this.contentsService.getSimplesList(this.engType[selected], 'date').subscribe(
+      this.contentsService.getSimplesList(this.engType[selected] + 'All', 'date').subscribe(
         data => {
           const titles = [];
           this.contentNoArr = [];
@@ -200,7 +200,7 @@ export class ContentsModificationComponent implements OnInit {
           console.log('error loading contents');
         });
     } else {
-      this.contentsService.getContentsList(this.engType[selected], 'newly', 'date').subscribe(
+      this.contentsService.getContentsList(this.engType[selected], 'All', 'date').subscribe(
         data => {
           const titles = [];
           this.contentNoArr = [];
