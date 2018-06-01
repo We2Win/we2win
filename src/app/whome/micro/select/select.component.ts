@@ -12,7 +12,7 @@ export class SelectComponent implements OnInit {
   @Output() change = new EventEmitter();
   selected: string;
 
-  constructor(private _elementRef: ElementRef) {}
+  constructor(private _elementRef: ElementRef) { }
 
   categories: Object = {
     '가용자산': ['2000만원', '5000만원', '1억', '3억', '5억 이상'],
@@ -43,12 +43,14 @@ export class SelectComponent implements OnInit {
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
       this.change.emit(this.selected);
-
-      // console.log(this.selected);
-
       if (this.selected === '하위 카테고리') {
         // console.log(this.topCategory);
       }
+    } else if (ev.path[1].nodeName === 'LI') {
+      this.selected = ev.path[1].innerText;
+      this.change.emit(this.selected);
+    } else {
+      console.log('error: ');
     }
     this.hideUl(false);
   }
