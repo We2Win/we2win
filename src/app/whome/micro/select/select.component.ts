@@ -39,7 +39,7 @@ export class SelectComponent implements OnInit {
   }
 
   selectValue(ev) {
-    console.log(ev);
+    // console.log(ev);
     if (ev.path[0].nodeName === 'LI') {
       this.selected = ev.path[0].innerText;
       this.change.emit(this.selected);
@@ -50,7 +50,7 @@ export class SelectComponent implements OnInit {
       this.selected = ev.path[1].innerText;
       this.change.emit(this.selected);
     } else {
-      console.log('error: ');
+      console.log('error: ', ev.path);
     }
     this.hideUl(false);
   }

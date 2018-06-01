@@ -42,19 +42,19 @@ export class NaverLoginComponent implements OnInit {
               auth => {
                 console.log('auth: ', auth);
                 if (auth) {
-                  this.router.navigate(['/']);
+                  this.refresh();
                 } else {
-                  this.router.navigate(['/']);
+                  this.refresh();
                   this.alertService.error('회원 정보를 불러오지 못했습니다.');
                   // this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
                 }
               },
               err => {
                 if (err.status === 422) {
-                  this.router.navigate(['/']);
+                  this.refresh();
                   this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
                 } else {
-                  this.router.navigate(['/']);
+                  this.refresh();
                   this.alertService.error('로그인 중 오류가\n발생했습니다.');
                 }
               }
@@ -70,6 +70,14 @@ export class NaverLoginComponent implements OnInit {
 
   getUrl() {
     window.location.href = window['naverLogin'].generateAuthorizeUrl();
+  }
+
+  refresh() {
+    // refresh current page
+    let currentUrl;
+    currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigateByUrl(currentUrl));
   }
 
 }
