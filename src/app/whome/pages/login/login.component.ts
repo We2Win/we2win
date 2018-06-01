@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     /* 설정정보를 초기화하고 연동을 준비 */
     this.naverLogin.init();
 
-    // this.elementRef.nativeElement.querySelector('#naverIdLogin a').setAttribute('onclick', 'return false;');
+    this.elementRef.nativeElement.querySelector('#naverIdLogin').setArrtibute('onclick', 'return false;');
 
     if (!window['Kakao'].Auth) {
       window['Kakao'].init(environment.kakao.clientId);
