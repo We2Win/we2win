@@ -78,6 +78,10 @@ import { SearchService } from './services/search.service';
 import { NaverService } from './services/naver.service';
 import { NaverLoginComponent } from './micro/naver-login/naver-login.component';
 import { NaverSignupComponent } from './micro/naver-signup/naver-signup.component';
+import { SchedulerComponent } from './micro/scheduler/scheduler.component';
+import { SchedulerWeekComponent } from './micro/scheduler-week/scheduler-week.component';
+import { SchedulerDayComponent } from './micro/scheduler-day/scheduler-day.component';
+import { SchedulerMonthComponent } from './micro/scheduler-month/scheduler-month.component';
 
 
 export function tokenGetter() {
@@ -158,6 +162,10 @@ export function tokenGetter() {
     AlertComponent,
     NaverLoginComponent,
     NaverSignupComponent,
+    SchedulerComponent,
+    SchedulerWeekComponent,
+    SchedulerDayComponent,
+    SchedulerMonthComponent,
   ],
   entryComponents: [
     InfoCardComponent,

@@ -547,6 +547,12 @@ export class ContentsModificationComponent implements OnInit {
     this.isDataChanged = true;
   }
 
+  delete() {
+    if (confirm('삭제하시겠습니까?')) {
+      this.contentsService.delete(this.loadedData['c-id']);
+    }
+  }
+
   putData(selectedData) {
     console.log('selectedData: ', selectedData);
     this.contentsService.updateContent(this.engType[this.selectedData.type], selectedData)

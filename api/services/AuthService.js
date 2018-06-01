@@ -230,6 +230,107 @@ const updateContent = async function (data) {
 }
 module.exports.updateContent = updateContent;
 
+const deleteContent = async function (cId) {
+  let unique_key, auth_info, err, content, indexContent;
+
+  switch (data.type) {
+    case '리포트':
+      console.log(data.body);
+      Report.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+      Content.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+
+      console.log('done updating.');
+      break;
+    case '부동산 뉴스':
+      console.log(data.body);
+      News.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+      Content.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+
+      console.log('done updating.');
+      break;
+    case '법률 및 정책':
+      console.log(data.body);
+      Law.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+      Content.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+
+      console.log('done updating.');
+      break;
+    case '아파트':
+    case '오피스텔':
+    case '상가/호텔':
+    case '토지':
+      console.log(data.body);
+      Site.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+      Content.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+
+      console.log('done updating.');
+      break;
+    case '오프라인 모임':
+      console.log(data.body);
+      Meeting.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+
+      console.log('done updating.');
+    case '구인':
+      console.log(data.body);
+      Employer.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+
+      console.log('done updating.');
+    case '구직':
+      console.log(data.body);
+      Employee.delete({
+        where: {
+          'c-id': cId
+        }
+      });
+
+      console.log('done updating.');
+  }
+
+  // console.log('createcontent()');
+  return content;
+}
+module.exports.deleteContent = deleteContent;
+
 const searchContent = async function (body, page) {
   let err, content;
   page = (page - 1) * 8 || 0;

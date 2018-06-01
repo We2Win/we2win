@@ -124,8 +124,17 @@ export class ContentsService {
 
     return this.http.put(environment.apiUrl + '/contents/' + type, _data);
   }
-  delete(id: string) {
-    return this.http.delete('/api');
+  delete(cId) {
+    const httpOptions = {};
+    if (this.authService.isAuthenticated()) {
+      httpOptions['headers'] = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      });
+    }
+
+    return this.http.delete(environment.apiUrl + '/contents/' + cId, httpOptions)
+      .map((res: any) => res);
   }
   try() {
     return this.http.get('/api');

@@ -135,6 +135,31 @@ const updateContent = async function (req, res) {
 }
 module.exports.updateContent = updateContent;
 
+const deleteComment = async function (req, res) {
+  let userInfo;
+  if (req.headers['authorization']) {
+    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  } else {
+    userInfo = false;
+  }
+
+  if (userInfo['user_level'] !== 'ADMIN' && userInfo['user_level'] !== 'MANAGER') {
+    console.log('not authorized:', userInfo, userInfo['user_level']);
+    return ReS(res, 'not authorized.', 422);
+  }
+
+  res.setHeader('Content-Type', 'application/json');
+
+  [err, content] = await to(authService.deleteContent(req.params.cid));
+
+  if (err) return ReE(res, err, 422);
+
+  content.destroy();
+  return ReS(res, {
+    message: 'successfully deleted comment.'
+  });
+}
+module.exports.deleteComment = deleteComment;
 
 const countShare = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
