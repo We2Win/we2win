@@ -14,7 +14,9 @@ export class ContentsService {
 
   getContentsList(page, list, sort, id?: any) {
     return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'))
-      .map((res: any) => res);
+      .map((res: object) => {
+        return res;
+      });
   }
 
   getWeeklyList(page) {

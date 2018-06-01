@@ -1,6 +1,6 @@
 <section>
   <app-select-filtering *ngIf="isNoNeed" (sorter)="sort($event)"></app-select-filtering>
-  <h1></h1>
+  <h1 *ngIf="isNoNeed"></h1>
   <div class="contents">
     <ng-content></ng-content>
   </div>

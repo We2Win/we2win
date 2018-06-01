@@ -195,15 +195,9 @@ section>div {
   text-align: center;
 }
 
-.lTable {
-  display: table;
-  width: 100%;
-  background: none;
-  font-size: 1.2em;
-  /* word-wrap: break-word; */
-  /* border-spacing set instead of margin */
-  /* border-spacing: 10px; */
-  /* border-collapse: separat e; */
+.personal {
+  padding: 1em;
+  font-size: 0.9em;
 }
 
 app-button {
