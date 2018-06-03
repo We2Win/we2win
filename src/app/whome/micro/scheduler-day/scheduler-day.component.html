@@ -1,3 +1,4 @@
-<p>
-  scheduler-day works!
-</p>
+<div class="day" [ngClass]="'d'+record.day" (click)="emitDate()">
+  <h1>{{ record.dateStr }}</h1>
+  <!-- <p>{{ record.value ? '￦ ' + record.value : '' }}</p> -->
+</div>

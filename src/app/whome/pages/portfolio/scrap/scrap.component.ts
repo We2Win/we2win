@@ -86,4 +86,8 @@ export class ScrapComponent implements OnInit {
       err => this.alertService.error('에러가 발생했습니다.')
     );
   }
+
+  payment() {
+    this.alertService.warn('현재 등급 전환을 할 수 없습니다.');
+  }
 }

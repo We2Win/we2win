@@ -1,3 +1,36 @@
+@keyframes showDetail {
+  from {
+    opacity: 0;
+    margin-top: -3em;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+.loader {
+  display: none;
+  font-size: 1.5em;
+  padding: 25vh 0;
+  text-align: center;
+  color: #666;
+}
+
+.loader.loading {
+  display: block;
+}
+
+.hasData {
+  opacity: 1;
+  animation: showDetail 1s;
+  animation-fill-mode: forwards;
+}
+
+section {
+  opacity: 0;
+}
+
 #background {
   position: relative;
   margin-bottom: -400px;

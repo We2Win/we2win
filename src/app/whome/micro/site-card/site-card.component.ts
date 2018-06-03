@@ -14,6 +14,16 @@ export class SiteCardComponent implements OnInit {
   @Input('record') record;
   @Input() level = 'standard';
 
+  engType = {
+    '리포트': 'report',
+    '부동산 뉴스': 'news',
+    '법률 및 정책': 'law',
+    '아파트': 'apartment',
+    '오피스텔': 'officetel',
+    '상가/호텔': 'commercial',
+    '토지': 'ground'
+  };
+
   imageUrl;
 
   constructor(

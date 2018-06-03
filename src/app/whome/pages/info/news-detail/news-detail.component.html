@@ -1,4 +1,5 @@
-<section>
+<h1 class="loader" [ngClass]="{'loading': !Data['title']}">데이터를 불러오고 있습니다.</h1>
+<section [ngClass]="{'hasData': Data['title']}">
   <img id="background" #background>
   <div id="top" #top>
     <div id="levelBar" [ngClass]="Data['level']">

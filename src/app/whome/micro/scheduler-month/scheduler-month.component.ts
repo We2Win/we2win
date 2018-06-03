@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scheduler-month.component.css']
 })
 export class SchedulerMonthComponent implements OnInit {
+  record;
 
   constructor() { }
 

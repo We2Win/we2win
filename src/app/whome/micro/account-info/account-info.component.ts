@@ -78,7 +78,7 @@ export class AccountInfoComponent implements OnInit {
   }
 
   editProfile() {
-    this.router.navigate(['/portfolio']);
+    this.router.navigate(['/portfolio/personal']);
     this.showProfile = false;
   }
 

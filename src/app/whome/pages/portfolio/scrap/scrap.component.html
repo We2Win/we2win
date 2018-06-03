@@ -19,7 +19,7 @@
         </div>
       </div>
       <div>
-        <app-button>결제하기</app-button>
+        <app-button (click)="payment()">결제하기</app-button>
       </div>
       <div id="memberLocation">
         <h1>관심 지역</h1>
@@ -61,7 +61,8 @@
   </div>
   <div>
     <div class="contentBox2">
-      <app-table [type]="'calendar'"></app-table>
+      <app-scheduler></app-scheduler>
+      <!-- <app-table [type]="'calendar'"></app-table> -->
     </div>
     <div class="contentBox1 scheduleBox">
       <nav id="menuSechedule" class="tabGroup">

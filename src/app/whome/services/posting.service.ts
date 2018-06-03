@@ -16,6 +16,8 @@ export class PostingService {
     const componentRef = viewContainerRef.createComponent(componentFactory);
     const myPost: any = <any>componentRef.instance;
     myPost.record = postItem.data;
+
+    return myPost;
   }
 
   loadChart(viewContainerRef: ViewContainerRef, postItem: PostItem) {
@@ -25,5 +27,7 @@ export class PostingService {
     const componentRef = viewContainerRef.createComponent(componentFactory);
     const myPost: any = <any>componentRef.instance;
     myPost.record = postItem.data;
+
+    return myPost;
   }
 }

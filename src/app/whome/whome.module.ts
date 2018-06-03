@@ -175,7 +175,11 @@ export function tokenGetter() {
     EmployeeCardComponent,
     EmployerCardComponent,
     MeetingCardComponent,
-    ChartComponent
+    ChartComponent,
+    SchedulerDayComponent,
+    SchedulerWeekComponent,
+    SchedulerMonthComponent,
+    SchedulerComponent
   ],
   providers: [
     PageInfoService,

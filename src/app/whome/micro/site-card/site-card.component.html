@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="record['rank']" (click)="isSelf()" [routerLink]="'/site/site-detail/'+record['no']">
+<div class="card" [ngClass]="record['rank']" (click)="isSelf()" [routerLink]="'/site/'+engType[record['s-type']]+'/'+record['no']">
   <div id="levelBar">{{ record['level'] }}</div>
   <div id="imgFrame">
     <img [src]="imageUrl" alt="부동산 사진">

@@ -108,16 +108,36 @@ const routes: Routes = [
             component: ApartmentComponent
           },
           {
+            path: 'apartment/:id',
+            component: SiteDetailComponent,
+            // canActivate: [AuthGuard],
+          },
+          {
             path: 'commercial',
             component: CommercialComponent
+          },
+          {
+            path: 'commercial/:id',
+            component: SiteDetailComponent,
+            // canActivate: [AuthGuard],
           },
           {
             path: 'ground',
             component: GroundComponent
           },
           {
+            path: 'ground/:id',
+            component: SiteDetailComponent,
+            // canActivate: [AuthGuard],
+          },
+          {
             path: 'officetel',
             component: OfficetelComponent
+          },
+          {
+            path: 'officetel/:id',
+            component: SiteDetailComponent,
+            // canActivate: [AuthGuard],
           },
           {
             path: 'site-detail/:id',

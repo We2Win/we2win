@@ -595,7 +595,7 @@ const addSchedule = async function (uId, body) {
     'c-id': body['c-id'],
     'no': body['no'],
     'title': body['title'],
-    'date': body['createdAt']
+    'date-start': body['createdAt']
   }
 
   console.log('info on addSchedule(): ', info);

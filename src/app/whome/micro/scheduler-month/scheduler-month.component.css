@@ -1,0 +1,8 @@
+p {
+  margin: 0;
+  padding: 0.5em 2em;
+  line-height: 200%;
+  background: #eee;
+  border-top: solid 1px #ddd;
+  border-bottom: solid 1px #ddd;
+}

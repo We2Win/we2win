@@ -1,1 +1,6 @@
-<ng-container appMyPost></ng-container>
+<header>
+  <span class="cell" *ngFor="let category of categories['calendar']" [innerHTML]="category"></span>
+</header>
+<div id="dates">
+  <ng-container appMypost></ng-container>
+</div>

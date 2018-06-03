@@ -1,3 +1,4 @@
-<app-horizontal-list [hasMoreContents]="hasMoreContents" (sorter)="sort($event)" (change)="paging($event)">
+<h1 class="loader" [ngClass]="{'loading': !Data}">데이터를 불러오고 있습니다.</h1>
+<app-horizontal-list [ngClass]="{'hasData': Data}" [hasMoreContents]="hasMoreContents" (sorter)="sort($event)" (change)="paging($event)">
   <ng-container appMypost></ng-container>
 </app-horizontal-list>

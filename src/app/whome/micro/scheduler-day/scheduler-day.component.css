@@ -1,0 +1,43 @@
+:host {
+  flex: 1;
+}
+
+.day {
+  width: 100%;
+  height: 70px;
+  padding: .7em;
+  margin: 0.5em 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.day:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.d0 {
+  color: rgb(192, 45, 45);
+  border-left: 0;
+}
+.d0:hover {
+  background: rgba(145, 19, 19, 0.1);
+}
+
+.d6 {
+  color: rgb(41, 85, 180);
+}
+.d6:hover {
+  background: rgba(16, 70, 151, 0.1);
+}
+
+h1 {
+  font-size: 1.2em;
+  line-height: 200%;
+  margin: 0;
+}
+
+p {
+  font-size: 0.8em;
+  margin: 0;
+}
