@@ -550,7 +550,7 @@ export class ContentsModificationComponent implements OnInit {
   delete() {
     console.log(this.engType[this.selectedData.type]);
     if (confirm('삭제하시겠습니까?')) {
-      this.contentsService.delete(this.loadedData['c-id'], this.engType[this.selectedData.type]).subscribe(
+      this.contentsService.delete(this.engType[this.selectedData.type], this.loadedData['c-id']).subscribe(
         data => {
           this.alertService.info('삭제하였습니다');
         },
