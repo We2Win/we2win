@@ -610,22 +610,18 @@ const addSchedule = async function (uId, body) {
   }
 
   console.log('on meeting bookmark: ', uId, info['c-id']);
-  [err, scrap] = await to(Schedule.findOne({
+  Schedule.findOne({
     where: {
       'u-id': uId,
       'c-id': info['c-id']
     }
-  })).then(
+  }).then(
     content => {
-      console.log(content);
+      console.log('rejecting..');
+      TE('북마크된 항목입니다.')
+      return;
     }
   );
-
-  if (scrap) {
-    console.log('rejecting..');
-    TE('북마크된 항목입니다.')
-    return;
-  }
 
   console.log('creating..');
   [err, content] = await to(Schedule.create(info));
