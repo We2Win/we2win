@@ -93,6 +93,23 @@ const searchContents = async function (req, res) {
 };
 module.exports.searchContents = searchContents;
 
+const getContents = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  let params = req.params;
+
+  [err, users] = await to(authService.getContentList(params));
+
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Successfully loading user lists.',
+    list: JSON.stringify(users),
+    // user: user.toWeb(),
+    // token: User.getJWT()
+  }, 201);
+}
+module.exports.getContents = getContents;
+
 const createContents = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;

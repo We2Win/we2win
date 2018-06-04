@@ -733,6 +733,29 @@ const getUserList = async function (params) {
 }
 module.exports.getUserList = getUserList;
 
+const getContentList = async function (params) {
+  const whereArr = {};
+  if (params.level !== 'ALL') {
+    whereArr['level'] = params.level;
+  }
+  if (params.amount !== 'ALL') {
+    whereArr['amount'] = params.amount;
+  }
+
+  console.log('getContentList: ', params, whereArr);
+
+  [err, users] = await to(Content.findAll({
+    offset: (parseInt(params.id) - 1) * 8 || 0,
+    limit: 20,
+    // attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
+    where: whereArr,
+  }));
+  if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
+
+  return users;
+}
+module.exports.getContentList = getContentList;
+
 const searchUser = async function (body) {
   [err, users] = await to(User.findAll({
     // IMPORTANT: has no params.id
