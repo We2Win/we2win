@@ -50,9 +50,14 @@ export class SchedulerComponent implements OnInit {
 
   ngOnInit() {
     this.setCalendar();
+    setTimeout(() => {
+      this.setCalendar();
+    }, 2000);
   }
 
   setCalendar() {
+    this.records = [];
+
     const today = new Date();
     const future = new Date();
     const todayDay = today.getDay();
@@ -72,7 +77,7 @@ export class SchedulerComponent implements OnInit {
       const record = {
         dateStr: future.toDateString(),
         day: future.getDay(),
-        hasSchedule: true,
+        hasSchedule: false,
       };
       this.records.push(record);
       future.setDate(future.getDate() + 1);
@@ -88,6 +93,26 @@ export class SchedulerComponent implements OnInit {
         };
         this.records.push(record);
       }
+    }
+
+    console.log('schedules on Scheduler: ', this.schedules);
+    // tslint:disable-next-line:forin
+    for (const schedule in this.schedules) {
+      const start = new Date(this.schedules[schedule]['duration-start']);
+      const end = new Date(this.schedules[schedule]['duration-end']);
+      const startIdx = (new Date(start.valueOf() - today.valueOf()).getDate());
+      let endIdx = (new Date(future.valueOf() - end.valueOf()).getDate());
+      if (endIdx < 0) {
+        endIdx = future.getDate();
+      }
+      console.log(startIdx, endIdx);
+      if (startIdx) {
+        for (let i = startIdx; i <= endIdx; ++i) {
+          this.records[i].hasSchedule = true;
+          console.log('done at: ', i, this.records[i]);
+        }
+      }
+
     }
 
     console.log('records: ', this.records);

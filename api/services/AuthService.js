@@ -367,6 +367,8 @@ const createComment = async function (body) {
     where: {
       'c-id': body['c-id']
     }
+  }).then(content => {
+    console.log('comment counted');
   });
   return content;
 }

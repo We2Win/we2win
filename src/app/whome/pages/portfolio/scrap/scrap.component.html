@@ -74,7 +74,7 @@
       <div *ngFor="let record of schedules" [routerLink]="'/meeting/detail/'+record['no']">
         <!-- <span id="categories">{{ record['no'] }}</span> -->
         <span id="title">{{ record['title'] }}</span>
-        <span id="date">{{ record['date'].slice(0, 10) }}</span>
+        <span id="date">{{ record['duration-start'].slice(5, 10).replace('-', '/') + ' ~ ' + record['duration-end'].slice(8, 10)}}</span>
       </div>
     </div>
   </div>
