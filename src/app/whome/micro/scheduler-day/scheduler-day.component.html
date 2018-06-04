@@ -1,4 +1,4 @@
-<div class="day" [ngClass]="'d'+record.day" (click)="emitDate()">
+<div class="day" [ngClass]="['d'+record.day, record.hasSchedule ? 'selected' : '']" (click)="emitDate()">
   <h1>{{ record.dateStr }}</h1>
   <!-- <p>{{ record.value ? '￦ ' + record.value : '' }}</p> -->
 </div>

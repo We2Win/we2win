@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { DatePickerService } from '../../services/date-picker.service';
 import { PostingService } from '../../services/posting.service';
 import { MypostDirective } from '../../directives/mypost.directive';
@@ -16,6 +16,7 @@ export class SchedulerComponent implements OnInit {
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
 
+  @Input('schedules') schedules;
   records = [];
 
   categories: Object = {
@@ -60,7 +61,8 @@ export class SchedulerComponent implements OnInit {
     for (let i = 0; i < todayDay; ++i) {
       const record = {
         dateStr: undefined,
-        day: undefined
+        day: undefined,
+        hasSchedule: false
       };
       this.records.push(record);
     }
@@ -69,7 +71,8 @@ export class SchedulerComponent implements OnInit {
     for (let i = 0; i < 91; i++) {
       const record = {
         dateStr: future.toDateString(),
-        day: future.getDay()
+        day: future.getDay(),
+        hasSchedule: true,
       };
       this.records.push(record);
       future.setDate(future.getDate() + 1);
@@ -80,7 +83,8 @@ export class SchedulerComponent implements OnInit {
       for (let i = 0; i < 7 - (todayDay); ++i) {
         const record = {
           dateStr: undefined,
-          day: undefined
+          day: undefined,
+          hasSchedule: false
         };
         this.records.push(record);
       }

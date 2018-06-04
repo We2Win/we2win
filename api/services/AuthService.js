@@ -595,7 +595,8 @@ const addSchedule = async function (uId, body) {
     'c-id': body['c-id'],
     'no': body['no'],
     'title': body['title'],
-    'date-start': body['createdAt']
+    'duration-start': body['duration-start'],
+    'duration-end': body['duration-end']
   }
 
   console.log('info on addSchedule(): ', info);
@@ -616,9 +617,8 @@ const removeSchedule = async function (uId, body) {
     'c-id': body['c-id'],
     'no': body['no'],
     'title': body['title'],
-    'c-type': body['c-type'],
-    's-type': body['s-type'],
-    'date': body['createdAt']
+    'duration-start': body['duration-start'],
+    'duration-end': body['duration-end']
   }
 
   [err, content] = await to(Schedule.destroy({
