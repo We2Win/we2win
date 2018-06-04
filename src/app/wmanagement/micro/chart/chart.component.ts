@@ -61,7 +61,6 @@ export class ChartComponent implements OnInit {
             '부동산 정보',
             '분양 현황',
             '구인 구직',
-            '오프라인 모임'
           ]
         }
       },

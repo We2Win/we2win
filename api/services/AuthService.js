@@ -567,7 +567,7 @@ const removeBookmark = async function (uId, body) {
       if (err) TE('생성 중 오류가 발생했습니다.');
       break;
     case '오프라인 모임':
-      [err, content] = await to(InfoScrap.destroy({
+      [err, content] = await to(Schedule.destroy({
         where: {
           'u-id': uId,
           'c-id': info['c-id']
