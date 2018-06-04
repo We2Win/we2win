@@ -22,6 +22,11 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  searchUser(query) {
+    return this.http.get(environment.apiUrl + '/mng/contents/' + query)
+      .map((res: any) => res);
+  }
+
   updateContent(page, data) {
     console.log('hi updateCOntent()');
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -30,7 +35,7 @@ export class ContentsService {
     return this.http.put(environment.apiUrl + '/contents', data)
       .map((res: any) => res);
   }
-  
+
   getWeeklyList(page) {
     return this.http.get(environment.apiUrl + '/contents/' + page + '/weekly')
       .map((res: any) => res);

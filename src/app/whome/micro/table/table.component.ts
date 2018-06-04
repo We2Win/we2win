@@ -10,7 +10,7 @@ export class TableComponent implements OnInit {
   categories: Object = {
     'account': ['(check)', '아이디', '이름', '이메일', '등급', '포인트', '사용기간'],
     'analysisUser': ['No.', '아이디', '이름', '이메일', '등급', '포인트', '금액', '사용기간'],
-    'analysisContents': ['No.', '카테고리', '금액', '제목', '댓글수', '게시일'],
+    'analysisContents': ['No.', '카테고리', '등급', '제목', '댓글수', '게시일'],
     'tracking': ['No.', '아이디', '이름', '이메일', '직종', '금액', '희망 연봉'],
     'calendar': ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
   };

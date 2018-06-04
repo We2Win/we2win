@@ -82,6 +82,7 @@ router.get('/mng/dashboard/contents', ContentController.getDashBoardData);
 router.get('/mng/users/:level/:amount/:id', UserController.getUsers);
 router.get('/mng/users/:query', UserController.getUsersByQuery);
 router.delete('/mng/users/:id', UserController.removeUser); //delete
+router.get('/mng/contents/:query', ContentController.getContentsByQuery);
 router.get('/mng/contents/count', ContentController.getCount);
 router.get('/mng/employers', ContentController.getEmployers);
 router.get('/mng/employees', ContentController.getEmployees);

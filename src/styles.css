@@ -44,6 +44,10 @@ section {
   box-sizing: border-box;
 }
 
+header #title {
+  flex: 2;
+}
+
 input, select {
   width: 220px;
   /* height: 42px; */

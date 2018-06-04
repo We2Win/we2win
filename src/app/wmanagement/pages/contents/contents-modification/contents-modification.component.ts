@@ -555,12 +555,25 @@ export class ContentsModificationComponent implements OnInit {
       this.contentsService.delete(this.engType[this.selectedData.type], this.loadedData['c-id']).subscribe(
         data => {
           this.alertService.info('삭제하였습니다');
+          this.refresh();
         },
         err => {
           this.alertService.error('삭제에 실패하였습니다.');
         }
       );
     }
+  }
+
+  refresh() {
+    // refresh current page
+    let currentUrl;
+    if (!this.router.url.split('#')[1]) {
+      currentUrl = this.router.url + '#commentBox';
+    } else {
+      currentUrl = this.router.url;
+    }
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigateByUrl(currentUrl));
   }
 
   putData(selectedData) {

@@ -19,6 +19,8 @@ export class AnalysisContentsComponent implements OnInit {
   List: any;
   total: number;
   date = new Date();
+  orderByLevel = 'ALL';
+  orderByAmount = 'ALL';
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -31,9 +33,24 @@ export class AnalysisContentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contentsService.getContentsList('report', 'newly', 'date').subscribe(
+    this.updateData(this.orderByLevel, this.orderByAmount);
+  }
+
+  updateData(level, amount, id?: any) {
+    this.contentsService.getContentsList(level, amount, id).subscribe(
       data => {
-        this.List = data;
+        this.List = JSON.parse(data.list);
+        console.log(this.List);
+        this.total = this.List.length;
+        this.addRecord(this.List);
+      }
+    );
+  }
+
+  searchData(query) {
+    this.contentsService.searchContents(query).subscribe(
+      data => {
+        this.List = JSON.parse(data.list);
         console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
@@ -50,4 +67,22 @@ export class AnalysisContentsComponent implements OnInit {
         new PostItem(AnalysisContentsRecordComponent, records[record]));
     }
   }
+
+  changeLevel(event) {
+    console.log('changedLevel: ', event);
+    this.orderByLevel = event;
+    this.updateData(this.orderByLevel, this.orderByAmount, 1);
+  }
+
+  changeAmount(event) {
+    console.log('changedAmount: ', event);
+    this.orderByAmount = event;
+    this.updateData(this.orderByLevel, this.orderByAmount, 1);
+  }
+
+  changeQuery(event) {
+    console.log('changedQuery: ', event.path[0].value);
+    this.searchData(event.path[0].value);
+  }
+
 }

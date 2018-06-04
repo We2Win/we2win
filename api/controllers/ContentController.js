@@ -626,6 +626,23 @@ const getContentsList = async function (req, res) {
 };
 module.exports.getContentsList = getContentsList;
 
+const getContentsByQuery = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  let params = req.params;
+
+  [err, contents] = await to(authService.searchContents(params.query));
+
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Successfully loading user lists.',
+    list: JSON.stringify(contents),
+    // user: user.toWeb(),
+    // token: User.getJWT()
+  }, 201);
+}
+module.exports.getContentsByQuery = getContentsByQuery;
+
 const getSimplesList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);

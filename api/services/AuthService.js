@@ -761,6 +761,34 @@ const searchUser = async function (body) {
 }
 module.exports.searchUser = searchUser;
 
+const searchContents = async function (body) {
+  [err, contents] = await to(Content.findAll({
+    // IMPORTANT: has no params.id
+    // offset: (parseInt(params.id) - 1) * 8 || 0,
+    limit: 20,
+    attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
+    where: {
+      [Sequelize.Op.or]: {
+        name: {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+        email: {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+        'u-id': {
+          [Sequelize.Op.like]: '%' + body + '%'
+        }
+      }
+    }
+  }));
+
+  console.log('body: ', body, contents);
+  if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
+
+  return contents;
+}
+module.exports.searchContents = searchContents;
+
 const authUser = async function (userInfo) { //returns token
   let unique_key, err, user;
   const auth_info = {};
