@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
 
         console.log('data: ', data);
         if (this.Data) {
-          if (data['length']) {
+          if (this.Data['length']) {
             this.isEmpty = false;
             if (data.page === 1) {
               container.clear();
@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
             }
 
             this.addRecord(this.Data);
-            if (data['length'] !== 8) {
+            if (this.Data['length'] !== 8) {
               this.hasMoreContents = false;
             }
           } else {

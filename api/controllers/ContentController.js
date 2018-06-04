@@ -143,6 +143,8 @@ const deleteContent = async function (req, res) {
     userInfo = false;
   }
 
+  console.log('doing with ', userInfo);
+
   if (userInfo['user_level'] !== 'ADMIN' && userInfo['user_level'] !== 'MANAGER') {
     console.log('not authorized:', userInfo, userInfo['user_level']);
     return ReS(res, 'not authorized.', 422);

@@ -52,7 +52,7 @@ export class SchedulerComponent implements OnInit {
     this.setCalendar();
     setTimeout(() => {
       this.setCalendar();
-    }, 2000);
+    }, 1000);
   }
 
   setCalendar() {

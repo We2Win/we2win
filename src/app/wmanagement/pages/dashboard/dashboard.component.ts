@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
 
     setTimeout(() => {
       this.addData(this.infoPie);
-    }, 500);
+    }, 100);
   }
 
   addData(component) {

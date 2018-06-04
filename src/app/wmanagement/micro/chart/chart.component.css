@@ -1,6 +1,6 @@
 :host {
   display: block;
-  width: 420px;
+  /* width: 420px; */
   flex: 1;
   padding: 1em;
   box-sizing: border-box;
