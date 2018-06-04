@@ -368,7 +368,7 @@ const createComment = async function (body) {
   }).then(
     content => {
       content.update({
-        'c-comment': Sequelize.literal('`c-comment` + 1')
+        'c-comments': Sequelize.literal('`c-comments` + 1')
       }).then(content => {
         console.log('comment counted: ', content);
         return content;
