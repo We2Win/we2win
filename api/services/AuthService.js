@@ -368,7 +368,7 @@ const createComment = async function (body) {
       'c-id': body['c-id']
     }
   }).then(content => {
-    console.log('comment counted');
+    console.log('comment counted: ', content);
   });
   return content;
 }
