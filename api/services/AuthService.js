@@ -494,12 +494,17 @@ const addBookmark = async function (uId, body) {
       if (err) TE('생성 중 오류가 발생했습니다.');
       break;
     case '오프라인 모임':
+      console.log('on meeting bookmark: ', uId, info['c-id']);
       [err, scrap] = await to(Schedule.findOne({
         where: {
           'u-id': uId,
           'c-id': info['c-id']
         }
-      }));
+      })).then(
+        content => {
+          console.log(content);
+        }
+      );
 
       if (scrap) {
         TE('북마크된 항목입니다.')
