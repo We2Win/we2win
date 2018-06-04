@@ -233,6 +233,7 @@ module.exports.updateContent = updateContent;
 const deleteContent = async function (cId, type) {
   let unique_key, auth_info, err, content, indexContent;
 
+  console.log('type: ', type);
   switch (type) {
     case '리포트':
       Report.destroy({
