@@ -622,6 +622,7 @@ const addSchedule = async function (uId, body) {
   );
 
   if (scrap) {
+    console.log('rejecting..');
     TE('북마크된 항목입니다.')
     return;
   }
