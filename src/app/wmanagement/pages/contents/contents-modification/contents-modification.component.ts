@@ -486,6 +486,8 @@ export class ContentsModificationComponent implements OnInit {
       'slave-image5': '기존 파일',
       'file': '기존 파일'
     };
+
+    this.updateContents('리포트');
   }
 
   selectFile(event, columnName) {

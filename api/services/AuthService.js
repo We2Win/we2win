@@ -235,7 +235,7 @@ const deleteContent = async function (cId, type) {
 
   console.log('type: ', type);
   switch (type) {
-    case '리포트':
+    case 'report':
       Report.destroy({
         where: {
           'c-id': cId
@@ -249,7 +249,7 @@ const deleteContent = async function (cId, type) {
 
       console.log('done updating.');
       break;
-    case '부동산 뉴스':
+    case 'news':
       News.destroy({
         where: {
           'c-id': cId
@@ -263,7 +263,7 @@ const deleteContent = async function (cId, type) {
 
       console.log('done updating.');
       break;
-    case '법률 및 정책':
+    case 'law':
       Law.destroy({
         where: {
           'c-id': cId
@@ -277,10 +277,10 @@ const deleteContent = async function (cId, type) {
 
       console.log('done updating.');
       break;
-    case '아파트':
-    case '오피스텔':
-    case '상가/호텔':
-    case '토지':
+    case 'apartment':
+    case 'officetel':
+    case 'commercial':
+    case 'ground':
       Site.destroy({
         where: {
           'c-id': cId
@@ -294,7 +294,7 @@ const deleteContent = async function (cId, type) {
 
       console.log('done updating.');
       break;
-    case '오프라인 모임':
+    case 'meeting':
       Meeting.destroy({
         where: {
           'c-id': cId
@@ -302,7 +302,7 @@ const deleteContent = async function (cId, type) {
       });
 
       console.log('done updating.');
-    case '구인':
+    case 'employer':
       Employer.destroy({
         where: {
           'c-id': cId
@@ -310,7 +310,7 @@ const deleteContent = async function (cId, type) {
       });
 
       console.log('done updating.');
-    case '구직':
+    case 'employee':
       Employee.destroy({
         where: {
           'c-id': cId
