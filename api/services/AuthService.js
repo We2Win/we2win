@@ -609,12 +609,35 @@ const addSchedule = async function (uId, body) {
     'duration-end': body['duration-end']
   }
 
-  console.log('info on addSchedule(): ', info);
+  console.log('on meeting bookmark: ', uId, info['c-id']);
+  [err, scrap] = await to(Schedule.findOne({
+    where: {
+      'u-id': uId,
+      'c-id': info['c-id']
+    }
+  })).then(
+    content => {
+      console.log(content);
+    }
+  );
 
-  info['c-type'] = body['c-type'];
+  if (scrap) {
+    TE('북마크된 항목입니다.')
+  }
+
   [err, content] = await to(Schedule.create(info));
   if (err) TE('생성 중 오류가 발생했습니다.');
+  break;
 
+  if (content) {
+    Content.update({
+      'c-scrap': Sequelize.literal('`c-scrap` + 1')
+    }, {
+      where: {
+        'c-id': info['c-id']
+      }
+    });
+  }
   return content;
 }
 module.exports.addSchedule = addSchedule;
