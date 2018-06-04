@@ -623,6 +623,7 @@ const addSchedule = async function (uId, body) {
 
   if (scrap) {
     TE('북마크된 항목입니다.')
+    return;
   }
 
   [err, content] = await to(Schedule.create(info));
