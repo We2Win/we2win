@@ -361,16 +361,19 @@ const createComment = async function (body) {
   console.log(err);
   if (err) TE(err);
 
-  Content.update({
-    'c-comment': Sequelize.literal('`c-comment` + 1')
-  }, {
+  Content.findOne({
     where: {
       'c-id': body['c-id']
     }
-  }).then(content => {
-    console.log('comment counted: ', content);
-  });
-  return content;
+  }).then(
+    content => {
+      content.update({
+        'c-comment': Sequelize.literal('`c-comment` + 1')
+      }).then(content => {
+        console.log('comment counted: ', content);
+        return content;
+      });
+    });
 }
 module.exports.createComment = createComment;
 
