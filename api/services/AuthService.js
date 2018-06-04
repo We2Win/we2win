@@ -626,6 +626,7 @@ const addSchedule = async function (uId, body) {
     return;
   }
 
+  console.log('creating..');
   [err, content] = await to(Schedule.create(info));
   if (err) TE('생성 중 오류가 발생했습니다.');
 
