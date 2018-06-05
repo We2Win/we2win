@@ -131,6 +131,7 @@ const editUser = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   console.log('userInfo: ', userInfo);
+  console.log('req.body: ', req.body);
 
   req.body['password'] = bcrypt.hashSync(req.body['password'], 8);
   
