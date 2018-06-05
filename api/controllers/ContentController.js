@@ -528,7 +528,6 @@ module.exports.getContentsDetail = getContentsDetail;
 
 const getContentsList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  console.log('req.params: ', req.params);
   const id = (req.params.id - 1) * 8 || 0;
 
   const pageTypes = {
@@ -581,6 +580,8 @@ const getContentsList = async function (req, res) {
     orderArr = [];
   }
 
+  console.log('11111111');
+
   switch (req.params.list) {
     case 'All':
       Content.findAll({
@@ -592,12 +593,15 @@ const getContentsList = async function (req, res) {
       });
       break;
     case 'newly':
+      console.log('222222222');
+    
       Content.findAll({
         offset: id,
         limit: 8,
         order: orderArr,
         where: whereArr
       }).then(content => {
+        console.log('33333333');
         return ReS(res, content);
       });
       break;
