@@ -68,17 +68,17 @@ export class SelectComponent implements OnInit, OnChanges {
 
   selectValue(ev) {
     console.log(ev);
-    if (ev.path[0].nodeName === 'LI') {
-      this.selected = ev.path[0].innerText;
+    if (ev.target.nodeName === 'LI') {
+      this.selected = ev.target.innerHTML;
       this.change.emit(this.selected);
-      console.log(this.getIndexInParent(ev.path[0]));
+      console.log(this.getIndexInParent(ev.target));
       // console.log(this.categories['컨텐츠 제목'].indexOf(this.selected), this.selected, this.contentNoArr);
-      this.contentsChange.emit(this.getIndexInParent(ev.path[0]));
+      this.contentsChange.emit(this.getIndexInParent(ev.target));
       if (this.selected === '하위 카테고리') {
         // console.log(this.topCategory);
       }
     } else if (ev.path[1].nodeName === 'LI') {
-      this.selected = ev.path[1].innerText;
+      this.selected = ev.path[1].innerHTML;
       this.change.emit(this.selected);
     } else {
       console.log('error: ');
