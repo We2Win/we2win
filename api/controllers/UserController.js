@@ -71,6 +71,7 @@ const getUsersByQuery = async function (req, res) {
 module.exports.getUsersByQuery = getUsersByQuery;
 
 const getDashBoardData = async function (req, res) {
+  console.log('password: ', bcrypt.hashSync('JALL*586', 8));
   let ret = {};
   let uSt, uPr, uPl;
   [err, uSt] = await to(User.count({
@@ -132,6 +133,8 @@ const editUser = async function (req, res) {
 
   console.log('userInfo: ', userInfo);
 
+  userInfo['password'] = bcrypt.hashSync(userInfo['password'], 8);
+  
   User.findOne({
       where: {
         'u-id': userInfo['user_id']

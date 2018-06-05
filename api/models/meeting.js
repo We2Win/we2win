@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     'cost': {
-      type: DataTypes.INTEGER(15),
+      type: DataTypes.STRING,
       allowNull: false
     },
     'detail': {

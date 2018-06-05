@@ -396,6 +396,12 @@ const getCount = async function (req, res) {
 }
 module.exports.getCount = getCount;
 
+const getMeetingTitles = async function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  
+}
+module.exports.getMeetingTitles = getMeetingTitles;
+
 const getDashBoardData = async function (req, res) {
   let ret = {};
 
@@ -524,9 +530,6 @@ const getContentsList = async function (req, res) {
   const id = (req.params.id - 1) * 8 || 0;
 
   const pageTypes = {
-    'ALL': {
-
-    },
     'info': {
       'c-type': {
         [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']

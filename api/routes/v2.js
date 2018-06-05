@@ -85,6 +85,7 @@ router.delete('/mng/users/:id', UserController.removeUser); //delete
 // router.get('/mng/contents/:level/:amount/:id', ContentController.getContents);
 router.get('/mng/contents/:query', ContentController.getContentsByQuery);
 router.get('/mng/contents/count', ContentController.getCount);
+router.get('/mng/contents/meeting', ContentController.getMeetingTitles);
 router.get('/mng/employers', ContentController.getEmployers);
 router.get('/mng/employees', ContentController.getEmployees);
 router.post('/mng/employers', ContentController.confirmEmployers);

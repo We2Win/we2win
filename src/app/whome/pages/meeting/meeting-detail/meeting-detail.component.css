@@ -31,7 +31,6 @@ section {
   opacity: 0;
 }
 
-
 #top {
   display: flex;
   padding: 0 0 2em 0;
@@ -119,7 +118,6 @@ section {
 #optionBar img:hover {
   transform: scale(1.5);
 }
-
 
 #optionBar img+img:before {
   display: inline-block;
@@ -235,3 +233,4 @@ app-popup /deep/ .row+.row {
   padding-top: 10px;
   border-top: 1px solid #ccc;
 }
+
