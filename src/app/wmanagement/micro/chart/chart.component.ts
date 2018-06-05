@@ -70,7 +70,7 @@ export class ChartComponent implements OnInit {
           datasets: [{
             // data: ['3000', '1000', '500  ', '1200  ', '300  ']
           }],
-          labels: ['클릭  ', '댓글  ', 'SNS  ', '스크랩  '],
+          labels: ['클릭  ', 'SNS  ', '댓글  ', '스크랩  '],
         },
         options: this.optionA,
       }
