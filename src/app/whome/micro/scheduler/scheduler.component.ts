@@ -100,7 +100,7 @@ export class SchedulerComponent implements OnInit {
     for (const schedule in this.schedules) {
       const start = new Date(this.schedules[schedule]['duration-start']);
       const end = new Date(this.schedules[schedule]['duration-end']);
-      const startIdx = (new Date(start.valueOf() - today.valueOf()).getDate() + 1);
+      const startIdx = (new Date(start.valueOf() - today.valueOf()).getDate() + 2);
       let endIdx = (new Date(future.valueOf() - end.valueOf()).getDate());
       if (endIdx < 0) {
         endIdx = future.getDate();

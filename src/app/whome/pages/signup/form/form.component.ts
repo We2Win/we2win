@@ -192,7 +192,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       // tslint:disable-next-line:radix
       'asset': parseInt(this.asset.selected),
     };
-    console.log(this.user);
+    console.log('onSubmit: ', this.user, this.level);
 
     if (this.user['level'] === 'STANDARD') {
       this.createUser(this.user);
