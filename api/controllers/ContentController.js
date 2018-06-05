@@ -411,7 +411,6 @@ const getDashBoardData = async function (req, res) {
   [err, cE] = await to(Employee.count());
   [err, cR] = await to(Employer.count());
 
-  console.log('cComment: ', Comment.count(), Schedule.count(), Content.count());
   let cClick, cSns, cScrap, cComment, cSchedule;
   [err, cClick] = await to(Content.sum('c-click'));
   [err, cSns] = await to(Content.sum('c-sns'));
@@ -438,6 +437,7 @@ const getDashBoardData = async function (req, res) {
     }
   }
 
+  console.log(ret);
   // for returning to UserController
   return ReS(res, ret);
 }
