@@ -581,6 +581,8 @@ const getContentsList = async function (req, res) {
   }
 
 
+  console.log('whereArr: ', pageTypes[req.params.page]);
+
   switch (req.params.list) {
     case 'All':
       Content.findAll({
