@@ -415,7 +415,7 @@ const getDashBoardData = async function (req, res) {
   [err, cClick] = await to(Content.sum('c-click'));
   [err, cSns] = await to(Content.sum('c-sns'));
   [err, cScrap] = await to(Content.sum('c-scrap'));
-  [err, cComment] = await to(Comments.count());
+  [err, cComment] = await to(Comment.count());
   [err, cSchedule] = await to(Schedule.count());
 
   if (err) return ReE(res, 'error occured trying to get data');
