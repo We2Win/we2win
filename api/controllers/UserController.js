@@ -133,7 +133,9 @@ const editUser = async function (req, res) {
   console.log('userInfo: ', userInfo);
   console.log('req.body: ', req.body);
 
-  req.body['password'] = bcrypt.hashSync(req.body['password'], 8);
+  if(req.body['password']) {
+    req.body['password'] = bcrypt.hashSync(req.body['password'], 8);
+  }
   
   User.findOne({
       where: {
