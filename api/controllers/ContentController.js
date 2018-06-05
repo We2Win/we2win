@@ -523,6 +523,9 @@ const getContentsList = async function (req, res) {
   const id = (req.params.id - 1) * 8 || 0;
 
   const pageTypes = {
+    'ALL': {
+
+    },
     'info': {
       'c-type': {
         [Sequelize.Op.or]: ['리포트', '부동산 뉴스', '법률 및 정책']

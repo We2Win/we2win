@@ -33,13 +33,13 @@ export class AnalysisContentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updateData(this.orderByLevel, this.orderByAmount);
+    this.updateData('info', 'newly', 'date', 1);
   }
 
-  updateData(level, amount, id?: any) {
-    this.contentsService.getContentsList(level, amount, id).subscribe(
+  updateData(page, list, sort, id?: any) {
+    this.contentsService.getContentsList(page, list, sort, id).subscribe(
       data => {
-        this.List = JSON.parse(data.list);
+        this.List = data;
         console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);

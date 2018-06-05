@@ -18,7 +18,7 @@ export class ContentsService {
   ) { }
 
   getContentsList(page, list, sort, id?: any) {
-    return this.http.get(environment.apiUrl + '/mng/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'))
+    return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'))
       .map((res: any) => res);
   }
 
@@ -28,7 +28,7 @@ export class ContentsService {
   }
 
   updateContent(page, data) {
-    console.log('hi updateCOntent()');
+    console.log('hi updateContent()');
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
 
