@@ -39,14 +39,14 @@ export class SelectComponent implements OnInit {
 
   selectValue(ev) {
     // console.log(ev);
-    if (ev.path[0].nodeName === 'LI') {
-      this.selected = ev.path[0].innerText;
+    if (ev.target.nodeName === 'LI') {
+      this.selected = ev.target.innerHTML;
       this.change.emit(this.selected);
       if (this.selected === '하위 카테고리') {
         // console.log(this.topCategory);
       }
     } else if (ev.path[1].nodeName === 'LI') {
-      this.selected = ev.path[1].innerText;
+      this.selected = ev.path[1].innerHTML;
       this.change.emit(this.selected);
     } else {
       console.log('error: ', ev.path);
