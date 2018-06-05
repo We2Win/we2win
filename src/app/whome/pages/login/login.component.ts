@@ -111,7 +111,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
               },
               err => {
                 if (err.status === 422) {
-                  this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+                  this.error('회원가입을 하지 않았거나 아이디, 비밀번호가\n맞지 않습니다.');
                 } else {
                   this.error('로그인 중 오류가\n발생했습니다.');
                 }

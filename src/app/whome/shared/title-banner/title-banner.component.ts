@@ -61,7 +61,7 @@ export class TitleBannerComponent implements OnInit {
   }
 
   search(event) {
-    this.searchService.updateData(event.path[0].value);
+    this.searchService.updateData(event.target.value);
     if (this.router.url !== '/search') {
       this.router.navigate(['search']);
     }
