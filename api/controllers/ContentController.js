@@ -580,6 +580,7 @@ const getContentsList = async function (req, res) {
     orderArr = [];
   }
 
+  console.log('req: ', req.params);
 
   console.log('whereArr: ', pageTypes[req.params.page]);
 
