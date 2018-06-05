@@ -580,12 +580,6 @@ const getContentsList = async function (req, res) {
     orderArr = [];
   }
 
-  console.log('req: ', req.params);
-
-  console.log('whereArr: ', pageTypes[req.params.page]);
-
-  console.log('111111111111111111111111111111111111');
-  
   switch (req.params.list) {
     case 'All':
       Content.findAll({
@@ -597,14 +591,12 @@ const getContentsList = async function (req, res) {
       });
       break;
     case 'newly':
-      console.log('22222222222222222222222222222222');    
       Content.findAll({
         offset: id,
         limit: 8,
         order: orderArr,
         where: whereArr
       }).then(content => {
-        console.log('333333333333333333333333');
         return ReS(res, content);
       });
       break;
