@@ -97,6 +97,8 @@ const getContents = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   let params = req.params;
 
+  console.log(req.params);
+
   [err, users] = await to(authService.getContentList(params));
 
   if (err) return ReE(res, err, 422);
