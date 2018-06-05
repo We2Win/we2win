@@ -31,10 +31,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(10),
             defaultValue: ''
         },
-        'open-start': {
+        'duration-start': {
             type: DataTypes.DATE,
         },
-        'open-end': {
+        'duration-end': {
             type: DataTypes.DATE,
         },
         'ammount': {

@@ -580,7 +580,6 @@ const getContentsList = async function (req, res) {
     orderArr = [];
   }
 
-  console.log('11111111');
 
   switch (req.params.list) {
     case 'All':
@@ -593,7 +592,6 @@ const getContentsList = async function (req, res) {
       });
       break;
     case 'newly':
-      console.log('222222222');
     
       Content.findAll({
         offset: id,
@@ -601,7 +599,6 @@ const getContentsList = async function (req, res) {
         order: orderArr,
         where: whereArr
       }).then(content => {
-        console.log('33333333');
         return ReS(res, content);
       });
       break;
