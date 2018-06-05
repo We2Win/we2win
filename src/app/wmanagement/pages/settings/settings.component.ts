@@ -103,8 +103,8 @@ export class SettingsComponent implements OnInit {
   }
 
   changeQuery(event) {
-    console.log('changedQuery: ', event.path[0].value);
-    this.searchData(event.path[0].value);
+    console.log('changedQuery: ', event.target.value);
+    this.searchData(event.target.value);
   }
 
   setAsAdmin() {

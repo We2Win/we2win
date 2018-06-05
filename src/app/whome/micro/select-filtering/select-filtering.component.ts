@@ -34,8 +34,8 @@ export class SelectFilteringComponent implements OnInit {
   }
 
   selectValue(ev) {
-    if (ev.path[0].nodeName === 'LI') {
-      this.selected = ev.path[0].innerText;
+    if (ev.target.nodeName === 'LI') {
+      this.selected = ev.target.innerText;
       this.sorter.emit(this.selected);
     }
     this.hideUl(false);
