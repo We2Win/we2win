@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const aws = require('aws-sdk');
 
 const verify = async function (req, res) {
-  aws.config.loadFromPath('../config/config-aws.json');
+  aws.config.loadFromPath('./../config/config-aws.json');
   const ses = new aws.SES({
     apiVersion: '2010-12-01'
   });
