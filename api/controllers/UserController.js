@@ -2,6 +2,40 @@ const bcrypt = require('bcrypt');
 const User = require('../models').user;
 const authService = require('./../services/AuthService');
 const jwt = require('jsonwebtoken');
+const aws = require('aws-sdk');
+aws.config.loadFromPath('../config/config-aws.json');
+const ses = new aws.SES({
+  apiVersion: '2010-12-01'
+});
+
+
+const verify = async function (req, res) {
+  const to = ['kimjihyeong100@we2lab.com'];
+  const from = 'kimjihyeong100@we2lab.com';
+
+  // this sends the email
+  // @todo - add HTML version
+  ses.sendEmail({
+    Source: from,
+    Destination: {
+      ToAddresses: to
+    },
+    Message: {
+      Subject: {
+        Data: 'A Message To You Rudy'
+      },
+      Body: {
+        Text: {
+          Data: 'Stop your messing around',
+        }
+      }
+    }
+  }, function (err, data) {
+    if (err) throw err;
+    console.log('Email sent:');
+    console.log(data);
+  });
+}
 
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -133,10 +167,10 @@ const editUser = async function (req, res) {
   console.log('userInfo: ', userInfo);
   console.log('req.body: ', req.body);
 
-  if(req.body['password']) {
+  if (req.body['password']) {
     req.body['password'] = bcrypt.hashSync(req.body['password'], 8);
   }
-  
+
   User.findOne({
       where: {
         'u-id': userInfo['user_id']
@@ -406,7 +440,7 @@ const hasId = async function (req, res) {
 }
 module.exports.hasId = hasId;
 
-const checkUser = async function(req, res) {
+const checkUser = async function (req, res) {
   const body = req.body;
 
   [err, hasUser] = await to(authService.hasUser(req.body));
