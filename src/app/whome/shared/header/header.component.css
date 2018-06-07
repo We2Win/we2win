@@ -1,7 +1,8 @@
 :host {
   display: block;
   min-width: var(--main-width);
-  background-color: var(--header-bg-color);
+  background-color: #232323;
+  /* background-color: var(--header-bg-color); */
 }
 
 * {
