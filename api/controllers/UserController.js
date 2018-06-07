@@ -36,6 +36,7 @@ const verify = async function (req, res) {
     console.log(data);
   });
 }
+module.exports.verify = verify;
 
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
