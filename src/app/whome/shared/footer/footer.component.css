@@ -4,7 +4,7 @@
   background: #232323;
   /* background: var(--footer-bg-color); */
   padding: 0;
-  color: white;
+  color: #aaa;
   /* color: var(--footer-font-normal); */
   cursor: default;
 }
