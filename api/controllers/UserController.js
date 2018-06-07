@@ -13,7 +13,7 @@ const ses = new aws.SES({
 const verify = async function (req, res) {
   var params = {
     EmailAddress: '100kimch@naver.com', /* required */
-    TemplateName: 'STRING_VALUE', /* required */
+    TemplateName: 'EmailVerification', /* required */
     ConfigurationSetName: 'Verifier_we2win'
   };
   ses.sendCustomVerificationEmail(params, function (err, data) {
