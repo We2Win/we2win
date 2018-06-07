@@ -530,7 +530,7 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   checkRows(event, rowNum) {
-    if (event.text.split('\n').length >= 5) {
+    if (event.text.split('\n').length >= rowNum + 2) {
       this.alertService.error('3줄 이내로 입력하는 공간입니다.');
     }
   }

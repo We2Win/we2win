@@ -389,6 +389,12 @@ export class ContentsRegistrationComponent implements OnInit {
     }
   }
 
+  checkRows(event, rowNum) {
+    if (event.text.split('\n').length >= rowNum + 2) {
+      this.alertService.error('3줄 이내로 입력하는 공간입니다.');
+    }
+  }
+
   onSubmit() {
     this.selectedData.body = this.forms[this.selectedData.type].value;
     this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
