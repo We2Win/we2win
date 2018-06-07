@@ -43,6 +43,10 @@ module.exports = (sequelize, DataTypes) => {
     'master-image': {
       type: DataTypes.STRING,
     },
+    'notification': {
+      type: DataTypes.TINYINT(1),
+      defaultValue: false
+    },
     'c-click': {
       type: DataTypes.INTEGER,
       defaultValue: 0
