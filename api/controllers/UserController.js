@@ -3,9 +3,9 @@ const User = require('../models').user;
 const authService = require('./../services/AuthService');
 const jwt = require('jsonwebtoken');
 const aws = require('aws-sdk');
+aws.config.loadFromPath('./../config/config-aws.json');
 
 const verify = async function (req, res) {
-  aws.config.loadFromPath('./../config/config-aws.json');
   const ses = new aws.SES({
     apiVersion: '2010-12-01'
   });
