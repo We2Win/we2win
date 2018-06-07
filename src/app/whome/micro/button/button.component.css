@@ -7,8 +7,10 @@
 button {
   display: block;
   width: 100%;
-  background: var(--main-bg-color);
-  color: var(--main-font-normal-dark);
+  background: #232323;
+  color: #ccc;
+  /* background: var(--main-bg-color); */
+  /* color: var(--main-font-normal-dark); */
   flex: none;
   font-size: 1em;
   padding: 1em 0;

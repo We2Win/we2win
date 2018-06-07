@@ -1,6 +1,7 @@
 :host {
   display: block;
-  min-width: var(--main-width);
+  min-width: 1100px;
+  /* min-width: var(--main-width); */
   background-color: #232323;
   /* background-color: var(--header-bg-color); */
 }
@@ -42,7 +43,8 @@ section {
 }
 
 li {
-  color: var(--header-font-normal);
+  color: #aaa;
+  /* color: var(--header-font-normal); */
   list-style: none;
   flex: none;
   transition: color 0.5s;
@@ -50,7 +52,8 @@ li {
   outline: none;
 }
 li:hover {
-  color: var(--header-font-highlight);
+  color: #fff;
+  /* color: var(--header-font-highlight); */
 }
 
 #mainMenu {

@@ -21,16 +21,20 @@
 }
 
 :host.platinum .card {
-  border-top: 4px solid var(--level-platinum);
+  border-top: #d5b15e;
+  /* border-top: 4px solid var(--level-platinum); */
 }
 
 :host.premium .card {
-  border-top: 4px solid var(--level-premium);
+  border-top: #111111;
+  /* border-top: 4px solid var(--level-premium); */
 }
 
 :host.standard .card {
-  border-top: 4px solid var(--level-standard);
+  border-top: 4px solid #afafaf;
+  /* border-top: 4px solid var(--level-standard); */
 }
+
 
 #levelBar {
   position: relative;
@@ -47,15 +51,18 @@
 }
 
 :host.platinum #levelBar {
-  background: var(--level-platinum-gradient);
+  background: linear-gradient(35deg, rgba(213, 177, 94, 1.0), rgba(187, 141, 34, 0.6), rgba(187, 141, 34, 0.2));
+  /* background: var(--level-platinum-gradient); */
 }
 
 :host.premium #levelBar {
-  background: var(--level-premium-gradient);
+  background: linear-gradient(35deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
+  /* background: var(--level-premium-gradient); */
 }
 
 :host.standard #levelBar {
-  background: var(--level-standard-gradient);
+  background: linear-gradient(35deg, rgb(175, 175, 175), rgba(175, 175, 175, 0.6), rgba(175, 175, 175, 0.2));
+  /* background: var(--level-standard-gradient); */
 }
 
 .card:hover #levelBar {

@@ -53,7 +53,8 @@
   font-size: 1.3em;
   font-weight: 500;
   margin: 0.5em 1em 0.5em 0;
-  color: var(--main-bg-color-dark);
+  color: #ccc;
+  /* color: var(--main-bg-color-dark); */
 }
 
 .namecard h2 {

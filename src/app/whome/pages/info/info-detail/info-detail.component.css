@@ -62,16 +62,19 @@ section {
   padding: 0 1em;
 }
 
-#levelBar.platinum {
-  background: var(--level-platinum-gradient);
+:host.platinum #levelBar {
+  background: linear-gradient(35deg, rgba(213, 177, 94, 1.0), rgba(187, 141, 34, 0.6), rgba(187, 141, 34, 0.2));
+  /* background: var(--level-platinum-gradient); */
 }
 
-#levelBar.premium {
-  background: var(--level-premium-gradient);
+:host.premium #levelBar {
+  background: linear-gradient(35deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
+  /* background: var(--level-premium-gradient); */
 }
 
-#levelBar.standard {
-  background: var(--level-standard-gradient);
+:host.standard #levelBar {
+  background: linear-gradient(35deg, rgb(175, 175, 175), rgba(175, 175, 175, 0.6), rgba(175, 175, 175, 0.2));
+  /* background: var(--level-standard-gradient); */
 }
 
 #description {
