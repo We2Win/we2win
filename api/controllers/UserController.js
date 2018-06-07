@@ -2,40 +2,40 @@ const bcrypt = require('bcrypt');
 const User = require('../models').user;
 const authService = require('./../services/AuthService');
 const jwt = require('jsonwebtoken');
-// const aws = require('aws-sdk');
+const aws = require('aws-sdk');
 
-// const verify = async function (req, res) {
-//   aws.config.loadFromPath('../config/config-aws.json');
-//   const ses = new aws.SES({
-//     apiVersion: '2010-12-01'
-//   });
+const verify = async function (req, res) {
+  aws.config.loadFromPath('../config/config-aws.json');
+  const ses = new aws.SES({
+    apiVersion: '2010-12-01'
+  });
 
-//   const to = ['kimjihyeong100@we2lab.com'];
-//   const from = 'kimjihyeong100@we2lab.com';
+  const to = ['kimjihyeong100@we2lab.com'];
+  const from = 'kimjihyeong100@we2lab.com';
 
-//   // this sends the email
-//   // @todo - add HTML version
-//   ses.sendEmail({
-//     Source: from,
-//     Destination: {
-//       ToAddresses: to
-//     },
-//     Message: {
-//       Subject: {
-//         Data: 'A Message To You Rudy'
-//       },
-//       Body: {
-//         Text: {
-//           Data: 'Stop your messing around',
-//         }
-//       }
-//     }
-//   }, function (err, data) {
-//     if (err) throw err;
-//     console.log('Email sent:');
-//     console.log(data);
-//   });
-// }
+  // this sends the email
+  // @todo - add HTML version
+  ses.sendEmail({
+    Source: from,
+    Destination: {
+      ToAddresses: to
+    },
+    Message: {
+      Subject: {
+        Data: 'A Message To You Rudy'
+      },
+      Body: {
+        Text: {
+          Data: 'Stop your messing around',
+        }
+      }
+    }
+  }, function (err, data) {
+    if (err) throw err;
+    console.log('Email sent:');
+    console.log(data);
+  });
+}
 
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
