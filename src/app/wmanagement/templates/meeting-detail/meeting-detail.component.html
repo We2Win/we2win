@@ -32,11 +32,11 @@
       </li>
       <li class="buttonBar">
         <h2></h2>
-        <app-button (click)="schedule()">모임 참가하기</app-button>
+        <app-button>모임 참가하기</app-button>
       </li>
       <div id="optionBar">
-        <img id="schedule" (click)="schedule()" src="/assets/img/icon_schedule_black.png">
-        <img (click)="fbShare()" src="/assets/img/icon_facebook_black.png">
+        <img id="schedule" src="/assets/img/icon_schedule_black.png">
+        <img src="/assets/img/icon_facebook_black.png">
       </div>
     </div>
   </div>
@@ -73,10 +73,10 @@
           <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
         </div>
         <div name="commentBox" class="row">
-          <form class="commentForm" (submit)="addComment()">
+          <form class="commentForm">
             <label>{{userInfo['user_id'] ? userInfo['user_id'] : '비회원'}}</label>
             <textarea type="text" class="commentInput" #NewComment></textarea>
-            <app-button (click)="addComment()">댓글 입력</app-button>
+            <app-button>댓글 입력</app-button>
           </form>
         </div>
       </article>

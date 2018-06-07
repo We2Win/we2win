@@ -14,6 +14,10 @@
   cursor: pointer;
 }
 
+li {
+  cursor: pointer;
+}
+
 :host /deep/ label {
   padding-top: 7px;
   width: 100px;
@@ -24,7 +28,7 @@
 }
 
 :host /deep/ button {
-  margin: 20px 0 0 0;
+  margin: 0;
   height: 50px !important;
 }
 
@@ -60,4 +64,55 @@
   background: #ffeb00;
   height: 48px;
   overflow: hidden;
+}
+
+app-popup h1 {
+  font-size: 18px;
+  line-height: 70px;
+  margin-bottom: 2em !important;
+}
+
+app-popup .row {
+  padding: 3px;
+  padding-top: 14px;
+  margin: 0 !important;
+}
+
+app-popup .row + .row {
+  padding-top: 3px;
+}
+
+app-popup .group {
+  border-top: 1px solid #333;
+  padding: 1em;
+}
+
+app-popup .group + .group {
+  border-bottom: 1px solid #333;
+}
+
+app-popup .blank {
+  flex: 1;
+}
+
+app-popup li {
+  list-style: none;
+}
+
+app-popup h2 {
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0;
+  line-height: 50px;
+  flex: none;
+  width: 5em;
+  text-align: center;
+}
+
+app-popup input {
+  flex: 1;
+}
+
+app-popup app-button {
+  flex: 1;
 }

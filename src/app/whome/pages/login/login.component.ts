@@ -105,26 +105,26 @@ export class LoginComponent implements OnInit, AfterViewInit {
                 if (auth) {
                   this.router.navigate(['/']);
                 } else {
-                  this.error('회원 정보를 불러오지 못했습니다.');
-                  // this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+                  this.alertService.error('회원 정보를 불러오지 못했습니다.');
+                  // this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
                 }
               },
               err => {
                 if (err.status === 422) {
-                  this.error('회원가입을 하지 않았거나 아이디, 비밀번호가\n맞지 않습니다.');
+                  this.alertService.error('회원가입을 하지 않았거나 아이디, 비밀번호가\n맞지 않습니다.');
                 } else {
-                  this.error('로그인 중 오류가\n발생했습니다.');
+                  this.alertService.error('로그인 중 오류가\n발생했습니다.');
                 }
               }
             );
           },
           fail: err => {
-            this.error(JSON.stringify(err));
+            this.alertService.error(JSON.stringify(err));
           }
         });
       },
       fail: (err) => {
-        this.error(JSON.stringify(err));
+        this.alertService.error(JSON.stringify(err));
       }
     });
 
@@ -153,19 +153,19 @@ export class LoginComponent implements OnInit, AfterViewInit {
           if (auth) {
             this.router.navigate(['/']);
           } else {
-            this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+            this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
           }
         },
         err => {
           if (err.status === 422) {
-            this.error('아이디 또는 비밀번호가\n맞지 않습니다.');
+            this.alertService.error('아이디 또는 비밀번호가\n맞지 않습니다.');
           } else {
-            this.error('로그인 중 오류가\n발생했습니다.');
+            this.alertService.error('로그인 중 오류가\n발생했습니다.');
           }
         }
       );
     } else {
-      this.error('아이디 또는 비밀번호를\n입력하지 않으셨습니다.');
+      this.alertService.error('아이디 또는 비밀번호를\n입력하지 않으셨습니다.');
     }
   }
 
@@ -173,23 +173,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   }
 
-  success(message: string) {
-    this.alertService.success(message);
-  }
-
-  error(message: string) {
-    this.alertService.error(message);
-  }
-
-  info(message: string) {
-    this.alertService.info(message);
-  }
-
-  warn(message: string) {
-    this.alertService.warn(message);
-  }
-
-  clear() {
-    this.alertService.clear();
+  findInfo() {
+    this.elementRef.nativeElement.querySelector('app-popup').classList.add('show');
   }
 }
