@@ -405,6 +405,7 @@ export class ContentsModificationComponent implements OnInit {
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
       'summary': new FormControl('', [Validators.required]),
+      'master-image': new FormControl('', [Validators.required]),
       // 'image': new FormControl('', [Validators.required]),
       'host': new FormControl('', [Validators.required]),
       'apply-start': new FormControl('', [Validators.required]),
@@ -526,6 +527,12 @@ export class ContentsModificationComponent implements OnInit {
 
   uploadFile(type, columnName) {
 
+  }
+
+  checkRows(event, rowNum) {
+    if (event.text.split('\n').length >= 5) {
+      this.alertService.error('3줄 이내로 입력하는 공간입니다.');
+    }
   }
 
   onSubmit() {

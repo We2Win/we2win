@@ -29,7 +29,9 @@ div {
   border-radius: 0;
   z-index: 100;
   text-align: center;
-  background: rgb(230, 227, 192);
+  background: rgb(255, 250, 192);
+  padding: 0.5em 1em;
+  border: rgb(207, 198, 96);
   /* transform: scale(1);
   animation: intro 0.5s;
   animation-fill-mode: both;

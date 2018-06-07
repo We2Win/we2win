@@ -52,7 +52,8 @@ quill-editor /deep/ .ql-editor:focus {
 }
 
 quill-editor.short /deep/ .ql-editor {
-  min-height: 4em !important;
+  min-height: 8em !important;
+  max-height: 8em !important;
 }
 
 section {

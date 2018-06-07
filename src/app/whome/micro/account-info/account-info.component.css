@@ -64,7 +64,7 @@
 
 .signed {
   min-width: 15em;
-  border-bottom: #aaa;
+  border-bottom: 1px solid #aaa;
   /* border-bottom: 1px solid var(--header-border-solid); */
   cursor: pointer;
 }
