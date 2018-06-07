@@ -21,7 +21,7 @@ router.put('/users', UserController.editUser);
 
 // router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
 router.post('/users/login', UserController.login);
-router.post('/users/verify', UserController.verify);
+// router.post('/users/verify', UserController.verify);
 
 router.get('/testing', (req, res) => {
   res.send('Testing Successful.');
