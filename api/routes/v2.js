@@ -22,6 +22,7 @@ router.put('/users', UserController.editUser);
 // router.delete('/users', passport.authenticate('jwt', { session: false }), UserController.remove); //delete
 router.post('/users/login', UserController.login);
 router.get('/users/verify', UserController.verify);
+router.get('/users/sendEmail', UserController.sendEmail);
 
 router.get('/testing', (req, res) => {
   res.send('Testing Successful.');

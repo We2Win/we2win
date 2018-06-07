@@ -4,11 +4,26 @@ const authService = require('./../services/AuthService');
 const jwt = require('jsonwebtoken');
 const aws = require('aws-sdk');
 aws.config.loadFromPath('config/configaws.json');
+const ses = new aws.SES({
+  apiVersion: '2010-12-01'
+});
+
+
 
 const verify = async function (req, res) {
-  const ses = new aws.SES({
-    apiVersion: '2010-12-01'
+  var params = {
+    EmailAddress: '100kimch@naver.com', /* required */
+    // TemplateName: 'STRING_VALUE', /* required */
+    ConfigurationSetName: 'Verifier_we2win'
+  };
+  ses.sendCustomVerificationEmail(params, function (err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else console.log(data);           // successful response
   });
+}
+module.exports.verify = verify;
+
+const sendEmail = async function (req, res) {
 
   const to = ['kimjihyeong100@we2lab.com, 100kimch@naver.com'];
   const from = 'kimjihyeong100@we2lab.com';
@@ -36,7 +51,7 @@ const verify = async function (req, res) {
     console.log(data);
   });
 }
-module.exports.verify = verify;
+module.exports.sendEmail = sendEmail;
 
 const create = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
