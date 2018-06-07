@@ -9,8 +9,7 @@
   "author": "KJH",
   "license": "ISC",
   "dependencies": {
-    "Express": "^3.0.1",
-    "express": "latest",
+    "express": "^3.0.1",
     "aws-sdk": "latest",
     "bcrypt": "^1.0.3",
     "bcrypt-promise": "^2.0.0",
