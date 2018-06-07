@@ -575,7 +575,7 @@ const getContentsList = async function (req, res) {
   const whereArr = pageTypes[req.params.page];
   let orderArr;
   if (req.params.sort) {
-    orderArr = [sortTypes[req.params.sort]];
+    orderArr = [sortTypes[req.params.sort], ['notification', 'DESC']];
   } else {
     orderArr = [];
   }
