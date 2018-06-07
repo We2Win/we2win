@@ -3,7 +3,7 @@ const User = require('../models').user;
 const authService = require('./../services/AuthService');
 const jwt = require('jsonwebtoken');
 const aws = require('aws-sdk');
-aws.config.loadFromPath('./../config/configaws.json');
+aws.config.loadFromPath('config/configaws.json');
 
 const verify = async function (req, res) {
   const ses = new aws.SES({
