@@ -132,7 +132,8 @@ const updateContent = async function (data) {
       'open-start': data.body['open-start'] || '',
       'open-end': data.body['open-end'] || '',
       'ammount': data.body['ammount'] || '',
-      'master-image': data.body['master-image']
+      'master-image': data.body['master-image'],
+      'notification': data.body['notification']
     }
     console.log('indexData: ', indexData);
     [err, indexContent] = await to(Content.update(indexData, {

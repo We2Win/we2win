@@ -148,7 +148,7 @@ const updateContent = async function (req, res) {
   content = JSON.stringify(content);
   // console.log('content.string: ', content);
   return ReS(res, {
-    message: 'Successfully created new content data.',
+    message: 'Successfully updated new content data.',
     body: content,
   }, 201);
 }
