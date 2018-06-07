@@ -10,7 +10,7 @@ const verify = async function (req, res) {
     apiVersion: '2010-12-01'
   });
 
-  const to = ['kimjihyeong100@we2lab.com'];
+  const to = ['kimjihyeong100@we2lab.com, 100kimch@naver.com'];
   const from = 'kimjihyeong100@we2lab.com';
 
   // this sends the email
