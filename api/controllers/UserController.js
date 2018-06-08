@@ -19,6 +19,9 @@ const verify = async function (req, res) {
   ses.sendCustomVerificationEmail(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
     else console.log(data);           // successful response
+    return ReS(res, {
+      message: 'Done.',
+    }, 201);
   });
 }
 module.exports.verify = verify;
@@ -30,7 +33,7 @@ const sendEmail2 = async function (req, res) {
 
   // Replace recipient@example.com with a "To" address. If your account 
   // is still in the sandbox, this address must be verified.
-  const recipient = "100kimch@naver.com";
+  const recipient = "kimjihyeong100@we2lab.com";
 
   // Specify a configuration set. If you do not want to use a configuration
   // set, comment the following variable, and the 
@@ -97,6 +100,9 @@ const sendEmail2 = async function (req, res) {
       console.log(err.message);
     } else {
       console.log("Email sent! Message ID: ", data.MessageId);
+      return ReS(res, {
+        message: 'Done.',
+      }, 201);
     }
   });
 }
