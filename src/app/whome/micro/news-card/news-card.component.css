@@ -64,7 +64,6 @@
   /* background: var(--level-standard-gradient); */
 }
 
-
 .card:hover #levelBar {
   opacity: 1;
 }
