@@ -185,7 +185,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   onSubmitId() {
     if (this.findIdForm.valid) {
       console.log(this.findIdForm.value);
-      this.authService.sendInfoForId(this.findIdForm);
+      this.authService.sendInfoForId(this.findIdForm.value);
 
     } else {
       this.alertService.error('양식을 모두\n입력하지 않으셨습니다.');
