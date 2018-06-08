@@ -512,6 +512,7 @@ module.exports.addSchedule = addSchedule;
 const removeSchedule = async function (req, res) {
   const userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
 
+  console.log('userInfo: ', userInfo);
   let uId;
   if (userInfo['user_id']) {
     uId = userInfo['user_id'];
