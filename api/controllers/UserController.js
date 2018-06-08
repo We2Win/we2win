@@ -25,7 +25,7 @@ const findId = async function (req, res) {
     return ReE(res, '오류가 발생했습니다.');
   }
   
-  if (user['u-id']) {
+  if (user) {
     return ReS(res, {
       message: '회원님의 아이디는 ' + user['u-id'] + ' 입니다.'
     });
