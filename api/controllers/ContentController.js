@@ -694,7 +694,22 @@ const getSimplesList = async function (req, res) {
         offset: id,
         order: orderArr,
       }).then(content => {
-        return ReS(res, content);
+        if (bookmarkTypes[req.params.page] && userInfo) {
+          // console.log('searching bookmark...');
+          bookmarkTypes[req.params.page].findOne({
+            where: {
+              'c-id': content['c-id'],
+              'u-id': userInfo['user_id']
+            }
+          }).then(isBookmarked => {
+            content.dataValues['isBookmarked'] = isBookmarked ? true : false;
+            // console.log('content: ', content);
+            return ReS(res, content);
+          });
+        } else {
+          console.log('skipped searching bookmark: ', req.params.page, bookmarkTypes);
+          return ReS(res, content);
+        }
       });
       break;
     case 'employeeAll':

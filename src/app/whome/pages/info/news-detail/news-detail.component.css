@@ -128,13 +128,6 @@ section {
   background-position: center;
 }
 
-#optionBar #facebook.selected {
-  background: url('/assets/img/icon_bookmark_selected.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 app-group /deep/ article {
   border-top: 1px solid #ccc;
   display: flex;

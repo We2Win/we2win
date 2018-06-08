@@ -174,14 +174,6 @@ section {
   background-position: center;
 }
 
-#optionBar #facebook.selected {
-  background: url('/assets/img/icon_bookmark_black_selected.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-
 .price {
   color: red;
   font-size: 36px !important;

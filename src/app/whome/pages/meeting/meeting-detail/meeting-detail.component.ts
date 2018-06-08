@@ -189,16 +189,14 @@ export class MeetingDetailComponent implements OnInit {
     }
     const schedule = this._elementRef.nativeElement.querySelector('#schedule');
 
-    if (schedule.classList.contains('selected')) {
-      schedule.src = '/assets/img/icon_schedule_black.png';
-      schedule.classList.remove('selected');
+    if (this.isScheduled) {
+      this.isScheduled = false;
       this.alertService.warn('북마크가 해제되었습니다.');
-      this.userService.removeSchedule(this.Data);
+      this.userService.removeBookmark(this.Data);
     } else {
-      schedule.src = '/assets/img/icon_schedule_black_selected.png';
-      schedule.classList.add('selected');
+      this.isScheduled = true;
       this.alertService.success('북마크가 설정되었습니다.');
-      this.userService.addSchedule(this.Data);
+      this.userService.addBookmark(this.Data);
     }
   }
 
