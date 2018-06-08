@@ -663,6 +663,7 @@ const removeSchedule = async function (uId, body) {
     'duration-start': body['duration-start'],
     'duration-end': body['duration-end']
   }
+  console.log('info: ', info);
 
   [err, content] = await to(Schedule.destroy({
     where: {

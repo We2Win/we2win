@@ -517,7 +517,7 @@ const getContentsDetail = async function (req, res) {
         content.dataValues['isBookmarked'] = isBookmarked ? true : false;
         // console.log('content: ', content);
         return ReS(res, content);
-      })
+      });
     } else {
       console.log('skipped searching bookmark: ', req.params.page, bookmarkTypes);
       return ReS(res, content);

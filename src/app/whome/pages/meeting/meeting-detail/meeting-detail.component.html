@@ -36,8 +36,8 @@
         <app-button (click)="schedule()">모임 참가하기</app-button>
       </li>
       <div id="optionBar">
-        <img id="schedule" (click)="schedule()" src="/assets/img/icon_schedule_black.png">
-        <img (click)="fbShare()" src="/assets/img/icon_facebook_black.png">
+        <span id="schedule" [ngClass]="{'selected': isScheduled}" (click)="schedule()"></span>
+        <span id="facebook" (click)="fbShare()"></span>
       </div>
     </div>
   </div>

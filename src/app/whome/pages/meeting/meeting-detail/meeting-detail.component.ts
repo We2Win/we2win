@@ -30,6 +30,7 @@ export class MeetingDetailComponent implements OnInit {
   selectedImgUrl = '';
   selectedNum = 1;
   showMoreReport = false;
+  isScheduled = false;
 
   // userInfo = new UserInfo;
   userInfo = new UserInfo();

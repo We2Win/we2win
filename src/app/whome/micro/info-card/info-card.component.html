@@ -4,8 +4,8 @@
     <img [src]="imageUrl" alt="부동산 사진">
   </div>
   <div id="buttonBar">
-    <img id="bookmark" (click)="bookmark(); $event.stopPropagation();" src="/assets/img/icon_bookmark.png" />
-    <img (click)="fbShare(); $event.stopPropagation();" src="/assets/img/icon_share.png"/>
+    <span id="bookmark" [ngClass]="{'selected': isBookmarked}" (click)="bookmark(); $event.stopPropagation();"></span>
+    <span id="facebook" (click)="fbShare()"></span>
   </div>
   <h3>리포트</h3>
   <h2>{{ record['title'] }}</h2>
