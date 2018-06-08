@@ -557,9 +557,6 @@ const removeBookmark = async function (uId, body) {
     'date': body['createdAt']
   }
 
-  console.log('info on removeBoookmark(): ', info, body);
-  
-
   switch (body['c-type']) {
     case '리포트':
     case '부동산 정보':
