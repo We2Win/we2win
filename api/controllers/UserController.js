@@ -14,12 +14,12 @@ const findId = async function (req, res) {
   console.log(req.body);
 
   let err, user;
-  [err, user] = User.findOne({
+  [err, user] = await to(User.findOne({
     where: {
       'email': req.body['email'],
       'name': req.body['name']
     }
-  });
+  }));
 
   if (err) {
     return ReE(res, '오류가 발생했습니다.');
