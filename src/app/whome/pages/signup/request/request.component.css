@@ -1,0 +1,17 @@
+#done {
+  padding: 2em 5em;
+}
+
+div {
+  padding: 2em;
+}
+
+#title {
+  font-size: 1.8em;
+  margin: 1em 0;
+  width: auto;
+}
+
+img {
+  flex: none !important;
+}

@@ -411,6 +411,24 @@ const hasBookmark = async function (id, uId) {
 }
 module.exports.hasBookmark = hasBookmark;
 
+const isBookmarked = async function (param) {
+  let err, content;
+
+  [err, content] = await to(contentsList.findOne({
+    where: {
+      'u-id': param['u-id'],
+      'c-id': param['c-id']
+    }
+  }))
+
+  if (content) {
+    return true;
+  } else {
+    return false;
+  }
+}
+module.exports.isBookmarked = isBookmarked;
+
 const getBookmark = async function (id, uId) {
   let unique_key, auth_info, err, content;
 

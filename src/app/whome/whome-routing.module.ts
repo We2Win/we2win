@@ -41,6 +41,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { AdminGuard } from './guards/admin.guard';
 import { NaverLoginComponent } from './micro/naver-login/naver-login.component';
 import { NaverSignupComponent } from './micro/naver-signup/naver-signup.component';
+import { RequestComponent } from './pages/signup/request/request.component';
 
 const routes: Routes = [
   {
@@ -233,6 +234,10 @@ const routes: Routes = [
       {
         path: 'form',
         component: FormComponent
+      },
+      {
+        path: 'request',
+        component: RequestComponent
       },
       {
         path: 'done',

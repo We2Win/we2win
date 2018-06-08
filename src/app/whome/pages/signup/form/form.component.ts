@@ -207,7 +207,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       data => {
         console.log('data: ', data);
         if (data.success) {
-          this.router.navigate(['signup', 'done']);
+          this.router.navigate(['signup', 'request']);
         } else {
           this.alertService.error(data.error);
         }

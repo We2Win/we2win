@@ -142,9 +142,18 @@ section {
   flex: none;
   height: 15px;
   padding: 0 21px;
+  transition: transform 0.5s;
+  transform: scale(1);
 }
 
-#optionBar img+img {
+#optionBar img:hover {
+  transform: scale(1.5);
+}
+
+#optionBar img+img:before {
+  display: inline-block;
+  height: 15px;
+  content: '';
   border-left: 1px solid #ccc;
 }
 

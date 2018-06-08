@@ -82,6 +82,7 @@ import { SchedulerComponent } from './micro/scheduler/scheduler.component';
 import { SchedulerWeekComponent } from './micro/scheduler-week/scheduler-week.component';
 import { SchedulerDayComponent } from './micro/scheduler-day/scheduler-day.component';
 import { SchedulerMonthComponent } from './micro/scheduler-month/scheduler-month.component';
+import { RequestComponent } from './pages/signup/request/request.component';
 
 
 export function tokenGetter() {
@@ -166,6 +167,7 @@ export function tokenGetter() {
     SchedulerWeekComponent,
     SchedulerDayComponent,
     SchedulerMonthComponent,
+    RequestComponent,
   ],
   entryComponents: [
     InfoCardComponent,

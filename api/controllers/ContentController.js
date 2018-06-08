@@ -668,6 +668,21 @@ const getContentsByQuery = async function (req, res) {
 }
 module.exports.getContentsByQuery = getContentsByQuery;
 
+const isBookmarked = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  let params = req.params;
+
+  [err, contents] = await to(authService.isBookmarked(params));
+
+  if(err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Successfully loading bookmark status.',
+    isBookmarked: contents
+  })
+}
+module.exports.isBookmarked = isBookmarked;
+
 const getSimplesList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
@@ -772,145 +787,6 @@ const getFilePath = async function (req, res) {
   });
 }
 module.exports.getFilePath = getFilePath;
-
-// const getRankingList = (name) =>
-//   async function (req, res) {
-//     res.setHeader('Content-Type', 'application/json');
-
-//     const id = (req.params.id - 1) || 0;
-//     let contentList = [];
-
-//     console.log(id);
-//     switch (name) {
-//       case 'info/newly':
-//         Report.findAll({
-//             offset: id,
-//             limit: 8,
-//             order: [
-//               ['createdAt', 'DESC']
-//             ]
-//           })
-//           .then((content) => {
-//             contentList.push(content);
-//             News.findAll({
-//                 offset: id,
-//                 limit: 8,
-//                 order: [
-//                   ['createdAt', 'DESC']
-//                 ]
-//               })
-//               .then((content) => {
-//                 contentList.push(content);
-//                 Law.findAll({
-//                     offset: id,
-//                     limit: 8,
-//                     order: [
-//                       ['createdAt', 'DESC']
-//                     ]
-//                   })
-//                   .then((content) => {
-//                     contentList.push(content);
-//                     return ReS(res, contentList);
-//                   });
-//               });
-//           });
-//         break;
-//       case 'info/weekly':
-//         Report.findAll({
-//             offset: id,
-//             limit: 1,
-//             order: [
-//               ['data-click', 'DESC']
-//             ]
-//           })
-//           .then((content) => {
-//             contentList.push(content);
-//             News.findAll({
-//                 offset: id,
-//                 limit: 1,
-//                 order: [
-//                   ['data-click', 'DESC']
-//                 ]
-//               })
-//               .then((content) => {
-//                 contentList.push(content);
-//                 Law.findAll({
-//                     offset: id,
-//                     limit: 1,
-//                     order: [
-//                       ['data-click', 'DESC']
-//                     ]
-//                   })
-//                   .then((content) => {
-//                     contentList.push(content);
-//                     return ReS(res, contentList);
-//                   });
-//               });
-//           });
-//         break;
-//       case 'info/report':
-//         Report.findAll({
-//             offset: id,
-//             limit: 8,
-//             order: [
-//               ['data-click', 'DESC']
-//             ]
-//           })
-//           .then((content) => {
-//             return ReS(res, content);
-//           });
-//         break;
-//       case 'info/news':
-//         News.findAll({
-//             offset: id,
-//             limit: 8,
-//             order: [
-//               ['data-click', 'DESC']
-//             ]
-//           })
-//           .then((content) => {
-//             return ReS(res, content);
-//           });
-//         break;
-//       case 'info/law':
-//         Law.findAll({
-//             offset: id,
-//             limit: 8,
-//             order: [
-//               ['data-click', 'DESC']
-//             ]
-//           })
-//           .then((content) => {
-//             return ReS(res, content);
-//           });
-//         break;
-//       case 'site/newly':
-//         Site.findAll({
-//             offset: id,
-//             limit: 8,
-//             order: [
-//               ['createdAt', 'DESC']
-//             ]
-//           })
-//           .then((content) => {
-//             return ReS(res, content);
-//           });
-//         break;
-//       case 'site/weekly':
-//         Site.findAll({
-//             offset: id,
-//             limit: 8,
-//             order: [
-//               ['data-click', 'DESC']
-//             ]
-//           })
-//           .then((content) => {
-//             return ReS(res, content);
-//           });
-//         break;
-//     }
-//   };
-// module.exports.getRankingList = getRankingList;
 
 const updateList = (name) =>
   async function (req, res) {
