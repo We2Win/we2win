@@ -27,7 +27,7 @@ module.exports.verify = verify;
 
 const verify2 = async function (req, res) {
   var params = {
-    EmailAddress: '100kimch@naver.com', /* required */
+    EmailAddress: 'kimjihyeong100@we2lab.com', /* required */
     TemplateName: 'EmailVerification', /* required */
     ConfigurationSetName: 'Manager'
   };
