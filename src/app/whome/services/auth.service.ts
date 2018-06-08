@@ -81,6 +81,26 @@ export class AuthService {
       .shareReplay();
   }
 
+  sendInfoForId(info) {
+    const headers = { headers: { 'Content-Type': 'application/json' } };
+
+    return this.http.post(environment.apiUrl + '/users/findId', info, headers)
+      .do((res: any) => this.alertService.info(res.message),
+      (err) => { this.alertService.error(err); }
+      )
+      .shareReplay();
+  }
+
+  sendInfoForPassword(info) {
+    const headers = { headers: { 'Content-Type': 'application/json' } };
+
+    return this.http.post(environment.apiUrl + '/users/findPassword', info, headers)
+      .do((res: any) => console.log(res),
+      (err) => { this.alertService.error(err); }
+      )
+      .shareReplay();
+  }
+
   // signin(credential: User) {
   signin(credential: UserInfo): Observable<Token> {
     return this.http.post<Token>(`${this.appUrl}/auth/signin`, credential)

@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   // we want to actually subscribe to the boolean of the observable
   loginForm: FormGroup;
+  findIdForm: FormGroup;
+  findPasswordForm: FormGroup;
   post: any;
   // private user = new UserInfo();
   private user;
@@ -65,6 +67,17 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loginForm = new FormGroup({
       'u-id': new FormControl('', [Validators.required]),
       'password': new FormControl('', [Validators.required]),
+    });
+
+    this.findIdForm = new FormGroup({
+      'name': new FormControl('', [Validators.required]),
+      'email': new FormControl('', [Validators.required])
+    });
+
+    this.findPasswordForm = new FormGroup({
+      'name': new FormControl('', [Validators.required]),
+      'u-id': new FormControl('', [Validators.required]),
+      'email': new FormControl('', [Validators.required])
     });
   }
 
@@ -169,6 +182,24 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
   }
 
+  onSubmitId() {
+    if (this.findIdForm.valid) {
+
+    } else {
+      this.alertService.error('양식을 모두\n입력하지 않으셨습니다.');
+    }
+    console.log(this.findIdForm);
+  }
+
+  onSubmitPassword() {
+    if (this.findPasswordForm.valid) {
+
+    } else {
+      this.alertService.error('양식을 모두\n입력하지 않으셨습니다.');
+    }
+    console.log(this.findPasswordForm);
+  }
+
   loginWithNaver() {
 
   }
@@ -176,4 +207,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   findInfo() {
     this.elementRef.nativeElement.querySelector('app-popup').classList.add('show');
   }
+
+
 }

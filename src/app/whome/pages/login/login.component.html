@@ -29,38 +29,42 @@
 
 <app-popup>
   <h1>아이디/비밀번호 찾기</h1>
-  <div class="group">
-    <div class="row">
-      <h2>네이버 / 카카오로 회원가입하신분은 </h2>
+  <form [formGroup]="findIdForm" (ngSubmit)="onSubmitId()" novalidate>
+    <div class="group">
+      <div class="row">
+        <p>네이버 / 카카오로 회원가입하신 회원님은 해당 사이트에서 회원정보를 수정하시기 바랍니다.</p>
+      </div>
+      <div class="row">
+        <h2>성명</h2>
+        <input formControlName="name" type="text">
+        <h2></h2>
+        <div class="blank"></div>
+      </div>
+      <div class="row">
+        <h2>이메일</h2>
+        <input formControlName="email" type="text">
+      </div>
+      <div class="row">
+        <app-button>아이디 찾기</app-button>
+      </div>
     </div>
-    <div class="row">
-      <h2>성명</h2>
-      <input type="text">
-      <h2></h2>
-      <div class="blank"></div>
+  </form>
+  <form [formGroup]="findPasswordForm" (ngSubmit)="onSubmitPassword()" novalidate>
+    <div class="group">
+      <div class="row">
+        <h2>성명</h2>
+        <input formControlName="name" type="text">
+        <h2>아이디</h2>
+        <input formControlName="u-id" type="text">
+      </div>
+      <div class="row">
+        <h2>이메일</h2>
+        <input formControlName="email" type="text">
+      </div>
+      <div class="row">
+        <app-button>비밀번호 찾기</app-button>
+      </div>
     </div>
-    <div class="row">
-      <h2>이메일</h2>
-      <input type="text">
-    </div>
-    <div class="row">
-      <app-button>아이디 찾기</app-button>
-    </div>
-  </div>
-  <div class="group">
-    <div class="row">
-      <h2>성명</h2>
-      <input type="text">
-      <h2>아이디</h2>
-      <input type="text">
-    </div>
-    <div class="row">
-      <h2>이메일</h2>
-      <input type="text">
-    </div>
-    <div class="row">
-      <app-button>비밀번호 찾기</app-button>
-    </div>
-  </div>
+  </form>
 
 </app-popup>

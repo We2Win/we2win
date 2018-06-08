@@ -23,6 +23,8 @@ router.put('/users', UserController.editUser);
 router.post('/users/login', UserController.login);
 router.get('/users/verify', UserController.verify);
 router.get('/users/verify2', UserController.verify2);
+router.post('/users/findId', UserController.findId);
+router.post('/users/findPassword', UserController.findPassword);
 router.get('/users/sendEmail', UserController.sendEmail2);
 
 router.get('/testing', (req, res) => {
