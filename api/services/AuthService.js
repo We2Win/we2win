@@ -569,10 +569,7 @@ const removeBookmark = async function (uId, body) {
       }));
       if (err) TE('생성 중 오류가 발생했습니다.');
       break;
-    case '아파트':
-    case '오피스텔':
-    case '상가/호텔':
-    case '토지':
+    case '분양 정보':
       [err, content] = await to(InfoScrap.destroy({
         where: {
           'u-id': uId,
