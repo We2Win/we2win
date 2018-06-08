@@ -559,7 +559,7 @@ const removeBookmark = async function (uId, body) {
 
   switch (body['c-type']) {
     case '리포트':
-    case '부동산 정보':
+    case '부동산 뉴스':
     case '법률 및 정책':
       [err, content] = await to(InfoScrap.destroy({
         where: {
@@ -569,7 +569,7 @@ const removeBookmark = async function (uId, body) {
       }));
       if (err) TE('생성 중 오류가 발생했습니다.');
       break;
-    case '분양 정보':
+    case '분양 현장':
       [err, content] = await to(SiteScrap.destroy({
         where: {
           'u-id': info['u-id'],
