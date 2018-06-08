@@ -144,47 +144,45 @@ section {
 #optionBar span {
   flex: none;
   height: 15px;
-  margin: 0 21px;
-  padding: 0;
+  padding: 0 21px;
   transition: transform 0.5s;
   transform: scale(1);
+  cursor: pointer;
 }
 
 #optionBar span:hover {
   transform: scale(1.5);
 }
 
-#optionBar span+span:before {
-  display: inline-block;
-  height: 15px;
-  content: '';
-  border-left: 1px solid #ccc;
-}
-
 #optionBar #bookmark {
   width: 11px;
   background-image: url('/assets/img/icon_bookmark_black.png');
-  background-size: 100%;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 #optionBar #bookmark.selected {
   background: url('/assets/img/icon_bookmark_black_selected.png');
-  background-size: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #optionBar #facebook {
   width: 7px;
   background-image: url('/assets/img/icon_facebook_black.png');
-  background-size: 100%;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 #optionBar #facebook.selected {
   background: url('/assets/img/icon_bookmark_black_selected.png');
-  background-size: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-
 
 .price {
   color: red;

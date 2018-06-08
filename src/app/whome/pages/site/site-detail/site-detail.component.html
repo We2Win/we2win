@@ -18,8 +18,8 @@
       </div>
       <app-button>담당자 | {{Data['manager-name']}} | {{Data['manager-contact']}}</app-button>
       <div id="optionBar">
-        <img id="bookmark" (click)="bookmark()" src="/assets/img/icon_bookmark_black.png">
-        <img (click)="fbShare()" src="/assets/img/icon_facebook_black.png">
+        <span id="bookmark" [ngClass]="{'selected': isBookmarked}" (click)="bookmark()"></span>
+        <span id="facebook" (click)="fbShare()"></span>
       </div>
     </div>
   </div>

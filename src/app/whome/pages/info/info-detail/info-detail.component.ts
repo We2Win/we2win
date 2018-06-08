@@ -96,6 +96,7 @@ export class InfoDetailComponent implements OnInit {
       data => {
         if (data) {
           this.Data = data;
+          this.Data['c-type'] = '리포트';
           console.log('this.Data: ', this.Data);
           if (this.Data['current-duration1'] || this.Data['around-duration1']) {
             this.showCharts = true;

@@ -92,25 +92,48 @@ section {
   padding: 20px 0;
 }
 
-#optionBar img {
+#optionBar span {
   flex: none;
   height: 15px;
   padding: 0 21px;
   transition: transform 0.5s;
   transform: scale(1);
+  cursor: pointer;
 }
 
-#optionBar img:hover {
+#optionBar span:hover {
   transform: scale(1.5);
 }
 
-#optionBar img+img:before {
-  display: inline-block;
-  height: 15px;
-  content: '';
-  border-left: 1px solid #ccc;
+#optionBar #bookmark {
+  width: 11px;
+  background-image: url('/assets/img/icon_bookmark_black.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
+#optionBar #bookmark.selected {
+  background: url('/assets/img/icon_bookmark_black_selected.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#optionBar #facebook {
+  width: 7px;
+  background-image: url('/assets/img/icon_facebook_black.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#optionBar #facebook.selected {
+  background: url('/assets/img/icon_bookmark_black_selected.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 app-group /deep/ article {
   border-top: 1px solid #ccc;

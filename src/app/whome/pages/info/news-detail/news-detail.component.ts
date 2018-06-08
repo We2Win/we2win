@@ -67,11 +67,14 @@ export class NewsDetailComponent implements OnInit {
       data => {
         if (data) {
           this.Data = data;
+          this.Data['c-type'] = '부동산 뉴스';
           // this.top.nativeElement.style.background = 'red';
           this.background.nativeElement.src = environment.bucket.downloadUrl + this.Data['slave-image1'];
           // this.top.nativeElement.style.backgroundSize = 'cover';
           // this.top.nativeElement.style.backgroundPosition = 'center';
           console.log('data: ', this.Data);
+
+          this.isBookmarked = this.Data['isBookmarked'];
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
           this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
@@ -105,14 +108,10 @@ export class NewsDetailComponent implements OnInit {
 
     if (this.isBookmarked) {
       this.isBookmarked = false;
-      bookmark.src = '/assets/img/icon_bookmark.png';
-      bookmark.classList.remove('selected');
       this.alertService.warn('북마크가 해제되었습니다.');
       this.userService.removeBookmark(this.Data);
     } else {
       this.isBookmarked = true;
-      bookmark.src = '/assets/img/icon_bookmark_selected.png';
-      bookmark.classList.add('selected');
       this.alertService.success('북마크가 설정되었습니다.');
       this.userService.addBookmark(this.Data);
     }
