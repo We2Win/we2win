@@ -13,35 +13,35 @@ const ses = new aws.SES({
 const findId = async function (req, res) {
   console.log(req.body);
 
-  User.findOne({
+  let err, user;
+  [err, user] = User.findOne({
     where: {
       'email': req.body['email'],
       'name': req.body['name']
     }
-  }).then(
-    data => {
-      return ReS(res, {
-        message: '회원님의 아이디는 ' + data['u-id'] + ' 입니다.'
-      });
-    },
-    err => {
-      return ReE(res, '오류가 발생했습니다.');
-    }
-  )
-  // var params = {
-  //   EmailAddress: req.body.email
-  // };
-  // ses.verifyEmailIdentity(params, function (err, data) {
-  //   if (err) console.log(err, err.stack); // an error occurred
-  //   else console.log(data);           // successful response
-  //   /*
-  //   data = {
-  //   }
-  //   */
-  //   return ReS(res, {
-  //     message: '아이디를 메일로 보냈습니다.',
-  //   }, 201);
-  // });
+  });
+
+  if (err) {
+    return ReE(res, '오류가 발생했습니다.');
+  }
+  
+  return ReS(res, {
+    message: '회원님의 아이디는 ' + data['u-id'] + ' 입니다.'
+  });
+// var params = {
+//   EmailAddress: req.body.email
+// };
+// ses.verifyEmailIdentity(params, function (err, data) {
+//   if (err) console.log(err, err.stack); // an error occurred
+//   else console.log(data);           // successful response
+//   /*
+//   data = {
+//   }
+//   */
+//   return ReS(res, {
+//     message: '아이디를 메일로 보냈습니다.',
+//   }, 201);
+// });
 }
 module.exports.findId = findId;
 
@@ -86,7 +86,7 @@ const verify = async function (req, res) {
   };
   ses.verifyEmailIdentity(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
-    else console.log(data);           // successful response
+    else console.log(data); // successful response
     /*
     data = {
     }
@@ -100,12 +100,14 @@ module.exports.verify = verify;
 
 const verify2 = async function (req, res) {
   var params = {
-    EmailAddress: 'kimjihyeong100@we2lab.com', /* required */
-    TemplateName: 'verifier', /* required */
+    EmailAddress: 'kimjihyeong100@we2lab.com',
+    /* required */
+    TemplateName: 'verifier',
+    /* required */
   };
   ses.sendCustomVerificationEmail(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
-    else console.log(data);           // successful response
+    else console.log(data); // successful response
     return ReS(res, {
       message: 'Done.',
     }, 201);
@@ -132,9 +134,9 @@ const sendEmail2 = async function (req, res) {
   const subject = "Amazon SES Test (AWS SDK for JavaScript in Node.js)";
 
   // The email body for recipients with non-HTML email clients.
-  const body_text = "Amazon SES Test (SDK for JavaScript in Node.js)\r\n"
-    + "This email was sent with Amazon SES using the "
-    + "AWS SDK for JavaScript in Node.js.";
+  const body_text = "Amazon SES Test (SDK for JavaScript in Node.js)\r\n" +
+    "This email was sent with Amazon SES using the " +
+    "AWS SDK for JavaScript in Node.js.";
 
   // The HTML body of the email.
   const body_html = `<html>
