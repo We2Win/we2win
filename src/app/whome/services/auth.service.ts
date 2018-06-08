@@ -84,7 +84,11 @@ export class AuthService {
   sendInfoForId(info) {
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
-    return this.http.post(environment.apiUrl + '/users/findId', info, headers);
+    return this.http.post(environment.apiUrl + '/users/findId', info, headers)
+      .do((res: any) => this.alertService.info(res.message),
+      (err) => { this.alertService.error(err); }
+      )
+      .shareReplay();
   }
 
   sendInfoForPassword(info) {

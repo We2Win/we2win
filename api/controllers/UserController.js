@@ -30,9 +30,7 @@ const findId = async function (req, res) {
       message: '회원님의 아이디는 ' + user['u-id'] + ' 입니다.'
     });
   } else {
-    return ReS(res, {
-      message: '해당하는 회원 정보가 없습니다.'
-    });
+    return ReE(res, '해당하는 회원 정보가 없습니다.');
   }
 
 // var params = {
