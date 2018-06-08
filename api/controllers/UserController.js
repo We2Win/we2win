@@ -21,6 +21,9 @@ const verify = async function (req, res) {
     data = {
     }
     */
+    return ReS(res, {
+      message: 'Done.',
+    }, 201);
   });
 }
 module.exports.verify = verify;
@@ -34,6 +37,9 @@ const verify2 = async function (req, res) {
   ses.sendCustomVerificationEmail(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
     else console.log(data);           // successful response
+    return ReS(res, {
+      message: 'Done.',
+    }, 201);
   });
 }
 module.exports.verify2 = verify2;
