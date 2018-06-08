@@ -481,7 +481,7 @@ const addBookmark = async function (uId, body) {
       info['c-type'] = body['c-type'];
       [err, scrap] = await to(InfoScrap.findOne({
         where: {
-          'u-id': uId,
+          'u-id': info['u-id'],
           'c-id': info['c-id']
         }
       }));
@@ -497,7 +497,7 @@ const addBookmark = async function (uId, body) {
     case '분양 현장':
       [err, scrap] = await to(SiteScrap.findOne({
         where: {
-          'u-id': uId,
+          'u-id': info['u-id'],
           'c-id': info['c-id']
         }
       }));
@@ -511,10 +511,10 @@ const addBookmark = async function (uId, body) {
       if (err) TE('생성 중 오류가 발생했습니다.');
       break;
     case '오프라인 모임':
-      console.log('on meeting bookmark: ', uId, info['c-id']);
+      console.log('on meeting bookmark: ', info['u-id'], info['c-id']);
       Schedule.findOne({
         where: {
-          'u-id': uId,
+          'u-id': info['u-id'],
           'c-id': info['c-id']
         }
       }).then(
@@ -566,7 +566,7 @@ const removeBookmark = async function (uId, body) {
     case '법률 및 정책':
       [err, content] = await to(InfoScrap.destroy({
         where: {
-          'u-id': uId,
+          'u-id': info['u-id'],
           'c-id': info['c-id']
         }
       }));
@@ -575,7 +575,7 @@ const removeBookmark = async function (uId, body) {
     case '분양 정보':
       [err, content] = await to(SiteScrap.destroy({
         where: {
-          'u-id': uId,
+          'u-id': info['u-id'],
           'c-id': info['c-id']
         }
       }));
@@ -584,7 +584,7 @@ const removeBookmark = async function (uId, body) {
     case '오프라인 모임':
       [err, content] = await to(Schedule.destroy({
         where: {
-          'u-id': uId,
+          'u-id': info['u-id'],
           'c-id': info['c-id']
         }
       }));
