@@ -472,7 +472,7 @@ const addBookmark = async function (uId, body) {
     'date': body['createdAt']
   }
 
-  console.log('info on addBoookmark(): ', info, body['c-type']);
+  console.log('info on addBoookmark(): ', info, body);
 
   switch (body['c-type']) {
     case '리포트':
