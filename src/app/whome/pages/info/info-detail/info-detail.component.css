@@ -141,23 +141,48 @@ section {
   padding: 20px 0;
 }
 
-#optionBar img {
+#optionBar span {
   flex: none;
   height: 15px;
-  padding: 0 21px;
+  margin: 0 21px;
+  padding: 0;
   transition: transform 0.5s;
   transform: scale(1);
 }
 
-#optionBar img:hover {
+#optionBar span:hover {
   transform: scale(1.5);
 }
 
-#optionBar img+img:before {
+#optionBar span+span:before {
   display: inline-block;
   height: 15px;
   content: '';
   border-left: 1px solid #ccc;
+}
+
+#optionBar #bookmark {
+  width: 11px;
+  background-image: url('/assets/img/icon_bookmark_black.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#optionBar #bookmark.selected {
+  background: url('/assets/img/icon_bookmark_black_selected.png');
+  background-size: 100%;
+}
+
+#optionBar #facebook {
+  width: 7px;
+  background-image: url('/assets/img/icon_facebook_black.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#optionBar #facebook.selected {
+  background: url('/assets/img/icon_bookmark_black_selected.png');
+  background-size: 100%;
 }
 
 

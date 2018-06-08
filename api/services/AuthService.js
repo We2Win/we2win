@@ -542,6 +542,7 @@ const addBookmark = async function (uId, body) {
     });
   }
 
+  console.log('almost done: ', content);
   return content;
 }
 module.exports.addBookmark = addBookmark;

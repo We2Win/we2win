@@ -196,16 +196,6 @@ export class AuthService {
     localStorage.removeItem(this.TOKEN_NAME);
   }
 
-  isBookmarked(cId, uId) {
-    const headers = { headers: { 'Content-Type': 'application/json' } };
-    const bodyString = {
-      'u-id': uId,
-      'c-id': cId
-    };
-
-    return this.http.post(environment.apiUrl + '/isbookmarked', bodyString, headers);
-  }
-
   /*
     token 유효 기간 체크
     The JwtHelper class has several useful methods that can be utilized in your components:

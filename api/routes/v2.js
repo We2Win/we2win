@@ -46,8 +46,6 @@ router.post('/contents/comments', ContentController.createComments);
 router.get('/contents/comments/:cid', ContentController.getComments);
 router.delete('/contents/comments/:cid/:uid', ContentController.deleteComment);
 
-router.post('/contents/isbookmarked', ContentController.isBookmarked);
-
 router.put('/contents/employer', ContentController.createEmployer);
 router.put('/contents/employee', ContentController.createEmployee);
 
@@ -74,6 +72,7 @@ router.post('/userInfo', UserController.detailedInfo);
 router.put('/bookmark/add', UserController.addBookmark);
 router.post('/bookmark/remove', UserController.removeBookmark);
 router.get('/bookmark/:id', UserController.getBookmark);
+
 // router.get('/bookmark/:id', UserController.hasBookmark);
 // router.get('/mng/dash', ContentController.getDashboardData);
 

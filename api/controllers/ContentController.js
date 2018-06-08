@@ -668,21 +668,6 @@ const getContentsByQuery = async function (req, res) {
 }
 module.exports.getContentsByQuery = getContentsByQuery;
 
-const isBookmarked = async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  let params = req.params;
-
-  [err, contents] = await to(authService.isBookmarked(params));
-
-  if(err) return ReE(res, err, 422);
-
-  return ReS(res, {
-    message: 'Successfully loading bookmark status.',
-    isBookmarked: contents
-  })
-}
-module.exports.isBookmarked = isBookmarked;
-
 const getSimplesList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
