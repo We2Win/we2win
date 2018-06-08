@@ -12,16 +12,15 @@ const ses = new aws.SES({
 
 const verify = async function (req, res) {
   var params = {
-    EmailAddress: '100kimch@naver.com', /* required */
-    TemplateName: 'EmailVerification', /* required */
-    ConfigurationSetName: 'Manager'
+    EmailAddress: "100kimch@naver.com"
   };
-  ses.sendCustomVerificationEmail(params, function (err, data) {
+  ses.verifyEmailIdentity(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
     else console.log(data);           // successful response
-    return ReS(res, {
-      message: 'Done.',
-    }, 201);
+    /*
+    data = {
+    }
+    */
   });
 }
 module.exports.verify = verify;
