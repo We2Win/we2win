@@ -31,7 +31,7 @@ module.exports.verify = verify;
 const verify2 = async function (req, res) {
   var params = {
     EmailAddress: 'kimjihyeong100@we2lab.com', /* required */
-    TemplateName: 'EmailVerification', /* required */
+    TemplateName: 'verifier', /* required */
     ConfigurationSetName: 'Manager'
   };
   ses.sendCustomVerificationEmail(params, function (err, data) {
