@@ -546,7 +546,7 @@ module.exports.addBookmark = addBookmark;
 
 const removeBookmark = async function (uId, body) {
   let unique_key, auth_info, err, content;
-
+  
   const info = {
     'u-id': uId,
     'c-id': body['c-id'],
@@ -556,6 +556,9 @@ const removeBookmark = async function (uId, body) {
     's-type': body['s-type'],
     'date': body['createdAt']
   }
+
+  console.log('info on removeBoookmark(): ', info, body);
+  
 
   switch (body['c-type']) {
     case '리포트':
