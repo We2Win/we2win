@@ -85,7 +85,13 @@ export class AuthService {
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
     return this.http.post(environment.apiUrl + '/users/findId', info, headers)
-      .do((res: any) => this.alertService.info(res.message),
+      .do((res: any) => {
+        if (res.success) {
+          this.alertService.info(res.message);
+        } else {
+          this.alertService.warn(res.error);
+        }
+      },
       (err) => { this.alertService.error(err); }
       )
       .shareReplay();

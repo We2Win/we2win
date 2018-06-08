@@ -184,7 +184,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   onSubmitId() {
     if (this.findIdForm.valid) {
-      console.log(this.findIdForm.value);
+      // console.log(this.findIdForm.value);
       this.authService.sendInfoForId(this.findIdForm.value).subscribe(
         data => {
           console.log('data: ', data);

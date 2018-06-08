@@ -27,6 +27,7 @@ const findId = async function (req, res) {
   
   if (user) {
     return ReS(res, {
+      success: true,
       message: '회원님의 아이디는 ' + user['u-id'] + ' 입니다.'
     });
   } else {
