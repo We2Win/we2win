@@ -96,6 +96,7 @@ export class SiteDetailComponent implements OnInit {
       data => {
         if (data) {
           this.Data = data;
+          this.Data['c-type'] = '분양 현장';
           console.log(this.Data);
           if (this.Data['current-duration1'] || this.Data['around-duration1']) {
             this.showCharts = true;
@@ -112,7 +113,7 @@ export class SiteDetailComponent implements OnInit {
           this.subImgUrl[5] = environment.bucket.downloadUrl + this.Data['slave-image5'];
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['slave-image1'];
 
-          console.log('data: ', this.Data);
+          this.isBookmarked = this.Data['isBookmarked'];
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
           this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
@@ -250,14 +251,10 @@ export class SiteDetailComponent implements OnInit {
 
     if (this.isBookmarked) {
       this.isBookmarked = false;
-      bookmark.src = '/assets/img/icon_bookmark_black.png';
-      bookmark.classList.remove('selected');
       this.alertService.warn('북마크가 해제되었습니다.');
       this.userService.removeBookmark(this.Data);
     } else {
       this.isBookmarked = true;
-      bookmark.src = '/assets/img/icon_bookmark_black_selected.png';
-      bookmark.classList.add('selected');
       this.alertService.success('북마크가 설정되었습니다.');
       this.userService.addBookmark(this.Data);
     }

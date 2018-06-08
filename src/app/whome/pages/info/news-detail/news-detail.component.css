@@ -59,17 +59,17 @@ section {
   color: white;
 }
 
-:host.platinum #levelBar {
+:host.PLATINUM #levelBar {
   background: linear-gradient(35deg, rgba(213, 177, 94, 1.0), rgba(187, 141, 34, 0.6), rgba(187, 141, 34, 0.2));
   /* background: var(--level-platinum-gradient); */
 }
 
-:host.premium #levelBar {
+:host.PREMIUM #levelBar {
   background: linear-gradient(35deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
   /* background: var(--level-premium-gradient); */
 }
 
-:host.standard #levelBar {
+:host.STANDARD #levelBar {
   background: linear-gradient(35deg, rgb(175, 175, 175), rgba(175, 175, 175, 0.6), rgba(175, 175, 175, 0.2));
   /* background: var(--level-standard-gradient); */
 }
@@ -107,14 +107,14 @@ section {
 
 #optionBar #bookmark {
   width: 11px;
-  background-image: url('/assets/img/icon_bookmark_black.png');
+  background-image: url('/assets/img/icon_bookmark.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #optionBar #bookmark.selected {
-  background: url('/assets/img/icon_bookmark_black_selected.png');
+  background: url('/assets/img/icon_bookmark_selected.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -122,14 +122,14 @@ section {
 
 #optionBar #facebook {
   width: 7px;
-  background-image: url('/assets/img/icon_facebook_black.png');
+  background-image: url('/assets/img/icon_facebook.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #optionBar #facebook.selected {
-  background: url('/assets/img/icon_bookmark_black_selected.png');
+  background: url('/assets/img/icon_bookmark_selected.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
