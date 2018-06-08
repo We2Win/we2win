@@ -14,7 +14,7 @@ const verify = async function (req, res) {
   var params = {
     EmailAddress: '100kimch@naver.com', /* required */
     TemplateName: 'EmailVerification', /* required */
-    // ConfigurationSetName: 'Verifier_we2win'
+    ConfigurationSetName: 'Manager'
   };
   ses.sendCustomVerificationEmail(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
