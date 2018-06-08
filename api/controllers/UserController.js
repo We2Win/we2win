@@ -32,7 +32,6 @@ const verify2 = async function (req, res) {
   var params = {
     EmailAddress: 'kimjihyeong100@we2lab.com', /* required */
     TemplateName: 'verifier', /* required */
-    ConfigurationSetName: 'Manager'
   };
   ses.sendCustomVerificationEmail(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
