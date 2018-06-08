@@ -25,6 +25,20 @@ const verify = async function (req, res) {
 }
 module.exports.verify = verify;
 
+const verify2 = async function (req, res) {
+  var params = {
+    EmailAddress: '100kimch@naver.com', /* required */
+    TemplateName: 'EmailVerification', /* required */
+    ConfigurationSetName: 'Manager'
+  };
+  ses.sendCustomVerificationEmail(params, function (err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else console.log(data);           // successful response
+  });
+}
+module.exports.verify2 = verify2;
+
+
 const sendEmail2 = async function (req, res) {
   // Replace sender@example.com with your "From" address.
   // This address must be verified with Amazon SES.
