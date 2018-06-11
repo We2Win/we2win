@@ -534,7 +534,7 @@ const getContentsList = async function (req, res) {
   } else {
     userInfo = false;
   }
-  
+
   res.setHeader('Content-Type', 'application/json');
   const id = (req.params.id - 1) * 8 || 0;
 
@@ -657,16 +657,16 @@ const getContentsList = async function (req, res) {
 
   if (bookmarkTypes[req.params.page] && userInfo) {
     // console.log('searching bookmark...');
-    bookmarkTypes[req.params.page].findOne({
+    let isBookmarked;
+    [err, isBookmarked] = await to(bookmarkTypes[req.params.page].findOne({
       where: {
         'c-id': content['c-id'],
         'u-id': userInfo['user_id']
       }
-    }).then(isBookmarked => {
-      content.dataValues['isBookmarked'] = isBookmarked ? true : false;
-      // console.log('content: ', content);
-      return ReS(res, content);
-    });
+    }));
+    content.dataValues['isBookmarked'] = isBookmarked ? true : false;
+    // console.log('content: ', content);
+    return ReS(res, content);
   } else {
     console.log('skipped searching bookmark: ', bookmarkTypes[req.params.page], userInfo);
     return ReS(res, content);
