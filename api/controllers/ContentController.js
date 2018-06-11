@@ -715,11 +715,12 @@ const getRankingList = async function (req, res) {
 
   console.log('date: ', startDate, endDate);
 
-  let err, content;
+  let err, content, contents, result;
+  result = [];
 
   switch (req.params.list) {
     case 'info':
-      [err, content] = await to(ViewList.findAll({
+      [err, contents] = await to(ViewList.findAll({
         // where: {
         //   from: {
         //     // [Sequelize.Op.between]: [startDate, endDate],
@@ -728,6 +729,16 @@ const getRankingList = async function (req, res) {
         // },
         limit: 3
       }));
+
+      for (content in contents) {
+        [err, content] = await to(Content.findOne({
+          where: {
+            'c-id': content['c-id']
+          }
+        }));
+        if (err) return ReE(res, err, 422);        
+        result.push(content);
+      }
       console.log('content: ', content);
       break;
     case 'site':
