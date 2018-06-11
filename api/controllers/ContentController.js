@@ -756,6 +756,7 @@ const getRankingList = async function (req, res) {
   }
   if (err) return ReE(res, err, 422);
 
+  console.log('results: ', results);
   return ReS(res, {
     message: 'Successfully loading ranking lists.',
     content: results
