@@ -13,14 +13,28 @@ export class ContentsService {
   ) { }
 
   getContentsList(page, list, sort, id?: any) {
-    return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'))
+    const httpOptions = {};
+    if (this.authService.isAuthenticated()) {
+      httpOptions['headers'] = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      });
+    }
+    return this.http.get(environment.apiUrl + '/contents/' + page + '/' + list + '/' + sort + '/' + (id || '1'), httpOptions)
       .map((res: object) => {
         return res;
       });
   }
 
   getWeeklyList(page) {
-    return this.http.get(environment.apiUrl + '/contents/' + page + '/weekly')
+    const httpOptions = {};
+    if (this.authService.isAuthenticated()) {
+      httpOptions['headers'] = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getToken()
+      });
+    }
+    return this.http.get(environment.apiUrl + '/contents/' + page + '/weekly', httpOptions)
       .map((res: any) => res);
   }
 
