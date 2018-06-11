@@ -722,7 +722,7 @@ const getRankingList = async function (req, res) {
       [err, content] = await to(ViewList.findAll({
         where: {
           from: {
-            [Sequelize.Op.between]: [startDate, endDate],
+            [Sequelize.Op.Between]: [startDate, endDate],
           },
           [Sequelize.Op.or]: ['report', 'news', 'law']
         },
@@ -736,16 +736,14 @@ const getRankingList = async function (req, res) {
       [err, content] = await to(ViewList.findAll({
         where: {
           from: {
-            [Sequelize.Op.between]: [startDate, endDate],
+            [Sequelize.Op.Between]: [startDate, endDate],
           }
         },
         limit: 3
       }));
       break;
   }
-  if (err) return ReE(res, {
-    message: 'error: ' + err
-  }, 422);
+  if (err) return ReE(res, err, 422);
 
   return ReS(res, {
     message: 'Successfully loading ranking lists.',
