@@ -607,7 +607,7 @@ const getContentsList = async function (req, res) {
     case 'weekly':
       let contentList = [];
       let content1, content2, content3;
-      [err, content] = await to(Content.findOne({
+      [err, content1] = await to(Content.findOne({
         order: [
           ['c-click', 'DESC']
         ],
