@@ -24,7 +24,7 @@ const findId = async function (req, res) {
   if (err) {
     return ReE(res, '오류가 발생했습니다.');
   }
-  
+
   if (user) {
     return ReS(res, {
       success: true,
@@ -34,20 +34,20 @@ const findId = async function (req, res) {
     return ReE(res, '해당하는 회원 정보가 없습니다.');
   }
 
-// var params = {
-//   EmailAddress: req.body.email
-// };
-// ses.verifyEmailIdentity(params, function (err, data) {
-//   if (err) console.log(err, err.stack); // an error occurred
-//   else console.log(data);           // successful response
-//   /*
-//   data = {
-//   }
-//   */
-//   return ReS(res, {
-//     message: '아이디를 메일로 보냈습니다.',
-//   }, 201);
-// });
+  // var params = {
+  //   EmailAddress: req.body.email
+  // };
+  // ses.verifyEmailIdentity(params, function (err, data) {
+  //   if (err) console.log(err, err.stack); // an error occurred
+  //   else console.log(data);           // successful response
+  //   /*
+  //   data = {
+  //   }
+  //   */
+  //   return ReS(res, {
+  //     message: '아이디를 메일로 보냈습니다.',
+  //   }, 201);
+  // });
 }
 module.exports.findId = findId;
 
@@ -105,49 +105,54 @@ const verify = async function (req, res) {
 module.exports.verify = verify;
 
 const verify2 = async function (req, res) {
-  var params = {
-    FailureRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/login', /* required */
-    FromEmailAddress: 'kimjihyeong100@we2lab.com', /* required */
-    SuccessRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/info', /* required */
-    TemplateContent: '회원 인증 메일입니다.', /* required */
-    TemplateName: 'verifier_first', /* required */
-    TemplateSubject: 'We2Win 회원 인증 메일' /* required */
-  };
-  ses.createCustomVerificationEmailTemplate(params, function (err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    else console.log('createCustomVerificationEmailTemplate: ', data);           // successful response
-    // Create the promise and SES service object
-    var templatePromise = ses.listTemplates({ MaxItems: 10 }).promise();
-
-    // Handle promise's fulfilled/rejected states
-    templatePromise.then(
-      function (data) {
-        console.log('templates: ', data);
-      }).catch(
-      function (err) {
-        console.error(err, err.stack);
-      });
-
-    return ReS(res, {
-      message: 'done.'
-    }, 201);
-  });
-
-
-
   // var params = {
-  //   EmailAddress: 'kimjihyeong100@we2lab.com',
+  //   FailureRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/login',
+  //   /* required */
+  //   FromEmailAddress: 'kimjihyeong100@we2lab.com',
+  //   /* required */
+  //   SuccessRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/info',
+  //   /* required */
+  //   TemplateContent: '회원 인증 메일입니다.',
   //   /* required */
   //   TemplateName: 'verifier_first',
   //   /* required */
+  //   TemplateSubject: 'We2Win 회원 인증 메일' /* required */
   // };
-  // ses.sendCustomVerificationEmail(params, function (err, data) {
+  // ses.createCustomVerificationEmailTemplate(params, (err, data) => {
   //   if (err) console.log(err, err.stack); // an error occurred
-  //   else console.log(data); // successful response
+  //   else console.log('createCustomVerificationEmailTemplate: ', data); // successful response
+  //   // Create the promise and SES service object
+  //   var templatePromise = ses.listTemplates({
+  //     MaxItems: 10
+  //   }).promise();
+
+  //   // Handle promise's fulfilled/rejected states
+  //   templatePromise.then(
+  //     dat => {
+  //       console.log('templates: ', data);
+  //     }).catch(
+  //     err => {
+  //       console.error(err, err.stack);
+  //     });
+
   //   return ReS(res, {
-  //     message: 'Done - sendCustomVerificationEmail: ' + data,
+  //     message: 'done.'
   //   }, 201);
   // });
+
+  var params = {
+    EmailAddress: 'kimjihyeong100@we2lab.com',
+    /* required */
+    TemplateName: 'verifier_first',
+    /* required */
+  };
+  ses.sendCustomVerificationEmail(params, function (err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else console.log(data); // successful response
+    return ReS(res, {
+      message: 'Done - sendCustomVerificationEmail: ' + data,
+    }, 201);
+  });
 }
 module.exports.verify2 = verify2;
 
