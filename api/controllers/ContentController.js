@@ -724,7 +724,7 @@ const getRankingList = async function (req, res) {
           from: {
             [Sequelize.Op.Between]: [startDate, endDate],
           },
-          [Sequelize.Op.or]: ['report', 'news', 'law']
+          // [Sequelize.Op.or]: ['report', 'news', 'law']
         },
         limit: 3
       }));
