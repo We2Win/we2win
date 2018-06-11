@@ -663,16 +663,15 @@ const getContentsList = async function (req, res) {
     let isBookmarked;
     [err, isBookmarked] = await to(bookmarkTypes[req.params.page].findOne({
       where: {
-        'c-id': content['c-id'],
+        'c-id': content[0]['c-id'],
         'u-id': userInfo['user_id']
       }
     }));
+    console.log(isBookmarked, content[0]['c-id'])
 
     if (err) return ReE(res, 'error occured: ', err);
     
-    // console.log('content: ', content[0]);
     content[0].dataValues['isBookmarked'] = isBookmarked ? true : false;
-    // console.log('content: ', content);
     return ReS(res, content);
   } else {
     console.log('skipped searching bookmark: ', bookmarkTypes[req.params.page], userInfo);
