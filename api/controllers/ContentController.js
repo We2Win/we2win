@@ -238,40 +238,40 @@ const getComments = async function (req, res) {
 }
 module.exports.getComments = getComments;
 
-const deleteComment = async function (req, res) {	
-  let userInfo;	
-  if (req.headers['authorization']) {	
-    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);	
-  } else {	
-    userInfo = false;	
-  }	
-	
-	
-  if (userInfo['user_level'] !== 'ADMIN' && userInfo['user_level'] !== 'MANAGER') {	
-    console.log('not authorized:', userInfo, userInfo['user_level']);	
-    return ReS(res, 'not authorized.', 422);	
-  }	
-	
-  res.setHeader('Content-Type', 'application/json');	
-	
-  let err, content;	
-	
-  [err, content] = await to(Comment.findOne({	
-    where: {	
-      'c-id': req.params.cid,	
-      'u-id': req.params.uid	
-    }	
-  }));	
-	
- console.log(content);	
+const deleteComment = async function (req, res) {
+  let userInfo;
+  if (req.headers['authorization']) {
+    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  } else {
+    userInfo = false;
+  }
 
- if (err) return ReE(res, err, 422);	
 
- content.destroy();	
-  return ReS(res, {	
-    message: 'successfully deleted comment.'	
-  });	
-}	
+  if (userInfo['user_level'] !== 'ADMIN' && userInfo['user_level'] !== 'MANAGER') {
+    console.log('not authorized:', userInfo, userInfo['user_level']);
+    return ReS(res, 'not authorized.', 422);
+  }
+
+  res.setHeader('Content-Type', 'application/json');
+
+  let err, content;
+
+  [err, content] = await to(Comment.findOne({
+    where: {
+      'c-id': req.params.cid,
+      'u-id': req.params.uid
+    }
+  }));
+
+  console.log(content);
+
+  if (err) return ReE(res, err, 422);
+
+  content.destroy();
+  return ReS(res, {
+    message: 'successfully deleted comment.'
+  });
+}
 module.exports.deleteComment = deleteComment;
 
 const createEmployer = async function (req, res) {
@@ -398,9 +398,9 @@ const getCount = async function (req, res) {
 }
 module.exports.getCount = getCount;
 
-const getMeetingTitles = async function(req, res) {
+const getMeetingTitles = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  
+
 }
 module.exports.getMeetingTitles = getMeetingTitles;
 
@@ -562,7 +562,7 @@ const getContentsList = async function (req, res) {
     'ground': {
       's-type': '토지'
     }
-  }
+  };
 
   const sortTypes = {
     'date': ['createdAt', 'DESC'],
@@ -575,77 +575,79 @@ const getContentsList = async function (req, res) {
   const whereArr = pageTypes[req.params.page];
   let orderArr;
   if (req.params.sort) {
-    orderArr = [['notification', 'DESC'], sortTypes[req.params.sort]];
+    orderArr = [
+      ['notification', 'DESC'], sortTypes[req.params.sort]
+    ];
   } else {
-    orderArr = [['notification', 'DESC']];
+    orderArr = [
+      ['notification', 'DESC']
+    ];
   }
+
+  let err, content;
 
   switch (req.params.list) {
     case 'All':
-      Content.findAll({
+      [err, content] = await to(Content.findAll({
         offset: id,
         order: orderArr,
         where: whereArr
-      }).then(content => {
-        return ReS(res, content);
-      });
+      }));
+      return ReS(res, content);
       break;
     case 'newly':
-      Content.findAll({
+      [err, content] = await to(Content.findAll({
         offset: id,
         limit: 8,
         order: orderArr,
         where: whereArr
-      }).then(content => {
-        return ReS(res, content);
-      });
+      }));
+      return ReS(res, content);
       break;
     case 'weekly':
       let contentList = [];
-      Content.findOne({
+      let content2, content3;
+      [err, content] = await to(Content.findOne({
         order: [
           ['c-click', 'DESC']
         ],
         where: whereArr
-      }).then(content1 => {
-        contentList.push(content1);
-        Content.findOne({
-          order: [
-            ['c-comments', 'DESC']
-          ],
-          where: whereArr
-        }).then(content2 => {
-          contentList.push(content2);
-          Content.findOne({
-            order: [
-              ['c-sns', 'DESC']
-            ],
-            where: whereArr
-          }).then(content3 => {
-            contentList.push(content3);
-            return ReS(res, contentList);
-          })
-        })
-      });
+      }));
+
+      contentList.push(content1);
+      [err, content2] = await to(Content.findOne({
+        order: [
+          ['c-comments', 'DESC']
+        ],
+        where: whereArr
+      }));
+
+      contentList.push(content2);
+      [err, content3] = await to(Content.findOne({
+        order: [
+          ['c-sns', 'DESC']
+        ],
+        where: whereArr
+      }));
+      contentList.push(content3);
+      return ReS(res, contentList);
       break;
     case 'titles':
-      Content.findAll({
+      [err, content] = await to(Content.findAll({
         order: orderArr,
         where: whereArr,
         attributes: ['title', 'no']
-      }).then(content => {
-        return ReS(res, content);
-      })
+      }));
+      return ReS(res, content);
       break;
     case 'reporter':
-      Content.findAll({
+      [err, content] = await to(Content.findAll({
         offset: id,
         limit: 4,
         order: orderArr,
         where: whereArr
-      }).then(content => {
-        return ReS(res, content);
-      });
+      }));
+      return ReS(res, content);
       break;
   }
 };
