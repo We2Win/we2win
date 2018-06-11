@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('viewList', {
-    'v-id': {
-      type: DataTypes.UUID,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
+    'num': {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
     },
     'c-id': {
       type: DataTypes.UUID,
