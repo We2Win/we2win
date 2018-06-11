@@ -709,9 +709,10 @@ const getRankingList = async function (req, res) {
 
   res.setHeader('Content-Type', 'application/json');
 
-  const endDate = new Date(req.params.date).toISOString().slice(0, 10);
+  let endDate = new Date(req.params.date);
   const startDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 7).toISOString().slice(0, 10);
-
+  endDate = endDate.toISOString().slice(0, 10);
+  
   console.log('date: ', startDate, endDate);
 
   let err, content;
