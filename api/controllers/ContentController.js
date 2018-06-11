@@ -516,7 +516,7 @@ const getContentsDetail = async function (req, res) {
   [viewErr, viewContent] = await to(ViewList.create({
     'c-id': content['c-id'],
     'c-type': req.params.page,
-    'u-id': userInfo['user_id'],
+    'u-id': userInfo['user_id'] || '',
   }));
 
   console.log('viewCOntent Status: ', viewErr, viewContent);
