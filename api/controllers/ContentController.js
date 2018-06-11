@@ -713,10 +713,10 @@ const getRankingList = async function (req, res) {
   const startDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 7);
 
   console.log('date: ', startDate, endDate);
-  
+
   let err, content;
 
-  switch (params.list) {
+  switch (req.params.list) {
     case 'info':
       [err, content] = await to(ViewList.findAll({
         where: {

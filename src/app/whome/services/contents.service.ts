@@ -38,6 +38,11 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  getRankingList(page, date) {
+    return this.http.get(environment.apiUrl + '/contents/ranking/' + page + '/' + date)
+      .map((res: any) => res);
+  }
+
   getContentsDetail(page, id) {
     const httpOptions = {};
     if (this.authService.isAuthenticated()) {
