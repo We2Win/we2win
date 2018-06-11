@@ -108,7 +108,7 @@ const verify2 = async function (req, res) {
   var params = {
     EmailAddress: '100kimch@naver.com',
     /* required */
-    TemplateName: 'EmailVerification',
+    TemplateName: 'verifier',
     /* required */
   };
   ses.sendCustomVerificationEmail(params, function (err, data) {
