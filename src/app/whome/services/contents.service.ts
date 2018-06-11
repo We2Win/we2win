@@ -40,7 +40,7 @@ export class ContentsService {
 
   getRankingList(page, date) {
     return this.http.get(environment.apiUrl + '/contents/ranking/' + page + '/' + date)
-      .map((res: any) => res);
+      .map((res: any) => res.content);
   }
 
   getContentsDetail(page, id) {

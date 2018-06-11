@@ -74,6 +74,7 @@ export class InfoMainComponent implements OnInit {
     this.contentsService.getRankingList('info', new Date().toISOString().slice(0, 10)).subscribe(
     // this.contentsService.getWeeklyList('info').subscribe(
       data => {
+        console.log('data: ', data);
         if (data) {
           const list = [];
           data.forEach(content => {
