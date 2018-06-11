@@ -68,6 +68,21 @@ const contentsInfo = {
   }
 };
 
+const bookmarkTypes = {
+  'info': InfoScrap,
+  'report': InfoScrap,
+  'news': InfoScrap,
+  'law': InfoScrap,
+  'site': SiteScrap,
+  'apartment': SiteScrap,
+  'officetel': SiteScrap,
+  'commercial': SiteScrap,
+  'ground': SiteScrap,
+  'meeting': Schedule,
+  'employee': undefined,
+  'employer': undefined,
+}
+
 const searchContents = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.params.id;
@@ -476,20 +491,6 @@ const getContentsDetail = async function (req, res) {
     'meeting': Meeting
   }
 
-  const bookmarkTypes = {
-    'report': InfoScrap,
-    'news': InfoScrap,
-    'law': InfoScrap,
-    'site': SiteScrap,
-    'apartment': SiteScrap,
-    'officetel': SiteScrap,
-    'commercial': SiteScrap,
-    'ground': SiteScrap,
-    'meeting': Schedule,
-    'employee': undefined,
-    'employer': undefined,
-  }
-
   let whereArr = {
     'no': req.params.id
   };
@@ -654,19 +655,6 @@ const getContentsList = async function (req, res) {
       break;
   }
 
-  const bookmarkTypes = {
-    'report': InfoScrap,
-    'news': InfoScrap,
-    'law': InfoScrap,
-    'site': SiteScrap,
-    'apartment': SiteScrap,
-    'officetel': SiteScrap,
-    'commercial': SiteScrap,
-    'ground': SiteScrap,
-    'meeting': Schedule,
-    'employee': undefined,
-    'employer': undefined,
-  }
   if (bookmarkTypes[req.params.page] && userInfo) {
     // console.log('searching bookmark...');
     bookmarkTypes[req.params.page].findOne({
