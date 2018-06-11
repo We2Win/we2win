@@ -504,14 +504,13 @@ const getContentsDetail = async function (req, res) {
       'c-click': Sequelize.literal('`c-click` + 1')
     }, {
       where: {
-        'c-id': content.dataValues['c-id']
+        'c-id': content['c-id']
       }
     });
 
-    console.log('content.dataValues: ', content.dataValues);
     ViewList.create({
-      'c-id': content.dataValues['c-id'],
-      'c-type': content.dataValues['c-type'],      
+      'c-id': content['c-id'],
+      'c-type': req.params.page,
       'u-id': userInfo['u-id'],
     });
 
