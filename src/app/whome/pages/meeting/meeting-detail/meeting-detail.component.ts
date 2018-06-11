@@ -152,6 +152,18 @@ export class MeetingDetailComponent implements OnInit {
 
   }
 
+  refresh() {
+    // refresh current page
+    let currentUrl;
+    if (!this.router.url.split('#')[1]) {
+      currentUrl = this.router.url + '#commentBox';
+    } else {
+      currentUrl = this.router.url;
+    }
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigateByUrl(currentUrl));
+  }
+
   getComments() {
     this.contentsService.getComments(this.Data['c-id']).subscribe(
       data => {
@@ -202,5 +214,21 @@ export class MeetingDetailComponent implements OnInit {
 
   fbShare() {
     this.fbShareService.share(environment.homeUrl + '/meeting/detail/' + this.Data['no'], this.Data['c-id']);
+  }
+
+  isAdmin() {
+    return this.authService.isAdministrator();
+  }
+
+  deleteComment(uid, cid) {
+    console.log(uid, cid);
+    if (confirm('정말로 삭제하시겠습니까?')) {
+      this.contentsService.deleteComments(uid, cid).subscribe(
+        data => {
+          this.refresh();
+          // this.alertService.success('댓글을 삭제했습니다.');
+        }
+      );
+    }
   }
 }

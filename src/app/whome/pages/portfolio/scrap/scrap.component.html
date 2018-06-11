@@ -71,7 +71,7 @@
       <div *ngIf="schedules.length == 0">
         <span>스크랩한 항목이 없습니다.</span>
       </div>
-      <div *ngFor="let record of schedules" [routerLink]="'/meeting/detail/'+record['no']">
+      <div class="record" *ngFor="let record of schedules" [routerLink]="'/meeting/detail/'+record['no']">
         <!-- <span id="categories">{{ record['no'] }}</span> -->
         <span id="title">{{ record['title'] }}</span>
         <span id="date">{{ record['duration-start'].slice(5, 10).replace('-', '/') + ' ~ ' + record['duration-end'].slice(8, 10)}}</span>

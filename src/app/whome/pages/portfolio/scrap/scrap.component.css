@@ -196,6 +196,15 @@ nav {
   }
 }
 
+.record {
+  cursor: default;
+  outline: none;
+}
+
+.record:hover {
+  background: #eee;
+}
+
 .scheduleBox div,
 .contentBox2 .record {
   display: flex;
