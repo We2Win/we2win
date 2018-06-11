@@ -710,8 +710,8 @@ const getRankingList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   let endDate = new Date(req.params.date);
-  const startDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 7).toISOString().slice(0, 10);
-  endDate = endDate.toISOString().slice(0, 10);
+  const startDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 7);
+  // endDate = endDate.toISOString().slice(0, 10);
 
   console.log('date: ', startDate, endDate);
 
@@ -721,7 +721,9 @@ const getRankingList = async function (req, res) {
     case 'info':
       [err, content] = await to(ViewList.findAll({
         where: {
-          [Sequelize.Op.between]: [startDate, endDate],
+          from: {
+            [Sequelize.Op.between]: [startDate, endDate],
+          },
           [Sequelize.Op.or]: ['report', 'news', 'law']
         },
         limit: 3
@@ -733,7 +735,9 @@ const getRankingList = async function (req, res) {
     case 'law':
       [err, content] = await to(ViewList.findAll({
         where: {
-          [Sequelize.Op.between]: [startDate, endDate],
+          from: {
+            [Sequelize.Op.between]: [startDate, endDate],
+          }
         },
         limit: 3
       }));
