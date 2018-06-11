@@ -655,6 +655,9 @@ const getContentsList = async function (req, res) {
       break;
   }
 
+  if (err) return ReE(res, 'error occured: ', err);
+  
+
   if (bookmarkTypes[req.params.page] && userInfo) {
     // console.log('searching bookmark...');
     let isBookmarked;
@@ -664,6 +667,9 @@ const getContentsList = async function (req, res) {
         'u-id': userInfo['user_id']
       }
     }));
+
+    if (err) return ReE(res, 'error occured: ', err);
+    
     content.dataValues['isBookmarked'] = isBookmarked ? true : false;
     // console.log('content: ', content);
     return ReS(res, content);
