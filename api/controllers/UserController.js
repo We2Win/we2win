@@ -106,7 +106,7 @@ module.exports.verify = verify;
 
 const verify2 = async function (req, res) {
   // Create the promise and SES service object
-  var templatePromise = ses.listTemplates({ MaxItems: ITEMS_COUNT }).promise();
+  var templatePromise = ses.listTemplates({ MaxItems: 10 }).promise();
 
   // Handle promise's fulfilled/rejected states
   templatePromise.then(
@@ -117,6 +117,9 @@ const verify2 = async function (req, res) {
       console.error(err, err.stack);
     });
 
+  return ReS(res, {
+    message: 'done.'
+  }, 201);
   // var params = {
   //   FailureRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/login', /* required */
   //   FromEmailAddress: 'kimjihyeong100@we2lab.com', /* required */
