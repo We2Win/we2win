@@ -105,33 +105,35 @@ const verify = async function (req, res) {
 module.exports.verify = verify;
 
 const verify2 = async function (req, res) {
-  // Create the promise and SES service object
-  var templatePromise = ses.listTemplates({ MaxItems: 10 }).promise();
+  var params = {
+    FailureRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/login', /* required */
+    FromEmailAddress: 'kimjihyeong100@we2lab.com', /* required */
+    SuccessRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/info', /* required */
+    TemplateContent: '회원 인증 메일입니다.', /* required */
+    TemplateName: 'verifier_first', /* required */
+    TemplateSubject: 'We2Win 회원 인증 메일' /* required */
+  };
+  ses.createCustomVerificationEmailTemplate(params, function (err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else console.log('createCustomVerificationEmailTemplate: ', data);           // successful response
+    // Create the promise and SES service object
+    var templatePromise = ses.listTemplates({ MaxItems: 10 }).promise();
 
-  // Handle promise's fulfilled/rejected states
-  templatePromise.then(
-    function (data) {
-      console.log('templates: ', data);
-    }).catch(
-    function (err) {
-      console.error(err, err.stack);
-    });
+    // Handle promise's fulfilled/rejected states
+    templatePromise.then(
+      function (data) {
+        console.log('templates: ', data);
+      }).catch(
+      function (err) {
+        console.error(err, err.stack);
+      });
 
-  return ReS(res, {
-    message: 'done.'
-  }, 201);
-  // var params = {
-  //   FailureRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/login', /* required */
-  //   FromEmailAddress: 'kimjihyeong100@we2lab.com', /* required */
-  //   SuccessRedirectionURL: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/info', /* required */
-  //   TemplateContent: '회원 인증 메일입니다.', /* required */
-  //   TemplateName: 'verifier_first', /* required */
-  //   TemplateSubject: 'We2Win 회원 인증 메일' /* required */
-  // };
-  // ses.createCustomVerificationEmailTemplate(params, function (err, data) {
-  //   if (err) console.log(err, err.stack); // an error occurred
-  //   else console.log('createCustomVerificationEmailTemplate: ', data);           // successful response
-  // });
+    return ReS(res, {
+      message: 'done.'
+    }, 201);
+  });
+
+
 
   // var params = {
   //   EmailAddress: 'kimjihyeong100@we2lab.com',
