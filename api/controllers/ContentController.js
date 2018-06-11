@@ -712,7 +712,7 @@ const getRankingList = async function (req, res) {
   let endDate = new Date(req.params.date);
   const startDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 7).toISOString().slice(0, 10);
   endDate = endDate.toISOString().slice(0, 10);
-  
+
   console.log('date: ', startDate, endDate);
 
   let err, content;
@@ -739,7 +739,9 @@ const getRankingList = async function (req, res) {
       }));
       break;
   }
-  if (err) return ReE(res, err, 422);
+  if (err) return ReE(res, {
+    message: 'error: ' + err
+  }, 422);
 
   return ReS(res, {
     message: 'Successfully loading ranking lists.',
