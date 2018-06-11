@@ -504,19 +504,20 @@ const getContentsDetail = async function (req, res) {
       'c-click': Sequelize.literal('`c-click` + 1')
     }, {
       where: {
-        'c-id': content['c-id']
+        'c-id': content.dataValues['c-id']
       }
     });
 
-    console.log('content: ', content);
+    console.log('content.dataValues: ', content.dataValues);
     ViewList.create({
-      'c-id': content['c-id'],
-      'c-type': content['c-type'],      
+      'c-id': content.dataValues['c-id'],
+      'c-type': content.dataValues['c-type'],      
       'u-id': userInfo['u-id'],
     });
 
     if (bookmarkTypes[req.params.page] && userInfo) {
       // console.log('searching bookmark...');
+      console.log('c-id: ', content['c-id'], content.dataValues['c-id']);
       bookmarkTypes[req.params.page].findOne({
         where: {
           'c-id': content['c-id'],
