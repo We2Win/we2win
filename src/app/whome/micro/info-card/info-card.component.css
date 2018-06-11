@@ -18,6 +18,11 @@
   margin-left: 0;
 }
 
+:host .card {
+  border-top: 4px solid #afafaf;
+  /* border-top: 4px solid var(--level-platinum); */
+}
+
 :host.platinum .card {
   border-top: 4px solid #d5b15e;
   /* border-top: 4px solid var(--level-platinum); */
@@ -45,6 +50,11 @@
   text-transform: uppercase;
   font-size: 0.9em;
   padding: 0 1em;
+}
+
+:host #levelBar {
+  background: rgba(214, 214, 214, 0.5);
+  /* background: var(--level-platinum-gradient); */
 }
 
 :host.platinum #levelBar {

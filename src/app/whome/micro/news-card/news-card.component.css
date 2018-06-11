@@ -99,10 +99,40 @@
   transition: opacity 0.5s;
 }
 
-#buttonBar img {
+#buttonBar span {
   display: inline-block;
   padding: 0 0.3em;
   height: 17px;
+}
+
+#buttonBar #bookmark {
+  width: 21px;
+  background-image: url('/assets/img/icon_bookmark.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#buttonBar #bookmark.selected {
+  background: url('/assets/img/icon_bookmark_selected.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#buttonBar #facebook {
+  width: 24px;
+  background-image: url('/assets/img/icon_facebook.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#buttonBar #facebook.selected {
+  background: url('/assets/img/icon_bookmark_selected.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card:hover #buttonBar {

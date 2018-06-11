@@ -10,8 +10,11 @@ export class RankingListComponent implements OnInit {
   @Input() toptitle = 'noname';
   @Input() more;
   @Input() records;
+  date = new Date();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    console.log('next day: ', this.getNextDayOfWeek(this.date, 0));
+  }
 
   ngOnInit() {
     // console.log('records form parent to ranking-list: ', this.records);
@@ -19,6 +22,12 @@ export class RankingListComponent implements OnInit {
 
   onClickMore() {
     this.router.navigate(['info/weekly']);
+  }
+
+  getNextDayOfWeek(date, dayOfWeek) {
+    const resultDate = new Date(date.getTime());
+    resultDate.setDate(date.getDate() + (7 + dayOfWeek - date.getDay() - 1) % 7 + 1);
+    return resultDate;
   }
 
 }

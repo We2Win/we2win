@@ -11,6 +11,7 @@ const authService = require('./../services/AuthService');
 const InfoScrap = require('../models').infoScrap;
 const SiteScrap = require('../models').siteScrap;
 const Schedule = require('../models').schedule;
+const ViewList = require('../models').viewList;
 const jwt = require('jsonwebtoken');
 
 // temporary
@@ -507,6 +508,12 @@ const getContentsDetail = async function (req, res) {
       }
     });
 
+    ViewList.create({
+      'c-id': content['c-id'],
+      'c-type': content['c-type'],      
+      'u-id': userInfo['u-id'],
+    });
+
     if (bookmarkTypes[req.params.page] && userInfo) {
       // console.log('searching bookmark...');
       bookmarkTypes[req.params.page].findOne({
@@ -683,6 +690,51 @@ const getContentsList = async function (req, res) {
   }
 };
 module.exports.getContentsList = getContentsList;
+
+const getRankingList = async function (req, res) {
+  let userInfo;
+  if (req.headers['authorization']) {
+    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  } else {
+    userInfo = false;
+  }
+
+  res.setHeader('Content-Type', 'application/json');
+
+  let err, content;
+
+  switch (params.list) {
+    case 'info':
+      [err, content] = await to(ViewList.findAll({
+        where: {
+          [Sequelize.Op.between]: [params.start, params.end],
+          [Sequelize.Op.or]: ['report', 'news', 'law']
+        },
+        limit: 3
+      }));
+    break;
+    case 'site':
+    case 'report':
+    case 'news':
+    case 'law':
+      [err, content] = await to(ViewList.findAll({
+        where: {
+          [Sequelize.Op.between]: [params.start, params.end],
+        },
+        limit: 3
+      }));
+    break;
+  }
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Successfully loading ranking lists.',
+    content: content
+    // user: user.toWeb(),
+    // token: User.getJWT()
+  }, 201);
+}
+module.exports.getRankingList = getRankingList;
 
 const getContentsByQuery = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');

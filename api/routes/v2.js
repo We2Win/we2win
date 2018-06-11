@@ -52,6 +52,7 @@ router.put('/contents/employee', ContentController.createEmployee);
 // For Infos and Sites
 router.get('/contents/:page/:list/:sort/:id', ContentController.getContentsList);
 router.get('/contents/:page/:list', ContentController.getContentsList);
+router.get('/contents/ranking/:list/:start/:end', ContentController.getRankingList);
 router.put('/contents', ContentController.updateContent);
 
 // For Employee/Employer and Meeting

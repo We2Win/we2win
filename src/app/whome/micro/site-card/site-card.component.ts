@@ -12,7 +12,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SiteCardComponent implements OnInit {
   @Input('record') record;
-  @Input() level = 'standard';
+  @Input() level = 'STANDARD';
+  isBookmarked = false;
 
   engType = {
     '리포트': 'report',
@@ -60,14 +61,12 @@ export class SiteCardComponent implements OnInit {
     }
     const bookmark = this._elementRef.nativeElement.querySelector('#bookmark');
 
-    if (bookmark.classList.contains('selected')) {
-      bookmark.src = '/assets/img/icon_bookmark.png';
-      bookmark.classList.remove('selected');
+    if (this.isBookmarked) {
+      this.isBookmarked = false;
       this.alertService.warn('북마크가 해제되었습니다.');
       this.userService.removeBookmark(this.record);
     } else {
-      bookmark.src = '/assets/img/icon_bookmark_selected.png';
-      bookmark.classList.add('selected');
+      this.isBookmarked = true;
       this.alertService.success('북마크가 설정되었습니다.');
       this.userService.addBookmark(this.record);
     }

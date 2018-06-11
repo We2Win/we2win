@@ -14,7 +14,7 @@ import { AuthService } from '../../../wmanagement/services/auth.service';
 })
 export class InfoCardComponent implements OnInit {
   @Input('record') record;
-  @Input() level = 'standard';
+  @Input() level = 'STANDARD';
   isBookmarked = false;
 
   imageUrl;
