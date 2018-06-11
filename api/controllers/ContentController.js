@@ -508,16 +508,18 @@ const getContentsDetail = async function (req, res) {
       }
     });
 
-    console.log('userInfo: ', userInfo);
-    ViewList.create({
+    let viewContent, viewErr;
+    [viewErr, viewContent] = await to(ViewList.create({
       'c-id': content['c-id'],
       'c-type': req.params.page,
       'u-id': userInfo['user_id'],
-    });
+    }));
+
+    console.log('viewCOntent Status: ', viewErr, viewContent);
 
     if (bookmarkTypes[req.params.page] && userInfo) {
       // console.log('searching bookmark...');
-      console.log('c-id: ', content['c-id'], content.dataValues['c-id']);
+      // console.log('c-id: ', content['c-id'], content.dataValues['c-id']);
       bookmarkTypes[req.params.page].findOne({
         where: {
           'c-id': content['c-id'],
