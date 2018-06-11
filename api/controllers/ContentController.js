@@ -680,7 +680,7 @@ const getContentsList = async function (req, res) {
       return ReS(res, content);
     });
   } else {
-    console.log('skipped searching bookmark: ', req.params.page, bookmarkTypes);
+    console.log('skipped searching bookmark: ', req.params.page, userInfo);
     return ReS(res, content);
   }
 };
