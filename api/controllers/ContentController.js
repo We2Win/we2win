@@ -670,8 +670,8 @@ const getContentsList = async function (req, res) {
 
     if (err) return ReE(res, 'error occured: ', err);
     
-    console.log('content: ', content);
-    content.dataValues['isBookmarked'] = isBookmarked ? true : false;
+    // console.log('content: ', content[0]);
+    content[0].dataValues['isBookmarked'] = isBookmarked ? true : false;
     // console.log('content: ', content);
     return ReS(res, content);
   } else {
