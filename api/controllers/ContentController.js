@@ -715,8 +715,8 @@ const getRankingList = async function (req, res) {
 
   console.log('date: ', startDate, endDate);
 
-  let err, content, contents, result;
-  result = [];
+  let err, content, contents, result, results;
+  results = [];
 
   switch (req.params.list) {
     case 'info':
@@ -731,15 +731,15 @@ const getRankingList = async function (req, res) {
       }));
 
       for (content in contents) {
-        [err, content] = await to(Content.findOne({
+        console.log('content: ', content);
+        [err, result] = await to(Content.findOne({
           where: {
             'c-id': content['c-id']
           }
         }));
         if (err) return ReE(res, err, 422);        
-        result.push(content);
+        results.push(result);
       }
-      console.log('content: ', content);
       break;
     case 'site':
     case 'report':
@@ -759,7 +759,7 @@ const getRankingList = async function (req, res) {
 
   return ReS(res, {
     message: 'Successfully loading ranking lists.',
-    content: content
+    content: results
     // user: user.toWeb(),
     // token: User.getJWT()
   }, 201);
