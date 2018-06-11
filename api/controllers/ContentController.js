@@ -519,7 +519,7 @@ const getContentsDetail = async function (req, res) {
     'u-id': userInfo['user_id'] || '',
   }));
 
-  console.log('viewCOntent Status: ', viewErr, viewContent);
+  // console.log('viewCOntent Status: ', viewErr, viewContent);
 
   if (bookmarkTypes[req.params.page] && userInfo) {
     // console.log('searching bookmark...');
@@ -709,13 +709,18 @@ const getRankingList = async function (req, res) {
 
   res.setHeader('Content-Type', 'application/json');
 
+  const endDate = new Date(req.params.date);
+  const startDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 7);
+
+  console.log('date: ', startDate, endDate);
+  
   let err, content;
 
   switch (params.list) {
     case 'info':
       [err, content] = await to(ViewList.findAll({
         where: {
-          [Sequelize.Op.between]: [params.start, params.end],
+          [Sequelize.Op.between]: [startDate, endDate],
           [Sequelize.Op.or]: ['report', 'news', 'law']
         },
         limit: 3
@@ -727,7 +732,7 @@ const getRankingList = async function (req, res) {
     case 'law':
       [err, content] = await to(ViewList.findAll({
         where: {
-          [Sequelize.Op.between]: [params.start, params.end],
+          [Sequelize.Op.between]: [startDate, endDate],
         },
         limit: 3
       }));

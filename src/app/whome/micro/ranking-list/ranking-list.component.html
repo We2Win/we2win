@@ -3,9 +3,9 @@
   <div id="subBar">
     <div class="side"></div>
     <div id="dateSelector">
-      <button id="btnLeft" class="btnNav"></button>
-      <h2>2018.05.05 기준</h2>
-      <button id="btnRight" class="btnNav"></button>
+      <button id="btnLeft" class="btnNav" (click)="getLastWeek()"></button>
+      <h2>{{dateStr}} 기준</h2>
+      <button id="btnRight" class="btnNav" (click)="getNextWeek()"></button>
     </div>
     <div class="side">
       <h3 class="more" (click)="onClickMore()" *ngIf="more">더보기</h3>
