@@ -496,45 +496,49 @@ const getContentsDetail = async function (req, res) {
     'no': req.params.id
   };
 
-  pageTypes[req.params.page].findOne({
+  let err, content;
+  [err, content] = await to(pageTypes[req.params.page].findOne({
     where: whereArr
-  }).then(content => {
-    // console.log(content['c-id']);
-    Content.update({
-      'c-click': Sequelize.literal('`c-click` + 1')
-    }, {
-      where: {
-        'c-id': content['c-id']
-      }
-    });
+  }));
 
-    let viewContent, viewErr;
-    [viewErr, viewContent] = await to(ViewList.create({
-      'c-id': content['c-id'],
-      'c-type': req.params.page,
-      'u-id': userInfo['user_id'],
-    }));
+  if (err) return ReE(res, err, 422);
 
-    console.log('viewCOntent Status: ', viewErr, viewContent);
-
-    if (bookmarkTypes[req.params.page] && userInfo) {
-      // console.log('searching bookmark...');
-      // console.log('c-id: ', content['c-id'], content.dataValues['c-id']);
-      bookmarkTypes[req.params.page].findOne({
-        where: {
-          'c-id': content['c-id'],
-          'u-id': userInfo['user_id']
-        }
-      }).then(isBookmarked => {
-        content.dataValues['isBookmarked'] = isBookmarked ? true : false;
-        // console.log('content: ', content);
-        return ReS(res, content);
-      });
-    } else {
-      console.log('skipped searching bookmark: ', req.params.page, bookmarkTypes);
-      return ReS(res, content);
+  // console.log(content['c-id']);
+  Content.update({
+    'c-click': Sequelize.literal('`c-click` + 1')
+  }, {
+    where: {
+      'c-id': content['c-id']
     }
   });
+
+  let viewContent, viewErr;
+  [viewErr, viewContent] = await to(ViewList.create({
+    'c-id': content['c-id'],
+    'c-type': req.params.page,
+    'u-id': userInfo['user_id'],
+  }));
+
+  console.log('viewCOntent Status: ', viewErr, viewContent);
+
+  if (bookmarkTypes[req.params.page] && userInfo) {
+    // console.log('searching bookmark...');
+    // console.log('c-id: ', content['c-id'], content.dataValues['c-id']);
+    bookmarkTypes[req.params.page].findOne({
+      where: {
+        'c-id': content['c-id'],
+        'u-id': userInfo['user_id']
+      }
+    }).then(isBookmarked => {
+      content.dataValues['isBookmarked'] = isBookmarked ? true : false;
+      // console.log('content: ', content);
+      return ReS(res, content);
+    });
+  } else {
+    console.log('skipped searching bookmark: ', req.params.page, bookmarkTypes);
+    return ReS(res, content);
+  }
+
 }
 module.exports.getContentsDetail = getContentsDetail;
 
@@ -667,12 +671,12 @@ const getContentsList = async function (req, res) {
   }
 
   if (err) return ReE(res, 'error occured: ', err);
-  
+
 
   if (bookmarkTypes[req.params.page] && userInfo) {
     // console.log('searching bookmark...');
     let isBookmarked;
-    
+
     for (let i in content) {
       [err, isBookmarked] = await to(bookmarkTypes[req.params.page].findOne({
         where: {
@@ -716,7 +720,7 @@ const getRankingList = async function (req, res) {
         },
         limit: 3
       }));
-    break;
+      break;
     case 'site':
     case 'report':
     case 'news':
@@ -727,7 +731,7 @@ const getRankingList = async function (req, res) {
         },
         limit: 3
       }));
-    break;
+      break;
   }
   if (err) return ReE(res, err, 422);
 
