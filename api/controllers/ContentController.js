@@ -512,7 +512,7 @@ const getContentsDetail = async function (req, res) {
     ViewList.create({
       'c-id': content['c-id'],
       'c-type': req.params.page,
-      'u-id': userInfo['u-id'],
+      'u-id': userInfo['user_id'],
     });
 
     if (bookmarkTypes[req.params.page] && userInfo) {
