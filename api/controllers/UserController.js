@@ -119,7 +119,7 @@ const verify2 = async function (req, res) {
   });
 
   var params = {
-    EmailAddress: '100kimch@naver.com',
+    EmailAddress: 'kimjihyeong100@we2lab.com',
     /* required */
     TemplateName: 'verifier_first',
     /* required */
