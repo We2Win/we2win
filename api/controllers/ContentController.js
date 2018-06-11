@@ -722,7 +722,7 @@ const getRankingList = async function (req, res) {
       [err, content] = await to(ViewList.findAll({
         where: {
           from: {
-            [Sequelize.Op.Between]: [startDate, endDate],
+            // [Sequelize.Op.between]: [startDate, endDate],
           },
           // [Sequelize.Op.or]: ['report', 'news', 'law']
         },
@@ -736,7 +736,7 @@ const getRankingList = async function (req, res) {
       [err, content] = await to(ViewList.findAll({
         where: {
           from: {
-            [Sequelize.Op.Between]: [startDate, endDate],
+            // [Sequelize.Op.between]: [startDate, endDate],
           }
         },
         limit: 3
