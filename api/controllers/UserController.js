@@ -111,7 +111,7 @@ const verify2 = async function (req, res) {
   // Handle promise's fulfilled/rejected states
   templatePromise.then(
     function (data) {
-      console.log(data);
+      console.log('templates: ', data);
     }).catch(
     function (err) {
       console.error(err, err.stack);
