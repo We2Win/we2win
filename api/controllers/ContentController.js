@@ -715,7 +715,7 @@ const getRankingList = async function (req, res) {
 
   console.log('date: ', startDate, endDate);
 
-  let err, content, contents, result, results;
+  let err, contents, result, results;
   results = [];
 
   switch (req.params.list) {
@@ -730,11 +730,10 @@ const getRankingList = async function (req, res) {
         limit: 3
       }));
 
-      for (content in contents) {
-        console.log('content: ', content);
+      for (let i in contents) {
         [err, result] = await to(Content.findOne({
           where: {
-            'c-id': content['c-id']
+            'c-id': contents[i]['c-id']
           }
         }));
         if (err) return ReE(res, err, 422);        
