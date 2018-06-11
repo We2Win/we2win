@@ -527,6 +527,13 @@ const getContentsDetail = async function (req, res) {
 module.exports.getContentsDetail = getContentsDetail;
 
 const getContentsList = async function (req, res) {
+  let userInfo;
+  if (req.headers['authorization']) {
+    userInfo = jwt.verify(req.headers['authorization'], CONFIG.jwt_encryption);
+  } else {
+    userInfo = false;
+  }
+  
   res.setHeader('Content-Type', 'application/json');
   const id = (req.params.id - 1) * 8 || 0;
 
