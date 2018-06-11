@@ -508,7 +508,7 @@ const getContentsDetail = async function (req, res) {
       }
     });
 
-    console.log('content: ');
+    console.log('content: ', content);
     ViewList.create({
       'c-id': content['c-id'],
       'c-type': content['c-type'],      
