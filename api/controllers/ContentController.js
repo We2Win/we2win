@@ -593,7 +593,6 @@ const getContentsList = async function (req, res) {
         order: orderArr,
         where: whereArr
       }));
-      return ReS(res, content);
       break;
     case 'newly':
       [err, content] = await to(Content.findAll({
@@ -602,7 +601,6 @@ const getContentsList = async function (req, res) {
         order: orderArr,
         where: whereArr
       }));
-      return ReS(res, content);
       break;
     case 'weekly':
       let contentList = [];
@@ -630,7 +628,7 @@ const getContentsList = async function (req, res) {
         where: whereArr
       }));
       contentList.push(content3);
-      return ReS(res, contentList);
+      content = contentList;
       break;
     case 'titles':
       [err, content] = await to(Content.findAll({
@@ -638,7 +636,6 @@ const getContentsList = async function (req, res) {
         where: whereArr,
         attributes: ['title', 'no']
       }));
-      return ReS(res, content);
       break;
     case 'reporter':
       [err, content] = await to(Content.findAll({
@@ -647,8 +644,37 @@ const getContentsList = async function (req, res) {
         order: orderArr,
         where: whereArr
       }));
-      return ReS(res, content);
       break;
+  }
+
+  const bookmarkTypes = {
+    'report': InfoScrap,
+    'news': InfoScrap,
+    'law': InfoScrap,
+    'site': SiteScrap,
+    'apartment': SiteScrap,
+    'officetel': SiteScrap,
+    'commercial': SiteScrap,
+    'ground': SiteScrap,
+    'meeting': Schedule,
+    'employee': undefined,
+    'employer': undefined,
+  }
+  if (bookmarkTypes[req.params.page] && userInfo) {
+    // console.log('searching bookmark...');
+    bookmarkTypes[req.params.page].findOne({
+      where: {
+        'c-id': content['c-id'],
+        'u-id': userInfo['user_id']
+      }
+    }).then(isBookmarked => {
+      content.dataValues['isBookmarked'] = isBookmarked ? true : false;
+      // console.log('content: ', content);
+      return ReS(res, content);
+    });
+  } else {
+    console.log('skipped searching bookmark: ', req.params.page, bookmarkTypes);
+    return ReS(res, content);
   }
 };
 module.exports.getContentsList = getContentsList;
