@@ -35,7 +35,7 @@ export class InfoCardComponent implements OnInit {
     if (this.record['level']) {
       this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
     }
-
+    this.isBookmarked = this.record['isBookmarked'];
   }
 
   isSelf() {
