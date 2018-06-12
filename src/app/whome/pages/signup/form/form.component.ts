@@ -357,11 +357,11 @@ export class FormComponent implements OnInit, AfterViewInit {
     // this.passwordV.nativeElement.value = '네이버 회원정보로 설정되었습니다.';
     // this.name.nativeElement.value = '네이버 회원정보로 설정되었습니다.';
     this.email.nativeElement.value = authInfo.email;
-    // this.uId.nativeElement.readOnly = true;
-    // this.password.nativeElement.readOnly = true;
-    // this.passwordV.nativeElement.readOnly = true;
+    this.uId.nativeElement.readOnly = true;
+    this.password.nativeElement.readOnly = true;
+    this.passwordV.nativeElement.readOnly = true;
     // // this.name.nativeElement.readOnly = true;
-    // this.email.nativeElement.readOnly = true;
+    this.email.nativeElement.readOnly = true;
   }
 
   loginWithKakao() {
