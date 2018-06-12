@@ -152,7 +152,8 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: EmployerComponent
+            redirectTo: 'employer',
+            pathMatch: 'full'
           },
           {
             path: 'employer',
