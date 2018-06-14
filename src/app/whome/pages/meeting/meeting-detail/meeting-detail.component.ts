@@ -1,3 +1,8 @@
+/**
+ * @file meeting-detail.component.ts
+ * @author
+ * @brief a detailed page of meeting. (/meeting/detail/:id)
+ */
 import { Component, OnInit, ViewChild, ViewContainerRef, Input, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';

@@ -1,3 +1,8 @@
+/**
+ * @file account-record.component.ts
+ * @author
+ * @brief a micro component for account record in table component.
+ */
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs/Observable';

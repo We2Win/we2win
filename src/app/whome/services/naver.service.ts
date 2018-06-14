@@ -1,3 +1,8 @@
+/**
+ * @file naver.component.ts
+ * @author
+ * @brief Naver authentication service
+ */
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 

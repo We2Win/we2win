@@ -1,3 +1,8 @@
+/**
+ * @file employee-record.component.ts
+ * @author
+ * @brief a micro component for employee record in table component.
+ */
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router/';

@@ -1,5 +1,10 @@
+/**
+ * @file horizontal-list.component.ts
+ * @author
+ * @brief a micro component for showing contents horizontally.
+ * @see this can contain various types of card contents.
+ */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {  } from 'events';
 
 @Component({
   selector: 'app-horizontal-list',

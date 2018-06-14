@@ -1,3 +1,9 @@
+/**
+ * @file list-input.component.ts
+ * @author
+ * @brief a micro component for putting list component.
+ * @deprecated no longer used.
+ */
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

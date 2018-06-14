@@ -1,7 +1,11 @@
+/**
+ * @file account-info.component.ts
+ * @author
+ * @brief a micro component for showing account information in header.
+ */
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { DbConnectService } from '../../../db-connect.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
@@ -10,9 +14,7 @@ import { AlertService } from '../../services/alert.service';
   selector: 'app-account-info',
   templateUrl: './account-info.component.html',
   styleUrls: ['./account-info.component.css'],
-  providers: [
-    DbConnectService,
-  ]
+  providers: []
 })
 export class AccountInfoComponent implements OnInit {
   isLogin = false;

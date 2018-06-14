@@ -1,3 +1,8 @@
+/**
+ * @file table.component.ts
+ * @author
+ * @deprecated this was used before using a scheduler component.
+ */
 import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 
 @Component({

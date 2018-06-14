@@ -1,3 +1,7 @@
+/**
+ * @file userInfo.ts
+ * @author
+ */
 export class UserInfo {
     exp = 0;
     iat = 0;

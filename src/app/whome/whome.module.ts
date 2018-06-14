@@ -1,3 +1,9 @@
+/**
+ * @file whome.module.ts
+ * @author
+ * @brief Main module of websites. (seperated from management pages.)
+ */
+
 import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WhomeRoutingModule } from './whome-routing.module';
@@ -40,9 +46,7 @@ import { MeetingCardComponent } from './micro/meeting-card/meeting-card.componen
 import { MeetingDetailComponent } from './pages/meeting/meeting-detail/meeting-detail.component';
 import { SiteCardComponent } from './micro/site-card/site-card.component';
 import { InfoCardComponent } from './micro/info-card/info-card.component';
-import { LevelDirective } from './directive/level.directive';
 import { NewsDetailComponent } from './pages/info/news-detail/news-detail.component';
-import { DescriptionComponent } from './micro/description/description.component';
 import { TableComponent } from './micro/table/table.component';
 import { AccountInfoComponent } from './micro/account-info/account-info.component';
 import { PolicyComponent } from './pages/signup/policy/policy.component';
@@ -51,7 +55,6 @@ import { Error404Component } from './pages/error404/error404.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './services/auth.service';
-import { SocialComponent } from './pages/signup/social/social.component';
 import { SocialButtonComponent } from './micro/social-button/social-button.component';
 import { UserService } from './services/user.service';
 import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
@@ -134,16 +137,13 @@ export function tokenGetter() {
     MeetingCardComponent,
     MeetingDetailComponent,
     SiteCardComponent,
-    LevelDirective,
     NewsDetailComponent,
-    DescriptionComponent,
     TableComponent,
     AccountInfoComponent,
     PolicyComponent,
     GroupComponent,
     Error404Component,
     LoginComponent,
-    SocialComponent,
     SocialButtonComponent,
     InfoDetailComponent,
     ChartComponent,

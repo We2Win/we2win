@@ -1,3 +1,8 @@
+/**
+ * @file employee.component.ts
+ * @author
+ * @brief a content list page of employee. (/recruit/employee)
+ */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { PostingService } from '../../../services/posting.service';

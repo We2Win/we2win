@@ -1,3 +1,8 @@
+/**
+ * @file site-main.component.ts
+ * @author
+ * @brief a main page of site. (/site)
+ */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { PostingService } from '../../../services/posting.service';

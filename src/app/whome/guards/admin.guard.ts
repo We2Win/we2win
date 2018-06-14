@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+/**
+ * @file admin.guard.ts
+ * @author
+ * @brief guard for not admin users.
+ */
 import { Router, CanActivate } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AlertService } from '../services/alert.service';

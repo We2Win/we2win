@@ -1,3 +1,8 @@
+/**
+ * @file naver-login.component.ts
+ * @author
+ * @brief dealing with naver callbacks.
+ */
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../services/auth.service';

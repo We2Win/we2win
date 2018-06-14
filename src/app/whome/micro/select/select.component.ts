@@ -1,3 +1,8 @@
+/**
+ * @file select.component.ts
+ * @author
+ * @brief a micro component of a customized selectbox.
+ */
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { ElementRef, Renderer2 } from '@angular/core';
 import { EventEmitter } from 'events';

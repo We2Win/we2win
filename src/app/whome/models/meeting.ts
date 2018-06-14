@@ -1,3 +1,7 @@
+/**
+ * @file meeting.ts
+ * @author
+ */
 export class Meeting {
     'c-id' = '';
     'level' = '';

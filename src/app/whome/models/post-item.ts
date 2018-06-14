@@ -1,3 +1,7 @@
+/**
+ * @file post-item.ts
+ * @author
+ */
 import { Type } from '@angular/core';
 
 export class PostItem {

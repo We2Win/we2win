@@ -1,3 +1,8 @@
+/**
+ * @file weekly.component.ts
+ * @author
+ * @brief a page for weekly ranking. (/info/weekly)
+ */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Rankingpost1Directive, Rankingpost2Directive, Rankingpost3Directive } from '../../../directives/rankingpost.directive';
 import { PostItem } from '../../../models/post-item';

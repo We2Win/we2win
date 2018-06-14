@@ -1,3 +1,8 @@
+/**
+ * @file fb-share.component.ts
+ * @author
+ * @brief Facebook sharing service
+ */
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

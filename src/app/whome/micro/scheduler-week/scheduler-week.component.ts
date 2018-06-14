@@ -1,3 +1,8 @@
+/**
+ * @file scheduler-day.component.ts
+ * @author
+ * @brief a micro component inside scheduler component.
+ */
 import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 import { PostingService } from '../../services/posting.service';
 import { Rankingpost1Directive } from '../../directives/rankingpost.directive';

@@ -1,3 +1,9 @@
+/**
+ * @file button.component.ts
+ * @author
+ * @brief a micro component of a customized selectbox only for filtering contents.
+ */
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ElementRef, Renderer2 } from '@angular/core';
 

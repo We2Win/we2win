@@ -1,3 +1,7 @@
+/**
+ * @file report.ts
+ * @author
+ */
 export class Report {
     'c-id' = '';
     'level' = '';

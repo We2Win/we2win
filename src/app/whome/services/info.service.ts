@@ -1,3 +1,8 @@
+/**
+ * @file info.component.ts
+ * @author
+ * @deprecated not used now.
+ */
 import { Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Headers, RequestOptions, Response } from '@angular/http';

@@ -1,3 +1,8 @@
+/**
+ * @file policy.component.ts
+ * @author
+ * @brief the first page of signup. (/signup/policy)
+ */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../../../services/alert.service';

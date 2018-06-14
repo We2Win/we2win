@@ -1,3 +1,8 @@
+/**
+ * @file portfolio.component.ts
+ * @author
+ * @brief a page of portfolio. (/portfolio)
+ */
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { UserInfo } from '../../../models/userInfo';

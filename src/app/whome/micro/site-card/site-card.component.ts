@@ -1,3 +1,8 @@
+/**
+ * @file law-card.component.ts
+ * @author
+ * @brief a micro component for showing a content of site(apartment, officetel, commercial, and ground) contents.
+ */
 import { Component, OnInit, Input, ElementRef, ViewContainerRef } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { FbShareService } from '../../services/fb-share.service';

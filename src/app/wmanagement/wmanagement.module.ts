@@ -48,7 +48,6 @@ import { LawDetailComponent } from './templates/law-detail/law-detail.component'
 import { MeetingDetailComponent } from './templates/meeting-detail/meeting-detail.component';
 import { EmployerRecordComponent } from './micro/employer-record/employer-record.component';
 import { EmployeeRecordComponent } from './micro/employee-record/employee-record.component';
-import { AnalysisContentRecordComponent } from './micro/analysis-content-record/analysis-content-record.component';
 import { AlertComponent } from './micro/alert/alert.component';
 import { AlertService } from './services/alert.service';
 import { TrackingRecordComponent } from './micro/tracking-record/tracking-record.component';
@@ -102,7 +101,6 @@ import { TrackingRecordComponent } from './micro/tracking-record/tracking-record
     MeetingDetailComponent,
     EmployerRecordComponent,
     EmployeeRecordComponent,
-    AnalysisContentRecordComponent,
     AlertComponent,
     TrackingRecordComponent,
   ],

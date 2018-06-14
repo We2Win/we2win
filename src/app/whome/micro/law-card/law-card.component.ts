@@ -1,3 +1,8 @@
+/**
+ * @file law-card.component.ts
+ * @author
+ * @brief a micro component for showing a content of law contents.
+ */
 import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
 import { Card } from '../../models/card';
 import { FbShareService } from '../../services/fb-share.service';

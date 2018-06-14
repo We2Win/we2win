@@ -1,3 +1,8 @@
+/**
+ * @file user.service.ts
+ * @author
+ * @brief http user service.
+ */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Headers, RequestOptions, Response } from '@angular/http';

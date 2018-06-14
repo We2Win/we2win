@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { DbConnectService } from './db-connect.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -22,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [DbConnectService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

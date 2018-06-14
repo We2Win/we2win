@@ -1,3 +1,8 @@
+/**
+ * @file apply-employer.component.ts
+ * @author
+ * @brief a page of apply-employer. (/apply-employer)
+ */
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../services/alert.service';

@@ -1,3 +1,8 @@
+/**
+ * @file alert.component.ts
+ * @author
+ * @brief a micro component for a space to alert something.
+ */
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 

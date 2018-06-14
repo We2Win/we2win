@@ -1,3 +1,8 @@
+/**
+ * @file search.component.ts
+ * @author
+ * @brief a result page of searching. (/search)
+ */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContentsService } from '../../services/contents.service';
 import { PostingService } from '../../services/posting.service';

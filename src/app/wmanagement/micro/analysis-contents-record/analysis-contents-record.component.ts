@@ -1,3 +1,8 @@
+/**
+ * @file analysis-content-record.component.ts
+ * @author
+ * @brief a micro component for analysis content record in table component.
+ */
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

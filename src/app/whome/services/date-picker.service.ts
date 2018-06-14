@@ -1,3 +1,8 @@
+/**
+ * @file date-picker.component.ts
+ * @author
+ * @deprecated this is originally for scheduler component but not used in this website.
+ */
 import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()

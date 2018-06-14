@@ -12,11 +12,6 @@ const routes: Routes = [
     path: 'mng',
     loadChildren: 'app/wmanagement/wmanagement.module#WmanagementModule'
   },
-  {
-    path: 'wadmin',
-    canActivate: [AdminGuard],
-    loadChildren: 'app/wadmin/wadmin.module#WadminModule'
-  },
 ];
 
 @NgModule({

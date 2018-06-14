@@ -1,3 +1,8 @@
+/**
+ * @file news-card.component.ts
+ * @author
+ * @brief a micro component for showing a content of news contents.
+ */
 import { Component, OnInit, Input, ElementRef, ViewContainerRef } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { FbShareService } from '../../services/fb-share.service';

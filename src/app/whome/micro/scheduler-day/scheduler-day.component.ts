@@ -1,3 +1,8 @@
+/**
+ * @file scheduler-day.component.ts
+ * @author
+ * @brief a micro component inside scheduler-week, scheduler component.
+ */
 import { Component, OnInit } from '@angular/core';
 import { DatePickerService } from '../../services/date-picker.service';
 

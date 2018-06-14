@@ -1,3 +1,8 @@
+/**
+ * @file search.service.ts
+ * @author
+ * @brief service for searching.
+ */
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';

@@ -1,3 +1,8 @@
+/**
+ * @file error404.component.ts
+ * @author
+ * @brief a component for 404 not found pages.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

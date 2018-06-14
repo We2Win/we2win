@@ -1,3 +1,8 @@
+/**
+ * @file ground.component.ts
+ * @author
+ * @brief a content list page of ground. (/site/ground)
+ */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { PostingService } from '../../../services/posting.service';

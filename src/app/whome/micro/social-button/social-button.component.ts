@@ -1,3 +1,8 @@
+/**
+ * @file button.component.ts
+ * @author
+ * @brief a micro component of a customized button only for social service(Kakao, Naver..).
+ */
 import { Component, OnInit, Input } from '@angular/core';
 import { EventEmitter } from 'events';
 

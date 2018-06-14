@@ -1,3 +1,8 @@
+/**
+ * @file site-detail.component.ts
+ * @author
+ * @brief a page for site(apartment, officetel, commercial, ground) detail. (/site/:type/:id)
+ */
 import { Component, OnInit, ViewChild, ViewContainerRef, ElementRef, Input } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';

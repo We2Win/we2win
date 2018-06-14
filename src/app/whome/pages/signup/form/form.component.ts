@@ -1,3 +1,8 @@
+/**
+ * @file form.component.ts
+ * @author
+ * @brief a page of signup form. (/signup/form)
+ */
 import { Component, OnInit, AfterViewInit, ViewChild, Renderer, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';

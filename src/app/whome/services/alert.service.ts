@@ -1,3 +1,8 @@
+/**
+ * @file alert.service.ts
+ * @author
+ * @brief this is substituted for alert();
+ */
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';

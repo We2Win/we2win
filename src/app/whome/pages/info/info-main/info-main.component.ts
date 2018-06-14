@@ -1,3 +1,8 @@
+/**
+ * @file info-main.component.ts
+ * @author
+ * @brief a main page of info. (/info)
+ */
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { PostingService } from '../../../services/posting.service';

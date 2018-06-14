@@ -1,3 +1,10 @@
+/**
+ * @file vertical-list.component.ts
+ * @author
+ * @brief a micro component for showing contents vertically.
+ * @see this can contain various types of card contents.
+ */
+
 import { Component, ViewChild, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

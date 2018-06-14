@@ -1,3 +1,7 @@
+/**
+ * @file alert.ts
+ * @author
+ */
 export class Alert {
     type: AlertType;
     message: string;

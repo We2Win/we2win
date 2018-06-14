@@ -1,3 +1,13 @@
+/**
+ * @file scheduler.component.ts
+ * @author
+ * @brief a micro component of a calendar for a portfolio page.
+ * @see structure of this component: \n
+ * +--- <scheduler-month> \n
+ * +--- <scheduler-week> \n
+ * |    \--- <scheduler-day> \n
+ * \
+ */
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { DatePickerService } from '../../services/date-picker.service';
 import { PostingService } from '../../services/posting.service';

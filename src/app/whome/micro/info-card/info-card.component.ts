@@ -1,3 +1,9 @@
+/**
+ * @file info-card.component.ts
+ * @author
+ * @brief a micro component for showing a content of report contents.
+ * @see DO NOT be confsed: this is info-card, not report-card.
+ */
 import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
 import { Card } from '../../models/card';
 import { environment } from '../../../../environments/environment';

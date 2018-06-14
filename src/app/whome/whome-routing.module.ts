@@ -1,3 +1,9 @@
+/**
+ * @file whome-routing.module.ts
+ * @author
+ * @brief User's page routing trees.
+ */
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Router, RoutesRecognized } from '@angular/router';
@@ -30,7 +36,6 @@ import { FormComponent } from './pages/signup/form/form.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
-import { SocialComponent } from './pages/signup/social/social.component';
 import { InfoDetailComponent } from './pages/info/info-detail/info-detail.component';
 import { NewsDetailComponent } from './pages/info/news-detail/news-detail.component';
 import { JwtHelper } from 'angular2-jwt';
@@ -229,10 +234,6 @@ const routes: Routes = [
         component: PolicyComponent
       },
       {
-        path: 'social',
-        component: SocialComponent
-      },
-      {
         path: 'form',
         component: FormComponent
       },
@@ -304,13 +305,6 @@ const routes: Routes = [
   ]
 })
 export class WhomeRoutingModule {
-  constructor(private pageInfoService: PageInfoService, router: Router) {
-    // router.events.subscribe(event => {
-    //   if (event instanceof RoutesRecognized) {
-    //     console.log(event, this.dataset);
-    //     this.pageInfoService.getTitleBannerData(this.dataset);
-    //   }
-    // });
-  }
+  constructor(private pageInfoService: PageInfoService, router: Router) { }
 }
 

@@ -1,3 +1,7 @@
+/**
+ * @file news.ts
+ * @author
+ */
 export class News {
     'id' = '';
     'image' = '';

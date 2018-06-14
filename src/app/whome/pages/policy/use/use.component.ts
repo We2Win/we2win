@@ -1,3 +1,8 @@
+/**
+ * @file use.component.ts
+ * @author
+ * @brief a page for showing company's use info. (/policy//use)
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

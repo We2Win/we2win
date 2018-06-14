@@ -1,3 +1,9 @@
+/**
+ * @file request.component.ts
+ * @author
+ * @brief the page duringauthentication-email process. (/signup/request)
+ * @todo this is not a completed source. complete this.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

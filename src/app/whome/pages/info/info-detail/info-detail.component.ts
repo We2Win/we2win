@@ -1,3 +1,8 @@
+/**
+ * @file info-detail.component.ts
+ * @author
+ * @brief a page for report detail. (/info/report/:id)
+ */
 import { Component, OnInit, ViewChild, ViewContainerRef, Input, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { ContentsService } from '../../../services/contents.service';

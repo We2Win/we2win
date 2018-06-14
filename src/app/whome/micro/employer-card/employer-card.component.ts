@@ -1,3 +1,8 @@
+/**
+ * @file employer-card-component.ts
+ * @author
+ * @brief a micro component for showing a content of job information.
+ */
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 

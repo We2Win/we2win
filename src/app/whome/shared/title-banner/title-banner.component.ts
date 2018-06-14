@@ -1,3 +1,8 @@
+/**
+ * @file title-banner.component.ts
+ * @author
+ * @brief tite-banner which is next to header .
+ */
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { PageInfoService } from '../../page-info.service';

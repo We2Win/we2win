@@ -1,3 +1,8 @@
+/**
+ * @file privacy.component.ts
+ * @author
+ * @brief a page for showing company's privacy info. (/policy/privacy)
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

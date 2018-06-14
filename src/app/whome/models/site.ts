@@ -1,3 +1,7 @@
+/**
+ * @file site.ts
+ * @author
+ */
 export class Site {
     'c-id' = '';
     'level' = '';

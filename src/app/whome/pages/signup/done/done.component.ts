@@ -1,3 +1,8 @@
+/**
+ * @file done.component.ts
+ * @author
+ * @brief the last page of signup. (/signup/done)
+ */
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 

@@ -1,3 +1,8 @@
+/**
+ * @file popup.component.ts
+ * @author
+ * @brief a micro component for a popup in various purposes like showing details of employee infos or comments of reports.
+ */
 import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({

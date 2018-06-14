@@ -1,3 +1,8 @@
+/**
+ * @file header.component.ts
+ * @author
+ * @brief header.
+ */
 import { Component, OnInit } from '@angular/core';
 import { String } from 'aws-sdk/clients/ecs';
 

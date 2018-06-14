@@ -1,3 +1,8 @@
+/**
+ * @file scheduler-day.component.ts
+ * @author
+ * @brief a micro component inside scheduler component.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

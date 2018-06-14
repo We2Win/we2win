@@ -1,3 +1,8 @@
+/**
+ * @file apply.component.ts
+ * @author
+ * @brief a page of apply. (/apply)
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,3 +1,8 @@
+/**
+ * @file rankingpost.directive.ts
+ * @author
+ * @brief bunch of directives just for using 'viewContainerRef's.
+ */
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({

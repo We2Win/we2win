@@ -1,3 +1,8 @@
+/**
+ * @file chart.component.ts
+ * @author
+ * @brief a micro component for embedding chartjs elements.
+ */
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
 

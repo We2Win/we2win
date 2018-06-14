@@ -1,5 +1,9 @@
+/**
+ * @file posting.service.ts
+ * @author
+ * @brief posting service for dynamically creating components;
+ */
 import { Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
-
 import { PostItem } from '../models/post-item';
 
 @Injectable()

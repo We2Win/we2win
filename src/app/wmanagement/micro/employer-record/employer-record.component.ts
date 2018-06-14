@@ -1,3 +1,8 @@
+/**
+ * @file employer-record.component.ts
+ * @author
+ * @brief a micro component for employer record in table component.
+ */
 import { Component, OnInit, Input, Output, ElementRef, EventEmitter } from '@angular/core';
 import { RecordService } from '../../services/record.service';
 

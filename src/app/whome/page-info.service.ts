@@ -1,3 +1,8 @@
+/**
+ * @file page-info.service.ts
+ * @author
+ * @brief title-description json for displaying texts in title-banner component.
+ */
 import { Injectable } from '@angular/core';
 
 @Injectable()

@@ -1,3 +1,9 @@
+/**
+ * @file date-input.component.ts
+ * @author
+ * @brief a micro component for putting date component.
+ * @deprecated no longer used.
+ */
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

@@ -1,3 +1,8 @@
+/**
+ * @file meeting-card.component.ts
+ * @author
+ * @brief a micro component for showing a content of meeting contents.
+ */
 import { Component, OnInit, ElementRef, Input, ViewContainerRef } from '@angular/core';
 import { Card } from '../../models/card';
 import { environment } from '../../../../environments/environment';

@@ -1,3 +1,8 @@
+/**
+ * @file notifier.component.ts
+ * @author
+ * @brief a micro component for showing notifications in header.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,3 +1,8 @@
+/**
+ * @file news-detail.component.ts
+ * @author
+ * @brief a page for news detail. (/info/news/:id)
+ */
 import { Component, OnInit, ViewChild, ViewContainerRef, ElementRef } from '@angular/core';
 import { ContentsService } from '../../../services/contents.service';
 import { ActivatedRoute } from '@angular/router';

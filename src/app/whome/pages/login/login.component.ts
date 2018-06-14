@@ -1,3 +1,8 @@
+/**
+ * @file login.component.ts
+ * @author
+ * @brief a page for login.
+ */
 import { Component, OnInit, HostBinding, Renderer, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';

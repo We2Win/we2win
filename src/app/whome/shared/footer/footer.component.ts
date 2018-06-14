@@ -1,3 +1,8 @@
+/**
+ * @file footer.component.ts
+ * @author
+ * @brief footer.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

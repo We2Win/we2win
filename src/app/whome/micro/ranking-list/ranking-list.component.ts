@@ -1,3 +1,8 @@
+/**
+ * @file horizontal-list.component.ts
+ * @author
+ * @brief a micro component for showing ranking contents vertically up to 3.
+ */
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';

@@ -1,3 +1,8 @@
+/**
+ * @file card.component.ts
+ * @author
+ * @deprecated this component was for creating other '-card' components.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
