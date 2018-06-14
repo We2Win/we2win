@@ -27,15 +27,15 @@
   color: white;
 }
 
-#top #levelBar.PREMIUM {
-  background: var(--level-premium-gradient);
-}
-
-#top #levelBar.PLATINUM {
+#levelBar.PLATINUM {
   background: var(--level-platinum-gradient);
 }
 
-#top #levelBar.STANDARD {
+#levelBar.PREMIUM {
+  background: var(--level-premium-gradient);
+}
+
+#levelBar.STANDARD {
   background: var(--level-standard-gradient);
 }
 

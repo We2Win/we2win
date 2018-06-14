@@ -3,14 +3,13 @@
   margin-left: 3px;
 }
 
-:host:nth-child(n+5) {
+/* :host:nth-child(n+5) {
   margin-top: 13px;
 }
 
 :host:nth-child(4n-3) {
   margin-left: 0;
-}
-
+} */
 
 .namecard {
   border: 1px solid #ccc;
@@ -53,7 +52,7 @@
   font-size: 1.3em;
   font-weight: 500;
   margin: 0.5em 1em 0.5em 0;
-  color: #ccc;
+  color: #333;
   /* color: var(--main-bg-color-dark); */
 }
 

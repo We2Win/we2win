@@ -3,14 +3,13 @@
   margin-left: 3px;
 }
 
-:host:nth-child(n+5) {
+/* :host:nth-child(n+5) {
   margin-top: 13px;
 }
 
 :host:nth-child(4n-3) {
   margin-left: 0;
-}
-
+} */
 
 .namecard {
   border: 1px solid #ccc;
