@@ -62,15 +62,15 @@ section {
   padding: 0 1em;
 }
 
-#levelBar.platinum {
+#levelBar.PLATINUM {
   background: var(--level-platinum-gradient);
 }
 
-#levelBar.premium {
+#levelBar.PREMIUM {
   background: var(--level-premium-gradient);
 }
 
-#levelBar.standard {
+#levelBar.STANDARD {
   background: var(--level-standard-gradient);
 }
 
