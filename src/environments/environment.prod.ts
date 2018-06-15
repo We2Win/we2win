@@ -1,15 +1,15 @@
 export const environment = {
   production: true,
-  homeUrl: 'http://test.we2win.co.kr/',
-  apiUrl: 'http://test.we2win.co.kr/api/v2',
+  homeUrl: 'http://52.79.186.88/',
+  apiUrl: 'http://52.79.186.88/api/v2',
   naver: {
     reqUrl: 'https://nid.naver.com/oauth2.0/authorize?response_type=code&' +
       'client_id=' + 's_brdfQHOF5ygOo6wszb' +
       '&state=' + 'we2win_state' +
-      '&redirect_uri=' + 'http://test.we2win.co.kr/',
+      '&redirect_uri=' + 'http://52.79.186.88/',
     clientId: 's_brdfQHOF5ygOo6wszb',
-    callbackUrl: 'http://test.we2win.co.kr/naver',
-    signupCallbackUrl: 'http://test.we2win.co.kr/naverSign'
+    callbackUrl: 'http://52.79.186.88/naver',
+    signupCallbackUrl: 'http://52.79.186.88/naverSign'
   },
   kakao: {
     clientId: 'b560ff0ff0ea7935612a6555fb53c516'
