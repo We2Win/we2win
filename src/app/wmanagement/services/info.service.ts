@@ -18,17 +18,6 @@ export class InfoService {
   getById(id: string) {
     return this.http.get('/api');
   }
-  create(data: Info) {
-    const bodyString = data;
-    // const bodyString = JSON.stringify(data);
-    console.log('bodyString: ', bodyString);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: headers });
-
-    return this.http.post('http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v1/infos', bodyString);
-    // .map((res: User) => JSON.stringify(res))
-    // .catch((error: any) => Observable.throw(error.message));
-  }
   update(user: Info) {
     return this.http.put('/api', user);
   }
