@@ -56,7 +56,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'info',
-        pathMatch: 'prefix'
+        pathMatch: 'full'
       },
       {
         path: 'search',
