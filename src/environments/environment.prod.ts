@@ -1,15 +1,15 @@
 export const environment = {
   production: true,
-  homeUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/',
-  apiUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/api/v2',
+  homeUrl: 'http://we2win.co.kr/',
+  apiUrl: 'http://we2win.co.kr/api/v2',
   naver: {
     reqUrl: 'https://nid.naver.com/oauth2.0/authorize?response_type=code&' +
       'client_id=' + 's_brdfQHOF5ygOo6wszb' +
       '&state=' + 'we2win_state' +
-      '&redirect_uri=' + 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/',
+      '&redirect_uri=' + 'http://we2win.co.kr/',
     clientId: 's_brdfQHOF5ygOo6wszb',
-    callbackUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/naver',
-    signupCallbackUrl: 'http://ec2-13-125-222-53.ap-northeast-2.compute.amazonaws.com/naverSign'
+    callbackUrl: 'http://we2win.co.kr/naver',
+    signupCallbackUrl: 'http://we2win.co.kr/naverSign'
   },
   kakao: {
     clientId: 'b560ff0ff0ea7935612a6555fb53c516'
