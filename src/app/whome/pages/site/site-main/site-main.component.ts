@@ -47,7 +47,7 @@ export class SiteMainComponent implements OnInit {
     this.getContentsListWeekly();
   }
   getContentsListNewly(sort, id?: any) {
-    this.contentsService.getContentsList('site', 'newly', sort, id).subscribe(
+    this.contentsService.getContentsList('site', 'main', sort, id).subscribe(
       data => {
         if (data) {
           if (data['length'] === 0) {

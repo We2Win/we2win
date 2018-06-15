@@ -42,7 +42,7 @@ export class EmployeeComponent implements OnInit {
           console.log(data);
           this.Data = data;
           this.addRecord(this.Data);
-          if (data['length'] !== 8) {
+          if (data['length'] !== 12) {
             this.hasMoreContents = false;
           }
         }

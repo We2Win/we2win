@@ -45,7 +45,7 @@ export class InfoMainComponent implements OnInit {
   }
 
   getContentsListNewly(sort, id?: any) {
-    this.contentsService.getContentsList('info', 'newly', sort, id).subscribe(
+    this.contentsService.getContentsList('info', 'main', sort, id).subscribe(
       data => {
         if (data) {
           if (data['length'] === 0) {

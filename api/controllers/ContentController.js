@@ -551,7 +551,12 @@ const getContentsList = async function (req, res) {
   }
 
   res.setHeader('Content-Type', 'application/json');
-  const id = (req.params.id - 1) * 12 || 0;
+  let id;
+  if (req.params.list === 'main') {
+    id = (req.params.id - 1) * 8 || 0;
+  } else {
+    id = (req.params.id - 1) * 12 || 0;
+  }
 
   const pageTypes = {
     'info': {
@@ -613,6 +618,14 @@ const getContentsList = async function (req, res) {
     case 'All':
       [err, content] = await to(Content.findAll({
         offset: id,
+        order: orderArr,
+        where: whereArr
+      }));
+      break;
+    case 'main':
+      [err, content] = await to(Content.findAll({
+        offset: id,
+        limit: 8,
         order: orderArr,
         where: whereArr
       }));

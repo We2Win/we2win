@@ -57,7 +57,7 @@ export class SearchComponent implements OnInit {
             }
 
             this.addRecord(this.Data);
-            if (this.Data['length'] !== 8) {
+            if (this.Data['length'] !== 12) {
               this.hasMoreContents = false;
             }
           } else {
