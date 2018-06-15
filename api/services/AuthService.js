@@ -328,11 +328,11 @@ module.exports.deleteContent = deleteContent;
 
 const searchContent = async function (body, page) {
   let err, content;
-  page = (page - 1) * 8 || 0;
+  page = (page - 1) * 12 || 0;
 
   [err, content] = await to(Content.findAll({
     offset: page,
-    limit: 8,
+    limit: 12,
     where: {
       [Sequelize.Op.or]: {
         title: {

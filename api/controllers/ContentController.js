@@ -551,7 +551,7 @@ const getContentsList = async function (req, res) {
   }
 
   res.setHeader('Content-Type', 'application/json');
-  const id = (req.params.id - 1) * 8 || 0;
+  const id = (req.params.id - 1) * 12 || 0;
 
   const pageTypes = {
     'info': {
@@ -620,7 +620,7 @@ const getContentsList = async function (req, res) {
     case 'newly':
       [err, content] = await to(Content.findAll({
         offset: id,
-        limit: 8,
+        limit: 12,
         order: orderArr,
         where: whereArr
       }));
@@ -786,7 +786,7 @@ module.exports.getContentsByQuery = getContentsByQuery;
 const getSimplesList = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);
-  const id = (req.params.id - 1) * 8 || 0;
+  const id = (req.params.id - 1) * 12 || 0;
 
   const sortTypes = {
     'date': ['createdAt', 'DESC'],
@@ -852,7 +852,7 @@ const getSimplesList = async function (req, res) {
     case 'meeting':
       Meeting.findAll({
         offset: id,
-        limit: 8,
+        limit: 12,
         order: orderArr,
       }).then(content => {
         return ReS(res, content);
@@ -861,7 +861,7 @@ const getSimplesList = async function (req, res) {
     case 'employee':
       Employee.findAll({
         offset: id,
-        limit: 8,
+        limit: 12,
         order: orderArr,
         where: {
           'confirm': 1
@@ -873,7 +873,7 @@ const getSimplesList = async function (req, res) {
     case 'employer':
       Employer.findAll({
         offset: id,
-        limit: 8,
+        limit: 12,
         order: orderArr,
         where: {
           'confirm': 1
