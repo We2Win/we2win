@@ -115,11 +115,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
               'user_id': 'k_' + authInfo.id,
             };
 
-            console.log('authInfo: ', authInfo);
+            // console.log('authInfo: ', authInfo);
 
             this.authService.loginWithKakao(user).subscribe(
               auth => {
-                console.log('auth: ', auth);
+                // console.log('auth: ', auth);
                 if (auth) {
                   this.router.navigate(['/']);
                 } else {
@@ -192,7 +192,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       // console.log(this.findIdForm.value);
       this.authService.sendInfoForId(this.findIdForm.value).subscribe(
         data => {
-          console.log('data: ', data);
+          // console.log('data: ', data);
         },
         err => {
           this.alertService.error('오류가 발생했습니다.');
@@ -210,7 +210,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     } else {
       this.alertService.error('양식을 모두\n입력하지 않으셨습니다.');
     }
-    console.log(this.findPasswordForm);
+    // console.log(this.findPasswordForm);
   }
 
   loginWithNaver() {

@@ -329,7 +329,7 @@ export class ChartComponent implements OnInit {
 
     try {
       setTimeout(() => {
-        console.log('chart data: ', this.data, this.chartData[this.type][this.num]);
+        // console.log('chart data: ', this.data, this.chartData[this.type][this.num]);
         const dataArr = [];
         // tslint:disable-next-line:forin
         for (const i in this.data) {

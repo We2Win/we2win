@@ -55,7 +55,7 @@ export class NewsDetailComponent implements OnInit {
     this.background.nativeElement.src = environment.bucket.downloadUrl + this.Data['slave-image1'];
     // this.top.nativeElement.style.backgroundSize = 'cover';
     // this.top.nativeElement.style.backgroundPosition = 'center';
-    console.log('data: ', this.Data);
+    // console.log('data: ', this.Data);
 
     this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
     this.meta.addTag({ name: 'og:title', content: this.Data['title'] });

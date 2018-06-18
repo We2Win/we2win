@@ -49,7 +49,7 @@ export class TrackingComponent implements OnInit {
     this.contentService.getEmployeeList().subscribe(
       data => {
         this.List = data;
-        console.log(this.List);
+        // console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
       }
@@ -61,7 +61,7 @@ export class TrackingComponent implements OnInit {
     ref.clear();
     // tslint:disable-next-line:forin
     for (const record in records) {
-      console.log('record: ', records[record]);
+      // console.log('record: ', records[record]);
 
       this.postingService.loadComponent(ref,
         new PostItem(TrackingRecordComponent, records[record]));

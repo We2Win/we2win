@@ -56,7 +56,7 @@ export class AccountComponent implements OnInit {
     this.userService.getUserList(level, amount, id).subscribe(
       data => {
         this.List = JSON.parse(data.list);
-        console.log(this.List);
+        // console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
       }
@@ -67,7 +67,7 @@ export class AccountComponent implements OnInit {
     this.userService.searchUser(query).subscribe(
       data => {
         this.List = JSON.parse(data.list);
-        console.log(this.List);
+        // console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
       }
@@ -79,7 +79,7 @@ export class AccountComponent implements OnInit {
     ref.clear();
     // tslint:disable-next-line:forin
     for (const record in records) {
-      console.log('record: ', records[record]);
+      // console.log('record: ', records[record]);
 
       this.postingService.loadComponent(ref,
         new PostItem(AccountRecordComponent, records[record]));
@@ -87,19 +87,19 @@ export class AccountComponent implements OnInit {
   }
 
   changeLevel(event) {
-    console.log('changedLevel: ', event);
+    // console.log('changedLevel: ', event);
     this.orderByLevel = event;
     this.updateData(this.orderByLevel, this.orderByAmount, 1);
   }
 
   changeAmount(event) {
-    console.log('changedAmount: ', event);
+    // console.log('changedAmount: ', event);
     this.orderByAmount = event;
     this.updateData(this.orderByLevel, this.orderByAmount, 1);
   }
 
   changeQuery(event) {
-    console.log('changedQuery: ', event.target.value);
+    // console.log('changedQuery: ', event.target.value);
     this.searchData(event.target.value);
   }
 

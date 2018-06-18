@@ -77,7 +77,7 @@ export class NewsDetailComponent implements OnInit {
           this.background.nativeElement.src = environment.bucket.downloadUrl + this.Data['slave-image1'];
           // this.top.nativeElement.style.backgroundSize = 'cover';
           // this.top.nativeElement.style.backgroundPosition = 'center';
-          console.log('data: ', this.Data);
+          // console.log('data: ', this.Data);
 
           this.isBookmarked = this.Data['isBookmarked'];
 

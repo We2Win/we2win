@@ -37,7 +37,7 @@ export class AlertComponent implements OnInit {
 
       // add alert to array
       this.alerts.push(alert);
-      console.log('alerts: ', alert, this.alerts);
+      // console.log('alerts: ', alert, this.alerts);
 
     }, err => { console.log(err); } );
   }

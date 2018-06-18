@@ -56,7 +56,7 @@ export class InfoMainComponent implements OnInit {
           } else {
             this.hasMoreContents = true;
           }
-          console.log('data: ', data);
+          // console.log('data: ', data);
           const list = [];
           // tslint:disable-next-line:forin
           for (const i in data) {
@@ -79,7 +79,7 @@ export class InfoMainComponent implements OnInit {
     // this.contentsService.getRankingList('info', new Date().toISOString().slice(0, 10)).subscribe(
     this.contentsService.getWeeklyList('info').subscribe(
       data => {
-        console.log('data: ', data);
+        // console.log('data: ', data);
         if (data) {
           const list = [];
           data.forEach(content => {
@@ -89,7 +89,7 @@ export class InfoMainComponent implements OnInit {
             content['createdAt'] = new Date(content['createdAt']);
             content['updatedAt'] = new Date(content['createdAt']);
           });
-          console.log('Weekly List: ', list);
+          // console.log('Weekly List: ', list);
           this.WeeklyList = list;
           this.addWeeklyRecord(this.WeeklyList);
         }
@@ -142,7 +142,7 @@ export class InfoMainComponent implements OnInit {
     const count = ['first', 'second', 'third'];
     for (const num in count) {
       if (records[num]) {
-        console.log('records[num]: ', records[num]);
+        // console.log('records[num]: ', records[num]);
         records[num]['rank'] = count[num];
         if (records[num]['c-type'] === '리포트') {
           this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,

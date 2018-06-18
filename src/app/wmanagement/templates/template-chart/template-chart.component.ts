@@ -142,7 +142,7 @@ export class TemplateChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('record:', this.record);
+    // console.log('record:', this.record);
 
     const canvas: any = this._elementRef.nativeElement.querySelector('canvas');
     const ctx = canvas.getContext('2d');
@@ -172,7 +172,7 @@ export class TemplateChartComponent implements OnInit {
     data.data.datasets = this.record.datasets;
     data.data.datasets[0]['backgroundColor'] =
       [fillStandard, fillStandard, fillStandard, fillPremium, fillPlatinum];
-    console.log('data at chart:', data);
+    // console.log('data at chart:', data);
     try {
       const chart = new Chart(canvas, data);
     } catch (e) {

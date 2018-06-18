@@ -50,7 +50,7 @@ export class MeetingDetailComponent implements OnInit {
     private putDataService: PutDataService
   ) {
     this.id = this.route.params['value'].id;
-    console.log(this.Data);
+    // console.log(this.Data);
   }
 
   ngOnInit() {
@@ -74,11 +74,11 @@ export class MeetingDetailComponent implements OnInit {
   }
 
   updateDetail() {
-    console.log(this.Data);
+    // console.log(this.Data);
 
     this.imgUrl = environment.bucket.downloadUrl + this.Data['master-image'];
 
-    console.log('data: ', this.Data);
+    // console.log('data: ', this.Data);
 
     this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
     this.meta.addTag({ name: 'og:title', content: this.Data['title'] });

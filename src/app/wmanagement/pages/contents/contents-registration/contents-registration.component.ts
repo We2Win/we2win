@@ -365,7 +365,7 @@ export class ContentsRegistrationComponent implements OnInit {
   }
 
   upload(type, columnName) {
-    console.log('type: ', type);
+    // console.log('type: ', type);
     const file = this.uploadedFiles[columnName];
 
     if (file) {
@@ -375,11 +375,11 @@ export class ContentsRegistrationComponent implements OnInit {
         data => data.Key
         ).subscribe(
         name => {
-          console.log('name: ', name);
-          console.log(this.forms[type], columnName);
+          // console.log('name: ', name);
+          // console.log(this.forms[type], columnName);
           this.forms[type].controls[columnName].setValue(name);
           this.inputs[columnName] = name;
-          console.log(this.inputs);
+          // console.log(this.inputs);
           this.uploadedFiles[columnName] = '-done';
           // this.alertService.info('업로드 되었습니다.');
         }
@@ -398,7 +398,7 @@ export class ContentsRegistrationComponent implements OnInit {
   onSubmit() {
     this.selectedData.body = this.forms[this.selectedData.type].value;
     this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
-    console.log(this.selectedData);
+    // console.log(this.selectedData);
 
     if (this.forms[this.selectedData.type].valid) {
       this.postData(this.selectedData);
@@ -410,23 +410,23 @@ export class ContentsRegistrationComponent implements OnInit {
   preview() {
     this.selectedData.body = this.forms[this.selectedData.type].value;
     this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
-    console.log(this.selectedData, this.selectBoxData);
+    // console.log(this.selectedData, this.selectBoxData);
 
     this.putDataService.updateData(this.selectedData.body, this.selectedData.type);
     this.isDataChanged = true;
   }
 
   postData(selectedData) {
-    console.log('selectedData: ', selectedData);
+    // console.log('selectedData: ', selectedData);
     this.contentsService.create(selectedData)
       .subscribe(
       data => {
         this.alertService.info((data) ? '컨텐츠가 등록되었습니다.' : '오류가 발생했습니다.');
-        console.log(data);
+        // console.log(data);
       },
       error => {
         this.alertService.info('컨텐츠 등록에 실패하였습니다.');
-        console.log('error: ', error);
+        // console.log('error: ', error);
       }
       );
   }

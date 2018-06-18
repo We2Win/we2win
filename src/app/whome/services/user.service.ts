@@ -36,7 +36,7 @@ export class UserService {
   //   return this.http.get('/api/v1/infos');
   // }
   create(user: UserInfo) {
-    console.log('user form create(): ', user);
+    // console.log('user form create(): ', user);
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
@@ -53,7 +53,7 @@ export class UserService {
   // }
 
   hasId(user) {
-    console.log('user from hasId(): ', user);
+    // console.log('user from hasId(): ', user);
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
@@ -63,7 +63,7 @@ export class UserService {
   }
 
   testing() {
-    console.log('testing...');
+    // console.log('testing...');
     return this.http.get(environment.apiUrl + '/testing')
       .map(data => { console.log('testing(): ', data); });
   }

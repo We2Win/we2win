@@ -12,7 +12,7 @@ export class PutDataService {
   constructor() { }
 
   updateData(data, type) {
-    console.log('data: ', data, type);
+    // console.log('data: ', data, type);
     switch (type) {
       case '리포트':
         this.dataReport.emit(data);

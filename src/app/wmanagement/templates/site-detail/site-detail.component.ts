@@ -24,6 +24,8 @@ export class SiteDetailComponent implements OnInit {
   selectedNum = 1;
   showCharts = true;
   showMoreReport = false;
+  // '분양중', '분양 마감', '미정';
+  dateStatus = '미정';
 
   @ViewChild('NewComment') NewComment;
   @ViewChild('reportDetail') reportDetail;
@@ -72,7 +74,7 @@ export class SiteDetailComponent implements OnInit {
   }
 
   updateDetail() {
-    console.log(this.Data);
+    // console.log(this.Data);
     if (this.Data['current-duration1'] || this.Data['around-duration1']) {
       this.showCharts = true;
       this.addChart();
@@ -88,7 +90,15 @@ export class SiteDetailComponent implements OnInit {
     this.subImgUrl[5] = environment.bucket.downloadUrl + this.Data['slave-image5'];
     this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['slave-image1'];
 
-    console.log('data: ', this.Data);
+    // console.log('data: ', this.Data);
+    const now = new Date();
+    const start = new Date(this.Data['open-start']);
+    const end = new Date(this.Data['open-end']);
+    if (now > start && now < end) {
+      this.dateStatus = '분양중';
+    } else {
+      this.dateStatus = '분양 마감';
+    }
 
     this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
     this.meta.addTag({ name: 'og:title', content: this.Data['title'] });

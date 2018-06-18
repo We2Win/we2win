@@ -38,7 +38,7 @@ export class MeetingComponent implements OnInit {
     this.contentsService.getSimplesList('meeting', sort, id).subscribe(
       data => {
         if (data) {
-          console.log(data);
+          // console.log(data);
           this.Data = data;
           this.addRecord(this.Data);
           if (data['length'] !== 12) {
@@ -50,7 +50,7 @@ export class MeetingComponent implements OnInit {
   }
 
   paging(page) {
-    console.log('page: ', page);
+    // console.log('page: ', page);
     const container = this.mypostDirective.viewContainerRef;
     this.getSimplesListNewly(this.sortType, page);
   }

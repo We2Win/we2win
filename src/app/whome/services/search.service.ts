@@ -23,7 +23,7 @@ export class SearchService {
     this.query = data;
     clearTimeout(window['setCount']);
     window['setCount'] = setTimeout(() => {
-      console.log(this.query);
+      // console.log(this.query);
       this.search(this.query, 1);
     }, 1000);
   }
@@ -42,7 +42,7 @@ export class SearchService {
         });
       },
       err => {
-        console.log('search error: ', err);
+        // console.log('search error: ', err);
       }
     );
   }

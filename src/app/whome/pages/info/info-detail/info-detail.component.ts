@@ -102,7 +102,7 @@ export class InfoDetailComponent implements OnInit {
         if (data) {
           this.Data = data;
           this.Data['c-type'] = '리포트';
-          console.log('this.Data: ', this.Data);
+          // console.log('this.Data: ', this.Data);
           if (this.Data['current-duration1'] || this.Data['around-duration1']) {
             this.showCharts = true;
             this.addChart();
@@ -205,7 +205,7 @@ export class InfoDetailComponent implements OnInit {
       'date': new Date().toISOString(),
       'contents': this.NewComment.nativeElement.value
     };
-    console.log('comment body: ', body);
+    // console.log('comment body: ', body);
     if (!body.contents) {
       this.alertService.error('댓글 내용이 없습니다.');
     } else {
@@ -233,7 +233,7 @@ export class InfoDetailComponent implements OnInit {
         // console.log('data: ', data);
         if (data.content[0]) {
           this.comments = data.content;
-          console.log('this.comments: ', this.comments);
+          // console.log('this.comments: ', this.comments);
         }
       }
     );
@@ -281,7 +281,7 @@ export class InfoDetailComponent implements OnInit {
   }
 
   deleteComment(uid, cid) {
-    console.log(uid, cid);
+    // console.log(uid, cid);
     if (confirm('정말로 삭제하시겠습니까?')) {
       this.contentsService.deleteComments(uid, cid).subscribe(
         data => {

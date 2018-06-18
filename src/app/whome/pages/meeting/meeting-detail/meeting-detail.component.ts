@@ -99,11 +99,11 @@ export class MeetingDetailComponent implements OnInit {
       data => {
         if (data) {
           this.Data = data;
-          console.log(this.Data);
+          // console.log(this.Data);
 
           this.imgUrl = environment.bucket.downloadUrl + this.Data['master-image'];
 
-          console.log('data: ', this.Data);
+          // console.log('data: ', this.Data);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
           this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
@@ -137,11 +137,11 @@ export class MeetingDetailComponent implements OnInit {
       'date': new Date().toISOString(),
       'contents': this.NewComment.nativeElement.value
     };
-    console.log('comment body: ', body);
+    // console.log('comment body: ', body);
     if (!body.contents) {
       this.alertService.error('댓글 내용이 없습니다.');
     } else {
-      console.log(body);
+      // console.log(body);
       this.contentsService.addComments(body);
 
       // refresh current page
@@ -226,7 +226,7 @@ export class MeetingDetailComponent implements OnInit {
   }
 
   deleteComment(uid, cid) {
-    console.log(uid, cid);
+    // console.log(uid, cid);
     if (confirm('정말로 삭제하시겠습니까?')) {
       this.contentsService.deleteComments(uid, cid).subscribe(
         data => {

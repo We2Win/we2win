@@ -22,7 +22,7 @@ export class AnalysisUserRecordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('record in accountRecordComponent: ', this.record);
+    // console.log('record in accountRecordComponent: ', this.record);
   }
 
   deleteUser() {

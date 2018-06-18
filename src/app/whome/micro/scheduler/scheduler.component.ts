@@ -105,7 +105,7 @@ export class SchedulerComponent implements OnInit {
       }
     }
 
-    console.log('schedules on Scheduler: ', this.schedules);
+    // console.log('schedules on Scheduler: ', this.schedules);
     // tslint:disable-next-line:forin
     for (const schedule in this.schedules) {
       const start = new Date(this.schedules[schedule]['duration-start']);
@@ -115,16 +115,16 @@ export class SchedulerComponent implements OnInit {
       if (end.valueOf() > future.valueOf()) {
         endIdx = new Date(future.valueOf() - today.valueOf()).getDate();
       }
-      console.log(startIdx, endIdx, start, end);
+      // console.log(startIdx, endIdx, start, end);
       if (startIdx) {
         for (let i = startIdx + todayDay - 1; i <= endIdx + todayDay - 1; ++i) {
           this.records[i].hasSchedule = true;
-          console.log('done at: ', i, this.records[i]);
+          // console.log('done at: ', i, this.records[i]);
         }
       }
     }
 
-    console.log('records: ', this.records);
+    // console.log('records: ', this.records);
 
     this.addRecord(this.records);
   }

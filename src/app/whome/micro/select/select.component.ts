@@ -54,7 +54,7 @@ export class SelectComponent implements OnInit {
       this.selected = ev.path[1].innerHTML;
       this.change.emit(this.selected);
     } else {
-      console.log('error: ', ev.path);
+      // console.log('error: ', ev.path);
     }
     this.hideUl(false);
   }

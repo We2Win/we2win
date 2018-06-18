@@ -23,7 +23,7 @@ export class AccountRecordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('record in accountRecordComponent: ', this.record);
+    // console.log('record in accountRecordComponent: ', this.record);
   }
 
   deleteUser() {
@@ -31,7 +31,7 @@ export class AccountRecordComponent implements OnInit {
       this.userService.deleteUser(this.record)
         .subscribe(
         data => {
-          console.log(data);
+          // console.log(data);
           // refresh current page
           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
             this.router.navigate(['mng', 'account']));

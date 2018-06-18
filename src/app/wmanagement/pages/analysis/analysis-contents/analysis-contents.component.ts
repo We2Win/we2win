@@ -40,7 +40,7 @@ export class AnalysisContentsComponent implements OnInit {
     this.contentsService.getContentsList(page, list, sort, id).subscribe(
       data => {
         this.List = data;
-        console.log(this.List);
+        // console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
       }
@@ -51,7 +51,7 @@ export class AnalysisContentsComponent implements OnInit {
     this.contentsService.searchContents(query).subscribe(
       data => {
         this.List = JSON.parse(data.list);
-        console.log(this.List);
+        // console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
       }
@@ -62,26 +62,26 @@ export class AnalysisContentsComponent implements OnInit {
     // tslint:disable-next-line:forin
     for (const record in records) {
       records[record]['no'] = parseInt(record, 10) + 1;
-      console.log('record: ', records[record]);
+      // console.log('record: ', records[record]);
       this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
         new PostItem(AnalysisContentsRecordComponent, records[record]));
     }
   }
 
   changeLevel(event) {
-    console.log('changedLevel: ', event);
+    // console.log('changedLevel: ', event);
     this.orderByLevel = event;
     this.updateData(this.orderByLevel, this.orderByAmount, 1);
   }
 
   changeAmount(event) {
-    console.log('changedAmount: ', event);
+    // console.log('changedAmount: ', event);
     this.orderByAmount = event;
     this.updateData(this.orderByLevel, this.orderByAmount, 1);
   }
 
   changeQuery(event) {
-    console.log('changedQuery: ', event.target.value);
+    // console.log('changedQuery: ', event.target.value);
     this.searchData(event.target.value);
   }
 

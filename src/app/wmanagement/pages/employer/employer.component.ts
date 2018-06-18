@@ -67,7 +67,7 @@ export class EmployerComponent implements OnInit {
     this.contentsService.getEmployerList().subscribe(
       data => {
         this.List = data;
-        console.log('list: ', this.List);
+        // console.log('list: ', this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
       }
@@ -79,7 +79,7 @@ export class EmployerComponent implements OnInit {
     ref.clear();
     // tslint:disable-next-line:forin
     for (const record in records) {
-      console.log('record: ', records[record]);
+      // console.log('record: ', records[record]);
       this.postingService.loadComponent(ref,
         new PostItem(EmployerRecordComponent, records[record]));
     }

@@ -65,7 +65,7 @@ export class ContentsService {
     const bodyString = JSON.stringify(body);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
-    console.log('comments: ', body);
+    // console.log('comments: ', body);
 
     return this.http.post(environment.apiUrl + '/contents/comments', bodyString, headers).subscribe(
       res => { console.log(res); },
@@ -137,7 +137,7 @@ export class ContentsService {
 
     return this.http.put(environment.apiUrl + '/contents/' + page, bodyString, headers).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.alertService.success('등록 완료했습니다.');
       },
       error => {

@@ -37,7 +37,7 @@ export class NewsComponent implements OnInit {
     this.contentsService.getContentsList('news', 'newly', sort, id).subscribe(
       data => {
         if (data) {
-          console.log('data: ', data);
+          // console.log('data: ', data);
           this.Data = data;
           this.addRecord(this.Data);
           if (data['length'] !== 12) {
@@ -49,7 +49,7 @@ export class NewsComponent implements OnInit {
   }
 
   paging(page) {
-    console.log('page: ', page);
+    // console.log('page: ', page);
     const container = this.mypostDirective.viewContainerRef;
     this.getContentsList(this.sortType, page);
   }

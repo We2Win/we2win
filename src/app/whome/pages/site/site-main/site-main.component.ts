@@ -58,7 +58,7 @@ export class SiteMainComponent implements OnInit {
           } else {
             this.hasMoreContents1 = true;
           }
-          console.log('Newly List: ', data);
+          // console.log('Newly List: ', data);
           this.NewlyList = data;
           this.addNewlyRecord(this.NewlyList);
         }
@@ -77,7 +77,7 @@ export class SiteMainComponent implements OnInit {
           } else {
             this.hasMoreContents2 = true;
           }
-          console.log('Report List: ', data);
+          // console.log('Report List: ', data);
           this.ReportList = data;
           this.addReporterRecord(this.ReportList);
         }
@@ -88,7 +88,7 @@ export class SiteMainComponent implements OnInit {
     this.contentsService.getWeeklyList('site').subscribe(
       data => {
         if (data) {
-          console.log('Weekly List: ', data);
+          // console.log('Weekly List: ', data);
           this.WeeklyList = data;
           this.addWeeklyRecord(this.WeeklyList);
         }

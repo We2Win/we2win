@@ -51,7 +51,7 @@ export class ApplyEmployeeComponent implements OnInit {
       this.alertService.error('양식이 모두 입력되지 않았습니다.');
       return;
     }
-    console.log(this.applyForm.value);
+    // console.log(this.applyForm.value);
     this.contentService.addRecruitContent('employee', this.applyForm.value);
   }
 }

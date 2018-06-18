@@ -48,7 +48,7 @@ export class AccountInfoComponent implements OnInit {
       this.user.start = userInfo.user_start;
       this.user.end = userInfo.user_end;
       this.user.level = userInfo.user_level;
-      console.log(this.user);
+      // console.log(this.user);
     }
 
     setTimeout(() => {

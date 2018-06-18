@@ -43,7 +43,7 @@ export class AuthService {
     // checkAuth(): Observable<boolean> {
     return this.http.get(this.appUrl + '/users')
       .map(res => {
-        console.log(res);
+        // console.log(res);
         if (res['auth'] === 1) {
           return true;
         } else {
@@ -69,7 +69,7 @@ export class AuthService {
 
     return this.http.get(environment.naver.reqUrl)
       .map(res => {
-        console.log(res);
+        // console.log(res);
       });
   }
 
@@ -77,7 +77,7 @@ export class AuthService {
     const bodyString = JSON.stringify(user);
     const headers = { headers: { 'Content-Type': 'application/json' } };
 
-    console.log(bodyString);
+    // console.log(bodyString);
 
     return this.http.post(environment.apiUrl + '/login/kakao', bodyString, headers)
       .do((res: any) => this.setToken(res.token),
@@ -175,17 +175,17 @@ export class AuthService {
 
     return this.http.get('https://openapi.naver.com/v1/nid/me', httpOptions)
       .map(res => {
-        console.log(res);
+        // console.log(res);
       },
       err => {
-        console.log(err);
+        // console.log(err);
       }
       );
   }
 
   getUserInfoDetail(info) {
     const headers = { headers: { 'Content-Type': 'application/json' } };
-    console.log('executing getUserInfoDetail(): ', info);
+    // console.log('executing getUserInfoDetail(): ', info);
     return this.http.post(environment.apiUrl + '/userInfo', info, headers)
       .do((res: any) => console.log('res: ', res),
       (err) => { this.alertService.error(err); }

@@ -104,7 +104,7 @@ export class SiteDetailComponent implements OnInit {
         if (data) {
           this.Data = data;
           this.Data['c-type'] = '분양 현장';
-          console.log(this.Data);
+          // console.log(this.Data);
           if (this.Data['current-duration1'] || this.Data['around-duration1']) {
             this.showCharts = true;
             this.addChart();
@@ -131,7 +131,7 @@ export class SiteDetailComponent implements OnInit {
             this.dateStatus = '분양 마감';
           }
 
-          console.log('userInfo: ', this.userInfo);
+          // console.log('userInfo: ', this.userInfo);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
           this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
@@ -214,7 +214,7 @@ export class SiteDetailComponent implements OnInit {
       'date': new Date().toISOString(),
       'contents': this.NewComment.nativeElement.value
     };
-    console.log('comment body: ', body);
+    // console.log('comment body: ', body);
     if (!body.contents) {
       this.alertService.error('댓글 내용이 없습니다.');
     } else {
@@ -248,10 +248,10 @@ export class SiteDetailComponent implements OnInit {
   getComments() {
     this.contentsService.getComments(this.Data['c-id']).subscribe(
       data => {
-        console.log('comments: ', data);
+        // console.log('comments: ', data);
         if (data.content[0]) {
           this.comments = data.content;
-          console.log('this.comments: ', this.comments);
+          // console.log('this.comments: ', this.comments);
         }
       }
     );
@@ -299,7 +299,7 @@ export class SiteDetailComponent implements OnInit {
   }
 
   deleteComment(uid, cid) {
-    console.log(uid, cid);
+    // console.log(uid, cid);
     if (confirm('정말로 삭제하시겠습니까?')) {
       this.contentsService.deleteComments(uid, cid).subscribe(
         data => {

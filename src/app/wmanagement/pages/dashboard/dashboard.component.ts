@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.contentsService.getDashboardUsers().subscribe(
       data => {
-        console.log('users: ', data);
+        // console.log('users: ', data);
         this.data['users'] = data['users'];
       },
       error => {
@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
 
     this.contentsService.getDashboardContents().subscribe(
       data => {
-        console.log('contents: ', data);
+        // console.log('contents: ', data);
         this.data['contents'] = data['contents'];
         this.data['logs'] = data['logs'];
       },
@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
   }
 
   addData(component) {
-    console.log(component.chartObject);
+    // console.log(component.chartObject);
     // component.chartObject.data.datasets[0].data = [0, 0, 5];
     // component.chartObject.data.labels = [
     //     'PLATINUM',

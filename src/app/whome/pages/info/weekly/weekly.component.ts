@@ -51,7 +51,7 @@ export class WeeklyComponent implements OnInit {
     this.contentsService.getWeeklyList('law').subscribe(
       data => {
         if (data) {
-          console.log('law: ', data);
+          // console.log('law: ', data);
           this.addLawRecord(data);
         }
       }

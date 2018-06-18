@@ -17,6 +17,6 @@ export class TrackingRecordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('record in trackingRecordComponent: ', this.record);
+    // console.log('record in trackingRecordComponent: ', this.record);
   }
 }

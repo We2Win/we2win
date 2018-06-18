@@ -54,7 +54,7 @@ export class InfoDetailComponent implements OnInit {
     // When routed to another info contents:
     this.putDataService.dataReport.subscribe(
       data => {
-        console.log('data on info-detail: ', this.Data, data);
+        // console.log('data on info-detail: ', this.Data, data);
         this.Data = data;
         this.updateDetail();
       }
@@ -72,7 +72,7 @@ export class InfoDetailComponent implements OnInit {
   }
 
   updateDetail() {
-    console.log('this.Data: ', this.Data);
+    // console.log('this.Data: ', this.Data);
     if (this.Data['current-duration1'] || this.Data['around-duration1']) {
       this.showCharts = true;
       this.addChart();
@@ -151,7 +151,7 @@ export class InfoDetailComponent implements OnInit {
     };
     const container = this.mypostDirective.viewContainerRef;
     container.clear();
-    console.log('templateChart: ', TemplateChartComponent);
+    // console.log('templateChart: ', TemplateChartComponent);
     this.postingService.loadComponent(container,
       new PostItem(TemplateChartComponent, current));
     this.postingService.loadComponent(container,

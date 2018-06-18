@@ -145,7 +145,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     this.naverLogin.init();
 
     const naverAuth = localStorage.getItem('naverAuth');
-    console.log(naverAuth);
+    // console.log(naverAuth);
     if (naverAuth) {
       this.loginWithNaver(JSON.parse(naverAuth));
     }
@@ -176,7 +176,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
     // this.setSelectValue();
     // this.user = this.signupForm.value;
-    console.log('testing');
+    // console.log('testing');
     this.user = {
       'u-id': this.signupForm.controls['u-id'].value,
       'password': this.signupForm.controls['password'].value,
@@ -197,7 +197,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       // tslint:disable-next-line:radix
       'asset': parseInt(this.asset.selected),
     };
-    console.log('onSubmit: ', this.user, this.level);
+    // console.log('onSubmit: ', this.user, this.level);
 
     if (this.user['level'] === 'STANDARD') {
       this.createUser(this.user);
@@ -210,7 +210,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     this.userService.create(this.user)
       .subscribe(
       data => {
-        console.log('data: ', data);
+        // console.log('data: ', data);
         if (data.success) {
           this.router.navigate(['signup', 'request']);
         } else {
@@ -219,14 +219,14 @@ export class FormComponent implements OnInit, AfterViewInit {
       },
       error => {
         this.alertService.error('회원 가입중 문제가 발생했습니다.');
-        console.log('error: ', error);
+        // console.log('error: ', error);
       }
       );
   }
 
   payFee(userInfo) {
     // IMP.request_pay(param, callback) 호출
-    console.log(userInfo);
+    // console.log(userInfo);
     window['IMP'].request_pay({ // param
       pg: 'kcp',
       pay_method: 'card',
@@ -252,7 +252,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         userInfo['level-end'] = current;
       } else {
         this.alertService.warn('취소되었습니다.');
-        console.log(rsp);
+        // console.log(rsp);
       }
     });
   }
@@ -329,7 +329,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   loginWithNaver(authInfo) {
     this.loginType = 'naver';
 
-    console.log('authInfo: ', authInfo);
+    // console.log('authInfo: ', authInfo);
 
     const userInfo = {
       'u-id': 'n_' + authInfo.id
@@ -373,7 +373,7 @@ export class FormComponent implements OnInit, AfterViewInit {
         window['Kakao'].API.request({
           url: '/v1/user/me',
           success: authInfo => {
-            console.log('authInfo: ', authInfo);
+            // console.log('authInfo: ', authInfo);
             this.loginType = 'kakao';
 
             const userInfo = {
@@ -440,7 +440,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   setHyphen(input) {
     if (input === 'cp') {
       let str = this.signupForm.controls['cp'].value.replace(/\-/g, '');
-      console.log(str);
+      // console.log(str);
       if (str.length === 11) {
         str = str.substring(0, 3) + '-' + str.substring(3, 7) + '-' + str.substring(7, str.length);
       } else if (str.length === 10) {
@@ -506,6 +506,6 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   selectLoginType($event) {
-    console.log($event);
+    // console.log($event);
   }
 }

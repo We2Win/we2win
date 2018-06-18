@@ -22,7 +22,7 @@ export class EmployeeRecordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.record);
+    // console.log(this.record);
   }
 
   checkBox() {

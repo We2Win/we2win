@@ -35,7 +35,7 @@ export class PersonalComponent implements OnInit {
     this.authService.getUserInfoDetail(this.userInfo).subscribe(
       (res: any) => {
         this.detailedInfo = res.user;
-        console.log(this.detailedInfo);
+        // console.log(this.detailedInfo);
       },
       (err) => { this.alertService.error(err); }
     );
@@ -74,10 +74,10 @@ export class PersonalComponent implements OnInit {
         editedData[field] = this.editForm.controls[field].value;
       }
     }
-    console.log(editedData);
+    // console.log(editedData);
     this.userService.editUserInfo(editedData).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.alertService.success('수정 완료했습니다.');
         this.editMode = false;
         this.editForm.reset();

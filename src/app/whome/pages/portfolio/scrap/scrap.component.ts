@@ -41,14 +41,14 @@ export class ScrapComponent implements OnInit {
     this.userService.getBookmark('info').subscribe(
       res => {
         this.infos = res['contents'];
-        console.log('infos: ', this.infos);
+        // console.log('infos: ', this.infos);
       },
       err => this.alertService.error('에러가 발생했습니다.')
     );
     this.userService.getSchedule().subscribe(
       res => {
         this.schedules = res['contents'];
-        console.log('schedule', this.schedules);
+        // console.log('schedule', this.schedules);
       }
     );
   }
@@ -75,7 +75,7 @@ export class ScrapComponent implements OnInit {
     this.userService.getBookmark('site').subscribe(
       res => {
         this.sites = res['contents'];
-        console.log('sites: ', this.sites);
+        // console.log('sites: ', this.sites);
         this.infos = [];
       },
       err => this.alertService.error('에러가 발생했습니다.')
@@ -86,7 +86,7 @@ export class ScrapComponent implements OnInit {
     this.userService.getSchedule().subscribe(
       res => {
         this.schedules = res['contents'];
-        console.log('m schedules: ', this.schedules);
+        // console.log('m schedules: ', this.schedules);
       },
       err => this.alertService.error('에러가 발생했습니다.')
     );

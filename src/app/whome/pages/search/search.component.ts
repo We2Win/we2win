@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
         this.Data = data.body;
         const container = this.mypostDirective.viewContainerRef;
 
-        console.log('data: ', data);
+        // console.log('data: ', data);
         if (this.Data) {
           if (this.Data['length']) {
             this.isEmpty = false;
@@ -70,13 +70,13 @@ export class SearchComponent implements OnInit {
         }
       },
       err => {
-        console.log('err: ', err);
+        // console.log('err: ', err);
       }
     );
   }
 
   paging(page) {
-    console.log('page: ', page);
+    // console.log('page: ', page);
     this.searchService.searchByPage(page);
   }
 

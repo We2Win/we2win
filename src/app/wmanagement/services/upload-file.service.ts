@@ -40,10 +40,10 @@ export class UploadFileService {
 
     this.bucket.upload(params, (err, data) => {
       if (err) {
-        console.log('There was an error uploading your file: ', err);
+        // console.log('There was an error uploading your file: ', err);
       } else {
-        console.log('Successfully uploaded file.', data);
-        console.log(this.dataList);
+        // console.log('Successfully uploaded file.', data);
+        // console.log(this.dataList);
         this.dataList[columnName].next(data);
       }
     });

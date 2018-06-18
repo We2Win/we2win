@@ -174,7 +174,7 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   updateContents(selected) {
-    console.log('updateContents(): ', this.engType[selected], selected);
+    // console.log('updateContents(): ', this.engType[selected], selected);
 
     if (selected === '오프라인 모임') {
       this.contentsService.getSimplesList(this.engType[selected] + 'All', 'date').subscribe(
@@ -197,7 +197,7 @@ export class ContentsModificationComponent implements OnInit {
           // console.log('updated: ', titles);
         },
         error => {
-          console.log('error loading contents');
+          // console.log('error loading contents');
         });
     } else {
       this.contentsService.getContentsList(this.engType[selected], 'All', 'date').subscribe(
@@ -221,18 +221,18 @@ export class ContentsModificationComponent implements OnInit {
           // console.log('updated: ', titles);
         },
         error => {
-          console.log('error loading contents');
+          // console.log('error loading contents');
         }
       );
     }
   }
 
   onContentsChange(num) {
-    console.log('onContentsChange(): ', num, this.contentNoArr[num]);
+    // console.log('onContentsChange(): ', num, this.contentNoArr[num]);
     this.contentsService.getContentsDetail(this.engType[this.selectedData.type], this.contentNoArr[num]).subscribe(
       data => {
         this.loadedData = data;
-        console.log('changedData: ', data);
+        // console.log('changedData: ', data);
 
         const form = this.forms[this.selectedData.type];
         // const symbol = form.controls;
@@ -245,7 +245,7 @@ export class ContentsModificationComponent implements OnInit {
             form.controls[field].setValue(this.loadedData[field].slice(0, 10));
           } else if (field === 'level') {
             form.controls[field].setValue(this.loadedData[field]);
-            console.log('type: ', this.selectedData.type);
+            // console.log('type: ', this.selectedData.type);
             switch (this.selectedData.type) {
               case '리포트':
                 this.ILevel.selected = this.loadedData[field];
@@ -267,14 +267,14 @@ export class ContentsModificationComponent implements OnInit {
                 break;
             }
           } else {
-            console.log(field + ': ', this.loadedData[field]);
+            // console.log(field + ': ', this.loadedData[field]);
             form.controls[field].setValue(this.loadedData[field]);
             this.inputs[field.slice(1)] = this.loadedData[field];
           }
         }
       },
       error => {
-        console.log('error loading contents');
+        // console.log('error loading contents');
       }
     );
   }
@@ -499,10 +499,10 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   upload(type, columnName) {
-    console.log('type: ', type);
+    // console.log('type: ', type);
     const file = this.uploadedFiles[columnName];
 
-    console.log('inputs:', this.inputs['master-image']);
+    // console.log('inputs:', this.inputs['master-image']);
 
     if (file) {
       this.uploadService.uploadFile(file, columnName);
@@ -511,11 +511,11 @@ export class ContentsModificationComponent implements OnInit {
         data => data.Key
         ).subscribe(
         name => {
-          console.log('name: ', name);
-          console.log(this.forms[type], columnName);
+          // console.log('name: ', name);
+          // console.log(this.forms[type], columnName);
           this.forms[type].controls[columnName].setValue(name);
           this.inputs[columnName] = name;
-          console.log(this.inputs);
+          // console.log(this.inputs);
           this.uploadedFiles[columnName] = '-done';
           // this.alertService.info('업로드 되었습니다.');
         }
@@ -538,7 +538,7 @@ export class ContentsModificationComponent implements OnInit {
   onSubmit() {
     this.selectedData.body = this.forms[this.selectedData.type].value;
     this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
-    console.log(this.selectedData);
+    // console.log(this.selectedData);
 
     if (this.forms[this.selectedData.type].valid) {
       this.putData(this.selectedData);
@@ -550,14 +550,14 @@ export class ContentsModificationComponent implements OnInit {
   preview() {
     this.selectedData.body = this.forms[this.selectedData.type].value;
     this.selectedData.body = Object.assign(this.selectedData.body, this.selectBoxData);
-    console.log(this.selectedData, this.selectBoxData);
+    // console.log(this.selectedData, this.selectBoxData);
 
     this.putDataService.updateData(this.selectedData.body, this.selectedData.type);
     this.isDataChanged = true;
   }
 
   delete() {
-    console.log(this.engType[this.selectedData.type]);
+    // console.log(this.engType[this.selectedData.type]);
     if (confirm('삭제하시겠습니까?')) {
       this.contentsService.delete(this.engType[this.selectedData.type], this.loadedData['c-id']).subscribe(
         data => {
@@ -584,17 +584,17 @@ export class ContentsModificationComponent implements OnInit {
   }
 
   putData(selectedData) {
-    console.log('selectedData: ', selectedData);
+    // console.log('selectedData: ', selectedData);
     this.contentsService.updateContent(this.engType[this.selectedData.type], selectedData)
       .subscribe(
       data => {
         this.alertService.info((data) ? '컨텐츠가 수정되었습니다.' : '오류가 발생했습니다.');
         this.updateContents(this.selectedData.type);
-        console.log(data);
+        // console.log(data);
       },
       error => {
         this.alertService.info('불러오기에 실패하였습니다.');
-        console.log('error: ', error);
+        // console.log('error: ', error);
       }
       );
   }
