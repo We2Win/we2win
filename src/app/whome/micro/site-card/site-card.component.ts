@@ -19,6 +19,8 @@ export class SiteCardComponent implements OnInit {
   @Input('record') record;
   @Input() level = 'STANDARD';
   isBookmarked = false;
+  // '분양중', '분양 마감', '미정';
+  dateStatus = '미정';
 
   engType = {
     '리포트': 'report',
@@ -48,6 +50,14 @@ export class SiteCardComponent implements OnInit {
     if (this.record['level']) {
       this._elementRef.nativeElement.classList.add(this.record['level'].toLowerCase());
     }
+    const now = new Date();
+    const start = new Date(this.record['open-start']);
+    const end = new Date(this.record['open-end']);
+    if (now > start && now < end) {
+      this.dateStatus = '분양중';
+    } else {
+      this.dateStatus = '분양 마감';
+    }
   }
 
   formatDate(dateStr) {
@@ -55,7 +65,10 @@ export class SiteCardComponent implements OnInit {
   }
 
   isSelf() {
-    if (window.location.pathname === '/site/site-detail/' + this.record['no']) {
+    const paths = window.location.pathname.split('/');
+    // console.log('paths: ', paths, paths[1] === 'site', paths[3] === this.record['no']);
+    // tslint:disable-next-line:triple-equals
+    if (paths[1] === 'site' && paths[3] == this.record['no']) {
       this.alertService.info('현재 컨텐츠와 동일한 컨텐츠입니다.');
     }
   }

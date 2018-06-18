@@ -9,6 +9,7 @@
   </div>
   <h3>{{ record['type'] }}</h3>
   <h2>{{ record['title'] }}</h2>
-  <h4>모집일 {{ formatDate(record['open-start']) }} ~ {{ formatDate(record['open-end']) }}</h4>
+  <h4>분양모집 {{ dateStatus }}</h4>
+  <!-- <h4>모집일 {{ formatDate(record['open-start']) }} ~ {{ formatDate(record['open-end']) }}</h4> -->
   <h5><b>{{ record['ammount'].toLocaleString() }}</b>천만원</h5>
 </div>

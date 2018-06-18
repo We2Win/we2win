@@ -37,6 +37,8 @@ export class SiteDetailComponent implements OnInit {
   showCharts = true;
   showMoreReport = false;
   isBookmarked = false;
+  // '분양중', '분양 마감', '미정';
+  dateStatus = '미정';
 
   userInfo = new UserInfo();
   // userInfo;
@@ -119,6 +121,17 @@ export class SiteDetailComponent implements OnInit {
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['slave-image1'];
 
           this.isBookmarked = this.Data['isBookmarked'];
+
+          const now = new Date();
+          const start = new Date(this.Data['open-start']);
+          const end = new Date(this.Data['open-end']);
+          if (now > start && now < end) {
+            this.dateStatus = '분양중';
+          } else {
+            this.dateStatus = '분양 마감';
+          }
+
+          console.log('userInfo: ', this.userInfo);
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
           this.meta.addTag({ name: 'og:title', content: this.Data['title'] });

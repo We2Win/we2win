@@ -9,8 +9,9 @@
       <h1>{{Data['title']}}</h1>
       <p class="document" [innerHtml]="Data['summary']"></p>
       <div>
-        <label>분양모집일</label>
-        <p>{{Data['open-start'].slice(0,10)}} - {{Data['open-end'].slice(0,10)}}</p>
+        <label>분양모집</label>
+        <p>{{dateStatus}}</p>
+        <!-- <p>{{Data['open-start'].slice(0,10)}} - {{Data['open-end'].slice(0,10)}}</p> -->
       </div>
       <div>
         <label>분양가</label>
@@ -74,7 +75,7 @@
         </div>
         <div name="commentBox" class="row">
           <form class="commentForm" (submit)="addComment()">
-            <label>{{userInfo['user_id'] ? userInfo['user_id'] : '비회원'}}</label>
+            <label>{{userInfo['user_id'].length ? userInfo['user_id'] : '비회원'}}</label>
             <textarea type="text" class="commentInput" #NewComment></textarea>
             <app-button (click)="addComment()">댓글 입력</app-button>
           </form>
