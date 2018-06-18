@@ -441,8 +441,8 @@
         <form [formGroup]="uploadForm3" id="upload3" action="/api/v2/upload" method="post">
           <li>
             <h2 class="subTitleBar">파일 등록</h2>
-            <input type="file" (change)="selectFile($event, '-file')" #I9>
-            <app-button [ngClass]="{disabled: inputs['-file']!=='파일 없음'}" (click)="upload(selectedData.type, '-file')">{{uploadedFiles['-file']==='-done'?'등록 완료':'파일 등록'}}</app-button>
+            <input type="file" (change)="selectFile($event, 'file')" #I9>
+            <app-button [ngClass]="{disabled: inputs['file']!=='파일 없음'}" (click)="upload(selectedData.type, 'file')">{{uploadedFiles['file']==='-done'?'등록 완료':'파일 등록'}}</app-button>
           </li>
           <li>
             <p>모든 형식의 파일을 올릴 수 있습니다.</p>

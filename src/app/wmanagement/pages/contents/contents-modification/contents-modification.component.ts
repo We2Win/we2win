@@ -503,6 +503,7 @@ export class ContentsModificationComponent implements OnInit {
     const file = this.uploadedFiles[columnName];
 
     // console.log('inputs:', this.inputs['master-image']);
+    console.log('columnName: ', columnName, type);
 
     if (file) {
       this.uploadService.uploadFile(file, columnName);
