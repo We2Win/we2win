@@ -335,7 +335,7 @@ const searchContent = async function (body, page) {
 
   console.log('searching...');
   
-  const query = "SELECT * FROM `contentsLists` WHERE REPLACE(title, ' ', '') LIKE %'"+body+"'%";
+  const query = "SELECT * FROM `contentsLists` WHERE REPLACE(title, ' ', '') LIKE %"+body+"%";
 
   // models.sequelize.query("SELECT * FROM contentsLists").spread(
   //   (results, metadata) => {
