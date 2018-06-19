@@ -346,8 +346,10 @@ const searchContent = async function (body, page) {
   //   });
   // [err, content] = await to(Sequelize.query("SHOW TABLES"));
 
-  [err, content] = await to(models.sequelize.query(query), { type: Sequelize.QueryTypes.SELECT,
-  model: Content});
+  [err, content] = await to(models.sequelize.query(query), {
+    type: Sequelize.QueryTypes.SELECT,
+    model: Content
+  });
 
   console.log('content: ', content, err);
 
