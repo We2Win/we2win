@@ -15,6 +15,7 @@ const Schedule = require('./../models').schedule;
 const validator = require('validator');
 
 const Sequelize = require('sequelize');
+const models = require('./../models');
 
 
 const getUniqueKeyFromBody = function (body) {
@@ -335,7 +336,7 @@ const searchContent = async function (body, page) {
   console.log('searching...');
   
 
-  Sequelize.query("SELECT * FROM contentsLists").spread(
+  NodeList.sequelize.query("SELECT * FROM contentsLists").spread(
     (results, metadata) => {
       console.log('results: ', results);
     },
