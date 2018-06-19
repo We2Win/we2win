@@ -356,7 +356,7 @@ const searchContent = async function (body, page) {
     where: {
       [Sequelize.Op.or]: {
         title: {
-          [Sequelize.Op.like]: '%' + body.replace(' ', '%') + '%'
+          [Sequelize.Op.like]: '%' + body.split('').join('%') + '%'
         },
         level: {
           [Sequelize.Op.like]: '%' + body + '%'
