@@ -330,23 +330,25 @@ const searchContent = async function (body, page) {
   let err, content;
   page = (page - 1) * 12 || 0;
 
-  [err, content] = await to(Content.findAll({
-    offset: page,
-    limit: 12,
-    where: {
-      [Sequelize.Op.or]: {
-        title: {
-          [Sequelize.Op.like]: '%' + body + '%'
-        },
-        level: {
-          [Sequelize.Op.like]: '%' + body + '%'
-        },
-        'c-type': {
-          [Sequelize.Op.like]: '%' + body + '%'
-        },
-      }
-    }
-  }));
+  [err, content] = await to(sequelize.query('SELECT * FROM users WHERE REPLACE(title, \' \', \'\') LIKE %'+body+'% LIMIT '+page+', 12 ', { type: sequelize.QueryTypes.SELECT}));
+
+  // [err, content] = await to(Content.findAll({
+  //   offset: page,
+  //   limit: 12,
+  //   where: {
+  //     [Sequelize.Op.or]: {
+  //       title: {
+  //         [Sequelize.Op.like]: '%' + body + '%'
+  //       },
+  //       level: {
+  //         [Sequelize.Op.like]: '%' + body + '%'
+  //       },
+  //       'c-type': {
+  //         [Sequelize.Op.like]: '%' + body + '%'
+  //       },
+  //     }
+  //   }
+  // }));
 
   console.log('err: ', err, 'content: ', content);
 

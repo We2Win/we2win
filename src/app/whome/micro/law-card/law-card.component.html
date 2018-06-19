@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="record['rank']" (click)="download()">
+<div class="card" [ngClass]="record['rank']" (click)="viewPopup()">
   <div id="levelBar">{{ record['level'] }}</div>
   <div id="imgFrame">
     <img [src]="imageUrl" alt="부동산 사진">
@@ -10,3 +10,7 @@
   <h3>법률 및 정책</h3>
   <h2>{{ record['title'] }}</h2>
 </div>
+
+<app-popup>
+  <pdf-viewer [src]="fileUrl" [render-text]="true" [original-size]="false"></pdf-viewer>
+</app-popup>

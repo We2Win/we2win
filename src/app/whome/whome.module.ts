@@ -86,7 +86,7 @@ import { SchedulerWeekComponent } from './micro/scheduler-week/scheduler-week.co
 import { SchedulerDayComponent } from './micro/scheduler-day/scheduler-day.component';
 import { SchedulerMonthComponent } from './micro/scheduler-month/scheduler-month.component';
 import { RequestComponent } from './pages/signup/request/request.component';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -98,6 +98,7 @@ export function tokenGetter() {
     WhomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    PdfViewerModule
   ],
   declarations: [
     HeaderComponent,

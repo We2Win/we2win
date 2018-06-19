@@ -17,14 +17,15 @@ import { UserService } from '../../services/user.service';
   selector: 'app-law-card',
   templateUrl: './law-card.component.html',
   styleUrls: ['./law-card.component.css'],
-  providers: [ ContentsService ]
+  providers: [ContentsService]
 })
 export class LawCardComponent implements OnInit {
-  @Input('record') record;
+  @Input('record') record;ㅈ
   @Input() level = 'STANDARD';
   isBookmarked = false;
 
   imageUrl = '/assets/img/icon_document.png';
+  fileUrl;
 
   constructor(
     private _elementRef: ElementRef,
@@ -83,6 +84,26 @@ export class LawCardComponent implements OnInit {
         data => {
           // console.log('file data:', data['content']['file']);
           window.location.assign(environment.bucket.downloadUrl + data['content']['file']);
+        });
+    } else {
+      this.router.navigate(['login']);
+    }
+  }
+
+  viewPopup() {
+    if (this.authService.isAuthenticated()) {
+      this.contentsService.getFilePath(this.record['c-id']).subscribe(
+        data => {
+          const now = new Date();
+          const applyEndDate = new Date(this.record['apply-end']);
+
+          if (now > applyEndDate) {
+            this.alertService.warn('유효기간이 지난 항목입니다.');
+            return false;
+          }
+
+          this.fileUrl = environment.bucket.downloadUrl + data['content']['file'];
+          this._elementRef.nativeElement.querySelector('app-popup').classList.add('show');
         });
     } else {
       this.router.navigate(['login']);

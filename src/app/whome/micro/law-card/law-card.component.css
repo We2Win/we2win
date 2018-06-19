@@ -157,3 +157,12 @@
   color: rgb(153, 119, 27);
 }
 
+app-popup /deep/ #popupBox{
+  width: 868px;
+  left: calc(50vw - 868px / 2)
+}
+
+pdf-viewer {
+  width: 100%;
+  height: 60vh;
+}
