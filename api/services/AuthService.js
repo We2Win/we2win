@@ -333,8 +333,16 @@ const searchContent = async function (body, page) {
   // console.log("SELECT * FROM ₩contentsLists₩ WHERE REPLACE(title, \' \', \'\') LIKE %'+body+'% LIMIT '+page+', 12");
 
   console.log('searching...');
-  [err, content] = await to(Sequelize.query("SHOW TABLES"));
-  console.log('content: ', content, err);
+  
+
+  Sequelize.query("SELECT * FROM contentsLists").spread(
+    (results, metadata) => {
+      console.log('results: ', results);
+    },
+    err => {
+      console.log('ERROR: ', err);
+    });
+  // [err, content] = await to(Sequelize.query("SHOW TABLES"));
 
   // Sequelize.query("SELECT * FROM ₩contentsLists₩ WHERE REPLACE(title, \' \', \'\') LIKE %"+body+"% LIMIT "+page+", 12", { type: Sequelize.QueryTypes.SELECT})
   // .then(
@@ -362,7 +370,7 @@ const searchContent = async function (body, page) {
 
   console.log('err: ', err, 'content: ', content);
 
-  return content;
+  // return content;
 }
 module.exports.searchContent = searchContent;
 
