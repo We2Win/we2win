@@ -334,21 +334,39 @@ const searchContent = async function (body, page) {
   // console.log("SELECT * FROM ₩contentsLists₩ WHERE REPLACE(title, \' \', \'\') LIKE %'+body+'% LIMIT '+page+', 12");
 
   console.log('searching...');
-  
-  const query = "SELECT * FROM `contentsLists` WHERE REPLACE(title, ' ', '') LIKE '%"+body+"%' LIMIT "+page+", 12";
 
-  // models.sequelize.query("SELECT * FROM contentsLists").spread(
-  //   (results, metadata) => {
-  //     console.log('results: ', results);
-  //   },
-  //   err => {
-  //     console.log('ERROR: ', err);
-  //   });
-  // [err, content] = await to(Sequelize.query("SHOW TABLES"));
+  // const query = "SELECT * FROM `contentsLists` WHERE REPLACE(title, ' ', '') LIKE '%" + body + "%' LIMIT " + page + ", 12";
 
-  [err, content] = await to(models.sequelize.query(query), {
-    model: Content
-  });
+  // // models.sequelize.query("SELECT * FROM contentsLists").spread(
+  // //   (results, metadata) => {
+  // //     console.log('results: ', results);
+  // //   },
+  // //   err => {
+  // //     console.log('ERROR: ', err);
+  // //   });
+  // // [err, content] = await to(Sequelize.query("SHOW TABLES"));
+
+  // [err, content] = await to(models.sequelize.query(query), {
+  //   model: Content
+  // });
+
+  [err, content] = await to(Content.findAll({
+    offset: page,
+    limit: 12,
+    where: {
+      [Sequelize.Op.or]: {
+        title: {
+          [Sequelize.Op.like]: '%' + body.replace(' ', '%') + '%'
+        },
+        level: {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+        'c-type': {
+          [Sequelize.Op.like]: '%' + body + '%'
+        },
+      }
+    }
+  }))
 
   console.log('content: ', content, err);
 
@@ -574,7 +592,7 @@ module.exports.addBookmark = addBookmark;
 
 const removeBookmark = async function (uId, body) {
   let unique_key, auth_info, err, content;
-  
+
   const info = {
     'u-id': uId,
     'c-id': body['c-id'],
