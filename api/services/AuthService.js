@@ -330,7 +330,11 @@ const searchContent = async function (body, page) {
   let err, content;
   page = (page - 1) * 12 || 0;
 
-  [err, content] = await to(sequelize.query("SELECT * FROM ₩users₩ WHERE REPLACE(title, \' \', \'\') LIKE %'+body+'% LIMIT '+page+', 12", { type: sequelize.QueryTypes.SELECT}));
+  sequelize.query("SELECT * FROM ₩users₩ WHERE REPLACE(title, \' \', \'\') LIKE %'+body+'% LIMIT '+page+', 12", { type: sequelize.QueryTypes.SELECT})
+  .then(
+    data => {
+      content = data
+    });
 
   // [err, content] = await to(Content.findAll({
   //   offset: page,
