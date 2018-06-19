@@ -335,7 +335,7 @@ const searchContent = async function (body, page) {
 
   console.log('searching...');
   
-  const query = "SELECT * FROM ₩contentsLists₩ WHERE REPLACE(title, \' \', \'\') LIKE %"+body+"% LIMIT "+page+", 12";
+  const query = "SELECT * FROM `contentsLists` WHERE REPLACE(title, \' \', \'\') LIKE %"+body+"% LIMIT "+page+", 12";
 
   // models.sequelize.query("SELECT * FROM contentsLists").spread(
   //   (results, metadata) => {
