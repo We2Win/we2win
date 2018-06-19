@@ -347,7 +347,6 @@ const searchContent = async function (body, page) {
   // [err, content] = await to(Sequelize.query("SHOW TABLES"));
 
   [err, content] = await to(models.sequelize.query(query), {
-    type: Sequelize.QueryTypes.SELECT,
     model: Content
   });
 
@@ -359,25 +358,25 @@ const searchContent = async function (body, page) {
   //     content = data
   //   });
 
-  [err, content] = await to(Content.findAll({
-    offset: page,
-    limit: 12,
-    where: {
-      [Sequelize.Op.or]: {
-        title: {
-          [Sequelize.Op.like]: '%' + body + '%'
-        },
-        level: {
-          [Sequelize.Op.like]: '%' + body + '%'
-        },
-        'c-type': {
-          [Sequelize.Op.like]: '%' + body + '%'
-        },
-      }
-    }
-  }));
+  // [err, content] = await to(Content.findAll({
+  //   offset: page,
+  //   limit: 12,
+  //   where: {
+  //     [Sequelize.Op.or]: {
+  //       title: {
+  //         [Sequelize.Op.like]: '%' + body + '%'
+  //       },
+  //       level: {
+  //         [Sequelize.Op.like]: '%' + body + '%'
+  //       },
+  //       'c-type': {
+  //         [Sequelize.Op.like]: '%' + body + '%'
+  //       },
+  //     }
+  //   }
+  // }));
 
-  console.log('err: ', err, 'content: ', content);
+  // console.log('err: ', err, 'content: ', content);
 
   return content;
 }
