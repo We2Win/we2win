@@ -336,7 +336,7 @@ const searchContent = async function (body, page) {
   console.log('searching...');
   
 
-  NodeList.sequelize.query("SELECT * FROM contentsLists").spread(
+  models.sequelize.query("SELECT * FROM contentsLists").spread(
     (results, metadata) => {
       console.log('results: ', results);
     },
