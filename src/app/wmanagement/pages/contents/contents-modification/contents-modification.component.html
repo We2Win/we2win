@@ -203,12 +203,13 @@
           <h2>컨텐츠 제목</h2>
           <input class="form-control" formControlName="title" type="text" placeholder="제목을 입력하세요" />
         </li>
+        <li>
+          <h2></h2>
+          <p>요약 정보는 3줄 이내로 작성해 주세요.</p>
+        </li>
         <li class="form-group">
           <h2>요약 정보</h2>
           <quill-editor class="form-control short" (change)="checkRows($event, 3)" formControlName="summary" [options]="editorOptions"></quill-editor>
-        </li>
-        <li>
-          <p>요약 정보는 3줄 이내로 작성해 주세요.</p>
         </li>
         <li>
           <h2>분양 오픈일</h2>

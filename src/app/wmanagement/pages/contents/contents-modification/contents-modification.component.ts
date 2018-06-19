@@ -232,7 +232,7 @@ export class ContentsModificationComponent implements OnInit {
     this.contentsService.getContentsDetail(this.engType[this.selectedData.type], this.contentNoArr[num]).subscribe(
       data => {
         this.loadedData = data;
-        // console.log('changedData: ', data);
+        console.log('changedData: ', data);
 
         const form = this.forms[this.selectedData.type];
         // const symbol = form.controls;
@@ -245,7 +245,6 @@ export class ContentsModificationComponent implements OnInit {
             form.controls[field].setValue(this.loadedData[field].slice(0, 10));
           } else if (field === 'level') {
             form.controls[field].setValue(this.loadedData[field]);
-            // console.log('type: ', this.selectedData.type);
             switch (this.selectedData.type) {
               case '리포트':
                 this.ILevel.selected = this.loadedData[field];
@@ -344,11 +343,11 @@ export class ContentsModificationComponent implements OnInit {
       'notification': new FormControl(''),
       'title': new FormControl('', [Validators.required]),
       'summary': new FormControl('', [Validators.required]),
-      'open-start': new FormControl(''),
-      'open-end': new FormControl(''),
+      'open-start': new FormControl('', [Validators.required]),
+      'open-end': new FormControl('', [Validators.required]),
       'ammount': new FormControl(''),
-      'manager-name': new FormControl(''),
-      'manager-contact': new FormControl(''),
+      'manager-name': new FormControl('', [Validators.required]),
+      'manager-contact': new FormControl('', [Validators.required]),
       'current-duration1': new FormControl(''),
       'current-duration2': new FormControl(''),
       'current-duration3': new FormControl(''),
