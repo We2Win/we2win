@@ -376,7 +376,7 @@ const searchContent = async function (body, page) {
 
   console.log('err: ', err, 'content: ', content);
 
-  // return content;
+  return content;
 }
 module.exports.searchContent = searchContent;
 
