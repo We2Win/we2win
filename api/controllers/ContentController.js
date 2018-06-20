@@ -424,9 +424,13 @@ const getPrivacyData = async function (req, res) {
     }
   }).then((content) => {
     console.log('privacy content: ', content);
-    return ReS(res, {
-      content: content.dataValues
-    })
+    if (content.dataValues) {
+      return ReS(res, {
+        content: content.dataValues
+      })
+    } else {
+      return ReS(res, {message: 'noData'});
+    }
   });
 }
 module.exports.getPrivacyData = getPrivacyData;
@@ -440,9 +444,13 @@ const getUseData = async function (req, res) {
     }
   }).then((content) => {
     console.log('use content: ', content);    
-    return ReS(res, {
-      content: content.dataValues
-    })
+    if (content.dataValues) {
+      return ReS(res, {
+        content: content.dataValues
+      })
+    } else {
+      return ReS(res, { message: 'noData' });
+    }
   });
 }
 module.exports.getUseData = getUseData;
