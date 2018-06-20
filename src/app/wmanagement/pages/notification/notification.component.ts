@@ -48,6 +48,17 @@ export class NotificationComponent implements OnInit {
     this.privacyForm = new FormGroup({
       'contents': new FormControl('')
     });
+
+    this.contentsService.getCompanyInfo('use').subscribe(
+      content => {
+        this.useForm.controls['contents'].setValue(content);
+      }
+    );
+    this.contentsService.getCompanyInfo('privacy').subscribe(
+      content => {
+        this.privacyForm.controls['contents'].setValue(content);
+      }
+    );
   }
 
   onSubmitUse() {

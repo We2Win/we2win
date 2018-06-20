@@ -27,6 +27,11 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  getCompanyInfo(type) {
+    return this.http.get(environment.apiUrl + '/' + type)
+      .map((res: any) => res);
+  }
+
   updateCompanyInfo(type, data) {
     // console.log('hi updateContent()');
     const headers = new Headers({ 'Content-Type': 'application/json' });
