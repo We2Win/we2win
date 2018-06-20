@@ -4,6 +4,7 @@
  * @brief a page for showing company's use info. (/policy//use)
  */
 import { Component, OnInit } from '@angular/core';
+import { ContentsService } from '../../../services/contents.service';
 
 @Component({
   selector: 'app-use',
@@ -11,10 +12,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./use.component.css']
 })
 export class UseComponent implements OnInit {
+  content;
 
-  constructor() { }
+  constructor(
+    private contentsService: ContentsService
+  ) { }
 
   ngOnInit() {
+    this.contentsService.getCompanyInfo('use').subscribe(
+      content => {
+        console.log(content);
+        this.content = content;
+      }
+    );
   }
 
 }

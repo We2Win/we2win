@@ -429,7 +429,7 @@ const getPrivacyData = async function (req, res) {
         content: content.dataValues
       })
     } else {
-      return ReS(res, {message: 'noData'});
+      return ReS(res, { content: ''});
     }
   });
 }
@@ -449,7 +449,7 @@ const getUseData = async function (req, res) {
         content: content.dataValues
       })
     } else {
-      return ReS(res, { message: 'noData' });
+      return ReS(res, { content: '' });
     }
   });
 }

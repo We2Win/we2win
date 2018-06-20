@@ -51,12 +51,14 @@ export class NotificationComponent implements OnInit {
 
     this.contentsService.getCompanyInfo('use').subscribe(
       content => {
-        this.useForm.controls['contents'].setValue(content.contents);
+        console.log('content in use: ', content);
+        this.useForm.controls['contents'].setValue(content.content.contents);
       }
     );
     this.contentsService.getCompanyInfo('privacy').subscribe(
       content => {
-        this.privacyForm.controls['contents'].setValue(content.contents);
+        console.log('content in use: ', content);
+        this.privacyForm.controls['contents'].setValue(content.content.contents);
       }
     );
   }
@@ -65,13 +67,13 @@ export class NotificationComponent implements OnInit {
     console.log(this.useForm.value);
     this.contentsService.updateCompanyInfo('use', this.useForm.value)
       .subscribe(
-        data => {
-          this.alertService.info((data) ? '컨텐츠가 수정되었습니다.' : '오류가 발생했습니다.');
-          console.log('data: ', data);
-        },
-        error => {
-          this.alertService.error('불러오기에 실패하였습니다.');
-        }
+      data => {
+        this.alertService.info((data) ? '컨텐츠가 수정되었습니다.' : '오류가 발생했습니다.');
+        console.log('data: ', data);
+      },
+      error => {
+        this.alertService.error('불러오기에 실패하였습니다.');
+      }
       );
   }
 
