@@ -1,9 +1,11 @@
 :host {
   display: block;
   min-width: var(--main-width);
-  background: var(--footer-bg-color);
+  background: #232323;
+  /* background: var(--footer-bg-color); */
   padding: 0;
-  color: var(--footer-font-normal);
+  color: #aaa;
+  /* color: var(--footer-font-normal); */
   cursor: default;
 }
 
@@ -34,6 +36,11 @@ nav li:hover {
 
 p {
   font-size: 0.8em;
+}
+
+#info {
+  padding-left: 2em;
+  padding-bottom: 1em;
 }
 
 b {

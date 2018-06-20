@@ -35,9 +35,14 @@ nav li:hover {
 }
 
 p {
-    font-size: 0.8em;
+  font-size: 0.8em;
+}
+
+#info {
+  padding-left: 2em;
+  padding-bottom: 1em;  
 }
 
 b {
-    color: #ddd;
+  color: #ddd;
 }
