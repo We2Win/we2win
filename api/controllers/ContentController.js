@@ -424,7 +424,7 @@ const getPrivacyData = async function (req, res) {
     }
   }).then((content) => {
     console.log('privacy content: ', content);
-    if (content.dataValues) {
+    if (content) {
       return ReS(res, {
         content: content.dataValues
       })
@@ -444,7 +444,7 @@ const getUseData = async function (req, res) {
     }
   }).then((content) => {
     console.log('use content: ', content);    
-    if (content.dataValues) {
+    if (content) {
       return ReS(res, {
         content: content.dataValues
       })
