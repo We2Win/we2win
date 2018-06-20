@@ -455,7 +455,7 @@ const editPrivacyData = async function (req, res) {
         type: 'privacy'
       },
       defaults: {
-        body: req.body.contents
+        contents: req.body.contents
       }
     })
     .spread((body, created) => {
@@ -481,7 +481,7 @@ const editUseData = async function (req, res) {
         type: 'use'
       },
       defaults: {
-        body: req.body.contents
+        contents: req.body.contents
       }
     })
     .spread((body, created) => {
