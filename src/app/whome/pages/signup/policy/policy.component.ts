@@ -6,6 +6,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../../../services/alert.service';
+import { ContentsService } from '../../../services/contents.service';
 
 @Component({
   selector: 'app-policy',
@@ -16,12 +17,28 @@ export class PolicyComponent implements OnInit {
   agree1: boolean;
   agree2: boolean;
 
+  useContent;
+  privacyContent;
+
   constructor(
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private contentsService: ContentsService
   ) { }
 
   ngOnInit( ) {
+    this.contentsService.getCompanyInfo('use').subscribe(
+      content => {
+        console.log(content);
+        this.useContent = content.content.contents;
+      }
+    );
+    this.contentsService.getCompanyInfo('privacy').subscribe(
+      content => {
+        console.log(content);
+        this.privacyContent = content.content.contents;
+      }
+    );
   }
 
   checkAgreement() {

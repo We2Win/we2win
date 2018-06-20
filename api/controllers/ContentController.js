@@ -460,24 +460,48 @@ const editPrivacyData = async function (req, res) {
 
   console.log('contents: ', req.body);
 
-  CompanyInfo.findOrCreate({
-      where: {
-        type: 'privacy'
-      },
-      defaults: {
-        contents: req.body.contents
-      }
-    })
-    .spread((body, created) => {
-      if (created) {
-        console.log('New body: ', body.dataValues);
-        return ReS(res, body.dataValues);
-        
+  CompanyInfo.findOne({
+    where: {
+      type: 'privacy'
+    }
+  }).then(
+    data => {
+      if (data) {
+        CompanyInfo.update(
+        {
+            contents: req.body.contents          
+        },
+        {
+          where: {
+            type: 'privacy'
+          }
+        }).then(
+          content => {
+            return ReS(res, { message: 'done' });
+          }
+        )
       } else {
-        console.log('Old body: ', body.dataValues);
-        return ReS(res, body.dataValues);
+        CompanyInfo.findOrCreate({
+          where: {
+            type: 'privacy'
+          },
+          defaults: {
+            contents: req.body.contents
+          }
+        })
+          .spread((body, created) => {
+            if (created) {
+              console.log('New body: ', body.dataValues);
+              return ReS(res, body.dataValues);
+
+            } else {
+              console.log('Old body: ', body.dataValues);
+              return ReS(res, body.dataValues);
+            }
+          });
       }
-    });
+    }
+  )
 }
 module.exports.editPrivacyData = editPrivacyData;
 
@@ -486,24 +510,48 @@ const editUseData = async function (req, res) {
 
   console.log('contents: ', req.body);
 
-  CompanyInfo.findOrCreate({
-      where: {
-        type: 'use'
-      },
-      defaults: {
-        contents: req.body.contents
-      }
-    })
-    .spread((body, created) => {
-      if (created) {
-        console.log('New body: ', body.dataValues);
-        return ReS(res, body.dataValues);
-        
+  CompanyInfo.findOne({
+    where: {
+      type: 'use'
+    }
+  }).then(
+    data => {
+      if (data) {
+        CompanyInfo.update(
+          {
+            contents: req.body.contents
+          },
+          {
+            where: {
+              type: 'use'
+            }
+          }).then(
+          content => {
+            return ReS(res, { message: 'done' });
+          }
+          )
       } else {
-        console.log('Old body: ', body.dataValues);
-        return ReS(res, body.dataValues);
+        CompanyInfo.findOrCreate({
+          where: {
+            type: 'use'
+          },
+          defaults: {
+            contents: req.body.contents
+          }
+        })
+          .spread((body, created) => {
+            if (created) {
+              console.log('New body: ', body.dataValues);
+              return ReS(res, body.dataValues);
+
+            } else {
+              console.log('Old body: ', body.dataValues);
+              return ReS(res, body.dataValues);
+            }
+          });
       }
-    });
+    }
+    )
 }
 module.exports.editUseData = editUseData;
 
