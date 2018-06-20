@@ -86,6 +86,10 @@ router.get('/countShare/:cid', ContentController.countShare);
 
 router.get('/mng/dashboard/users', UserController.getDashBoardData);
 router.get('/mng/dashboard/contents', ContentController.getDashBoardData);
+router.get('/mng/dashboard/privacy', ContentController.getPrivacyData);
+router.get('/mng/dashboard/use', ContentController.getUseData);
+router.put('/mng/dashboard/privacy', ContentController.editPrivacyData);
+router.put('/mng/dashboard/use', ContentController.editUseData);
 router.get('/mng/users/:level/:amount/:id', UserController.getUsers);
 router.get('/mng/users/:query', UserController.getUsersByQuery);
 router.delete('/mng/users/:id', UserController.removeUser); //delete

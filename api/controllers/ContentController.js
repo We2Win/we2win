@@ -12,6 +12,7 @@ const InfoScrap = require('../models').infoScrap;
 const SiteScrap = require('../models').siteScrap;
 const Schedule = require('../models').schedule;
 const ViewList = require('../models').viewList;
+const CompanyInfo = require('../models').companyInfo;
 const jwt = require('jsonwebtoken');
 
 // temporary
@@ -414,6 +415,88 @@ const getCount = async function (req, res) {
 }
 module.exports.getCount = getCount;
 
+const getPrivacyData = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  CompanyInfo.findOne({
+    where: {
+      'type': 'privacy'
+    }
+  }).then((content) => {
+    return ReS(res, {
+      content: content.dataValues
+    })
+  });
+}
+module.exports.getPrivacyData = getPrivacyData;
+
+const getUseData = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  CompanyInfo.findOne({
+    where: {
+      'type': 'use'
+    }
+  }).then((content) => {
+    return ReS(res, {
+      content: content.dataValues
+    })
+  });
+}
+module.exports.getUseData = getUseData;
+
+const editPrivacyData = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  console.log('content: ');
+
+  CompanyInfo.findOrCreate({
+      where: {
+        type: 'privacy'
+      },
+      defaults: {
+        body: req.body
+      }
+    })
+    .spread((body, created) => {
+      if (created) {
+        console.log('New body: ', body.dataValues);
+        return ReS(res, body.dataValues);
+        
+      } else {
+        console.log('Old body: ', body.dataValues);
+        return ReS(res, body.dataValues);
+      }
+    });
+}
+module.exports.editPrivacyData = editPrivacyData;
+
+const editUseData = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  console.log('content: ');
+
+  CompanyInfo.findOrCreate({
+      where: {
+        type: 'use'
+      },
+      defaults: {
+        body: req.body
+      }
+    })
+    .spread((body, created) => {
+      if (created) {
+        console.log('New body: ', body.dataValues);
+        return ReS(res, body.dataValues);
+        
+      } else {
+        console.log('Old body: ', body.dataValues);
+        return ReS(res, body.dataValues);
+      }
+    });
+}
+module.exports.editUseData = editUseData;
+
 const getMeetingTitles = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
@@ -736,7 +819,7 @@ const getRankingList = async function (req, res) {
       [err, contents] = await to(ViewList.findAll({
         where: {
           // from: {
-            // [Sequelize.Op.between]: [startDate, endDate],
+          // [Sequelize.Op.between]: [startDate, endDate],
           // },
           [Sequelize.Op.or]: ['report', 'news', 'law']
         },
@@ -749,7 +832,7 @@ const getRankingList = async function (req, res) {
             'c-id': contents[i]['c-id']
           }
         }));
-        if (err) return ReE(res, err, 422);        
+        if (err) return ReE(res, err, 422);
         results.push(result);
       }
       break;

@@ -78,6 +78,11 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  getCompanyInfo(type) {
+    return this.http.get(environment.apiUrl + '/' + type)
+      .map((res: any) => res);
+  }
+
   deleteComments(uid, cid) {
     const httpOptions = {};
     if (this.authService.isAuthenticated()) {
