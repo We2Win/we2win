@@ -1,4 +1,8 @@
 section {
-  margin-top: 9em;
   margin-bottom: 5em;
+}
+
+h1 {
+  margin-bottom: 2em;
+  text-align: center;
 }

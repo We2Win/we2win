@@ -9,7 +9,8 @@ import { ContentsService } from '../../../services/contents.service';
 @Component({
   selector: 'app-use',
   templateUrl: './use.component.html',
-  styleUrls: ['./use.component.css']
+  styleUrls: ['./use.component.css'],
+  providers: [ContentsService]
 })
 export class UseComponent implements OnInit {
   content;
@@ -22,7 +23,7 @@ export class UseComponent implements OnInit {
     this.contentsService.getCompanyInfo('use').subscribe(
       content => {
         console.log(content);
-        this.content = content;
+        this.content = content.content.contents;
       }
     );
   }
