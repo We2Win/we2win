@@ -39,6 +39,8 @@ router.post('/contents', ContentController.createContents);
 // router.get('/contents', ContentController.get);
 router.delete('/contents/:type/:cid', ContentController.deleteContent);
 
+router.get('/privacy', ContentController.getPrivacyData);
+router.get('/use', ContentController.getUseData);
 
 router.get('/search/:id/:pages', ContentController.searchContents);
 
@@ -86,8 +88,7 @@ router.get('/countShare/:cid', ContentController.countShare);
 
 router.get('/mng/dashboard/users', UserController.getDashBoardData);
 router.get('/mng/dashboard/contents', ContentController.getDashBoardData);
-router.get('/mng/dashboard/privacy', ContentController.getPrivacyData);
-router.get('/mng/dashboard/use', ContentController.getUseData);
+
 router.put('/mng/dashboard/privacy', ContentController.editPrivacyData);
 router.put('/mng/dashboard/use', ContentController.editUseData);
 router.get('/mng/users/:level/:amount/:id', UserController.getUsers);

@@ -448,14 +448,14 @@ module.exports.getUseData = getUseData;
 const editPrivacyData = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  console.log('content: ');
+  console.log('contents: ', req.body);
 
   CompanyInfo.findOrCreate({
       where: {
         type: 'privacy'
       },
       defaults: {
-        body: req.body
+        body: req.body.contents
       }
     })
     .spread((body, created) => {
@@ -474,14 +474,14 @@ module.exports.editPrivacyData = editPrivacyData;
 const editUseData = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
-  console.log('content: ');
+  console.log('contents: ', req.body);
 
   CompanyInfo.findOrCreate({
       where: {
         type: 'use'
       },
       defaults: {
-        body: req.body
+        body: req.body.contents
       }
     })
     .spread((body, created) => {

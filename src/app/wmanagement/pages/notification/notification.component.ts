@@ -43,10 +43,10 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit() {
     this.useForm = new FormGroup({
-      'content': new FormControl('')
+      'contents': new FormControl('')
     });
     this.privacyForm = new FormGroup({
-      'content': new FormControl('')
+      'contents': new FormControl('')
     });
   }
 
