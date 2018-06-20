@@ -51,12 +51,12 @@ export class NotificationComponent implements OnInit {
 
     this.contentsService.getCompanyInfo('use').subscribe(
       content => {
-        this.useForm.controls['contents'].setValue(content);
+        this.useForm.controls['contents'].setValue(content.contents);
       }
     );
     this.contentsService.getCompanyInfo('privacy').subscribe(
       content => {
-        this.privacyForm.controls['contents'].setValue(content);
+        this.privacyForm.controls['contents'].setValue(content.contents);
       }
     );
   }
