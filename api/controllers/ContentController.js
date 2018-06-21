@@ -332,7 +332,7 @@ const createEmployee = async function (req, res) {
 module.exports.createEmployee = createEmployee;
 
 const getAnalysisData = async function (req, res) {
-  const types = ['c-click', 'c-scrap', 'c-comments', 'c-sns'];
+  const types = ['c-click DESC', 'c-scrap DESC', 'c-comments DESC', 'c-sns DESC'];
   const contents = [];
 
   let err, total;
@@ -344,10 +344,8 @@ const getAnalysisData = async function (req, res) {
     const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
     for (const i in rowLevel) {
       let result;
-      [err, result] = await to(Content.findAndCountAll({
-        order: [
-          [types[type], 'DESC']
-        ],
+      [err, result] = await to(Content.count({
+        order: types[type],
         where: {
           'level': rowLevel[i]
         },
@@ -364,10 +362,8 @@ const getAnalysisData = async function (req, res) {
         break;
       }
       let result;      
-      [err, result] = await to(Content.findAndCountAll({
-        order: [
-          [types[type], 'DESC']
-        ],
+      [err, result] = await to(Content.count({
+        order: types[type],
         where: {
           'amount': {
             [Sequelize.Op.between]: [rowAmount[i], rowAmount[i + 1]]
