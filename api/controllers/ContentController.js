@@ -343,25 +343,29 @@ const getAnalysisData = async function (req, res) {
   const results = [];
 
   for (const type in types) {
-    let hotContents;
-    console.log('types: ', types, 'type: ', type);
-    [err, hotContents] = await to(Content.findAll({
+    Content.findAll({
       order: [types[type], 'DESC'],
       limit: total
     }).then(
-      data => {
-        console.log('data: ', data);
-        data.findAll({
-          limit: 1
-        }).then(
-          data1 => {
-            console.log('data1: ', data1);
-          }
-        )
+      hotContents => {
+        let rowLevelResults = [];
+        let countNum;
+
+        const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
+        for (const i in rowLevel) {
+          [err, countNum] = await to(hotContents.count({
+            where: {
+              'level': rowLevel[i]
+            }
+          }));
+          rowLevelResults.push(countNum);
+        }
+
+        console.log('rowLevelResults: ', rowLevelResults);
       }
-    ));
+    );
   }
-  
+
   //   let test;
   //   [err, test] = await to(hotContents.findAll({
   //     attributes: [Sequelize.fn('count', '*'), 'count']
