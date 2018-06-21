@@ -344,7 +344,7 @@ const getAnalysisData = async function (req, res) {
 
   for (const type in types) {
     Content.findAll({
-      order: [types[type], 'DESC'],
+      // order: [types[type], 'DESC'],
       limit: total
     }).then(
       hotContents => {
