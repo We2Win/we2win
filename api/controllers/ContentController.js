@@ -352,26 +352,29 @@ const getAnalysisData = async function (req, res) {
           [types[type], 'DESC']
         ],
         offset: 0,
-        limit: 2
+        limit: total
       }));
 
       console.log('level result: ', result);
     }
 
-    const rowAmount = [5, 10, 30, 50, 100];
+    const rowAmount = [0, 5, 10, 30, 50, 100];
     for (const i in rowAmount) {
+      if (i === 6) {
+        break;
+      }
       let result;      
       [err, result] = await to(Content.findAndCountAll({
         where: {
           'amount': {
-            [Sequelize.Op.lte]: rowAmount[i]
+            [Sequelize.Op.between]: [rowAmount[i], rowAmount[i+1]]
           }
         },
         order: [
           [types[type], 'DESC']
         ],
         offset: 0,
-        limit: 2
+        limit: total
       }));
 
       console.log('amount result: ', result);
