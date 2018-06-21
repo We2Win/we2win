@@ -353,6 +353,7 @@ const getAnalysisData = async function (req, res) {
 
         const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
         for (const i in rowLevel) {
+          console.log(i + ': ');
           hotContents.count({
             where: {
               'level': rowLevel[i]
@@ -370,6 +371,7 @@ const getAnalysisData = async function (req, res) {
 
         const rowAmount = ['5', '10', '30', '50', '100'];
         for (const i in rowAmount) {
+          console.log(i + ': ');
           hotContents.count({
             where: {
               'amount': {
