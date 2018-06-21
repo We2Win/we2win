@@ -337,14 +337,16 @@ const getAnalysisData = async function (req, res) {
 
   const total = Content.count();
   console.log('total: ', total);
+  const hotTotal = total / 3;
 
   const results = [];
 
   for (const type in types) {
     let hotContents;
+    console.log('types: ', types, 'type: ', type);
     [err, hotContents] = await to(Content.findAll({
       order: [types[type], 'DESC'],
-      limit: (total / 3)
+      limit: hotTotal
     }));
 
     console.log('hotContents: ', hotContents);
