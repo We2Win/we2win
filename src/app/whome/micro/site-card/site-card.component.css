@@ -65,6 +65,11 @@
   /* background: var(--level-standard-gradient); */
 }
 
+:host.all .card {
+  border-top: 1px solid #afafaf;
+  /* border-top: 4px solid var(--level-standard); */
+}
+
 .card:hover #levelBar {
   opacity: 1;
 }

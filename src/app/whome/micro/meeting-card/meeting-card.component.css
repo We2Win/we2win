@@ -35,6 +35,10 @@
   /* border-top: 4px solid var(--level-standard); */
 }
 
+:host.all .card {
+  border-top: 1px solid #afafaf;
+  /* border-top: 4px solid var(--level-standard); */
+}
 
 #levelBar {
   position: relative;
@@ -64,6 +68,12 @@
   background: linear-gradient(35deg, rgb(175, 175, 175), rgba(175, 175, 175, 0.6), rgba(175, 175, 175, 0.2));
   /* background: var(--level-standard-gradient); */
 }
+
+:host.all #levelBar {
+  background: linear-gradient(35deg, rgb(175, 175, 175), rgba(175, 175, 175, 0.6), rgba(175, 175, 175, 0.2));
+  /* background: var(--level-standard-gradient); */
+}
+
 
 .card:hover #levelBar {
   opacity: 1;

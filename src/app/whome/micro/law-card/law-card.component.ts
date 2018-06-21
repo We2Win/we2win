@@ -20,7 +20,7 @@ import { UserService } from '../../services/user.service';
   providers: [ContentsService]
 })
 export class LawCardComponent implements OnInit {
-  @Input('record') record;ㅈ
+  @Input('record') record;
   @Input() level = 'STANDARD';
   isBookmarked = false;
 
