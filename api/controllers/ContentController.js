@@ -354,20 +354,18 @@ const getAnalysisData = async function (req, res) {
     let rowLevelResults = [];
 
     const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
-    for (const i in rowLevel) {
-      console.log('level ' + i + ': ');
+    [err, result] = await to (Content.count({
+      where: {
+        'level': rowLevel[i]
+      },
+      order: [
+        [types[type], 'DESC']        
+      ],
+      limit: total      
+    }));
 
-      let hotContentsByLevel;
-      [err, hotContentsByLevel] = await to (hotContents.findAll({
-        where: {
-          'level': rowLevel[i]
-        }
-      }));
+    console.log(result);
 
-      rowLevelResults[i] = hotContentsByLevel.count();
-    }
-
-    let rowAmountResults = [];
 
     // const rowAmount = ['5', '10', '30', '50', '100'];
     // for (const i in rowAmount) {
