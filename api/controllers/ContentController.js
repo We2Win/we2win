@@ -352,7 +352,7 @@ const getAnalysisData = async function (req, res) {
         limit: total
       }));
 
-      console.log('level result: ', result);
+      console.log('level result: ', result.length);
     }
 
     const rowAmount = [0, 5, 10, 30, 50, 100];
@@ -371,7 +371,7 @@ const getAnalysisData = async function (req, res) {
         limit: total
       }));
 
-      console.log('amount result: ', result);
+      console.log('amount result: ', result.length);
     }
   }
 }
