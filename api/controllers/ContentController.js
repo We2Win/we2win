@@ -366,13 +366,6 @@ const getAnalysisData = async function (req, res) {
     );
   }
 
-  //   let test;
-  //   [err, test] = await to(hotContents.findAll({
-  //     attributes: [Sequelize.fn('count', '*'), 'count']
-  //   }));
-
-  //   console.log('hotContents: ', hotContents, test);
-
   //   let rowLevelResults = [];
   //   let countNum;
 
