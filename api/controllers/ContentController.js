@@ -356,8 +356,8 @@ const getAnalysisData = async function (req, res) {
     }
 
     const rowAmount = [0, 5, 10, 30, 50, 100];
-    for (const i in rowAmount) {
-      console.log(i, parseInt(i)+1, rowAmount[i], rowAmount[parseInt(i)+1]);
+    for (let i in rowAmount) {
+      i = parseInt(i);
       if (i === 6) {
         break;
       }
