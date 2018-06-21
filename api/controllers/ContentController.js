@@ -387,40 +387,39 @@ const getAnalysisData = async function (req, res) {
 
     // console.log('rowAmountResults: ', rowAmountResults);
   }
-}
 
-let rowLevelResults = [];
-let countNum;
+// let rowLevelResults = [];
+// let countNum;
 
-const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
-for (const i in rowLevel) {
-  [err, countNum] = await to(hotContents.count({
-    where: {
-      'level': rowLevel[i]
-    }
-  }));
-  rowLevelResults.push(countNum);
-}
+// const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
+// for (const i in rowLevel) {
+//   [err, countNum] = await to(hotContents.count({
+//     where: {
+//       'level': rowLevel[i]
+//     }
+//   }));
+//   rowLevelResults.push(countNum);
+// }
 
-console.log('rowLevelResults: ', rowLevelResults);
+// console.log('rowLevelResults: ', rowLevelResults);
 
-let rowAmountResults = [];
+// let rowAmountResults = [];
 
-const rowAmount = ['5', '10', '30', '50', '100'];
-for (const i in rowAmount) {
-  [err, countNum] = await to(hotContents.count({
-    where: {
-      'amount': {
-        [Sequelize.Op.lte]: rowAmount[i]
-      }
-    }
-  }));
-  rowAmountResults.push(countNum);
-}
+// const rowAmount = ['5', '10', '30', '50', '100'];
+// for (const i in rowAmount) {
+//   [err, countNum] = await to(hotContents.count({
+//     where: {
+//       'amount': {
+//         [Sequelize.Op.lte]: rowAmount[i]
+//       }
+//     }
+//   }));
+//   rowAmountResults.push(countNum);
+// }
 
-console.log('rowAmountResults: ', rowAmountResults);
+// console.log('rowAmountResults: ', rowAmountResults);
 
-}
+// }
 }
 module.exports.getAnalysisData = getAnalysisData;
 
