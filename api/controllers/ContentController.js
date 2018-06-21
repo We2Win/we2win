@@ -337,7 +337,7 @@ const getAnalysisData = async function (req, res) {
 
   let total;
   [err, total] = await to(Content.count());
-  total = total / 3;
+  total = Math.floor(total / 3);
   console.log('total: ', total);
 
   const results = [];
