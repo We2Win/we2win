@@ -348,6 +348,7 @@ const getAnalysisData = async function (req, res) {
       limit: total
     }).then(
       hotContents => {
+        console.log('hotContents: ', hotContents);
         let rowLevelResults = [];
 
         const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
