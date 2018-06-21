@@ -359,7 +359,7 @@ const getAnalysisData = async function (req, res) {
         limit: total
       }));
 
-      console.log('level result: ', result.length);
+      // console.log('level result: ', result.length);
       results[types[type]][0] = result.length;
     }
 
@@ -380,10 +380,13 @@ const getAnalysisData = async function (req, res) {
         limit: total
       }));
 
-      console.log('amount result: ', result.length);
+      // console.log('amount result: ', result.length);
       results[types[type]][1] = result.length;      
     }
   }
+
+  console.log('results: ', results);
+  return ReS(res, results);
 }
 module.exports.getAnalysisData = getAnalysisData;
 
