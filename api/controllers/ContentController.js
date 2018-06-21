@@ -347,10 +347,12 @@ const getAnalysisData = async function (req, res) {
     console.log('types: ', types, 'type: ', type);
     [err, hotContents] = await to(Content.findAll({
       // order: [types[type], 'DESC'],
-      limit: total
+      // limit: total
     }));
 
-    console.log('hotContents: ', hotContents);
+    let test;
+    [err, test] = await to(hotContents.count());
+    console.log('hotContents: ', hotContents, test);
 
     let rowLevelResults = [];
     let countNum;
