@@ -349,7 +349,7 @@ const getAnalysisData = async function (req, res) {
 
   for (const type in types) {
     const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
-    let rowLevelResults;
+    let rowLevelResults = [];
     for (const i in rowLevel) {
       let result;
       [err, result] = await to(Content.findAll({
@@ -368,7 +368,7 @@ const getAnalysisData = async function (req, res) {
     results[types[type]][0] = rowLevelResults;
 
     const rowAmount = [0, 5, 10, 30, 50, 100];
-    let rowAmountResults;
+    let rowAmountResults = [];
     for (let i in rowAmount) {
       i = parseInt(i);
       if (i === 6) {
