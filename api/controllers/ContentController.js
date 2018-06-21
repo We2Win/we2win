@@ -349,10 +349,13 @@ const getAnalysisData = async function (req, res) {
 
   for (const type in types) {
     const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
+    let rowLevelResults;
     for (const i in rowLevel) {
       let result;
       [err, result] = await to(Content.findAll({
-        order: [[types[type], 'DESC']],
+        order: [
+          [types[type], 'DESC']
+        ],
         where: {
           'level': rowLevel[i]
         },
@@ -360,18 +363,22 @@ const getAnalysisData = async function (req, res) {
       }));
 
       // console.log('level result: ', result.length);
-      results[types[type]][0] = result.length;
+      rowLevelResults[i] = result.length;
     }
+    results[types[type]][0] = rowLevelResults;
 
     const rowAmount = [0, 5, 10, 30, 50, 100];
+    let rowAmountResults;
     for (let i in rowAmount) {
       i = parseInt(i);
       if (i === 6) {
         break;
       }
-      let result;      
+      let result;
       [err, result] = await to(Content.findAll({
-        order: [[types[type], 'DESC']],
+        order: [
+          [types[type], 'DESC']
+        ],
         where: {
           'ammount': {
             [Sequelize.Op.between]: [rowAmount[i], rowAmount[i + 1]]
@@ -381,8 +388,9 @@ const getAnalysisData = async function (req, res) {
       }));
 
       // console.log('amount result: ', result.length);
-      results[types[type]][1] = result.length;      
+      rowAmountResults[i] = result.length;
     }
+    results[types[type]][1] = rowAmountResults;
   }
 
   console.log('results: ', results);
