@@ -349,19 +349,40 @@ const getAnalysisData = async function (req, res) {
     }).then(
       hotContents => {
         let rowLevelResults = [];
-        let countNum;
 
         const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
         for (const i in rowLevel) {
-          [err, countNum] = await to(hotContents.count({
+          hotContents.count({
             where: {
               'level': rowLevel[i]
             }
-          }));
-          rowLevelResults.push(countNum);
+          }).then(
+            countNum => {
+              rowLevelResults[i] = countNum;
+            }
+          );
         }
 
         console.log('rowLevelResults: ', rowLevelResults);
+
+        let rowAmountResults = [];
+
+        const rowAmount = ['5', '10', '30', '50', '100'];
+        for (const i in rowAmount) {
+          hotContents.count({
+            where: {
+              'amount': {
+                [Sequelize.Op.lte]: rowAmount[i]
+              }
+            }
+          }).then(
+            countNum => {
+              rowAmountResults[i] = countNum;
+            }
+          );
+        }
+
+        console.log('rowAmountResults: ', rowAmountResults);
       }
     );
   }
