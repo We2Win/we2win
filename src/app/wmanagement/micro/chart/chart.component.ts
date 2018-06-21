@@ -87,7 +87,7 @@ export class ChartComponent implements OnInit {
           datasets: [{
             data: ['500  ', '1200  ', '300  ']
           }],
-          labels: ['PLATINUM  ', 'PREMIUM  ', 'STANDARD  '],
+          labels: ['ALL  ', 'PLATINUM  ', 'PREMIUM  ', 'STANDARD  '],
         },
         options: this.optionA,
       },
@@ -109,7 +109,7 @@ export class ChartComponent implements OnInit {
             data: ['500  ', '1200  ', '300  ']
           }],
 
-          labels: ['PLATINUM  ', 'PREMIUM  ', 'STANDARD  '],
+          labels: ['ALL  ', 'PLATINUM  ', 'PREMIUM  ', 'STANDARD  '],
         },
         options: this.optionA
       },
@@ -132,7 +132,7 @@ export class ChartComponent implements OnInit {
             data: ['500  ', '1200  ', '300  ']
           }],
 
-          labels: ['PLATINUM  ', 'PREMIUM  ', 'STANDARD  '],
+          labels: ['ALL  ', 'PLATINUM  ', 'PREMIUM  ', 'STANDARD  '],
           barThickness: '5',
           borderWidth: 1,
         },
@@ -157,7 +157,7 @@ export class ChartComponent implements OnInit {
             data: ['500  ', '1200  ', '300  ']
           }],
 
-          labels: ['PLATINUM  ', 'PREMIUM  ', 'STANDARD  '],
+          labels: ['ALL  ', 'PLATINUM  ', 'PREMIUM  ', 'STANDARD  '],
           barThickness: '5',
           borderWidth: 1,
         },

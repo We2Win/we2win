@@ -19,7 +19,7 @@ import { ContentsService } from '../../../services/contents.service';
 })
 export class AnalysisUserComponent implements OnInit {
   List: any;
-  chartData: any;
+  chartData: object;
   total: number;
   date = new Date();
   orderByLevel = 'ALL';
@@ -56,6 +56,7 @@ export class AnalysisUserComponent implements OnInit {
     this.contentService.getAnalysisContents().subscribe(
       data => {
         console.log('data: ', data);
+        this.chartData = data;
       },
       err => {
         console.error('error: ', err);
