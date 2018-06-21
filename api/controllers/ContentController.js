@@ -343,6 +343,7 @@ const getAnalysisData = async function (req, res) {
   const results = [];
 
   for (const type in types) {
+    console.log(types[type], type);
     Content.findAll({
       order: [types[type], 'DESC'],
       limit: total
