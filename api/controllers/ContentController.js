@@ -351,13 +351,14 @@ const getAnalysisData = async function (req, res) {
         order: [
           [types[type], 'DESC']
         ],
-        offset: total
+        offset: 0,
+        limit: 2
       }));
 
       console.log('level result: ', result);
     }
 
-    const rowAmount = ['5', '10', '30', '50', '100'];
+    const rowAmount = [5, 10, 30, 50, 100];
     for (const i in rowAmount) {
       let result;      
       [err, result] = await to(Content.count({
@@ -369,7 +370,8 @@ const getAnalysisData = async function (req, res) {
         order: [
           [types[type], 'DESC']
         ],
-        offset: total
+        offset: 0,
+        limit: 2
       }));
 
       console.log('amount result: ', result);
