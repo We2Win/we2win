@@ -344,12 +344,11 @@ const getAnalysisData = async function (req, res) {
     const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
     for (const i in rowLevel) {
       let result;
-      [err, result] = await to(Content.count({
+      [err, result] = await to(Content.findAll({
         order: types[type],
         where: {
           'level': rowLevel[i]
         },
-        offset: 0,
         limit: total
       }));
 
@@ -362,14 +361,13 @@ const getAnalysisData = async function (req, res) {
         break;
       }
       let result;      
-      [err, result] = await to(Content.count({
+      [err, result] = await to(Content.findAll({
         order: types[type],
         where: {
           'amount': {
             [Sequelize.Op.between]: [rowAmount[i], rowAmount[i + 1]]
           }
         },
-        offset: 0,
         limit: total
       }));
 
