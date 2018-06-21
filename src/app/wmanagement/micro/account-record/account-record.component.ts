@@ -26,6 +26,10 @@ export class AccountRecordComponent implements OnInit {
     // console.log('record in accountRecordComponent: ', this.record);
   }
 
+  editUser() {
+
+  }
+
   deleteUser() {
     if (confirm('정말로 해당 이용자를 삭제하시겠습니까?')) {
       this.userService.deleteUser(this.record)

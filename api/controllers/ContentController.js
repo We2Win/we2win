@@ -331,6 +331,59 @@ const createEmployee = async function (req, res) {
 }
 module.exports.createEmployee = createEmployee;
 
+const getAnalysisData = async function (req, res) {
+  const types = ['c-click', 'c-scrap', 'c-comments', 'c-sns'];
+  const contents = [];
+
+  const total = ContentsList.count();
+  console.log('total: ', total);
+
+  const results = [];
+
+  for (const type in types) {
+    const hotContents;
+    [err, hotContents] = await to(ContentsList.findAll({
+      order: [types[type], 'DESC'],
+      limit: (total / 3)
+    }));
+
+    console.log('hotContents: ', hotContents);
+
+    let rowLevelResults = [];
+    let countNum;
+    
+    const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
+    for (const i in rowLevel) {
+      [err, countNum] = await to(hotContents.count({
+        where: {
+          'level': rowLevel[i]
+        }
+      }));
+      rowLevelResults.push(countNum);
+    }
+
+    console.log('rowLevelResults: ', rowLevelResults);
+
+    let rowAmountResults = [];    
+
+    const rowAmount = ['5', '10', '30', '50', '100'];
+    for (const i in rowAmount) {
+      [err, countNum] = await to(hotContents.count({
+        where: {
+          'amount': {
+            [Sequelize.Op.lte]: rowAmount[i]
+          }
+        }
+      }));
+      rowAmountResults.push(countNum);
+    }
+
+    console.log('rowAmountResults: ', rowAmountResults); 
+
+  }
+}
+module.exports.getAnalysisData = getAnalysisData;
+
 const getEmployees = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log('req.params: ', req.params);

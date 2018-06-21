@@ -6,6 +6,7 @@ import { TableComponent } from '../../../micro/table/table.component';
 import { MypostDirective } from '../../../directives/mypost.directive';
 import { AnalysisUserRecordComponent } from '../../../micro/analysis-user-record/analysis-user-record.component';
 import { Angular2Csv } from 'angular2-csv';
+import { ContentsService } from '../../../services/contents.service';
 
 @Component({
   selector: 'app-analysis-user',
@@ -18,6 +19,7 @@ import { Angular2Csv } from 'angular2-csv';
 })
 export class AnalysisUserComponent implements OnInit {
   List: any;
+  chartData: any;
   total: number;
   date = new Date();
   orderByLevel = 'ALL';
@@ -34,6 +36,7 @@ export class AnalysisUserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private contentService: ContentsService
     private postingService: PostingService,
   ) { }
 
@@ -48,6 +51,14 @@ export class AnalysisUserComponent implements OnInit {
         // console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
+      }
+    );
+    this.contentService.getAnalysisContents().subscribe(
+      data => {
+        console.log('data: ', data);
+      },
+      err => {
+        console.error('error: ', err);
       }
     );
   }

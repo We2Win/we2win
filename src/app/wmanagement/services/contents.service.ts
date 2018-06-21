@@ -111,6 +111,10 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  getAnalysisContents() {
+    return this.http.get(environment.apiUrl + '/mng/analysis');
+  }
+
   confirmEmployers(_body, confirm) {
     const body = {
       confirm: confirm,

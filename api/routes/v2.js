@@ -102,5 +102,6 @@ router.get('/mng/employers', ContentController.getEmployers);
 router.get('/mng/employees', ContentController.getEmployees);
 router.post('/mng/employers', ContentController.confirmEmployers);
 router.post('/mng/employees', ContentController.confirmEmployees);
+router.get('/mng/analysis', ContentController.getAnalysisData);
 
 module.exports = router;
