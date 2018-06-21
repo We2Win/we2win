@@ -348,12 +348,11 @@ const getAnalysisData = async function (req, res) {
       limit: total
     }).then(
       hotContents => {
-        console.log('hotContents: ', hotContents);
         let rowLevelResults = [];
 
         const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
         for (const i in rowLevel) {
-          console.log(i + ': ');
+          console.log('level ' + i + ': ');
           hotContents.count({
             where: {
               'level': rowLevel[i]
