@@ -371,7 +371,7 @@ const getAnalysisData = async function (req, res) {
 
         const rowAmount = ['5', '10', '30', '50', '100'];
         for (const i in rowAmount) {
-          console.log(i + ': ');
+          console.log('amount ' + i + ': ');
           hotContents.count({
             where: {
               'amount': {
