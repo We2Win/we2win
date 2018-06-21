@@ -372,7 +372,7 @@ const getAnalysisData = async function (req, res) {
         limit: total
       }));
 
-      console.log('amount result: ', result.length);
+      console.log('amount result: ', result);
     }
   }
 }
