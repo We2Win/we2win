@@ -345,7 +345,7 @@ const getAnalysisData = async function (req, res) {
     for (const i in rowLevel) {
       let result;
       [err, result] = await to(Content.findAll({
-        order: types[type],
+        order: [types[type]],
         where: {
           'level': rowLevel[i]
         },
@@ -362,7 +362,7 @@ const getAnalysisData = async function (req, res) {
       }
       let result;      
       [err, result] = await to(Content.findAll({
-        order: types[type],
+        order: [types[type]],
         where: {
           'amount': {
             [Sequelize.Op.between]: [rowAmount[i], rowAmount[i + 1]]
