@@ -332,7 +332,8 @@ const createEmployee = async function (req, res) {
 module.exports.createEmployee = createEmployee;
 
 const getAnalysisData = async function (req, res) {
-  const types = ['c-click', 'c-scrap', 'c-comments', 'c-sns'];
+  const types = ['c-click'];
+  // const types = ['c-click', 'c-scrap', 'c-comments', 'c-sns'];
   const contents = [];
 
   let total;
