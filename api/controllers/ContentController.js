@@ -344,7 +344,7 @@ const getAnalysisData = async function (req, res) {
     const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
     for (const i in rowLevel) {
       let result;
-      [err, result] = await to(Content.count({
+      [err, result] = await to(Content.findAll({
         where: {
           'level': rowLevel[i]
         },
