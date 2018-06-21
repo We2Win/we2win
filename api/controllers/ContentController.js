@@ -332,8 +332,7 @@ const createEmployee = async function (req, res) {
 module.exports.createEmployee = createEmployee;
 
 const getAnalysisData = async function (req, res) {
-  const types = ['c-click'];
-  // const types = ['c-click', 'c-scrap', 'c-comments', 'c-sns'];
+  const types = ['c-click', 'c-scrap', 'c-comments', 'c-sns'];
   const contents = [];
 
   let total;
@@ -344,84 +343,84 @@ const getAnalysisData = async function (req, res) {
   const results = [];
 
   for (const type in types) {
-    Content.findAll({
-      order: [[types[type], 'DESC']],
+    let hotContents;
+    [err, hotContents] = await to(Content.findAll({
+      order: [
+        [types[type], 'DESC']
+      ],
       limit: total
-    }).then(
-      hotContents => {
-        let rowLevelResults = [];
+    }));
 
-        const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
-        for (const i in rowLevel) {
-          console.log('level ' + i + ': ');
-          hotContents.count({
-            where: {
-              'level': rowLevel[i]
-            }
-          }).then(
-            countNum => {
-              rowLevelResults[i] = countNum;
-            }
-          );
+    let rowLevelResults = [];
+
+    const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
+    for (const i in rowLevel) {
+      console.log('level ' + i + ': ');
+
+      let hotContentsByLevel;
+      [err, hotContentsByLevel] = await to (hotContents.findAll({
+        where: {
+          'level': rowLevel[i]
         }
+      }));
 
-        console.log('rowLevelResults: ', rowLevelResults);
+      rowLevelResults[i] = hotContentsByLevel.count();
+    }
 
-        let rowAmountResults = [];
+    let rowAmountResults = [];
 
-        const rowAmount = ['5', '10', '30', '50', '100'];
-        for (const i in rowAmount) {
-          console.log('amount ' + i + ': ');
-          hotContents.count({
-            where: {
-              'amount': {
-                [Sequelize.Op.lte]: rowAmount[i]
-              }
-            }
-          }).then(
-            countNum => {
-              rowAmountResults[i] = countNum;
-            }
-          );
-        }
+    // const rowAmount = ['5', '10', '30', '50', '100'];
+    // for (const i in rowAmount) {
+    //   console.log('amount ' + i + ': ');
+    //   hotContents.count({
+    //     where: {
+    //       'amount': {
+    //         [Sequelize.Op.lte]: rowAmount[i]
+    //       }
+    //     }
+    //   }).then(
+    //     countNum => {
+    //       rowAmountResults[i] = countNum;
+    //     }
+    //   );
+    // }
 
-        console.log('rowAmountResults: ', rowAmountResults);
-      }
-    );
+    // console.log('rowAmountResults: ', rowAmountResults);
   }
+}
 
-  //   let rowLevelResults = [];
-  //   let countNum;
+let rowLevelResults = [];
+let countNum;
 
-  //   const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
-  //   for (const i in rowLevel) {
-  //     [err, countNum] = await to(hotContents.count({
-  //       where: {
-  //         'level': rowLevel[i]
-  //       }
-  //     }));
-  //     rowLevelResults.push(countNum);
-  //   }
+const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
+for (const i in rowLevel) {
+  [err, countNum] = await to(hotContents.count({
+    where: {
+      'level': rowLevel[i]
+    }
+  }));
+  rowLevelResults.push(countNum);
+}
 
-  //   console.log('rowLevelResults: ', rowLevelResults);
+console.log('rowLevelResults: ', rowLevelResults);
 
-  //   let rowAmountResults = [];
+let rowAmountResults = [];
 
-  //   const rowAmount = ['5', '10', '30', '50', '100'];
-  //   for (const i in rowAmount) {
-  //     [err, countNum] = await to(hotContents.count({
-  //       where: {
-  //         'amount': {
-  //           [Sequelize.Op.lte]: rowAmount[i]
-  //         }
-  //       }
-  //     }));
-  //     rowAmountResults.push(countNum);
-  //   }
+const rowAmount = ['5', '10', '30', '50', '100'];
+for (const i in rowAmount) {
+  [err, countNum] = await to(hotContents.count({
+    where: {
+      'amount': {
+        [Sequelize.Op.lte]: rowAmount[i]
+      }
+    }
+  }));
+  rowAmountResults.push(countNum);
+}
 
-  //   console.log('rowAmountResults: ', rowAmountResults);
+console.log('rowAmountResults: ', rowAmountResults);
 
-  // }
+}
 }
 module.exports.getAnalysisData = getAnalysisData;
 
