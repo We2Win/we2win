@@ -335,9 +335,10 @@ const getAnalysisData = async function (req, res) {
   const types = ['c-click', 'c-scrap', 'c-comments', 'c-sns'];
   const contents = [];
 
-  const total = Content.count();
+  let total;
+  [err, total] = await to(Content.count());
+  total = total / 3;
   console.log('total: ', total);
-  const hotTotal = total / 3;
 
   const results = [];
 
