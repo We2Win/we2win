@@ -9,7 +9,8 @@
     <header>
       <app-select [type]="'회원 등급'" (change)="changeLevel($event)"></app-select>
       <app-select [type]="'금액'" (change)="changeAmount($event)"></app-select>
-      <input class="search" type="text" placeholder="아이디 검색" (click)="changeQuery($event)" (keypress)="changeQuery($event)" (change)="changeQuery($event)"/>
+      <input class="search" type="text" placeholder="아이디 검색" (click)="changeQuery($event)" (keypress)="changeQuery($event)" (change)="changeQuery($event)"
+      />
     </header>
     <app-table [type]="'analysisUser'">
       <ng-container appMypost></ng-container>
@@ -58,6 +59,7 @@
       <div class="subtitle">금액</div>
       <app-chart [type]="'analysisContents'" [num]="'7'"></app-chart>
     </article>
+  </div>
   <!-- <div class="wrapper">
     <article>
       <header>

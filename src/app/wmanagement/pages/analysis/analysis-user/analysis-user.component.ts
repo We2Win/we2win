@@ -36,8 +36,8 @@ export class AnalysisUserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private contentService: ContentsService
-    private postingService: PostingService,
+    private contentService: ContentsService,
+    private postingService: PostingService
   ) { }
 
   ngOnInit() {
