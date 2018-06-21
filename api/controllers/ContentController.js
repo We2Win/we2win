@@ -351,7 +351,7 @@ const getAnalysisData = async function (req, res) {
         order: [
           [types[type], 'DESC']
         ],
-        limit: total
+        limit: 2
       }));
 
       console.log('level result: ', result);
