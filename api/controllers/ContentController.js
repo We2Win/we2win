@@ -346,9 +346,20 @@ const getAnalysisData = async function (req, res) {
     let hotContents;
     console.log('types: ', types, 'type: ', type);
     [err, hotContents] = await to(Content.findAll({
-      // order: [types[type], 'DESC'],
-      // limit: total
-    }));
+      order: [types[type], 'DESC'],
+      limit: total
+    }).then(
+      data => {
+        console.log('data: ', data);
+        data.findAll({
+          limit: 1
+        }).then(
+          data1 => {
+            console.log('data1: ', data1);
+          }
+        )
+      }
+    ));
 
     let test;
     [err, test] = await to(hotContents.findAll({
