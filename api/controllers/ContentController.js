@@ -345,12 +345,12 @@ const getAnalysisData = async function (req, res) {
     for (const i in rowLevel) {
       let result;
       [err, result] = await to(Content.findAndCountAll({
-        where: {
-          'level': rowLevel[i]
-        },
         order: [
           [types[type], 'DESC']
         ],
+        where: {
+          'level': rowLevel[i]
+        },
         offset: 0,
         limit: total
       }));
@@ -365,14 +365,14 @@ const getAnalysisData = async function (req, res) {
       }
       let result;      
       [err, result] = await to(Content.findAndCountAll({
-        where: {
-          'amount': {
-            [Sequelize.Op.between]: [rowAmount[i], rowAmount[i+1]]
-          }
-        },
         order: [
           [types[type], 'DESC']
         ],
+        where: {
+          'amount': {
+            [Sequelize.Op.between]: [rowAmount[i], rowAmount[i + 1]]
+          }
+        },
         offset: 0,
         limit: total
       }));
