@@ -362,7 +362,9 @@ const getAnalysisData = async function (req, res) {
     for (const i in rowAmount) {
       [err, result] = await to(Content.count({
         where: {
-          'amount': rowAmount[i]
+          'amount': {
+            [Sequelize.Op.lte]: rowAmount[i]
+          }
         },
         order: [
           [types[type], 'DESC']
