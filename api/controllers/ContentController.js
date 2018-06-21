@@ -365,7 +365,7 @@ const getAnalysisData = async function (req, res) {
       [err, result] = await to(Content.findAll({
         order: [[types[type], 'DESC']],
         where: {
-          'amount': {
+          'ammount': {
             [Sequelize.Op.between]: [rowAmount[i], rowAmount[i + 1]]
           }
         },
