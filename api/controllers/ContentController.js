@@ -351,12 +351,15 @@ const getAnalysisData = async function (req, res) {
     }));
 
     let test;
-    [err, test] = await to(hotContents.count());
+    [err, test] = await to(hotContents.findAll({
+      attributes: [Sequelize.fn('count', '*'), 'count']
+    }));
+
     console.log('hotContents: ', hotContents, test);
 
     let rowLevelResults = [];
     let countNum;
-    
+
     const rowLevel = ['ALL', 'STANDARD', 'PREMIUM', 'PLATINUM'];
     for (const i in rowLevel) {
       [err, countNum] = await to(hotContents.count({
@@ -369,7 +372,7 @@ const getAnalysisData = async function (req, res) {
 
     console.log('rowLevelResults: ', rowLevelResults);
 
-    let rowAmountResults = [];    
+    let rowAmountResults = [];
 
     const rowAmount = ['5', '10', '30', '50', '100'];
     for (const i in rowAmount) {
@@ -383,7 +386,7 @@ const getAnalysisData = async function (req, res) {
       rowAmountResults.push(countNum);
     }
 
-    console.log('rowAmountResults: ', rowAmountResults); 
+    console.log('rowAmountResults: ', rowAmountResults);
 
   }
 }
@@ -487,7 +490,9 @@ const getPrivacyData = async function (req, res) {
         content: content.dataValues
       })
     } else {
-      return ReS(res, { content: ''});
+      return ReS(res, {
+        content: ''
+      });
     }
   });
 }
@@ -501,13 +506,15 @@ const getUseData = async function (req, res) {
       'type': 'use'
     }
   }).then((content) => {
-    console.log('use content: ', content);    
+    console.log('use content: ', content);
     if (content) {
       return ReS(res, {
         content: content.dataValues
       })
     } else {
-      return ReS(res, { content: '' });
+      return ReS(res, {
+        content: ''
+      });
     }
   });
 }
@@ -525,28 +532,28 @@ const editPrivacyData = async function (req, res) {
   }).then(
     data => {
       if (data) {
-        CompanyInfo.update(
-        {
-            contents: req.body.contents          
-        },
-        {
+        CompanyInfo.update({
+          contents: req.body.contents
+        }, {
           where: {
             type: 'privacy'
           }
         }).then(
           content => {
-            return ReS(res, { message: 'done' });
+            return ReS(res, {
+              message: 'done'
+            });
           }
         )
       } else {
         CompanyInfo.findOrCreate({
-          where: {
-            type: 'privacy'
-          },
-          defaults: {
-            contents: req.body.contents
-          }
-        })
+            where: {
+              type: 'privacy'
+            },
+            defaults: {
+              contents: req.body.contents
+            }
+          })
           .spread((body, created) => {
             if (created) {
               console.log('New body: ', body.dataValues);
@@ -575,28 +582,28 @@ const editUseData = async function (req, res) {
   }).then(
     data => {
       if (data) {
-        CompanyInfo.update(
-          {
-            contents: req.body.contents
-          },
-          {
-            where: {
-              type: 'use'
-            }
-          }).then(
-          content => {
-            return ReS(res, { message: 'done' });
-          }
-          )
-      } else {
-        CompanyInfo.findOrCreate({
+        CompanyInfo.update({
+          contents: req.body.contents
+        }, {
           where: {
             type: 'use'
-          },
-          defaults: {
-            contents: req.body.contents
           }
-        })
+        }).then(
+          content => {
+            return ReS(res, {
+              message: 'done'
+            });
+          }
+        )
+      } else {
+        CompanyInfo.findOrCreate({
+            where: {
+              type: 'use'
+            },
+            defaults: {
+              contents: req.body.contents
+            }
+          })
           .spread((body, created) => {
             if (created) {
               console.log('New body: ', body.dataValues);
@@ -609,7 +616,7 @@ const editUseData = async function (req, res) {
           });
       }
     }
-    )
+  )
 }
 module.exports.editUseData = editUseData;
 
