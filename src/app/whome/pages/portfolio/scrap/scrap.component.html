@@ -46,7 +46,7 @@
         <div class="site record hidden" *ngIf="sites.length == 0">
           <span>스크랩한 항목이 없습니다.</span>
         </div>
-        <div class="info record" *ngFor="let record of infos" [routerLink]="record['link']">
+        <div class="info record" *ngFor="let record of infos" [routerLink]="'/info/' + this.engType[record['c-type']] + '/' + record['no']">
           <span id="categories" [ngClass]="[engType[record['c-type']]]">{{ record['c-type'] }}</span>
           <span id="title">{{ record['title'] }}</span>
           <span id="date">{{ record['date'].slice(0, 10) }}</span>

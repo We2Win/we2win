@@ -63,7 +63,7 @@ export class ScrapComponent implements OnInit {
         this.infos = res['contents'];
         for (const record of this.infos) {
           if (record['c-type'] === 'law') {
-            record['link'] = '/info/law';
+            record['link'] = '/info/law/';
           } else {
             record['link'] = '/info/' + this.engType[record['c-type']] + '/' + record['no'];
           }
