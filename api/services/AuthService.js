@@ -787,6 +787,8 @@ const getContentsListByFiltering = async function (params) {
     limit: 20,
     // where: whereArr,
   }));
+
+  console.log('contents: ', contents);
   if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
 
   return contents;
