@@ -771,7 +771,7 @@ const getContentList = async function (params) {
 }
 module.exports.getContentList = getContentList;
 
-const getUserListByFiltering = async function (params) {
+const getContentsListByFiltering = async function (params) {
   const whereArr = {};
   if (params.level !== 'ALL') {
     whereArr['level'] = params.level;
@@ -780,7 +780,7 @@ const getUserListByFiltering = async function (params) {
     whereArr['ammount'] = params.amount;
   }
 
-  console.log('getUserListByFiltering: ', params, whereArr);
+  console.log('getContentsListByFiltering: ', params, whereArr);
 
   [err, users] = await to(User.findAll({
     offset: (parseInt(params.id) - 1) * 8 || 0,
@@ -791,7 +791,7 @@ const getUserListByFiltering = async function (params) {
 
   return users;
 }
-module.exports.getUserListByFiltering = getUserListByFiltering;
+module.exports.getContentsListByFiltering = getContentsListByFiltering;
 
 const searchUser = async function (body) {
   [err, users] = await to(User.findAll({

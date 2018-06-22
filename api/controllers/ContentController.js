@@ -133,7 +133,7 @@ const getContentsByFiltering = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   let params = req.params;
 
-  [err, users] = await to(authService.getContentListByFiltering(params));
+  [err, users] = await to(authService.getContentsListByFiltering(params));
 
   if (err) return ReE(res, err, 422);
 
