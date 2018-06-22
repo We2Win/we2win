@@ -11,7 +11,8 @@ import { ContentsService } from '../../../services/contents.service';
 @Component({
   selector: 'app-policy',
   templateUrl: './policy.component.html',
-  styleUrls: ['./policy.component.css']
+  styleUrls: ['./policy.component.css'],
+  providers: [ContentsService],
 })
 export class PolicyComponent implements OnInit {
   agree1: boolean;

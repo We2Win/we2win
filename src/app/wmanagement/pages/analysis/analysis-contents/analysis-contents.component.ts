@@ -69,13 +69,20 @@ export class AnalysisContentsComponent implements OnInit {
   }
 
   addRecord(records) {
-    console.log(records);
+    const ref = this.mypostDirective.viewContainerRef;
+    ref.clear();
+
+    // console.log(records);
     // tslint:disable-next-line:forin
-    for (const record in records) {
-      records[record]['no'] = parseInt(record, 10) + 1;
+    // records['list'] = JSON.parse(records['list']);
+    const List = JSON.parse(records['list']);
+    // tslint:disable-next-line:forin
+    for (const record in List) {
+      // console.log(List[record]);
+      List[record]['no'] = parseInt(record, 10) + 1;
       // console.log('record: ', records[record]);
       this.postingService.loadComponent(this.mypostDirective.viewContainerRef,
-        new PostItem(AnalysisContentsRecordComponent, records[record]));
+        new PostItem(AnalysisContentsRecordComponent, List[record]));
     }
   }
 
