@@ -24,6 +24,7 @@ export class AnalysisContentsComponent implements OnInit {
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
+  chartData: object;
 
   postItems: PostItem[];
 
@@ -43,6 +44,15 @@ export class AnalysisContentsComponent implements OnInit {
         // console.log(this.List);
         this.total = this.List.length;
         this.addRecord(this.List);
+      }
+    );
+    this.contentsService.getAnalysisContents().subscribe(
+      data => {
+        console.log('data: ', data);
+        this.chartData = data;
+      },
+      err => {
+        console.error('error: ', err);
       }
     );
   }

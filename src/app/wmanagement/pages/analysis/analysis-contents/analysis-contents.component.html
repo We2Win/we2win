@@ -22,9 +22,9 @@
         <span id="date">2017.12</span>
       </header>
       <div class="subtitle">사용자 레벨</div>
-      <app-chart class="shorter" [type]="'analysisContents'" [num]="'0'"></app-chart>
+      <app-chart class="shorter" [type]="'analysisContents'" [num]="'0'" [data]="chartData['c-click'][0]"></app-chart>
       <div class="subtitle">금액</div>
-      <app-chart [type]="'analysisContents'" [num]="'1'"></app-chart>
+      <app-chart [type]="'analysisContents'" [num]="'1'" [data]="chartData['c-click'][1]"></app-chart>
     </article>
     <article>
       <header>
@@ -32,9 +32,9 @@
         <span id="date">2017.12</span>
       </header>
       <div class="subtitle">사용자 레벨</div>
-      <app-chart class="shorter" [type]="'analysisContents'" [num]="'2'"></app-chart>
+      <app-chart class="shorter" [type]="'analysisContents'" [num]="'2'" [data]="chartData['c-scrap'][0]"></app-chart>
       <div class="subtitle">금액</div>
-      <app-chart [type]="'analysisContents'" [num]="'3'"></app-chart>
+      <app-chart [type]="'analysisContents'" [num]="'3'" [data]="chartData['c-scrap'][1]"></app-chart>
     </article>
   </div>
   <div class="wrapper">
@@ -44,9 +44,9 @@
         <span id="date">2017.12</span>
       </header>
       <div class="subtitle">사용자 레벨</div>
-      <app-chart class="shorter" [type]="'analysisContents'" [num]="'4'"></app-chart>
+      <app-chart class="shorter" [type]="'analysisContents'" [num]="'4'" [data]="chartData['c-comments'][0]"></app-chart>
       <div class="subtitle">금액</div>
-      <app-chart [type]="'analysisContents'" [num]="'5'"></app-chart>
+      <app-chart [type]="'analysisContents'" [num]="'5'" [data]="chartData['c-comments'][1]"></app-chart>
     </article>
     <article>
       <header>
@@ -54,9 +54,9 @@
         <span id="date">2017.12</span>
       </header>
       <div class="subtitle">사용자 레벨</div>
-      <app-chart class="shorter" [type]="'analysisContents'" [num]="'6'"></app-chart>
+      <app-chart class="shorter" [type]="'analysisContents'" [num]="'6'" [data]="chartData['c-sns'][0]"></app-chart>
       <div class="subtitle">금액</div>
-      <app-chart [type]="'analysisContents'" [num]="'7'"></app-chart>
+      <app-chart [type]="'analysisContents'" [num]="'7'" [data]="chartData['c-sns'][0]"></app-chart>
     </article>
   </div>
 </section>

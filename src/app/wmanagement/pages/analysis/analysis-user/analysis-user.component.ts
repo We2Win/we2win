@@ -36,7 +36,7 @@ export class AnalysisUserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private contentService: ContentsService,
+    private contentsService: ContentsService,
     private postingService: PostingService
   ) { }
 
@@ -53,7 +53,7 @@ export class AnalysisUserComponent implements OnInit {
         this.addRecord(this.List);
       }
     );
-    this.contentService.getAnalysisContents().subscribe(
+    this.contentsService.getAnalysisContents().subscribe(
       data => {
         console.log('data: ', data);
         this.chartData = data;

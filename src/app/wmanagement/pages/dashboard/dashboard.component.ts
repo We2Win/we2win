@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
       data => {
         // console.log('users: ', data);
         this.data['users'] = data['users'];
+        this.infoPie.chartObject.update();
       },
       error => {
         console.error(error);
@@ -51,6 +52,7 @@ export class DashboardComponent implements OnInit {
         // console.log('contents: ', data);
         this.data['contents'] = data['contents'];
         this.data['logs'] = data['logs'];
+        this.infoBar.chartObject.update();
       },
       error => {
         console.error(error);
@@ -58,19 +60,12 @@ export class DashboardComponent implements OnInit {
     );
 
 
-    setTimeout(() => {
-      this.addData(this.infoPie);
-    }, 100);
+    // setTimeout(() => {
+    //   this.addData(this.infoPie);
+    // }, 100);
   }
 
-  addData(component) {
-    // console.log(component.chartObject);
-    // component.chartObject.data.datasets[0].data = [0, 0, 5];
-    // component.chartObject.data.labels = [
-    //     'PLATINUM',
-    //     'PREMIUM',
-    //     'STANDARD'
-    // ];
-    component.chartObject.update();
-  }
+  // addData(component) {
+  //   component.chartObject.update();
+  // }
 }
