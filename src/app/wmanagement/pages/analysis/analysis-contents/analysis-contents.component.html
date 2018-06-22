@@ -7,9 +7,9 @@
 <section>
   <article>
     <header>
-      <app-select [type]="'카테고리'"></app-select>
-      <app-select [type]="'금액'"></app-select>
-      <input class="search" type="text" placeholder="컨텐츠 검색" />
+      <app-select [type]="'카테고리'" (change)="changeLevel($event)"></app-select>
+      <app-select [type]="'금액'" (change)="changeAmount($event)"></app-select>
+      <input class="search" type="text" placeholder="컨텐츠 검색" (click)="changeQuery($event)" (keypress)="changeQuery($event)" (change)="changeQuery($event)"/>
     </header>
     <app-table [type]="'analysisContents'">
       <ng-container appMypost></ng-container>

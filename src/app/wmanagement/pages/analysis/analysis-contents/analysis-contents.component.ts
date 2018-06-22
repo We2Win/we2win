@@ -34,11 +34,11 @@ export class AnalysisContentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updateData('info', 'newly', 'date', 1);
+    this.updateData(this.orderByLevel, this.orderByAmount, 1);
   }
 
-  updateData(page, list, sort, id?: any) {
-    this.contentsService.getContentsList(page, list, sort, id).subscribe(
+  updateData(page, amount, id?: any) {
+    this.contentsService.getContentsListByFiltering(page, amount, id).subscribe(
       data => {
         this.List = data;
         // console.log(this.List);
@@ -48,7 +48,7 @@ export class AnalysisContentsComponent implements OnInit {
     );
     this.contentsService.getAnalysisContents().subscribe(
       data => {
-        console.log('data: ', data);
+        // console.log('data: ', data);
         this.chartData = data;
       },
       err => {
@@ -69,6 +69,7 @@ export class AnalysisContentsComponent implements OnInit {
   }
 
   addRecord(records) {
+    console.log(records);
     // tslint:disable-next-line:forin
     for (const record in records) {
       records[record]['no'] = parseInt(record, 10) + 1;

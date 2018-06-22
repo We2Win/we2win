@@ -129,6 +129,23 @@ const getContents = async function (req, res) {
 }
 module.exports.getContents = getContents;
 
+const getContentsByFiltering = async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  let params = req.params;
+
+  [err, users] = await to(authService.getContentListByFiltering(params));
+
+  if (err) return ReE(res, err, 422);
+
+  return ReS(res, {
+    message: 'Successfully loading content lists.',
+    list: JSON.stringify(users),
+    // user: user.toWeb(),
+    // token: User.getJWT()
+  }, 201);
+}
+module.exports.getContentsByFiltering = getContentsByFiltering;
+
 const createContents = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   const body = req.body;
@@ -1000,7 +1017,7 @@ const getContentsByQuery = async function (req, res) {
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
-    message: 'Successfully loading user lists.',
+    message: 'Successfully loading content lists.',
     list: JSON.stringify(contents),
     // user: user.toWeb(),
     // token: User.getJWT()

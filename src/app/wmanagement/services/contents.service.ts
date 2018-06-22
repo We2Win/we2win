@@ -22,6 +22,11 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
+  getContentsListByFiltering(page, amount, id?: any) {
+    return this.http.get(environment.apiUrl + '/mng/contents/' + page + '/' + amount + '/' + (id || '1'))
+      .map((res: any) => res);
+  }
+
   searchContents(query) {
     return this.http.get(environment.apiUrl + '/mng/contents/' + query)
       .map((res: any) => res);

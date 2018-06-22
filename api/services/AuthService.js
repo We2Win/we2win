@@ -771,6 +771,28 @@ const getContentList = async function (params) {
 }
 module.exports.getContentList = getContentList;
 
+const getUserListByFiltering = async function (params) {
+  const whereArr = {};
+  if (params.level !== 'ALL') {
+    whereArr['level'] = params.level;
+  }
+  if (params.amount !== 'ALL') {
+    whereArr['ammount'] = params.amount;
+  }
+
+  console.log('getUserListByFiltering: ', params, whereArr);
+
+  [err, users] = await to(User.findAll({
+    offset: (parseInt(params.id) - 1) * 8 || 0,
+    limit: 20,
+    where: whereArr,
+  }));
+  if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
+
+  return users;
+}
+module.exports.getUserListByFiltering = getUserListByFiltering;
+
 const searchUser = async function (body) {
   [err, users] = await to(User.findAll({
     // IMPORTANT: has no params.id
@@ -804,16 +826,15 @@ const searchContents = async function (body) {
     // IMPORTANT: has no params.id
     // offset: (parseInt(params.id) - 1) * 8 || 0,
     limit: 20,
-    attributes: ['u-id', 'name', 'email', 'level', 'point', 'level-start', 'level-end', 'amount'],
     where: {
       [Sequelize.Op.or]: {
-        name: {
+        title: {
+          [Sequelize.Op.like]: '%' + body.split('').join('%') + '%'
+        },
+        level: {
           [Sequelize.Op.like]: '%' + body + '%'
         },
-        email: {
-          [Sequelize.Op.like]: '%' + body + '%'
-        },
-        'u-id': {
+        'c-type': {
           [Sequelize.Op.like]: '%' + body + '%'
         }
       }
