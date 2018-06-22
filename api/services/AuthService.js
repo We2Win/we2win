@@ -785,7 +785,7 @@ const getContentsListByFiltering = async function (params) {
   [err, contents] = await to(Content.findAll({
     offset: (parseInt(params.id) - 1) * 8 || 0,
     limit: 20,
-    where: whereArr,
+    // where: whereArr,
   }));
   if (err) TE('불러오기에 실패하였습니다.' + JSON.stringify(err));
 
