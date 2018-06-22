@@ -67,6 +67,7 @@ export class ScrapComponent implements OnInit {
           } else {
             record['link'] = '/info/' + this.engType[record['c-type']] + '/' + record['no'];
           }
+          console.log('record: ', record);
         }
         this.sites = [];
       },
