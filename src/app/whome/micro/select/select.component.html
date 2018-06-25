@@ -1,4 +1,4 @@
-<div id="container" tabindex="0" (click)="viewUl(true);" (focus)="viewUl(true);" (mouseover)="semiViewUl(true);" (mouseleave)="hideUl(true);" (blur)="hideUl(true);">{{ selected }}</div>
+<div id="container" tabindex="0" (mouseover)="semiViewUl(true);" (mouseleave)="hideUl(true);" (blur)="hideUl(true);">{{ selected }}</div>
 <ul (click)="selectValue($event);" (mouseover)="viewUl(false);" (mouseleave)="hideUl(false);">
   <li *ngFor="let category of categories[type]">{{ category }}</li>
 </ul>
