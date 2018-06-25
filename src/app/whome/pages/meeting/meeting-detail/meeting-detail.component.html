@@ -33,7 +33,8 @@
       </li>
       <li class="buttonBar">
         <h2></h2>
-        <app-button (click)="schedule()">모임 참가하기</app-button>
+        <app-button *ngIf="isScheduled" (click)="schedule()">모임 참여신청 완료</app-button>
+        <app-button *ngIf="!isScheduled" (click)="schedule()">모임 참여신청</app-button>
       </li>
       <div id="optionBar">
         <span id="schedule" [ngClass]="{'selected': isScheduled}" (click)="schedule()"></span>
