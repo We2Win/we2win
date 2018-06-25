@@ -467,8 +467,9 @@ module.exports.getBookmark = getBookmark;
 const addBookmark = async function (uId, body) {
   let unique_key, auth_info, err, content;
 
+  let info;
   if (body['c-type']) {
-    const info = {
+    info = {
       'u-id': uId,
       'c-id': body['c-id'],
       'no': body['no'],
@@ -476,7 +477,7 @@ const addBookmark = async function (uId, body) {
       'date': body['createdAt']
     }
   } else {
-    const info = {
+    info = {
       'u-id': uId,
       'c-id': body['c-id'],
       'no': body['no'],
