@@ -43,7 +43,7 @@ export class SelectComponent implements OnInit {
   }
 
   selectValue(ev) {
-    // console.log(ev);
+    console.log(ev);
     if (ev.target.nodeName === 'LI') {
       this.selected = ev.target.innerHTML;
       this.change.emit(this.selected);
