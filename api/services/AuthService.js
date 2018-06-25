@@ -467,13 +467,25 @@ module.exports.getBookmark = getBookmark;
 const addBookmark = async function (uId, body) {
   let unique_key, auth_info, err, content;
 
-  const info = {
-    'u-id': uId,
-    'c-id': body['c-id'],
-    'no': body['no'],
-    'title': body['title'],
-    'date': body['createdAt']
+  if (body['c-type']) {
+    const info = {
+      'u-id': uId,
+      'c-id': body['c-id'],
+      'no': body['no'],
+      'title': body['title'],
+      'date': body['createdAt']
+    }
+  } else {
+    const info = {
+      'u-id': uId,
+      'c-id': body['c-id'],
+      'no': body['no'],
+      'title': body['title'],
+      'duration-start': body['duration-start'],
+      'duration-end': body['duration-end']
+    }
   }
+
 
   console.log('info on addBoookmark(): ', info, body);
 
