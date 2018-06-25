@@ -524,7 +524,9 @@ const addBookmark = async function (uId, body) {
       }));
 
       console.log('content: ', content);
-      TE('일정이 등록된 항목입니다.')
+      if (content) {
+        TE('일정이 등록된 항목입니다.');
+      }
 
       console.log('info: ', info);
       [err, content] = await to(Schedule.create(info));
