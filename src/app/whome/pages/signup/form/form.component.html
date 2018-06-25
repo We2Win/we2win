@@ -31,8 +31,8 @@
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('u-id').hasError('required') && signupForm.get('u-id').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('u-id').hasError('minlength') && signupForm.get('u-id').touched">4 ~ 15글자로 넣어주세요.</div>
+            <div *ngIf="signupForm.get('u-id').touched && signupForm.get('u-id').hasError('required') && !signupForm.get('u-id').hasError('minlength')">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('u-id').touched && !signupForm.get('u-id').hasError('required') && (signupForm.get('u-id').hasError('minlength') || signupForm.get('u-id').hasError('maxlength'))">4 ~ 15글자로 넣어주세요.</div>
           </div>
           <div class="form-group row">
             <label>패스워드
@@ -57,8 +57,7 @@
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('passwordV').hasError('required') && signupForm.get('passwordV').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('passwordV').hasError('minlength') && signupForm.get('passwordV').touched">8 ~ 12 글자로 넣어주세요.</div>
+            <div *ngIf="signupForm.get('passwordV').touched && signupForm.get('passwordV').value !== signupForm.get('password').value">비밀번호를 다르게 입력하셨습니다.</div>
           </div>
           <!-- <div class="form-group row">
             <label>패스워드 확인<b class="red">*</b></label>
@@ -74,7 +73,8 @@
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('name').hasError('required') && signupForm.get('name').touched">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('name').touched && signupForm.get('name').hasError('required') && !signupForm.get('name').hasError('maxLength')">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('name').touched && !signupForm.get('name').hasError('required') && signupForm.get('name').hasError('maxLength')">10자 이내로 입력해 주세요.</div>
           </div>
           <div class="form-group row">
             <label>핸드폰
@@ -85,9 +85,9 @@
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('cp').hasError('required') && signupForm.get('cp').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('cp').hasError('minlength') && signupForm.get('cp').hasError('required') && signupForm.get('cp').touched">올바른 번호를 입력해주세요.</div>
-            <div *ngIf="signupForm.get('cp').hasError('maxlength') && signupForm.get('cp').hasError('required') && signupForm.get('cp').touched">올바른 번호를 입력해주세요.</div>
+            <div *ngIf="signupForm.get('cp').touched && signupForm.get('cp').hasError('required') && !signupForm.get('cp').hasError('minlength') && !signupForm.get('cp').hasError('maxlength')">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('cp').touched && !signupForm.get('cp').hasError('required') && signupForm.get('cp').hasError('minlength') && !signupForm.get('cp').hasError('maxlength')">올바른 핸드폰 번호를 입력해 주세요..</div>
+            <div *ngIf="signupForm.get('cp').touched && !signupForm.get('cp').hasError('required') && !signupForm.get('cp').hasError('minlength') && signupForm.get('cp').hasError('maxlength')">올바른 핸드폰 번호를 입력해 주세요..</div>
           </div>
           <div class="form-group row">
             <label>E-Mail
@@ -98,8 +98,8 @@
           </div>
           <div class="row alert">
             <label></label>
-            <div *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched">필수 입력사항입니다.</div>
-            <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched">이메일 형식에 맞게 입력해주세요.</div>
+            <div *ngIf="signupForm.get('email').touched && signupForm.get('email').hasError('required') && !signupForm.get('email').hasError('email')">필수 입력사항입니다.</div>
+            <div *ngIf="signupForm.get('email').touched && !signupForm.get('email').hasError('required') && signupForm.get('email').hasError('email')">이메일 형식에 맞게 입력해주세요.</div>
           </div>
           <div id="levelBox" class="form-group row">
             <label>신청 등급
@@ -246,13 +246,13 @@
             <label>정보 수신</label>
             <div class="checkboxGroup">
               <label class="sublabel" for="31">메일</label>
-              <input class="form-control" name="info-a" id="31" type="radio">
+              <input class="form-control" name="info-a" id="31" value="31" type="radio">
               <label class="sublabel" for="32">문자</label>
-              <input class="form-control" name="info-a" id="32" type="radio">
+              <input class="form-control" name="info-a" id="32" value="32" type="radio">
               <label class="sublabel" for="33">미수신</label>
-              <input class="form-control" name="info-a" id="33" type="radio">
-              <label class="sublabel" for="33">모두 해당</label>
-              <input class="form-control" name="info-a" id="34" type="radio">
+              <input class="form-control" name="info-a" id="33" value="33" type="radio">
+              <label class="sublabel" for="34">모두 해당</label>
+              <input class="form-control" name="info-a" id="34" value="34" type="radio">
             </div>
           </div>
           <div class="form-group row">

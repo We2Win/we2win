@@ -21,12 +21,12 @@
 }
 
 :host.platinum .card {
-  border-top: #d5b15e;
+  border-top: 4px solid #d5b15e;
   /* border-top: 4px solid var(--level-platinum); */
 }
 
 :host.premium .card {
-  border-top: #111111;
+  border-top: 4px solid #111111;
   /* border-top: 4px solid var(--level-premium); */
 }
 

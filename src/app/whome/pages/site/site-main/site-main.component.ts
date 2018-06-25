@@ -145,14 +145,12 @@ export class SiteMainComponent implements OnInit {
     const container = this.rankingpost2Directive.viewContainerRef;
     container.clear();
 
-    this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-      new PostItem(InfoCardComponent, records[0]));
-    this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-      new PostItem(InfoCardComponent, records[1]));
-    this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-      new PostItem(InfoCardComponent, records[2]));
-    this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
-      new PostItem(InfoCardComponent, records[3]));
+    for (let i = 0; i < 4; ++i) {
+      if (records[i]) {
+        this.postingService.loadComponent(this.rankingpost2Directive.viewContainerRef,
+          new PostItem(InfoCardComponent, records[i]));
+      }
+    }
   }
 
   addWeeklyRecord(records) {

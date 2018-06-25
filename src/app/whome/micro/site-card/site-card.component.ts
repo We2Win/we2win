@@ -58,6 +58,7 @@ export class SiteCardComponent implements OnInit {
     } else {
       this.dateStatus = '분양 마감';
     }
+    this.isBookmarked = this.record['isBookmarked'];
   }
 
   formatDate(dateStr) {

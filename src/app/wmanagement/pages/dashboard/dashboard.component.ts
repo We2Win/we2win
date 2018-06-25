@@ -23,7 +23,13 @@ export class DashboardComponent implements OnInit {
 
   data = {
     'users': {},
-    'contents': {},
+    'contents': {
+      'total': '',
+      'info': '',
+      'site': '',
+      'recruit': '',
+      'meeting': ''
+    },
     'logs': {},
   };
 
@@ -40,7 +46,7 @@ export class DashboardComponent implements OnInit {
       data => {
         // console.log('users: ', data);
         this.data['users'] = data['users'];
-        this.infoPie.chartObject.update();
+        // this.infoPie.chartObject.update();
       },
       error => {
         console.error(error);
@@ -52,7 +58,7 @@ export class DashboardComponent implements OnInit {
         // console.log('contents: ', data);
         this.data['contents'] = data['contents'];
         this.data['logs'] = data['logs'];
-        this.infoBar.chartObject.update();
+        // this.infoBar.chartObject.update();
       },
       error => {
         console.error(error);

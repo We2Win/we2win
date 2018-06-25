@@ -514,6 +514,7 @@ const addBookmark = async function (uId, body) {
       if (err) TE('생성 중 오류가 발생했습니다.');
       break;
     case '오프라인 모임':
+    default:
       console.log('on meeting bookmark: ', info['u-id'], info['c-id']);
       Schedule.findOne({
         where: {
@@ -523,7 +524,7 @@ const addBookmark = async function (uId, body) {
       }).then(
         content => {
           console.log(content);
-          TE('북마크된 항목입니다.')
+          TE('일정이 등록된 항목입니다.')
         }
       );
 
