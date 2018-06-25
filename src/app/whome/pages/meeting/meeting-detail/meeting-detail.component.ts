@@ -208,11 +208,11 @@ export class MeetingDetailComponent implements OnInit {
 
     if (this.isScheduled) {
       this.isScheduled = false;
-      this.alertService.warn('북마크가 해제되었습니다.');
+      this.alertService.warn('일정이 삭제되었습니다.');
       this.userService.removeBookmark(this.Data);
     } else {
       this.isScheduled = true;
-      this.alertService.success('북마크가 설정되었습니다.');
+      this.alertService.success('일정이 등록되었습니다.');
       this.userService.addBookmark(this.Data);
     }
   }
