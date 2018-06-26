@@ -809,7 +809,7 @@ const getContentsListByFiltering = async function (params) {
   [err, contents] = await to(Content.findAll({
     offset: (parseInt(params.id) - 1) * 8 || 0,
     limit: 20,
-    where: {whereArr},
+    where: whereArr,
   }));
 
   console.log('contents: ', contents);
