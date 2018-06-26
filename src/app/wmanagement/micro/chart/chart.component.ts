@@ -324,8 +324,10 @@ export class ChartComponent implements OnInit {
 
     this.chartData['dashboard'][0].data.datasets[0]['backgroundColor'] =
       [fillStandard, fillPremium, fillPlatinum];
-    this.chartData['analysisContents'][0].data.datasets[0]['backgroundColor'] =
-      [fillPlatinum, fillPremium, fillStandard];
+    for (let i = 0; i < 8; i += 2) {
+      this.chartData['analysisContents'][i].data.datasets[0]['backgroundColor'] =
+        [fillStandard, fillPlatinum, fillPremium, fillStandard];
+    }
 
     try {
       setTimeout(() => {

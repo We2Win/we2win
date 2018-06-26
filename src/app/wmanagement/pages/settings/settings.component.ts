@@ -6,6 +6,8 @@ import { PostItem } from '../../models/post-item';
 import { TableComponent } from '../../micro/table/table.component';
 import { MypostDirective } from '../../directives/mypost.directive';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import { RecordService } from '../../services/record.service';
+import { ContentsService } from '../../services/contents.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,11 +16,17 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
     './settings.component.css',
     '../pages.css'
   ],
-  providers: [UserService, PostingService]
+  providers: [
+    UserService,
+    PostingService,
+    ContentsService,
+    RecordService
+  ],
 })
 export class SettingsComponent implements OnInit {
   List: any;
   total: number;
+  selectedList: Array<string> = [];
   orderByLevel = 'ALL';
   orderByAmount = 'ALL';
 
@@ -46,10 +54,29 @@ export class SettingsComponent implements OnInit {
   constructor(
     private userService: UserService,
     private postingService: PostingService,
+    private contentsService: ContentsService,
+    private recordService: RecordService,
   ) { }
 
   ngOnInit() {
     this.updateData(this.orderByLevel, this.orderByAmount);
+    this.recordService.change.subscribe(
+      data => {
+        // console.log('data: ', data);
+        if (data.checked) {
+          this.selectedList.push(data['c-id']);
+        } else {
+          // remove c-id from selectedList
+          const index = this.selectedList.indexOf(data['c-id']);
+          if (index !== -1) {
+            this.selectedList.splice(index, 1);
+          }
+        }
+      },
+      err => {
+        console.error('error occurred: ', err);
+      }
+    );
   }
 
   updateData(level, amount, id?: any) {
@@ -80,7 +107,6 @@ export class SettingsComponent implements OnInit {
     // tslint:disable-next-line:forin
     for (const record in records) {
       // console.log('record: ', records[record]);
-
       this.postingService.loadComponent(ref,
         new PostItem(AccountRecordComponent, records[record]));
     }
@@ -107,7 +133,8 @@ export class SettingsComponent implements OnInit {
     this.searchData(event.target.value);
   }
 
-  setAsAdmin() {
+  setAs(level) {
+    this.
   }
 
 }

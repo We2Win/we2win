@@ -13,7 +13,10 @@
       <ng-container appMypost></ng-container>
     </app-table>
     <li class="submitBar">
-      <button (click)="setAsAdmin()">관리자로 지정</button>
+      <button (click)="setAs('ADMIN')">관리자로 지정</button>
+      <button (click)="setAs('PLATINUM')">PLATINUM으로 지정</button>
+      <button (click)="setAs('PREMIUM')">PREMIUM으로 지정</button>
+      <button (click)="setAs('STANDARD')">STANDARD로 지정</button>
     </li>
   </article>
 </section>

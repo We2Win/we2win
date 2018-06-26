@@ -469,6 +469,28 @@ const removeUser = async function (req, res) {
 }
 module.exports.removeUser = removeUser;
 
+const setLevel = async function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.body.array.length) {
+    User.update({
+      'level': req.body.level
+    }, {
+        where: {
+          'u-id': {
+            [Sequelize.Op.or]: req.body.array
+          }
+        }
+      }).then(content => {
+        console.log(content['u-id']);
+        return ReS(res, content);
+      });
+  }
+
+  return false;
+}
+module.exports.setLevel = setLevel;
+
 const login = async function (req, res) {
   const body = req.body;
   let err, user;

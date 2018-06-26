@@ -94,6 +94,7 @@ router.put('/mng/dashboard/use', ContentController.editUseData);
 router.get('/mng/users/:level/:amount/:id', UserController.getUsers);
 router.get('/mng/users/:query', UserController.getUsersByQuery);
 router.delete('/mng/users/:id', UserController.removeUser); //delete
+router.post('/mng/level', UserController.setLevel);
 // router.get('/mng/contents/:level/:amount/:id', ContentController.getContents);
 router.get('/mng/contents/:level/:amount/:id', ContentController.getContentsByFiltering);
 router.get('/mng/contents/:query', ContentController.getContentsByQuery);

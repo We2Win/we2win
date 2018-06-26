@@ -8,17 +8,20 @@ import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router/';
+import { RecordService } from '../../services/record.service';
 
 @Component({
   selector: 'app-account-record',
   templateUrl: './account-record.component.html',
-  styleUrls: ['./account-record.component.css']
+  styleUrls: ['./account-record.component.css'],
 })
 export class AccountRecordComponent implements OnInit {
   @Input('record') record;
+  checked = false;
 
   constructor(
     private userService: UserService,
+    private recordService: RecordService,
     private router: Router
   ) { }
 
@@ -28,6 +31,11 @@ export class AccountRecordComponent implements OnInit {
 
   editUser() {
 
+  }
+
+  checkBox() {
+    this.checked = !this.checked;
+    this.recordService.emitChange(this.record['u-id'], this.checked);
   }
 
   deleteUser() {

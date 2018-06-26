@@ -6,6 +6,7 @@ import { PostItem } from '../../models/post-item';
 import { TableComponent } from '../../micro/table/table.component';
 import { MypostDirective } from '../../directives/mypost.directive';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import { RecordService } from '../../services/record.service';
 
 @Component({
   selector: 'app-account',
@@ -14,11 +15,16 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
     './account.component.css',
     '../pages.css'
   ],
-  providers: [UserService, PostingService]
+  providers: [
+    UserService,
+    PostingService,
+    RecordService
+  ],
 })
 export class AccountComponent implements OnInit {
   List: any;
   total: number;
+  selectedList: Array<string> = [];
   orderByLevel = 'ALL';
   orderByAmount = 'ALL';
 
@@ -46,10 +52,28 @@ export class AccountComponent implements OnInit {
   constructor(
     private userService: UserService,
     private postingService: PostingService,
+    private recordService: RecordService,
   ) { }
 
   ngOnInit() {
     this.updateData(this.orderByLevel, this.orderByAmount);
+    this.recordService.change.subscribe(
+      data => {
+        console.log('data: ', data);
+        if (data.checked) {
+          this.selectedList.push(data['c-id']);
+        } else {
+          // remove c-id from selectedList
+          const index = this.selectedList.indexOf(data['c-id']);
+          if (index !== -1) {
+            this.selectedList.splice(index, 1);
+          }
+        }
+      },
+      err => {
+        console.error('error occurred: ', err);
+      }
+    );
   }
 
   updateData(level, amount, id?: any) {
