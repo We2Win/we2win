@@ -19,8 +19,8 @@ export class AnalysisContentsComponent implements OnInit {
   List: any;
   total: number;
   date = new Date();
+  orderByCtype = 'ALL';
   orderByLevel = 'ALL';
-  orderByAmount = 'ALL';
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
@@ -39,12 +39,12 @@ export class AnalysisContentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updateData(this.orderByLevel, this.orderByAmount, 1);
+    this.updateData(this.orderByCtype, this.orderByLevel, 1);
   }
 
-  updateData(level, amount, id?: any) {
+  updateData(ctype, level, id?: any) {
     console.log('updating..');
-    this.contentsService.getContentsListByFiltering(level, amount, id).subscribe(
+    this.contentsService.getContentsListByFiltering(ctype, level, id).subscribe(
       data => {
         this.List = data;
         // console.log(this.List);
@@ -95,16 +95,16 @@ export class AnalysisContentsComponent implements OnInit {
     }
   }
 
-  changeLevel(event) {
+  changectype(event) {
     // console.log('changedLevel: ', event);
-    this.orderByLevel = event;
-    this.updateData(this.orderByLevel, this.orderByAmount, 1);
+    this.orderByCtype = event;
+    this.updateData(this.orderByCtype, this.orderByLevel, 1);
   }
 
-  changeAmount(event) {
+  changeLevel(event) {
     // console.log('changedAmount: ', event);
-    this.orderByAmount = event;
-    this.updateData(this.orderByLevel, this.orderByAmount, 1);
+    this.orderByLevel = event;
+    this.updateData(this.orderByCtype, this.orderByLevel, 1);
   }
 
   changeQuery(event) {

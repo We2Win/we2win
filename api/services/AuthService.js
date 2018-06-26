@@ -798,10 +798,10 @@ module.exports.getContentList = getContentList;
 const getContentsListByFiltering = async function (params) {
   const whereArr = {};
   if (params.cType !== 'ALL') {
-    whereArr['c-type'] = params.cType;
+    whereArr['c-type'] = params.ctype;
   }
-  if (params.amount !== 'ALL') {
-    whereArr['ammount'] = params.amount;
+  if (params.level !== 'ALL') {
+    whereArr['level'] = params.level;
   }
 
   console.log('getContentsListByFiltering: ', params, whereArr);

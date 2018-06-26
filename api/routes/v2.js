@@ -96,7 +96,7 @@ router.get('/mng/users/:query', UserController.getUsersByQuery);
 router.delete('/mng/users/:id', UserController.removeUser); //delete
 router.post('/mng/level', UserController.setLevel);
 // router.get('/mng/contents/:level/:amount/:id', ContentController.getContents);
-router.get('/mng/contents/:cType/:amount/:id', ContentController.getContentsByFiltering);
+router.get('/mng/contents/:ctype/:level/:id', ContentController.getContentsByFiltering);
 router.get('/mng/contents/:query', ContentController.getContentsByQuery);
 router.get('/mng/contents/count', ContentController.getCount);
 router.get('/mng/contents/meeting', ContentController.getMeetingTitles);

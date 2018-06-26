@@ -7,8 +7,8 @@
 <section>
   <article>
     <header>
-      <app-select [type]="'카테고리'" (change)="changeLevel($event)"></app-select>
-      <app-select [type]="'금액'" (change)="changeAmount($event)"></app-select>
+      <app-select [type]="'카테고리'" (change)="changeCtype($event)"></app-select>
+      <app-select [type]="'컨텐츠 등급'" (change)="changeLevel($event)"></app-select>
       <input class="search" type="text" placeholder="컨텐츠 검색" (click)="changeQuery($event)" (keypress)="changeQuery($event)" (change)="changeQuery($event)"/>
     </header>
     <app-table [type]="'analysisContents'">

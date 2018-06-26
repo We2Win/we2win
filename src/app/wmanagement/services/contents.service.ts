@@ -22,8 +22,8 @@ export class ContentsService {
       .map((res: any) => res);
   }
 
-  getContentsListByFiltering(level, amount, id?: any) {
-    return this.http.get(environment.apiUrl + '/mng/contents/' + level + '/' + amount + '/' + (id || '1'))
+  getContentsListByFiltering(ctype, level, id?: any) {
+    return this.http.get(environment.apiUrl + '/mng/contents/' + ctype + '/' + level + '/' + (id || '1'))
       .map((res: any) => res);
   }
 
