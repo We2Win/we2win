@@ -9,14 +9,14 @@
       <h1>{{Data['title']}}</h1>
       <p class="document" [innerHtml]="Data['summary']"></p>
       <div>
-        <label>분양모집일</label>
-        <p>{{Data['open-start'].slice(0,10)}} - {{Data['open-end'].slice(0,10)}}</p>
+        <label>분양모집</label>
+        <p>{{dateStatus}}</p>
       </div>
-      <div>
+      <div *ngIf="ammount">
         <label>분양가</label>
-        <p class="price">{{( Data['ammount']* 10000000).toLocaleString() }}원</p>
+        <p class="price">{{ ammount ? ammount + '원' : '미정' }}</p>
       </div>
-      <app-button>담당자 | {{Data['manager-name']}} | {{Data['manager-contact']}}</app-button>
+      <app-button *ngIf="Data['manager-name']">담당자 | {{Data['manager-name']}} | {{Data['manager-contact']}}</app-button>
       <div id="optionBar">
         <span id="bookmark" [ngClass]="{'selected': isBookmarked}" (click)="bookmark()"></span>
         <span id="facebook" (click)="fbShare()"></span>
@@ -42,52 +42,64 @@
     </article>
     <div class="subGroup">
       <label>현장 사진</label>
-      <article id="album">
-        <div id="imgNavigator" class="row navigator" #imgNavigator>
-          <img id="i1" class="show" [src]="subImgUrl[1]" (click)="selectImg(1)" />
-          <img id="i2" [src]="subImgUrl[2]" (click)="selectImg(2)" />
-          <img id="i3" [src]="subImgUrl[3]" (click)="selectImg(3)" />
-          <img id="i4" [src]="subImgUrl[4]" (click)="selectImg(4)" />
-          <img id="i5" [src]="subImgUrl[5]" (click)="selectImg(5)" />
+      <article>
+        <div id="imgNavigatorContainer">
+          <div id="imgNavigator" class="row navigator" #imgNavigator>
+            <!-- <img id="m1" class="show" src="/assets/img/map.png" (click)="selectImg(0)" /> -->
+            <img id="i1" [src]="subImgUrl[1]" (click)="selectImg(1)" />
+            <img id="i2" *ngIf="subImgUrl[2]" [src]="subImgUrl[2]" (click)="selectImg(2)" />
+            <img id="i3" *ngIf="subImgUrl[3]" [src]="subImgUrl[3]" (click)="selectImg(3)" />
+            <img id="i4" *ngIf="subImgUrl[4]" [src]="subImgUrl[4]" (click)="selectImg(4)" />
+            <img id="i5" *ngIf="subImgUrl[5]" [src]="subImgUrl[5]" (click)="selectImg(5)" />
+          </div>
         </div>
-        <div class="row shower">
+        <div hidden class="row"></div>
+        <!-- <div [hidden]="!showMap" class="row shower">
+          <label> {{selectedNum}} / 5 </label>
+          <app-map [address]="Data['map']"></app-map>
+        </div>
+        <div [hidden]="!showMap" class="row addressBar">
+          <label></label>
+          <p>{{Data['map']}}</p>
+        </div> -->
+        <div [hidden]="showMap" class="row shower">
           <label> {{selectedNum}} / 5 </label>
           <img [src]="selectedImgUrl" />
         </div>
       </article>
-    </div>
-    <div class="subGroup">
-      <label>현장 댓글
-        <p class="more" (click)="showMore(commentDetail)">더보기 ></p>
-      </label>
-      <article class="comments">
-        <div class="row" *ngIf="comments.length > 0">
-          <label>{{comments[0]['u-id']}}</label>
-          <p>{{comments[0]['contents']}}</p>
-          <span>{{comments[0]['createdAt'].slice(0,10)}}</span>
-        </div>
-        <div class="row" *ngIf="comments.length > 1">
-          <label>{{comments[1]['u-id']}}</label>
-          <p>{{comments[1]['contents']}}</p>
-          <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
-        </div>
-        <div name="commentBox" class="row">
-          <form class="commentForm" (submit)="addComment()">
-            <label>{{userInfo['user_id'].length ? userInfo['user_id'] : '비회원'}}</label>
-            <textarea type="text" class="commentInput" #NewComment></textarea>
-            <app-button (click)="addComment()">댓글 입력</app-button>
-          </form>
+      </div>
+      <div class="subGroup">
+        <label>현장 댓글
+          <p class="more" (click)="showMore(commentDetail)">더보기 ></p>
+        </label>
+        <article class="comments">
+          <div class="row" *ngIf="comments.length > 0">
+            <label>{{comments[0]['u-id']}}</label>
+            <p>{{comments[0]['contents']}}</p>
+            <span>{{comments[0]['createdAt'].slice(0,10)}}</span>
+          </div>
+          <div class="row" *ngIf="comments.length > 1">
+            <label>{{comments[1]['u-id']}}</label>
+            <p>{{comments[1]['contents']}}</p>
+            <span>{{comments[1]['createdAt'].slice(0,10)}}</span>
+          </div>
+          <div name="commentBox" class="row">
+            <form class="commentForm" (submit)="addComment()">
+              <label>{{userInfo['user_id'].length ? userInfo['user_id'] : '비회원'}}</label>
+              <textarea type="text" class="commentInput" #NewComment></textarea>
+              <app-button (click)="addComment()">댓글 입력</app-button>
+            </form>
+          </div>
+        </article>
+      </div>
+      <article>
+        <div class="row">
+          <label>관련 분양 리포트</label>
+          <div class="row flex">
+            <ng-container appRankingpost></ng-container>
+          </div>
         </div>
       </article>
-    </div>
-    <article>
-      <div class="row">
-        <label>관련 분양 리포트</label>
-        <div class="row flex">
-          <ng-container appRankingpost></ng-container>
-        </div>
-      </div>
-    </article>
   </app-group>
 </section>
 

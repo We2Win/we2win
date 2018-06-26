@@ -36,7 +36,11 @@ export class InfoDetailComponent implements OnInit {
   selectedNum = 1;
   showCharts = true;
   showMoreReport = false;
+  showMap = false;
   isBookmarked = false;
+  // '분양중', '분양 마감', '미정';
+  dateStatus = '미정';
+  ammount = '미정';
 
   // userInfo;
   userInfo = new UserInfo();
@@ -119,6 +123,19 @@ export class InfoDetailComponent implements OnInit {
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['slave-image1'];
 
           this.isBookmarked = this.Data['isBookmarked'];
+          // if (this.Data['map']) {
+          //   this.showMap = true;
+          // }
+
+          const now = new Date();
+          const start = new Date(this.Data['open-start']);
+          const end = new Date(this.Data['open-end']);
+          if (now > start && now < end) {
+            this.dateStatus = '분양중';
+          } else {
+            this.dateStatus = '분양 마감';
+          }
+          this.ammount = this.Data['ammount'] ? (this.Data['ammount'] * 10000000).toLocaleString() : '';
 
           this.meta.addTag({ name: 'og:url', content: 'we2win.com' });
           this.meta.addTag({ name: 'og:title', content: this.Data['title'] });
@@ -132,8 +149,18 @@ export class InfoDetailComponent implements OnInit {
   }
 
   selectImg(num) {
+    // if (num === 0) {
+    //   this.showMap = true;
+    //   this.selectedNum = 1;
+    //   this.imgNavigator.nativeElement.querySelectorAll('img').forEach(element => {
+    //     element.classList.remove('show');
+    //   });
+    //   this.imgNavigator.nativeElement.querySelector('#m1').classList.add('show');
+    //   return;
+    // }
+    this.showMap = false;
     this.selectedImgUrl = this.subImgUrl[num];
-    this.selectedNum = num;
+    this.selectedNum = num + 1;
     this.imgNavigator.nativeElement.querySelectorAll('img').forEach(element => {
       element.classList.remove('show');
     });

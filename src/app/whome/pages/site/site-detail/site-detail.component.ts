@@ -40,6 +40,7 @@ export class SiteDetailComponent implements OnInit {
   isBookmarked = false;
   // '분양중', '분양 마감', '미정';
   dateStatus = '미정';
+  ammount = '미정';
 
   userInfo = new UserInfo();
   // userInfo;
@@ -135,6 +136,7 @@ export class SiteDetailComponent implements OnInit {
           } else {
             this.dateStatus = '분양 마감';
           }
+          this.ammount = this.Data['ammount'] ? (this.Data['ammount'] * 10000000).toLocaleString() : '';
 
           // console.log('userInfo: ', this.userInfo);
 

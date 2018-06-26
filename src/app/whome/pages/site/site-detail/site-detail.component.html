@@ -8,16 +8,15 @@
     <div id="description">
       <h1>{{Data['title']}}</h1>
       <p class="document" [innerHtml]="Data['summary']"></p>
-      <div>
+      <div *ngIf="dateStatus">
         <label>분양모집</label>
         <p>{{dateStatus}}</p>
-        <!-- <p>{{Data['open-start'].slice(0,10)}} - {{Data['open-end'].slice(0,10)}}</p> -->
       </div>
-      <div>
+      <div *ngIf="ammount">
         <label>분양가</label>
-        <p class="price">{{( Data['ammount']* 10000000).toLocaleString() }}원</p>
+        <p class="price">{{ ammount ? ammount + '원' : '미정' }}</p>
       </div>
-      <app-button>담당자 | {{Data['manager-name']}} | {{Data['manager-contact']}}</app-button>
+      <app-button *ngIf="Data['manager-name']">담당자 | {{Data['manager-name']}} | {{Data['manager-contact']}}</app-button>
       <div id="optionBar">
         <span id="bookmark" [ngClass]="{'selected': isBookmarked}" (click)="bookmark()"></span>
         <span id="facebook" (click)="fbShare()"></span>
