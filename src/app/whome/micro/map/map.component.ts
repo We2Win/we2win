@@ -22,9 +22,9 @@ export class MapComponent implements OnInit {
 
   }
 
-  setMap() {
+  setMap(address) {
     const map = new window['naver'].maps.Map('map');
-    const myaddress = this.address;
+    const myaddress = address;
     window['naver'].maps.Service.geocode({ address: myaddress }, function (status, response) {
       if (status !== window['naver'].maps.Service.Status.OK) {
         return alert(myaddress + '의 검색 결과가 없거나 기타 네트워크 에러');
