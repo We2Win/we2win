@@ -36,7 +36,7 @@ export class SiteDetailComponent implements OnInit {
   selectedNum = 1;
   showCharts = true;
   showMoreReport = false;
-  showMap = true;
+  showMap = false;
   isBookmarked = false;
   // '분양중', '분양 마감', '미정';
   dateStatus = '미정';
@@ -123,6 +123,9 @@ export class SiteDetailComponent implements OnInit {
           this.selectedImgUrl = environment.bucket.downloadUrl + this.Data['slave-image1'];
 
           this.isBookmarked = this.Data['isBookmarked'];
+          if (this.Data['map']) {
+            this.showMap = true;
+          }
 
           const now = new Date();
           const start = new Date(this.Data['open-start']);

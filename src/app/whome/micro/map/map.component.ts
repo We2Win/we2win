@@ -40,18 +40,18 @@ export class MapComponent implements OnInit {
         position: myaddr,
         map: map
       });
-      // 마커 클릭 이벤트 처리
-      window['naver'].maps.Event.addListener(marker, 'click', function (e) {
-        if (infowindow.getMap()) {
-          infowindow.close();
-        } else {
-          infowindow.open(map, marker);
-        }
-      });
-      // 마크 클릭시 인포윈도우 오픈
-      const infowindow = new window['naver'].maps.InfoWindow({
-        content: '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
-      });
+      // // 마커 클릭 이벤트 처리
+      // window['naver'].maps.Event.addListener(marker, 'click', function (e) {
+      //   if (infowindow.getMap()) {
+      //     infowindow.close();
+      //   } else {
+      //     infowindow.open(map, marker);
+      //   }
+      // });
+      // // 마크 클릭시 인포윈도우 오픈
+      // const infowindow = new window['naver'].maps.InfoWindow({
+      //   content: '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
+      // });
     });
   }
 
