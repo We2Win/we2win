@@ -331,7 +331,7 @@ const searchContent = async function (body, page) {
   let err, content;
   page = (page - 1) * 12 || 0;
 
-  console.log('searching...');
+  console.log('searching...' + page);
 
   [err, content] = await to(Content.findAll({
     offset: page,

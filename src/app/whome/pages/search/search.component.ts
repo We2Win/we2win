@@ -76,7 +76,7 @@ export class SearchComponent implements OnInit {
   }
 
   paging(page) {
-    // console.log('page: ', page);
+    console.log('page: ', page);
     this.searchService.searchByPage(page);
   }
 
