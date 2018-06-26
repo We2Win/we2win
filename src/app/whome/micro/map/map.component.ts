@@ -6,11 +6,18 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  @Input() address;
+  @Input('address')
+  set address(value: boolean) {
+    this.setMap();
+  }
 
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  setMap() {
     const map = new window['naver'].maps.Map('map');
     const myaddress = this.address;
     window['naver'].maps.Service.geocode({ address: myaddress }, function (status, response) {
