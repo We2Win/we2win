@@ -6,9 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+  isLoaded = false;
   @Input('address')
-  set address(value: boolean) {
-    this.setMap();
+  set address(value: string) {
+    if (value && !this.isLoaded) {
+      this.setMap();
+      this.isLoaded = true;
+    }
   }
 
   constructor() { }
