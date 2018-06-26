@@ -32,8 +32,7 @@ export class MapComponent implements OnInit {
       const myaddress = address;
       window['naver'].maps.Service.geocode({ address: myaddress }, (status, response) => {
         if (status !== window['naver'].maps.Service.Status.OK) {
-          this.alertService.info(myaddress + '에 해당하는 지도를 찾지 못했습니다.');
-          return;
+          return this.alertService.info(myaddress + '에 해당하는 지도를 찾지 못했습니다.');
           // return alert(myaddress + '의 검색 결과가 없거나 기타 네트워크 에러');
         }
         const result = response.result;
