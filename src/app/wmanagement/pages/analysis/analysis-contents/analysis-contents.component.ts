@@ -24,7 +24,12 @@ export class AnalysisContentsComponent implements OnInit {
 
   @ViewChild(MypostDirective)
   private mypostDirective: MypostDirective;
-  chartData: object;
+  chartData = {
+    'c-click': [],
+    'c-scrap': [],
+    'c-comments': [],
+    'c-sns': []
+  };
 
   postItems: PostItem[];
 
@@ -37,19 +42,22 @@ export class AnalysisContentsComponent implements OnInit {
     this.updateData(this.orderByLevel, this.orderByAmount, 1);
   }
 
-  updateData(page, amount, id?: any) {
-    this.contentsService.getContentsListByFiltering(page, amount, id).subscribe(
+  updateData(level, amount, id?: any) {
+    this.contentsService.getContentsListByFiltering(level, amount, id).subscribe(
       data => {
         this.List = data;
         // console.log(this.List);
         this.total = this.List.length;
-        this.addRecord(this.List);
+        this.addRecord(JSON.parse(this.List.list));
       }
     );
     this.contentsService.getAnalysisContents().subscribe(
       data => {
         // console.log('data: ', data);
-        this.chartData = data;
+        // tslint:disable-next-line:forin
+        for (const atr in this.chartData) {
+          this.chartData[atr] = data[atr];
+        }
       },
       err => {
         console.error('error: ', err);
@@ -72,10 +80,10 @@ export class AnalysisContentsComponent implements OnInit {
     const ref = this.mypostDirective.viewContainerRef;
     ref.clear();
 
-    // console.log(records);
+    console.log(records);
     // tslint:disable-next-line:forin
     // records['list'] = JSON.parse(records['list']);
-    const List = JSON.parse(records['list']);
+    const List = records;
     // tslint:disable-next-line:forin
     for (const record in List) {
       // console.log(List[record]);

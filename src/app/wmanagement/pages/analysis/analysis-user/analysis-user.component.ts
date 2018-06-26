@@ -115,36 +115,9 @@ export class AnalysisUserComponent implements OnInit {
 
   }
 
-  download(type) {
-    switch (type) {
-      case 'all':
-        const data = [
-          {
-            name: 'Test 1',
-            age: 13,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-          {
-            name: 'Test 2',
-            age: 11,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-          {
-            name: 'Test 4',
-            age: 10,
-            average: 8.2,
-            approved: true,
-            description: 'using Content here, content here '
-          },
-        ];
-
-        // tslint:disable-next-line:no-unused-expression
-        new Angular2Csv(data, 'My Report');
-        break;
-    }
+  download() {
+    const name = 'We2Win_사용자분석_' + (new Date().toISOString().slice(0, 10)) + '.csv';
+    // tslint:disable-next-line:no-unused-expression
+    new Angular2Csv(this.List, name);
   }
 }

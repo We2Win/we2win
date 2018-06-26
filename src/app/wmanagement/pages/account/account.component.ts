@@ -134,8 +134,10 @@ export class AccountComponent implements OnInit {
   }
 
   download() {
-    const name = 'We2Win_계정관리_' + (new Date().toISOString().slice(0, 10));
+    const name = 'We2Win_계정관리_' + (new Date().toISOString().slice(0, 10)) + '.csv';
     // tslint:disable-next-line:no-unused-expression
-    new Angular2Csv(Object.assign(this.categoryName, this.List), name);
+    Array.prototype.push.apply(this.categoryName, this.List);
+    // tslint:disable-next-line:no-unused-expression
+    new Angular2Csv(this.categoryName, name);
   }
 }

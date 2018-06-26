@@ -139,9 +139,10 @@ export class SchedulerComponent implements OnInit {
         count = 0;
 
         const date = new Date(records[record].dateStr);
+        // console.log('date: ', date, date.getMonth());
         if (date.getDate() >= 1 && date.getDate() < 8) {
           this.postingService.loadComponent(ref,
-            new PostItem(SchedulerMonthComponent, date.getMonth()));
+            new PostItem(SchedulerMonthComponent, date.getMonth() + 1));
         }
         week = this.postingService.loadComponent(ref,
           new PostItem(SchedulerWeekComponent, null));

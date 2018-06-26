@@ -19,4 +19,7 @@ export class AnalysisContentsRecordComponent implements OnInit {
   ngOnInit() {
   }
 
+  download() {
+
+  }
 }
