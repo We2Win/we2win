@@ -19,7 +19,7 @@ export class MapComponent implements OnInit {
   }
 
   constructor(
-    private alertService: AlertService
+    private alertService: AlertService,
   ) { }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class MapComponent implements OnInit {
     try {
       const map = new window['naver'].maps.Map('map');
       const myaddress = address;
-      window['naver'].maps.Service.geocode({ address: myaddress }, function (status, response) {
+      window['naver'].maps.Service.geocode({ address: myaddress }, (status, response) => {
         if (status !== window['naver'].maps.Service.Status.OK) {
           this.alertService.info(myaddress + '에 해당하는 지도를 찾지 못했습니다.');
           return;
