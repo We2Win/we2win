@@ -43,6 +43,7 @@ export class AnalysisContentsComponent implements OnInit {
   }
 
   updateData(level, amount, id?: any) {
+    console.log('updating..');
     this.contentsService.getContentsListByFiltering(level, amount, id).subscribe(
       data => {
         this.List = data;

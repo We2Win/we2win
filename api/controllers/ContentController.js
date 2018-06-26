@@ -133,13 +133,13 @@ const getContentsByFiltering = async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   let params = req.params;
 
-  [err, users] = await to(authService.getContentsListByFiltering(params));
+  [err, contents] = await to(authService.getContentsListByFiltering(params));
 
   if (err) return ReE(res, err, 422);
 
   return ReS(res, {
     message: 'Successfully loading content lists.',
-    list: JSON.stringify(users),
+    list: JSON.stringify(contents),
     // user: user.toWeb(),
     // token: User.getJWT()
   }, 201);
