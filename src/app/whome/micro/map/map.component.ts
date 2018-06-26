@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
+  providers: [AlertService]
 })
 export class MapComponent implements OnInit {
   isLoaded = false;
@@ -16,7 +18,9 @@ export class MapComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
 
@@ -28,7 +32,9 @@ export class MapComponent implements OnInit {
       const myaddress = address;
       window['naver'].maps.Service.geocode({ address: myaddress }, function (status, response) {
         if (status !== window['naver'].maps.Service.Status.OK) {
-          return alert(myaddress + '의 검색 결과가 없거나 기타 네트워크 에러');
+          this.alertService.info(myaddress + '에 해당하는 지도를 찾지 못했습니다.');
+          return;
+          // return alert(myaddress + '의 검색 결과가 없거나 기타 네트워크 에러');
         }
         const result = response.result;
         // 검색 결과 갯수: result.total
