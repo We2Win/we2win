@@ -95,7 +95,7 @@ export class AnalysisContentsComponent implements OnInit {
     }
   }
 
-  changectype(event) {
+  changeCtype(event) {
     // console.log('changedLevel: ', event);
     this.orderByCtype = event;
     this.updateData(this.orderByCtype, this.orderByLevel, 1);
