@@ -351,7 +351,7 @@ const searchContent = async function (body, page) {
     }
   }))
 
-  console.log('content: ', content, err);
+  // console.log('content: ', content, err);
 
   return content;
 }
