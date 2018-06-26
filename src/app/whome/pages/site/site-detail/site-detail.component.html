@@ -60,6 +60,10 @@
           <label> {{selectedNum}} / 5 </label>
           <app-map [address]="Data['map']"></app-map>
         </div>
+        <div [hidden]="!showMap" class="row addressBar">
+          <label></label>
+          <p>{{Data['map']}}</p>
+        </div>
         <div [hidden]="showMap" class="row shower">
           <label> {{selectedNum}} / 5 </label>
           <img [src]="selectedImgUrl" />

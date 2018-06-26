@@ -209,6 +209,22 @@ section {
   height: 310px;
 }
 
+.shower app-map {
+  width: 517px;
+  margin: .2em;
+}
+
+.addressBar {
+  text-align: center;
+  margin: 0 !important;
+}
+
+.addressBar p {
+  margin: -0.2em 0.2em 0.2em 0.2em;
+  line-height: 200%;
+  background: #eee;
+}
+
 #imgNavigatorContainer {
   width: 726px;
   overflow-x: scroll;
