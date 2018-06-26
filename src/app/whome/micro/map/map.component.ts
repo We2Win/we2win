@@ -9,6 +9,7 @@ export class MapComponent implements OnInit {
   isLoaded = false;
   @Input('address')
   set address(value: string) {
+    console.log('value: ', value, this.isLoaded);
     if (value && !this.isLoaded) {
       this.setMap();
       this.isLoaded = true;
