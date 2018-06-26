@@ -99,7 +99,7 @@ const searchContents = async function (req, res) {
 
   if (err) return ReE(res, err, 422);
 
-  console.log('content: ', content);
+  // console.log('content: ', content);
 
   // content = JSON.stringify(content);
 
