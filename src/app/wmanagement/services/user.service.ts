@@ -43,4 +43,12 @@ export class UserService {
     .map((res: UserInfo) => res);
       // .catch((error: any) => { console.log(error.message); });
   }
+
+  setLevel(_body, level) {
+    const body = {
+      level: level,
+      array: _body
+    };
+    return this.http.post(environment.apiUrl + '/mng/level', body);
+  }
 }

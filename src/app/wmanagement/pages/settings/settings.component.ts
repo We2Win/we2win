@@ -7,7 +7,7 @@ import { TableComponent } from '../../micro/table/table.component';
 import { MypostDirective } from '../../directives/mypost.directive';
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import { RecordService } from '../../services/record.service';
-import { ContentsService } from '../../services/contents.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-settings',
@@ -19,8 +19,9 @@ import { ContentsService } from '../../services/contents.service';
   providers: [
     UserService,
     PostingService,
-    ContentsService,
-    RecordService
+    UserService,
+    RecordService,
+    AlertService
   ],
 })
 export class SettingsComponent implements OnInit {
@@ -54,8 +55,8 @@ export class SettingsComponent implements OnInit {
   constructor(
     private userService: UserService,
     private postingService: PostingService,
-    private contentsService: ContentsService,
     private recordService: RecordService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -134,7 +135,13 @@ export class SettingsComponent implements OnInit {
   }
 
   setAs(level) {
-    this.
+    this.userService.setLevel(this.selectedList, level).subscribe(
+      data => {
+        this.alertService.success('등급을 전환했습니다.');
+        this.selectedList = [];
+        this.updateData(this.orderByLevel, this.orderByAmount);
+      }
+    );
   }
 
 }

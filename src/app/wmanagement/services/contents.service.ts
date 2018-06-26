@@ -120,14 +120,6 @@ export class ContentsService {
     return this.http.get(environment.apiUrl + '/mng/analysis');
   }
 
-  setLevel(_body, level) {
-    const body = {
-      level: level,
-      array: _body
-    };
-    return this.http.post(environment.apiUrl + '/mng/level', body);
-  }
-
   confirmEmployers(_body, confirm) {
     const body = {
       confirm: confirm,
