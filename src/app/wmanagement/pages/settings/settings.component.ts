@@ -135,11 +135,15 @@ export class SettingsComponent implements OnInit {
   }
 
   setAs(level) {
+    console.log(level, this.selectedList);
     this.userService.setLevel(this.selectedList, level).subscribe(
       data => {
         this.alertService.success('등급을 전환했습니다.');
         this.selectedList = [];
         this.updateData(this.orderByLevel, this.orderByAmount);
+      },
+      err => {
+        this.alertService.error('에러가 발생했습니다.');
       }
     );
   }

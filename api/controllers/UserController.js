@@ -8,7 +8,7 @@ const ses = new aws.SES({
   apiVersion: '2010-12-01'
 });
 
-
+const Sequelize = require('sequelize');
 
 const findId = async function (req, res) {
   console.log(req.body);
