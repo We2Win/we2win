@@ -87,6 +87,7 @@ import { SchedulerDayComponent } from './micro/scheduler-day/scheduler-day.compo
 import { SchedulerMonthComponent } from './micro/scheduler-month/scheduler-month.component';
 import { RequestComponent } from './pages/signup/request/request.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MapComponent } from './micro/map/map.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -169,6 +170,7 @@ export function tokenGetter() {
     SchedulerDayComponent,
     SchedulerMonthComponent,
     RequestComponent,
+    MapComponent,
   ],
   entryComponents: [
     InfoCardComponent,

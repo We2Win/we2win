@@ -36,6 +36,7 @@ export class SiteDetailComponent implements OnInit {
   selectedNum = 1;
   showCharts = true;
   showMoreReport = false;
+  showMap = true;
   isBookmarked = false;
   // '분양중', '분양 마감', '미정';
   dateStatus = '미정';
@@ -102,6 +103,7 @@ export class SiteDetailComponent implements OnInit {
     this.contentsService.getContentsDetail('site', this.id).subscribe(
       data => {
         if (data) {
+          console.log('data: ', data);
           this.Data = data;
           this.Data['c-type'] = '분양 현장';
           // console.log(this.Data);
@@ -145,8 +147,18 @@ export class SiteDetailComponent implements OnInit {
   }
 
   selectImg(num) {
+    if (num === 0) {
+      this.showMap = true;
+      this.selectedNum = 1;
+      this.imgNavigator.nativeElement.querySelectorAll('img').forEach(element => {
+        element.classList.remove('show');
+      });
+      this.imgNavigator.nativeElement.querySelector('#m1').classList.add('show');
+      return;
+    }
+    this.showMap = false;
     this.selectedImgUrl = this.subImgUrl[num];
-    this.selectedNum = num;
+    this.selectedNum = num + 1;
     this.imgNavigator.nativeElement.querySelectorAll('img').forEach(element => {
       element.classList.remove('show');
     });

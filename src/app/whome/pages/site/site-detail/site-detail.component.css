@@ -209,6 +209,15 @@ section {
   height: 310px;
 }
 
+#imgNavigatorContainer {
+  width: 726px;
+  overflow-x: scroll;
+}
+
+#imgNavigator {
+  width: 790px;
+}
+
 #imgNavigator img {
   opacity: 0.5;
   transition: opacity 0.5s;

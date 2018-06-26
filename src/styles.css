@@ -90,6 +90,11 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
+[hidden] {
+  opacity: 0;
+  position: absolute;
+}
+
 .document h1{
   font-size: 2em;
   margin: 0;
