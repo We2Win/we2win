@@ -11,7 +11,7 @@ export class MapComponent implements OnInit {
   set address(value: string) {
     console.log('value: ', value, this.isLoaded);
     if (value && !this.isLoaded) {
-      this.setMap();
+      this.setMap(value);
       this.isLoaded = true;
     }
   }
